@@ -1,4 +1,4 @@
-# teeeeest
+# project_name
 
 > My stylish Nuxt.js project
 
