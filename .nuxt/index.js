@@ -11,6 +11,11 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
+import nuxt_plugin_axios_3fa3ac38 from 'nuxt_plugin_axios_3fa3ac38' // Source: ../plugins/modules/axios (mode: 'all')
+import nuxt_plugin_i18n_3df04bc8 from 'nuxt_plugin_i18n_3df04bc8' // Source: ../plugins/modules/i18n (mode: 'all')
+import nuxt_plugin_mq_568b5522 from 'nuxt_plugin_mq_568b5522' // Source: ../plugins/modules/mq (mode: 'all')
+import nuxt_plugin_general_6849ad30 from 'nuxt_plugin_general_6849ad30' // Source: ../plugins/globalComponents/general (mode: 'all')
+
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
 
@@ -111,7 +116,53 @@ async function createApp (ssrContext) {
     ssrContext
   })
 
+  const inject = function (key, value) {
+    if (!key) {
+      throw new Error('inject(key, value) has no key provided')
+    }
+    if (value === undefined) {
+      throw new Error('inject(key, value) has no value provided')
+    }
+
+    key = '$' + key
+    // Add into app
+    app[key] = value
+
+    // Check if plugin not already installed
+    const installKey = '__nuxt_' + key + '_installed__'
+    if (Vue[installKey]) {
+      return
+    }
+    Vue[installKey] = true
+    // Call Vue.use() to install the plugin into vm
+    Vue.use(() => {
+      if (!Vue.prototype.hasOwnProperty(key)) {
+        Object.defineProperty(Vue.prototype, key, {
+          get () {
+            return this.$root.$options[key]
+          }
+        })
+      }
+    })
+  }
+
   // Plugin execution
+
+  if (typeof nuxt_plugin_axios_3fa3ac38 === 'function') {
+    await nuxt_plugin_axios_3fa3ac38(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_i18n_3df04bc8 === 'function') {
+    await nuxt_plugin_i18n_3df04bc8(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_mq_568b5522 === 'function') {
+    await nuxt_plugin_mq_568b5522(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_general_6849ad30 === 'function') {
+    await nuxt_plugin_general_6849ad30(app.context, inject)
+  }
 
   // If server-side, wait for async component to be resolved first
   if (process.server && ssrContext && ssrContext.url) {
