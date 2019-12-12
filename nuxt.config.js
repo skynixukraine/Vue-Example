@@ -22,6 +22,9 @@ module.exports = {
     loading: { color: '#3B8070' },
     router: {},
     plugins: [
+        // Injections
+        { src: '~/plugins/injections/routes' },
+        
         // 3rd Party Modules/Libs
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/i18n' },
