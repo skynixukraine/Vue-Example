@@ -9,23 +9,16 @@
 </template>
 
 <script>
-// mixins
-import Error from '~/mixins/Error'
-
 export default {
-    mixins: [Error],
     head() {
         return { title: "Homepage" }
     },
-    mounted() {
-        setTimeout(() => {
-            this.fireCriticalError({ statusCode: 404, message: 'fireCriticalError' })
-        }, 2000)
+    async fetch ({ store, error }) {
+        if (!store.getters['user/USERS'].length) {
+            await store.dispatch('user/LOAD_AND_COMMIT_USERS').catch((e) => {
+                error({ statusCode: e.status, message: e.message })
+            })
+        }
     }
-    // async fetch ({ store }) {
-    //     if (!store.getters['blog/POSTS'].length) {
-    //         await store.dispatch('blog/GET_POSTS')
-    //     }
-    // }
 }
 </script>
