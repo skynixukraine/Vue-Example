@@ -15,9 +15,10 @@ export default {
     },
     async fetch ({ store, error }) {
         if (!store.getters['user/USERS'].length) {
-            await store.dispatch('user/LOAD_AND_COMMIT_USERS').catch((e) => {
+            const users = await store.dispatch('user/LOAD_USERS').catch((e) => {
                 error({ statusCode: e.status, message: e.message })
             })
+            store.commit('user/SET_USERS', users)
         }
     }
 }
