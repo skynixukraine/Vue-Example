@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="page">
         <h1 v-if="error.statusCode === 404">{{ message }}</h1>
         <h1 v-else>{{ message }}</h1>
         <nuxt-link :to="$routes.home.path">Home page</nuxt-link>

@@ -10,22 +10,21 @@
 
 <script>
 // mixins
-import Error from '~/mixins/Error'
+import User from '~/services/app/User'
 
 export default {
-    mixins: [Error],
     head() {
         return { title: "Homepage" }
     },
     mounted() {
         setTimeout(() => {
             this.fireCriticalError({ statusCode: 404, message: 'fireCriticalError' })
-        }, 2000)
+        }, 200000)
+    },
+    async fetch ({ store }) {
+        if (!store.getters['user/USERS'].length) {
+            await store.dispatch('user/LOAD_AND_COMMIT_USERS')
+        }
     }
-    // async fetch ({ store }) {
-    //     if (!store.getters['blog/POSTS'].length) {
-    //         await store.dispatch('blog/GET_POSTS')
-    //     }
-    // }
 }
 </script>
