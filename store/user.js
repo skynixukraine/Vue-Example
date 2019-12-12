@@ -12,9 +12,9 @@ export const mutations = {
 }
 
 export const actions = {
-    async LOAD_AND_COMMIT_USERS ({ commit }) {
+    async LOAD_USERS ({ commit }) {
         const response = await UserApi.loadUsers()
-        commit('SET_USERS', response.data)
+        return response.data
     }
 }
 
