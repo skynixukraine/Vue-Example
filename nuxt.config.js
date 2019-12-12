@@ -24,7 +24,8 @@ module.exports = {
     plugins: [
         // Injections
         { src: '~/plugins/injections/routes' },
-        
+        { src: '~/plugins/injections/apiRoutes' },
+
         // 3rd Party Modules/Libs
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/i18n' },

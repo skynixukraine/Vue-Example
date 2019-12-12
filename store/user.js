@@ -1,12 +1,13 @@
 import UserApi from '../services/api/User'
 
 export const state = () => ({
-    users: [{id:23}, {id:17}]
+    users: [],
+    user: {}
 })
 
 export const mutations = {
-    SET_USERS (state, posts) {
-        state.users = posts
+    SET_USERS (state, users) {
+        state.users = users
     }
 }
 
@@ -19,6 +20,6 @@ export const actions = {
 
 export const getters = {
     USERS (state) {
-        return state.posts
+        return state.users
     },
 }

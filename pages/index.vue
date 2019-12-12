@@ -9,21 +9,15 @@
 </template>
 
 <script>
-// mixins
-import User from '~/services/app/User'
-
 export default {
     head() {
         return { title: "Homepage" }
     },
-    mounted() {
-        setTimeout(() => {
-            this.fireCriticalError({ statusCode: 404, message: 'fireCriticalError' })
-        }, 200000)
-    },
-    async fetch ({ store }) {
+    async fetch ({ store, error }) {
         if (!store.getters['user/USERS'].length) {
-            await store.dispatch('user/LOAD_AND_COMMIT_USERS')
+            await store.dispatch('user/LOAD_AND_COMMIT_USERS').catch((e) => {
+                error({ statusCode: e.status, message: e.message })
+            })
         }
     }
 }
