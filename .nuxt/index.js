@@ -4,13 +4,14 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from './components/nuxt-error.vue'
+import NuxtError from '../layouts/error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
+import nuxt_plugin_routes_3558dcf2 from 'nuxt_plugin_routes_3558dcf2' // Source: ../plugins/injections/routes (mode: 'all')
 import nuxt_plugin_axios_3fa3ac38 from 'nuxt_plugin_axios_3fa3ac38' // Source: ../plugins/modules/axios (mode: 'all')
 import nuxt_plugin_i18n_3df04bc8 from 'nuxt_plugin_i18n_3df04bc8' // Source: ../plugins/modules/i18n (mode: 'all')
 import nuxt_plugin_mq_568b5522 from 'nuxt_plugin_mq_568b5522' // Source: ../plugins/modules/mq (mode: 'all')
@@ -147,6 +148,10 @@ async function createApp (ssrContext) {
   }
 
   // Plugin execution
+
+  if (typeof nuxt_plugin_routes_3558dcf2 === 'function') {
+    await nuxt_plugin_routes_3558dcf2(app.context, inject)
+  }
 
   if (typeof nuxt_plugin_axios_3fa3ac38 === 'function') {
     await nuxt_plugin_axios_3fa3ac38(app.context, inject)

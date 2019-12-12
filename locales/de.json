@@ -1,7 +1,42 @@
 {
-    "lang": {
-        "en": "English",
-        "ua": "Ukr",
-        "ru": "Russian"
+    "navigation": {
+        "dermatologists": "Hautärzte",
+        "advantages": "Ihre Vorteile",
+        "faq": "FAQ",
+        "about": "Über uns",
+        "jobs": "Jobs"
+    },
+    "errors": {
+        "default": "Some error find."
+    },
+    "page-home": {
+        "head": {
+            "title": "Home page"
+        }
+    },
+    "page-dermatologists": {
+        "head": {
+            "title": "Home page"
+        }
+    },
+    "page-advantages": {
+        "head": {
+            "title": "Advantages page"
+        }
+    },
+    "page-faq": {
+        "head": {
+            "title": "FAQ page"
+        }
+    },
+    "page-about": {
+        "head": {
+            "title": "About page"
+        }
+    },
+    "page-jobs": {
+        "head": {
+            "title": "Jobs page"
+        }
     }
 }
