@@ -1,5 +1,5 @@
 <template>
-    <ul class="list list--desktop-3">
+    <ul class="list">
         <template v-if="!items.length">
             <li>Items not found.</li>
         </template>
@@ -16,8 +16,6 @@
 </template>
 
 <script>
-
-
 export default {
     props: {
         items: {

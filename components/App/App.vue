@@ -357,4 +357,47 @@ template {
 /*********************
 END: NORMILIZE
 *********************/
+/*********************
+START: COMPONENTS
+*********************/
+.link {
+  display: inline;
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  &--button {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 30px;
+
+    &-white {
+      background: #f5f5f5;
+      color: blue;
+    }
+
+    &-blue {
+      background: blue;
+      color: #FFF;
+    }
+  }
+
+  &--card {
+    display: block;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+.block-link {
+  display: block;
+}
+/*********************
+END: COMPONENTS
+*********************/
+
 </style>
