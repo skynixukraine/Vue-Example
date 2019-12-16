@@ -1,24 +1,27 @@
 import Vue from 'vue'
 
-const OPTIONS = {
-    home: {
-        path: '/'
-    },
-    dermatologists: {
-        path: '/dermatologists'
-    },
-    advantages: {
-        path: '/advantages',
-    },
-    faq: {
-        path: '/faq',
-    },
-    about: {
-        path: '/about',
-    },
-    jobs: {
-        path: '/jobs',
-    },
+export default ({ app }, inject) => {
+    const OPTIONS = {
+        home: {
+            path: '/'
+        },
+        dermatologists: {
+            path: '/dermatologists'
+        },
+        advantages: {
+            path: '/advantages',
+        },
+        faq: {
+            path: '/faq',
+        },
+        about: {
+            path: '/about',
+        },
+        jobs: {
+            path: '/jobs',
+        },
+    }
+    
+    Vue.prototype.$routes = OPTIONS
+    app.routes = OPTIONS
 }
-
-Vue.prototype.$routes = OPTIONS

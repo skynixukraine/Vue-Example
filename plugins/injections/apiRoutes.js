@@ -1,9 +1,12 @@
 import Vue from 'vue'
 
-const OPTIONS = {
-    users: {
-        path: '/users'
-    },
+export default ({ app }, inject) => {
+    const OPTIONS = {
+        users: {
+            path: '/users'
+        },
+    }
+    
+    Vue.prototype.$apiRoutes = OPTIONS
+    app.apiRoutes = OPTIONS
 }
-
-Vue.prototype.$apiRoutes = OPTIONS

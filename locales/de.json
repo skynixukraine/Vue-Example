@@ -6,8 +6,26 @@
         "about": "Über uns",
         "jobs": "Jobs"
     },
+    "buttons": {
+        "show-all": "alle anzeigen",
+        "learn-more": "mehr erfahren",
+        "frequently-asked": "häufig gestellte fragen (FAQ)"
+    },
     "errors": {
         "default": "Some error find."
+    },
+    "headers": {
+        "our-family-doctors": "Unsere Hausärzte",
+        "your-advantages": "Ihre Vorteile",
+        "few-steps": "In wenigen Schritten zu Ihrem Haut-Check",
+        "use-us": "Bekannt aus"
+    },
+    "banners": {
+        "herobanner": {
+            "title": "Title",
+            "description": "Description",
+            "scroll-to-run": "scroll to run"
+        }
     },
     "page-home": {
         "head": {
