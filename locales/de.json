@@ -1,5 +1,6 @@
 {
-    "navigation": {
+    "links": {
+        "home": "Home",
         "dermatologists": "Hautärzte",
         "advantages": "Ihre Vorteile",
         "faq": "FAQ",
