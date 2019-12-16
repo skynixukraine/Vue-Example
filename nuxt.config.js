@@ -11,6 +11,9 @@ module.exports = {
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i,800,800i|Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic' }
         ]
     },
+    env: {
+        GOOGLE_MAPS_API_KEY: 'AIzaSyDN_Rttye1v0Tyu8Jvl2sc_W5y1IOVe2N4'
+    },
     modules: [
         '@nuxtjs/style-resources'
     ],
@@ -28,6 +31,7 @@ module.exports = {
 
         // 3rd Party Modules/Libs
         { src: '~/plugins/modules/axios' },
+        { src: '~/plugins/modules/googleMaps' },
         { src: '~/plugins/modules/i18n' },
         { src: '~/plugins/modules/mq' },
 
@@ -35,9 +39,7 @@ module.exports = {
         { src: '~/plugins/globalComponents/general' },
     ],
     build: {
-        vendor: [
-            'axios',
-            'vue-notification'
-        ],
+        vendor: ['axios'],
+        transpile: ['/^vue2-google-maps($|\/)/']
     }
 }

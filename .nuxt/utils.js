@@ -133,7 +133,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {}
+      env: {"GOOGLE_MAPS_API_KEY":"AIzaSyDN_Rttye1v0Tyu8Jvl2sc_W5y1IOVe2N4"}
     }
     // Only set once
     if (context.req) {

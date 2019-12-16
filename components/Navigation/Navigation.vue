@@ -16,27 +16,27 @@ export default {
                 {
                     id: 1,
                     to: this.$routes.dermatologists.path,
-                    text: this.$t('navigation.dermatologists')
+                    text: this.$t('links.dermatologists')
                 },
                 {
                     id: 2,
                     to: this.$routes.advantages.path,
-                    text: this.$t('navigation.advantages')
+                    text: this.$t('links.advantages')
                 },
                 {
                     id: 3,
                     to: this.$routes.faq.path,
-                    text: this.$t('navigation.faq')
+                    text: this.$t('links.faq')
                 },
                 {
                     id: 4,
                     to: this.$routes.about.path,
-                    text: this.$t('navigation.about')
+                    text: this.$t('links.about')
                 },
                 {
                     id: 5,
                     to: this.$routes.jobs.path,
-                    text: this.$t('navigation.jobs')
+                    text: this.$t('links.jobs')
                 },
             ]
         }

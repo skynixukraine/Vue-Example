@@ -5,6 +5,20 @@
                 <HeroBanner />
             </Container>
         </Section>
+         <Section>
+            <Container>
+                <GmapMap
+                    :center="{lat:10, lng:10}"
+                    :zoom="7"
+                    style="width: 100%; height: 300px"
+                />
+            </Container>
+        </Section>
+         <Section>
+            <Container>
+                <Breadcrumbs :breadcrumbs="breadcrumbs" />
+            </Container>
+        </Section>
         <Section>
             <Container>
                 <SectionHeader :title="$t('headers.our-family-doctors')" />
@@ -45,7 +59,7 @@
                     <LogoCard :logo="item" />
                 </List>
                 <SectionFooter>
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('buttons.frequently-asked') }}</NuxtLink>
+                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('buttons.show-all') }}</NuxtLink>
                 </SectionFooter>
             </Container>
         </Section>
@@ -74,6 +88,10 @@ export default {
 
     data() {
         return {
+            breadcrumbs: [{
+                text: this.$t('links.home'),
+                to: this.$routes.home.path
+            }],
             advantages: [{
                 id: 1,
                 icon: 'url or svg name',
