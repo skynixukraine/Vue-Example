@@ -7,7 +7,7 @@
         </Section>
         <Section>
             <Container>
-                <h1>FAQ id</h1>
+                <h1>ID: {{ $route.params.id }}</h1>
             </Container>
         </Section>
     </div>
@@ -24,7 +24,7 @@ export default {
                 text: this.$t('links.faq'),
                 to: this.$routes.faq.path
             },{
-                text: 'FAQ ID',
+                text: this.$route.params.id,
             }],
         }
     }

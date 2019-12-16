@@ -26,7 +26,7 @@
                     <DoctorCard :doctor="item" />
                 </List>
                 <SectionFooter>
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('buttons.show-all') }}</NuxtLink>
+                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.show-all') }}</NuxtLink>
                 </SectionFooter>
             </Container>
         </Section>
@@ -37,7 +37,7 @@
                     <AdvantageCard :advantage="item" />
                 </List>
                 <SectionFooter>
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-white" exact>{{ $t('buttons.learn-more') }}</NuxtLink>
+                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-white" exact>{{ $t('links.learn-more') }}</NuxtLink>
                 </SectionFooter>
             </Container>
         </Section>
@@ -48,7 +48,7 @@
                     <StepCard :step="item" />
                 </List>
                 <SectionFooter>
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('buttons.frequently-asked') }}</NuxtLink>
+                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.frequently-asked') }}</NuxtLink>
                 </SectionFooter>
             </Container>
         </Section>
@@ -59,7 +59,7 @@
                     <LogoCard :logo="item" />
                 </List>
                 <SectionFooter>
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('buttons.show-all') }}</NuxtLink>
+                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.show-all') }}</NuxtLink>
                 </SectionFooter>
             </Container>
         </Section>
@@ -77,7 +77,7 @@ export default {
     head() {
         return { title: this.$t('page-home.head.title') }
     },
-    async fetch ({ store, error }) {   
+    async fetch ({ store, error }) {
         if (!store.getters['user/USERS'].length) {
             const users = await store.dispatch('user/LOAD_USERS').catch((e) => {
                 error({ statusCode: e.status, message: e.message })

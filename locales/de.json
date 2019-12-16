@@ -5,9 +5,7 @@
         "advantages": "Ihre Vorteile",
         "faq": "FAQ",
         "about": "Über uns",
-        "jobs": "Jobs"
-    },
-    "buttons": {
+        "jobs": "Jobs",
         "show-all": "alle anzeigen",
         "learn-more": "mehr erfahren",
         "frequently-asked": "häufig gestellte fragen (FAQ)"
@@ -19,7 +17,11 @@
         "our-family-doctors": "Unsere Hausärzte",
         "your-advantages": "Ihre Vorteile",
         "few-steps": "In wenigen Schritten zu Ihrem Haut-Check",
-        "use-us": "Bekannt aus"
+        "use-us": "Bekannt aus",
+        "for-patients": "Für Patienten",
+        "for-dermatologists": "Für Hautärzte",
+        "research": "Forschung",
+        "formal": "Formales"
     },
     "banners": {
         "herobanner": {
