@@ -8,7 +8,7 @@
          <Section>
             <Container>
                 <GmapMap
-                    :center="{lat:10, lng:10}"
+                    :center="{lat:52, lng:48}"
                     :zoom="7"
                     style="width: 100%; height: 300px"
                 />
@@ -44,7 +44,7 @@
         <Section>
             <Container>
                 <SectionHeader :title="$t('headers.few-steps')" />
-                <List :items="steps" #default="{ item }">
+                <List :items="steps" #default="{ item }" :columns="[50, 50, 50, 33.33, 25, 25]">
                     <StepCard :step="item" />
                 </List>
                 <SectionFooter>
@@ -55,7 +55,7 @@
         <Section>
             <Container>
                 <SectionHeader :title="$t('headers.use-us')" />
-                <List :items="steps" #default="{ item }">
+                <List :items="logos" #default="{ item }" :columns="[100, 50, 50, 33.33, 25, 25]">
                     <LogoCard :logo="item" />
                 </List>
                 <SectionFooter>
@@ -84,6 +84,10 @@ export default {
             })
             store.commit('user/SET_USERS', users)
         }
+    },
+
+    mounted() {
+        this.$root.$emit('showNotify', { type: 'success', text: 'Home page is mounted.' })
     },
 
     data() {
@@ -124,6 +128,23 @@ export default {
                 number: '03',
                 title: 'Step Title',
                 text: 'My geant step description.'
+            }],
+            logos: [{
+                url: 'url'
+            },{
+                url: 'url'
+            },{
+               url: 'url' 
+            },{
+                url: 'url'
+            },{
+                url: 'url'
+            },{
+                url: 'url'
+            },{
+                url: 'url'
+            },{
+                url: 'url'
             }]
         }
     },

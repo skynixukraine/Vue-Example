@@ -6,6 +6,7 @@
 				<Nuxt />
 			</AppMain>
             <AppFooter />
+            <AppNotify />
         </App>
     </div>
 </template>
@@ -15,6 +16,7 @@ import App from "~/components/App/App"
 import AppHeader from "~/components/App/AppHeader"
 import AppMain from "~/components/App/AppMain"
 import AppFooter from "~/components/App/AppFooter"
+import AppNotify from "~/components/App/AppNotify"
 
 export default {
     components: {
@@ -22,6 +24,7 @@ export default {
 		AppHeader,
 		AppMain,
         AppFooter,
+        AppNotify,
     }
 }
 </script>
