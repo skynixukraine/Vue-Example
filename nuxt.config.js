@@ -15,7 +15,8 @@ module.exports = {
         GOOGLE_MAPS_API_KEY: 'AIzaSyDN_Rttye1v0Tyu8Jvl2sc_W5y1IOVe2N4'
     },
     modules: [
-        '@nuxtjs/style-resources'
+        '@nuxtjs/style-resources',
+        '@nuxtjs/pwa'
     ],
     styleResources: {
         scss: [
@@ -23,6 +24,12 @@ module.exports = {
         ]
     },
     loading: { color: '#3B8070' },
+    manifest: {
+        name: 'Nuxt Hacker News',
+        short_name: 'Nuxt HN',
+        description: 'HackerNews clone built with Nuxt.js',
+        theme_color: '#2F495E',
+    },
     router: {},
     plugins: [
         // Injections
