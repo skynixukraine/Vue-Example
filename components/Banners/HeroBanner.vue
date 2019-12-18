@@ -5,7 +5,7 @@
         </header>
         <div class="hero-banner__main">
             <p class="hero-banner__text">{{ $t('banners.herobanner.description') }}</p>
-            <button>Button</button>
+            <Button>{{ $t('links.start-inquiry') }}</Button>
         </div>
         <footer class="hero-banner__footer">{{ $t('banners.herobanner.scroll-to-run') }}</footer>
     </div>

@@ -1,6 +1,11 @@
 <template>
     <div class="page">
-        <Section>
+        <Section
+            :paddingTop="76"
+            :paddingBottom="24"
+            :bgImage="require('~/static/images/bg/abstract-bg-2.jpg')"
+            :fullscreen="true"
+        >
             <Container>
                 <HeroBanner />
             </Container>
@@ -30,7 +35,7 @@
                 </SectionFooter>
             </Container>
         </Section>
-        <Section :bgImage="require('~/static/images/bg/abstract-bg-1.jpg')">
+        <Section :padding="64" :bgImage="require('~/static/images/bg/abstract-bg-1.jpg')">
             <Container>
                 <SectionHeader :title="$t('headers.your-advantages')" />
                 <List :items="advantages" #default="{ item }">

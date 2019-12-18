@@ -8,7 +8,8 @@
         "jobs": "Jobs",
         "show-all": "alle anzeigen",
         "learn-more": "mehr erfahren",
-        "frequently-asked": "häufig gestellte fragen (FAQ)"
+        "frequently-asked": "häufig gestellte fragen (FAQ)",
+        "start-inquiry": "Anfrage starten"
     },
     "errors": {
         "default": "Some error find."
@@ -25,9 +26,9 @@
     },
     "banners": {
         "herobanner": {
-            "title": "Title",
-            "description": "Description",
-            "scroll-to-run": "scroll to run"
+            "title": "Konsultieren Sie einen Hautarzt online",
+            "description": "Bei OnlineDoctor können Sie in wenigen Schritten einen Hautarzt online konsultieren. Innerhalb von maximal 48 Stunden erhalten Sie schnell, ortsunabhängig und kostengünstig (EUR 39.-) eine fachärztliche Ersteinschätzung Ihres Hautproblems (siehe FAQs). Dank der Handlungsempfehlung wissen Sie zudem, was Sie tun können.",
+            "scroll-to-run": "Runterscrollen"
         }
     },
     "page-home": {

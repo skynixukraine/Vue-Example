@@ -25,7 +25,13 @@ export default {
 
 <style lang="scss">
 .app-header {
-    padding: 20px 0;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    background: rgba(0,0,0,.5);
 
     &__inner {
         display: flex;
