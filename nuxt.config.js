@@ -14,21 +14,28 @@ module.exports = {
     env: {
         GOOGLE_MAPS_API_KEY: 'AIzaSyDN_Rttye1v0Tyu8Jvl2sc_W5y1IOVe2N4'
     },
-    modules: [
-        '@nuxtjs/style-resources',
-        '@nuxtjs/pwa'
+    css: [
+        { src: "~/static/styles/fonts.css", lang: 'css' },
+        { src: "~/static/styles/normalize.css", lang: 'css' }
     ],
     styleResources: {
         scss: [
             'assets/scss/main.scss'
         ]
     },
+    modules: [
+        '@nuxtjs/style-resources',
+        '@nuxtjs/pwa'
+    ],
     loading: { color: '#3B8070' },
     manifest: {
         name: 'Nuxt Hacker News',
         short_name: 'Nuxt HN',
         description: 'HackerNews clone built with Nuxt.js',
+        display: 'standalone',
+        orientation: 'portrait',
         theme_color: '#2F495E',
+        lang: 'de',
     },
     router: {},
     plugins: [
