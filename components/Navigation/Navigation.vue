@@ -43,3 +43,31 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.navigation {
+
+    &__list {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__item {
+        margin-right: 30px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__link {
+        font-size: 18px;
+        font-weight: 400;
+        color: #FFF;
+        text-decoration: none;
+    }
+}
+</style>
