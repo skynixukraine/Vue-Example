@@ -22,7 +22,7 @@
         <Section>
             <Container>
                 <SectionHeader :title="$t('headers.our-family-doctors')" />
-                <List :items="users.slice(0, 3)" #default="{ item }">
+                <List :items="users" #default="{ item }">
                     <DoctorCard :doctor="item" />
                 </List>
                 <SectionFooter>
@@ -30,7 +30,7 @@
                 </SectionFooter>
             </Container>
         </Section>
-        <Section>
+        <Section :bgImage="require('~/static/images/bg/abstract-bg-1.jpg')">
             <Container>
                 <SectionHeader :title="$t('headers.your-advantages')" />
                 <List :items="advantages" #default="{ item }">

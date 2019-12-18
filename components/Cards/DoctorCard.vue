@@ -22,3 +22,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.doctor-card {
+    font-family: 'Sans';
+}
+</style>
