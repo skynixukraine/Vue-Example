@@ -5,9 +5,10 @@
         </header>
         <div class="hero-banner__main">
             <p class="hero-banner__text">{{ $t('banners.herobanner.description') }}</p>
-            <Button>{{ $t('links.start-inquiry') }}</Button>
         </div>
-        <footer class="hero-banner__footer">{{ $t('banners.herobanner.scroll-to-run') }}</footer>
+        <footer class="hero-banner__footer">
+            <NuxtLink :to="this.$routes.home.path" class="link link--button">{{ $t('links.start-inquiry') }}</NuxtLink>
+        </footer>
     </div>
 </template>
 
@@ -15,8 +16,20 @@
 export default {}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .hero-banner {
-    background: #FFF;
+
+    &__title {
+        font-size: 64px;
+        line-height: 76px;
+        color: $color-white;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: $color-white;
+    }
 }
 </style>

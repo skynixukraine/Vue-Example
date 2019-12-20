@@ -14,10 +14,13 @@ export default {
     },
     computed: {
         cssProperties() {
-            if (!this.maxWidth) return {}
-            return {
-                'max-width': `${this.maxWidth}px`
+            let properties = {}
+
+            if (this.maxWidth) {
+                properties['max-width'] = `${this.maxWidth}px`
             }
+
+            return properties
         }
     }
 }

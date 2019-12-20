@@ -10,20 +10,6 @@
                 <HeroBanner />
             </Container>
         </Section>
-         <Section>
-            <Container>
-                <GmapMap
-                    :center="{lat:52, lng:48}"
-                    :zoom="7"
-                    style="width: 100%; height: 300px"
-                />
-            </Container>
-        </Section>
-         <Section>
-            <Container>
-                <Breadcrumbs :breadcrumbs="breadcrumbs" />
-            </Container>
-        </Section>
         <Section>
             <Container>
                 <SectionHeader :title="$t('headers.our-family-doctors')" />
@@ -37,8 +23,8 @@
         </Section>
         <Section :padding="64" :bgImage="require('~/static/images/bg/abstract-bg-1.jpg')">
             <Container>
-                <SectionHeader :title="$t('headers.your-advantages')" />
-                <List :items="advantages" #default="{ item }">
+                <SectionHeader :title="$t('headers.your-advantages')" :color="'white'" />
+                <List :items="advantages" #default="{ item }" :columns="[100, 50, 50, 25, 25, 25]">
                     <AdvantageCard :advantage="item" />
                 </List>
                 <SectionFooter>
@@ -49,7 +35,7 @@
         <Section>
             <Container>
                 <SectionHeader :title="$t('headers.few-steps')" />
-                <List :items="steps" #default="{ item }" :columns="[50, 50, 50, 33.33, 25, 25]">
+                <List :items="steps" #default="{ item }" :columns="[100, 100, 100, 100, 100, 100]">
                     <StepCard :step="item" />
                 </List>
                 <SectionFooter>
@@ -59,13 +45,7 @@
         </Section>
         <Section>
             <Container>
-                <SectionHeader :title="$t('headers.use-us')" />
-                <List :items="logos" #default="{ item }" :columns="[100, 50, 50, 33.33, 25, 25]">
-                    <LogoCard :logo="item" />
-                </List>
-                <SectionFooter>
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.show-all') }}</NuxtLink>
-                </SectionFooter>
+                <RequestBanner />
             </Container>
         </Section>
     </div>
@@ -77,6 +57,7 @@ import DoctorCard from "~/components/Cards/DoctorCard"
 import AdvantageCard from "~/components/Cards/AdvantageCard"
 import StepCard from "~/components/Cards/StepCard"
 import LogoCard from "~/components/Cards/LogoCard"
+import RequestBanner from "~/components/Banners/RequestBanner"
 
 export default {
     head() {
@@ -102,55 +83,31 @@ export default {
                 to: this.$routes.home.path
             }],
             advantages: [{
-                id: 1,
-                icon: 'url or svg name',
-                text: 'ADV description'
+                icon: require('~/static/images/advantages/diamond.svg'),
+                text: this.$t('advantages.professional-trustworthy')
             },{
-                id: 2,
-                icon: 'url or svg name',
-                text: 'ADV description'
+                icon: require('~/static/images/advantages/shield.svg'),
+                text: this.$t('advantages.data-protection-compliant')
             },{
-                id: 3,
-                icon: 'url or svg name',
-                text: 'ADV description'
+                icon: require('~/static/images/advantages/clock.svg'),
+                text: this.$t('advantages.fast-time-saving')
             },{
-                id: 4,
-                icon: 'url or svg name',
-                text: 'ADV description'
+                icon: require('~/static/images/advantages/loupe.svg'),
+                text: this.$t('advantages.independent-accessible')
             }],
             steps: [{
-                id: 1,
                 number: '01',
-                title: 'Step Title',
-                text: 'My geant step description.'
+                title: this.$t('steps.choose-dermatologist'),
+                text: this.$t('steps.dermatologist-at-clinic-essen')
             },{
-                id: 2,
                 number: '02',
-                title: 'Step Title',
-                text: 'My geant step description.'
+                title: this.$t('steps.describe-symptoms'),
+                text: this.$t('steps.what-complaints-problem')
             },{
-                id: 3,
                 number: '03',
-                title: 'Step Title',
-                text: 'My geant step description.'
+                title: this.$t('steps.you-get-specialist-advice'),
+                text: this.$t('steps.specialist-initial-assessment')
             }],
-            logos: [{
-                url: 'url'
-            },{
-                url: 'url'
-            },{
-               url: 'url' 
-            },{
-                url: 'url'
-            },{
-                url: 'url'
-            },{
-                url: 'url'
-            },{
-                url: 'url'
-            },{
-                url: 'url'
-            }]
         }
     },
     computed: {
@@ -164,7 +121,8 @@ export default {
         DoctorCard,
         AdvantageCard,
         StepCard,
-        LogoCard
+        LogoCard,
+        RequestBanner
     }
 }
 </script>
