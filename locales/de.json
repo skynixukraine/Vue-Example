@@ -9,7 +9,20 @@
         "show-all": "alle anzeigen",
         "learn-more": "mehr erfahren",
         "frequently-asked": "häufig gestellte fragen (FAQ)",
-        "start-inquiry": "Anfrage starten"
+        "start-inquiry": "Anfrage starten",
+        "send-case": "Fall einsenden",
+        "frequently-questions": "Häufige Fragen",
+        "skin-lexicon": "Hautlexikon",
+        "via-online-dermatologist": "Über Online-Hautarzt",
+        "contact-form": "Kontaktformular",
+        "participate": "Mitmachen",
+        "about-teledermatology": "Über Teledermatologie",
+        "project-group-studies": "Studien der Projektgruppe",
+        "scientific-advisory-board": "Wissenschaftlicher Beirat",
+        "general-teledermatology": "Teledermatologie Allgemein",
+        "imprint": "Impressum",
+        "data-protection": "Datenschutzerklärung",
+        "terms-of-service": "Allgemeine Geschäftsbedingungen"
     },
     "errors": {
         "default": "Some error find."
@@ -22,7 +35,8 @@
         "for-patients": "Für Patienten",
         "for-dermatologists": "Für Hautärzte",
         "research": "Forschung",
-        "formal": "Formales"
+        "formal": "Formales",
+        "start-your-request-now": "Starten Sie jetzt Ihre Anfrage"
     },
     "banners": {
         "herobanner": {
@@ -60,5 +74,22 @@
         "head": {
             "title": "Jobs page"
         }
+    },
+    "phrases": {
+        "copyright": "Online Hautarzt vor Ort © 2019 Alle Rechte vorbehalten"
+    },
+    "advantages": {
+        "professional-trustworthy": "Professionell & vertrauenswürdig",
+        "data-protection-compliant": "Sicher & datenschutzkonform",
+        "fast-time-saving": "Schnell & zeitsparend",
+        "independent-accessible": "Ortsunabhängig & einfach erreichbar"
+    },
+    "steps": {
+        "choose-dermatologist": "Wählen Sie den Hautarzt",
+        "dermatologist-at-clinic-essen": "Hautfachärztin und Oberärztin an der Universitäts-Hautklinik Essen. Leiterin der externen wissenschaftlichen Evaluation und Qualitätskontrolle von AppDoc.",
+        "describe-symptoms": "Beschreiben Sie die Symptome und fotografieren Sie Ihr Hautproblem",
+        "what-complaints-problem": "Welche Beschwerden haben Sie wegen Ihres Hautproblems? Beschreiben Sie mithilfe von OnlineDoctor die Symptome. Laden Sie zudem Fotos Ihres Hautproblems hoch. In der Regel nimmt die Anfrage 5-7 Minuten in Anspruch.",
+        "you-get-specialist-advice": "Sie bekommen fachärztlichen Rat",
+        "specialist-initial-assessment": "Innerhalb von 48 Stunden – meist sogar schon nach ein paar Stunden – erhalten Sie von Ihrem Hautarzt eine fachärztliche Ersteinschätzung sowie eine Empfehlung, was Sie wegen Ihres Hautproblems unternehmen sollten."
     }
 }

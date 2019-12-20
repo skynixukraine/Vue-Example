@@ -6,8 +6,8 @@
         <template v-if="items.length">
             <li
                 class="list__item"
-                v-for="item in items"
-                :key="item.id"
+                v-for="(item, index) in items"
+                :key="index"
                 :style="cssProperties"
             >
                 <slot :item="item"></slot>
@@ -73,5 +73,8 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 </style>

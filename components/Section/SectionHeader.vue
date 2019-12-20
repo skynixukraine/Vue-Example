@@ -1,11 +1,6 @@
 <template>
-    <header class="section-header" v-if="Object.keys(link).length || title">
-        <h2 class="section-header__title" v-if="title">{{ title }}</h2>
-        <p class="section-header__content" v-if="Object.keys(link).length">
-            <NuxtLink :to="link.to" class="link" exact>
-              {{ link.text }}
-            </NuxtLink>
-        </p>
+    <header class="section-header">
+        <h2 class="section-header__title" :style="cssProperties">{{ title }}</h2>
     </header>
 </template>
 
@@ -16,10 +11,31 @@ export default {
             type: String,
             default: ''
         },
-        link: {
-            type: Object,
-            default: () => new Object()
+        color: {
+            type: String,
+            default: ''
+        }
+    },
+    computed: {
+        cssProperties() {
+            let properties = {}
+
+            if (this.color) {
+                properties['color'] = this.color
+            }
+
+            return properties
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.section-header {
+    
+    &__title {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+}
+</style>

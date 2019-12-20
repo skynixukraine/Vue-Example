@@ -26,26 +26,13 @@ export default {
 
 <style lang="scss">
 .button {
-    color: $color-lightest-gray;
-    background: $color-light-black;
+    color: #FFF;
+    background: #CCC;
     padding: 13px 20px 14px;
     border: none;
     border-radius: 5px;
     font-weight: 300;
     cursor: pointer;
     vertical-align: middle;
-
-    &:hover {
-        background: $color-black;
-    }
-
-    &--icon {
-        padding: 5px;
-        background: $color-light-gray;
-
-        &:hover {
-            background: $color-gray;
-        }
-    }
 }
 </style>
