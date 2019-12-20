@@ -37,7 +37,7 @@ export default {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        max-width: 1200px;
+        max-width: 1120px;
         margin: 0 auto;
     }
 }

@@ -7,7 +7,7 @@
             <p class="hero-banner__text">{{ $t('banners.herobanner.description') }}</p>
         </div>
         <footer class="hero-banner__footer">
-            <NuxtLink :to="this.$routes.home.path" class="link link--button">{{ $t('links.start-inquiry') }}</NuxtLink>
+            <NuxtLink :to="this.$routes.home.path" class="link link--button link--button-white">{{ $t('links.start-inquiry') }}</NuxtLink>
         </footer>
     </div>
 </template>

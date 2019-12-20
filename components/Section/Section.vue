@@ -61,16 +61,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-.section {
-    padding-top: 112px;
-    padding-bottom: 112px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-</style>
