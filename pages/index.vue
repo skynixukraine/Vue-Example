@@ -1,53 +1,71 @@
 <template>
-    <div class="page">
-        <Section
-            :paddingTop="76"
-            :paddingBottom="24"
-            :bgImage="require('~/static/images/bg/abstract-bg-2.jpg')"
-            :fullscreen="true"
-        >
-            <Container>
+    <div class="page page--home">
+        <div class="section section--fullscreen" :style="{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})` }">
+            <div class="container">
                 <HeroBanner />
-            </Container>
-        </Section>
-        <Section>
-            <Container>
-                <SectionHeader :title="$t('headers.our-family-doctors')" />
-                <List :items="users" #default="{ item }">
-                    <DoctorCard :doctor="item" />
-                </List>
-                <SectionFooter>
+            </div>
+            <div class="section-scroll-tooltip"><div class="section-scroll-tooltip__inner">{{ $t('banners.herobanner.scroll-to-run') }}</div></div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">{{ $t('headers.our-family-doctors') }}</h2>
+                </header>
+                <ul class="list list--d3">
+                    <li class="list__item" v-for="(user, index) in users.slice(0, 3)" :key="index">
+                         <DoctorCard :doctor="user" />
+                    </li>
+                </ul>
+                <footer class="section-footer">
                     <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.show-all') }}</NuxtLink>
-                </SectionFooter>
-            </Container>
-        </Section>
-        <Section :padding="64" :bgImage="require('~/static/images/bg/abstract-bg-1.jpg')">
-            <Container>
-                <SectionHeader :title="$t('headers.your-advantages')" :color="'white'" />
-                <List :items="advantages" #default="{ item }" :columns="[100, 50, 50, 25, 25, 25]">
-                    <AdvantageCard :advantage="item" />
-                </List>
-                <SectionFooter>
+                </footer>
+            </div>
+        </div>
+        <div class="section section--64" :style="{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})` }">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title section-header__title--white">{{ $t('headers.your-advantages') }}</h2>
+                </header>
+                <ul class="list list--d4">
+                    <li class="list__item" v-for="(advantage, index) in advantages" :key="index">
+                         <AdvantageCard :advantage="advantage" />
+                    </li>
+                </ul>
+                <footer class="section-footer">
                     <NuxtLink :to="$routes.home.path" class="link link--button link--button-white" exact>{{ $t('links.learn-more') }}</NuxtLink>
-                </SectionFooter>
-            </Container>
-        </Section>
-        <Section>
-            <Container>
-                <SectionHeader :title="$t('headers.few-steps')" />
-                <List :items="steps" #default="{ item }" :columns="[100, 100, 100, 100, 100, 100]">
-                    <StepCard :step="item" />
-                </List>
-                <SectionFooter>
+                </footer>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">{{ $t('headers.few-steps') }}</h2>
+                </header>
+                <ul class="list">
+                    <li class="list__item" v-for="(step, index) in steps" :key="index">
+                         <StepCard :step="step" />
+                    </li>
+                </ul>
+                <footer class="section-footer">
                     <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.frequently-asked') }}</NuxtLink>
-                </SectionFooter>
-            </Container>
-        </Section>
-        <Section>
-            <Container>
+                </footer>
+            </div>
+        </div>
+        <div class="section section--without-paddings">
+            <div class="container">
                 <RequestBanner />
-            </Container>
-        </Section>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <WhyInfo />
+            </div>
+        </div>
+        <div class="section section--0-default">
+            <div class="container">
+                <DiseasesInfo />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -58,6 +76,8 @@ import AdvantageCard from "~/components/Cards/AdvantageCard"
 import StepCard from "~/components/Cards/StepCard"
 import LogoCard from "~/components/Cards/LogoCard"
 import RequestBanner from "~/components/Banners/RequestBanner"
+import WhyInfo from "~/components/Content/WhyInfo"
+import DiseasesInfo from "~/components/Content/DiseasesInfo"
 
 export default {
     head() {
@@ -122,7 +142,9 @@ export default {
         AdvantageCard,
         StepCard,
         LogoCard,
-        RequestBanner
+        RequestBanner,
+        WhyInfo,
+        DiseasesInfo,
     }
 }
 </script>

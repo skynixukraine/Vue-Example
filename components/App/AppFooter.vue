@@ -5,7 +5,7 @@
             <Container>
                 <div class="app-footer__row">
                     <div class="app-footer__column">
-                        <h3 class="app-footer__title">{{ $t('headers.for-patients') }}</h3>
+                        <h4 class="app-footer__title">{{ $t('headers.for-patients') }}</h4>
                         <ul class="app-footer__list">
                             <li class="app-footer__item" v-for="(link, index) in links.forPatients" :key="index">
                                 <NuxtLink :to="link.to" class="app-footer__link">{{ link.text }}</NuxtLink>
@@ -13,7 +13,7 @@
                         </ul>
                     </div>
                     <div class="app-footer__column">
-                        <h3 class="app-footer__title">{{ $t('headers.for-dermatologists') }}</h3>
+                        <h4 class="app-footer__title">{{ $t('headers.for-dermatologists') }}</h4>
                         <ul class="app-footer__list">
                             <li class="app-footer__item" v-for="(link, index) in links.forDermatologists" :key="index">
                                 <NuxtLink :to="link.to" class="app-footer__link">{{ link.text }}</NuxtLink>
@@ -21,7 +21,7 @@
                         </ul>
                     </div>
                     <div class="app-footer__column">
-                        <h3 class="app-footer__title">{{ $t('headers.research') }}</h3>
+                        <h4 class="app-footer__title">{{ $t('headers.research') }}</h4>
                         <ul class="app-footer__list">
                             <li class="app-footer__item" v-for="(link, index) in links.research" :key="index">
                                 <NuxtLink :to="link.to" class="app-footer__link">{{ link.text }}</NuxtLink>
@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                     <div class="app-footer__column">
-                        <h3 class="app-footer__title">{{ $t('headers.formal') }}</h3>
+                        <h4 class="app-footer__title">{{ $t('headers.formal') }}</h4>
                         <ul class="app-footer__list">
                             <li class="app-footer__item" v-for="(link, index) in links.formal" :key="index">
                                 <NuxtLink :to="link.to" class="app-footer__link">{{ link.text }}</NuxtLink>
