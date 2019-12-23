@@ -22,10 +22,23 @@
         "general-teledermatology": "Teledermatologie Allgemein",
         "imprint": "Impressum",
         "data-protection": "Datenschutzerklärung",
-        "terms-of-service": "Allgemeine Geschäftsbedingungen"
+        "terms-of-service": "Allgemeine Geschäftsbedingungen",
+        "signin": "Sign In",
+        "signup": "Sign Up"
     },
     "errors": {
-        "default": "Some error find."
+        "app": {
+            "required-field": "This field is required.",
+            "unvalid-email-name": "Unvalid email name."
+        },
+        "form": {
+            "required-field": "This field is required.",
+            "unvalid-email-name": "Unvalid email name."
+        }
+    },
+    "forms": {
+        "enter-email": "Enter Email",
+        "enter-password": "Enter Password"
     },
     "headers": {
         "our-family-doctors": "Unsere Hausärzte",
