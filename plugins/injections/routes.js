@@ -20,6 +20,24 @@ export default ({ app }, inject) => {
         jobs: {
             path: '/jobs',
         },
+        account: {
+            path: '/account'
+        },
+        accountPersonalInformation: {
+            path: '/account/personal-information'
+        },
+        accountBilling: {
+            path: '/account/billing'
+        },
+        enquiries: {
+            path: '/enquiries'
+        },
+        dashboard: {
+            path: '/dashboard'
+        },
+        authorisation: {
+            path: '/authorisation'
+        },
     }
     
     Vue.prototype.$routes = OPTIONS
