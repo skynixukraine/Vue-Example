@@ -47,6 +47,7 @@ module.exports = {
         { src: '~/plugins/modules/googleMaps' },
         { src: '~/plugins/modules/i18n' },
         { src: '~/plugins/modules/mq' },
+        { src: '~/plugins/modules/telInput' },
 
         // Global components
         { src: '~/plugins/globalComponents/general' },

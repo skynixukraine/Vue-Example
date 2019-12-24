@@ -33,12 +33,20 @@
         },
         "form": {
             "required-field": "This field is required.",
-            "unvalid-email-name": "Unvalid email name."
+            "unvalid-email-name": "Unvalid email name.",
+            "passwords-not-equal": "Passwords not equal.",
+            "invalid-number": "Invalid phone number."
         }
     },
     "forms": {
         "enter-email": "Enter Email",
-        "enter-password": "Enter Password"
+        "enter-password": "Enter Password",
+        "create-password": "Create Password",
+        "confirm-password": "Confirm Password",
+        "phone-number": "Phone Number",
+        "upload-degree": "Upload medical degree (or add later)",
+        "upload-certification": "Upload board-certification (or add later)",
+        "i-accept": "I accept Terms and Conditions and Privacy Policy"
     },
     "headers": {
         "our-family-doctors": "Unsere Hausärzte",
