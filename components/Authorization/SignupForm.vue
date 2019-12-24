@@ -69,7 +69,7 @@ export default {
                 return false
             }
 
-            const requestData = this.prepareDataForSending(this.models)
+            const formData = this.prepareDataForSending(this.models)
 
             // send request...
         },
