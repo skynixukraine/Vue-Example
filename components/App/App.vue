@@ -254,6 +254,19 @@ START: COMPONENTS
         }
     }
 }
+
+
+
+// input
+.input {
+
+    &--hidden {
+        width: 0;
+        height: 0;
+        position: fixed;
+        top: -9999px;
+    }
+}
 /*********************
 END: COMPONENTS
 *********************/

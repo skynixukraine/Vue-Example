@@ -27,11 +27,13 @@
         </div>
         <div class="form__item">
             <div class="form__title">{{ $t('forms.upload-degree') }}</div>
-            <input class="input" type="file" id="degree" name="degree" ref="degree" @change="onDegreeUpload">
+            <input class="input input--hidden" type="file" id="degree" name="degree" ref="degree" @change="onDegreeUpload">
+            <button class="link link--button link--button-white" type="button" @click="addFileDegree">Add Degree</button>
         </div>
         <div class="form__item">
             <div class="form__title">{{ $t('forms.upload-certification') }}</div>
-            <input class="input" type="file" id="certification" name="certification" ref="certification" @change="onCertificationUpload">
+            <input class="input input--hidden" type="file" id="certification" name="certification" ref="certification" @change="onCertificationUpload">
+            <button class="link link--button link--button-white" type="button" @click="addFileCertification">Add Certification</button>
         </div>
         <div class="form__item">
             <div class="form__title">{{ $t('forms.i-accept') }}</div>
@@ -87,6 +89,15 @@ export default {
             let data = {}
 
             return data
+        },
+
+
+        // files upload
+        addFileDegree() {
+            this.$refs.degree.click()
+        },
+        addFileCertification() {
+            this.$refs.certification.click()
         },
 
 
