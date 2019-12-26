@@ -8,14 +8,30 @@ export const state = () => ({
 export const mutations = {
     SET_USERS (state, users) {
         state.users = users
-    }
+    },
+
+    SET_USER (state, user) {
+        state.user = user
+    },
 }
 
 export const actions = {
     async LOAD_USERS ({ commit }) {
         const response = await UserApi.loadUsers()
+        console.log('res: ', response);
+        
+        return response.data.data
+    },
+
+    async LOAD_USER ({ commit }, userId) {
+        const response = await UserApi.loadUser(userId)
         return response.data
-    }
+    },
+
+    async REGISTER_USER ({ commit }, registerRequestData) {
+        const response = await UserApi.loadUser(registerRequestData)
+        return response.data
+    },
 }
 
 export const getters = {
