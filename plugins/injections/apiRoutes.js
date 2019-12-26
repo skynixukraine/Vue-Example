@@ -2,8 +2,11 @@ import Vue from 'vue'
 
 export default ({ app }, inject) => {
     const OPTIONS = {
+        register: {
+            path: '/register'
+        },
         users: {
-            path: '/users'
+            path: '/doctors'
         },
     }
     

@@ -12,7 +12,7 @@
                     <h2 class="section-header__title">{{ $t('headers.our-family-doctors') }}</h2>
                 </header>
                 <ul class="list list--d3">
-                    <li class="list__item" v-for="(user, index) in users.slice(0, 3)" :key="index">
+                    <li class="list__item" v-for="(user, index) in users" :key="index">
                          <DoctorCard :doctor="user" />
                     </li>
                 </ul>

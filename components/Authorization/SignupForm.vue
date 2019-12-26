@@ -49,9 +49,13 @@
 <script>
 // mixins
 import validator from '~/mixins/validator'
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
-    mixins: [validator],
+    mixins: [
+        validator,
+        recaptcha,
+    ],
     data() {
         return {
             models: {
@@ -61,34 +65,56 @@ export default {
                 phone: '',
                 degree: '',
                 certification: '',
-                accept: false
-            }
+                accept: false,
+            },
         }
     },
+
+    created() {
+        this.getRecaptchaToken()
+    },
+
     methods: {
-        onSubmit(event) {
-            if (!this.validateForm(this.models)) {
+        async onSubmit(event) {
+            const isFormValid = await this.validateForm(this.models)
+            
+            if (!isFormValid) {
                 return false
             }
 
-            const formData = this.prepareDataForSending(this.models)
-
-            // send request...
-        },
-        validateForm(models) {
-            console.log('models: ', models);
             
+
+            const registerResponse = await store.dispatch('user/REGISTER_USER', registerRequestData).catch((e) => {
+                error({ statusCode: e.status, message: e.message })
+            })
+            console.log('registerResponse: ', registerResponse)
+            return true
+        },
+        async validateForm(models) {
+            // check recaptcha token verify respone
+            // before send formData
+            await this.getTokenVerify(this.recaptchaToken)
+            if (!this.isTokenVerify) {
+                return false
+            }
             // check required fields
             if (!models.email) {
                 this.errors['email'] = this.$t('errors.form.required-field')
                 return false
             }
+
             return true
         },
         prepareDataForSending(models) {
-            let data = {}
+            let formData = new FormData()
 
-            return data
+            formData.append('email', this.email)
+            formData.append('password', this.password)
+            formData.append('password_confirmation', this.confirmPassword)
+            formData.append('phone_number', this.phone)
+            formData.append('password', this.password)
+
+            return formData
         },
 
 
@@ -118,15 +144,15 @@ export default {
         onPhoneChange(formattedNumber, telInput) {
             this.validatePhone(telInput, 'phone')
         },
-        onAcceptChange(event) {
-            this.validateAccept(event, this.models.accept)
-        },
         onDegreeUpload() {
             this.models.degree = this.$refs.degree.files[0];
         },
         onCertificationUpload() {
             this.models.certification = this.$refs.certification.files[0];
-        }
+        },
+        onAcceptChange(event) {
+            this.validateAccept(event, this.models.accept)
+        },
     }
 }
 </script>
