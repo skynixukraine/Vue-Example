@@ -1,5 +1,4 @@
 import configEnv from './configs/env'
-import configServer from './configs/server'
 
 module.exports = {
     head: {
@@ -14,7 +13,6 @@ module.exports = {
         ]
     },
     env: configEnv,
-    server: configServer,
     css: [
         { src: "~/static/styles/fonts.css", lang: 'css' },
         { src: "~/static/styles/normalize.css", lang: 'css' }
