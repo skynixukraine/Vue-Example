@@ -28,9 +28,11 @@ export const actions = {
         return response.data
     },
 
-    async REGISTER_USER ({ commit }, registerRequestData) {
-        const response = await UserApi.loadUser(registerRequestData)
-        return response.data
+    async REGISTER_USER ({ commit }, requestData) {
+        console.log('requestData: ', requestData);
+        
+        const response = await UserApi.registerUser(requestData)
+        return response
     },
 }
 
