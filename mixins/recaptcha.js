@@ -14,7 +14,7 @@ export default {
                     throw new Error('Failed to load recaptcha.')
                 })
 
-            const token = await this.$recaptcha(process.env.RECAPTCHA_ACTION)
+            const token = await this.$recaptcha('register_doctor')
                 .catch((e) => {
                     throw new Error('Failed to get recaptcha token.')
                 })
