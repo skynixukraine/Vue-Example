@@ -1,12 +1,10 @@
 import { HTTP } from '~/plugins/modules/axios'
 import Vue from 'vue'
 
-const apiRoutes = Vue.prototype.$apiRoutes
-
 export default {
 
     async registerUser(registerData) {
-        const response = await HTTP.post(apiRoutes.register.path)
+        const response = await HTTP.post('/register', JSON.stringify(registerData))
         return response
     },
 
@@ -31,7 +29,7 @@ export default {
     },
 
     async loadUsers() {
-        const response = await HTTP.get(apiRoutes.users.path)
+        const response = await HTTP.get('/doctors')
         return response
     },
 

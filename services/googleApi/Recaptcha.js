@@ -5,7 +5,7 @@ const googleApiRoutes = Vue.prototype.$googleApiRoutes
 
 export default {
 
-    async verifyToken(token) {
+    async loadVerifyForSite(token) {
         const response = await HTTP.post(googleApiRoutes.siteverify.path, {
             secret: process.env.RECAPTCHA_SECRET_KEY,
             response: token,

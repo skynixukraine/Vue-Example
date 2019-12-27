@@ -69,26 +69,25 @@ export default {
             },
         }
     },
-
     created() {
         this.getRecaptchaToken()
     },
-
     methods: {
         async onSubmit(event) {
-            const isFormValid = await this.validateForm(this.models)
-            
-            if (!isFormValid) {
-                return false
-            }
+            // const isFormValid = await this.validateForm(this.models)
+            // if (!isFormValid) { return false }
 
-            
+            const requestData = this.prepareDataForSending(this.models)
 
-            const registerResponse = await store.dispatch('user/REGISTER_USER', registerRequestData).catch((e) => {
-                error({ statusCode: e.status, message: e.message })
-            })
-            console.log('registerResponse: ', registerResponse)
-            return true
+            const responseData = await this.$store.dispatch('user/REGISTER_USER', requestData)
+                .catch((e) => {
+                    throw new Error(e)
+                    return false
+                })
+                .then((response) => {
+                    console.log('responseData: ', responseData)
+                    return true
+                })
         },
         async validateForm(models) {
             // check recaptcha token verify respone
@@ -106,15 +105,16 @@ export default {
             return true
         },
         prepareDataForSending(models) {
-            let formData = new FormData()
-
-            formData.append('email', this.email)
-            formData.append('password', this.password)
-            formData.append('password_confirmation', this.confirmPassword)
-            formData.append('phone_number', this.phone)
-            formData.append('password', this.password)
-
-            return formData
+            let requestData = {
+                email: models.email,
+                password: models.password,
+                password_confirmation: models.confirmPassword,
+                phone_number: models.phone,
+                accepted: models.accept,
+                recaptcha: this.recaptchaToken,
+            }
+            
+            return requestData
         },
 
 
