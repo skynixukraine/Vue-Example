@@ -4,7 +4,7 @@ import Vue from 'vue'
 export default {
 
     async registerUser(registerData) {
-        const response = await HTTP.post('/register', JSON.stringify(registerData))
+        const response = await HTTP.post('/register', registerData)
         return response
     },
 

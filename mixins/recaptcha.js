@@ -1,5 +1,3 @@
-import RecaptchaApi from '../services/googleApi/Recaptcha'
-
 export default {
     data() {
         return {
@@ -8,28 +6,10 @@ export default {
         }
     },
     methods: {
-        async getRecaptchaToken() {
+        async getRecaptchaToken(actionName) {
             await this.$recaptchaLoaded()
-                .catch((e) => {
-                    throw new Error('Failed to load recaptcha.')
-                })
-
-            const token = await this.$recaptcha('register_doctor')
-                .catch((e) => {
-                    throw new Error('Failed to get recaptcha token.')
-                })
-            
-            this.recaptchaToken = token
+            const token = await this.$recaptcha(actionName)
             return token
         },
-        async getTokenVerify(token) {
-            const isVerify = await RecaptchaApi.loadVerifyForSite(token)
-                .catch((e) => {
-                    throw new Error('Failed to verify recaptcha token.')
-                })
-
-            this.isTokenVerify = isVerify
-            return isVerify
-        }
     },
 }
