@@ -97,6 +97,7 @@ export default {
 
             return true
         },
+        
         validateFileImage(event) {
             const name = event.target.name
             const type = event.target.files[0].type
