@@ -79,6 +79,48 @@ export default {
             delete this.errors[name]
             return true
         },
+        validateFilePDF(event) {
+            const name = event.target.name
+            const type = event.target.files[0].type
+            const sizeMb = event.target.files[0].size/1024/1024
+
+            // type check
+            if (!this.checkFileTypePDF(type)) {
+                this.errors[name] = 'Invalid type. Must be PDF.'
+                return false
+            }
+            // size check
+            if (!this.checkFileSize(sizeMb)) {
+                this.errors[name] = 'File size is too large.'
+                return false
+            }
+
+            return true
+        },
+        
+        validateFileImage(event) {
+            const name = event.target.name
+            const type = event.target.files[0].type
+            const sizeMb = event.target.files[0].size/1024/1024
+
+            // type check
+            if (!this.checkFileTypeImage(type)) {
+                this.errors[name] = 'Invalid type. Must be Image.'
+                return false
+            }
+            // size check
+            if (!this.checkFileSize(sizeMb)) {
+                this.errors[name] = 'File size is too large.'
+                return false
+            }
+
+            return true
+        },
+
+
+
+
+
 
 
 
@@ -90,5 +132,29 @@ export default {
         checkStringEqual(stringOne, stringTwo) {  
             return stringOne === stringTwo
         },
+        checkFileTypeImage(type) {
+            const allowedTypes = ['image/png', 'image/jpeg']
+            allowedTypes.forEach((element) => {
+                if (element === type) {
+                    console.log('element, type: ', element, type);
+                    return true
+                }
+            })
+            return false
+        },
+        checkFileTypePDF(type) {
+            const allowedTypes = ['application/pdf']
+            allowedTypes.forEach((element) => {
+                if (element === type) {
+                    console.log('element, type: ', element, type);
+                    return true
+                }
+            })
+            return false
+        },
+        checkFileSize(sizeMb) {
+            const allowedSizeMb = 50
+            return sizeMb < allowedSizeMb
+        }
     }
 }

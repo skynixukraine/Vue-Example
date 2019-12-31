@@ -41,6 +41,8 @@ module.exports = {
         // Injections
         { src: '~/plugins/injections/routes' },
         { src: '~/plugins/injections/apiRoutes' },
+        { src: '~/plugins/injections/googleApiRoutes' },
+        { src: '~/plugins/injections/recaptchaActions' },
 
         // 3rd Party Modules/Libs
         { src: '~/plugins/modules/recaptcha' },

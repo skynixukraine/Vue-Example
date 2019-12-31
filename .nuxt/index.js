@@ -4,7 +4,7 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from '../layouts/error.vue'
+import NuxtError from './components/nuxt-error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
@@ -15,6 +15,8 @@ import { createStore } from './store.js'
 import nuxt_plugin_workbox_5e824221 from 'nuxt_plugin_workbox_5e824221' // Source: ./workbox.js (mode: 'client')
 import nuxt_plugin_routes_3558dcf2 from 'nuxt_plugin_routes_3558dcf2' // Source: ../plugins/injections/routes (mode: 'all')
 import nuxt_plugin_apiRoutes_59ebfab2 from 'nuxt_plugin_apiRoutes_59ebfab2' // Source: ../plugins/injections/apiRoutes (mode: 'all')
+import nuxt_plugin_googleApiRoutes_0f246e2e from 'nuxt_plugin_googleApiRoutes_0f246e2e' // Source: ../plugins/injections/googleApiRoutes (mode: 'all')
+import nuxt_plugin_recaptchaActions_b0e367da from 'nuxt_plugin_recaptchaActions_b0e367da' // Source: ../plugins/injections/recaptchaActions (mode: 'all')
 import nuxt_plugin_recaptcha_02cad8ae from 'nuxt_plugin_recaptcha_02cad8ae' // Source: ../plugins/modules/recaptcha (mode: 'all')
 import nuxt_plugin_axios_3fa3ac38 from 'nuxt_plugin_axios_3fa3ac38' // Source: ../plugins/modules/axios (mode: 'all')
 import nuxt_plugin_googleMaps_347efdee from 'nuxt_plugin_googleMaps_347efdee' // Source: ../plugins/modules/googleMaps (mode: 'all')
@@ -188,6 +190,14 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_apiRoutes_59ebfab2 === 'function') {
     await nuxt_plugin_apiRoutes_59ebfab2(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_googleApiRoutes_0f246e2e === 'function') {
+    await nuxt_plugin_googleApiRoutes_0f246e2e(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_recaptchaActions_b0e367da === 'function') {
+    await nuxt_plugin_recaptchaActions_b0e367da(app.context, inject)
   }
 
   if (typeof nuxt_plugin_recaptcha_02cad8ae === 'function') {

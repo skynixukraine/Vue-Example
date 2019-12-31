@@ -18,8 +18,6 @@ export const mutations = {
 export const actions = {
     async LOAD_USERS ({ commit }) {
         const response = await UserApi.loadUsers()
-        console.log('res: ', response);
-        
         return response.data.data
     },
 
@@ -29,8 +27,6 @@ export const actions = {
     },
 
     async REGISTER_USER ({ commit }, requestData) {
-        console.log('requestData: ', requestData);
-        
         const response = await UserApi.registerUser(requestData)
         return response
     },

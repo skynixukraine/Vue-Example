@@ -29,11 +29,13 @@
             <div class="form__title">{{ $t('forms.upload-degree') }}</div>
             <input class="input input--hidden" type="file" id="degree" name="degree" ref="degree" @change="onDegreeUpload">
             <button class="link link--button link--button-white" type="button" @click="addFileDegree">Add Degree</button>
+            <div class="form__message" v-if="errors['degree']">{{ errors['degree'] }}</div>
         </div>
         <div class="form__item">
             <div class="form__title">{{ $t('forms.upload-certification') }}</div>
             <input class="input input--hidden" type="file" id="certification" name="certification" ref="certification" @change="onCertificationUpload">
             <button class="link link--button link--button-white" type="button" @click="addFileCertification">Add Certification</button>
+            <div class="form__message" v-if="errors['certification']">{{ errors['certification'] }}</div>
         </div>
         <div class="form__item">
             <div class="form__title">{{ $t('forms.i-accept') }}</div>
@@ -70,52 +72,88 @@ export default {
         }
     },
     created() {
-        this.getRecaptchaToken()
+        this.getRecaptchaToken(this.$recaptchaActions.registerDoctor)
+            .then((token) => {
+                this.recaptchaToken = token
+            })
     },
     methods: {
+
         async onSubmit(event) {
-            // const isFormValid = await this.validateForm(this.models)
-            // if (!isFormValid) { return false }
-
-            const requestData = this.prepareDataForSending(this.models)
-
-            const responseData = await this.$store.dispatch('user/REGISTER_USER', requestData)
-                .catch((e) => {
-                    throw new Error(e)
-                    return false
-                })
-                .then((response) => {
-                    console.log('responseData: ', responseData)
-                    return true
-                })
-        },
-        async validateForm(models) {
-            // check recaptcha token verify respone
-            // before send formData
-            await this.getTokenVerify(this.recaptchaToken)
-            if (!this.isTokenVerify) {
+            const isFormValid = await this.validateForm(this.models)
+            if (!isFormValid) {
+                this.$root.$emit('showNotify', { type: 'error', text: 'Проверте правильность заполнения формы.' })
                 return false
             }
+
+            const formData = this.prepareDataForSending(this.models)
+
+            await this.$store.dispatch('user/REGISTER_USER', formData)
+                .catch((e) => {
+                    this.$root.$emit('showNotify', { type: 'error', text: 'Не удалось зарегистрировать нового пользователя.' })
+                    return false
+                })
+        },
+
+
+        async validateForm(models) {
             // check required fields
             if (!models.email) {
                 this.errors['email'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
+            }
+            if (!models.password) {
+                this.errors['password'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
+            }
+            if (!models.confirmPassword) {
+                this.errors['confirmPassword'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
+            }
+            if (!models.phone) {
+                this.errors['phone'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
+            }
+            if (!models.accept) {
+                this.errors['accept'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
                 return false
             }
 
             return true
         },
+
+
         prepareDataForSending(models) {
-            let requestData = {
-                email: models.email,
-                password: models.password,
-                password_confirmation: models.confirmPassword,
-                phone_number: models.phone,
-                accepted: models.accept,
-                recaptcha: this.recaptchaToken,
+            let formData = new FormData()
+
+            // required fields
+            formData.append('email', models.email)
+            formData.append('phone_number', models.phone)
+            formData.append('password ', models.password)
+            formData.append('password_confirmation', models.confirmPassword)
+            formData.append('accepted', models.accept)
+
+            // unrequired fields
+            if (models.degree) {
+                formData.append('medical_degree', models.degree)
             }
-            
-            return requestData
+            if (models.certification) {
+                formData.append('medical_degree', models.certification)
+            }
+
+            // recaptcha token for action 'register_doctor'
+            formData.append('recaptcha', this.recaptchaToken)
+
+            return formData
         },
+
+
+
 
 
         // files upload
@@ -125,6 +163,8 @@ export default {
         addFileCertification() {
             this.$refs.certification.click()
         },
+
+
 
 
 
@@ -144,11 +184,15 @@ export default {
         onPhoneChange(formattedNumber, telInput) {
             this.validatePhone(telInput, 'phone')
         },
-        onDegreeUpload() {
-            this.models.degree = this.$refs.degree.files[0];
+        onDegreeUpload(event) {
+            if (this.validateFilePDF(event)) {
+                this.models.degree = event.target.files[0]  
+            }
         },
-        onCertificationUpload() {
-            this.models.certification = this.$refs.certification.files[0];
+        onCertificationUpload(event) {
+            if (this.validateFilePDF(event)) {
+                this.models.certification = event.target.files[0]  
+            }
         },
         onAcceptChange(event) {
             this.validateAccept(event, this.models.accept)
