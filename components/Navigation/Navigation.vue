@@ -1,7 +1,8 @@
 <template>
-    <nav class="navigation">
+    <nav class="navigation" :class="{ 'navigation--active': isActive }">
+        <button @click="emitToggleNavigation" v-if="windowWidth < 962">CLOSE</button>
         <ul class="navigation__list">
-            <li class="navigation__item" v-for="link in links" :key="link.id">
+            <li class="navigation__item" v-for="(link, index) in links" :key="index">
                 <NuxtLink :to="link.to" class="navigation__link">{{ link.text }}</NuxtLink>
             </li>
         </ul>
@@ -9,36 +10,60 @@
 </template>
 
 <script>
+// mixins
+import window from '~/mixins/window'
+
 export default {
+    mixins: [window],
+    data() {
+        return {
+            isActive: false
+        }
+    },
+    created() {
+        this.handleToggleNavigation()
+    },
     computed: {
         links() {
             return [
                 {
-                    id: 1,
                     to: this.$routes.dermatologists.path,
                     text: this.$t('links.dermatologists')
                 },
                 {
-                    id: 2,
                     to: this.$routes.advantages.path,
                     text: this.$t('links.advantages')
                 },
                 {
-                    id: 3,
                     to: this.$routes.faq.path,
                     text: this.$t('links.faq')
                 },
                 {
-                    id: 4,
                     to: this.$routes.about.path,
                     text: this.$t('links.about')
                 },
                 {
-                    id: 5,
                     to: this.$routes.jobs.path,
                     text: this.$t('links.jobs')
                 },
             ]
+        }
+    },
+    watch: {
+        windowWidth(width) {
+            if (width >= 720) {
+                this.isActive = false
+            }
+        }
+    },
+    methods: {
+        handleToggleNavigation() {
+            this.$root.$on('toggleNavigation', () => {
+                this.isActive = !this.isActive
+            })
+        },
+        emitToggleNavigation() {
+            this.$root.$emit('toggleNavigation')
         }
     }
 }
@@ -46,10 +71,20 @@ export default {
 
 <style lang="scss" scoped>
 .navigation {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #001A4B;
+    transition: left 200ms ease-in-out;
+
+    &--active {
+        left: 0;
+    }
+
 
     &__list {
-        display: flex;
-        justify-content: flex-end;
         padding: 0;
         margin: 0;
         list-style: none;
@@ -68,6 +103,19 @@ export default {
         font-weight: 400;
         color: #FFF;
         text-decoration: none;
+    }
+
+
+    @include tablet-big {
+        position: static;
+        display: flex;
+        align-items: center;
+        background: transparent;
+
+        &__list {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 }
 </style>

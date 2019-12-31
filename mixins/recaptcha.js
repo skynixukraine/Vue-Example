@@ -1,8 +1,7 @@
 export default {
     data() {
         return {
-            recaptchaToken: '',
-            isTokenVerify: false,
+            recaptchaToken: ''
         }
     },
     methods: {

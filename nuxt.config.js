@@ -5,7 +5,7 @@ module.exports = {
         title: 'client',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
             { hid: 'description', name: 'description', content: 'Nuxt.js project' }
         ],
         link: [
@@ -26,7 +26,7 @@ module.exports = {
         '@nuxtjs/style-resources',
         '@nuxtjs/pwa'
     ],
-    loading: { color: '#3B8070' },
+    loading: { color: '#FFF' },
     manifest: {
         name: 'Nuxt Hacker News',
         short_name: 'Nuxt HN',
@@ -49,7 +49,6 @@ module.exports = {
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/googleMaps' },
         { src: '~/plugins/modules/i18n' },
-        { src: '~/plugins/modules/mq' },
         { src: '~/plugins/modules/telInput' },
 
         // Global components

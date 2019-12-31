@@ -15,7 +15,6 @@
 		"lodash": "^4.17.15",
 		"nuxt": "^2.0.0",
 		"vue-i18n": "^8.15.1",
-		"vue-mq": "^1.0.1",
 		"vue-recaptcha-v3": "^1.8.0",
 		"vue-tel-input": "^4.1.1",
 		"vue2-google-maps": "^0.10.7"

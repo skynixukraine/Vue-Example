@@ -60,6 +60,19 @@ END: GENERAL
 /*********************
 START: COMPONENTS
 *********************/
+// page
+.page {
+    padding-top: 68px;
+
+    &.page--without-padding {
+        padding-top: 0;
+    }
+
+
+    @include tablet-big {
+        padding-top: 72px;
+    }
+}
 // section
 .section {
     padding-top: 112px;
@@ -266,6 +279,19 @@ START: COMPONENTS
         position: fixed;
         top: -9999px;
     }
+}
+
+
+// button with icons
+.button-menu {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    background-image: url('~static/images/icons/menu.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: none;
 }
 /*********************
 END: COMPONENTS
