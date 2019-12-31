@@ -1,5 +1,5 @@
 <template>
-    <div class="page page--home">
+    <div class="page page--without-padding">
         <div class="section section--fullscreen" :style="{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})` }">
             <div class="container">
                 <HeroBanner />
@@ -51,7 +51,7 @@
                 </footer>
             </div>
         </div>
-        <div class="section section--without-paddings">
+        <!-- <div class="section section--without-paddings">
             <div class="container">
                 <RequestBanner />
             </div>
@@ -65,7 +65,7 @@
             <div class="container">
                 <DiseasesInfo />
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -84,12 +84,14 @@ export default {
         return { title: this.$t('page-home.head.title') }
     },
     async fetch ({ store, error }) {
+
         if (!store.getters['user/USERS'].length) {
             const users = await store.dispatch('user/LOAD_USERS').catch((e) => {
                 error({ statusCode: e.status, message: e.message })
             })
             store.commit('user/SET_USERS', users)
         }
+        
     },
 
     mounted() {

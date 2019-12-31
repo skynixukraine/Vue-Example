@@ -97,7 +97,7 @@ export default {
 
             return true
         },
-        
+
         validateFileImage(event) {
             const name = event.target.name
             const type = event.target.files[0].type
@@ -136,7 +136,6 @@ export default {
             const allowedTypes = ['image/png', 'image/jpeg']
             allowedTypes.forEach((element) => {
                 if (element === type) {
-                    console.log('element, type: ', element, type);
                     return true
                 }
             })
@@ -146,7 +145,6 @@ export default {
             const allowedTypes = ['application/pdf']
             allowedTypes.forEach((element) => {
                 if (element === type) {
-                    console.log('element, type: ', element, type);
                     return true
                 }
             })
@@ -155,6 +153,6 @@ export default {
         checkFileSize(sizeMb) {
             const allowedSizeMb = 50
             return sizeMb < allowedSizeMb
-        }
-    }
+        },
+    },
 }
