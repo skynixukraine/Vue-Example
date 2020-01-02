@@ -26,11 +26,5 @@ export default {
         handleScroll() {
             this.scrollTop = window.pageYOffset
         },
-        disableScroll() {
-            // создать функу блокирующую скролл
-        },
-        enableScroll() {
-
-        },
     },
 }

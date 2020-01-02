@@ -10,6 +10,8 @@
 </template>
 
 <script>
+// libs
+import scrollLock from 'scroll-lock'
 // mixins
 import window from '~/mixins/window'
 
@@ -60,6 +62,11 @@ export default {
         handleToggleNavigation() {
             this.$root.$on('toggleNavigation', () => {
                 this.isActive = !this.isActive
+                if (this.isActive) {
+                    scrollLock.disablePageScroll()
+                } else {
+                    scrollLock.enablePageScroll()
+                }
             })
         },
         emitToggleNavigation() {

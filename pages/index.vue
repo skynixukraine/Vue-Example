@@ -42,16 +42,16 @@
                     <h2 class="section-header__title">{{ $t('headers.few-steps') }}</h2>
                 </header>
                 <ul class="list">
-                    <li class="list__item" v-for="(step, index) in steps" :key="index">
+                    <li class="list__item" v-for="(step, index) in steps" :key="index" style="margin: 0;">
                          <StepCard :step="step" />
                     </li>
                 </ul>
                 <footer class="section-footer">
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.frequently-asked') }}</NuxtLink>
+                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-gradient" exact>{{ $t('links.frequently-asked') }}</NuxtLink>
                 </footer>
             </div>
         </div>
-        <!-- <div class="section section--without-paddings">
+        <div class="section section--without-paddings">
             <div class="container">
                 <RequestBanner />
             </div>
@@ -65,7 +65,7 @@
             <div class="container">
                 <DiseasesInfo />
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
