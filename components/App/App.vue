@@ -34,6 +34,7 @@ h2 {
     font-size: 36px;
     line-height: 46px;
     font-weight: 800;
+    margin: 0 0 32px;
 }
 
 h3 {
@@ -339,11 +340,11 @@ START: COMPONENTS
             color: $color-white;
 
             &:hover {
-                background: $color-tory-blue;
+                background: $color-gradient-blue-dark;
             }
 
             &:active {
-                background: $color-tory-blue;
+                background: $color-gradient-blue-dark;
             }
         }
     }
@@ -371,7 +372,7 @@ START: COMPONENTS
 }
 
 
-// button with icons
+// buttons with icons
 .button-menu {
     display: block;
     width: 48px;
@@ -381,6 +382,30 @@ START: COMPONENTS
     background-position: center center;
     background-repeat: no-repeat;
     border: none;
+}
+
+.button-more-less {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: $color-curious-blue;
+    cursor: pointer;
+    padding: 0;
+
+    &::before {
+        content: "+";
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        font-size: 28px;
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(36, 126, 229, 0.1);
+        box-shadow: 0px 20px 80px rgba(208, 208, 208, 0.25);
+        border-radius: 50%;
+        margin-right: 8px;
+    }
 }
 /*********************
 END: COMPONENTS

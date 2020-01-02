@@ -42,11 +42,7 @@
 
         <div class="app-footer__section">
             <Container>
-                <div class="app-footer__row app-footer__row--center">
-                    <div class="app-footer__column">
-                        <div class="app-footer__copyright">{{ $t('phrases.copyright') }}</div>
-                    </div>
-                </div>
+                <div class="app-footer__copyright">{{ $t('phrases.copyright') }}</div>
             </Container>
         </div>
 
@@ -137,11 +133,13 @@ export default {
 
     &__row {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
+    }
 
-        &--center {
-            justify-content: center;
-        }
+    &__column {
+        width: 50%;
+        margin-bottom: 32px;
     }
 
     &__title {
@@ -150,16 +148,29 @@ export default {
 
     &__list {
         margin: 0;
-        padding: 0;
+        padding: 0 8px 0 0;
         list-style: none;
         font-size: 16px;
         line-height: 32px;
+    }
+
+    &__item {
+        line-height: 1.4;
+        margin-bottom: 10px;
     }
 
     &__copyright {
         text-align: center;
         font-size: 15px;
         font-weight: 300;
+    }
+
+
+    @include tablet {
+
+        &__column {
+            width: 25%;
+        }
     }
 }
 </style>
