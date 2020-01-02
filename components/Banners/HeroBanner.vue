@@ -9,6 +9,7 @@
         <footer class="hero-banner__footer">
             <NuxtLink :to="this.$routes.home.path" class="link link--button link--button-white">{{ $t('links.start-inquiry') }}</NuxtLink>
         </footer>
+        <img class="hero-banner__phone" :src="require('~/static/images/images/iphone.png')" alt="iphone" />
     </div>
 </template>
 
@@ -18,10 +19,13 @@ export default {}
 
 <style lang="scss" scoped>
 .hero-banner {
+    position: relative;
+
+    &__main {
+        margin-bottom: 64px;
+    }
 
     &__title {
-        font-size: 64px;
-        line-height: 76px;
         color: $color-white;
     }
 
@@ -30,6 +34,48 @@ export default {}
         font-size: 20px;
         line-height: 30px;
         color: $color-white;
+    }
+
+    &__footer {
+        text-align: center;
+    }
+
+    &__phone {
+        display: none;
+    }
+
+
+    @include tablet-big {
+
+        &__header {
+            width: 55%;
+        }
+
+        &__main {
+            width: 55%;
+        }
+
+        &__footer {
+            text-align: left;
+        }
+
+        &__phone {
+            display: block;
+            position: absolute;
+            top: -30px;
+            right: -130px;
+        }
+    }
+
+    @include desktop {
+
+        &__header {
+            width: 60%;
+        }
+
+        &__main {
+            width: 60%;
+        }
     }
 }
 </style>
