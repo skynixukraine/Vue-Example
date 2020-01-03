@@ -15,7 +15,8 @@ module.exports = {
     env: configEnv,
     css: [
         { src: "~/static/styles/fonts.css", lang: 'css' },
-        { src: "~/static/styles/normalize.css", lang: 'css' }
+        { src: "~/static/styles/normalize.css", lang: 'css' },
+        { src: "~/static/styles/modal.css", lang: 'css' },
     ],
     styleResources: {
         scss: [
@@ -50,6 +51,7 @@ module.exports = {
         { src: '~/plugins/modules/googleMaps' },
         { src: '~/plugins/modules/i18n' },
         { src: '~/plugins/modules/telInput' },
+        { src: '~/plugins/modules/modals' },
 
         // Global components
         { src: '~/plugins/globalComponents/general' },

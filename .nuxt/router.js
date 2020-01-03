@@ -8,6 +8,7 @@ const _5ee659e3 = () => interopDefault(import('../pages/authorization/index.vue'
 const _2630ddbe = () => interopDefault(import('../pages/dashboard/index.vue' /* webpackChunkName: "pages/dashboard/index" */))
 const _b32a60ea = () => interopDefault(import('../pages/enquiries/index.vue' /* webpackChunkName: "pages/enquiries/index" */))
 const _6bd6fb00 = () => interopDefault(import('../pages/faq/index.vue' /* webpackChunkName: "pages/faq/index" */))
+const _37e52cb6 = () => interopDefault(import('../pages/verify/index.vue' /* webpackChunkName: "pages/verify/index" */))
 const _113dd37a = () => interopDefault(import('../pages/account/billing/index.vue' /* webpackChunkName: "pages/account/billing/index" */))
 const _1380082d = () => interopDefault(import('../pages/account/personal-information/index.vue' /* webpackChunkName: "pages/account/personal-information/index" */))
 const _06258e9a = () => interopDefault(import('../pages/enquiries/_id.vue' /* webpackChunkName: "pages/enquiries/_id" */))
@@ -50,6 +51,10 @@ export const routerOptions = {
     path: "/faq",
     component: _6bd6fb00,
     name: "faq"
+  }, {
+    path: "/verify",
+    component: _37e52cb6,
+    name: "verify"
   }, {
     path: "/account/billing",
     component: _113dd37a,
