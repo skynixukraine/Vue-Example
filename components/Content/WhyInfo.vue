@@ -64,6 +64,8 @@ export default {
     &__image {
         max-width: 100%;
         display: block;
+        position: relative;
+        z-index: 1;
     }
 
 

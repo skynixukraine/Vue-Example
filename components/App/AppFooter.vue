@@ -139,7 +139,11 @@ export default {
 
     &__column {
         width: 50%;
-        margin-bottom: 32px;
+        
+        &:nth-child(1),
+        &:nth-child(2) {
+            margin-bottom: 32px;
+        }
     }
 
     &__title {
@@ -157,6 +161,11 @@ export default {
     &__item {
         line-height: 1.4;
         margin-bottom: 10px;
+        font-size: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     &__copyright {
@@ -166,10 +175,23 @@ export default {
     }
 
 
+    @include phone-big {
+
+        &__item {
+            font-size: 16px;
+        }
+    }
+
+
     @include tablet {
 
         &__column {
             width: 25%;
+
+            &:nth-child(1),
+            &:nth-child(2) {
+                margin-bottom: 0;
+            }
         }
     }
 }
