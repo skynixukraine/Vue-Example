@@ -7,6 +7,7 @@
 			</AppMain>
             <AppFooter />
             <AppNotify />
+            <Modals />
         </App>
     </div>
 </template>
@@ -17,6 +18,7 @@ import AppHeader from "~/components/App/AppHeader"
 import AppMain from "~/components/App/AppMain"
 import AppFooter from "~/components/App/AppFooter"
 import AppNotify from "~/components/App/AppNotify"
+import Modals from "~/components/Modals/Modals"
 
 export default {
     components: {
@@ -25,6 +27,7 @@ export default {
 		AppMain,
         AppFooter,
         AppNotify,
+        Modals,
     }
 }
 </script>

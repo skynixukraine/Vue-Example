@@ -13,6 +13,8 @@ import '../static/styles/fonts.css'
 
 import '../static/styles/normalize.css'
 
+import '../static/styles/modal.css'
+
 import _6f6c098b from '../layouts/default.vue'
 
 const layouts = { "_default": _6f6c098b }
