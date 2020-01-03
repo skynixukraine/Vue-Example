@@ -10,6 +10,7 @@
                 <template v-if="currentTab === 'signup'">
                     <SignupForm />
                 </template>
+                <button>Forgot Password?</button>
             </Container>
         </Section>
     </div>

@@ -39,13 +39,13 @@ module.exports = {
     },
     router: {},
     plugins: [
-        // Injections
         { src: '~/plugins/injections/routes' },
         { src: '~/plugins/injections/apiRoutes' },
         { src: '~/plugins/injections/googleApiRoutes' },
         { src: '~/plugins/injections/recaptchaActions' },
 
-        // 3rd Party Modules/Libs
+        { src: '~/plugins/custom/timeOfDay' },
+
         { src: '~/plugins/modules/recaptcha' },
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/googleMaps' },
@@ -53,7 +53,6 @@ module.exports = {
         { src: '~/plugins/modules/telInput' },
         { src: '~/plugins/modules/modals' },
 
-        // Global components
         { src: '~/plugins/globalComponents/general' },
     ],
     build: {
