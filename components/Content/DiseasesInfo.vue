@@ -67,20 +67,39 @@ export default {
     &__list {
         display: flex;
         flex-wrap: wrap;
-        padding: 0 0 0 25px;
+        justify-content: space-between;
         margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
     &__list-item {
-        flex: 0 0 33.33%;
-        margin: 0;
-        font-size: 30px;
-        color: $color-curious-blue;
+        width: 100%;
+        margin-bottom: 16px;
 
-        span {
-            font-size: 18px;
-            line-height: 28px;
-            color: $color-rolling-stone;
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: $color-curious-blue;
+            margin-right: 10px;
+        }
+    }
+
+
+    @include phone-big {
+        
+        &__list-item {
+            width: 50%;
+        }
+    }
+
+    @include tablet {
+        
+        &__list-item {
+            width: 33.33%;
         }
     }
 }

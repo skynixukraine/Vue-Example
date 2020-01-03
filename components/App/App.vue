@@ -121,6 +121,18 @@ START: COMPONENTS
         padding-top: 0px; 
     }
 
+    &.section--bg-right-1 {
+        background-image: url('~static/images/images/rectangle-right.png');
+        background-size: auto;
+        background-position: right center;
+    }
+
+    &.section--bg-left-2 {
+        background-image: url('~static/images/images/rectangle-left.png');
+        background-size: auto;
+        background-position: left center;
+    }
+
 
     @include tablet-big {
         padding-top: 112px;
@@ -210,6 +222,28 @@ START: COMPONENTS
     padding: 0 20px;
     margin-right: auto;
     margin-left: auto;
+    position: relative;
+
+    &__dots {
+
+        &--1 {
+            position: absolute;
+            top: -74px;
+            right: -75px;
+        }
+
+        &--2 {
+            position: absolute;
+            bottom: -74px;
+            left: -75px;
+        }
+
+        &--3 {
+            position: absolute;
+            top: -186px;
+            right: 0;
+        }
+    }
 }
 
 

@@ -17,6 +17,7 @@ export default {}
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 
     &__title {
         color: $color-white;
