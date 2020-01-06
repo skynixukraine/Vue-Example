@@ -10,6 +10,7 @@
         "learn-more": "mehr erfahren",
         "frequently-asked": "häufig gestellte fragen (FAQ)",
         "start-inquiry": "Anfrage starten",
+        "our-dermatologists": "Unsere Hautärzte",
         "send-case": "Fall einsenden",
         "frequently-questions": "Häufige Fragen",
         "skin-lexicon": "Hautlexikon",
@@ -61,8 +62,8 @@
     },
     "banners": {
         "herobanner": {
-            "title": "Konsultieren Sie einen Hautarzt online",
-            "description": "Bei OnlineDoctor können Sie in wenigen Schritten einen Hautarzt online konsultieren. Innerhalb von maximal 48 Stunden erhalten Sie schnell, ortsunabhängig und kostengünstig (EUR 39.-) eine fachärztliche Ersteinschätzung Ihres Hautproblems (siehe FAQs). Dank der Handlungsempfehlung wissen Sie zudem, was Sie tun können.",
+            "title": "Fragen Sie online einen Hautarzt Ihrer Wahl",
+            "description": "Bei Online Hautarzt vor Ort erhalten Sie schnell und kostengünstig (19,-€) eine professionelleEinschätzung Ihres Hautproblems durch einen deutschen Hautfacharzt. Dank derHandlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblemsunternehmen sollten. Etwa 70% unserer Patienten müssen nach dem Online-Besuch nichtmehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoherGewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger alssechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden.",
             "scroll-to-run": "Runterscrollen"
         }
     },
