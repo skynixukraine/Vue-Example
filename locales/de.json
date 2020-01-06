@@ -8,6 +8,7 @@
         "jobs": "Jobs",
         "show-all": "alle anzeigen",
         "learn-more": "mehr erfahren",
+        "further-information": "Weitere Informationen",
         "frequently-asked": "häufig gestellte fragen (FAQ)",
         "start-inquiry": "Anfrage starten",
         "our-dermatologists": "Unsere Hautärzte",
@@ -51,14 +52,14 @@
     },
     "headers": {
         "our-family-doctors": "Unsere Hausärzte",
-        "your-advantages": "Ihre Vorteile",
+        "your-advantages": "Vorteile von Online Hautarz",
         "few-steps": "In wenigen Schritten zu Ihrem Haut-Check",
         "use-us": "Bekannt aus",
         "for-patients": "Für Patienten",
         "for-dermatologists": "Für Hautärzte",
         "research": "Forschung",
         "formal": "Formales",
-        "start-your-request-now": "Starten Sie jetzt Ihre Anfrage"
+        "start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt"
     },
     "banners": {
         "herobanner": {
@@ -101,17 +102,17 @@
         "copyright": "Online Hautarzt vor Ort © 2019 Alle Rechte vorbehalten"
     },
     "advantages": {
-        "professional-trustworthy": "Professionell & vertrauenswürdig",
-        "data-protection-compliant": "Sicher & datenschutzkonform",
-        "fast-time-saving": "Schnell & zeitsparend",
-        "independent-accessible": "Ortsunabhängig & einfach erreichbar"
+        "professional-trustworthy": "Ausgezeichnet & wissenschaftlich evaluiert",
+        "data-protection-compliant": "Sicher & Made in Germany",
+        "fast-time-saving": "Wegsparend & schnell",
+        "independent-accessible": "Ohne Termin & von überall erreichbar"
     },
     "steps": {
-        "choose-dermatologist": "Wählen Sie den Hautarzt",
-        "dermatologist-at-clinic-essen": "Hautfachärztin und Oberärztin an der Universitäts-Hautklinik Essen. Leiterin der externen wissenschaftlichen Evaluation und Qualitätskontrolle von AppDoc.",
-        "describe-symptoms": "Beschreiben Sie die Symptome und fotografieren Sie Ihr Hautproblem",
-        "what-complaints-problem": "Welche Beschwerden haben Sie wegen Ihres Hautproblems? Beschreiben Sie mithilfe von OnlineDoctor die Symptome. Laden Sie zudem Fotos Ihres Hautproblems hoch. In der Regel nimmt die Anfrage 5-7 Minuten in Anspruch.",
-        "you-get-specialist-advice": "Sie bekommen fachärztlichen Rat",
-        "specialist-initial-assessment": "Innerhalb von 48 Stunden – meist sogar schon nach ein paar Stunden – erhalten Sie von Ihrem Hautarzt eine fachärztliche Ersteinschätzung sowie eine Empfehlung, was Sie wegen Ihres Hautproblems unternehmen sollten."
+        "choose-dermatologist": "Hautarzt auswählen",
+        "dermatologist-at-clinic-essen": "Über unsere Plattform sind viele Hautärzte aus Deutschland erreichbar. Wer soll IhrHautproblem befunden? Ob Sie einen Hautarzt in der Nähe auswählen, oder einenHautarzt mit hoher Erfahrung aus einer anderen Stadt, bleibt Ihnen überlassen.",
+        "describe-symptoms": "Fotografieren Sie Ihr Hautproblem und beschreiben Sie Ihre Symptome",
+        "what-complaints-problem": "Nachdem Sie den Hautarzt ausgewählt haben, beantworten Sie wenige Fragen zuIhrem Hautproblem und fotografieren es nach einfacher Anleitung, zum Beispiel mitIhrer Handykamera. Insgesamt kostet Sie dieser Vorgang etwa fünf Minuten IhrerZeit.",
+        "you-get-specialist-advice": "Sie erhalten Rat von Ihrem Hautarzt",
+        "specialist-initial-assessment": "Meist in weniger als sechs Stunden erhalten Sie fachärztliche Hilfe durch den vonIhnen ausgewählten Hautarzt. Maximal dauert die Beantwortung Ihrer Anfrage 48Stunden. In etwa 90% der Fälle stellt der Hautarzt eine konkrete Diagnose. Immererhalten Sie eine Handlungsempfehlung, was Sie tun sollten. Etwa 70% unsererPatienten müssen nicht mehr persönlich in die Praxis, der Rest der Patienten kanndas Hautproblem besser einschätzen. Insgesamt kostet dieser Dienst 19,- Euro.Zusätzliche Kosten fallen nicht an."
     }
 }
