@@ -55,50 +55,53 @@ export default {
         return {
             links: {
                 forPatients: [{
-                    text: this.$t('links.send-case'),
-                    to: this.$routes.home.path
+                    text: 'Anfrage starten',
+                    to: this.$routes.hautarzt.path
                 },{
-                    text: this.$t('links.advantages'),
-                    to: this.$routes.home.path
+                    text: 'Hautärzte',
+                    to: this.$routes.hautarzt.path
                 },{
-                    text: this.$t('links.frequently-questions'),
-                    to: this.$routes.home.path
+                    text: 'Ihre Vorteile',
+                    to: this.$routes.vorteile.path
                 },{
-                    text: this.$t('links.skin-lexicon'),
-                    to: this.$routes.home.path
+                    text: 'Häufige Fragen',
+                    to: this.$routes.faq.path
                 },{
-                    text: this.$t('links.via-online-dermatologist'),
-                    to: this.$routes.home.path
+                    text: 'Über Uns',
+                    to: this.$routes.about.path
                 },{
-                    text: this.$t('links.contact-form'),
-                    to: this.$routes.home.path
+                    text: 'Kontakt',
+                    to: this.$routes.contact.path
                 }],
+
                 forDermatologists: [{
-                    text: this.$t('links.participate'),
-                    to: this.$routes.home.path
+                    text: 'Mitmachen bei Online Hautarzt',
+                    to: this.$routes.registrierung.path
                 },{
-                    text: this.$t('links.about-teledermatology'),
-                    to: this.$routes.home.path
+                    text: 'Teilnahmekonditionen',
+                    to: this.$routes.konditionen.path
+                },{
+                    text: 'Login',
+                    to: this.$routes.login.path
                 }],
+
                 research: [{
-                    text: this.$t('links.project-group-studies'),
-                    to: this.$routes.home.path
+                    text: 'Abgeschlossene Studien',
+                    to: this.$routes.studien.path
                 },{
-                    text: this.$t('links.scientific-advisory-board'),
-                    to: this.$routes.home.path
-                },{
-                    text: this.$t('links.general-teledermatology'),
-                    to: this.$routes.home.path
+                    text: 'Laufende Studien',
+                    to: this.$routes.forschung.path
                 }],
+
                 formal: [{
-                    text: this.$t('links.imprint'),
-                    to: this.$routes.home.path
+                    text: 'Datenschutzerklärung',
+                    to: this.$routes.datenschutz.path
                 },{
-                    text: this.$t('links.data-protection'),
-                    to: this.$routes.home.path
+                    text: 'Allgemeine Geschäftsbedingungen',
+                    to: this.$routes.agb.path
                 },{
-                    text: this.$t('links.terms-of-service'),
-                    to: this.$routes.home.path
+                    text: 'Impressum',
+                    to: this.$routes.impressum.path
                 }],
             }
         }

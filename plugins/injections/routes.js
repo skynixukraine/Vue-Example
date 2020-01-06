@@ -5,38 +5,47 @@ export default ({ app }, inject) => {
         home: {
             path: '/'
         },
-        dermatologists: {
-            path: '/dermatologists'
+        hautarzt: {
+            path: '/hautarzt'
         },
-        advantages: {
-            path: '/advantages',
+        vorteile: {
+            path: '/vorteile'
         },
         faq: {
-            path: '/faq',
+            path: '/faq'
         },
         about: {
-            path: '/about',
+            path: '/ueber-uns'
         },
-        jobs: {
-            path: '/jobs',
-        },
-        account: {
-            path: '/account'
-        },
-        accountPersonalInformation: {
-            path: '/account/personal-information'
-        },
-        accountBilling: {
-            path: '/account/billing'
-        },
-        enquiries: {
-            path: '/enquiries'
-        },
-        dashboard: {
-            path: '/dashboard'
+        contact: {
+            path: '/kontakt'
         },
         authorisation: {
             path: '/authorisation'
+        },
+        registrierung: {
+            path: '/registrierung'
+        },
+        login: {
+            path: '/login'
+        },
+        konditionen: {
+            path: '/konditionen'
+        },
+        studien: {
+            path: '/studien'
+        },
+        forschung: {
+            path: '/forschung'
+        },
+        datenschutz: {
+            path: '/datenschutz'
+        },
+        agb: {
+            path: '/agb'
+        },
+        impressum: {
+            path: '/impressum'
         },
     }
     

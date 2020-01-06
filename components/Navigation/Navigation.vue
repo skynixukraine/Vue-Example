@@ -29,12 +29,12 @@ export default {
         links() {
             return [
                 {
-                    to: this.$routes.dermatologists.path,
-                    text: this.$t('links.dermatologists')
+                    to: this.$routes.hautarzt.path,
+                    text: this.$t('links.hautarzt')
                 },
                 {
-                    to: this.$routes.advantages.path,
-                    text: this.$t('links.advantages')
+                    to: this.$routes.vorteile.path,
+                    text: this.$t('links.vorteile')
                 },
                 {
                     to: this.$routes.faq.path,
@@ -43,10 +43,6 @@ export default {
                 {
                     to: this.$routes.about.path,
                     text: this.$t('links.about')
-                },
-                {
-                    to: this.$routes.jobs.path,
-                    text: this.$t('links.jobs')
                 },
             ]
         }
