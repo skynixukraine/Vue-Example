@@ -1,5 +1,5 @@
 <template>
-    <div class="page page--without-padding">
+    <div class="page page--home page--without-padding">
         <div class="section section--fullscreen" :style="{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})` }">
             <div class="container">
                 <HeroBanner />
@@ -38,7 +38,7 @@
         </div>
         <div class="section section--bg-left-2">
             <div class="container">
-                <img class="container__dots--3" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
+                <img class="container__dots container__dots--3" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
                 <header class="section-header">
                     <h2 class="section-header__title">{{ $t('headers.few-steps') }}</h2>
                 </header>
@@ -54,13 +54,13 @@
         </div>
         <div class="section section--without-paddings">
             <div class="container">
-                <img class="container__dots--1" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
+                <img class="container__dots container__dots--1" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
                 <RequestBanner />
             </div>
         </div>
         <div class="section">
             <div class="container">
-                <img class="container__dots--2" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
+                <img class="container__dots container__dots--2" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
                 <WhyInfo />
             </div>
         </div>

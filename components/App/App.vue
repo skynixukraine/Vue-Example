@@ -14,6 +14,9 @@ body {
     line-height: 1.55;
     color: $color-rolling-stone;
     font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $color-black-squeeze;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -85,16 +88,19 @@ START: COMPONENTS
         padding-top: 0;
     }
 
-
     @include tablet-big {
         padding-top: 72px;
+
+        &.page--home {
+            background: url('~static/images/images/rectangle-right.png') right 78.5% no-repeat,
+                        url('~static/images/images/rectangle-left.png') left bottom no-repeat;
+        }
     }
 }
 // section
 .section {
     padding-top: 64px;
     padding-bottom: 64px;
-    background-color: $color-black-squeeze;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -121,22 +127,22 @@ START: COMPONENTS
         padding-top: 0px; 
     }
 
-    &.section--bg-right-1 {
-        background-image: url('~static/images/images/rectangle-right.png');
-        background-size: auto;
-        background-position: right center;
-    }
-
-    &.section--bg-left-2 {
-        background-image: url('~static/images/images/rectangle-left.png');
-        background-size: auto;
-        background-position: left center;
-    }
-
 
     @include tablet-big {
         padding-top: 112px;
         padding-bottom: 112px;
+
+        &.section--bg-right-1 {
+            background-image: url('~static/images/images/rectangle-right.png');
+            background-size: auto;
+            background-position: right center;
+        }
+
+        &.section--bg-left-2 {
+            background-image: url('~static/images/images/rectangle-left.png');
+            background-size: auto;
+            background-position: 0 20%;
+        }
     }
 }
 
@@ -225,23 +231,32 @@ START: COMPONENTS
     position: relative;
 
     &__dots {
+        display: none;
+    }
 
-        &--1 {
-            position: absolute;
-            top: -74px;
-            right: -75px;
-        }
 
-        &--2 {
-            position: absolute;
-            bottom: -74px;
-            left: -75px;
-        }
+    @include tablet-big {
 
-        &--3 {
-            position: absolute;
-            top: -186px;
-            right: 0;
+        &__dots {
+            display: block;
+
+            &--1 {
+                position: absolute;
+                top: -74px;
+                right: -75px;
+            }
+
+            &--2 {
+                position: absolute;
+                bottom: -74px;
+                left: -75px;
+            }
+
+            &--3 {
+                position: absolute;
+                top: -186px;
+                right: 0;
+            }
         }
     }
 }
