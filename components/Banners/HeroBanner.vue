@@ -7,7 +7,12 @@
             <p class="hero-banner__text">{{ $t('banners.herobanner.description') }}</p>
         </div>
         <footer class="hero-banner__footer">
-            <NuxtLink :to="this.$routes.home.path" class="link link--button link--button-white">{{ $t('links.start-inquiry') }}</NuxtLink>
+            <div class="hero-banner__footer-item">
+                <NuxtLink :to="this.$routes.home.path" class="link link--button link--button-white">{{ $t('links.start-inquiry') }}</NuxtLink>
+            </div>
+            <div class="hero-banner__footer-item">
+                <NuxtLink :to="this.$routes.home.path" class="link link--button link--button-white">{{ $t('links.our-dermatologists') }}</NuxtLink>
+            </div>
         </footer>
         <img class="hero-banner__phone" :src="require('~/static/images/images/iphone.png')" alt="iphone" />
     </div>
@@ -37,13 +42,38 @@ export default {}
     }
 
     &__footer {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__footer-item {
+        
+        &:first-child {
+            margin-bottom: 16px;
+        }
     }
 
     &__phone {
         display: none;
     }
 
+
+    @include tablet {
+
+        &__footer {
+            flex-direction: row;
+        }
+
+        &__footer-item {
+        
+            &:first-child {
+                margin-bottom: 0;
+                margin-right: 16px;
+            }
+        }
+    }
 
     @include tablet-big {
 
@@ -56,14 +86,14 @@ export default {}
         }
 
         &__footer {
-            text-align: left;
+            justify-content: flex-start;
         }
 
         &__phone {
             display: block;
             position: absolute;
-            top: -30px;
-            right: -130px;
+            top: 100px;
+            right: -135px;
         }
     }
 
