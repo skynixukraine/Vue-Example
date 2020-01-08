@@ -9,10 +9,21 @@
 </template>
 
 <script>
+// mixins
+import window from '~/mixins/window'
+
 export default {
+    mixins: [window],
     data() {
         return {
             isActive: false
+        }
+    },
+    watch: {
+        windowWidth(width) {
+            if (width >= 720) {
+                this.isActive = false
+            }
         }
     },
     methods: {

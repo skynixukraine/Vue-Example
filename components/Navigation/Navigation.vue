@@ -63,9 +63,6 @@ export default {
                     scrollLock.enablePageScroll()
                 }
             })
-        },
-        emitToggleNavigation() {
-            this.$root.$emit('toggleNavigation')
         }
     }
 }
