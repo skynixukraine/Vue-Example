@@ -5,10 +5,10 @@
                 <AppLogo />
             </div>
             <div class="app-header__item">
-                <AppNavigation />
+                <Navigation />
             </div>
             <div class="app-header__item" v-if="windowWidth < 962">
-                <button class="button-menu" @click="emitToggleNavigation"></button>
+                <NavigationToggler />
             </div>
         </div>
     </header>
@@ -20,22 +20,19 @@ import window from '~/mixins/window'
 
 // components
 import AppLogo from "~/components/App/AppLogo"
-import AppNavigation from "~/components/App/AppNavigation"
+import Navigation from "~/components/Navigation/Navigation"
+import NavigationToggler from "~/components/Navigation/NavigationToggler"
 
 export default {
     mixins: [window],
     components: {
         AppLogo,
-        AppNavigation,
+        Navigation,
+        NavigationToggler
     },
     computed: {
         isHomePage() {
             return this.$route.name === 'index'
-        }
-    },
-    methods: {
-        emitToggleNavigation() {
-            this.$root.$emit('toggleNavigation')
         }
     }
 }
