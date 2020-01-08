@@ -1,5 +1,5 @@
 <template>
-    <div class="app-notify" :class="{ 'app-notify--active' : isActive }">
+    <div class="app-notify" :class="{ 'app-notify--active' : isActive }" v-if="isActive">
         {{ type }} : {{ text }}
     </div>
 </template>
