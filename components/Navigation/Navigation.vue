@@ -1,8 +1,8 @@
 <template>
-    <nav class="app-navigation" :class="{ 'app-navigation--active': isActive }">
-        <ul class="app-navigation__list">
-            <li class="app-navigation__item" v-for="(link, index) in links" :key="index">
-                <NuxtLink :to="link.to" class="link app-navigation__link">{{ link.text }}</NuxtLink>
+    <nav class="navigation" :class="{ 'navigation--active': isActive }">
+        <ul class="navigation__list">
+            <li class="navigation__item" v-for="(link, index) in links" :key="index">
+                <NuxtLink :to="link.to" class="link navigation__link">{{ link.text }}</NuxtLink>
             </li>
         </ul>
     </nav>
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-navigation {
+.navigation {
     position: fixed;
     top: 0;
     left: -100%;

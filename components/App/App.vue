@@ -60,6 +60,16 @@ a {
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+    -webkit-tap-highlight-color : transparent;
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
 
 @include tablet {
     h1 {
@@ -426,17 +436,6 @@ START: COMPONENTS
 
 
 // buttons with icons
-.button-menu {
-    display: block;
-    width: 48px;
-    height: 48px;
-    background-color: transparent;
-    background-image: url('~static/images/icons/menu.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    border: none;
-}
-
 .button-more-less {
     display: inline-block;
     background: none;

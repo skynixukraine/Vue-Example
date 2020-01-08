@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="$routes.home.path" class="link">
+    <NuxtLink :to="$routes.home.path" class="link app-logo__link">
         <div class="app-logo">
             <div class="app-logo__image"></div>
             <div class="app-logo__text">{{ $t('links.logo-link') }}</div>
@@ -28,6 +28,16 @@
         color: $color-white;
         font-size: 18px;
         line-height: 1.3;
+    }
+
+    &__link {
+
+        &:hover {
+
+            .app-logo__text {
+                text-decoration: underline;
+            }
+        }
     }
 
 
