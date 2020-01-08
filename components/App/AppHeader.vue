@@ -1,11 +1,11 @@
 <template>
-    <header class="app-header" :class="{ 'app-header--transparent': isHomePage, 'app-header--with-bg': scrollTop > 68 }">
+    <header class="app-header" :class="{ 'app-header--bg-transparent': isHomePage, 'app-header--bg-default': scrollTop > 68 }">
         <div class="app-header__inner">
             <div class="app-header__item">
-                <Logo />
+                <AppLogo />
             </div>
             <div class="app-header__item">
-                <Navigation />
+                <AppNavigation />
             </div>
             <div class="app-header__item" v-if="windowWidth < 962">
                 <button class="button-menu" @click="emitToggleNavigation"></button>
@@ -19,14 +19,14 @@
 import window from '~/mixins/window'
 
 // components
-import Logo from "~/components/Logo/Logo"
-import Navigation from "~/components/Navigation/Navigation"
+import AppLogo from "~/components/App/AppLogo"
+import AppNavigation from "~/components/App/AppNavigation"
 
 export default {
     mixins: [window],
     components: {
-        Logo,
-        Navigation,
+        AppLogo,
+        AppNavigation,
     },
     computed: {
         isHomePage() {
@@ -49,14 +49,14 @@ export default {
     left: 0;
     width: 100%;
     padding: 10px 15px;
-    background: linear-gradient(0deg, #08154B, #08154B);
+    background: $color-stratos;
 
-    &--transparent {
+    &--bg-transparent {
         background: transparent;
     }
 
-    &--with-bg {
-        background: linear-gradient(0deg, #08154B, #08154B);
+    &--bg-default {
+        background: $color-stratos;
     }
 
     &__inner {

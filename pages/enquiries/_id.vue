@@ -1,9 +1,9 @@
 <template>
     <div class="page">
-        <Section>
-            <Container>
-                <h1>Enquiries ID</h1>
-            </Container>
-        </Section>
+        <div class="section">
+            <div class="container">
+                <h1>Enquiries ID: {{ $route.params.id }}</h1>
+            </div>
+        </div>
     </div>
 </template>

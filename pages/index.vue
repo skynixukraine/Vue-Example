@@ -6,6 +6,21 @@
             </div>
             <div class="section-scroll-tooltip"><div class="section-scroll-tooltip__inner">{{ $t('banners.herobanner.scroll-to-run') }}</div></div>
         </div>
+        <div class="section section--default-0 section--bg-right-1">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">{{ $t('headers.our-family-doctors') }}</h2>
+                </header>
+                <ul class="list list--d3">
+                    <li class="list__item" v-for="(user, index) in users" :key="index">
+                         <DoctorCard :doctor="user" />
+                    </li>
+                </ul>
+                <footer class="section-footer">
+                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.show-all') }}</NuxtLink>
+                </footer>
+            </div>
+        </div>
         <div class="section section--bg-left-2">
             <div class="container">
                 <img class="container__dots container__dots--3" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
@@ -22,7 +37,7 @@
                 </footer>
             </div>
         </div>
-        <div class="section section--64" :style="{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})` }" style="position:relative;z-index:1;">
+        <div class="section section--64-64" :style="{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})` }" style="position:relative;z-index:1;">
             <div class="container">
                 <header class="section-header">
                     <h2 class="section-header__title section-header__title--white">{{ $t('headers.your-advantages') }}</h2>
@@ -37,22 +52,7 @@
                 </footer>
             </div>
         </div>
-        <!-- <div class="section section--bg-right-1">
-            <div class="container">
-                <header class="section-header">
-                    <h2 class="section-header__title">{{ $t('headers.our-family-doctors') }}</h2>
-                </header>
-                <ul class="list list--d3">
-                    <li class="list__item" v-for="(user, index) in users" :key="index">
-                         <DoctorCard :doctor="user" />
-                    </li>
-                </ul>
-                <footer class="section-footer">
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>{{ $t('links.show-all') }}</NuxtLink>
-                </footer>
-            </div>
-        </div> -->
-        <div class="section section--without-paddings">
+        <div class="section section--default-0">
             <div class="container">
                 <img class="container__dots container__dots--1" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
                 <RequestBanner />

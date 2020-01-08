@@ -1,9 +1,9 @@
 <template>
     <div class="page">
-        <Section>
-            <Container>
+        <div class="section">
+            <div class="container">
                 <h1>Forshung</h1>
-            </Container>
-        </Section>
+            </div>
+        </div>
     </div>
 </template>

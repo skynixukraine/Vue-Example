@@ -1,7 +1,7 @@
 <template>
     <div class="page">
-        <Section>
-            <Container>
+        <div class="section">
+            <div class="container">
                 <button class="link link--button link--button-white" @click="setCurrentTab('signin')">Sign In</button>
                 <button class="link link--button link--button-white" @click="setCurrentTab('signup')">Sign Up</button>
                 <template v-if="currentTab === 'signin'">
@@ -11,8 +11,8 @@
                     <SignupForm />
                 </template>
                 <button>Forgot Password?</button>
-            </Container>
-        </Section>
+            </div>
+        </div>
     </div>
 </template>
 

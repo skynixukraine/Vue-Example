@@ -2,7 +2,7 @@
     <footer class="app-footer">
 
         <div class="app-footer__section">
-            <Container>
+            <div class="container">
                 <div class="app-footer__row">
                     <div class="app-footer__column">
                         <h4 class="app-footer__title">{{ $t('headers.for-patients') }}</h4>
@@ -37,13 +37,13 @@
                         </ul>
                     </div>
                 </div>
-            </Container>
+            </div>
         </div>
 
         <div class="app-footer__section">
-            <Container>
+            <div class="container">
                 <div class="app-footer__copyright">{{ $t('phrases.copyright') }}</div>
-            </Container>
+            </div>
         </div>
 
     </footer>
@@ -111,25 +111,25 @@ export default {
 
 <style lang="scss" scoped>
 .app-footer {
-    color: rgba(255, 255, 255, 0.44);
+    color: $color-footer-text;
 
     &__link {
-        color: rgba(255, 255, 255, 0.6);
+        color: $color-footer-link;
 
         &:hover {
-            color: rgba(255, 255, 255, 0.88);
+            color: $color-footer-link-active;
         }
     }
 
     &__section {
 
         &:first-child {
-            background: linear-gradient(180deg, #0F44B2 0%, #042052 100%);
+            background: $color-gradient-blue-dark;
             padding: 64px 0;
         }
 
         &:last-child {
-            background: #001A4B;
+            background: $color-stratos;
             padding: 26px 0 22px;
         }
     }

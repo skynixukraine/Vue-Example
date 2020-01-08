@@ -1,12 +1,14 @@
 <template>
-    <div class="logo">
-       <div class="logo__image"></div>
-       <div class="logo__text">Online Hautarzt vor Ort</div>
-    </div>
+    <NuxtLink :to="$routes.home.path" class="link">
+        <div class="app-logo">
+            <div class="app-logo__image"></div>
+            <div class="app-logo__text">{{ $t('links.logo-link') }}</div>
+        </div>
+    </NuxtLink>
 </template>
 
 <style lang="scss" scoped>
-.logo {
+.app-logo {
     display: flex;
     align-items: center;
 
