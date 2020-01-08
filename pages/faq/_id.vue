@@ -1,15 +1,15 @@
 <template>
     <div class="page">
-        <Section>
-            <Container>
+        <div class="section">
+            <div class="container">
                 <Breadcrumbs :breadcrumbs="breadcrumbs" />
-            </Container>
-        </Section>
-        <Section>
-            <Container>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
                 <h1>ID: {{ $route.params.id }}</h1>
-            </Container>
-        </Section>
+            </div>
+        </div>
     </div>
 </template>
 

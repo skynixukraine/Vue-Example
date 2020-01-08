@@ -1,9 +1,9 @@
 <template>
-    <nav class="navigation" :class="{ 'navigation--active': isActive }">
+    <nav class="app-navigation" :class="{ 'app-navigation--active': isActive }">
         <button @click="emitToggleNavigation" v-if="windowWidth < 962">CLOSE</button>
-        <ul class="navigation__list">
-            <li class="navigation__item" v-for="(link, index) in links" :key="index">
-                <NuxtLink :to="link.to" class="navigation__link">{{ link.text }}</NuxtLink>
+        <ul class="app-navigation__list">
+            <li class="app-navigation__item" v-for="(link, index) in links" :key="index">
+                <NuxtLink :to="link.to" class="link app-navigation__link">{{ link.text }}</NuxtLink>
             </li>
         </ul>
     </nav>
@@ -73,13 +73,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navigation {
+.app-navigation {
     position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: #001A4B;
+    background: $color-stratos;
     transition: left 200ms ease-in-out;
 
     &--active {
@@ -104,7 +104,7 @@ export default {
     &__link {
         font-size: 18px;
         font-weight: 400;
-        color: #FFF;
+        color: $color-white;
         text-decoration: none;
     }
 

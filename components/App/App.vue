@@ -113,18 +113,22 @@ START: COMPONENTS
         min-height: 100vh;
     }
 
-    &.section--without-paddings {
+    &.section--0-0 {
         padding-top: 0;
         padding-bottom: 0;
     }
 
-    &.section--64 {
+    &.section--64-64 {
         padding-top: 64px;
         padding-bottom: 64px;
     }
 
     &.section--0-default {
         padding-top: 0px; 
+    }
+
+    &.section--default-0 {
+        padding-bottom: 0px;
     }
 
 

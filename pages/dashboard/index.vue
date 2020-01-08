@@ -1,9 +1,9 @@
 <template>
     <div class="page">
-        <Section>
-            <Container>
+        <div class="section">
+            <div class="container">
                 <h1>{{ `Good ${this.$timeOfDay}` }}</h1>
-            </Container>
-        </Section>
+            </div>
+        </div>
     </div>
 </template>
