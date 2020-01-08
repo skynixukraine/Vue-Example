@@ -8,12 +8,12 @@
         <div class="form__item">
             <div class="form__title">{{ $t('forms.enter-email') }}</div>
             <input class="input" type="email" name="email" v-model="models.email" @keyup="onEmailChange">
-            <div class="form__message" v-if="errors['email']">{{ errors['email'] }}</div>
+            <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
         </div>
         <div class="form__item">
             <div class="form__title">{{ $t('forms.enter-password') }}</div>
             <input class="input" type="password" name="password" v-model="models.password" @keyup="onPasswordChange">
-            <div class="form__message" v-if="errors['password']">{{ errors['password'] }}</div>
+            <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
         </div>
         <div class="form__item">
             <button class="link link--button link--button-blue" type="submit">{{ $t('links.signin') }}</button>

@@ -1,8 +1,8 @@
 <template>
     <nav class="navigation" :class="{ 'navigation--active': isActive }">
         <ul class="navigation__list">
-            <li class="navigation__item" v-for="(link, index) in links" :key="index">
-                <NuxtLink :to="link.to" class="link navigation__link">{{ link.text }}</NuxtLink>
+            <li class="navigation__item" v-for="(link, index) in links" :key="index" @click="closeNavigation">
+                <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
             </li>
         </ul>
     </nav>
@@ -74,6 +74,8 @@ export default {
             scrollLock.disablePageScroll()
         },
         closeNavigation() {
+            console.log('closeNavigation');
+            
             this.isActive = false
             scrollLock.enablePageScroll()
         }
@@ -106,8 +108,17 @@ export default {
         list-style: none;
     }
 
+    &__item {
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
     &__link {
-        font-size: 18px;
+        display: block;
+        font-size: 24px;
         font-weight: 400;
         color: $color-white;
         text-decoration: none;
@@ -128,10 +139,15 @@ export default {
 
         &__item {
             margin-right: 30px;
+            margin-bottom: 0;
 
             &:last-child {
                 margin-right: 0;
             }
+        }
+
+        &__link {
+            font-size: 18px;
         }
     }
 }
