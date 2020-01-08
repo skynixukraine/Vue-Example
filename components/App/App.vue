@@ -128,6 +128,11 @@ START: COMPONENTS
         padding-bottom: 0;
     }
 
+    &.section--32-32 {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
     &.section--64-64 {
         padding-top: 64px;
         padding-bottom: 64px;

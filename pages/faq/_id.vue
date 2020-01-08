@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <div class="section">
+        <div class="section section--32-32">
             <div class="container">
                 <Breadcrumbs :breadcrumbs="breadcrumbs" />
             </div>

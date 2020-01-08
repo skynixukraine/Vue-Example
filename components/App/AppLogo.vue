@@ -43,13 +43,13 @@
 
     @include tablet-big {
 
-        & .logo__image {
+        & .app-logo__image {
             width: 52px;
             height: 52px;
             min-width: 52px;
         }
 
-        & .logo__text {
+        & .app-logo__text {
             font-size: 24px;
         }
     }
