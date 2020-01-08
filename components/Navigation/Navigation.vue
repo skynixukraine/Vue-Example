@@ -14,15 +14,21 @@ import scrollLock from 'scroll-lock'
 // mixins
 import window from '~/mixins/window'
 
+// options
+const DEFAULT_IS_ACTIVE = false
+
 export default {
     mixins: [window],
     data() {
         return {
-            isActive: false
+            isActive: DEFAULT_IS_ACTIVE
         }
     },
     created() {
-        this.handleToggleNavigation()
+        this.startHandleToggleNavigation()
+    },
+    beforeDestroy() {
+        this.stopHandleToggleNavigation()
     },
     computed: {
         links() {
@@ -49,20 +55,27 @@ export default {
     watch: {
         windowWidth(width) {
             if (width >= 720) {
-                this.isActive = false
+                this.closeNavigation()
             }
         }
     },
     methods: {
-        handleToggleNavigation() {
-            this.$root.$on('toggleNavigation', () => {
-                this.isActive = !this.isActive
-                if (this.isActive) {
-                    scrollLock.disablePageScroll()
-                } else {
-                    scrollLock.enablePageScroll()
-                }
-            })
+        startHandleToggleNavigation() {
+            this.$root.$on('toggleNavigation', this.onToggleNavigation)
+        },
+        stopHandleToggleNavigation() {
+            this.$root.$off('toggleNavigation', this.onToggleNavigation)
+        },
+        onToggleNavigation() {
+            this.isActive ? this.closeNavigation() : this.openNavigation()
+        },
+        openNavigation() {
+            this.isActive = true
+            scrollLock.disablePageScroll()
+        },
+        closeNavigation() {
+            this.isActive = false
+            scrollLock.enablePageScroll()
         }
     }
 }

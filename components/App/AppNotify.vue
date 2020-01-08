@@ -5,34 +5,45 @@
 </template>
 
 <script>
-const defaultType = 'success'
+const DEFAULT_TYPE = 'success'
+const DEFAULT_IS_ACTIVE = false
 
 export default {
     data() {
         return {
-            isActive: false,
-            type: defaultType,
+            isActive: DEFAULT_IS_ACTIVE,
+            type: DEFAULT_TYPE,
             text: ''
         }
     },
     created() {
-        this.$root.$on('showNotify', (notify) => {
-            this.show(notify)
-            setTimeout(() => {
-                this.hide()
-            }, 2000)
-        });
+        this.startHandleShowNotify()
+    },
+    beforeDestroy() {
+        this.stopHandleShowNotify()
     },
     methods: {
-        show(notify) {
+        startHandleShowNotify() {
+            this.$root.$on('showNotify', this.onShowNotify)
+        },
+        stopHandleShowNotify() {
+            this.$root.$off('showNotify', this.onShowNotify)
+        },
+        onShowNotify(notify) {
+            this.showNotify(notify)
+            setTimeout(() => {
+                this.hideNotify()
+            }, 2000)
+        },
+        showNotify(notify) {
             this.isActive = true
             this.type = notify.type
             this.text = notify.text
         },
-        hide() {
+        hideNotify() {
             this.isActive = false
-            this.type = ''
-            this.text = defaultType
+            this.type = DEFAULT_TYPE
+            this.text = ''
         }
     }
 }
