@@ -1,4 +1,3 @@
 node_modules/
 static/sw.js
 configs/env.js
-configs/server.js
