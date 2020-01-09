@@ -1,39 +1,37 @@
+// services
 import UserApi from '../services/api/User'
 
+// options (init values)
+const DEFAULT_USER = {}
+
+
 export const state = () => ({
-    users: [],
-    user: {}
+    user: DEFAULT_USER,
 })
 
-export const mutations = {
-    SET_USERS (state, users) {
-        state.users = users
-    },
 
+export const mutations = {
     SET_USER (state, user) {
         state.user = user
     },
 }
 
+
 export const actions = {
-    async LOAD_USERS ({ commit }) {
-        const response = await UserApi.loadUsers()
-        return response.data.data
-    },
-
-    async LOAD_USER ({ commit }, userId) {
-        const response = await UserApi.loadUser(userId)
-        return response.data
-    },
-
     async REGISTER_USER ({ commit }, requestData) {
         const response = await UserApi.registerUser(requestData)
         return response
     },
+    
+    async LOAD_USER ({ commit }, userId) {
+        const response = await UserApi.loadUser(userId)
+        return response.data
+    },
 }
 
+
 export const getters = {
-    USERS (state) {
-        return state.users
+    USER (state) {
+        return state.user
     },
 }

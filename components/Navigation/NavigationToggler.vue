@@ -1,35 +1,18 @@
 <template>
     <button
         class="navigation-toggler"
-        :class="{ 'navigation-toggler--active': isActive }"
-        @click="emitToggleNavigation"
+        :class="{ 'navigation-toggler--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }"
+        @click="toggleNavigationActive"
     >
         <span></span>
     </button>
 </template>
 
 <script>
-// mixins
-import window from '~/mixins/window'
-
 export default {
-    mixins: [window],
-    data() {
-        return {
-            isActive: false
-        }
-    },
-    watch: {
-        windowWidth(width) {
-            if (width >= 720) {
-                this.isActive = false
-            }
-        }
-    },
     methods: {
-        emitToggleNavigation() {
-            this.isActive = !this.isActive
-            this.$root.$emit('toggleNavigation')
+        toggleNavigationActive() {
+            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', !this.$store.getters['app/IS_NAVIGATION_ACTIVE'])
         }
     }
 }
