@@ -1,5 +1,5 @@
 <template>
-    <div class="page page--home page--without-padding">
+    <div class="page page--home page--no-padding">
         <div class="section section--fullscreen" :style="{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})` }">
             <div class="container">
                 <HeroBanner />

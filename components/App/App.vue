@@ -90,11 +90,12 @@ END: GENERAL
 /*********************
 START: COMPONENTS
 *********************/
+
 // page
 .page {
     padding-top: 68px;
 
-    &.page--without-padding {
+    &.page--no-padding {
         padding-top: 0;
     }
 
@@ -107,6 +108,9 @@ START: COMPONENTS
         }
     }
 }
+
+
+
 // section
 .section {
     padding-top: 64px;
@@ -439,6 +443,12 @@ START: COMPONENTS
     }
 }
 
+/*********************
+END: COMPONENTS
+*********************/
+/*********************
+START: CUSTOM BUTTONS
+*********************/
 
 // buttons with icons
 .button-more-less {
@@ -465,7 +475,7 @@ START: COMPONENTS
     }
 }
 /*********************
-END: COMPONENTS
+END: CUSTOM BUTTONS
 *********************/
 
 </style>
