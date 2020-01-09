@@ -21,7 +21,10 @@ export default {
                 return false
             }
 
-            delete this.errors[name]
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
+            }
             return true
         },
         validatePassword(event) {
