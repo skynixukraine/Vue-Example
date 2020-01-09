@@ -1,3 +1,7 @@
+import RecaptchaApi from "~/services/api/Recaptcha"
+
+const DEFAULT_RECAPTCHA_TOKEN = ''
+
 export default {
     data() {
         return {
@@ -6,16 +10,13 @@ export default {
     },
     methods: {
         async loadAndSetRecaptchaToken(actionName) {
-            const token = await this.getRecaptchaToken(actionName)
+            const token = await RecaptchaApi.loadRecaptchaToken(actionName)
             this.setRecaptchaToken(token)
-        },
-        async getRecaptchaToken(actionName) {
-            await this.$recaptchaLoaded()
-            const token = await this.$recaptcha(actionName)
+
             return token
         },
         setRecaptchaToken(token) {
             this.recaptchaToken = token
-        }
+        },
     },
 }
