@@ -1,6 +1,10 @@
+// configs
 import configEnv from './configs/env'
+import configServer from './configs/server'
 
 module.exports = {
+    server: configServer,
+    env: configEnv,
     head: {
         title: 'client',
         meta: [
@@ -12,7 +16,6 @@ module.exports = {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         ]
     },
-    env: configEnv,
     css: [
         { src: "~/static/styles/fonts.css", lang: 'css' },
         { src: "~/static/styles/normalize.css", lang: 'css' },
@@ -22,10 +25,6 @@ module.exports = {
         scss: [
             'assets/scss/main.scss'
         ]
-    },
-    server: {
-        port: 8000, // default: 3000
-        host: '0.0.0.0' // default: localhost
     },
     modules: [
         '@nuxtjs/style-resources',

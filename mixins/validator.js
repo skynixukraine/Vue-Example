@@ -25,6 +25,7 @@ export default {
             if (this.errors.hasOwnProperty(name)) {
                 delete this.errors[name]
             }
+
             return true
         },
         validatePassword(event) {
@@ -37,7 +38,11 @@ export default {
                 return false
             }
 
-            delete this.errors[name]
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
+            }
+
             return true
         },
         validateConfirmPassword(event, { comparePassword, compareName }) {
@@ -67,7 +72,11 @@ export default {
                 return false
             }
 
-            delete this.errors[name]
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
+            }
+
             return true
         },
         validateAccept(event, value) {
@@ -79,7 +88,11 @@ export default {
                 return false
             }
 
-            delete this.errors[name]
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
+            }
+
             return true
         },
         validateFilePDF(event) {
@@ -96,6 +109,11 @@ export default {
             if (!this.checkFileSize(sizeMb)) {
                 this.errors[name] = 'File size is too large.'
                 return false
+            }
+
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
             }
 
             return true
@@ -115,6 +133,11 @@ export default {
             if (!this.checkFileSize(sizeMb)) {
                 this.errors[name] = 'File size is too large.'
                 return false
+            }
+
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
             }
 
             return true
