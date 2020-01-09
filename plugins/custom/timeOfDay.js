@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-export default ({ app }, inject) => {
+export default ({ app }) => {
     const today = new Date()
     const currentHours = today.getHours()
     let timeOfDay = ''
