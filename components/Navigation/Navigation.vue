@@ -1,7 +1,11 @@
 <template>
-    <nav class="navigation" :class="{ 'navigation--active': isActive }">
+    <nav class="navigation" :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }">
         <ul class="navigation__list">
-            <li class="navigation__item" v-for="(link, index) in links" :key="index" @click="closeNavigation">
+            <li
+                class="navigation__item"
+                v-for="(link, index) in links"
+                :key="index"
+            >
                 <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
             </li>
         </ul>
@@ -14,22 +18,8 @@ import scrollLock from 'scroll-lock'
 // mixins
 import window from '~/mixins/window'
 
-// options
-const DEFAULT_IS_ACTIVE = false
-
 export default {
     mixins: [window],
-    data() {
-        return {
-            isActive: DEFAULT_IS_ACTIVE
-        }
-    },
-    created() {
-        this.startHandleToggleNavigation()
-    },
-    beforeDestroy() {
-        this.stopHandleToggleNavigation()
-    },
     computed: {
         links() {
             return [
@@ -50,36 +40,19 @@ export default {
                     text: this.$t('links.about')
                 },
             ]
-        }
+        },
     },
     watch: {
         windowWidth(width) {
-            if (width >= 720) {
-                this.closeNavigation()
+            // if return to desktop viewport - reset 'app/IS_NAVIGATION_ACTIVE' to default state
+            if (width > 961 && this.$store.getters['app/IS_NAVIGATION_ACTIVE']) {
+                this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
             }
-        }
+        },
+        '$store.state.app.isNavigationActive'(isNavigationActive) {
+            isNavigationActive ? scrollLock.disablePageScroll() : scrollLock.enablePageScroll()
+        },
     },
-    methods: {
-        startHandleToggleNavigation() {
-            this.$root.$on('toggleNavigation', this.onToggleNavigation)
-        },
-        stopHandleToggleNavigation() {
-            this.$root.$off('toggleNavigation', this.onToggleNavigation)
-        },
-        onToggleNavigation() {
-            this.isActive ? this.closeNavigation() : this.openNavigation()
-        },
-        openNavigation() {
-            this.isActive = true
-            scrollLock.disablePageScroll()
-        },
-        closeNavigation() {
-            console.log('closeNavigation');
-            
-            this.isActive = false
-            scrollLock.enablePageScroll()
-        }
-    }
 }
 </script>
 

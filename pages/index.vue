@@ -88,12 +88,12 @@ export default {
     },
     async fetch ({ store, error }) {
 
-        if (!store.getters['user/USERS'].length) {
-            const users = await store.dispatch('user/LOAD_USERS').catch((e) => {
-                error({ statusCode: e.status, message: e.message })
-            })
-            store.commit('user/SET_USERS', users)
-        }
+        // if (!store.getters['user/USERS'].length) {
+        //     const users = await store.dispatch('user/LOAD_USERS').catch((e) => {
+        //         error({ statusCode: e.status, message: e.message })
+        //     })
+        //     store.commit('user/SET_USERS', users)
+        // }
         
     },
 
