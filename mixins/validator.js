@@ -45,9 +45,11 @@ export default {
 
             return true
         },
-        validateConfirmPassword(event, { comparePassword, compareName }) {
+        validateConfirmPassword(event, compareInput) {
             const name = event.target.name
             const value = event.target.value
+            const compareName = compareInput.name
+            const compareValue = compareInput.value
 
             // empty check
             if (!value) {
@@ -55,18 +57,26 @@ export default {
                 return false
             }
             // passwords equal check
-            if (!this.checkStringEqual(value, comparePassword)) {
+            if (!this.checkStringEqual(value, compareValue)) {
                 this.errors[name] = this.$t('errors.form.passwords-not-equal')
                 return false
             }
 
-            delete this.errors[name]
-            delete this.errors[compareName]
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
+            }
+            if (this.errors.hasOwnProperty(compareName)) {
+                delete this.errors[compareName]
+            }
+
             return true
         },
-        validatePhone(telInput, name) {
+        validatePhone(telInput) {
             // more info about telInput - https://github.com/EducationLink/vue-tel-input
+            const name = telInput.name
 
+            // phone format check
             if (!telInput.isValid) {
                 this.errors[name] = this.$t('errors.form.invalid-number')
                 return false
@@ -142,11 +152,6 @@ export default {
 
             return true
         },
-
-
-
-
-
 
 
 

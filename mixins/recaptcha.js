@@ -5,8 +5,11 @@ const DEFAULT_RECAPTCHA_TOKEN = ''
 export default {
     data() {
         return {
-            recaptchaToken: ''
+            recaptchaToken: DEFAULT_RECAPTCHA_TOKEN,
         }
+    },
+    beforeDestroy() {
+        this.cleanRecaptchaToken()
     },
     methods: {
         async loadAndSetRecaptchaToken(actionName) {
@@ -18,5 +21,8 @@ export default {
         setRecaptchaToken(token) {
             this.recaptchaToken = token
         },
+        cleanRecaptchaToken() {
+            this.recaptchaToken = DEFAULT_RECAPTCHA_TOKEN
+        }
     },
 }
