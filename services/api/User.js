@@ -2,7 +2,11 @@ import { HTTP } from '~/plugins/modules/axios'
 import Vue from 'vue'
 
 export default {
-
+    /**
+     * Returns reCaptcha Token by Action name
+     * @param {Object} registerData
+     * @return {Promise} response
+     */
     async registerUser(registerData) {
         const response = await HTTP.post('/register', registerData)
         return response

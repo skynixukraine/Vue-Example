@@ -23,6 +23,7 @@
                 class="input"
                 type="text"
                 name="password"
+                ref="password"
                 v-model="models.password"
                 @keyup="onPasswordChange"
             />
@@ -124,7 +125,7 @@ export default {
 
         async onSubmit(event) {
             if ( !this.validateForm(this.models) ) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Проверте правильность заполнения формы.' })
+                this.$root.$emit('showNotify', { type: 'error', text: 'Форма не прошла предварительную валидацию.' })
                 return false
             }
 
@@ -163,6 +164,12 @@ export default {
             if (!models.accept) {
                 this.errors['accept'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
+                return false
+            }
+
+            // check recaptcha token exist
+            if (!this.recaptchaToken) {
+                this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
                 return false
             }
 
@@ -216,15 +223,15 @@ export default {
             this.$forceUpdate()
         },
         onPasswordChange(event) {      
-            this.validateConfirmPassword(event, { comparePassword: this.models.confirmPassword, compareName: 'confirmPassword' })
+            this.validateConfirmPassword(event, this.$refs.confirmPassword)
             this.$forceUpdate()
         },
         onConfirmPasswordChange(event) {
-            this.validateConfirmPassword(event, { comparePassword: this.models.password, compareName: 'password' })
+            this.validateConfirmPassword(event, this.$refs.password)
             this.$forceUpdate()
         },
         onPhoneChange(formattedNumber, telInput) {
-            this.validatePhone(telInput, 'phone')
+            this.validatePhone(telInput)
         },
         onDegreeUpload(event) {
             if (this.validateFilePDF(event)) {
