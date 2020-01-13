@@ -1,44 +1,71 @@
 import { HTTP } from '~/plugins/modules/axios'
-import Vue from 'vue'
 
 export default {
     /**
-     * Returns reCaptcha Token by Action name
+     * Register User
      * @param {Object} registerData
-     * @return {Promise} response
+     * @return {Promise} responseData
      */
     async registerUser(registerData) {
-        const response = await HTTP.post('/register', registerData)
-        return response
+        return new Promise ((resolve, reject) => {
+            HTTP.post('/doctors/register', registerData)
+                .then(response => {
+                    const responseData = {          
+                        success: true,
+                        status: response.status,
+                        data: response.data.data,
+                        message: 'User success registered'
+                    }
+                    resolve(responseData)
+                })
+                .catch(error => {
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        data: {},
+                        message: error.response.data.message
+                    }
+                    reject(responseData)
+                })
+        })
     },
 
-    async loginUser() {
-        const response = await HTTP.post('/login')
-        return response
+    /**
+     * Load User By Id
+     * @param {Object} {id, token}
+     * @return {Promise}
+     */
+    async loadUser({id, token}) {
+        return new Promise ((resolve, reject) => {
+            HTTP.get(`/doctors/${id}`, { headers: {'Authorization': `Bearer ${token}`} })
+                .then(response => {
+                    const responseData = {          
+                        success: true,
+                        status: response.status,
+                        data: response.data.data,
+                        message: 'User success loaded'
+                    }
+                    resolve(responseData)
+                })
+                .catch(error => {
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        data: {},
+                        message: error.response.data.message
+                    }
+                    reject(responseData)
+                })
+        })
     },
 
-    async logoutUser() {
-        const response = await HTTP.post('/logout')
+    /**
+     * Verify Email
+     * @param {Object} verifyData
+     * @return {Promise} none or Error Object
+     */
+    async verifyUserEmail(verifyData) {
+        const response = await HTTP.get('/doctors/register', { params: verifyData })
         return response
     },
-
-    async sendResetLink() {
-        const response = await HTTP.post('/send-reset-link')
-        return response
-    },
-
-    async updatePassword() {
-        const response = await HTTP.patch('/users')
-        return response
-    },
-
-    async loadUsers() {
-        const response = await HTTP.get('/doctors')
-        return response
-    },
-
-    async loadUser(userId) {
-        const response = await HTTP.get(apiRoutes.users.path, { params: userId })
-        return response
-    }
 }

@@ -131,10 +131,9 @@ export default {
 
             const formData = this.prepareDataForSending(this.models)
 
-            await this.$store.dispatch('user/REGISTER_USER', formData)
-                .catch((e) => {
-                    this.$root.$emit('showNotify', { type: 'error', text: 'Не удалось зарегистрировать нового пользователя.' })
-                    return false
+            this.$store.dispatch('user/REGISTER_USER', formData)
+                .then((token) => {
+                    this.$store.dispatch('user/LOAD_USER', { id: token.data.doctor_id, token: token.data.access_token })
                 })
         },
 
@@ -183,7 +182,7 @@ export default {
             // required fields
             formData.append('email', models.email)
             formData.append('phone_number', models.phone)
-            formData.append('password ', models.password)
+            formData.append('password', models.password)
             formData.append('password_confirmation', models.confirmPassword)
             formData.append('accepted', models.accept)
 

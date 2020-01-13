@@ -1,6 +1,6 @@
 // configs
-import configEnv from './configs/env'
 import configServer from './configs/server'
+import configEnv from './configs/env'
 
 module.exports = {
     server: configServer,
