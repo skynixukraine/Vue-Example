@@ -96,10 +96,12 @@ export default {
         // }
         
     },
-
+    beforeCreate() {
+        this.$store.dispatch('user/AUTOLOGIN_USER')
+    },
     mounted() {
-        this.$root.$emit('showNotify', { type: 'success', text: 'Home page is mounted.' })
-        this.$modal.show('register-success', { foo: 'bar' })
+        // this.$root.$emit('showNotify', { type: 'success', text: 'Home page is mounted.' })
+        // this.$modal.show('register-success', { foo: 'bar' })
     },
 
     data() {

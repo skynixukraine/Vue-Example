@@ -5,7 +5,6 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _ebf4ec52 = () => interopDefault(import('../pages/account/index.vue' /* webpackChunkName: "pages/account/index" */))
 const _380b4166 = () => interopDefault(import('../pages/agb/index.vue' /* webpackChunkName: "pages/agb/index" */))
-const _33e948ca = () => interopDefault(import('../pages/authorisation/index.vue' /* webpackChunkName: "pages/authorisation/index" */))
 const _2630ddbe = () => interopDefault(import('../pages/dashboard/index.vue' /* webpackChunkName: "pages/dashboard/index" */))
 const _f9064466 = () => interopDefault(import('../pages/datenschutz/index.vue' /* webpackChunkName: "pages/datenschutz/index" */))
 const _b32a60ea = () => interopDefault(import('../pages/enquiries/index.vue' /* webpackChunkName: "pages/enquiries/index" */))
@@ -51,10 +50,6 @@ export const routerOptions = {
     path: "/agb",
     component: _380b4166,
     name: "agb"
-  }, {
-    path: "/authorisation",
-    component: _33e948ca,
-    name: "authorisation"
   }, {
     path: "/dashboard",
     component: _2630ddbe,
