@@ -89,7 +89,8 @@
             <button
                 class="link link--button link--button-blue"
                 type="submit"
-            >{{ $t('links.signup') }}</button>
+                :disabled="isFormSending"
+            >{{ isFormSending ? 'loading...'  : $t('links.signup') }}</button>
         </div>
     </form>
 </template>
@@ -121,11 +122,13 @@ export default {
                 certification: '',
                 accepted: false,
             },
+            isFormSending: false
         }
     },
 
     methods: {
         async onSubmit() {
+            this.isFormSending = true
             if ( !this.validateForm(this.models) ) {
                 this.$root.$emit('showNotify', { type: 'error', text: 'Форма не прошла предварительную валидацию.' })
                 return false
@@ -136,9 +139,14 @@ export default {
             this.$store.dispatch('user/REGISTER_USER', formData)
                 .then((response) => {
                     this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
+                        .then((response) => {
+                            this.$modal.show('register-success')
+                            this.isFormSending = false
+                        })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
+                    this.isFormSending = false
                 })
         },
 

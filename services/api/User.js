@@ -10,7 +10,7 @@ export default {
         return new Promise ((resolve, reject) => {
             HTTP.post('/doctors/register', registerData)
                 .then(response => {
-                    const responseData = {          
+                    const responseData = {
                         success: true,
                         status: response.status,
                         data: response.data.data,
@@ -47,7 +47,8 @@ export default {
                         success: true,
                         status: response.status,
                         data: response.data.data,
-                        message: 'User success login'
+                        message: 'User success login',
+                        errors: {}
                     }
                     resolve(responseData)
                 })
@@ -56,7 +57,8 @@ export default {
                         success: false,
                         status: error.response.status,
                         data: {},
-                        message: error.response.data.message
+                        message: error.response.data.message,
+                        errors: error.response.data.errors
                     }
                     reject(responseData)
                 })
@@ -76,7 +78,8 @@ export default {
                         success: true,
                         status: response.status,
                         data: response.data.data,
-                        message: 'User success loaded'
+                        message: 'User success loaded',
+                        errors: {}
                     }
                     resolve(responseData)
                 })
@@ -85,7 +88,8 @@ export default {
                         success: false,
                         status: error.response.status,
                         data: {},
-                        message: error.response.data.message
+                        message: error.response.data.message,
+                        errors: error.response.data.errors
                     }
                     reject(responseData)
                 })
@@ -93,12 +97,29 @@ export default {
     },
 
     /**
-     * Verify Email
+     * Verify User Email
      * @param {Object} verifyData
      * @return {Promise} none or Error Object
      */
     async verifyUserEmail(verifyData) {
-        const response = await HTTP.get('/doctors/register', { params: verifyData })
-        return response
+        return new Promise ((resolve, reject) => {
+            HTTP.get('/doctors/verify-email', { params: verifyData })
+                .then(response => {
+                    console.log('response: ', response.status);
+                    
+                    const responseData = {          
+                        success: true
+                    }
+                    resolve(responseData)
+                })
+                .catch(error => {
+                    console.log('error: ', error.response);
+                    
+                    const responseData = {
+                        success: false
+                    }
+                    reject(responseData)
+                })
+        })
     },
 }
