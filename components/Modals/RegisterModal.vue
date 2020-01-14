@@ -13,11 +13,11 @@
             <h3 class="modal__title">Register Success</h3>
         </header>
         <div class="modal__main">
-            <p>Мы отправили вам письмо с подтверждением на указанный email.</p>
+            <p>We have sent you a confirmation email to the email address specified during registration.</p>
         </div>
         <footer class="modal__footer">
             <div class="modal__footer-item">
-                <button class="link link--button link--button-blue">Отправить письмо повторно</button>
+                <button class="link link--button link--button-blue" @click="onResendEmail">Resend email</button>
             </div>
         </footer>
     </modal>
@@ -28,6 +28,11 @@
 import modal from '~/mixins/modal'
 
 export default {
-    mixins: [modal]
+    mixins: [modal],
+    methods: {
+        onResendEmail() {
+            console.log('RESEND EMAIL')
+        }
+    }
 }
 </script>

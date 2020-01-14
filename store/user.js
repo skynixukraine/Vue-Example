@@ -39,7 +39,7 @@ export const actions = {
                 })
                 .catch(error => {
                     reject(error)
-                })  
+                })
         })
     },
 
@@ -80,6 +80,18 @@ export const actions = {
             UserApi.loadUser({ id, token })
                 .then(response => {
                     commit('SET_USER', response.data)
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })  
+        })
+    },
+
+    async VERIFY_USER_EMAIL ({ commit }, requestData) {
+        return new Promise ((resolve, reject) => {
+            UserApi.verifyUserEmail(requestData)
+                .then(response => {
                     resolve(response)
                 })
                 .catch(error => {
