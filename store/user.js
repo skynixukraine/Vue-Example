@@ -32,10 +32,24 @@ export const actions = {
     async REGISTER_USER ({ commit }, requestData) {
         return new Promise ((resolve, reject) => {
             UserApi.registerUser(requestData)
-                .then(token => {
+                .then(response => {
                     // login user after success register
-                    localStorage.setItem('token', JSON.stringify(token.data))
-                    resolve(token)
+                    localStorage.setItem('token', JSON.stringify(response.data))
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })  
+        })
+    },
+
+    async LOGIN_USER ({ commit }, requestData) {
+        return new Promise ((resolve, reject) => {
+            UserApi.loginUser(requestData)
+                .then(response => {
+                    // login user after success register
+                    localStorage.setItem('token', JSON.stringify(response.data))
+                    resolve(response)
                 })
                 .catch(error => {
                     reject(error)
@@ -50,9 +64,9 @@ export const actions = {
         if (token.hasOwnProperty('access_token') && !Object.keys(getters['USER']).length) {
             return new Promise ((resolve, reject) => {
                 UserApi.loadUser({ id: token.doctor_id, token: token.access_token })
-                    .then(user => {
-                        commit('SET_USER', user.data)
-                        resolve(user)
+                    .then(response => {
+                        commit('SET_USER', response.data)
+                        resolve(response)
                     })
                     .catch(error => {
                         reject(error)
@@ -64,9 +78,9 @@ export const actions = {
     async LOAD_USER ({ commit }, { id, token }) {
         return new Promise ((resolve, reject) => {
             UserApi.loadUser({ id, token })
-                .then(user => {
-                    commit('SET_USER', user.data)
-                    resolve(user)
+                .then(response => {
+                    commit('SET_USER', response.data)
+                    resolve(response)
                 })
                 .catch(error => {
                     reject(error)
