@@ -31,6 +31,35 @@ export default {
     },
 
     /**
+     * Login User
+     * @param {Object} loginData
+     * @return {Promise} responseData
+     */
+    async loginUser(loginData) {
+        return new Promise ((resolve, reject) => {
+            HTTP.post('/doctors/login', loginData)
+                .then(response => {
+                    const responseData = {          
+                        success: true,
+                        status: response.status,
+                        data: response.data.data,
+                        message: 'User success login'
+                    }
+                    resolve(responseData)
+                })
+                .catch(error => {
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        data: {},
+                        message: error.response.data.message
+                    }
+                    reject(responseData)
+                })
+        })
+    },
+
+    /**
      * Load User By Id
      * @param {Object} {id, token}
      * @return {Promise}

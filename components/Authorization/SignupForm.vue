@@ -104,6 +104,12 @@ export default {
         validator,
         recaptcha,
     ],
+
+    created() {
+        // load reCaptcha token for 'register_doctor' action
+        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+    },
+
     data() {
         return {
             models: {
@@ -117,13 +123,9 @@ export default {
             },
         }
     },
-    created() {
-        // load reCaptcha token for 'register_doctor' action
-        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
-    },
-    methods: {
 
-        async onSubmit(event) {
+    methods: {
+        async onSubmit() {
             if ( !this.validateForm(this.models) ) {
                 this.$root.$emit('showNotify', { type: 'error', text: 'Форма не прошла предварительную валидацию.' })
                 return false
@@ -136,7 +138,6 @@ export default {
                     this.$store.dispatch('user/LOAD_USER', { id: token.data.doctor_id, token: token.data.access_token })
                 })
         },
-
 
         async validateForm(models) {
             // check required fields
@@ -175,7 +176,6 @@ export default {
             return true
         },
 
-
         prepareDataForSending(models) {
             let formData = new FormData()
 
@@ -201,9 +201,6 @@ export default {
         },
 
 
-
-
-
         // files upload
         addFileDegree() {
             this.$refs.degree.click()
@@ -211,9 +208,6 @@ export default {
         addFileCertification() {
             this.$refs.certification.click()
         },
-
-
-
 
 
         // inputs changes
