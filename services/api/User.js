@@ -14,16 +14,20 @@ export default {
                         success: true,
                         status: response.status,
                         data: response.data.data,
-                        message: 'User success registered'
+                        message: 'User success registered',
+                        errors: {}
                     }
                     resolve(responseData)
                 })
                 .catch(error => {
+                    console.log('reg error: ', error.response);
+                    
                     const responseData = {
                         success: false,
                         status: error.response.status,
                         data: {},
-                        message: error.response.data.message
+                        message: error.response.data.message,
+                        errors: error.response.data.errors
                     }
                     reject(responseData)
                 })
