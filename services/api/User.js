@@ -19,13 +19,22 @@ export default {
                     resolve(responseData)
                 })
                 .catch(error => {
-                    console.log('reg error: ', error.response);
+                    let message = ''
+                    let errors = {}
+
+                    if (error.response.status === 422) {
+                        message = 'There are some validation errors.'
+                        errors = error.response.data.errors
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
                     
                     const responseData = {
                         success: false,
                         status: error.response.status,
-                        message: error.response.data.message,
-                        errors: error.response.data.errors
+                        message,
+                        errors,
                     }
                     reject(responseData)
                 })
@@ -79,11 +88,25 @@ export default {
                     resolve(responseData)
                 })
                 .catch(error => {
+                    let message = ''
+
+                    if (error.response.status === 401) {
+                        message = 'Invalid signature: unauthenticated.'
+                    }
+                    if (error.response.status === 403) {
+                        message = 'Current user has not permissions to do this action.'
+                    }
+                    if (error.response.status === 404) {
+                        message = 'Resource not found.'
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
+
                     const responseData = {
                         success: false,
                         status: error.response.status,
-                        message: error.response.data.message,
-                        errors: error.response.data.errors
+                        message,
                     }
                     reject(responseData)
                 })
@@ -102,7 +125,6 @@ export default {
                     const responseData = {          
                         success: true,
                         status: response.status,
-                        data: response.data.data,
                         message: 'Email is verify',
                     }
                     resolve(responseData)
@@ -127,9 +149,8 @@ export default {
                         success: false,
                         status: error.response.status,
                         message,
-                        errors: error.response.data.errors
                     }
-                    
+
                     reject(responseData)
                 })
         })
