@@ -107,8 +107,10 @@ export default {
     ],
 
     created() {
-        // load reCaptcha token for 'register_doctor' action
-        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+        if (process.client) {
+            // load reCaptcha token for 'register_doctor' action
+            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+        }
     },
 
     data() {
@@ -131,6 +133,7 @@ export default {
             this.isFormSending = true
             if ( !this.validateForm(this.models) ) {
                 this.$root.$emit('showNotify', { type: 'error', text: 'Форма не прошла предварительную валидацию.' })
+                this.isFormSending = false
                 return false
             }
 
@@ -141,11 +144,15 @@ export default {
                     this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
                         .then((response) => {
                             this.$modal.show('register-success')
+                            // re request captcha (need update after each form send)
+                            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                             this.isFormSending = false
                         })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
+                    // re request captcha (need update after each form send)
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                     this.isFormSending = false
                 })
         },

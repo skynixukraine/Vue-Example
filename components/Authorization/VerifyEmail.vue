@@ -2,6 +2,7 @@
     <div class="verify-email">
         <h1>Verify Email</h1>
         <p>{{ message }}</p>
+        <p><NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>Back to Home Page</NuxtLink></p>
     </div>
 </template>
 

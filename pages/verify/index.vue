@@ -12,9 +12,9 @@
 import VerifyEmail from "~/components/Authorization/VerifyEmail"
 
 export default {
-    // async fetch ({ store, error }) {
-    //     await store.dispatch('user/AUTOLOGIN_USER', { token: store.getters['user/TOKEN'], user: store.getters['user/USER'] })        
-    // },
+    async fetch ({ store, error }) {
+        await store.dispatch('user/AUTOLOGIN_USER', { token: store.getters['user/TOKEN'], user: store.getters['user/USER'] })        
+    },
 
     components: {
         VerifyEmail,
