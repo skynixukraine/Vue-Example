@@ -26,14 +26,45 @@
 <script>
 // mixins
 import modal from '~/mixins/modal'
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
-    mixins: [modal],
+    mixins: [
+        modal,
+        recaptcha,
+    ],
+
+    created() {
+        if (process.client) {
+            // load reCaptcha token for 'send_email_verification_link' action
+            this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+        }
+    },
 
     methods: {
         onResendEmail() {
-            console.log('RESEND EMAIL')
-        }
+            const requestData = this.prepareDataForSending({ email: this.$store.getters['user/USER'].email, recaptchaToken: this.recaptchaToken })
+
+            this.$store.dispatch('user/SEND_EMAIL_VERIFICATION_LINK', requestData)
+                .then(response => {
+                    // дописать завтра с утра
+                })
+                .catch(error => {
+
+                })
+            
+            // re request captcha (need update after each form send)
+            this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+        },
+
+        prepareDataForSending({ email, recaptchaToken }) {
+            let formData = new FormData()
+
+            formData.append('email', email)
+            formData.append('recaptcha', recaptchaToken)
+
+            return formData
+        },
     }
 }
 </script>

@@ -33,10 +33,6 @@ export default {
         },
 
         validateCurrentUser(user, token, query) {
-            console.log('user: ', user);
-            console.log('token: ', token);
-            console.log('query: ', query);
-            
             if (!Object.keys(user).length || !token.access_token) {
                 this.message = 'You must has same browser.'
                 return false

@@ -23,16 +23,24 @@ import SignupForm from "~/components/Authorization/SignupForm"
 const DEFAULT_CURRENT_TAB = 'signin'
 
 export default {
+    beforeCreate() {
+        setTimeout(() => {
+            this.$store.dispatch('user/AUTOLOGIN_USER', { token: this.$store.getters['user/TOKEN'], user: this.$store.getters['user/USER'] })
+        }, 0)
+    },
+
     data() {
         return {
             currentTab: DEFAULT_CURRENT_TAB,
         }
     },
+
     methods: {
         setCurrentTab(tabName) {
             this.currentTab = tabName
         },
     },
+    
     components: {
         SigninForm,
         SignupForm,
