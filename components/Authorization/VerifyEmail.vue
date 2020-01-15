@@ -10,8 +10,10 @@
 const DEFAULT_MESSAGE = ''
 
 export default {
-    created() {
-        this.onVerifyEmail()
+    mounted() {
+        setTimeout(() => {
+            this.onVerifyEmail()
+        }, 0)
     },
 
     data() {
@@ -22,7 +24,24 @@ export default {
 
     methods: {
         validateQueryData(query) {
-            return query.hasOwnProperty('expires') && query.hasOwnProperty('id') && query.hasOwnProperty('signature')
+            if (query.hasOwnProperty('expires') && query.hasOwnProperty('id') && query.hasOwnProperty('signature')) {
+                return true
+            } else {
+                this.message = 'Invalid vefiry data for sending.'
+                return false
+            }
+        },
+
+        validateCurrentUser(user, token, query) {
+            if (!Object.keys(user).length || !token.access_token) {
+                this.message = 'You must has same browser.'
+                return false
+            }
+            if (parseInt(token.doctor_id) !==  parseInt(query.id)) {
+                this.message = 'Inappropriate user.'
+                return false
+            }
+            return true
         },
 
         prepareDataForSending(query) {
@@ -37,17 +56,19 @@ export default {
 
         onVerifyEmail() {
             if (process.client) {
-                if (this.validateQueryData(this.$route.query)) {
+                if (this.validateQueryData(this.$route.query) && this.validateCurrentUser(this.$store.getters['user/USER'], this.$store.getters['user/TOKEN'], this.$route.query)) {
                     const requestData = this.prepareDataForSending(this.$route.query)
                     this.$store.dispatch('user/VERIFY_USER_EMAIL', requestData)
                         .then(response => {
                             this.message = response.message
+                            this.$store.dispatch('user/LOAD_USER', {
+                                id: this.$store.getters['user/TOKEN'].doctor_id,
+                                token: this.$store.getters['user/TOKEN'].access_token
+                            })
                         })
                         .catch(error => {
                             this.message = error.message
                         })
-                } else {
-                    this.message = 'Invalid vefiry data for sending.'
                 }
             }
         },

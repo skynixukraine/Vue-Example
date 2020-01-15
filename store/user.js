@@ -66,7 +66,7 @@ export const actions = {
     },
 
     async AUTOLOGIN_USER({ commit, getters }, { token, user }) {
-        // if token exist and user object not exist
+        // if token exist and user object is emptry
         if (token.access_token && !Object.keys(user).length) {
             return new Promise ((resolve, reject) => {
                 UserApi.loadUser({ id: token.doctor_id, token: token.access_token })
@@ -97,6 +97,20 @@ export const actions = {
     async VERIFY_USER_EMAIL ({ commit }, requestData) {
         return new Promise ((resolve, reject) => {
             UserApi.verifyUserEmail(requestData)
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })  
+        })
+    },
+
+    async SEND_EMAIL_VERIFICATION_LINK ({ commit }, requestData) {
+        console.log('rd: ', requestData);
+        
+        return new Promise ((resolve, reject) => {
+            UserApi.sendEmailVerifyLink(requestData)
                 .then(response => {
                     resolve(response)
                 })

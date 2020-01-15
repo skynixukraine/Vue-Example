@@ -155,4 +155,23 @@ export default {
                 })
         })
     },
+
+    /**
+     * Resend Verify Email
+     * @param {Object} verifyData
+     * @return {Promise} none or Error Object
+     */
+    async sendEmailVerifyLink(requestData) {
+        return new Promise ((resolve, reject) => {
+            HTTP.post('/doctors/send-email-verification-link', requestData)
+                .then(response => {
+                    console.log('sendEmailVerifyLink response: ', response);
+                    resolve(response)
+                })
+                .catch(error => {
+                    console.log('sendEmailVerifyLink error: ', error);
+                    reject(error)
+                })
+        })
+    },
 }
