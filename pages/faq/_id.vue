@@ -15,10 +15,6 @@
 
 <script>
 export default {
-    beforeCreate() {
-        this.$store.dispatch('user/AUTOLOGIN_USER')
-    },
-    
     data() {
         return {
             breadcrumbs: [{

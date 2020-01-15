@@ -23,9 +23,6 @@ import SignupForm from "~/components/Authorization/SignupForm"
 const DEFAULT_CURRENT_TAB = 'signin'
 
 export default {
-    beforeCreate() {
-        this.$store.dispatch('user/AUTOLOGIN_USER')
-    },
     data() {
         return {
             currentTab: DEFAULT_CURRENT_TAB,

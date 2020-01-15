@@ -13,9 +13,5 @@
 </template>
 
 <script>
-export default {
-    beforeCreate() {
-        this.$store.dispatch('user/AUTOLOGIN_USER')
-    },
-}
+export default {}
 </script>

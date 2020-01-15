@@ -2,26 +2,36 @@
 import UserApi from '../services/api/User'
 
 // options (init values)
+const DEFAULT_TOKEN = {
+    access_token: '',
+    doctor_id: '',
+    expires_at: {}
+}
 const DEFAULT_USER = {}
 
 
 export const state = () => ({
+    token: DEFAULT_TOKEN,
     user: DEFAULT_USER,
 })
 
 
 export const getters = {
-    USER (state) {
-        return state.user
+    TOKEN (state) {
+        return state.token
     },
 
-    IS_USER_LOGIN (state) {
-        return !!Object.keys(state.user).length
+    USER (state) {
+        return state.user
     },
 }
 
 
 export const mutations = {
+    SET_TOKEN (state, token) {
+        state.token = token
+    },
+
     SET_USER (state, user) {
         state.user = user
     },
@@ -33,8 +43,7 @@ export const actions = {
         return new Promise ((resolve, reject) => {
             UserApi.registerUser(requestData)
                 .then(response => {
-                    // login user after success register
-                    localStorage.setItem('token', JSON.stringify(response.data))
+                    commit('SET_TOKEN', response.data)
                     resolve(response)
                 })
                 .catch(error => {
@@ -47,21 +56,18 @@ export const actions = {
         return new Promise ((resolve, reject) => {
             UserApi.loginUser(requestData)
                 .then(response => {
-                    // login user after success register
-                    localStorage.setItem('token', JSON.stringify(response.data))
+                    commit('SET_TOKEN', response.data)
                     resolve(response)
                 })
                 .catch(error => {
                     reject(error)
-                })  
+                })
         })
     },
 
-    async AUTOLOGIN_USER({ state, commit, getters }) {
-        const token = JSON.parse(localStorage.getItem('token')) ? JSON.parse(localStorage.getItem('token')) : {}
-
-        // if localStorage has Token and state.user is empty - DO AUTOLOGIN
-        if (token.hasOwnProperty('access_token') && !Object.keys(getters['USER']).length) {
+    async AUTOLOGIN_USER({ commit, getters }, { token, user }) {
+        // if token exist and user object not exist
+        if (token.access_token && !Object.keys(user).length) {
             return new Promise ((resolve, reject) => {
                 UserApi.loadUser({ id: token.doctor_id, token: token.access_token })
                     .then(response => {

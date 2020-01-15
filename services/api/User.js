@@ -15,7 +15,6 @@ export default {
                         status: response.status,
                         data: response.data.data,
                         message: 'User success registered',
-                        errors: {}
                     }
                     resolve(responseData)
                 })
@@ -25,7 +24,6 @@ export default {
                     const responseData = {
                         success: false,
                         status: error.response.status,
-                        data: {},
                         message: error.response.data.message,
                         errors: error.response.data.errors
                     }
@@ -48,7 +46,6 @@ export default {
                         status: response.status,
                         data: response.data.data,
                         message: 'User success login',
-                        errors: {}
                     }
                     resolve(responseData)
                 })
@@ -56,7 +53,6 @@ export default {
                     const responseData = {
                         success: false,
                         status: error.response.status,
-                        data: {},
                         message: error.response.data.message,
                         errors: error.response.data.errors
                     }
@@ -79,7 +75,6 @@ export default {
                         status: response.status,
                         data: response.data.data,
                         message: 'User success loaded',
-                        errors: {}
                     }
                     resolve(responseData)
                 })
@@ -87,7 +82,6 @@ export default {
                     const responseData = {
                         success: false,
                         status: error.response.status,
-                        data: {},
                         message: error.response.data.message,
                         errors: error.response.data.errors
                     }
@@ -105,19 +99,37 @@ export default {
         return new Promise ((resolve, reject) => {
             HTTP.get('/doctors/verify-email', { params: verifyData })
                 .then(response => {
-                    console.log('response: ', response.status);
-                    
                     const responseData = {          
-                        success: true
+                        success: true,
+                        status: response.status,
+                        data: response.data.data,
+                        message: 'Email is verify',
                     }
                     resolve(responseData)
                 })
                 .catch(error => {
-                    console.log('error: ', error.response);
-                    
-                    const responseData = {
-                        success: false
+                    let message = ''
+
+                    if (error.response.status === 304) {
+                        message = 'An e-mail already verified.'
                     }
+                    if (error.response.status === 401) {
+                        message = 'Invalid signature: unauthenticated.'
+                    }
+                    if (error.response.status === 404) {
+                        message = 'Resource not found.'
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Something went wrong, please try again later.'
+                    }
+
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        message,
+                        errors: error.response.data.errors
+                    }
+                    
                     reject(responseData)
                 })
         })
