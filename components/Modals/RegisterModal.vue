@@ -29,6 +29,7 @@ import modal from '~/mixins/modal'
 
 export default {
     mixins: [modal],
+
     methods: {
         onResendEmail() {
             console.log('RESEND EMAIL')

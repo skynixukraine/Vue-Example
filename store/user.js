@@ -66,7 +66,10 @@ export const actions = {
     },
 
     async AUTOLOGIN_USER({ commit, getters }, { token, user }) {
-        // if token exist and user object not exist
+        console.log('autologin token: ', token);
+        console.log('autologin user: ', user);
+        
+        // if token exist and user object is emptry
         if (token.access_token && !Object.keys(user).length) {
             return new Promise ((resolve, reject) => {
                 UserApi.loadUser({ id: token.doctor_id, token: token.access_token })
@@ -98,6 +101,7 @@ export const actions = {
         return new Promise ((resolve, reject) => {
             UserApi.verifyUserEmail(requestData)
                 .then(response => {
+                    //commit('SET_USER_PROPERTY', { name: '', value: '' })
                     resolve(response)
                 })
                 .catch(error => {
