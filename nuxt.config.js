@@ -50,6 +50,7 @@ module.exports = {
         { src: '~/plugins/custom/timeOfDay' },
         { src: '~/plugins/custom/window', mode: 'client' },
 
+        { src: '~/plugins/modules/localStorage', mode: 'client' },
         { src: '~/plugins/modules/recaptcha' },
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/googleMaps' },
