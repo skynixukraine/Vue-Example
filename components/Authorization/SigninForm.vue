@@ -38,20 +38,24 @@
 </template>
 
 <script>
+// libs
+import { load } from 'recaptcha-v3'
 // mixins
 import validator from '~/mixins/validator'
-import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         validator,
-        recaptcha,
     ],
 
     created() {
         if (process.client) {
-            // load and set reCaptcha token for 'login_doctor' action
-            this.loadAndSetRecaptchaToken(this.$recaptchaActions.loginDoctor)
+            // load and set reCaptcha token for 'send_email_verification_link' action
+            load(process.env.RECAPTCHA_SITE_KEY).then((recaptcha) => {
+                recaptcha.execute(this.$recaptchaActions.loginDoctor).then((token) => {
+                    this.recaptchaToken = token
+                })
+            })
         }
     },
 
@@ -60,7 +64,8 @@ export default {
             models: {
                 email: '',
                 password: '',
-            }
+            },
+            recaptchaToken: '',
         }
     },
 

@@ -96,20 +96,24 @@
 </template>
 
 <script>
+// libs
+import { load } from 'recaptcha-v3'
 // mixins
 import validator from '~/mixins/validator'
-import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         validator,
-        recaptcha,
     ],
 
     created() {
         if (process.client) {
-            // load and set reCaptcha token for 'register_doctor' action
-            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+            // load and set reCaptcha token for 'send_email_verification_link' action
+            load(process.env.RECAPTCHA_SITE_KEY).then((recaptcha) => {
+                recaptcha.execute(this.$recaptchaActions.registerDoctor).then((token) => {
+                    this.recaptchaToken = token
+                })
+            })
         }
     },
 
@@ -124,7 +128,8 @@ export default {
                 certification: '',
                 accepted: false,
             },
-            isFormSending: false
+            isFormSending: false,
+            recaptchaToken: '',
         }
     },
 

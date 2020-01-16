@@ -24,20 +24,30 @@
 </template>
 
 <script>
+// libs
+import { load } from 'recaptcha-v3'
 // mixins
 import modal from '~/mixins/modal'
-import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         modal,
-        recaptcha,
     ],
 
     created() {
         if (process.client) {
             // load and set reCaptcha token for 'send_email_verification_link' action
-            this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+            load(process.env.RECAPTCHA_SITE_KEY).then((recaptcha) => {
+                recaptcha.execute(this.$recaptchaActions.sendEmailVerificationLink).then((token) => {
+                    this.recaptchaToken = token
+                })
+            })
+        }
+    },
+
+    data() {
+        return {
+            recaptchaToken: '',
         }
     },
 
