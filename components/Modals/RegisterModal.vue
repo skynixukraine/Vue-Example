@@ -24,8 +24,6 @@
 </template>
 
 <script>
-// libs
-import { load } from 'recaptcha-v3'
 // mixins
 import modal from '~/mixins/modal'
 
@@ -33,23 +31,6 @@ export default {
     mixins: [
         modal,
     ],
-
-    created() {
-        if (process.client) {
-            // load and set reCaptcha token for 'send_email_verification_link' action
-            load(process.env.RECAPTCHA_SITE_KEY).then((recaptcha) => {
-                recaptcha.execute(this.$recaptchaActions.sendEmailVerificationLink).then((token) => {
-                    this.recaptchaToken = token
-                })
-            })
-        }
-    },
-
-    data() {
-        return {
-            recaptchaToken: '',
-        }
-    },
 
     methods: {
         onResendEmail() {
@@ -64,10 +45,7 @@ export default {
                 })
             
             // re request captcha (need update after each form send)
-            this.recaptchaInstance.execute(this.$recaptchaActions.sendEmailVerificationLink)
-                .then(token => {
-                    this.recaptchaToken = token
-                })
+            // ...
         },
 
         prepareDataForSending({ email, recaptchaToken }) {
