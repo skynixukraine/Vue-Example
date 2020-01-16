@@ -12,9 +12,6 @@ module.exports = {
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
             { hid: 'description', name: 'description', content: 'Nuxt.js project' }
         ],
-        script: [
-            { src: `https://www.google.com/recaptcha/api.js?render=${configEnv.RECAPTCHA_SITE_KEY}` }
-        ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         ]
