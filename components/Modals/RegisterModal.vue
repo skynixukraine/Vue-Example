@@ -26,11 +26,20 @@
 <script>
 // mixins
 import modal from '~/mixins/modal'
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         modal,
+        recaptcha,
     ],
+
+    created() {
+        if (process.client) {
+            // load and set reCaptcha token for 'send_email_verification_link' action
+            this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+        }
+    },
 
     methods: {
         onResendEmail() {
@@ -45,7 +54,10 @@ export default {
                 })
             
             // re request captcha (need update after each form send)
-            // this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+            this.recaptchaInstance.execute(this.$recaptchaActions.sendEmailVerificationLink)
+                .then(token => {
+                    this.recaptchaToken = token
+                })
         },
 
         prepareDataForSending({ email, recaptchaToken }) {

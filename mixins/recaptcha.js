@@ -1,28 +1,20 @@
-import RecaptchaApi from "~/services/api/Recaptcha"
+import { load } from 'recaptcha-v3'
 
+const DEFAULT_RECAPTCHA_INSTANCE = {}
 const DEFAULT_RECAPTCHA_TOKEN = ''
 
 export default {
     data() {
         return {
+            recaptchaInstance:  DEFAULT_RECAPTCHA_INSTANCE,
             recaptchaToken: DEFAULT_RECAPTCHA_TOKEN,
         }
     },
-    beforeDestroy() {
-        this.cleanRecaptchaToken()
-    },
-    methods: {
-        async loadAndSetRecaptchaToken(actionName) {
-            const token = await RecaptchaApi.loadRecaptchaToken(actionName)
-            this.setRecaptchaToken(token)
 
-            return token
+    methods: {
+        async loadAndSetRecaptchaToken(action) {
+            this.recaptchaInstance = await load(process.env.RECAPTCHA_SITE_KEY)
+            this.recaptchaToken = await this.recaptchaInstance.execute(action)
         },
-        setRecaptchaToken(token) {
-            this.recaptchaToken = token
-        },
-        cleanRecaptchaToken() {
-            this.recaptchaToken = DEFAULT_RECAPTCHA_TOKEN
-        }
-    },
+    }
 }
