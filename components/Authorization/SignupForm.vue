@@ -144,14 +144,14 @@ export default {
                     this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
                         .then((response) => {
                             this.$modal.show('register-success')
-                            // re request captcha (need update after each form send)
+                            // re request captcha (need update after each form send).
                             this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                             this.isFormSending = false
                         })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
-                    // re request captcha (need update after each form send)
+                    // re request captcha (need update after each form send).
                     this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                     this.isFormSending = false
                 })
