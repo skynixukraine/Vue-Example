@@ -96,21 +96,21 @@
 </template>
 
 <script>
+import { load } from 'recaptcha-v3'
 // mixins
 import validator from '~/mixins/validator'
-import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         validator,
-        recaptcha,
     ],
 
-    created() {
-        if (process.client) {
-            // load reCaptcha token for 'register_doctor' action
-            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
-        }
+    mounted() {
+        load('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI').then((recaptcha) => {
+        recaptcha.execute('register_doctor').then((token) => {
+            console.log('toooooken: ', token) // Will print the token
+            })
+        })
     },
 
     data() {
@@ -186,10 +186,10 @@ export default {
             }
 
             // check recaptcha token exist
-            if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
-                return false
-            }
+            // if (!this.recaptchaToken) {
+            //     this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
+            //     return false
+            // }
 
             return true
         },

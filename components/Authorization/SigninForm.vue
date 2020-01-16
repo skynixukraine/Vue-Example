@@ -40,18 +40,11 @@
 <script>
 // mixins
 import validator from '~/mixins/validator'
-import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         validator,
-        recaptcha,
     ],
-
-    created() {
-        // load reCaptcha token for 'login_doctor' action
-        this.loadAndSetRecaptchaToken(this.$recaptchaActions.loginDoctor)
-    },
 
     data() {
         return {
@@ -91,10 +84,10 @@ export default {
             }
 
             // check recaptcha token exist
-            if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
-                return false
-            }
+            // if (!this.recaptchaToken) {
+            //     this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
+            //     return false
+            // }
 
             return true
         },

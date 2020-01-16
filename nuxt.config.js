@@ -51,7 +51,6 @@ module.exports = {
         { src: '~/plugins/custom/window', mode: 'client' },
 
         { src: '~/plugins/modules/localStorage', mode: 'client' },
-        { src: '~/plugins/modules/recaptcha', mode: 'client' },
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/googleMaps' },
         { src: '~/plugins/modules/i18n' },
