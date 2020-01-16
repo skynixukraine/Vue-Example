@@ -96,8 +96,6 @@
 </template>
 
 <script>
-// libs
-import { load } from 'recaptcha-v3'
 // mixins
 import validator from '~/mixins/validator'
 
@@ -106,15 +104,12 @@ export default {
         validator,
     ],
 
-    created() {
-        if (process.client) {
-            // load and set reCaptcha token for 'send_email_verification_link' action
-            load(process.env.RECAPTCHA_SITE_KEY).then((recaptcha) => {
-                recaptcha.execute(this.$recaptchaActions.registerDoctor).then((token) => {
-                    this.recaptchaToken = token
-                })
-            })
-        }
+    mounted() {
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', {action: 'register_doctor'}).then(function(token) {
+                console.log(token);
+            });
+        });
     },
 
     data() {
@@ -129,7 +124,6 @@ export default {
                 accepted: false,
             },
             isFormSending: false,
-            recaptchaToken: '',
         }
     },
 
@@ -150,14 +144,14 @@ export default {
                         .then((response) => {
                             this.$modal.show('register-success')
                             // re request captcha (need update after each form send)
-                            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                            // ...
                             this.isFormSending = false
                         })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
                     // re request captcha (need update after each form send)
-                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                    // ...
                     this.isFormSending = false
                 })
         },
