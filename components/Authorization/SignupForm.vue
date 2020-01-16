@@ -104,14 +104,6 @@ export default {
         validator,
     ],
 
-    mounted() {
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', {action: 'register_doctor'}).then(function(token) {
-                console.log(token);
-            });
-        });
-    },
-
     data() {
         return {
             models: {
