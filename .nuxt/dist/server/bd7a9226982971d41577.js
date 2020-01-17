@@ -1,0 +1,1 @@
+exports.ids=[1],exports.modules={185:function(t,e,l){"use strict";l.r(e);var n={},r=l(1),component=Object(r.a)(n,(function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"page"},[this._ssrNode('<div class="section"><div class="container"><h1>Billing</h1></div></div>')])}),[],!1,null,null,"e1385d04");e.default=component.exports}};

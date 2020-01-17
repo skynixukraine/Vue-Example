@@ -127,7 +127,6 @@ export default {
                 accepted: false,
             },
             isFormSending: false,
-            recaptchaToken: '',
         }
     },
 
