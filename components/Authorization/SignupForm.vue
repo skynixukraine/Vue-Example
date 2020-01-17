@@ -98,16 +98,19 @@
 <script>
 // mixins
 import validator from '~/mixins/validator'
-import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         validator,
-        recaptcha,
     ],
 
     mounted() {
-        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+        grecaptcha.ready(() => {
+            grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor })
+                .then((token) => {
+                    this.recaptchaToken = token
+                })
+        })
     },
 
     data() {
@@ -122,6 +125,7 @@ export default {
                 accepted: false,
             },
             isFormSending: false,
+            recaptchaToken: '',
         }
     },
 
@@ -142,15 +146,21 @@ export default {
                         .then((response) => {
                             this.$modal.show('register-success')
                             // re request captcha (need update after each form send)
-                            // ...
-                            this.isFormSending = false
+                            grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor })
+                                .then((token) => {
+                                    this.recaptchaToken = token
+                                    this.isFormSending = false
+                                })
                         })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
                     // re request captcha (need update after each form send)
-                    // ...
-                    this.isFormSending = false
+                    grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor })
+                        .then((token) => {
+                            this.recaptchaToken = token
+                            this.isFormSending = false
+                        })
                 })
         },
 
