@@ -104,6 +104,14 @@ export default {
         validator,
     ],
 
+    mounted() {
+        grecaptcha.ready(() => {
+            grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor }).then((token) => {
+                console.log('token: ', token, this.isFormSending)
+            })
+        })
+    },
+
     data() {
         return {
             models: {
