@@ -107,7 +107,7 @@ export default {
     mounted() {
         grecaptcha.ready(() => {
             grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
-                console.log(token)
+                this.recaptchaToken = token
             })
         })
     },
@@ -124,6 +124,7 @@ export default {
                 accepted: false,
             },
             isFormSending: false,
+            recaptchaToken: '',
         }
     },
 
@@ -144,14 +145,15 @@ export default {
                         .then((response) => {
                             this.$modal.show('register-success')
                             // re request captcha (need update after each form send)
-                            // ...
+                            console.log('r: ', grecaptcha, window.grecaptcha);
+                            
                             this.isFormSending = false
                         })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
                     // re request captcha (need update after each form send)
-                    // ...
+                    console.log('r: ', grecaptcha, window.grecaptcha);
                     this.isFormSending = false
                 })
         },
