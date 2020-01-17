@@ -1,0 +1,1 @@
+exports.ids=[19],exports.modules={180:function(t,e,d){"use strict";d.r(e);var n={},r=d(1),component=Object(r.a)(n,(function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"page"},[this._ssrNode('<div class="section"><div class="container"><h1>Studien</h1></div></div>')])}),[],!1,null,null,"d8def072");e.default=component.exports}};
