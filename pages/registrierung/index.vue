@@ -12,11 +12,6 @@
                         @click="setCurrentTab('signup')"
                     >Sign Up</button>
                 </div>
-                <!-- <div class="container-forms">
-                    <SigninForm />
-                    <SignupForm />
-                </div>-->
-
                 <div class="container-forms">
                     <template v-if="windowWidth  > 768 || currentTab === 'signin'">
                         <SigninForm />
@@ -70,9 +65,13 @@ export default {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 5%;
 
     @include desktop {
         justify-content: space-between;
+    }
+    div {
+        padding: 0 10px;
     }
 }
 

@@ -150,15 +150,9 @@ export default {
     border-radius: 4px;
     @media (min-width: #{$screen-phone-big-min}) {
         width: 300px;
+        height: 56px;
     }
 
-    @include phone-big {
-        height: 56px;
-        width: 400px;
-    }
-    @include tablet {
-        width: 430px;
-    }
     @include desktop {
         width: 544px;
     }
@@ -168,9 +162,17 @@ export default {
     font-family: TheSansB;
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 28px;
     color: #7a7d84;
+
+    @include phone-big {
+        font-size: 16px;
+    }
+
+    @include tablet-big {
+        font-size: 18px;
+    }
 }
 
 .login {
@@ -209,16 +211,15 @@ export default {
         border-radius: 4px;
 
         @media (min-width: #{$screen-phone-big-min}) {
-            width: 350px;
+            width: 335px;
+            height: 56px;
         }
 
-        @include phone-big {
-            height: 56px;
-            width: 400px;
-        }
-        @include tablet {
-            width: 430px;
-        }
+        // @include phone-big {
+        //     height: 56px;
+        //     width: 380px;
+        // }
+
         @include desktop {
             width: 544px;
         }

@@ -327,16 +327,10 @@ export default {
     box-sizing: border-box;
     border-radius: 4px;
     @media (min-width: #{$screen-phone-big-min}) {
-        width: 350px;
+        width: 335px;
+        height: 56px;
     }
 
-    @include phone-big {
-        height: 56px;
-        width: 400px;
-    }
-    @include tablet {
-        width: 430px;
-    }
     @include desktop {
         width: 544px;
     }
@@ -351,6 +345,10 @@ export default {
     color: #7a7d84;
 
     @include phone-big {
+        font-size: 16px;
+    }
+
+    @include desktop {
         font-size: 18px;
     }
 }
@@ -403,16 +401,15 @@ export default {
         border-radius: 4px;
 
         @media (min-width: #{$screen-phone-big-min}) {
-            width: 350px;
+            width: 335px;
+            height: 56px;
         }
 
-        @include phone-big {
-            height: 56px;
-            width: 400px;
-        }
-        @include tablet {
-            width: 430px;
-        }
+        // @include phone-big {
+        //     height: 56px;
+        //     width: 380px;
+        // }
+
         @include desktop {
             width: 544px;
         }
@@ -468,6 +465,12 @@ export default {
     &--checkbox {
         display: flex;
         flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+
+        .form__title--accepted {
+            font-size: 14px;
+        }
     }
 
     input[type="checkbox"] {
@@ -490,7 +493,7 @@ export default {
                 padding-left: 14%;
 
                 @include phone-big {
-                    padding-left: 10%;
+                    padding-left: 12%;
                 }
 
                 img {
