@@ -14,16 +14,10 @@
                 </div>
                 <div class="container-forms">
                     <template v-if="windowWidth  > 768 || currentTab === 'signin'">
-                        <div>
-                            <h1 class="login login--title">{{ $t('headers.login')}}</h1>
-                            <SigninForm />
-                        </div>
+                        <Signin />
                     </template>
                     <template v-if="windowWidth  > 768 || currentTab === 'signup'">
-                        <div>
-                            <h1 class="login login--title">{{ $t('headers.register')}}</h1>
-                            <SignupForm />
-                        </div>
+                        <Signup />
                     </template>
                 </div>
             </div>
@@ -35,13 +29,18 @@
 // Mixins
 import windowWidth from "~/mixins/window";
 // Components
-import SigninForm from "~/components/Authorization/SigninForm";
-import SignupForm from "~/components/Authorization/SignupForm";
+import Signin from "~/components/Authorization/Signin";
+import Signup from "~/components/Authorization/Signup";
 
 const DEFAULT_CURRENT_TAB = "signin";
 
 export default {
     mixins: [windowWidth],
+
+    components: {
+        Signin,
+        Signup
+    },
 
     beforeCreate() {
         setTimeout(() => {
@@ -62,11 +61,6 @@ export default {
         setCurrentTab(tabName) {
             this.currentTab = tabName;
         }
-    },
-
-    components: {
-        SigninForm,
-        SignupForm
     }
 };
 </script>

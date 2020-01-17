@@ -207,17 +207,13 @@ export default {
             height: 56px;
         }
 
-        // @include phone-big {
-        //     height: 56px;
-        //     width: 380px;
-        // }
-
         @include desktop {
             width: 544px;
         }
     }
 
     &--button-blue {
+        color: $color-white;
         background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
         border: 1px solid #0f44b2;
 

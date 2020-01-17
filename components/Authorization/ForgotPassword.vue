@@ -1,5 +1,5 @@
 <template>
-    <button class="link link--button link--button--transparent">Forgot Password?</button>
+    <button class="link link--button link--button-transparent">Forgot Password?</button>
 </template>
 
 <script>
