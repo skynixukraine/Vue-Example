@@ -32,6 +32,14 @@ export default {
         modal,
     ],
 
+    mounted() {
+        grecaptcha.ready(() => {
+            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
+                this.recaptchaToken = token
+            })
+        })
+    },
+
     methods: {
         onResendEmail() {
             const requestData = this.prepareDataForSending({ email: this.$store.getters['user/USER'].email, recaptchaToken: this.recaptchaToken })
