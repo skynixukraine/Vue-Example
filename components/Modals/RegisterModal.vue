@@ -35,7 +35,12 @@ export default {
     ],
 
     created() {
-        this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+        if (process.client) {
+            this.$recaptchaLoaded()
+                .then(() => {
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+                })
+        }
     },
 
     methods: {
@@ -44,15 +49,11 @@ export default {
 
             this.$store.dispatch('user/SEND_EMAIL_VERIFICATION_LINK', requestData)
                 .then(response => {
-                    // re request captcha (need update after each form send)
-                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+                    // ...
                 })
                 .catch(error => {
-                    // re request captcha (need update after each form send)
-                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+                    // ...
                 })
-            
-            // re request captcha (need update after each form send)
             this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
         },
 
