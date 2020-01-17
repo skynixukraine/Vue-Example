@@ -106,10 +106,9 @@ export default {
 
     mounted() {
         grecaptcha.ready(() => {
-            grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor })
-                .then((token) => {
-                    console.log(token)
-                })
+            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
+                console.log(token)
+            })
         })
     },
 
@@ -125,7 +124,6 @@ export default {
                 accepted: false,
             },
             isFormSending: false,
-            recaptchaToken: '',
         }
     },
 
