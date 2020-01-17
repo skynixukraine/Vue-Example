@@ -98,18 +98,16 @@
 <script>
 // mixins
 import validator from '~/mixins/validator'
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         validator,
+        recaptcha,
     ],
 
     mounted() {
-        grecaptcha.ready(() => {
-            grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor }).then((token) => {
-                console.log('token: ', token, this.isFormSending)
-            })
-        })
+        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
     },
 
     data() {
