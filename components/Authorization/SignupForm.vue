@@ -106,6 +106,10 @@ export default {
 
     mounted() {
         console.log('BASE_API_URL: ', process.env.BASE_API_URL);
+        console.log('GOOGLE_API_RECAPTCHA_URL: ', process.env.GOOGLE_API_RECAPTCHA_URL);
+        console.log('GOOGLE_MAPS_API_KEY: ', process.env.GOOGLE_MAPS_API_KEY);
+        console.log('RECAPTCHA_SITE_KEY: ', process.env.RECAPTCHA_SITE_KEY);
+        console.log('RECAPTCHA_SECRET_KEY: ', process.env.RECAPTCHA_SECRET_KEY);
         grecaptcha.ready(() => {
             grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
                 this.recaptchaToken = token
