@@ -98,23 +98,21 @@
 <script>
 // mixins
 import validator from '~/mixins/validator'
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         validator,
+        recaptcha
     ],
 
-    mounted() {
-        console.log('BASE_API_URL: ', process.env.BASE_API_URL);
-        console.log('GOOGLE_API_RECAPTCHA_URL: ', process.env.GOOGLE_API_RECAPTCHA_URL);
-        console.log('GOOGLE_MAPS_API_KEY: ', process.env.GOOGLE_MAPS_API_KEY);
-        console.log('RECAPTCHA_SITE_KEY: ', process.env.RECAPTCHA_SITE_KEY);
-        console.log('RECAPTCHA_SECRET_KEY: ', process.env.RECAPTCHA_SECRET_KEY);
-        grecaptcha.ready(() => {
-            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
-                this.recaptchaToken = token
-            })
-        })
+    created() {
+        if (process.client) {
+            this.$recaptchaLoaded()
+                .then(() => {
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                })
+        }
     },
 
     data() {
@@ -150,19 +148,14 @@ export default {
                         .then((response) => {
                             this.$modal.show('register-success')
                             // re request captcha (need update after each form send)
-                            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
-                                this.recaptchaToken = token
-                                this.isFormSending = false
-                            })
+                            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                            this.isFormSending = false
                         })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
                     // re request captcha (need update after each form send)
-                    grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
-                        this.recaptchaToken = token
-                        this.isFormSending = false
-                    })
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                     this.isFormSending = false
                 })
         },
