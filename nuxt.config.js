@@ -3,7 +3,7 @@ import configServer from './configs/server'
 import configEnv from './configs/env'
 
 module.exports = {
-    server: configServer,
+    //server: configServer,
     env: configEnv,
     head: {
         title: 'client',
@@ -53,6 +53,7 @@ module.exports = {
         { src: '~/plugins/custom/timeOfDay' },
         { src: '~/plugins/custom/window', mode: 'client' },
 
+        { src: '~plugins/modules/vuexSharedMutations', mode: 'client' },
         { src: '~/plugins/modules/recaptcha', mode: 'client' },
         { src: '~/plugins/modules/localStorage', mode: 'client' },
         { src: '~/plugins/modules/axios' },
