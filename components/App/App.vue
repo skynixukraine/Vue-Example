@@ -25,7 +25,7 @@ export default {
 START: GENERAL
 *********************/
 body {
-    font-family: "Sans", sans-serif;
+    font-family: 'Sans', sans-serif;
     font-size: 18px;
     line-height: 1.55;
     color: $color-rolling-stone;
@@ -35,13 +35,8 @@ body {
     background-color: $color-black-squeeze;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Antiqua", serif;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Antiqua', serif;
     line-height: 1.33;
     color: $color-curious-blue;
     font-weight: 700;
@@ -83,13 +78,14 @@ a {
 
 button {
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color : transparent;
 
     &:active,
     &:focus {
         outline: none;
     }
 }
+
 
 @include tablet {
     h1 {
@@ -123,13 +119,13 @@ START: COMPONENTS
         padding-top: 72px;
 
         &.page--home {
-            background: url("~static/images/images/rectangle-right.png") right
-                    78.5% no-repeat,
-                url("~static/images/images/rectangle-left.png") left bottom
-                    no-repeat;
+            background: url('~static/images/images/rectangle-right.png') right 78.5% no-repeat,
+                        url('~static/images/images/rectangle-left.png') left bottom no-repeat;
         }
     }
 }
+
+
 
 // section
 .section {
@@ -170,18 +166,19 @@ START: COMPONENTS
         padding-bottom: 0px;
     }
 
+
     @include tablet-big {
         padding-top: 112px;
         padding-bottom: 112px;
 
         &.section--bg-right-1 {
-            background-image: url("~static/images/images/rectangle-right.png");
+            background-image: url('~static/images/images/rectangle-right.png');
             background-size: auto;
             background-position: right center;
         }
 
         &.section--bg-left-2 {
-            background-image: url("~static/images/images/rectangle-left.png");
+            background-image: url('~static/images/images/rectangle-left.png');
             background-size: auto;
             background-position: 0 20%;
         }
@@ -190,7 +187,7 @@ START: COMPONENTS
 
 .section-header {
     margin-bottom: 32px;
-
+ 
     &__title {
         margin: 0;
 
@@ -198,6 +195,7 @@ START: COMPONENTS
             color: $color-white;
         }
     }
+
 
     @include tablet {
         margin-bottom: 48px;
@@ -211,6 +209,7 @@ START: COMPONENTS
 .section-footer {
     text-align: center;
     margin-top: 32px;
+
 
     @include tablet {
         margin-top: 48px;
@@ -236,7 +235,7 @@ START: COMPONENTS
 
     @include tablet-big {
         bottom: 24px;
-
+        
         &__inner {
             width: 100%;
             height: 33px;
@@ -244,7 +243,7 @@ START: COMPONENTS
             margin-left: auto;
             margin-right: auto;
             background: none;
-            background-image: url("~static/images/icons/mouse-scroll.svg");
+            background-image: url('~static/images/icons/mouse-scroll.svg');
             background-position: left center;
             background-repeat: no-repeat;
             font-size: 15px;
@@ -259,6 +258,8 @@ START: COMPONENTS
     }
 }
 
+
+
 // container
 .container {
     width: 100%;
@@ -272,7 +273,9 @@ START: COMPONENTS
         display: none;
     }
 
+
     @include tablet-big {
+
         &__dots {
             display: block;
 
@@ -297,6 +300,8 @@ START: COMPONENTS
     }
 }
 
+
+
 // list
 .list {
     margin: 0;
@@ -315,19 +320,23 @@ START: COMPONENTS
     }
 
     &--d3 {
+
         .list__item {
             flex: 0 0 100%;
         }
     }
 
     &--d4 {
+
         .list__item {
             flex: 0 0 100%;
         }
     }
 
     @include phone-big {
+
         &--d4 {
+
             .list__item {
                 flex: 0 0 50%;
             }
@@ -335,7 +344,9 @@ START: COMPONENTS
     }
 
     @include tablet {
+
         &--d3 {
+
             .list__item {
                 flex: 0 0 33.33%;
             }
@@ -343,19 +354,24 @@ START: COMPONENTS
     }
 
     @include tablet-big {
+
         &--d3 {
+
             .list__item {
                 flex: 0 0 33.33%;
             }
         }
 
         &--d4 {
+
             .list__item {
                 flex: 0 0 25%;
             }
         }
     }
 }
+
+
 
 // link
 .link {
@@ -419,21 +435,6 @@ START: COMPONENTS
                 background: $color-gradient-blue-dark;
             }
         }
-
-        &--transparent {
-            background: #f7fafc;
-            border: none;
-            font-family: TheSansB;
-            font-style: normal;
-            font-weight: 530;
-            font-size: 16px;
-            line-height: 21px;
-
-            /* identical to box height */
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #247ee5;
-        }
     }
 
     &--card {
@@ -445,8 +446,11 @@ START: COMPONENTS
     }
 }
 
+
+
 // input
 .input {
+
     &--hidden {
         width: 0;
         height: 0;
@@ -489,4 +493,5 @@ START: CUSTOM BUTTONS
 /*********************
 END: CUSTOM BUTTONS
 *********************/
+
 </style>
