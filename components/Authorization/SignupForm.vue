@@ -21,7 +21,7 @@
             <div class="form__title">{{ $t('forms.create-password') }}</div>
             <input
                 class="input"
-                type="text"
+                type="password"
                 name="password"
                 ref="password"
                 v-model="models.password"
@@ -33,7 +33,7 @@
             <div class="form__title">{{ $t('forms.confirm-password') }}</div>
             <input
                 class="input"
-                type="text"
+                type="password"
                 name="password_confirmation"
                 ref="password_confirmation"
                 v-model="models.password_confirmation"
