@@ -6,12 +6,12 @@
 
 <script>
 export default {
-    created() {
-        if (process.client) {
-            let recaptchaScript = document.createElement('script')
-            recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI')
-            document.body.appendChild(recaptchaScript)
-        }
+    mounted() {
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', {action: 'register_doctor'}).then(function(token) {
+                console.log('token: ', token);
+            });
+        });
     }
 }
 </script>
