@@ -108,7 +108,7 @@ export default {
         grecaptcha.ready(() => {
             grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor })
                 .then((token) => {
-                    this.recaptchaToken = token
+                    console.log(token)
                 })
         })
     },
@@ -146,21 +146,15 @@ export default {
                         .then((response) => {
                             this.$modal.show('register-success')
                             // re request captcha (need update after each form send)
-                            grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor })
-                                .then((token) => {
-                                    this.recaptchaToken = token
-                                    this.isFormSending = false
-                                })
+                            // ...
+                            this.isFormSending = false
                         })
                 })
                 .catch((response) => {
                     this.handleErrorResponse(response.errors)
                     // re request captcha (need update after each form send)
-                    grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, { action: this.$recaptchaActions.registerDoctor })
-                        .then((token) => {
-                            this.recaptchaToken = token
-                            this.isFormSending = false
-                        })
+                    // ...
+                    this.isFormSending = false
                 })
         },
 
