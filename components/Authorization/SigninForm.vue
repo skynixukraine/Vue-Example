@@ -1,5 +1,3 @@
-// Login form 
-
 <template>
     <div>
         <h1 class="login login--title">Log in</h1>
@@ -43,49 +41,37 @@
 import ForgotPassword from "./ForgotPassword";
 
 // mixins
-import validator from "~/mixins/validator";
-import recaptcha from "~/mixins/recaptcha";
+import validator from '~/mixins/validator'
 
 export default {
-    mixins: [validator, recaptcha],
-    components: {
-        ForgotPassword
-    },
-
-    created() {
-        // load reCaptcha token for 'login_doctor' action
-        this.loadAndSetRecaptchaToken(this.$recaptchaActions.loginDoctor);
-    },
+    mixins: [
+        validator,
+    ],
 
     data() {
         return {
             models: {
-                email: "",
-                password: ""
-            }
-        };
+                email: '',
+                password: '',
+            },
+        }
     },
 
     methods: {
         onSubmit() {
-            if (!this.validateForm(this.models)) {
-                this.$root.$emit("showNotify", {
-                    type: "error",
-                    text: "Форма не прошла предварительную валидацию."
-                });
-                return false;
+            if ( !this.validateForm(this.models) ) {
+                this.$root.$emit('showNotify', { type: 'error', text: 'Форма не прошла предварительную валидацию.' })
+                return false
             }
 
-            const formData = this.prepareDataForSending(this.models);
+            const formData = this.prepareDataForSending(this.models)
 
-            this.$store.dispatch("user/LOGIN_USER", formData).then(token => {
-                this.$store.dispatch("user/LOAD_USER", {
-                    id: token.data.doctor_id,
-                    token: token.data.access_token
-                });
-            });
+            this.$store.dispatch('user/LOGIN_USER', formData)
+                .then((token) => {
+                    this.$store.dispatch('user/LOAD_USER', { id: token.data.doctor_id, token: token.data.access_token })
+                })
         },
-
+        
         async validateForm(models) {
             // check required fields
             if (!models.email) {
@@ -101,12 +87,8 @@ export default {
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit("showNotify", {
-                    type: "error",
-                    text:
-                        "Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму."
-                });
-                return false;
+                this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
+                return false
             }
 
             return true;
@@ -120,9 +102,9 @@ export default {
             formData.append("password", models.password);
 
             // recaptcha token for action 'login_doctor'
-            formData.append("recaptcha", this.recaptchaToken);
+            formData.append('recaptcha', this.recaptchaToken)
 
-            return formData;
+            return formData
         },
 
         // input changes

@@ -96,11 +96,11 @@ export default {
         // }
         
     },
+
     beforeCreate() {
-        this.$store.dispatch('user/AUTOLOGIN_USER')
-    },
-    mounted() {
-        // this.$root.$emit('showNotify', { type: 'success', text: 'Home page is mounted.' })
+        setTimeout(() => {
+            this.$store.dispatch('user/AUTOLOGIN_USER', { token: this.$store.getters['user/TOKEN'], user: this.$store.getters['user/USER'] })
+        }, 0)
     },
 
     data() {

@@ -135,104 +135,89 @@
 
 <script>
 // mixins
-import validator from "~/mixins/validator";
-import recaptcha from "~/mixins/recaptcha";
+import validator from '~/mixins/validator'
 
 export default {
-    mixins: [validator, recaptcha],
-
-    created() {
-        // load reCaptcha token for 'register_doctor' action
-        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor);
-    },
+    mixins: [
+        validator,
+    ],
 
     data() {
         return {
             models: {
-                email: "",
-                password: "",
-                password_confirmation: "",
-                phone_number: "",
-                degree: "",
-                certification: "",
-                accepted: false
+                email: '',
+                password: '',
+                password_confirmation: '',
+                phone_number: '',
+                degree: '',
+                certification: '',
+                accepted: false,
             },
-            isFormSending: false
-        };
+            isFormSending: false,
+        }
     },
 
     methods: {
         async onSubmit() {
-            this.isFormSending = true;
-            if (!this.validateForm(this.models)) {
-                this.$root.$emit("showNotify", {
-                    type: "error",
-                    text: "Форма не прошла предварительную валидацию."
-                });
-                return false;
+            this.isFormSending = true
+            if ( !this.validateForm(this.models) ) {
+                this.$root.$emit('showNotify', { type: 'error', text: 'Форма не прошла предварительную валидацию.' })
+                this.isFormSending = false
+                return false
             }
 
-            const formData = this.prepareDataForSending(this.models);
+            const formData = this.prepareDataForSending(this.models)
 
-            this.$store
-                .dispatch("user/REGISTER_USER", formData)
-                .then(response => {
-                    this.$store
-                        .dispatch("user/LOAD_USER", {
-                            id: response.data.doctor_id,
-                            token: response.data.access_token
+            this.$store.dispatch('user/REGISTER_USER', formData)
+                .then((response) => {
+                    this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
+                        .then((response) => {
+                            this.$modal.show('register-success')
+                            // re request captcha (need update after each form send)
+                            // ...
+                            this.isFormSending = false
                         })
-                        .then(response => {
-                            this.$modal.show("register-success");
-                            this.isFormSending = false;
-                        });
                 })
-                .catch(response => {
-                    this.handleErrorResponse(response.errors);
-                    this.isFormSending = false;
-                });
+                .catch((response) => {
+                    this.handleErrorResponse(response.errors)
+                    // re request captcha (need update after each form send)
+                    // ...
+                    this.isFormSending = false
+                })
         },
 
         validateForm(models) {
             // check required fields
             if (!models.email) {
-                this.errors["email"] = this.$t("errors.form.required-field");
-                this.$forceUpdate();
-                return false;
+                this.errors['email'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
             }
             if (!models.password) {
-                this.errors["password"] = this.$t("errors.form.required-field");
-                this.$forceUpdate();
-                return false;
+                this.errors['password'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
             }
             if (!models.password_confirmation) {
-                this.errors["password_confirmation"] = this.$t(
-                    "errors.form.required-field"
-                );
-                this.$forceUpdate();
-                return false;
+                this.errors['password_confirmation'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
             }
             if (!models.phone_number) {
-                this.errors["phone_number"] = this.$t(
-                    "errors.form.required-field"
-                );
-                this.$forceUpdate();
-                return false;
+                this.errors['phone_number'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
             }
             if (!models.accepted) {
-                this.errors["accepted"] = this.$t("errors.form.required-field");
-                this.$forceUpdate();
-                return false;
+                this.errors['accepted'] = this.$t('errors.form.required-field')
+                this.$forceUpdate()
+                return false
             }
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit("showNotify", {
-                    type: "error",
-                    text:
-                        "Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму."
-                });
-                return false;
+                this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
+                return false
             }
 
             return true;
@@ -240,80 +225,76 @@ export default {
 
         handleErrorResponse(errors) {
             for (let fieldName in errors) {
-                this.errors[fieldName] = errors[fieldName][0];
+                this.errors[fieldName] = errors[fieldName][0]
             }
-            this.$forceUpdate();
+            this.$forceUpdate()
         },
 
         prepareDataForSending(models) {
-            let formData = new FormData();
+            let formData = new FormData()
 
             // required fields
-            formData.append("email", models.email);
-            formData.append("phone_number", models.phone_number);
-            formData.append("password", models.password);
-            formData.append(
-                "password_confirmation",
-                models.password_confirmation
-            );
-            formData.append("accepted", models.accepted);
+            formData.append('email', models.email)
+            formData.append('phone_number', models.phone_number)
+            formData.append('password', models.password)
+            formData.append('password_confirmation', models.password_confirmation)
+            formData.append('accepted', models.accepted)
 
             // unrequired fields
             if (models.degree) {
-                formData.append("medical_degree", models.degree);
+                formData.append('medical_degree', models.degree)
             }
             if (models.certification) {
-                formData.append("medical_degree", models.certification);
+                formData.append('medical_degree', models.certification)
             }
 
             // recaptcha token for action 'register_doctor'
-            formData.append("recaptcha", this.recaptchaToken);
+            formData.append('recaptcha', this.recaptchaToken)
 
-            return formData;
+            return formData
         },
+
 
         // files upload
         addFileDegree() {
-            this.$refs.degree.click();
+            this.$refs.degree.click()
         },
         addFileCertification() {
-            this.$refs.certification.click();
+            this.$refs.certification.click()
         },
+
 
         // inputs changes
         onEmailChange(event) {
-            this.validateEmail(event);
-            this.$forceUpdate();
+            this.validateEmail(event)
+            this.$forceUpdate()
         },
-        onPasswordChange(event) {
-            this.validateConfirmPassword(
-                event,
-                this.$refs.password_confirmation
-            );
-            this.$forceUpdate();
+        onPasswordChange(event) {      
+            this.validateConfirmPassword(event, this.$refs.password_confirmation)
+            this.$forceUpdate()
         },
         onConfirmPasswordChange(event) {
-            this.validateConfirmPassword(event, this.$refs.password);
-            this.$forceUpdate();
+            this.validateConfirmPassword(event, this.$refs.password)
+            this.$forceUpdate()
         },
         onPhoneChange(formattedNumber, telInput) {
-            this.validatePhone(telInput);
+            this.validatePhone(telInput)
         },
         onDegreeUpload(event) {
             if (this.validateFilePDF(event)) {
-                this.models.degree = event.target.files[0];
+                this.models.degree = event.target.files[0]  
             }
         },
         onCertificationUpload(event) {
             if (this.validateFilePDF(event)) {
-                this.models.certification = event.target.files[0];
+                this.models.certification = event.target.files[0]  
             }
         },
         onAcceptChange(event) {
-            this.validateAccept(event, this.models.accepted);
-        }
+            this.validateAccept(event, this.models.accepted)
+        },
     }
-};
+}
 </script>
 
 

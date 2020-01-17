@@ -28,11 +28,34 @@
 import modal from '~/mixins/modal'
 
 export default {
-    mixins: [modal],
+    mixins: [
+        modal,
+    ],
+
     methods: {
         onResendEmail() {
-            console.log('RESEND EMAIL')
-        }
+            const requestData = this.prepareDataForSending({ email: this.$store.getters['user/USER'].email, recaptchaToken: this.recaptchaToken })
+
+            this.$store.dispatch('user/SEND_EMAIL_VERIFICATION_LINK', requestData)
+                .then(response => {
+                    // дописать завтра с утра
+                })
+                .catch(error => {
+
+                })
+            
+            // re request captcha (need update after each form send)
+            // ...
+        },
+
+        prepareDataForSending({ email, recaptchaToken }) {
+            let formData = new FormData()
+
+            formData.append('email', email)
+            formData.append('recaptcha', recaptchaToken)
+
+            return formData
+        },
     }
 }
 </script>

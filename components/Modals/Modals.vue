@@ -1,15 +1,6 @@
 <template>
     <div class="modals">
-        <!-- Static modals: -->
         <RegisterModal />
-
-        <!-- Dialog modal: -->
-        <v-dialog
-            @before-opened="dialogEvent('before-open')"
-            @before-closed="dialogEvent('before-close')"
-            @opened="dialogEvent('opened')"
-            @closed="dialogEvent('closed')"
-        />
     </div>
 </template>
 
@@ -19,11 +10,6 @@ import RegisterModal from "~/components/Modals/RegisterModal"
 export default {
     components: {
         RegisterModal
-    },
-    methods: {
-        dialogEvent (eventName) {
-            console.log('Dialog event: ' + eventName)
-        }
     }
 }
 </script>
