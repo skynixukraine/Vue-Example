@@ -26,18 +26,16 @@
 <script>
 // mixins
 import modal from '~/mixins/modal'
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         modal,
+        recaptcha,
     ],
 
-    mounted() {
-        grecaptcha.ready(() => {
-            grecaptcha.execute('6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI', { action: 'register_doctor' }).then((token) => {
-                this.recaptchaToken = token
-            })
-        })
+    created() {
+        this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
     },
 
     methods: {
@@ -46,14 +44,16 @@ export default {
 
             this.$store.dispatch('user/SEND_EMAIL_VERIFICATION_LINK', requestData)
                 .then(response => {
-                    // дописать завтра с утра
+                    // re request captcha (need update after each form send)
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
                 })
                 .catch(error => {
-
+                    // re request captcha (need update after each form send)
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
                 })
             
             // re request captcha (need update after each form send)
-            // ...
+            this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
         },
 
         prepareDataForSending({ email, recaptchaToken }) {
