@@ -134,7 +134,6 @@ export default {
         async onSubmit() {
             this.isFormSending = true
             if ( !this.validateForm(this.models) ) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Форма не прошла предварительную валидацию.' })
                 this.isFormSending = false
                 return false
             }
@@ -164,32 +163,37 @@ export default {
             if (!models.email) {
                 this.errors['email'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Имейл не заполнен' })
                 return false
             }
             if (!models.password) {
                 this.errors['password'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Пароль не заполнен' })
                 return false
             }
             if (!models.password_confirmation) {
                 this.errors['password_confirmation'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Конфирм Пароль не заполнен' })
                 return false
             }
             if (!models.phone_number) {
                 this.errors['phone_number'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Телефон не заполнен' })
                 return false
             }
             if (!models.accepted) {
                 this.errors['accepted'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Вы должны согласится с правилами сайта' })
                 return false
             }
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму.' })
+                this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
                 return false
             }
 
@@ -197,10 +201,15 @@ export default {
         },
 
         handleErrorResponse(errors) {
+            if (Object.keys(errors).length === 0) {
+                return true
+            }
+
             for (let fieldName in errors) {
                 this.errors[fieldName] = errors[fieldName][0]
             }
             this.$forceUpdate()
+            return true
         },
 
         prepareDataForSending(models) {
