@@ -16,14 +16,14 @@
     }
 }
 
-@mixin desktop-l {
-    @media (min-width: #{$screen-desktop-l}) {
+@mixin desktop {
+    @media (min-width: #{$screen-desktop-min}) {
         @content;
     }
 }
 
-@mixin desktop {
-    @media (min-width: #{$screen-desktop-min}) {
+@mixin desktop-l {
+    @media (min-width: #{$screen-desktop-l}) {
         @content;
     }
 }

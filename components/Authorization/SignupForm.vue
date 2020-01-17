@@ -320,18 +320,24 @@ export default {
 
 <style lang="scss">
 @mixin input-field {
-    width: 352px;
+    width: 295px;
     height: 40px;
     background: #ffffff;
-    border: 1.5px solid #247ee5;
+    border: 2px solid #247ee5;
     box-sizing: border-box;
     border-radius: 4px;
+    @media (min-width: #{$screen-phone-big-min}) {
+        width: 350px;
+    }
 
     @include phone-big {
         height: 56px;
         width: 400px;
     }
     @include tablet {
+        width: 430px;
+    }
+    @include desktop {
         width: 544px;
     }
 }
@@ -340,9 +346,13 @@ export default {
     font-family: TheSansB;
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 28px;
     color: #7a7d84;
+
+    @include phone-big {
+        font-size: 18px;
+    }
 }
 
 .login {
@@ -366,7 +376,6 @@ export default {
         width: 100%;
         display: flex;
         flex-direction: column;
-        // flex-wrap: wrap;
         justify-content: center;
         align-items: center;
 
@@ -379,23 +388,32 @@ export default {
 .check-icon,
 .eye-icon {
     position: absolute;
-
-    top: 48px;
-
+    top: 41px;
     right: 20px;
+
+    @media (min-width: #{$screen-phone-big-min}) {
+        top: 48px;
+    }
 }
 
 .link {
     &--button {
-        width: 300px;
+        width: 295px;
         margin: 2% auto;
         border-radius: 4px;
+
+        @media (min-width: #{$screen-phone-big-min}) {
+            width: 350px;
+        }
 
         @include phone-big {
             height: 56px;
             width: 400px;
         }
         @include tablet {
+            width: 430px;
+        }
+        @include desktop {
             width: 544px;
         }
     }
@@ -412,12 +430,10 @@ export default {
 }
 
 .input {
+    padding-left: 2%;
+
     &--login {
         @include input-field;
-
-        ::after {
-            content: "Test";
-        }
     }
     &--password {
         @include input-field;
@@ -458,8 +474,11 @@ export default {
         order: 1;
     }
 
-    .form__title,
+    .form__title {
+        padding-left: 10px;
+    }
     .form__message {
+        color: red;
         padding-left: 10px;
     }
 
@@ -468,7 +487,11 @@ export default {
             &--upload {
                 position: relative;
                 text-align: left;
-                padding-left: 10%;
+                padding-left: 14%;
+
+                @include phone-big {
+                    padding-left: 10%;
+                }
 
                 img {
                     position: absolute;
@@ -477,7 +500,7 @@ export default {
                 }
                 font-family: TheSansB;
                 background: #ffffff;
-                border: 1.5px solid #247ee5;
+                border: 2px solid #247ee5;
                 box-sizing: border-box;
                 border-radius: 4px;
                 color: rgba(122, 125, 132, 0.5);

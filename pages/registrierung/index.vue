@@ -88,9 +88,13 @@ export default {
 
     .link {
         &--button {
-            width: 300px;
+            width: 295px;
             margin: 2% auto;
             border-radius: 4px;
+
+            @media (min-width: #{$screen-phone-big-min}) {
+                width: 350px;
+            }
 
             @include phone-big {
                 height: 56px;

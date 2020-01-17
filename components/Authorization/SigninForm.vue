@@ -142,18 +142,24 @@ export default {
 
 <style lang="scss">
 @mixin input-field {
-    width: 300px;
+    width: 250px;
     height: 40px;
     background: #ffffff;
-    border: 1.5px solid #247ee5;
+    border: 2px solid #247ee5;
     box-sizing: border-box;
     border-radius: 4px;
+    @media (min-width: #{$screen-phone-big-min}) {
+        width: 300px;
+    }
 
     @include phone-big {
         height: 56px;
         width: 400px;
     }
     @include tablet {
+        width: 430px;
+    }
+    @include desktop {
         width: 544px;
     }
 }
@@ -198,15 +204,22 @@ export default {
 
 .link {
     &--button {
-        width: 300px;
+        width: 295px;
         margin: 2% auto;
         border-radius: 4px;
+
+        @media (min-width: #{$screen-phone-big-min}) {
+            width: 350px;
+        }
 
         @include phone-big {
             height: 56px;
             width: 400px;
         }
         @include tablet {
+            width: 430px;
+        }
+        @include desktop {
             width: 544px;
         }
     }
@@ -223,6 +236,8 @@ export default {
 }
 
 .input {
+    padding-left: 2%;
+
     &--login,
     &--password {
         @include input-field;
@@ -233,6 +248,16 @@ export default {
     &--login,
     &--password {
         @include form__title--text;
+    }
+}
+
+.form__item {
+    .form__title {
+        padding-left: 10px;
+    }
+    .form__message {
+        color: red;
+        padding-left: 10px;
     }
 }
 </style>
