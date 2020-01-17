@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class="section">
-            <div class="container">
+            <div class="container container__forms--wrapper">
                 <div class="tab-buttons">
                     <button
                         class="link link--button link--button-blue"
@@ -14,10 +14,16 @@
                 </div>
                 <div class="container-forms">
                     <template v-if="windowWidth  > 768 || currentTab === 'signin'">
-                        <SigninForm />
+                        <div>
+                            <h1 class="login login--title">{{ $t('headers.login')}}</h1>
+                            <SigninForm />
+                        </div>
                     </template>
                     <template v-if="windowWidth  > 768 || currentTab === 'signup'">
-                        <SignupForm />
+                        <div>
+                            <h1 class="login login--title">{{ $t('headers.register')}}</h1>
+                            <SignupForm />
+                        </div>
                     </template>
                 </div>
             </div>
@@ -39,8 +45,11 @@ export default {
 
     beforeCreate() {
         setTimeout(() => {
-            this.$store.dispatch('user/AUTOLOGIN_USER', { token: this.$store.getters['user/TOKEN'], user: this.$store.getters['user/USER'] })
-        }, 0)
+            this.$store.dispatch("user/AUTOLOGIN_USER", {
+                token: this.$store.getters["user/TOKEN"],
+                user: this.$store.getters["user/USER"]
+            });
+        }, 0);
     },
 
     data() {
@@ -64,6 +73,10 @@ export default {
 
 
 <style lang="scss">
+.container__forms--wrapper {
+    max-width: 1260px;
+}
+
 .container-forms {
     width: 100%;
     display: flex;
