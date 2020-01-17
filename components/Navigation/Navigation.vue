@@ -1,11 +1,10 @@
 <template>
-    <nav class="navigation" :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }">
+    <nav
+        class="navigation"
+        :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }"
+    >
         <ul class="navigation__list">
-            <li
-                class="navigation__item"
-                v-for="(link, index) in links"
-                :key="index"
-            >
+            <li class="navigation__item" v-for="(link, index) in links" :key="index">
                 <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
             </li>
         </ul>
@@ -14,9 +13,9 @@
 
 <script>
 // libs
-import scrollLock from 'scroll-lock'
+import scrollLock from "scroll-lock";
 // mixins
-import window from '~/mixins/window'
+import window from "~/mixins/window";
 
 export default {
     mixins: [window],
@@ -25,35 +24,40 @@ export default {
             return [
                 {
                     to: this.$routes.hautarzt.path,
-                    text: this.$t('links.hautarzt')
+                    text: this.$t("links.hautarzt")
                 },
                 {
                     to: this.$routes.vorteile.path,
-                    text: this.$t('links.vorteile')
+                    text: this.$t("links.vorteile")
                 },
                 {
                     to: this.$routes.faq.path,
-                    text: this.$t('links.faq')
+                    text: this.$t("links.faq")
                 },
                 {
                     to: this.$routes.about.path,
-                    text: this.$t('links.about')
-                },
-            ]
-        },
+                    text: this.$t("links.about")
+                }
+            ];
+        }
     },
     watch: {
         windowWidth(width) {
             // if return to desktop viewport - reset 'app/IS_NAVIGATION_ACTIVE' to default state
-            if (width > 961 && this.$store.getters['app/IS_NAVIGATION_ACTIVE']) {
-                this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
+            if (
+                width > 961 &&
+                this.$store.getters["app/IS_NAVIGATION_ACTIVE"]
+            ) {
+                this.$store.commit("app/SET_IS_NAVIGATION_ACTIVE", false);
             }
         },
-        '$store.state.app.isNavigationActive'(isNavigationActive) {
-            isNavigationActive ? scrollLock.disablePageScroll() : scrollLock.enablePageScroll()
-        },
-    },
-}
+        "$store.state.app.isNavigationActive"(isNavigationActive) {
+            isNavigationActive
+                ? scrollLock.disablePageScroll()
+                : scrollLock.enablePageScroll();
+        }
+    }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -73,7 +77,6 @@ export default {
     &--active {
         left: 0;
     }
-
 
     &__list {
         padding: 0;
@@ -96,7 +99,6 @@ export default {
         color: $color-white;
         text-decoration: none;
     }
-
 
     @include tablet-big {
         position: static;

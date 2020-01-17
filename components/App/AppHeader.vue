@@ -1,5 +1,8 @@
 <template>
-    <header class="app-header" :class="{ 'app-header--bg-transparent': isHomePage, 'app-header--bg-default': scrollTop > 68 }">
+    <header
+        class="app-header"
+        :class="{ 'app-header--bg-transparent': isHomePage, 'app-header--bg-default': scrollTop > 68 }"
+    >
         <div class="app-header__inner">
             <div class="app-header__item">
                 <AppLogo />
@@ -16,12 +19,12 @@
 
 <script>
 // mixins
-import window from '~/mixins/window'
+import window from "~/mixins/window";
 
 // components
-import AppLogo from "~/components/App/AppLogo"
-import Navigation from "~/components/Navigation/Navigation"
-import NavigationToggler from "~/components/Navigation/NavigationToggler"
+import AppLogo from "~/components/App/AppLogo";
+import Navigation from "~/components/Navigation/Navigation";
+import NavigationToggler from "~/components/Navigation/NavigationToggler";
 
 export default {
     mixins: [window],
@@ -32,10 +35,10 @@ export default {
     },
     computed: {
         isHomePage() {
-            return this.$route.name === 'index'
+            return this.$route.name === "index";
         }
     }
-}
+};
 </script>
 
 <style lang="scss">
@@ -45,7 +48,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 15px;
+    padding: 25px 15px 10px;
     background: $color-stratos;
 
     &--bg-transparent {
