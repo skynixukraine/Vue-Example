@@ -188,6 +188,7 @@ export default {
                         })
                 })
                 .catch((response) => {
+                    this.$root.$emit('showNotify', { type: 'error', text: response.message })
                     this.handleErrorResponse(response.errors)
                     // re request captcha (need update after each form send)
                     this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
@@ -230,7 +231,7 @@ export default {
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
+                this.$root.$emit('showNotify', { type: 'error', text: 'Recaptcha not exist.' })
                 return false
             }
 
