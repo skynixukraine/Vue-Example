@@ -1,1 +1,0 @@
-exports.ids=[22],exports.modules={186:function(e,t,r){"use strict";r.r(t);var c={},l=r(1),component=Object(l.a)(c,(function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"page"},[this._ssrNode('<div class="section"><div class="container"><h1>Vorteile</h1></div></div>')])}),[],!1,null,null,"c67234ae");t.default=component.exports}};
