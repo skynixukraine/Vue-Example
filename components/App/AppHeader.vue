@@ -48,8 +48,15 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
+    height: 98px;
     padding: 25px 15px 10px;
     background: $color-stratos;
+
+    @include tablet-big{
+        height: 115px;
+    }
+
+
 
     &--bg-transparent {
         background: transparent;

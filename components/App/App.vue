@@ -4,18 +4,6 @@
     </div>
 </template>
 
-<script>
-export default {
-    created() {
-        if (process.client) {
-            let recaptchaScript = document.createElement('script')
-            recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI')
-            document.body.appendChild(recaptchaScript)
-        }
-    }
-}
-</script>
-
 <style lang="scss">
 /*********************
 START: GENERAL

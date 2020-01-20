@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const OPTIONS = {
-    baseURL: process.env.BASE_API_URL,
+    baseURL: 'https://staging.onl-haut.skynix.co/api/v1',
     headers: {
         'Content-Type': 'multipart/form-data'
     }

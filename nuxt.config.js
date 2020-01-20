@@ -12,6 +12,9 @@ module.exports = {
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
             { hid: 'description', name: 'description', content: 'Nuxt.js project' }
         ],
+        script: [
+            { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` },
+        ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         ]
@@ -50,6 +53,8 @@ module.exports = {
         { src: '~/plugins/custom/timeOfDay' },
         { src: '~/plugins/custom/window', mode: 'client' },
 
+        { src: '~plugins/modules/vuexSharedMutations', mode: 'client' },
+        { src: '~/plugins/modules/recaptcha', mode: 'client' },
         { src: '~/plugins/modules/localStorage', mode: 'client' },
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/googleMaps' },

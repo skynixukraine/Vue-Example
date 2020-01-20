@@ -26,11 +26,22 @@
 <script>
 // mixins
 import modal from '~/mixins/modal'
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
     mixins: [
         modal,
+        recaptcha,
     ],
+
+    created() {
+        if (process.client) {
+            this.$recaptchaLoaded()
+                .then(() => {
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
+                })
+        }
+    },
 
     methods: {
         onResendEmail() {
@@ -38,14 +49,12 @@ export default {
 
             this.$store.dispatch('user/SEND_EMAIL_VERIFICATION_LINK', requestData)
                 .then(response => {
-                    // дописать завтра с утра
+                    // ...
                 })
                 .catch(error => {
-
+                    // ...
                 })
-            
-            // re request captcha (need update after each form send)
-            // ...
+            this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
         },
 
         prepareDataForSending({ email, recaptchaToken }) {
