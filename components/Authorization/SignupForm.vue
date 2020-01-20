@@ -1,24 +1,24 @@
 <template>
-    <form
-        action=""
-        class="form"
-        method="POST"
-        @submit.prevent="onSubmit"
-    >
-        <div class="form__item">
-            <div class="form__title">{{ $t('forms.enter-email') }}</div>
+    <form action class="form form--register" method="POST" @submit.prevent="onSubmit">
+        <div class="form__item form__item--login">
+            <div class="form__title form__title--login">{{ $t('forms.enter-email') }}</div>
             <input
-                class="input"
+                class="input input--login"
                 type="email"
                 name="email"
                 ref="email"
                 v-model="models.email"
                 @keyup="onEmailChange"
             />
+            <img
+                class="check-icon"
+                :src="require('~/static/images/icons/check-icon.svg')"
+                alt="check-icon"
+            />
             <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
         </div>
-        <div class="form__item">
-            <div class="form__title">{{ $t('forms.create-password') }}</div>
+        <div class="form__item form__item--password">
+            <div class="form__title form__title--password">{{ $t('forms.create-password') }}</div>
             <input
                 class="input"
                 type="password"
@@ -27,10 +27,15 @@
                 v-model="models.password"
                 @keyup="onPasswordChange"
             />
+            <img
+                class="eye-icon"
+                :src="require('~/static/images/icons/eye-icon.svg')"
+                alt="eye-icon"
+            />
             <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
         </div>
         <div class="form__item">
-            <div class="form__title">{{ $t('forms.confirm-password') }}</div>
+            <div class="form__title form__title--password">{{ $t('forms.confirm-password') }}</div>
             <input
                 class="input"
                 type="password"
@@ -39,11 +44,15 @@
                 v-model="models.password_confirmation"
                 @keyup="onConfirmPasswordChange"
             />
-            <div class="form__message" v-if="errors.password_confirmation">{{ errors.password_confirmation }}</div>
+            <div
+                class="form__message"
+                v-if="errors.password_confirmation"
+            >{{ errors.password_confirmation }}</div>
         </div>
         <div class="form__item">
-            <div class="form__title">{{ $t('forms.phone-number') }}</div>
-            <vue-tel-input 
+            <div class="form__title form__title--phone_number">{{ $t('forms.phone-number') }}</div>
+            <vue-tel-input
+                id="vue-tel-input"
                 name="phone_number"
                 v-model="models.phone_number"
                 @input="onPhoneChange"
@@ -51,7 +60,7 @@
             <div class="form__message" v-if="errors.phone_number">{{ errors.phone_number }}</div>
         </div>
         <div class="form__item">
-            <div class="form__title">{{ $t('forms.upload-degree') }}</div>
+            <div class="form__title form__title--degree">{{ $t('forms.upload-degree') }}</div>
             <input
                 class="input input--hidden"
                 type="file"
@@ -59,11 +68,26 @@
                 ref="degree"
                 @change="onDegreeUpload"
             />
-            <button class="link link--button link--button-white" type="button" @click="addFileDegree">Add Degree</button>
+
+            <button
+                class="link link--button link--button-white link--button--upload"
+                type="button"
+                @click="addFileDegree"
+            >
+                <img
+                    class="paper-fastener-button-image"
+                    :src="require('~/static/images/icons/paper-fastener-button-icon.svg')"
+                    alt="paper-fastener-button"
+                />
+                <p>Add Degree</p>
+            </button>
+
             <div class="form__message" v-if="errors.degree">{{ errors.degree }}</div>
         </div>
         <div class="form__item">
-            <div class="form__title">{{ $t('forms.upload-certification') }}</div>
+            <div
+                class="form__title form__title--certification"
+            >{{ $t('forms.upload-certification') }}</div>
             <input
                 class="input input--hidden"
                 type="file"
@@ -71,11 +95,22 @@
                 ref="certification"
                 @change="onCertificationUpload"
             />
-            <button class="link link--button link--button-white" type="button" @click="addFileCertification">Add Certification</button>
+            <button
+                class="link link--button link--button-white link--button--upload"
+                type="button"
+                @click="addFileCertification"
+            >
+                <img
+                    class="paper-fastener-button-image"
+                    :src="require('~/static/images/icons/paper-fastener-button-icon.svg')"
+                    alt="paper-fastener-button"
+                />
+                <p>Add Certification</p>
+            </button>
             <div class="form__message" v-if="errors.certification">{{ errors.certification }}</div>
         </div>
-        <div class="form__item">
-            <div class="form__title">{{ $t('forms.i-accept') }}</div>
+        <div class="form__item form__item--checkbox">
+            <div class="form__title form__title--accepted">{{ $t('forms.i-accept') }}</div>
             <input
                 type="checkbox"
                 name="accepted"

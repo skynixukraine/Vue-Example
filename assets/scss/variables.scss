@@ -1,8 +1,8 @@
 // font families
-$font-family-primary: 'Sans', sans-serif;
-$font-family-secondary: 'Antiqua', serif;
-
-
+$font-family-primary: 'Sans',
+sans-serif;
+$font-family-secondary: 'Antiqua',
+serif;
 // colors
 $color-curious-blue: #247EE5;
 $color-tory-blue: #0F44B2;
@@ -20,12 +20,10 @@ $color-footer-link-active: rgba(255, 255, 255, 0.88);
 $color-footer-text: rgba(255, 255, 255, 0.44);
 $color-gradient-blue-light: linear-gradient(270deg, #247EE5 0%, #0F44B2 100%);
 $color-gradient-blue-dark: linear-gradient(270deg, #0F44B2 0%, #042052 100%);
-
-
-
 // Screen viewport
 $screen-phone-big-min: 480px;
 $screen-tablet-min: 720px;
 $screen-tablet-big-min: 962px;
 $screen-desktop-min: 1280px;
+$screen-desktop-l: 1366px;
 $screen-desktop-big-min: 1920px;

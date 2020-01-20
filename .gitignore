@@ -1,5 +1,4 @@
 node_modules/
 static/sw.js
 configs/env.js
-
 .idea/

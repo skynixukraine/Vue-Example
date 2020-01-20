@@ -24,8 +24,7 @@ export default {
     mixins: [window],
     methods:{
         closeNavMenu(){
-            console.log("sss");
-            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false);
+            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
         }
     },
     computed: {

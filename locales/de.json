@@ -60,7 +60,9 @@
         "for-dermatologists": "Für Hautärzte",
         "research": "Forschung",
         "formal": "Formales",
-        "start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt"
+        "start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt",
+        "login": "Log In",
+        "register": "Register"
     },
     "banners": {
         "herobanner": {
