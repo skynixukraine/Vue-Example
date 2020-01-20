@@ -84,6 +84,18 @@ export default {
         })
     },
 
+    async logoutUser(logoutData) {
+        return new Promise ((resolve, reject) => {
+            HTTP.patch('/doctors/logout', logoutData)
+                .then(response => {
+                    console.log('LOGOUT RESPONSE: ', response)
+                })
+                .catch(error => {
+                    console.log('LOGOUT ERROR: ', error)
+                })
+        })
+    },
+
     /**
      * Load User By Id
      * @param {Object} {id, token}

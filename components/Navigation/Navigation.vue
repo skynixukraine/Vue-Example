@@ -10,6 +10,9 @@
             >
                 <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
             </li>
+            <li v-if="Object.keys($store.getters['user/USER']).length">
+                <button type="button">logout</button>
+            </li>
         </ul>
     </nav>
 </template>
