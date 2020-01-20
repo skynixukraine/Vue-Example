@@ -12,11 +12,12 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_workbox_297406ae from 'nuxt_plugin_workbox_297406ae' // Source: ./workbox.js (mode: 'client')
+import nuxt_plugin_workbox_5e824221 from 'nuxt_plugin_workbox_5e824221' // Source: ./workbox.js (mode: 'client')
 import nuxt_plugin_routes_3558dcf2 from 'nuxt_plugin_routes_3558dcf2' // Source: ../plugins/injections/routes (mode: 'all')
 import nuxt_plugin_apiRoutes_59ebfab2 from 'nuxt_plugin_apiRoutes_59ebfab2' // Source: ../plugins/injections/apiRoutes (mode: 'all')
 import nuxt_plugin_googleApiRoutes_0f246e2e from 'nuxt_plugin_googleApiRoutes_0f246e2e' // Source: ../plugins/injections/googleApiRoutes (mode: 'all')
 import nuxt_plugin_recaptchaActions_b0e367da from 'nuxt_plugin_recaptchaActions_b0e367da' // Source: ../plugins/injections/recaptchaActions (mode: 'all')
+import nuxt_plugin_modals_467954ba from 'nuxt_plugin_modals_467954ba' // Source: ../plugins/injections/modals (mode: 'all')
 import nuxt_plugin_timeOfDay_2267f5d0 from 'nuxt_plugin_timeOfDay_2267f5d0' // Source: ../plugins/custom/timeOfDay (mode: 'all')
 import nuxt_plugin_window_4bc45498 from 'nuxt_plugin_window_4bc45498' // Source: ../plugins/custom/window (mode: 'client')
 import nuxt_plugin_vuexSharedMutations_a4289d98 from 'nuxt_plugin_vuexSharedMutations_a4289d98' // Source: ../plugins/modules/vuexSharedMutations (mode: 'client')
@@ -184,8 +185,8 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_workbox_297406ae === 'function') {
-    await nuxt_plugin_workbox_297406ae(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_5e824221 === 'function') {
+    await nuxt_plugin_workbox_5e824221(app.context, inject)
   }
 
   if (typeof nuxt_plugin_routes_3558dcf2 === 'function') {
@@ -202,6 +203,10 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_recaptchaActions_b0e367da === 'function') {
     await nuxt_plugin_recaptchaActions_b0e367da(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_modals_467954ba === 'function') {
+    await nuxt_plugin_modals_467954ba(app.context, inject)
   }
 
   if (typeof nuxt_plugin_timeOfDay_2267f5d0 === 'function') {

@@ -1,25 +1,24 @@
 const DEFAULT_COUNTDOWN = 60
-const DEFAULT_COUNTDOWN_INTERVAL_ID = null
 
 export default {
-    beforeDestroy() {
-        clearInterval(this.countdownIntervalId)
-    },
-
     data() {
         return {
-            countdown: DEFAULT_COUNTDOWN,
-            countdownIntervalId: DEFAULT_COUNTDOWN_INTERVAL_ID
+            countdown: DEFAULT_COUNTDOWN
         }
     },
 
     methods: {
-        startCountDown() {
-            this.countdownIntervalId = setInterval(() => {
-                if (this.countdown > 0) {
-                    this.countdown = this.countdown--
-                }
-            }, 1000)
+        startCountdown(number) {
+            if (!arguments[1]) {
+                this.countdown = number
+            }
+
+            if(this.countdown > 0) {
+                setTimeout(() => {
+                    this.countdown -= 1
+                    this.startCountdown(number, true)
+                }, 1000)
+            }
         }
-    },
+    }
 }
