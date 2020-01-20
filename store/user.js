@@ -107,8 +107,6 @@ export const actions = {
     },
 
     async SEND_EMAIL_VERIFICATION_LINK ({ commit }, requestData) {
-        console.log('rd: ', requestData);
-        
         return new Promise ((resolve, reject) => {
             UserApi.sendEmailVerifyLink(requestData)
                 .then(response => {
