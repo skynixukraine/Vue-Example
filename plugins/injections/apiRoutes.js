@@ -9,7 +9,7 @@ export default ({ app }, inject) => {
             path: '/doctors'
         },
     }
-    
+
     Vue.prototype.$apiRoutes = OPTIONS
     app.apiRoutes = OPTIONS
 }

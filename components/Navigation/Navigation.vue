@@ -1,5 +1,7 @@
 <template>
-    <nav class="navigation" :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }">
+    <nav class="navigation" :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }"
+        @click.stop="closeNavMenu"
+    >
         <ul class="navigation__list">
             <li
                 class="navigation__item"
@@ -20,6 +22,11 @@ import window from '~/mixins/window'
 
 export default {
     mixins: [window],
+    methods:{
+        closeNavMenu(){
+            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
+        }
+    },
     computed: {
         links() {
             return [
