@@ -20,8 +20,8 @@
         <div class="form__item form__item--password">
             <div class="form__title form__title--password">{{ $t('forms.create-password') }}</div>
             <input
-                class="input"
-                type="password"
+                class="input input--password"
+                type="text"
                 name="password"
                 ref="password"
                 v-model="models.password"
@@ -37,8 +37,8 @@
         <div class="form__item">
             <div class="form__title form__title--password">{{ $t('forms.confirm-password') }}</div>
             <input
-                class="input"
-                type="password"
+                class="input input--password"
+                type="text"
                 name="password_confirmation"
                 ref="password_confirmation"
                 v-model="models.password_confirmation"
@@ -125,7 +125,7 @@
                 class="link link--button link--button-blue"
                 type="submit"
                 :disabled="isFormSending"
-            >{{ isFormSending ? 'loading...'  : $t('links.signup') }}</button>
+            >{{ isFormSending ? 'loading...' : $t('links.signup') }}</button>
         </div>
     </form>
 </template>
@@ -313,3 +313,227 @@ export default {
     }
 }
 </script>
+
+
+<style lang="scss">
+@mixin input-field {
+    width: 295px;
+    height: 40px;
+    background: #ffffff;
+    border: 2px solid #247ee5;
+    box-sizing: border-box;
+    border-radius: 4px;
+ 
+    @include phone-big {
+        height: 56px;
+        width: 400px;
+    }
+
+    @include desktop {
+        width: 544px;
+    }
+}
+
+@mixin form__title--text {
+    font-family: TheSansB;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+    color: #7a7d84;
+
+    @include phone-big {
+        font-size: 16px;
+    }
+
+    @include desktop {
+        font-size: 18px;
+    }
+}
+
+.login {
+    &--title {
+        text-align: center;
+        font-family: TheAntiquaB;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 64px;
+        color: #247ee5;
+
+        @include phone-big {
+            font-size: 48px;
+        }
+    }
+}
+
+.form {
+    &--register {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .form__item {
+            margin: 2% auto;
+        }
+    }
+}
+
+.check-icon,
+.eye-icon {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    @include phone-big {
+        top: 48px;
+    }
+}
+
+.link {
+    &--button {
+        width: 300px;
+        margin: 2% auto;
+        border-radius: 4px;
+
+        @include phone-big {
+            height: 56px;
+            width: 335px;
+        }
+        @include tablet {
+            width: 544px;
+        }
+    }
+
+    &--button-blue {
+        background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
+        border: 1px solid #0f44b2;
+
+        &:hover {
+            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
+            border: 1px solid #0f44b2;
+        }
+    }
+}
+
+.input {
+    &--login {
+        @include input-field;
+
+        ::after {
+            content: "Test";
+        }
+    }
+    &--password {
+        @include input-field;
+    }
+    &--phone {
+        @include input-field;
+    }
+}
+
+// Phone field input
+#vue-tel-input {
+    @include input-field;
+    font-size: 15px;
+}
+
+.form__title {
+    &--login,
+    &--password,
+    &--phone_number,
+    &--degree,
+    &--certification,
+    &--accepted {
+        @include form__title--text;
+    }
+}
+
+.form__item {
+    &--login,
+    &--password {
+        position: relative;
+    }
+
+    &--checkbox {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+
+        @include phone-big {
+            flex-direction: row-reverse;
+        }
+
+        .form__title--accepted {
+            font-size: 14px;
+            text-align: center;
+
+            @include phone-big {
+                flex-direction: left;
+            }
+        }
+    }
+
+    input[type="checkbox"] {
+        order: 1;
+    }
+
+    .form__title{
+        padding-left: 5px;
+    }
+   
+    .form__message {
+        padding-left: 15px;
+        
+        @include phone-big {
+            padding-left: 15px;
+        }
+    }
+
+    .link {
+        &--button {
+            width: 295px;
+            margin: 2% auto;
+            border-radius: 4px;
+
+            @include phone-big {
+                height: 56px;
+                width: 400px;
+            }
+
+            @include desktop {
+                width: 544px;
+            }
+
+            &--upload {
+                position: relative;
+                text-align: left;
+
+                p {
+                    padding-left: 12px;
+                }
+                img {
+                    position: absolute;
+                    top: 12px;
+                    left: 11px;
+                }
+                font-family: TheSansB;
+                background: #ffffff;
+                border: 2px solid #247ee5;
+                box-sizing: border-box;
+                border-radius: 4px;
+                color: rgba(122, 125, 132, 0.5);
+                font-size: 18px;
+                text-transform: lowercase;
+                line-height: 18px;
+
+                ::first-letter {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+</style>
