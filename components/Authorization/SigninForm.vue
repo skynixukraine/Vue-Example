@@ -203,11 +203,6 @@ export default {
         margin: 2% auto;
         border-radius: 4px;
 
-        // @media (min-width: #{$screen-phone-big-min}) {
-        //     width: 335px;
-        //     height: 56px;
-        // }
-
         @include phone-big {
                 height: 56px;
                 width: 400px;
