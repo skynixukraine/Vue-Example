@@ -166,11 +166,37 @@ export default {
             HTTP.post('/doctors/send-email-verification-link', requestData)
                 .then(response => {
                     console.log('sendEmailVerifyLink response: ', response);
-                    resolve(response)
+                    const responseData = {          
+                        success: true,
+                        status: response.status,
+                        message: 'Verify link has been send on your email.',
+                    }
+                    resolve(responseData)
                 })
                 .catch(error => {
                     console.log('sendEmailVerifyLink error: ', error);
-                    reject(error)
+                    let message = ''
+
+                    if (error.response.status === 304) {
+                        message = 'An e-mail already verified.'
+                    }
+                    if (error.response.status === 404) {
+                        message = 'The doctor with provided email not found.'
+                    }
+                    if (error.response.status === 422) {
+                        message = 'An email is not valid.'
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
+
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        message,
+                    }
+
+                    reject(responseData)
                 })
         })
     },

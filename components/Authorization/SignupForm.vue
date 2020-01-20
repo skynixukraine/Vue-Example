@@ -134,11 +134,13 @@
 // mixins
 import validator from '~/mixins/validator'
 import recaptcha from '~/mixins/recaptcha'
+import modal from '~/mixins/modal'
 
 export default {
     mixins: [
         validator,
-        recaptcha
+        recaptcha,
+        modal,
     ],
 
     created() {
@@ -179,7 +181,7 @@ export default {
                 .then((response) => {
                     this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
                         .then((response) => {
-                            this.$modal.show('register-success')
+                            this.openModal(this.$modals.registerSuccess)
                             // re request captcha (need update after each form send)
                             this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                             this.isFormSending = false

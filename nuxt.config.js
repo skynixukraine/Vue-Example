@@ -3,7 +3,7 @@ import configServer from './configs/server'
 import configEnv from './configs/env'
 
 module.exports = {
-    server: configServer,
+    //server: configServer,
     env: configEnv,
     head: {
         title: 'client',
@@ -49,6 +49,7 @@ module.exports = {
         { src: '~/plugins/injections/apiRoutes' },
         { src: '~/plugins/injections/googleApiRoutes' },
         { src: '~/plugins/injections/recaptchaActions' },
+        { src: '~/plugins/injections/modals' },
 
         { src: '~/plugins/custom/timeOfDay' },
         { src: '~/plugins/custom/window', mode: 'client' },
