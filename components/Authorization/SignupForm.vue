@@ -315,57 +315,7 @@ export default {
 </script>
 
 
-<style lang="scss">
-@mixin input-field {
-    width: 295px;
-    height: 40px;
-    background: #ffffff;
-    border: 2px solid #247ee5;
-    box-sizing: border-box;
-    border-radius: 4px;
- 
-    @include phone-big {
-        height: 56px;
-        width: 400px;
-    }
-
-    @include desktop {
-        width: 544px;
-    }
-}
-
-@mixin form__title--text {
-    font-family: TheSansB;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 28px;
-    color: #7a7d84;
-
-    @include phone-big {
-        font-size: 16px;
-    }
-
-    @include desktop {
-        font-size: 18px;
-    }
-}
-
-.login {
-    &--title {
-        text-align: center;
-        font-family: TheAntiquaB;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 32px;
-        line-height: 64px;
-        color: #247ee5;
-
-        @include phone-big {
-            font-size: 48px;
-        }
-    }
-}
+<style lang="scss" scoped>
 
 .form {
     &--register {
@@ -381,76 +331,31 @@ export default {
     }
 }
 
-.check-icon,
-.eye-icon {
-    position: absolute;
-    top: 40px;
-    right: 20px;
-    @include phone-big {
-        top: 48px;
-    }
-}
-
-.link {
-    &--button {
-        width: 300px;
-        margin: 2% auto;
-        border-radius: 4px;
-
-        @include phone-big {
-            height: 56px;
-            width: 335px;
-        }
-        @include tablet {
-            width: 544px;
-        }
-    }
-
-    &--button-blue {
-        background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-        border: 1px solid #0f44b2;
-
-        &:hover {
-            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-            border: 1px solid #0f44b2;
-        }
-    }
-}
-
-.input {
-    &--login {
-        @include input-field;
-
-        ::after {
-            content: "Test";
-        }
-    }
-    &--password {
-        @include input-field;
-    }
-    &--phone {
-        @include input-field;
-    }
-}
-
-// Phone field input
-#vue-tel-input {
-    @include input-field;
-    font-size: 15px;
-}
-
-.form__title {
-    &--login,
-    &--password,
-    &--phone_number,
-    &--degree,
-    &--certification,
-    &--accepted {
-        @include form__title--text;
-    }
-}
 
 .form__item {
+    .form__title {
+        font-family: TheSansB;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 28px;
+        color: #7a7d84;
+
+        @include phone-big {
+            font-size: 16px;
+        }
+
+        @include desktop {
+            font-size: 18px;
+        }
+
+    }
+
+     .form__message {
+        color: red;
+        padding-left: 10px;
+    }
+
     &--login,
     &--password {
         position: relative;
@@ -462,7 +367,7 @@ export default {
         justify-content: center;
         align-items: center;
 
-        @include phone-big {
+        @include tablet {
             flex-direction: row-reverse;
         }
 
@@ -470,9 +375,38 @@ export default {
             font-size: 14px;
             text-align: center;
 
-            @include phone-big {
+            @include tablet {
                 flex-direction: left;
             }
+        }
+    }
+
+
+    .input, #vue-tel-input  {
+        width: 295px;
+        height: 40px;
+        background: #ffffff;
+        border: 2px solid #247ee5;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding-left: 2%;
+
+
+        @include phone-big {
+            height: 56px;
+            width: 400px;
+        }
+
+        @include desktop {
+            width: 544px;
+        }
+    }
+
+    .vti__input{
+        max-width: 150px;
+
+        @include phone-big {
+            max-width: 250px;
         }
     }
 
@@ -480,10 +414,6 @@ export default {
         order: 1;
     }
 
-    .form__title{
-        padding-left: 5px;
-    }
-   
     .form__message {
         padding-left: 15px;
         
@@ -533,7 +463,40 @@ export default {
                     text-transform: uppercase;
                 }
             }
+
+            
+        }
+
+        &--button-blue {
+            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
+            border: 1px solid #0f44b2;
+
+            &:hover {
+                background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
+                border: 1px solid #0f44b2;
+            }
         }
     }
+
+    .check-icon,
+    .eye-icon {
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        @include phone-big {
+            top: 48px;
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
 </style>

@@ -133,56 +133,7 @@ export default {
 
 
 
-<style lang="scss">
-@mixin input-field {
-    width: 250px;
-    height: 40px;
-    background: #ffffff;
-    border: 2px solid #247ee5;
-    box-sizing: border-box;
-    border-radius: 4px;
-    @media (min-width: #{$screen-phone-big-min}) {
-        width: 300px;
-        height: 56px;
-    }
-
-    @include desktop {
-        width: 544px;
-    }
-}
-
-@mixin form__title--text {
-    font-family: TheSansB;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 28px;
-    color: #7a7d84;
-
-    @include phone-big {
-        font-size: 16px;
-    }
-
-    @include tablet-big {
-        font-size: 18px;
-    }
-}
-
-.login {
-    &--title {
-        text-align: center;
-        font-family: TheAntiquaB;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 32px;
-        line-height: 64px;
-        color: #247ee5;
-
-        @include phone-big {
-            font-size: 48px;
-        }
-    }
-}
+<style lang="scss" scoped>
 
 .form {
     &--login {
@@ -197,57 +148,94 @@ export default {
     }
 }
 
-.link {
-    &--button {
-        width: 295px;
-        margin: 2% auto;
-        border-radius: 4px;
-
-        @include phone-big {
-                height: 56px;
-                width: 400px;
-            }
-
-        @include desktop {
-            width: 544px;
-        }
-    }
-
-    &--button-blue {
-        color: $color-white;
-        background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-        border: 1px solid #0f44b2;
-
-        &:hover {
-            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-            border: 1px solid #0f44b2;
-        }
-    }
-}
-
-.input {
-    padding-left: 2%;
-
-    &--login,
-    &--password {
-        @include input-field;
-    }
-}
-
-.form__title {
-    &--login,
-    &--password {
-        @include form__title--text;
-    }
-}
-
 .form__item {
     .form__title {
+        font-family: TheSansB;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 28px;
+        color: #7a7d84;
         padding-left: 10px;
-    }
+
+        @include phone-big {
+            font-size: 16px;
+        }
+
+        @include tablet-big {
+            font-size: 18px;
+        }
+}
+
+
+  
     .form__message {
         color: red;
         padding-left: 10px;
     }
+
+    .input {
+        width: 295px;
+        height: 40px;
+        background: #ffffff;
+        border: 2px solid #247ee5;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding-left: 2%;
+
+        @media (min-width: #{$screen-phone-big-min}) {
+                    width: 350px;
+                }
+
+                @include phone-big {
+                    height: 56px;
+                    width: 400px;
+                }
+                @include desktop {
+                    width: 544px;
+                }
+    }
+
+    .link {
+        &--button {
+            width: 295px;
+            margin: 2% auto;
+            border-radius: 4px;
+
+            @media (min-width: #{$screen-phone-big-min}) {
+                    width: 350px;
+                }
+
+            @include phone-big {
+                height: 56px;
+                width: 400px;
+            }
+            @include desktop {
+            width: 544px;
+            }
+        }
+
+        &--button-blue {
+            color: $color-white;
+            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
+            border: 1px solid #0f44b2;
+
+            &:hover {
+                background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
+                border: 1px solid #0f44b2;
+            }
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
 </style>

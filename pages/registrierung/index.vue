@@ -13,10 +13,10 @@
                     >Sign Up</button>
                 </div>
                 <div class="container-forms">
-                    <template v-if="windowWidth  > 768 || currentTab === 'signin'">
+                    <template v-if="windowWidth  > 962 || currentTab === 'signin'">
                         <Signin />
                     </template>
-                    <template v-if="windowWidth  > 768 || currentTab === 'signup'">
+                    <template v-if="windowWidth  > 962 || currentTab === 'signup'">
                         <Signup />
                     </template>
                 </div>
@@ -76,7 +76,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     margin-top: 5%;
 
     @include desktop {
@@ -84,6 +84,15 @@ export default {
     }
     div {
         padding: 0 10px;
+        // width: 100%;
+
+        @media (min-width: #{962px}) {
+        // width: 430px;
+
+
+    }
+
+
     }
 }
 
@@ -93,7 +102,7 @@ export default {
     align-content: center;
     margin: 0 auto;
 
-    @include tablet {
+    @media (min-width: #{962px}) {
         display: none;
     }
 
