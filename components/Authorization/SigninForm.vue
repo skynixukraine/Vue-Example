@@ -95,6 +95,7 @@ export default {
             if (!this.recaptchaToken) {
                 this.$root.$emit("showNotify", {
                     type: "error",
+
                     text:
                         "Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму."
                 });
@@ -202,10 +203,15 @@ export default {
         margin: 2% auto;
         border-radius: 4px;
 
-        @media (min-width: #{$screen-phone-big-min}) {
-            width: 335px;
-            height: 56px;
-        }
+        // @media (min-width: #{$screen-phone-big-min}) {
+        //     width: 335px;
+        //     height: 56px;
+        // }
+
+        @include phone-big {
+                height: 56px;
+                width: 400px;
+            }
 
         @include desktop {
             width: 544px;

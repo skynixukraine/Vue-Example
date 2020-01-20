@@ -336,17 +336,11 @@ export default {
     border: 2px solid #247ee5;
     box-sizing: border-box;
     border-radius: 4px;
-    // @media (min-width: #{$screen-phone-big-min}) {
-    //     width: 350px;
-    // }
-
+ 
     @include phone-big {
-        width: 335px;
         height: 56px;
+        width: 400px;
     }
-    // @include tablet {
-    //     width: 430px;
-    // }
 
     @include desktop {
         width: 544px;
@@ -391,7 +385,6 @@ export default {
         width: 100%;
         display: flex;
         flex-direction: column;
-        // flex-wrap: wrap;
         justify-content: center;
         align-items: center;
 
@@ -478,12 +471,21 @@ export default {
 
     &--checkbox {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
 
+        @include phone-big {
+            flex-direction: row-reverse;
+        }
+
         .form__title--accepted {
             font-size: 14px;
+            text-align: center;
+
+            @include phone-big {
+                flex-direction: left;
+            }
         }
     }
 
@@ -491,9 +493,16 @@ export default {
         order: 1;
     }
 
-    .form__title,
-    .form__message {
+    .form__title{
         padding-left: 5px;
+    }
+   
+    .form__message {
+        padding-left: 15px;
+        
+        @include phone-big {
+            padding-left: 15px;
+        }
     }
 
     .link {
@@ -502,9 +511,14 @@ export default {
             margin: 2% auto;
             border-radius: 4px;
 
-            @media (min-width: #{$screen-phone-big-min}) {
-                width: 335px;
+            // @media (min-width: #{$screen-phone-big-min}) {
+            //     width: 335px;
+            //     height: 56px;
+            // }
+
+            @include phone-big {
                 height: 56px;
+                width: 400px;
             }
 
             @include desktop {
@@ -515,9 +529,9 @@ export default {
                 position: relative;
                 text-align: left;
 
-                // p {
-                //     padding-left: 5px;
-                // }
+                p {
+                    padding-left: 12px;
+                }
                 img {
                     position: absolute;
                     top: 12px;
