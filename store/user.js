@@ -20,6 +20,10 @@ export const getters = {
     USER (state) {
         return state.user
     },
+
+    IS_USER_LOGIN (state) {
+        return !!state.token.access_token
+    },
 }
 
 

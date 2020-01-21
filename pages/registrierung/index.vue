@@ -35,12 +35,7 @@ import Signup from "~/components/Authorization/Signup";
 const DEFAULT_CURRENT_TAB = "signin";
 
 export default {
-    validate ({ app, store, redirect }) {
-        if (Object.keys(store.getters['user/TOKEN']).length) {
-            redirect(app.routes.home.path)
-        }
-        return true
-    },
+    middleware: 'nonauth',
 
     mixins: [windowWidth],
 

@@ -1,13 +1,46 @@
 <template>
     <div class="page">
         <div class="section">
-            <div class="container">
-                <h1>{{ `Good ${this.$timeOfDay}` }}</h1>
+            <div class="dashboard-container">
+                <aside class="dashboard-container__sidebar dashboard-sidebar">
+                    <div class="dashboard-sidebar__main">
+                        <div class="dashboard-sidebar__item">
+                            <ul class="dashboard-sidebar-list">
+                                <li class="dashboard-sidebar-list__item">
+                                    <NuxtLink :to="$routes.personalInformation.path">Personal Information</NuxtLink>
+                                </li>
+                                <li class="dashboard-sidebar-list__item">
+                                    <NuxtLink :to="$routes.billing.path">Billing</NuxtLink>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <footer class="dashboard-sidebar__footer">
+                        <div class="dashboard-sidebar__item">
+                            <ul class="dashboard-sidebar-list">
+                                <li class="dashboard-sidebar-list__item">
+                                    <button type="button" @click="onLogout">Logout</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </footer>
+                </aside>
+                <div class="dashboard-container__content dashboard-content">
+                    <h1>{{ `Good ${this.$timeOfDay}` }}, {{ $store.getters['user/USER'].first_name }} {{ $store.getters['user/USER'].last_name }}</h1>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-export default {}
+export default {
+
+    methods: {
+        onLogout() {
+            this.$router.push({ path: this.$routes.home.path })
+            this.$store.dispatch('user/LOGOUT_USER', this.$store.getters['user/TOKEN'].access_token)
+        }
+    }
+}
 </script>
