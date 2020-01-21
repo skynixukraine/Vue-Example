@@ -29,6 +29,9 @@
         "signin": "Sign In",
         "signup": "Sign Up"
     },
+    "warnings": {
+        "loading": "Loading..."
+    },
     "errors": {
         "app": {
             "required-field": "This field is required.",
@@ -38,7 +41,15 @@
             "required-field": "This field is required.",
             "unvalid-email-name": "Unvalid email name.",
             "passwords-not-equal": "Passwords not equal.",
-            "invalid-number": "Invalid phone number."
+            "invalid-number": "Invalid phone number.",
+            "invalid-recaptcha-tocken": "Invalid reCAPTCHA token.",
+            "email-is-empty": "Email is empty.",
+            "password-is-empty": "Password is empty.",
+            "сonfirmation-password-is-empty": "Confirmation password is empty.",
+            "phone-is-empty": "Phone is empty.",
+            "accept-terms-and-conditions": "Accept Terms and Conditions and Privacy Policy.",
+            "validation-failed": "Form validation failed"
+
         }
     },
     "forms": {
@@ -49,7 +60,10 @@
         "phone-number": "Phone Number",
         "upload-degree": "Upload medical degree (or add later)",
         "upload-certification": "Upload board-certification (or add later)",
-        "i-accept": "I accept Terms and Conditions and Privacy Policy"
+        "i-accept": "I accept Terms and Conditions and Privacy Policy",
+        "add-degree": "Add degree",
+        "add-certification": "Add certification"
+
     },
     "headers": {
         "our-family-doctors": "Unsere Hausärzte",

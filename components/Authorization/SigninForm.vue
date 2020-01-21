@@ -9,7 +9,7 @@
                     name="email"
                     ref="email"
                     v-model="models.email"
-                    @keyup="onEmailChange"
+                    @blur="onEmailChange"
                 />
                 <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
             </div>
@@ -21,7 +21,7 @@
                     name="password"
                     ref="password"
                     v-model="models.password"
-                    @keyup="onPasswordChange"
+                    @blur="onPasswordChange"
                 />
                 <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
             </div>
@@ -63,7 +63,8 @@ export default {
             if (!this.validateForm(this.models)) {
                 this.$root.$emit("showNotify", {
                     type: "error",
-                    text: "Форма не прошла предварительную валидацию."
+                    // text: "Форма не прошла предварительную валидацию."
+                    text: $t('errors.form.validation-failed')
                 });
                 return false;
             }
@@ -95,9 +96,8 @@ export default {
             if (!this.recaptchaToken) {
                 this.$root.$emit("showNotify", {
                     type: "error",
-
-                    text:
-                        "Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму."
+                    // text: "Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму."
+                    text: $t('errors.forms.invalid-recaptcha-tocken'), 
                 });
                 return false;
             }
@@ -141,21 +141,19 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-
-        .form__item {
-            margin: 2% auto;
-        }
     }
 }
 
 .form__item {
+    margin: 2% auto;
+
     .form__title {
         font-family: TheSansB;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
         line-height: 28px;
-        color: #7a7d84;
+        color: $color-rolling-stone;
         padding-left: 10px;
 
         @include phone-big {
@@ -167,8 +165,6 @@ export default {
         }
 }
 
-
-  
     .form__message {
         color: red;
         padding-left: 10px;
@@ -184,16 +180,16 @@ export default {
         padding-left: 2%;
 
         @media (min-width: #{$screen-phone-big-min}) {
-                    width: 350px;
-                }
+            width: 350px;
+        }
 
-                @include phone-big {
-                    height: 56px;
-                    width: 400px;
-                }
-                @include desktop {
-                    width: 544px;
-                }
+        @include phone-big {
+            height: 56px;
+            width: 400px;
+        }
+        @include desktop {
+            width: 544px;
+        }
     }
 
     .link {
@@ -203,15 +199,15 @@ export default {
             border-radius: 4px;
 
             @media (min-width: #{$screen-phone-big-min}) {
-                    width: 350px;
-                }
+                width: 350px;
+            }
 
             @include phone-big {
                 height: 56px;
                 width: 400px;
             }
             @include desktop {
-            width: 544px;
+                width: 544px;
             }
         }
 
@@ -228,14 +224,4 @@ export default {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
 </style>
