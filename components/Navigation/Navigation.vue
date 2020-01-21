@@ -10,9 +10,6 @@
             >
                 <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
             </li>
-            <li v-if="Object.keys($store.getters['user/USER']).length">
-                <button type="button" @click="onLogout">logout</button>
-            </li>
         </ul>
     </nav>
 </template>
@@ -64,10 +61,6 @@ export default {
     methods: {
         closeNavMenu(){
             this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
-        },
-
-        onLogout() {
-            this.$store.dispatch('user/LOGOUT_USER', this.$store.getters['user/TOKEN'].access_token)
         }
     }
 
