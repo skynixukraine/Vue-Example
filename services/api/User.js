@@ -84,14 +84,34 @@ export default {
         })
     },
 
-    async logoutUser(logoutData) {
+    async logoutUser(token) {
         return new Promise ((resolve, reject) => {
-            HTTP.patch('/doctors/logout', logoutData)
+            HTTP.patch('/doctors/logout', {}, { headers: {'Authorization': `Bearer ${token}`} })
                 .then(response => {
-                    console.log('LOGOUT RESPONSE: ', response)
+                    const responseData = {
+                        success: true,
+                        status: response.status,
+                        data: response.data.data,
+                        message: 'User success login.',
+                    }
+                    resolve(responseData)
                 })
                 .catch(error => {
-                    console.log('LOGOUT ERROR: ', error)
+                    let message = ''
+
+                    if (error.response.status === 401) {
+                        message = 'Authorization failed.'
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
+
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        message,
+                    }
+                    reject(responseData)
                 })
         })
     },

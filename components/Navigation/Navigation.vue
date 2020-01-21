@@ -11,7 +11,7 @@
                 <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
             </li>
             <li v-if="Object.keys($store.getters['user/USER']).length">
-                <button type="button">logout</button>
+                <button type="button" @click="onLogout">logout</button>
             </li>
         </ul>
     </nav>
@@ -25,11 +25,7 @@ import window from '~/mixins/window'
 
 export default {
     mixins: [window],
-    methods:{
-        closeNavMenu(){
-            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
-        }
-    },
+
     computed: {
         links() {
             return [
@@ -52,6 +48,7 @@ export default {
             ]
         },
     },
+
     watch: {
         windowWidth(width) {
             // if return to desktop viewport - reset 'app/IS_NAVIGATION_ACTIVE' to default state
@@ -63,6 +60,17 @@ export default {
             isNavigationActive ? scrollLock.disablePageScroll() : scrollLock.enablePageScroll()
         },
     },
+
+    methods: {
+        closeNavMenu(){
+            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
+        },
+
+        onLogout() {
+            this.$store.dispatch('user/LOGOUT_USER', this.$store.getters['user/TOKEN'].access_token)
+        }
+    }
+
 }
 </script>
 
