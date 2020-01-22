@@ -16,13 +16,14 @@
         width: 48px;
         height: 48px;
         min-width: 48px;
-        background-image: url('~static/images/icons/logo.svg');
+        background-image: url("~static/images/icons/logo.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
     }
 
     &__text {
+        width: 150px;
         margin-left: 10px;
         font-family: $font-family-secondary;
         color: $color-white;
@@ -31,22 +32,26 @@
     }
 
     &__link {
-
         &:hover {
-
             .app-logo__text {
                 text-decoration: underline;
             }
         }
     }
 
+    @include phone-big {
+        .app-logo {
+            &__text {
+                width: 100%;
+            }
+        }
+    }
 
     @include tablet-big {
-
         & .app-logo__image {
-            width: 52px;
-            height: 52px;
-            min-width: 52px;
+            width: 64px;
+            height: 64px;
+            min-width: 64px;
         }
 
         & .app-logo__text {

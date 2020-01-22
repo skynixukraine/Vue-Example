@@ -4,22 +4,6 @@
     </div>
 </template>
 
-<script>
-export default {
-    mounted() {
-        grecaptcha.ready(function() {
-            grecaptcha
-                .execute("6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI", {
-                    action: "register_doctor"
-                })
-                .then(function(token) {
-                    console.log("token: ", token);
-                });
-        });
-    }
-};
-</script>
-
 <style lang="scss">
 /*********************
 START: GENERAL
@@ -296,6 +280,28 @@ START: COMPONENTS
         }
     }
 }
+
+// dashboard container
+.dashboard-container {
+    display: flex;
+    width: 100%;
+
+    &__sidebar {
+        width: 283px;
+    }
+
+    &__content {
+        flex: 1;
+    }
+}
+
+.dashboard-sidebar {
+    background: $color-gradient-blue-light-revert;
+    color: $color-white;
+}
+
+
+
 
 // list
 .list {

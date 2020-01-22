@@ -2,16 +2,18 @@
     <div>
         <h2>{{ $t('headers.login')}}</h2>
         <SigninForm />
+        <!-- <ForgotPassword /> -->
     </div>
 </template>
 
 <script>
-import SigninForm from "./SigninForm";
+import SigninForm from "~/components/Authorization/SigninForm"
+import ForgotPassword from "~/components/Authorization/ForgotPassword"
 
 export default {
-    name: "Signin",
     components: {
-        SigninForm
+        SigninForm,
+        ForgotPassword
     }
 };
 </script>

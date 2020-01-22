@@ -8,23 +8,38 @@
         </div>
         <footer class="hero-banner__footer">
             <div class="hero-banner__footer-item">
-                <NuxtLink :to="this.$routes.home.path" class="link link--button link--button-white">{{ $t('links.start-inquiry') }}</NuxtLink>
+                <NuxtLink
+                    :to="this.$routes.home.path"
+                    class="link link--button link--button-white"
+                >{{ $t('links.start-inquiry') }}</NuxtLink>
             </div>
             <div class="hero-banner__footer-item">
-                <NuxtLink :to="this.$routes.home.path" class="link link--button link--button-white">{{ $t('links.our-dermatologists') }}</NuxtLink>
+                <NuxtLink
+                    :to="this.$routes.home.path"
+                    class="link link--button link--button-white"
+                >{{ $t('links.our-dermatologists') }}</NuxtLink>
             </div>
         </footer>
-        <img class="hero-banner__phone" :src="require('~/static/images/images/iphone.png')" alt="iphone" />
+        <img
+            class="hero-banner__phone"
+            :src="require('~/static/images/images/iphone.png')"
+            alt="iphone"
+        />
     </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style lang="scss" scoped>
 .hero-banner {
     position: relative;
+    margin-top: 50px;
+
+    @include tablet {
+        margin-top: auto;
+    }
 
     &__main {
         margin-bottom: 64px;
@@ -49,7 +64,6 @@ export default {}
     }
 
     &__footer-item {
-        
         &:first-child {
             margin-bottom: 16px;
         }
@@ -59,15 +73,12 @@ export default {}
         display: none;
     }
 
-
     @include tablet {
-
         &__footer {
             flex-direction: row;
         }
 
         &__footer-item {
-        
             &:first-child {
                 margin-bottom: 0;
                 margin-right: 16px;
@@ -76,7 +87,6 @@ export default {}
     }
 
     @include tablet-big {
-
         &__header {
             width: 55%;
         }
@@ -98,7 +108,6 @@ export default {}
     }
 
     @include desktop {
-
         &__header {
             width: 60%;
         }

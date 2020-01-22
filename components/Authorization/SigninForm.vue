@@ -1,52 +1,56 @@
 <template>
-    <div>
-        <form action class="form form--login" method="POST" @submit.prevent="onSubmit">
-            <div class="form__item">
-                <div class="form__title form__title--login">{{ $t('forms.enter-email') }}</div>
-                <input
-                    class="input input--login"
-                    type="email"
-                    name="email"
-                    ref="email"
-                    v-model="models.email"
-                    @blur="onEmailChange"
-                />
-                <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
-            </div>
-            <div class="form__item">
-                <div class="form__title form__title--password">{{ $t('forms.enter-password') }}</div>
-                <input
-                    class="input input--password"
-                    type="password"
-                    name="password"
-                    ref="password"
-                    v-model="models.password"
-                    @blur="onPasswordChange"
-                />
-                <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
-            </div>
-            <div class="form__item">
-                <button
-                    class="link link--button link--button-blue"
-                    type="submit"
-                >{{ $t('links.signin') }}</button>
-            </div>
-            <ForgotPassword />
-        </form>
-    </div>
+    <form action class="form form--login" method="POST" @submit.prevent="onSubmit">
+        <div class="form__item">
+            <div class="form__title form__title--login">{{ $t('forms.enter-email') }}</div>
+            <input
+                class="input input--login"
+                type="email"
+                name="email"
+                ref="email"
+                v-model="models.email"
+                @blur="onEmailChange"
+            />
+            <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
+        </div>
+        <div class="form__item">
+            <div class="form__title form__title--password">{{ $t('forms.enter-password') }}</div>
+            <input
+                class="input input--password"
+                type="password"
+                name="password"
+                ref="password"
+                v-model="models.password"
+                @blur="onPasswordChange"
+            />
+            <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
+        </div>
+        <div class="form__item">
+            <button
+                class="link link--button link--button-blue"
+                type="submit"
+            >{{ $t('links.signin') }}</button>
+        </div>
+    </form>
 </template>
 
 <script>
-import ForgotPassword from "./ForgotPassword";
-
 // mixins
-import validator from "~/mixins/validator";
+import validator from "~/mixins/validator"
+import recaptcha from '~/mixins/recaptcha'
 
 export default {
-    mixins: [validator],
+    mixins: [
+        validator,
+        recaptcha,
+    ],
 
-    components: {
-        ForgotPassword
+    created() {
+        if (process.client) {
+            this.$recaptchaLoaded()
+                .then(() => {
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.loginDoctor)
+                })
+        }
     },
 
     data() {
@@ -54,53 +58,72 @@ export default {
             models: {
                 email: "",
                 password: ""
-            }
+            },
+            isFormSending: false,
         };
     },
 
     methods: {
         onSubmit() {
-            if (!this.validateForm(this.models)) {
-                this.$root.$emit("showNotify", {
-                    type: "error",
-                    text: $t('errors.form.validation-failed')
-                });
-                return false;
+            this.isFormSending = true
+            if ( !this.validateForm(this.models) ) {
+                this.isFormSending = false
+                return false
             }
 
-            const formData = this.prepareDataForSending(this.models);
+            const formData = this.prepareDataForSending(this.models)
 
-            this.$store.dispatch("user/LOGIN_USER", formData).then(token => {
-                this.$store.dispatch("user/LOAD_USER", {
-                    id: token.data.doctor_id,
-                    token: token.data.access_token
-                });
-            });
+            this.$store.dispatch('user/LOGIN_USER', formData)
+                .then((response) => {
+                    this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
+                        .then((response) => {
+                            this.isFormSending = false
+                            this.$router.push({ path: this.$routes.home.path })
+                        })
+                })
+                .catch((response) => {
+                    this.$root.$emit('showNotify', { type: 'error', text: response.message })
+                    this.handleErrorResponse(response.errors)
+                    // re request captcha (need update after each form send)
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.loginDoctor)
+                    this.isFormSending = false
+                })
         },
 
-        async validateForm(models) {
+        validateForm(models) {
             // check required fields
             if (!models.email) {
                 this.errors["email"] = this.$t("errors.form.required-field");
-                this.$forceUpdate();
+                this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Имейл не заполнен' })
                 return false;
             }
             if (!models.password) {
                 this.errors["password"] = this.$t("errors.form.required-field");
-                this.$forceUpdate();
+                this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Пароль не заполнен' })
                 return false;
             }
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit("showNotify", {
-                    type: "error",
-                    text: $t('errors.forms.invalid-recaptcha-tocken'), 
-                });
-                return false;
+                this.$root.$emit('showNotify', { type: 'error', text: 'Recaptcha not exist.' })
+                return false
             }
 
             return true;
+        },
+
+        handleErrorResponse(errors) {
+            if (Object.keys(errors).length === 0) {
+                return true
+            }
+
+            for (let fieldName in errors) {
+                this.errors[fieldName] = errors[fieldName][0]
+            }
+            this.$forceUpdate()
+            return true
         },
 
         prepareDataForSending(models) {

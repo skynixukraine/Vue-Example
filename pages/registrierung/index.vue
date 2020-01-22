@@ -35,7 +35,7 @@ import Signup from "~/components/Authorization/Signup";
 const DEFAULT_CURRENT_TAB = "signin";
 
 export default {
-    // middleware: 'nonauth',
+    middleware: 'nonauth',
 
     mixins: [windowWidth],
 

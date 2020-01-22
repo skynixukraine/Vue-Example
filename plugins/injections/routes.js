@@ -47,8 +47,17 @@ export default ({ app }, inject) => {
         impressum: {
             path: '/impressum'
         },
+        account: {
+            path: '/account'
+        },
+        billing: {
+            path: '/account/billing'
+        },
+        personalInformation: {
+            path: '/account/personal-information'
+        },
     }
-    
+
     Vue.prototype.$routes = OPTIONS
     app.routes = OPTIONS
 }

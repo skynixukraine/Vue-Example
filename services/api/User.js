@@ -14,7 +14,7 @@ export default {
                         success: true,
                         status: response.status,
                         data: response.data.data,
-                        message: 'User success registered',
+                        message: 'User success registered.',
                     }
                     resolve(responseData)
                 })
@@ -50,20 +50,66 @@ export default {
         return new Promise ((resolve, reject) => {
             HTTP.post('/doctors/login', loginData)
                 .then(response => {
-                    const responseData = {          
+                    const responseData = {
                         success: true,
                         status: response.status,
                         data: response.data.data,
-                        message: 'User success login',
+                        message: 'User success login.',
                     }
                     resolve(responseData)
                 })
                 .catch(error => {
+                    let message = ''
+                    let errors = {}
+
+                    if (error.response.status === 401) {
+                        message = 'An authorization attempt has been failed.'
+                    }
+                    if (error.response.status === 422) {
+                        message = 'There are some validation errors.'
+                        errors = error.response.data.errors
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
+                    
                     const responseData = {
                         success: false,
                         status: error.response.status,
-                        message: error.response.data.message,
-                        errors: error.response.data.errors
+                        message,
+                        errors,
+                    }
+                    reject(responseData)
+                })
+        })
+    },
+
+    async logoutUser(token) {
+        return new Promise ((resolve, reject) => {
+            HTTP.patch('/doctors/logout', {}, { headers: {'Authorization': `Bearer ${token}`} })
+                .then(response => {
+                    const responseData = {
+                        success: true,
+                        status: response.status,
+                        data: response.data.data,
+                        message: 'User success login.',
+                    }
+                    resolve(responseData)
+                })
+                .catch(error => {
+                    let message = ''
+
+                    if (error.response.status === 401) {
+                        message = 'Authorization failed.'
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
+
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        message,
                     }
                     reject(responseData)
                 })
@@ -166,11 +212,37 @@ export default {
             HTTP.post('/doctors/send-email-verification-link', requestData)
                 .then(response => {
                     console.log('sendEmailVerifyLink response: ', response);
-                    resolve(response)
+                    const responseData = {          
+                        success: true,
+                        status: response.status,
+                        message: 'Verify link has been send on your email.',
+                    }
+                    resolve(responseData)
                 })
                 .catch(error => {
                     console.log('sendEmailVerifyLink error: ', error);
-                    reject(error)
+                    let message = ''
+
+                    if (error.response.status === 304) {
+                        message = 'An e-mail already verified.'
+                    }
+                    if (error.response.status === 404) {
+                        message = 'The doctor with provided email not found.'
+                    }
+                    if (error.response.status === 422) {
+                        message = 'An email is not valid.'
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
+
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        message,
+                    }
+
+                    reject(responseData)
                 })
         })
     },

@@ -2,11 +2,7 @@
 import UserApi from '../services/api/User'
 
 // options (init values)
-const DEFAULT_TOKEN = {
-    access_token: '',
-    doctor_id: '',
-    expires_at: {}
-}
+const DEFAULT_TOKEN = {}
 const DEFAULT_USER = {}
 
 
@@ -23,6 +19,10 @@ export const getters = {
 
     USER (state) {
         return state.user
+    },
+
+    IS_USER_LOGIN (state) {
+        return !!state.token.access_token
     },
 }
 
@@ -57,6 +57,20 @@ export const actions = {
             UserApi.loginUser(requestData)
                 .then(response => {
                     commit('SET_TOKEN', response.data)
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        })
+    },
+
+    async LOGOUT_USER ({ commit }, token) {
+        return new Promise ((resolve, reject) => {
+            UserApi.logoutUser(token)
+                .then(response => {
+                    commit('SET_TOKEN', {})
+                    commit('SET_USER', {})
                     resolve(response)
                 })
                 .catch(error => {

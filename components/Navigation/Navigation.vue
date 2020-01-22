@@ -1,5 +1,7 @@
 <template>
-    <nav class="navigation" :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }">
+    <nav class="navigation" :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }"
+        @click.stop="closeNavMenu"
+    >
         <ul class="navigation__list">
             <li
                 class="navigation__item"
@@ -20,6 +22,7 @@ import window from '~/mixins/window'
 
 export default {
     mixins: [window],
+
     computed: {
         links() {
             return [
@@ -42,6 +45,7 @@ export default {
             ]
         },
     },
+
     watch: {
         windowWidth(width) {
             // if return to desktop viewport - reset 'app/IS_NAVIGATION_ACTIVE' to default state
@@ -53,6 +57,13 @@ export default {
             isNavigationActive ? scrollLock.disablePageScroll() : scrollLock.enablePageScroll()
         },
     },
+
+    methods: {
+        closeNavMenu(){
+            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
+        }
+    }
+
 }
 </script>
 

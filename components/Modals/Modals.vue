@@ -1,16 +1,16 @@
 <template>
     <div class="modals">
-        <RegisterModal />
+        <RegisterSuccessModal v-if="$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.registerSuccess" />
     </div>
 </template>
 
 <script>
-import RegisterModal from "~/components/Modals/RegisterModal"
+import RegisterSuccessModal from "~/components/Modals/RegisterSuccessModal"
 
 export default {
     components: {
-        RegisterModal
-    }
+        RegisterSuccessModal
+    },
 }
 </script>
 

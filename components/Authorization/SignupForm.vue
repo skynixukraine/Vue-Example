@@ -140,11 +140,13 @@
 // mixins
 import validator from '~/mixins/validator'
 import recaptcha from '~/mixins/recaptcha'
+import modal from '~/mixins/modal'
 
 export default {
     mixins: [
         validator,
-        recaptcha
+        recaptcha,
+        modal,
     ],
 
     created() {
@@ -186,13 +188,14 @@ export default {
                 .then((response) => {
                     this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
                         .then((response) => {
-                            this.$modal.show('register-success')
+                            this.openModal(this.$modals.registerSuccess)
                             // re request captcha (need update after each form send)
                             this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                             this.isFormSending = false
                         })
                 })
                 .catch((response) => {
+                    this.$root.$emit('showNotify', { type: 'error', text: response.message })
                     this.handleErrorResponse(response.errors)
                     // re request captcha (need update after each form send)
                     this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
@@ -235,7 +238,7 @@ export default {
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.forms.invalid-recaptcha-tocken') })
+                this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
                 return false
             }
 
