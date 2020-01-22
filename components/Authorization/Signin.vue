@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="login login--title">{{ $t('headers.login')}}</h1>
+        <h2>{{ $t('headers.login')}}</h2>
         <SigninForm />
         <!-- <ForgotPassword /> -->
     </div>
@@ -18,5 +18,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+
+h2 {
+    text-align: center;
+}
+
 </style>

@@ -8,9 +8,10 @@
                 name="email"
                 ref="email"
                 v-model="models.email"
-                @keyup="onEmailChange"
+                @blur="onEmailChange"
             />
-            <img
+
+            <img v-if="!errors.email"
                 class="check-icon"
                 :src="require('~/static/images/icons/check-icon.svg')"
                 alt="check-icon"
@@ -20,29 +21,30 @@
         <div class="form__item form__item--password">
             <div class="form__title form__title--password">{{ $t('forms.create-password') }}</div>
             <input
-                class="input"
-                type="password"
+                class="input input--password"
+                type= "password"
                 name="password"
                 ref="password"
                 v-model="models.password"
-                @keyup="onPasswordChange"
+                @blur="onPasswordChange"
             />
             <img
                 class="eye-icon"
                 :src="require('~/static/images/icons/eye-icon.svg')"
                 alt="eye-icon"
+                @click="togglePasswordVisibility"
             />
             <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
         </div>
         <div class="form__item">
             <div class="form__title form__title--password">{{ $t('forms.confirm-password') }}</div>
             <input
-                class="input"
+                class="input input--password"
                 type="password"
                 name="password_confirmation"
                 ref="password_confirmation"
                 v-model="models.password_confirmation"
-                @keyup="onConfirmPasswordChange"
+                @blur="onConfirmPasswordChange"
             />
             <div
                 class="form__message"
@@ -70,7 +72,7 @@
             />
 
             <button
-                class="link link--button link--button-white link--button--upload"
+                class="link link--button link--button-white link--button-upload"
                 type="button"
                 @click="addFileDegree"
             >
@@ -79,7 +81,9 @@
                     :src="require('~/static/images/icons/paper-fastener-button-icon.svg')"
                     alt="paper-fastener-button"
                 />
-                <p>Add Degree</p>
+                <p>
+                    {{ models.degree ? models.degree.name :  $t('forms.add-degree') }}
+                </p>
             </button>
 
             <div class="form__message" v-if="errors.degree">{{ errors.degree }}</div>
@@ -96,7 +100,7 @@
                 @change="onCertificationUpload"
             />
             <button
-                class="link link--button link--button-white link--button--upload"
+                class="link link--button link--button-white link--button-upload"
                 type="button"
                 @click="addFileCertification"
             >
@@ -105,7 +109,9 @@
                     :src="require('~/static/images/icons/paper-fastener-button-icon.svg')"
                     alt="paper-fastener-button"
                 />
-                <p>Add Certification</p>
+                <p>
+                    {{ models.certification ? models.certification.name :  $t('forms.add-certification') }}
+                </p>
             </button>
             <div class="form__message" v-if="errors.certification">{{ errors.certification }}</div>
         </div>
@@ -125,7 +131,7 @@
                 class="link link--button link--button-blue"
                 type="submit"
                 :disabled="isFormSending"
-            >{{ isFormSending ? 'loading...'  : $t('links.signup') }}</button>
+            >{{ isFormSending ? $t('states.loading') : $t('links.signup') }}</button>
         </div>
     </form>
 </template>
@@ -164,6 +170,7 @@ export default {
                 accepted: false,
             },
             isFormSending: false,
+            fieldTypePassword: true
         }
     },
 
@@ -201,41 +208,47 @@ export default {
             if (!models.email) {
                 this.errors['email'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: 'Имейл не заполнен' })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.email-is-empty') })
                 return false
             }
             if (!models.password) {
                 this.errors['password'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: 'Пароль не заполнен' })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.password-is-empty') })
                 return false
             }
             if (!models.password_confirmation) {
                 this.errors['password_confirmation'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: 'Конфирм Пароль не заполнен' })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.сonfirmation-password-is-empty') })
                 return false
             }
             if (!models.phone_number) {
                 this.errors['phone_number'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: 'Телефон не заполнен' })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.phone-is-empty') })
                 return false
             }
             if (!models.accepted) {
                 this.errors['accepted'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: 'Вы должны согласится с правилами сайта' })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.accept-terms-and-conditions') })
                 return false
             }
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Recaptcha not exist.' })
+                this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
                 return false
             }
 
             return true
+        },
+
+        validateFilePDF(event){
+            if  ( event.target.files[0].type === 'application/pdf' ){
+                return this;
+            }
         },
 
         handleErrorResponse(errors) {
@@ -274,7 +287,6 @@ export default {
             return formData
         },
 
-
         // files upload
         addFileDegree() {
             this.$refs.degree.click()
@@ -298,11 +310,11 @@ export default {
             this.$forceUpdate()
         },
         onPhoneChange(formattedNumber, telInput) {
-            this.validatePhone(telInput)
+            this.validatePhone(telInput);
         },
         onDegreeUpload(event) {
             if (this.validateFilePDF(event)) {
-                this.models.degree = event.target.files[0]  
+                this.models.degree = event.target.files[0]
             }
         },
         onCertificationUpload(event) {
@@ -313,6 +325,136 @@ export default {
         onAcceptChange(event) {
             this.validateAccept(event, this.models.accepted)
         },
+
+        togglePasswordVisibility(){
+            if ( this.$refs.password.type === 'password') {
+                this.$refs.password.type = 'text'
+            } else {
+                this.$refs.password.type = 'password'
+            }
+        }
     }
 }
 </script>
+
+
+<style lang="scss" scoped>
+
+.form {
+    &--register {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.form__item {
+    margin: 2% auto;
+    width: 100%;
+
+    .form__title {
+        // font-family: TheSansB;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 28px;
+        color: $color-rolling-stone;
+
+        @include phone-big {
+            font-size: 16px;
+        }
+
+        @include desktop {
+            font-size: 18px;
+        }
+
+    }
+
+    .form__message {
+        color: $color-alert-red;
+        padding-left: 10px;
+        text-align: left;
+    }
+
+    &--login,
+    &--password {
+        position: relative;
+    }
+
+    &--checkbox {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+
+        @include tablet {
+            flex-direction: row-reverse;
+        }
+
+        .form__title--accepted {
+            font-size: 14px;
+            text-align: center;
+            padding-left: 10px;
+
+            @include tablet {
+                text-align: left;
+
+            }
+        }
+    }
+
+    .input, #vue-tel-input  {
+        width: 100%;
+        height: 40px;
+        background: $color-white;
+        border: 2px solid $color-curious-blue;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding-left: 2%;
+
+        @include phone-big {
+            height: 56px;
+        }
+
+        @include desktop {
+            width: 544px;
+        }
+    }
+
+        .vti__input{
+            max-width: 150px;
+
+            @include phone-big {
+                max-width: 250px;
+            }
+        }
+    }
+
+    input[type="checkbox"] {
+        order: 1;
+    }
+
+    .form__message {
+        padding-left: 15px;
+        text-align: left;
+
+        @include phone-big {
+            padding-left: 15px;
+        }
+    }
+
+    .check-icon,
+    .eye-icon {
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        cursor: pointer;
+
+        @include phone-big {
+            top: 48px;
+        }
+    }
+
+</style>

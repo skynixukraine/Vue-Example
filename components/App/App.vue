@@ -377,6 +377,7 @@ START: COMPONENTS
     }
 
     &--button {
+        width: 100%;
         display: inline-block;
         text-align: center;
         padding: 20px 31px 16px;
@@ -386,10 +387,14 @@ START: COMPONENTS
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 2px;
+        border-width: 1px;
+        border-style: solid;
+
 
         &-white {
             background: $color-white;
             color: $color-curious-blue;
+            border-color: $color-white;
 
             &:hover {
                 background: $color-solitude;
@@ -403,6 +408,7 @@ START: COMPONENTS
         &-blue {
             background: $color-torea-bay;
             color: $color-white;
+            border-color: $color-torea-bay;
 
             &:hover {
                 background: $color-tory-blue;
@@ -416,6 +422,7 @@ START: COMPONENTS
         &-gradient {
             background: $color-gradient-blue-light;
             color: $color-white;
+            border-color: $color-gradient-blue-light;
 
             &:hover {
                 background: $color-gradient-blue-dark;
@@ -425,20 +432,46 @@ START: COMPONENTS
                 background: $color-gradient-blue-dark;
             }
         }
-        &-transparent {
-            background: #f7fafc;
-            border: none;
-            font-family: TheSansB;
-            font-style: normal;
-            font-weight: 530;
-            font-size: 16px;
-            line-height: 21px;
 
-            /* identical to box height */
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #247ee5;
+        &-transparent {
+            background: $color-transparent;
+            color: $color-curious-blue;
+            border-color: $color-transparent;
+
+            &:hover {
+                background: $color-solitude;
+            }
+
+            &:active {
+                background: $color-solitude;
+            }
         }
+
+        &-upload {
+                position: relative;
+                text-align: left;
+                background: $color-white;
+                border: 2px solid $color-curious-blue;
+                box-sizing: border-box;
+                border-radius: 4px;
+                color: rgba(122, 125, 132, 0.5);
+                font-size: 18px;
+                text-transform: lowercase;
+                line-height: 18px;
+
+                ::first-letter {
+                    text-transform: uppercase;
+                }
+
+                p {
+                    padding-left: 12px;
+                }
+                img {
+                    position: absolute;
+                    top: 12px;
+                    left: 11px;
+                }
+            }
     }
 
     &--card {

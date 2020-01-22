@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="login login--title">{{ $t('headers.register')}}</h1>
+        <h2>{{ $t('headers.register')}}</h2>
         <SignupForm />
     </div>
 </template>
@@ -13,7 +13,13 @@ export default {
         SignupForm
     }
 };
-</script>
+</script >
 
-<style>
+
+<style lang="scss" scoped>
+
+h2 {
+    text-align: center;
+}
+
 </style>

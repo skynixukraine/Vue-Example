@@ -8,7 +8,7 @@
                 name="email"
                 ref="email"
                 v-model="models.email"
-                @keyup="onEmailChange"
+                @blur="onEmailChange"
             />
             <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
         </div>
@@ -20,7 +20,7 @@
                 name="password"
                 ref="password"
                 v-model="models.password"
-                @keyup="onPasswordChange"
+                @blur="onPasswordChange"
             />
             <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
         </div>
@@ -28,7 +28,7 @@
             <button
                 class="link link--button link--button-blue"
                 type="submit"
-            >{{ isFormSending ? 'loading...'  : $t('links.signin') }}</button>
+            >{{ $t('links.signin') }}</button>
         </div>
     </form>
 </template>
@@ -153,122 +153,57 @@ export default {
 </script>
 
 
-
-<style lang="scss">
-@mixin input-field {
-    width: 250px;
-    height: 40px;
-    background: #ffffff;
-    border: 2px solid #247ee5;
-    box-sizing: border-box;
-    border-radius: 4px;
-    @media (min-width: #{$screen-phone-big-min}) {
-        width: 300px;
-        height: 56px;
-    }
-
-    @include desktop {
-        width: 544px;
-    }
-}
-
-@mixin form__title--text {
-    font-family: TheSansB;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 28px;
-    color: #7a7d84;
-
-    @include phone-big {
-        font-size: 16px;
-    }
-
-    @include tablet-big {
-        font-size: 18px;
-    }
-}
-
-.login {
-    &--title {
-        text-align: center;
-        font-family: TheAntiquaB;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 32px;
-        line-height: 64px;
-        color: #247ee5;
-
-        @include phone-big {
-            font-size: 48px;
-        }
-    }
-}
-
+<style lang="scss" scoped>
 .form {
     &--login {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-
-        .form__item {
-            margin: 2% auto;
-        }
-    }
-}
-
-.link {
-    &--button {
-        width: 295px;
-        margin: 2% auto;
-        border-radius: 4px;
-
-        @include phone-big {
-                height: 56px;
-                width: 400px;
-            }
-
-        @include desktop {
-            width: 544px;
-        }
-    }
-
-    &--button-blue {
-        color: $color-white;
-        background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-        border: 1px solid #0f44b2;
-
-        &:hover {
-            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-            border: 1px solid #0f44b2;
-        }
-    }
-}
-
-.input {
-    padding-left: 2%;
-
-    &--login,
-    &--password {
-        @include input-field;
-    }
-}
-
-.form__title {
-    &--login,
-    &--password {
-        @include form__title--text;
     }
 }
 
 .form__item {
+    margin: 2% auto;
+    width: 100%;
+
     .form__title {
-        padding-left: 10px;
-    }
+        // font-family: TheSansB;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 28px;
+        color: $color-rolling-stone;
+
+        @include phone-big {
+            font-size: 16px;
+        }
+
+        @include tablet-big {
+            font-size: 18px;
+        }
+}
+
     .form__message {
-        color: red;
+        color: $color-alert-red;
         padding-left: 10px;
     }
+
+    .input {
+        width: 100%;
+        height: 40px;
+        background: $color-white;
+        border: 2px solid $color-curious-blue;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding-left: 2%;
+
+        @include phone-big {
+            height: 56px;
+        }
+
+    }
+
+
 }
 </style>
