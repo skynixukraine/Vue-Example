@@ -25,9 +25,9 @@
                         </div>
                     </footer>
                 </aside>
-                <div class="dashboard-container__content dashboard-content">
+                <!-- <div class="dashboard-container__content dashboard-content">
                     <h1>{{ `Good ${this.$timeOfDay}` }}, {{ $store.getters['user/USER'].first_name }} {{ $store.getters['user/USER'].last_name }}</h1>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -37,7 +37,9 @@
 import LogoutButton from "~/components/Authorization/LogoutButton"
 
 export default {
-    middleware: 'nonauth',
+    middleware: [
+        'auth',
+    ],
 
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
