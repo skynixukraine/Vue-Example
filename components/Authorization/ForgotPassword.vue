@@ -3,9 +3,7 @@
 </template>
 
 <script>
-export default {
-    name: "ForgotPassword"
-};
+export default {}
 </script>
 
 

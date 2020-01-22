@@ -14,7 +14,6 @@ const _12501622 = () => interopDefault(import('../pages/hautarzt/index.vue' /* w
 const _2720f83e = () => interopDefault(import('../pages/impressum/index.vue' /* webpackChunkName: "pages/impressum/index" */))
 const _da972b14 = () => interopDefault(import('../pages/konditionen/index.vue' /* webpackChunkName: "pages/konditionen/index" */))
 const _6020a9ec = () => interopDefault(import('../pages/kontakt/index.vue' /* webpackChunkName: "pages/kontakt/index" */))
-const _46ea7bd3 = () => interopDefault(import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */))
 const _7aad74be = () => interopDefault(import('../pages/registrierung/index.vue' /* webpackChunkName: "pages/registrierung/index" */))
 const _46653ce8 = () => interopDefault(import('../pages/studien/index.vue' /* webpackChunkName: "pages/studien/index" */))
 const _ff9ec954 = () => interopDefault(import('../pages/ueber-uns/index.vue' /* webpackChunkName: "pages/ueber-uns/index" */))
@@ -86,10 +85,6 @@ export const routerOptions = {
     path: "/kontakt",
     component: _6020a9ec,
     name: "kontakt"
-  }, {
-    path: "/login",
-    component: _46ea7bd3,
-    name: "login"
   }, {
     path: "/registrierung",
     component: _7aad74be,
