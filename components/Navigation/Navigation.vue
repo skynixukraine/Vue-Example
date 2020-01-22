@@ -70,16 +70,18 @@ export default {
 <style lang="scss" scoped>
 .navigation {
     position: fixed;
-    top: 0;
+    // top: 0;
+    bottom: 0;
     left: -100%;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 98px);;
     background: $color-stratos;
     transition: left 200ms ease-in-out;
     padding: 68px;
     display: flex;
     align-items: center;
     justify-content: center;
+
 
     &--active {
         left: 0;
@@ -122,7 +124,11 @@ export default {
         }
 
         &__item {
+
+
             margin-right: 30px;
+            
+            
             margin-bottom: 0;
 
             &:last-child {

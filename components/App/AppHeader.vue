@@ -10,6 +10,10 @@
             <div class="app-header__item">
                 <Navigation />
             </div>
+            <div class="app-header__item">
+                <HeaderUserInfo />
+            </div>
+            
             <div class="app-header__item" v-if="windowWidth < 962">
                 <NavigationToggler />
             </div>
@@ -25,13 +29,15 @@ import window from "~/mixins/window";
 import AppLogo from "~/components/App/AppLogo";
 import Navigation from "~/components/Navigation/Navigation";
 import NavigationToggler from "~/components/Navigation/NavigationToggler";
+import HeaderUserInfo from "~/components/Header/HeaderUserInfo";
 
 export default {
     mixins: [window],
     components: {
         AppLogo,
         Navigation,
-        NavigationToggler
+        NavigationToggler,
+        HeaderUserInfo
     },
     computed: {
         isHomePage() {
@@ -55,8 +61,6 @@ export default {
     @include tablet-big{
         height: 115px;
     }
-
-
 
     &--bg-transparent {
         background: transparent;

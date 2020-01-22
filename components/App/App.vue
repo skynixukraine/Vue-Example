@@ -377,7 +377,7 @@ START: COMPONENTS
     }
 
     &--button {
-        width: 100%;
+        width: auto;
         display: inline-block;
         text-align: center;
         padding: 20px 31px 16px;
@@ -389,6 +389,10 @@ START: COMPONENTS
         letter-spacing: 2px;
         border-width: 1px;
         border-style: solid;
+
+        &-full-width {
+            width: 100%
+        }
 
 
         &-white {
