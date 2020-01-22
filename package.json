@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.19.0",
+		"cookie-universal-nuxt": "^2.1.0",
 		"lodash": "^4.17.15",
 		"nuxt": "^2.0.0",
 		"scroll-lock": "^2.1.2",
@@ -20,7 +21,6 @@
 		"vue-recaptcha-v3": "^1.8.0",
 		"vue-tel-input": "^4.1.1",
 		"vue2-google-maps": "^0.10.7",
-		"vuex-persistedstate": "^2.7.0",
 		"vuex-shared-mutations": "^1.0.2"
 	},
 	"devDependencies": {

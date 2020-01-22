@@ -86,21 +86,15 @@ export default {
     head() {
         return { title: this.$t('page-home.head.title') }
     },
-    async fetch ({ store, error }) {
 
-        // if (!store.getters['user/USERS'].length) {
-        //     const users = await store.dispatch('user/LOAD_USERS').catch((e) => {
-        //         error({ statusCode: e.status, message: e.message })
-        //     })
-        //     store.commit('user/SET_USERS', users)
-        // }
-        
-    },
-
-    beforeCreate() {
-        setTimeout(() => {
-            this.$store.dispatch('user/AUTOLOGIN_USER', { token: this.$store.getters['user/TOKEN'], user: this.$store.getters['user/USER'] })
-        }, 0)
+    async fetch ({ app, store, error }) {
+        // if token exist and user empty - load User object        
+        if (app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null) {
+            await store.dispatch('user/LOAD_USER', {
+                id: app.$cookies.get(app.cookie.names.tokenId),
+                token: app.$cookies.get(app.cookie.names.token)
+            })
+        }
     },
 
     data() {
@@ -109,6 +103,7 @@ export default {
                 text: this.$t('links.home'),
                 to: this.$routes.home.path
             }],
+
             advantages: [{
                 icon: require('~/static/images/advantages/loupe.svg'),
                 text: this.$t('advantages.independent-accessible')
@@ -122,6 +117,7 @@ export default {
                 icon: require('~/static/images/advantages/diamond.svg'),
                 text: this.$t('advantages.professional-trustworthy')
             }],
+
             steps: [{
                 number: '01',
                 title: this.$t('steps.choose-dermatologist'),
