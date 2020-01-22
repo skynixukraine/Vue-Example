@@ -19,7 +19,7 @@
                         <div class="dashboard-sidebar__item">
                             <ul class="dashboard-sidebar-list">
                                 <li class="dashboard-sidebar-list__item">
-                                    <button type="button" @click="onLogout">Logout</button>
+                                    <LogoutButton />
                                 </li>
                             </ul>
                         </div>
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import LogoutButton from "~/components/Authorization/LogoutButton"
+
 export default {
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
@@ -45,11 +47,8 @@ export default {
         }
     },
 
-    methods: {
-        onLogout() {
-            this.$router.push({ path: this.$routes.home.path })
-            this.$store.dispatch('user/LOGOUT_USER', this.$store.getters['user/TOKEN'].access_token)
-        }
+    components: {
+        LogoutButton,
     }
 }
 </script>
