@@ -63,7 +63,6 @@ export default {
             if (!this.validateForm(this.models)) {
                 this.$root.$emit("showNotify", {
                     type: "error",
-                    // text: "Форма не прошла предварительную валидацию."
                     text: $t('errors.form.validation-failed')
                 });
                 return false;
@@ -96,7 +95,6 @@ export default {
             if (!this.recaptchaToken) {
                 this.$root.$emit("showNotify", {
                     type: "error",
-                    // text: "Рекаптча ТОКЕН не обнаружен. Невозможно отправить форму."
                     text: $t('errors.forms.invalid-recaptcha-tocken'), 
                 });
                 return false;
@@ -132,9 +130,7 @@ export default {
 </script>
 
 
-
 <style lang="scss" scoped>
-
 .form {
     &--login {
         width: 100%;
@@ -146,15 +142,15 @@ export default {
 
 .form__item {
     margin: 2% auto;
+    width: 100%;
 
     .form__title {
-        font-family: TheSansB;
+        // font-family: TheSansB;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
         line-height: 28px;
         color: $color-rolling-stone;
-        padding-left: 10px;
 
         @include phone-big {
             font-size: 16px;
@@ -166,62 +162,25 @@ export default {
 }
 
     .form__message {
-        color: red;
+        color: $color-alert-red;
         padding-left: 10px;
     }
 
     .input {
-        width: 295px;
+        width: 100%;
         height: 40px;
-        background: #ffffff;
-        border: 2px solid #247ee5;
+        background: $color-white;
+        border: 2px solid $color-curious-blue;
         box-sizing: border-box;
         border-radius: 4px;
         padding-left: 2%;
 
-        @media (min-width: #{$screen-phone-big-min}) {
-            width: 350px;
-        }
-
         @include phone-big {
             height: 56px;
-            width: 400px;
         }
-        @include desktop {
-            width: 544px;
-        }
+
     }
 
-    .link {
-        &--button {
-            width: 295px;
-            margin: 2% auto;
-            border-radius: 4px;
-
-            @media (min-width: #{$screen-phone-big-min}) {
-                width: 350px;
-            }
-
-            @include phone-big {
-                height: 56px;
-                width: 400px;
-            }
-            @include desktop {
-                width: 544px;
-            }
-        }
-
-        &--button-blue {
-            color: $color-white;
-            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-            border: 1px solid #0f44b2;
-
-            &:hover {
-                background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-                border: 1px solid #0f44b2;
-            }
-        }
-    }
 
 }
 </style>

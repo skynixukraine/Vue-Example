@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class="section">
-            <div class="container container__forms--wrapper">
+            <div class="container">
                 <div class="tab-buttons">
                     <button
                         class="link link--button link--button-blue"
@@ -35,6 +35,8 @@ import Signup from "~/components/Authorization/Signup";
 const DEFAULT_CURRENT_TAB = "signin";
 
 export default {
+    // middleware: 'nonauth',
+
     mixins: [windowWidth],
 
     components: {
@@ -67,73 +69,42 @@ export default {
 
 
 <style lang="scss">
-.container__forms--wrapper {
-    max-width: 1260px;
-}
-
 .container-forms {
     width: 100%;
+    max-width: 1160px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    // flex-wrap: wrap;
     margin-top: 5%;
 
-    @include desktop {
-        justify-content: space-between;
-    }
-    div {
-        padding: 0 10px;
-        // width: 100%;
-
-        @media (min-width: #{962px}) {
-        // width: 430px;
-
-
+    @media (min-width: #{962px}) {
+        flex-direction: row;
+        justify-content: space-around;
     }
 
-
+    & > div {
+     @media (min-width: #{962px}) {
+         flex: 50%;
+         padding: 0 10px;
     }
+
+ }
 }
 
 .tab-buttons {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-content: center;
     margin: 0 auto;
 
+
     @media (min-width: #{962px}) {
         display: none;
     }
 
-    .link {
-        &--button {
-            width: 295px;
-            margin: 2% auto;
-            border-radius: 4px;
-
-            @media (min-width: #{$screen-phone-big-min}) {
-                width: 350px;
-            }
-
-            @include phone-big {
-                height: 56px;
-                width: 400px;
-            }
-            @include tablet {
-                width: 544px;
-            }
-        }
-
-        &--button-blue {
-            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-            border: 1px solid #0f44b2;
-
-            &:hover {
-                background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-                border: 1px solid #0f44b2;
-            }
-        }
+    button{
+        margin: 1.5% 0;
     }
 }
 </style>

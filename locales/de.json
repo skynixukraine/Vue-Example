@@ -29,7 +29,7 @@
         "signin": "Sign In",
         "signup": "Sign Up"
     },
-    "warnings": {
+    "states": {
         "loading": "Loading..."
     },
     "errors": {

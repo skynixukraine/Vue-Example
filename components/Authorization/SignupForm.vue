@@ -72,7 +72,7 @@
             />
 
             <button
-                class="link link--button link--button-white link--button--upload"
+                class="link link--button link--button-white link--button-upload"
                 type="button"
                 @click="addFileDegree"
             >
@@ -100,7 +100,7 @@
                 @change="onCertificationUpload"
             />
             <button
-                class="link link--button link--button-white link--button--upload"
+                class="link link--button link--button-white link--button-upload"
                 type="button"
                 @click="addFileCertification"
             >
@@ -131,7 +131,7 @@
                 class="link link--button link--button-blue"
                 type="submit"
                 :disabled="isFormSending"
-            >{{ isFormSending ? $t('warnings.loading') : $t('links.signup') }}</button>
+            >{{ isFormSending ? $t('states.loading') : $t('links.signup') }}</button>
         </div>
     </form>
 </template>
@@ -205,43 +205,37 @@ export default {
             if (!models.email) {
                 this.errors['email'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                // this.$root.$emit('showNotify', { type: 'error', text: 'Имейл не заполнен' })
-                this.$root.$emit('showNotify', { type: 'error', text: $t('errors.form.email-is-empty') })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.email-is-empty') })
                 return false
             }
             if (!models.password) {
                 this.errors['password'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                // this.$root.$emit('showNotify', { type: 'error', text: 'Пароль не заполнен' })
-                this.$root.$emit('showNotify', { type: 'error', text: $('errors.form.password-is-empty') })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.password-is-empty') })
                 return false
             }
             if (!models.password_confirmation) {
                 this.errors['password_confirmation'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                // this.$root.$emit('showNotify', { type: 'error', text: 'Конфирм Пароль не заполнен' })
-                this.$root.$emit('showNotify', { type: 'error', text: $t('errors.form.сonfirmation-password-is-empty') })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.сonfirmation-password-is-empty') })
                 return false
             }
             if (!models.phone_number) {
                 this.errors['phone_number'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                // this.$root.$emit('showNotify', { type: 'error', text: 'Телефон не заполнен' })
-                this.$root.$emit('showNotify', { type: 'error', text: $t('errors.form.phone-is-empty') })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.phone-is-empty') })
                 return false
             }
             if (!models.accepted) {
                 this.errors['accepted'] = this.$t('errors.form.required-field')
                 this.$forceUpdate()
-                // this.$root.$emit('showNotify', { type: 'error', text: 'Вы должны согласится с правилами сайта' })
-                this.$root.$emit('showNotify', { type: 'error', text: $t('errors.form.accept-terms-and-conditions') })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.accept-terms-and-conditions') })
                 return false
             }
 
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                // this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
-                this.$root.$emit('showNotify', { type: 'error', text: $t('errors.forms.invalid-recaptcha-tocken') })
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.forms.invalid-recaptcha-tocken') })
                 return false
             }
 
@@ -355,9 +349,10 @@ export default {
 
 .form__item {
     margin: 2% auto;
+    width: 100%;
 
     .form__title {
-        font-family: TheSansB;
+        // font-family: TheSansB;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
@@ -377,6 +372,7 @@ export default {
     .form__message {
         color: $color-alert-red;
         padding-left: 10px;
+        text-align: left;
     }
 
     &--login,
@@ -397,25 +393,26 @@ export default {
         .form__title--accepted {
             font-size: 14px;
             text-align: center;
+            padding-left: 10px;
 
             @include tablet {
-                flex-direction: left;
+                text-align: left;
+
             }
         }
     }
 
     .input, #vue-tel-input  {
-        width: 295px;
+        width: 100%;
         height: 40px;
-        background: #ffffff;
-        border: 2px solid #247ee5;
+        background: $color-white;
+        border: 2px solid $color-curious-blue;
         box-sizing: border-box;
         border-radius: 4px;
         padding-left: 2%;
 
         @include phone-big {
             height: 56px;
-            width: 400px;
         }
 
         @include desktop {
@@ -423,11 +420,12 @@ export default {
         }
     }
 
-    .vti__input{
-        max-width: 150px;
+        .vti__input{
+            max-width: 150px;
 
-        @include phone-big {
-            max-width: 250px;
+            @include phone-big {
+                max-width: 250px;
+            }
         }
     }
 
@@ -437,63 +435,10 @@ export default {
 
     .form__message {
         padding-left: 15px;
-        
+        text-align: left;
+
         @include phone-big {
             padding-left: 15px;
-        }
-    }
-
-    .link {
-        &--button {
-            width: 295px;
-            margin: 2% auto;
-            border-radius: 4px;
-
-            @include phone-big {
-                height: 56px;
-                width: 400px;
-            }
-
-            @include desktop {
-                width: 544px;
-            }
-
-            &--upload {
-                position: relative;
-                text-align: left;
-                font-family: TheSansB;
-                background: #ffffff;
-                border: 2px solid #247ee5;
-                box-sizing: border-box;
-                border-radius: 4px;
-                color: rgba(122, 125, 132, 0.5);
-                font-size: 18px;
-                text-transform: lowercase;
-                line-height: 18px;
-
-                ::first-letter {
-                    text-transform: uppercase;
-                }
-
-                p {
-                    padding-left: 12px;
-                }
-                img {
-                    position: absolute;
-                    top: 12px;
-                    left: 11px;
-                }
-            }
-        }
-
-        &--button-blue {
-            background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-            border: 1px solid #0f44b2;
-
-            &:hover {
-                background: linear-gradient(90deg, #0f44b2 0%, #247ee5 100%);
-                border: 1px solid #0f44b2;
-            }
         }
     }
 
@@ -508,5 +453,5 @@ export default {
             top: 48px;
         }
     }
-}
+
 </style>

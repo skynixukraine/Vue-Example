@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="login login--title">{{ $t('headers.login')}}</h1>
+        <h2>{{ $t('headers.login')}}</h2>
         <SigninForm />
     </div>
 </template>
@@ -18,22 +18,8 @@ export default {
 
 <style lang="scss">
 
-.login {
-    &--title {
-        text-align: center;
-        font-family: TheAntiquaB;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 32px;
-        line-height: 64px;
-        color: #247ee5;
-
-        @include phone-big {
-            font-size: 48px;
-        }
-    }
+h2 {
+    text-align: center;
 }
-
-
 
 </style>
