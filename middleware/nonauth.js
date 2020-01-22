@@ -1,5 +1,5 @@
-export default function ({ store, redirect }) {
-    // if (store.getters['user/IS_USER_LOGIN']) {
-    //     return redirect('/')
-    // }
+export default function ({ app, redirect }) {
+    if (app.$cookies.get(app.cookie.names.token)) {
+        return redirect('/')
+    }
 }
