@@ -125,7 +125,7 @@ export default {
         return new Promise ((resolve, reject) => {
             HTTP.get(`/doctors/${id}`, { headers: {'Authorization': `Bearer ${token}`} })
                 .then(response => {
-                    const responseData = {          
+                    const responseData = {       
                         success: true,
                         status: response.status,
                         data: response.data.data,

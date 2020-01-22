@@ -2,30 +2,12 @@
 import UserApi from '../services/api/User'
 
 // options (init values)
-const DEFAULT_TOKEN = {}
-const DEFAULT_USER = {}
+const DEFAULT_USER = null
 
 
 export const state = () => ({
-    token: DEFAULT_TOKEN,
     user: DEFAULT_USER,
 })
-
-
-export const getters = {
-    TOKEN (state) {
-        return state.token
-    },
-
-    USER (state) {
-        return state.user
-    },
-
-    IS_USER_LOGIN (state) {
-        return !!state.token.access_token
-    },
-}
-
 
 export const mutations = {
     SET_TOKEN (state, token) {
@@ -43,7 +25,6 @@ export const actions = {
         return new Promise ((resolve, reject) => {
             UserApi.registerUser(requestData)
                 .then(response => {
-                    commit('SET_TOKEN', response.data)
                     resolve(response)
                 })
                 .catch(error => {
@@ -56,7 +37,6 @@ export const actions = {
         return new Promise ((resolve, reject) => {
             UserApi.loginUser(requestData)
                 .then(response => {
-                    commit('SET_TOKEN', response.data)
                     resolve(response)
                 })
                 .catch(error => {
@@ -69,30 +49,13 @@ export const actions = {
         return new Promise ((resolve, reject) => {
             UserApi.logoutUser(token)
                 .then(response => {
-                    commit('SET_TOKEN', {})
-                    commit('SET_USER', {})
+                    commit('SET_USER', null)
                     resolve(response)
                 })
                 .catch(error => {
                     reject(error)
                 })
         })
-    },
-
-    async AUTOLOGIN_USER({ commit, getters }, { token, user }) {
-        // if token exist and user object is emptry
-        if (token.access_token && !Object.keys(user).length) {
-            return new Promise ((resolve, reject) => {
-                UserApi.loadUser({ id: token.doctor_id, token: token.access_token })
-                    .then(response => {
-                        commit('SET_USER', response.data)
-                        resolve(response)
-                    })
-                    .catch(error => {
-                        reject(error)
-                    })
-            })
-        }
     },
     
     async LOAD_USER ({ commit }, { id, token }) {
@@ -130,5 +93,12 @@ export const actions = {
                     reject(error)
                 })  
         })
+    },
+}
+
+
+export const getters = {
+    USER (state) {
+        return state.user
     },
 }

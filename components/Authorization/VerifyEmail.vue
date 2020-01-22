@@ -10,10 +10,10 @@
 const DEFAULT_MESSAGE = ''
 
 export default {
-    mounted() {
-        setTimeout(() => {
-            this.onVerifyEmail()
-        }, 0)
+    created() {
+         if (process.client) {
+             this.verifyEmail()
+         }
     },
 
     data() {
@@ -23,7 +23,7 @@ export default {
     },
 
     methods: {
-        validateQueryData(query) {
+        validateQuery(query) {
             if (query.hasOwnProperty('expires') && query.hasOwnProperty('id') && query.hasOwnProperty('signature')) {
                 return true
             } else {
@@ -32,13 +32,9 @@ export default {
             }
         },
 
-        validateCurrentUser(user, token, query) {
-            if (!Object.keys(user).length || !token.access_token) {
+        validateToken(token) {
+            if (!token) {
                 this.message = 'You must has same browser.'
-                return false
-            }
-            if (parseInt(token.doctor_id) !==  parseInt(query.id)) {
-                this.message = 'Inappropriate user.'
                 return false
             }
             return true
@@ -54,22 +50,21 @@ export default {
             return data
         },
 
-        onVerifyEmail() {
-            if (process.client) {
-                if (this.validateQueryData(this.$route.query) && this.validateCurrentUser(this.$store.getters['user/USER'], this.$store.getters['user/TOKEN'], this.$route.query)) {
-                    const requestData = this.prepareDataForSending(this.$route.query)
-                    this.$store.dispatch('user/VERIFY_USER_EMAIL', requestData)
-                        .then(response => {
-                            this.message = response.message
-                            this.$store.dispatch('user/LOAD_USER', {
-                                id: this.$store.getters['user/TOKEN'].doctor_id,
-                                token: this.$store.getters['user/TOKEN'].access_token
-                            })
+        verifyEmail() {
+            if (this.validateQuery(this.$route.query) && this.validateToken(this.$cookies.get(this.$cookie.names.token))) {
+                const requestData = this.prepareDataForSending(this.$route.query)
+                
+                this.$store.dispatch('user/VERIFY_USER_EMAIL', requestData)
+                    .then(response => {
+                        this.message = response.message
+                        this.$store.dispatch('user/LOAD_USER', {
+                            id: this.$cookies.get(this.$cookie.names.tokenId),
+                            token: this.$cookies.get(this.$cookie.names.token)
                         })
-                        .catch(error => {
-                            this.message = error.message
-                        })
-                }
+                    })
+                    .catch(error => {
+                        this.message = error.message
+                    })
             }
         },
     }
