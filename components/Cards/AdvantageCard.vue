@@ -3,7 +3,8 @@
         <header class="advantage-card__header">
             <div class="advantage-card__round">
                 <div class="advantage-card__round-inner">
-                    <img class="advantage-card__image" :src="advantage.icon" :alt="advantage.text">
+                    <!-- <img class="advantage-card__image" :src="advantage.icon" :alt="advantage.text"> -->
+                    <video class="" :src="advantage.video" type="video/mp4" autoplay loop></video>
                 </div>
             </div>
         </header>
@@ -46,6 +47,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: -1;
 
         &-inner {
             width: 152px;
@@ -56,6 +58,21 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+            background: transparent;
+
+
+            video{
+                width: 304px;
+                height: 304px;
+                background: $color-white;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // border: 3px solid #0F44B2;
+                z-index: -1;
+            }
         }
     }
 
