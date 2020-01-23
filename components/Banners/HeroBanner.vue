@@ -22,7 +22,7 @@
         </footer>
         <img
             class="hero-banner__phone"
-            :src="require('~/static/images/images/FreeiPhoneX3.png')"
+            :src="require('~/static/images/images/iPhone_banner.png')"
             alt="iphone"
         />
     </div>
