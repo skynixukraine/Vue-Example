@@ -67,6 +67,18 @@ export const actions = {
         })
     },
 
+    async UPDATE_USER ({ commit }, { id, token, params }) {
+        return new Promise ((resolve, reject) => {
+            UserApi.updateUser({ id, token, params })
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })  
+        })
+    },
+
     async VERIFY_USER_EMAIL ({ commit }, requestData) {
         return new Promise ((resolve, reject) => {
             UserApi.verifyUserEmail(requestData)
