@@ -186,23 +186,9 @@ export default {
 
             this.$store.dispatch('user/REGISTER_USER', formData)
                 .then((response) => {
-                    // set user cookie (login user)
-                    this.$cookies.set(this.$cookie.names.token, response.data.access_token, {
-                        path: this.$cookie.path.root,
-                        maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), new Date(response.data.expires_at.date))
-                    })
-                    this.$cookies.set(this.$cookie.names.tokenId, response.data.doctor_id, {
-                        path: this.$cookie.path.root,
-                        maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), new Date(response.data.expires_at.date))
-                    })
-
-                    // load user in state
-                    this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
-                        .then((response) => {
-                            this.openModal(this.$modals.registerSuccess)
-                            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
-                            this.isFormSending = false
-                        })
+                    this.openModal(this.$modals.registerSuccess)
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                    this.isFormSending = false
                 })
                 .catch((response) => {
                     this.$root.$emit('showNotify', { type: 'error', text: response.message })
