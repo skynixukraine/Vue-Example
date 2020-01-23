@@ -70,11 +70,10 @@ export default {
 <style lang="scss" scoped>
 .navigation {
     position: fixed;
-    // top: 0;
     bottom: 0;
     left: -100%;
     width: 100%;
-    height: calc(100% - 98px);;
+    height: calc(100% - 98px);
     background: $color-stratos;
     transition: left 200ms ease-in-out;
     padding: 68px;
@@ -86,7 +85,6 @@ export default {
     &--active {
         left: 0;
     }
-
 
     &__list {
         padding: 0;
@@ -110,7 +108,6 @@ export default {
         text-decoration: none;
     }
 
-
     @include tablet-big {
         position: static;
         display: flex;
@@ -124,11 +121,7 @@ export default {
         }
 
         &__item {
-
-
             margin-right: 30px;
-            
-            
             margin-bottom: 0;
 
             &:last-child {

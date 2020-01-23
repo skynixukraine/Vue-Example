@@ -1,7 +1,11 @@
 <template>
     <header
         class="app-header"
-        :class="{ 'app-header--bg-transparent': isHomePage, 'app-header--bg-default': scrollTop > 68 }"
+        :class="{ 
+            'app-header--bg-transparent': isHomePage, 
+            'app-header--bg-white': isDashboard, 
+            'app-header--bg-default': scrollTop > 68 
+        }"
     >
         <div class="app-header__inner">
             <div class="app-header__item">
@@ -42,6 +46,9 @@ export default {
     computed: {
         isHomePage() {
             return this.$route.name === "index";
+        },
+        isDashboard (){
+            return this.$route.name === "/dashboard";
         }
     }
 };
@@ -58,12 +65,12 @@ export default {
     padding: 25px 15px 10px;
     background: $color-stratos;
 
-    @include tablet-big{
-        height: 115px;
-    }
-
     &--bg-transparent {
         background: transparent;
+    }
+
+    &--bg-white {
+        background: $color-white;
     }
 
     &--bg-default {
@@ -85,7 +92,15 @@ export default {
         &-logo{
             margin-left: auto;
             margin-right: 3%;
+
+            @include tablet-big{
+                margin: 0;
+            }
         }
+    }
+
+    @include tablet-big{
+        height: 115px;
     }
 }
 </style>

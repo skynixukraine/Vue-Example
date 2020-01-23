@@ -1,7 +1,10 @@
 <template>
-    <div class="header-user-info">
+    <div class="header-user-info" v-if="isLogin">
         <div class="header-user-info__item">
             {{ firstName }} {{ lastName }}
+        </div>
+        <div class="header-user-info__item" v-if="isActive">
+            <p>Active</p>
         </div>
          <div class="header-user-info__item">
              <UserAvatar />
@@ -18,7 +21,9 @@ export default {
     data() {
         return {
             firstName: 'MaximilianMaximilian',
-            lastName: 'ShvarzmullerShvarzmuller'
+            lastName: 'ShvarzmullerShvarzmuller',
+            isLogin: true,
+            isActive: false
         }
     },
     components: {
