@@ -17,8 +17,8 @@ import UserAvatar from "~/components/User/UserAvatar";
 export default {
     data() {
         return {
-            firstName: 'Maximilian',
-            lastName: 'Shvarzmuller'
+            firstName: 'MaximilianMaximilian',
+            lastName: 'ShvarzmullerShvarzmuller'
         }
     },
     components: {
@@ -31,6 +31,7 @@ export default {
 <style lang="scss" scoped>
 .header-user-info {
     width: 100%;
+    max-width: 300px;
     height: auto;
     display: flex;
     align-items: center;
@@ -50,6 +51,7 @@ export default {
         text-decoration: none;
         color: $color-white;
 
+        // hide user name
         &:first-child{
             display: none;
         
@@ -64,10 +66,8 @@ export default {
     }
 
     @include tablet-big {
-        // position: static;
         background: transparent;
         padding: 0;
-        // flex-direction: row-reverse;
     
         &__item {
             &:last-child {

@@ -10,7 +10,7 @@
             <div class="app-header__item">
                 <Navigation />
             </div>
-            <div class="app-header__item">
+            <div class="app-header__item app-header__item-logo">
                 <HeaderUserInfo />
             </div>
             
@@ -81,6 +81,11 @@ export default {
     &__item {
         display: flex;
         align-items: center;
+        
+        &-logo{
+            margin-left: auto;
+            margin-right: 3%;
+        }
     }
 }
 </style>
