@@ -4,7 +4,7 @@
             <Dashboard>
                 <DashboardSidebar />
                 <DashboardMain>
-                    <h1>{{ `Good ${this.$timeOfDay}` }}</h1>
+                    <DashboardHeader :title="`Good ${this.$timeOfDay}`" />
                 </DashboardMain>
             </Dashboard>
         </div>
@@ -15,6 +15,9 @@
 import Dashboard from "~/components/Dashboard/Dashboard"
 import DashboardSidebar from "~/components/Dashboard/DashboardSidebar"
 import DashboardMain from "~/components/Dashboard/DashboardMain"
+import DashboardHeader from "~/components/Dashboard/DashboardHeader"
+import DashboardContent from "~/components/Dashboard/DashboardContent"
+import AccountStatus from "~/components/Account/AccountStatus"
 
 export default {
     middleware: [
@@ -36,6 +39,9 @@ export default {
         Dashboard,
         DashboardSidebar,
         DashboardMain,
+        DashboardHeader,
+        DashboardContent,
+        AccountStatus,
     }
 }
 </script>

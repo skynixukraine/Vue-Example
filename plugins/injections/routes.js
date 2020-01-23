@@ -56,6 +56,9 @@ export default ({ app }, inject) => {
         personalInformation: {
             path: '/account/personal-information'
         },
+        enquiries: {
+            path: '/enquiries'
+        },
     }
 
     Vue.prototype.$routes = OPTIONS
