@@ -80,13 +80,13 @@ export default {
                         path: this.$cookie.path.root,
                         maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), new Date(response.data.expires_at.date))
                     })
-                    this.$cookies.set(this.$cookie.names.tokenId, response.data.doctor_id, {
+                    this.$cookies.set(this.$cookie.names.tokenId, response.data.id, {
                         path: this.$cookie.path.root,
                         maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), new Date(response.data.expires_at.date))
                     })
 
                     // load user in state
-                    this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
+                    this.$store.dispatch('user/LOAD_USER', { id: response.data.id, token: response.data.access_token })
                         .then((response) => {
                             this.isFormSending = false
                             this.$router.push({ path: this.$routes.home.path })

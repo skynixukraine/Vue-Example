@@ -281,23 +281,20 @@ START: COMPONENTS
     }
 }
 
-// dashboard container
-.dashboard-container {
+// dashboard
+.dashboard {
     display: flex;
     width: 100%;
-
-    &__sidebar {
-        width: 283px;
-    }
-
-    &__content {
-        flex: 1;
-    }
 }
 
 .dashboard-sidebar {
+    width: 283px;
     background: $color-gradient-blue-light-revert;
     color: $color-white;
+}
+
+.dashboard-main {
+    flex: 1;
 }
 
 
