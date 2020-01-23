@@ -8,7 +8,7 @@
         "about": "Über uns",
         "jobs": "Jobs",
         "show-all": "alle anzeigen",
-        "learn-more": "mehr erfahren",
+        "learn-more": "anfrage starten",
         "further-information": "Weitere Informationen",
         "frequently-asked": "häufig gestellte fragen (FAQ)",
         "start-inquiry": "Anfrage starten",
@@ -68,7 +68,7 @@
     "headers": {
         "our-family-doctors": "Unsere Hausärzte",
         "your-advantages": "Vorteile von Online Hautarz",
-        "few-steps": "In wenigen Schritten zu Ihrem Haut-Check",
+        "few-steps": "So funktioniert Online Hautarzt vor Ort",
         "use-us": "Bekannt aus",
         "for-patients": "Für Patienten",
         "for-dermatologists": "Für Hautärzte",
@@ -81,7 +81,7 @@
     "banners": {
         "herobanner": {
             "title": "Fragen Sie online einen Hautarzt Ihrer Wahl",
-            "description": "Bei Online Hautarzt vor Ort erhalten Sie schnell und kostengünstig (19,-€) eine professionelleEinschätzung Ihres Hautproblems durch einen deutschen Hautfacharzt. Dank derHandlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblemsunternehmen sollten. Etwa 70% unserer Patienten müssen nach dem Online-Besuch nichtmehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoherGewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger alssechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden.",
+            "description": "Bei Online Hautarzt vor Ort erhalten Sie schnell und kostengünstig (19,-€) eine professionelle Einschätzung Ihres Hautproblems durch einen deutschen Hautfacharzt. Dank der Handlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblems unternehmen sollten. Etwa 70% unserer Patienten müssen nach dem Online-Besuch nicht mehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoher Gewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger als sechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden.",
             "scroll-to-run": "Runterscrollen"
         }
     },
@@ -126,10 +126,10 @@
     },
     "steps": {
         "choose-dermatologist": "Hautarzt auswählen",
-        "dermatologist-at-clinic-essen": "Über unsere Plattform sind viele Hautärzte aus Deutschland erreichbar. Wer soll IhrHautproblem befunden? Ob Sie einen Hautarzt in der Nähe auswählen, oder einenHautarzt mit hoher Erfahrung aus einer anderen Stadt, bleibt Ihnen überlassen.",
+        "dermatologist-at-clinic-essen": "Über unsere Plattform sind viele Hautärzte aus Deutschland erreichbar. Wer soll Ihr Hautproblem befunden? Ob Sie einen Hautarzt in der Nähe auswählen, oder einen Hautarzt mit hoher Erfahrung aus einer anderen Stadt, bleibt Ihnen überlassen.",
         "describe-symptoms": "Fotografieren Sie Ihr Hautproblem und beschreiben Sie Ihre Symptome",
-        "what-complaints-problem": "Nachdem Sie den Hautarzt ausgewählt haben, beantworten Sie wenige Fragen zuIhrem Hautproblem und fotografieren es nach einfacher Anleitung, zum Beispiel mitIhrer Handykamera. Insgesamt kostet Sie dieser Vorgang etwa fünf Minuten IhrerZeit.",
+        "what-complaints-problem": "Nachdem Sie den Hautarzt ausgewählt haben, beantworten Sie wenige Fragen zu Ihrem Hautproblem und fotografieren es nach einfacher Anleitung, zum Beispiel mit Ihrer Handykamera. Insgesamt kostet Sie dieser Vorgang etwa fünf Minuten IhrerZeit.",
         "you-get-specialist-advice": "Sie erhalten Rat von Ihrem Hautarzt",
-        "specialist-initial-assessment": "Meist in weniger als sechs Stunden erhalten Sie fachärztliche Hilfe durch den vonIhnen ausgewählten Hautarzt. Maximal dauert die Beantwortung Ihrer Anfrage 48Stunden. In etwa 90% der Fälle stellt der Hautarzt eine konkrete Diagnose. Immererhalten Sie eine Handlungsempfehlung, was Sie tun sollten. Etwa 70% unsererPatienten müssen nicht mehr persönlich in die Praxis, der Rest der Patienten kanndas Hautproblem besser einschätzen. Insgesamt kostet dieser Dienst 19,- Euro.Zusätzliche Kosten fallen nicht an."
+        "specialist-initial-assessment": "Meist in weniger als sechs Stunden erhalten Sie fachärztliche Hilfe durch den von Ihnen ausgewählten Hautarzt. Maximal dauert die Beantwortung Ihrer Anfrage 48 Stunden. In etwa 90% der Fälle stellt der Hautarzt eine konkrete Diagnose. Immer erhalten Sie eine Handlungsempfehlung, was Sie tun sollten. Etwa 70% unserer Patienten müssen nicht mehr persönlich in die Praxis, der Rest der Patienten kann das Hautproblem besser einschätzen. Insgesamt kostet dieser Dienst 19,- Euro.Zusätzliche Kosten fallen nicht an."
     }
 }
