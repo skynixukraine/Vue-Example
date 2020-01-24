@@ -4,7 +4,7 @@
         :class="{ 
             'app-header--bg-transparent': isHomePage, 
             'app-header--bg-white': isDashboard, 
-            'app-header--bg-default': scrollTop > 68 
+            'app-header--bg-default': scrollTop > 68 && !isDashboard
         }"
     >
         <div class="app-header__inner">
@@ -48,7 +48,7 @@ export default {
             return this.$route.name === "index";
         },
         isDashboard (){
-            return this.$route.name === "/dashboard";
+            return this.$route.name === "dashboard";
         }
     }
 };
@@ -61,8 +61,8 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 98px;
-    padding: 25px 15px 10px;
+    height: 64px;
+    padding: 8px 15px;
     background: $color-stratos;
 
     &--bg-transparent {
@@ -100,7 +100,8 @@ export default {
     }
 
     @include tablet-big{
-        height: 115px;
+        height: 80px;
+        padding: 8px 15px;
     }
 }
 </style>

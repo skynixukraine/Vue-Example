@@ -1,14 +1,24 @@
 <template>
-    <div class="header-user-info" v-if="isLogin">
+    <div 
+        class="header-user-info" v-if="isLogin"
+        :class="{ 'header-user-info-dashboard': isDashboard }"
+    >
+        <div 
+            class="header-user-info__text">
+            <div 
+                class="header-user-info__item"
+                :class="{ 'header-user-info__item-dashboard': isDashboard }"
+            >
+                {{ firstName }} {{ lastName }}
+            </div>
+            <div class="header-user-info__item__is-active-user" v-if="isActive">
+                <p>Active</p>
+            </div>
+        
+        </div>  
         <div class="header-user-info__item">
-            {{ firstName }} {{ lastName }}
+            <UserAvatar />
         </div>
-        <div class="header-user-info__item" v-if="isActive">
-            <p>Active</p>
-        </div>
-         <div class="header-user-info__item">
-             <UserAvatar />
-         </div>
     </div>
 </template>
 
@@ -23,7 +33,13 @@ export default {
             firstName: 'MaximilianMaximilian',
             lastName: 'ShvarzmullerShvarzmuller',
             isLogin: true,
-            isActive: false
+            // Text if user is active
+            isActive: false,
+        }
+    },
+    computed: {
+        isDashboard (){
+            return this.$route.name === "dashboard";
         }
     },
     components: {
@@ -45,6 +61,14 @@ export default {
     background: $color-stratos;
     transition: left 200ms ease-in-out;
 
+    &-dashboard{
+        background: $color-white;
+    }
+
+    &__text{
+        line-height: 20px
+    }
+
     &__item {
         margin-bottom: 16px;
         padding-left: 10px;
@@ -52,21 +76,39 @@ export default {
         display: block;
         font-size: 16px;
         font-weight: 400;
-        color: $color-white;
         text-decoration: none;
         color: $color-white;
-
+        
         // hide user name
         &:first-child{
             display: none;
         
-        @media (min-width: #{1130px}) {
-            display: flex;
+            @media (min-width: #{1130px}) {
+                display: flex;
+            }
         }
-    }
 
         &:last-child {
             margin-bottom: 0;
+        }
+
+
+        &__is-active-user {
+            display: none;
+            color: $color-user-is-active;
+            font-size: 14px;
+            padding-left: 10px;
+
+            @media (min-width: #{1130px}) {
+                display: flex;
+            }
+        }
+
+        &-dashboard{
+            font-style: normal;
+            font-weight: 520;
+            font-size: 18px;
+            color: $color-rolling-stone;
         }
     }
 

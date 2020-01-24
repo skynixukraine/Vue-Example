@@ -4,7 +4,9 @@
         :class="{ 'navigation-toggler--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }"
         @click="toggleNavigationActive"
     >
-        <span></span>
+        <span
+            :class="{'navigation-toggler-dashboard': isDashboard }"        
+        ></span>
     </button>
 </template>
 
@@ -13,6 +15,11 @@ export default {
     methods: {
         toggleNavigationActive() {
             this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', !this.$store.getters['app/IS_NAVIGATION_ACTIVE'])
+        }
+    },
+    computed: {
+        isDashboard (){
+            return this.$route.name === "dashboard";
         }
     }
 }
@@ -27,7 +34,7 @@ export default {
     position: relative;
     padding: 0;
 
-    span {
+    span{
         width: 32px;
         height: 3px;
         background-color: #fff;
@@ -55,7 +62,41 @@ export default {
             top: 10px;
             transition: .3s;
         }
+
     }
+
+
+    .navigation-toggler-dashboard{
+        width: 32px;
+        height: 3px;
+        background-color: #444F5C;
+        position: absolute;
+        left: 0px;
+
+        &::before {
+            content: '';
+            width: 32px;
+            height: 3px;
+            background-color: #444F5C;
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transition: .3s;
+        }
+
+        &::after {
+            content: '';
+            width: 32px;
+            height: 3px;
+            background-color: #444F5C;
+            position: absolute;
+            left: 0px;
+            top: 10px;
+            transition: .3s;
+        }
+
+    }
+
 
     &.navigation-toggler--active {
         

@@ -1,14 +1,16 @@
 <template>
     <nav class="navigation" :class="{ 'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }"
-        @click.stop="closeNavMenu"
     >
         <ul class="navigation__list">
-            <li
+            <li  
                 class="navigation__item"
                 v-for="(link, index) in links"
                 :key="index"
             >
-                <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
+                <NuxtLink 
+                    class="link navigation__link" :to="link.to"
+                    :class="{ 'navigation__link-dashboard': isDashboard }"
+                >{{ link.text }}</NuxtLink>
             </li>
         </ul>
     </nav>
@@ -44,26 +46,22 @@ export default {
                 },
             ]
         },
+        isDashboard (){
+            return this.$route.name === "dashboard";
+        }
     },
 
     watch: {
         windowWidth(width) {
             // if return to desktop viewport - reset 'app/IS_NAVIGATION_ACTIVE' to default state
             if (width > 961 && this.$store.getters['app/IS_NAVIGATION_ACTIVE']) {
-                this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
+                this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', !this.$store.getters['app/IS_NAVIGATION_ACTIVE'])
             }
         },
         '$store.state.app.isNavigationActive'(isNavigationActive) {
             isNavigationActive ? scrollLock.disablePageScroll() : scrollLock.enablePageScroll()
         },
-    },
-
-    methods: {
-        closeNavMenu(){
-            this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', false)
-        }
     }
-
 }
 </script>
 
@@ -73,7 +71,7 @@ export default {
     bottom: 0;
     left: -100%;
     width: 100%;
-    height: calc(100% - 98px);
+    height: calc(100% - 64px);
     background: $color-stratos;
     transition: left 200ms ease-in-out;
     padding: 68px;
@@ -106,6 +104,10 @@ export default {
         font-weight: 400;
         color: $color-white;
         text-decoration: none;
+
+        &-dashboard{
+            color: $color-curious-blue;
+        }
     }
 
     @include tablet-big {
