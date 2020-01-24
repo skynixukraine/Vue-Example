@@ -10,7 +10,7 @@ module.exports = {
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
-            { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+            { hid: 'description', name: 'description', content: 'Nuxt.js project' },
         ],
         script: [
             { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` },
@@ -26,12 +26,13 @@ module.exports = {
     ],
     styleResources: {
         scss: [
-            'assets/scss/main.scss'
+            'assets/scss/main.scss',
         ]
     },
     modules: [
+        'cookie-universal-nuxt',
         '@nuxtjs/style-resources',
-        '@nuxtjs/pwa'
+        '@nuxtjs/pwa',
     ],
     loading: { color: '#FFF' },
     manifest: {
@@ -45,6 +46,7 @@ module.exports = {
     },
     router: {},
     plugins: [
+        { src: '~/plugins/injections/cookie' },
         { src: '~/plugins/injections/routes' },
         { src: '~/plugins/injections/apiRoutes' },
         { src: '~/plugins/injections/googleApiRoutes' },
@@ -56,7 +58,6 @@ module.exports = {
 
         { src: '~plugins/modules/vuexSharedMutations', mode: 'client' },
         { src: '~/plugins/modules/recaptcha', mode: 'client' },
-        { src: '~/plugins/modules/localStorage', mode: 'client' },
         { src: '~/plugins/modules/axios' },
         { src: '~/plugins/modules/googleMaps' },
         { src: '~/plugins/modules/i18n' },
@@ -67,6 +68,6 @@ module.exports = {
     ],
     build: {
         vendor: ['axios'],
-        transpile: ['/^vue2-google-maps($|\/)/']
+        transpile: ['/^vue2-google-maps($|\/)/'],
     }
 }

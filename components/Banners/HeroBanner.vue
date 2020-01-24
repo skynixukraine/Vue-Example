@@ -22,7 +22,7 @@
         </footer>
         <img
             class="hero-banner__phone"
-            :src="require('~/static/images/images/iphone.png')"
+            :src="require('~/static/images/images/iPhone_banner.png')"
             alt="iphone"
         />
     </div>
@@ -100,10 +100,12 @@ export default {};
         }
 
         &__phone {
+            width: 100%;
             display: block;
             position: absolute;
             top: 100px;
-            right: -135px;
+            right: -320px;
+            top: 50px;
         }
     }
 

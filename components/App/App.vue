@@ -281,27 +281,6 @@ START: COMPONENTS
     }
 }
 
-// dashboard container
-.dashboard-container {
-    display: flex;
-    width: 100%;
-
-    &__sidebar {
-        width: 283px;
-    }
-
-    &__content {
-        flex: 1;
-    }
-}
-
-.dashboard-sidebar {
-    background: $color-gradient-blue-light-revert;
-    color: $color-white;
-}
-
-
-
 
 // list
 .list {

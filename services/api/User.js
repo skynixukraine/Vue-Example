@@ -41,6 +41,9 @@ export default {
         })
     },
 
+
+
+
     /**
      * Login User
      * @param {Object} loginData
@@ -84,6 +87,9 @@ export default {
         })
     },
 
+
+
+
     async logoutUser(token) {
         return new Promise ((resolve, reject) => {
             HTTP.patch('/doctors/logout', {}, { headers: {'Authorization': `Bearer ${token}`} })
@@ -116,8 +122,11 @@ export default {
         })
     },
 
+
+
+
     /**
-     * Load User By Id
+     * Load User
      * @param {Object} {id, token}
      * @return {Promise}
      */
@@ -125,7 +134,7 @@ export default {
         return new Promise ((resolve, reject) => {
             HTTP.get(`/doctors/${id}`, { headers: {'Authorization': `Bearer ${token}`} })
                 .then(response => {
-                    const responseData = {          
+                    const responseData = {       
                         success: true,
                         status: response.status,
                         data: response.data.data,
@@ -158,6 +167,29 @@ export default {
                 })
         })
     },
+
+
+
+
+    /**
+     * Update User
+     * @param {Object}
+     * @return {Promise}
+     */
+    async updateUser({id, token, params}) {
+        return new Promise ((resolve, reject) => {
+            HTTP.patch(`/doctors/${id}`, params, { headers: {'Authorization': `Bearer ${token}`} })
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        })
+    },
+
+
+
 
     /**
      * Verify User Email
@@ -201,6 +233,9 @@ export default {
                 })
         })
     },
+
+
+
 
     /**
      * Resend Verify Email

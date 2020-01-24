@@ -1,7 +1,7 @@
 <template>
     <div class="request-banner" :style="`background-image: url(${require('~/static/images/bg/abstract-bg-2.jpg')})`">
         <h2 class="request-banner__title">{{ $t('headers.start-your-request-now') }}</h2>
-        <NuxtLink :to="$routes.home.path" class="link link--button link--button-white" exact>{{ $t('links.learn-more') }}</NuxtLink>
+        <NuxtLink :to="$routes.home.path" class="link link--button link--button-white" exact>{{ $t('links.start-inquiry') }}</NuxtLink>
     </div>
 </template>
 

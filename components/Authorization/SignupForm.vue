@@ -186,18 +186,13 @@ export default {
 
             this.$store.dispatch('user/REGISTER_USER', formData)
                 .then((response) => {
-                    this.$store.dispatch('user/LOAD_USER', { id: response.data.doctor_id, token: response.data.access_token })
-                        .then((response) => {
-                            this.openModal(this.$modals.registerSuccess)
-                            // re request captcha (need update after each form send)
-                            this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
-                            this.isFormSending = false
-                        })
+                    this.openModal(this.$modals.registerSuccess)
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                    this.isFormSending = false
                 })
                 .catch((response) => {
                     this.$root.$emit('showNotify', { type: 'error', text: response.message })
                     this.handleErrorResponse(response.errors)
-                    // re request captcha (need update after each form send)
                     this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                     this.isFormSending = false
                 })
