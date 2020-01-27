@@ -1,18 +1,35 @@
 <template>
     <NuxtLink :to="$routes.home.path" class="link app-logo__link">
         <div class="app-logo">
-            <div class="app-logo__image"></div>
-            <div class="app-logo__text">{{ $t('links.logo-link') }}</div>
+            <div
+                class="app-logo__image"
+                :class="{ 'app-logo__image-dashboard': isDashboard }"
+            ></div>
+            <div 
+                class="app-logo__text"
+                :class="{ 'app-logo__text-dashboard': isDashboard }"
+            >{{ $t('links.logo-link') }}</div>
         </div>
     </NuxtLink>
 </template>
+
+
+<script>
+export default {
+    computed: {
+        isDashboard (){
+            return this.$route.name === "dashboard";
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 .app-logo {
     display: flex;
     align-items: center;
 
-    &__image {
+    &__image, &__image-dashboard{
         width: 48px;
         height: 48px;
         min-width: 48px;
@@ -20,6 +37,10 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+
+        &-dashboard{
+            background-image: url("~static/images/icons/logo_blue.svg");
+        }
     }
 
     &__text {
@@ -29,6 +50,10 @@
         color: $color-white;
         font-size: 18px;
         line-height: 1.3;
+
+        &-dashboard{
+            color: $color-curious-blue;
+        }
     }
 
     &__link {
@@ -48,7 +73,7 @@
     }
 
     @include tablet-big {
-        & .app-logo__image {
+        & .app-logo__image, .app-logo__image-dashboard{
             width: 64px;
             height: 64px;
             min-width: 64px;

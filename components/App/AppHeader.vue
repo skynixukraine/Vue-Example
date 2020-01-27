@@ -1,7 +1,11 @@
 <template>
     <header
         class="app-header"
-        :class="{ 'app-header--bg-transparent': isHomePage, 'app-header--bg-default': scrollTop > 68 }"
+        :class="{ 
+            'app-header--bg-transparent': isHomePage, 
+            'app-header--bg-white': isDashboard, 
+            'app-header--bg-default': scrollTop > 68 && !isDashboard
+        }"
     >
         <div class="app-header__inner">
             <div class="app-header__item">
@@ -10,6 +14,10 @@
             <div class="app-header__item">
                 <Navigation />
             </div>
+            <div class="app-header__item app-header__item-logo">
+                <HeaderUserInfo />
+            </div>
+            
             <div class="app-header__item" v-if="windowWidth < 962">
                 <NavigationToggler />
             </div>
@@ -25,17 +33,22 @@ import window from "~/mixins/window";
 import AppLogo from "~/components/App/AppLogo";
 import Navigation from "~/components/Navigation/Navigation";
 import NavigationToggler from "~/components/Navigation/NavigationToggler";
+import HeaderUserInfo from "~/components/Header/HeaderUserInfo";
 
 export default {
     mixins: [window],
     components: {
         AppLogo,
         Navigation,
-        NavigationToggler
+        NavigationToggler,
+        HeaderUserInfo
     },
     computed: {
         isHomePage() {
             return this.$route.name === "index";
+        },
+        isDashboard (){
+            return this.$route.name === "dashboard";
         }
     }
 };
@@ -48,18 +61,16 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 98px;
-    padding: 25px 15px 10px;
+    height: 64px;
+    padding: 8px 15px;
     background: $color-stratos;
-
-    @include tablet-big{
-        height: 115px;
-    }
-
-
 
     &--bg-transparent {
         background: transparent;
+    }
+
+    &--bg-white {
+        background: $color-white;
     }
 
     &--bg-default {
@@ -77,6 +88,20 @@ export default {
     &__item {
         display: flex;
         align-items: center;
+        
+        &-logo{
+            margin-left: auto;
+            margin-right: 3%;
+
+            @include tablet-big{
+                margin: 0;
+            }
+        }
+    }
+
+    @include tablet-big{
+        height: 80px;
+        padding: 8px 15px;
     }
 }
 </style>
