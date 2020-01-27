@@ -69,6 +69,9 @@ export const actions = {
 
     async UPDATE_USER ({ commit }, { id, token, params }) {
         return new Promise ((resolve, reject) => {
+            console.log('UPDATE_USER request id: ', id)
+            console.log('UPDATE_USER request token: ', token)
+            console.log('UPDATE_USER request params: ', params)
             UserApi.updateUser({ id, token, params })
                 .then(response => {
                     resolve(response)

@@ -27,7 +27,7 @@ import PersonalInfo from "~/components/PersonalInfo/PersonalInfo"
 
 export default {
     middleware: [
-        //'auth',
+        'auth',
     ],
 
     async fetch ({ app, store, error }) {
