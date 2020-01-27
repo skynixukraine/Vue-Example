@@ -57,10 +57,8 @@ export default {
     }
 
     &__link {
-        &:hover {
-            .app-logo__text {
-                text-decoration: underline;
-            }
+        :hover {
+            text-decoration: none;
         }
     }
 
