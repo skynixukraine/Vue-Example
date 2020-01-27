@@ -125,12 +125,15 @@ export default {
 
         &:first-child {
             background: $color-gradient-blue-dark;
-            padding: 64px 0;
+            padding: 48px 0;
+            max-height: 565px;
+            height: 565px
         }
 
         &:last-child {
             background: $color-stratos;
             padding: 26px 0 22px;
+            max-height: 70px;
         }
     }
 
@@ -150,6 +153,7 @@ export default {
     }
 
     &__title {
+        font-size: 18px;
         color: $color-white;
     }
 
@@ -196,6 +200,18 @@ export default {
                 margin-bottom: 0;
             }
         }
+
+        &__section {
+            &:first-child {
+                max-height: 364px;
+                height: 364px;
+            }
+
+        &:last-child {
+            max-height: 70px;
+        }
+    }
+
     }
 }
 </style>
