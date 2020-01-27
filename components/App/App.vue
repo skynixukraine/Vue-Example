@@ -323,6 +323,7 @@ START: COMPONENTS
     &--d3 {
         .list__item {
             flex: 0 0 100%;
+            padding: 16px;
         }
     }
 
