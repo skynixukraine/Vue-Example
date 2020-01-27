@@ -37,5 +37,11 @@ export default {
             this.returnToBackupedValue()
             this.toogleIsEditMode()
         },
+
+        prepareDataForSending(name, value) {
+            let params = new URLSearchParams()
+            params.append(name, value)
+            return params
+        }
     }
 }

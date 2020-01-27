@@ -36,15 +36,15 @@
         <div class="single-form-main">
             <select
                 class="select"
-                name="title_id"
-                ref="title_id"
+                name="specialization_id"
+                ref="specialization_id"
                 v-model="value"
             >
                 <option disabled value="">Choose one of the options</option>
-                <option v-for="(option, index) in $store.getters['doctorTitles/DOCTOR_TITLES']" :key="index" :value="option.id">{{ option.name }}</option>
+                <option v-for="(option, index) in $store.getters['specializations/SPECIALIZATIONS']" :key="index" :value="option.id">{{ option.name }}</option>
             </select>
         </div>
-        <footer class="single-form-footer" v-if="errors.title_id">{{ errors.title_id }}</footer>
+        <footer class="single-form-footer" v-if="errors.specialization_id">{{ errors.specialization_id }}</footer>
     </form>
 </template>
 
@@ -61,14 +61,14 @@ export default {
 
     data() {
         return {
-            value: this.$store.getters['user/USER'].title.id,
+            value: this.$store.getters['user/USER'].specialization.id,
         }
     },
 
     methods: {
         async onSubmit() {
             this.setIsFormSending(true)
-            const searchParams = this.prepareDataForSending('title_id', this.value)
+            const searchParams = this.prepareDataForSending('specialization_id', this.value)
             this.$store.dispatch('user/UPDATE_USER', { id: this.$cookies.get(this.$cookie.names.tokenId), token: this.$cookies.get(this.$cookie.names.token), params: searchParams })
                 .then(response => {
                     this.setIsFormSending(false)

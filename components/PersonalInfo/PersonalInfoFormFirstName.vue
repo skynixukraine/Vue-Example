@@ -34,30 +34,14 @@
             </div>
         </header>
         <div class="single-form-main">
-            <!-- <input
+            <input
                 class="input"
                 type="text"
                 name="first_name"
                 ref="first_name"
                 v-model="value"
                 @blur="onInputChange"
-            /> -->
-            <input
-                class="input input--hidden"
-                type="file"
-                name="certification"
-                ref="certification"
-                @change="onCertificationUpload"
             />
-            <button
-                class="link link--button link--button-white link--button-upload"
-                type="button"
-                @click="addFileCertification"
-            >
-                <p>
-                    Add file
-                </p>
-            </button>
         </div>
         <footer class="single-form-footer" v-if="errors.first_name">{{ errors.first_name }}</footer>
     </form>
@@ -76,53 +60,26 @@ export default {
 
     data() {
         return {
-            value: '',
+            value: this.$store.getters['user/USER'].first_name,
         }
     },
 
     methods: {
-        addFileCertification() {
-            this.$refs.certification.click()
-        },
-
-        onCertificationUpload(event) {
-            this.value = event.target.files[0]
-        },
-
-
-
-
-
-
-
-
-
-
-
-
-
         async onSubmit() {
             this.setIsFormSending(true)
 
-            // if ( !this.validateForm(this.value) ) {
-            //     this.setIsFormSending(false)
-            //     return false
-            // }
+            if ( !this.validateForm(this.value) ) {
+                this.setIsFormSending(false)
+                return false
+            }
 
-            const searchParams = await this.prepareDataForSending(this.value)
-
-            this.$store.dispatch('user/UPDATE_USER', { id: this.$cookies.get(this.$cookie.names.tokenId), token: this.$cookies.get(this.$cookie.names.token), params: { photo: searchParams }})
+            const searchParams = this.prepareDataForSending('first_name', this.value)
+            this.$store.dispatch('user/UPDATE_USER', { id: this.$cookies.get(this.$cookie.names.tokenId), token: this.$cookies.get(this.$cookie.names.token), params: searchParams })
                 .then(response => {
-                    console.log('UPDATE_USER response success: ', response)
-                    // load user in state
-                    this.$store.dispatch('user/LOAD_USER', { id: this.$cookies.get(this.$cookie.names.tokenId), token: this.$cookies.get(this.$cookie.names.token) })
-                        .then((response) => {
-                            this.setIsFormSending(false)
-                        })
                     this.setIsFormSending(false)
                 })
                 .catch(error => {
-                    console.log('UPDATE_USER response error: ', error)
+                    console.error(error)
                     this.setIsFormSending(false)
                 })
         },
@@ -137,24 +94,6 @@ export default {
             }
 
             return true
-        },
-
-        async prepareDataForSending(value) {
-            return new Promise ((resolve, reject) => {
-                let reader = new FileReader();
-
-                reader.readAsBinaryString(value);
-
-                reader.onload = function() {
-                    console.log(reader.result);
-                    resolve(reader.result)
-                };
-
-                reader.onerror = function() {
-                    console.log(reader.error);
-                    reject(reader.error)
-                };
-            })
         },
 
         onInputChange(event) {
