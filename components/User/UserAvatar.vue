@@ -68,7 +68,7 @@ export default {
         height: 48px;
         min-width: 48px;
         border-radius: 50%;
-        background-color: green;
+        background: linear-gradient(135deg, #0F44B2 0%, #247EE5 100%);
 
         @include tablet-big {
             width: 64px;
