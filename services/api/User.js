@@ -178,7 +178,9 @@ export default {
      */
     async updateUser({id, token, params}) {
         return new Promise ((resolve, reject) => {
-            HTTP.patch(`/doctors/${id}`, params, { headers: {'Authorization': `Bearer ${token}`} })
+            console.log('dddd ', params);
+            
+            HTTP.patch(`/doctors/${id}`, params, { headers: {'Authorization': `Bearer ${token}`, 'Content-Type': 'application/x-www-form-urlencoded'} })
                 .then(response => {
                     resolve(response)
                 })

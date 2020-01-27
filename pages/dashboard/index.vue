@@ -21,7 +21,7 @@ import AccountStatus from "~/components/Account/AccountStatus"
 
 export default {
     middleware: [
-        //'auth',
+        'auth',
     ],
 
     async fetch ({ app, store, error }) {

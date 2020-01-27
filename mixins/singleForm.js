@@ -1,15 +1,8 @@
-// mixins
-import validator from "~/mixins/validator"
-
 const DEFAULT_BACKUPED_VALUE = ''
 const DEFAULT_IS_EDIT_MODE = false
 const DEFAULT_IS_FORM_SENDING = false
 
 export default {
-    mixins: [
-        validator,
-    ],
-
     data() {
         return {
             backupedValue: DEFAULT_BACKUPED_VALUE,
@@ -27,6 +20,10 @@ export default {
             this.backupedValue = this.value
         },
 
+        returnToBackupedValue() {
+            this.value = this.backupedValue
+        },
+
         setIsFormSending(isFormSending) {
             this.isFormSending = isFormSending
         },
@@ -37,6 +34,7 @@ export default {
         },
 
         onClickCancel() {
+            this.returnToBackupedValue()
             this.toogleIsEditMode()
         },
     }
