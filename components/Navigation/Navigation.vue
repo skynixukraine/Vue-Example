@@ -8,7 +8,7 @@
                 v-for="(link, index) in links"
                 :key="index"
             >
-                <NuxtLink class="link navigation__link" :to="link.to" @click="closeNavMenu">{{ link.text }}</NuxtLink>
+                <NuxtLink class="link navigation__link" :to="link.to">{{ link.text }}</NuxtLink>
             </li>
         </ul>
     </nav>
