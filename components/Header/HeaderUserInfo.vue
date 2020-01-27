@@ -1,6 +1,6 @@
 <template>
     <div 
-        class="header-user-info" v-if="isLogin"
+        class="header-user-info" v-if="$store.getters['user/USER']"
         :class="{ 'header-user-info-dashboard': isDashboard }"
     >
         <div 
@@ -9,7 +9,7 @@
                 class="header-user-info__item"
                 :class="{ 'header-user-info__item-dashboard': isDashboard }"
             >
-                {{ firstName }} {{ lastName }}
+                {{ $store.getters['user/USER'].first_name }} {{ $store.getters['user/USER'].last_name }}
             </div>
             <div class="header-user-info__item__is-active-user" v-if="isActive">
                 <p>Active</p>
@@ -30,8 +30,6 @@ import UserAvatar from "~/components/User/UserAvatar";
 export default {
     data() {
         return {
-            firstName: 'MaximilianMaximilian',
-            lastName: 'ShvarzmullerShvarzmuller',
             isLogin: true,
             // Text if user is active
             isActive: false,

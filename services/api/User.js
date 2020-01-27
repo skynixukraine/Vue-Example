@@ -178,14 +178,38 @@ export default {
      */
     async updateUser({id, token, params}) {
         return new Promise ((resolve, reject) => {
-            console.log('dddd ', params);
-            
             HTTP.patch(`/doctors/${id}`, params, { headers: {'Authorization': `Bearer ${token}`, 'Content-Type': 'application/x-www-form-urlencoded'} })
                 .then(response => {
-                    resolve(response)
+                    const responseData = {       
+                        success: true,
+                        status: response.status,
+                        data: response.data.data,
+                        message: 'User success updated',
+                    }
+                    resolve(responseData)
                 })
                 .catch(error => {
-                    reject(error)
+                    let message = ''
+
+                    if (error.response.status === 401) {
+                        message = 'Authorization failed.'
+                    }
+                    if (error.response.status === 403) {
+                        message = 'Current user has not permissions to do this action.'
+                    }
+                    if (error.response.status === 404) {
+                        message = 'Resource not found.'
+                    }
+                    if (error.response.status === 500) {
+                        message = 'Internal technical error was happened.'
+                    }
+
+                    const responseData = {
+                        success: false,
+                        status: error.response.status,
+                        message,
+                    }
+                    reject(responseData)
                 })
         })
     },

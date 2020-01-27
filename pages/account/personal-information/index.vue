@@ -39,6 +39,18 @@ export default {
                     app.$cookies.remove(app.cookie.names.tokenId)
                 })
         }
+
+        // load Titles (need for PersonalInfo component)
+        await store.dispatch('doctorTitles/LOAD_DOCTOR_TITLES')
+
+        // load Specializations (need for PersonalInfo component)
+        await store.dispatch('specializations/LOAD_SPECIALIZATIONS')
+
+        // load Regions (need for PersonalInfo component)
+        await store.dispatch('regions/LOAD_REGIONS')
+
+        // load Languages (need for PersonalInfo component)
+        await store.dispatch('languages/LOAD_LANGUAGES')
     },
 
     components: {

@@ -19,6 +19,10 @@ let store = {};
 
   resolveStoreModules(require('../store/app.js'), 'app.js')
   resolveStoreModules(require('../store/doctors.js'), 'doctors.js')
+  resolveStoreModules(require('../store/doctorTitles.js'), 'doctorTitles.js')
+  resolveStoreModules(require('../store/languages.js'), 'languages.js')
+  resolveStoreModules(require('../store/regions.js'), 'regions.js')
+  resolveStoreModules(require('../store/specializations.js'), 'specializations.js')
   resolveStoreModules(require('../store/user.js'), 'user.js')
 
   // If the environment supports hot reloading...
@@ -28,6 +32,10 @@ let store = {};
     module.hot.accept([
       '../store/app.js',
       '../store/doctors.js',
+      '../store/doctorTitles.js',
+      '../store/languages.js',
+      '../store/regions.js',
+      '../store/specializations.js',
       '../store/user.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
