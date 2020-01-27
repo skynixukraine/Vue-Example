@@ -143,8 +143,8 @@ export default {
     },
     computed: {
         users() {
-            // return this.$store.getters['user/USERS']
-            return 
+            /* return this.$store.getters['user/USERS'] */
+            let users = 
             [
                 {
                     "id": 1,
@@ -222,6 +222,7 @@ export default {
                     "description" : "333 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam labore dolor, laboriosam autem officiis ipsam incidunt voluptas, quidem reprehenderit vero consequatur, sint deleniti corporis sapiente deserunt provident adipisci reiciendis.",
                 }
             ]
+            return users;
         }
     },
 
