@@ -10,10 +10,6 @@ export const state = () => ({
 })
 
 export const mutations = {
-    SET_TOKEN (state, token) {
-        state.token = token
-    },
-
     SET_USER (state, user) {
         state.user = user
     },
@@ -63,6 +59,21 @@ export const actions = {
             UserApi.loadUser({ id, token })
                 .then(response => {
                     commit('SET_USER', response.data)
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })  
+        })
+    },
+
+    async UPDATE_USER ({ commit }, { id, token, params }) {
+        return new Promise ((resolve, reject) => {
+            console.log('UPDATE_USER request id: ', id)
+            console.log('UPDATE_USER request token: ', token)
+            console.log('UPDATE_USER request params: ', params)
+            UserApi.updateUser({ id, token, params })
+                .then(response => {
                     resolve(response)
                 })
                 .catch(error => {

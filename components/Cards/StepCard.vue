@@ -1,8 +1,14 @@
 <template>
     <div class="step-card" :class="`step-card--${step.number}`">
         <header class="step-card__header">
-            <div class="step-card__number">{{ step.number }}</div>
+            <video class="step-card__video" :src="step.video" type="video/mp4" autoplay loop></video>
+             <img
+                :class="`step-card__image-dots step-card__image-dots--${step.number}`"
+                :src="require('~/static/images/images/dots.png')"
+                alt="iphone"
+            />
         </header>
+       
         <div class="step-card__main">
             <h3 class="step-card__title">{{ step.title }}</h3>
             <p class="step-card__text">{{ step.text }}</p>
@@ -28,6 +34,8 @@ export default {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 32px;
+    align-items: center;
+
 
     &--03 {
         background-image: none;
@@ -39,9 +47,11 @@ export default {
         z-index: 1;
         display: flex;
         justify-content: center;
+
+        
     }
 
-    &__number {
+    &__video {
         font-family: $font-family-secondary;
         font-size: 24px;
         font-weight: 700;
@@ -66,20 +76,77 @@ export default {
         text-align: center;
     }
 
+    &__image-dots{
+        position: absolute;
+        z-index: -1;
+            
+        &--01{ display: none }
+        &--02{ display: none }
+        &--03{ display: none }
+        
+
+
+        @media (min-width: #{$screen-tablet-min}) {
+          &--01{ 
+                display: block;
+                bottom: -119px 
+            }
+
+            &--02{ 
+                display: block;
+                bottom: -179px 
+            }
+        }
+
+
+        @media (min-width: #{818px}) {
+            &--01{ 
+                bottom: -72px 
+            }
+
+            &--02{ 
+                bottom: -113px 
+            }
+        }
+
+        @media (min-width: #{898px}) {
+            &--01{ 
+                display: block;
+                bottom: -72px 
+            }
+
+            &--02{ 
+                bottom: -110px 
+            }
+        }
+
+        @include tablet-big {
+            &--01{ 
+                bottom: -61px 
+            }
+
+            &--02{ 
+                bottom: -97px 
+            }
+       
+        }
+    }
 
     @include tablet {
         display: flex;
-        background-image: url('~static/images/images/dots.png');
-        background-repeat: no-repeat;
-        padding-bottom: 48px;
+        // background-image: url('~static/images/images/dots.png');
+        // background-repeat: no-repeat;
+        // padding-bottom: 48px;
         
 
         &--01 {
-            background-position: 60px 77%;
+            // background-position: 60px 77%;
+            background-position: 121px 99%;
         }
 
         &--02 {
-            background-position: 60px 73%;
+            // background-position: 60px 73%;
+            background-position: 121px 99%;
         }
 
         &--03 {
@@ -87,12 +154,11 @@ export default {
             padding-bottom: 0;
         }
 
-        &__number {
-            font-size: 48px;
-            width: 128px;
-            height: 128px;
-            min-width: 128px;
-            min-height: 128px;
+        &__video {
+            width: 248px;
+            height: 248px;
+            min-width: 248px;
+            min-height: 248px;
         }
 
         &__main {
@@ -106,11 +172,13 @@ export default {
     @include tablet-big {
 
         &--01 {
-            background-position: 60px 87%;
+            // background-position: 60px 87%;
+            background-position: 121px 105%;
         }
 
         &--02 {
-            background-position: 60px 78%;
+            // background-position: 60px 78%;
+            background-position: 121px 99%;
         }
     }
 }

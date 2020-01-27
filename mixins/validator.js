@@ -6,6 +6,23 @@ export default {
     },
     methods: {
         // validators
+        validateName(event) {
+            const name = event.target.name
+            const value = event.target.value
+
+            // empty check
+            if (!value) {
+                this.errors[name] = this.$t('errors.form.required-field')
+                return false
+            }
+
+            // clean error if exist
+            if (this.errors.hasOwnProperty(name)) {
+                delete this.errors[name]
+            }
+
+            return true
+        },
         validateEmail(event) {
             const name = event.target.name
             const value = event.target.value

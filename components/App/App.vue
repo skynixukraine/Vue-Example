@@ -281,27 +281,6 @@ START: COMPONENTS
     }
 }
 
-// dashboard container
-.dashboard-container {
-    display: flex;
-    width: 100%;
-
-    &__sidebar {
-        width: 283px;
-    }
-
-    &__content {
-        flex: 1;
-    }
-}
-
-.dashboard-sidebar {
-    background: $color-gradient-blue-light-revert;
-    color: $color-white;
-}
-
-
-
 
 // list
 .list {
@@ -378,7 +357,7 @@ START: COMPONENTS
     }
 
     &--button {
-        width: 100%;
+        width: auto;
         display: inline-block;
         text-align: center;
         padding: 20px 31px 16px;
@@ -390,6 +369,10 @@ START: COMPONENTS
         letter-spacing: 2px;
         border-width: 1px;
         border-style: solid;
+
+        &-full-width {
+            width: 100%
+        }
 
 
         &-white {
