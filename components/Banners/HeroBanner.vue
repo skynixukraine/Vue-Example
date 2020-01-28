@@ -9,13 +9,13 @@
         <footer class="hero-banner__footer">
             <div class="hero-banner__footer-item">
                 <NuxtLink
-                    :to="this.$routes.home.path"
+                    :to="this.$routes.hautarzt.path"
                     class="link link--button link--button-white"
                 >{{ $t('links.start-inquiry') }}</NuxtLink>
             </div>
             <div class="hero-banner__footer-item">
                 <NuxtLink
-                    :to="this.$routes.home.path"
+                    :to="this.$routes.hautarzt.path"
                     class="link link--button link--button-white"
                 >{{ $t('links.our-dermatologists') }}</NuxtLink>
             </div>
@@ -61,6 +61,8 @@ export default {};
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        position : relative;
+        z-index : 1;
     }
 
     &__footer-item {
