@@ -39,7 +39,6 @@
                 </div>
             </div>
         </div>
-
         <div class="app-footer__section">
             <div class="container">
                 <div class="app-footer__copyright">{{ $t('phrases.copyright') }}</div>
@@ -103,9 +102,9 @@ export default {
                     text: 'Impressum',
                     to: this.$routes.impressum.path
                 }],
-            }
+            },
         }
-    }
+    },
 }
 </script>
 
@@ -122,7 +121,6 @@ export default {
     }
 
     &__section {
-
         &:first-child {
             background: $color-gradient-blue-dark;
             padding: 48px 0;
@@ -132,8 +130,15 @@ export default {
 
         &:last-child {
             background: $color-stratos;
-            padding: 26px 0 22px;
+            padding: 13px 0 22px;
             max-height: 70px;
+
+            .container{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
     }
 
@@ -179,13 +184,38 @@ export default {
         text-align: center;
         font-size: 15px;
         font-weight: 300;
+        width: 190px;
     }
 
 
-    @include phone-big {
 
+    @media (min-width: #{394px}) {
+        &__section {
+            &:last-child {
+                padding: 13px 0 22px;
+            }
+        }
+    }
+
+    @media (min-width: #{$screen-phone-big-min}) {
+        &__section {
+            &:last-child {
+                padding: 26px 0 22px;
+            }
+        }
+        
+        &__copyright {
+            width: 100%;
+        }   
+    }
+
+    @include phone-big {
         &__item {
             font-size: 16px;
+        }
+
+        &__copyright {
+            font-size: 18px;
         }
     }
 
@@ -207,9 +237,9 @@ export default {
                 height: 364px;
             }
 
-        &:last-child {
-            max-height: 70px;
-        }
+            &:last-child {
+                max-height: 70px;
+            }
     }
 
     }
