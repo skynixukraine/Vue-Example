@@ -72,7 +72,7 @@
             />
 
             <button
-                class="link link--button link--button-white link--button-upload"
+                class="link link--button link--button-full-width link--button-white link--button-upload"
                 type="button"
                 @click="addFileDegree"
             >
@@ -100,7 +100,7 @@
                 @change="onCertificationUpload"
             />
             <button
-                class="link link--button link--button-white link--button-upload"
+                class="link link--button link--button-full-width link--button-white link--button-upload"
                 type="button"
                 @click="addFileCertification"
             >
@@ -128,7 +128,7 @@
         </div>
         <div class="form__item">
             <button
-                class="link link--button link--button-blue"
+                class="link link--button link--button-full-width link--button-blue"
                 type="submit"
                 :disabled="isFormSending"
             >{{ isFormSending ? $t('states.loading') : $t('links.signup') }}</button>
