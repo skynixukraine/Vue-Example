@@ -8,6 +8,7 @@
                 name="email"
                 ref="email"
                 v-model="models.email"
+                :placeholder="$t('forms.enter-email')"
                 @blur="onEmailChange"
             />
             <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
@@ -20,6 +21,7 @@
                 name="password"
                 ref="password"
                 v-model="models.password"
+                :placeholder="$t('forms.enter-password')"
                 @blur="onPasswordChange"
             />
             <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
@@ -178,7 +180,6 @@ export default {
     width: 100%;
 
     .form__title {
-        // font-family: TheSansB;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
@@ -212,8 +213,35 @@ export default {
             height: 56px;
         }
 
+        &::placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        &::-moz-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }/* Firefox 19+ */
+
+        &:-moz-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+            }/* Firefox 18- */
+            
+        &:-ms-input-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
     }
-
-
 }
 </style>

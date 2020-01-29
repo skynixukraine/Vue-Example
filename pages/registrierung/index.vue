@@ -11,12 +11,12 @@
                         class="link link--button link--button-blue"
                         @click="setCurrentTab('signup')"
                     >Sign Up</button>
-                </div>
+                </div>`
                 <div class="container-forms">
-                    <template v-if="windowWidth  > 962 || currentTab === 'signin'">
+                    <template v-if="windowWidth  >= 962 || currentTab === 'signin'">
                         <Signin />
                     </template>
-                    <template v-if="windowWidth  > 962 || currentTab === 'signup'">
+                    <template v-if="windowWidth  >= 962 || currentTab === 'signup'">
                         <Signup />
                     </template>
                 </div>
@@ -79,7 +79,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 5%;
+    margin: 0;
 
     @media (min-width: #{962px}) {
         flex-direction: row;

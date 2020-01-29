@@ -21,12 +21,15 @@ $color-footer-text: rgba(255, 255, 255, 0.44);
 $color-gradient-blue-light: linear-gradient(270deg, #247EE5 0%, #0F44B2 100%);
 $color-gradient-blue-light-revert: linear-gradient(180deg, #0F44B2 0%, #247EE5 100%);
 $color-gradient-blue-dark: linear-gradient(270deg, #0F44B2 0%, #042052 100%);
+$color-gradient-button-blue: linear-gradient(90deg, #0F44B2 0%, #247EE5 100%);
 $color-alert-red: #FF0000;
 $color-transparent: transparent;
 $color-cinnabar: #EA4335;
 $color-mercury: #E5E5E5;
 $color-user-is-active: #34A853;
 $color-price: #257EE5;
+$color-terms-text-decoration: rgba(36, 126, 229, 0.2);
+$color-form-input-placeholder: rgba(122, 125, 132, 0.5);
 // Screen viewport
 $screen-phone-irregular-min: 394px;
 $screen-phone-big-min: 480px;

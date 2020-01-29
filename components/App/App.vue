@@ -390,12 +390,12 @@ START: COMPONENTS
         }
 
         &-blue {
-            background: $color-torea-bay;
+            background: $color-gradient-button-blue;
             color: $color-white;
             border-color: $color-torea-bay;
 
             &:hover {
-                background: $color-tory-blue;
+                background: $color-torea-bay;
             }
 
             &:active {
@@ -442,6 +442,7 @@ START: COMPONENTS
                 font-size: 18px;
                 text-transform: lowercase;
                 line-height: 18px;
+                letter-spacing: normal;
 
                 ::first-letter {
                     text-transform: uppercase;
@@ -464,6 +465,11 @@ START: COMPONENTS
         &:hover {
             transform: translateY(-5px);
         }
+    }
+
+    &--terms{
+        color:$color-curious-blue;
+        border-bottom: 1px solid $color-terms-text-decoration
     }
 }
 

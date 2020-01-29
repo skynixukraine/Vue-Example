@@ -1,13 +1,14 @@
 <template>
     <form action class="form form--register" method="POST" @submit.prevent="onSubmit">
         <div class="form__item form__item--login">
-            <div class="form__title form__title--login">{{ $t('forms.enter-email') }}</div>
+            <div class="form__title form__title--login">{{ $t('forms.enter-email') }} <span>*</span></div>
             <input
                 class="input input--login"
                 type="email"
                 name="email"
                 ref="email"
                 v-model="models.email"
+                :placeholder="$t('forms.enter-email')"
                 @blur="onEmailChange"
             />
 
@@ -19,13 +20,14 @@
             <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
         </div>
         <div class="form__item form__item--password">
-            <div class="form__title form__title--password">{{ $t('forms.create-password') }}</div>
+            <div class="form__title form__title--password">{{ $t('forms.create-password') }} <span>*</span></div>
             <input
                 class="input input--password"
                 type= "password"
                 name="password"
                 ref="password"
                 v-model="models.password"
+                :placeholder="$t('forms.create-password')"
                 @blur="onPasswordChange"
             />
             <img
@@ -44,6 +46,7 @@
                 name="password_confirmation"
                 ref="password_confirmation"
                 v-model="models.password_confirmation"
+                :placeholder="$t('forms.confirm-password')"
                 @blur="onConfirmPasswordChange"
             />
             <div
@@ -52,7 +55,7 @@
             >{{ errors.password_confirmation }}</div>
         </div>
         <div class="form__item">
-            <div class="form__title form__title--phone_number">{{ $t('forms.phone-number') }}</div>
+            <div class="form__title form__title--phone_number">{{ $t('forms.phone-number') }} <span>*</span></div>
             <vue-tel-input
                 id="vue-tel-input"
                 name="phone_number"
@@ -116,7 +119,18 @@
             <div class="form__message" v-if="errors.certification">{{ errors.certification }}</div>
         </div>
         <div class="form__item form__item--checkbox">
-            <div class="form__title form__title--accepted">{{ $t('forms.i-accept') }}</div>
+            <div class="form__title form__title--accepted">
+
+                {{ $t('genegal-translations.i-accept') }}
+                <NuxtLink 
+                    :to="$routes.terms.path" class="link link--terms" exact>{{ $t('links.terms-and-conditions') }}
+                </NuxtLink>
+                {{ $t('genegal-translations.and') }}
+                <NuxtLink 
+                    :to="$routes.privacy.path" class="link link--terms" exact>{{ $t('links.privacy-policy') }}
+                </NuxtLink>
+
+            </div>
             <input
                 type="checkbox"
                 name="accepted"
@@ -350,7 +364,6 @@ export default {
     width: 100%;
 
     .form__title {
-        // font-family: TheSansB;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
@@ -363,6 +376,10 @@ export default {
 
         @include desktop {
             font-size: 18px;
+        }
+
+        span {
+            color: $color-alert-red;
         }
 
     }
@@ -400,7 +417,7 @@ export default {
         }
     }
 
-    .input, #vue-tel-input  {
+     .input, #vue-tel-input{
         width: 100%;
         height: 40px;
         background: $color-white;
@@ -408,6 +425,7 @@ export default {
         box-sizing: border-box;
         border-radius: 4px;
         padding-left: 2%;
+        // color: $color-form-input-placeholder;
 
         @include phone-big {
             height: 56px;
@@ -416,6 +434,37 @@ export default {
         @include desktop {
             width: 544px;
         }
+
+        &::placeholder, input::placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        &::-moz-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }/* Firefox 19+ */
+
+        &:-moz-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+            }/* Firefox 18- */
+            
+        &:-ms-input-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
+
     }
 
         .vti__input{
@@ -423,6 +472,10 @@ export default {
 
             @include phone-big {
                 max-width: 250px;
+            }
+
+            &::placeholder{
+                color: red;
             }
         }
     }
@@ -451,5 +504,4 @@ export default {
             top: 48px;
         }
     }
-
 </style>
