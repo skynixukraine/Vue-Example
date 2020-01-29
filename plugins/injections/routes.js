@@ -59,6 +59,12 @@ export default ({ app }, inject) => {
         enquiries: {
             path: '/enquiries'
         },
+        terms: {
+            path: '/terms-and-conditions'
+        },
+        privacy: {
+            path: '/privacy-policy'
+        }
     }
 
     Vue.prototype.$routes = OPTIONS

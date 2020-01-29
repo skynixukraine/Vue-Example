@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <h2>{{ $t('headers.login')}}</h2>
+    <div class="signin">
+        <h2 class="signin__header">{{ $t('headers.login')}}</h2>
         <SigninForm />
-        <!-- <ForgotPassword /> -->
+        <ForgotPassword />
     </div>
 </template>
 
@@ -20,8 +20,16 @@ export default {
 
 <style lang="scss">
 
-h2 {
-    text-align: center;
+.signin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__header {
+        text-align: center;
+    }
 }
 
 </style>
