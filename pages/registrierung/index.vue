@@ -11,7 +11,7 @@
                         class="link link--button link--button-blue"
                         @click="setCurrentTab('signup')"
                     >Sign Up</button>
-                </div>`
+                </div>
                 <div class="container-forms">
                     <template v-if="windowWidth  >= 962 || currentTab === 'signin'">
                         <Signin />

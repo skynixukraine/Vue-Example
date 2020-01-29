@@ -467,7 +467,7 @@ START: COMPONENTS
         }
     }
 
-    &--terms{
+    &--small-blue{
         color:$color-curious-blue;
         border-bottom: 1px solid $color-terms-text-decoration
     }

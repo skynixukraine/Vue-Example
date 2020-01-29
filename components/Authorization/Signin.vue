@@ -1,6 +1,6 @@
 <template>
     <div class="signin">
-        <h2>{{ $t('headers.login')}}</h2>
+        <h2 class="signin__header">{{ $t('headers.login')}}</h2>
         <SigninForm />
         <ForgotPassword />
     </div>
@@ -27,11 +27,9 @@ export default {
     align-items: center;
     justify-content: flex-start;
 
-    h2 {
-    text-align: center;
+    &__header {
+        text-align: center;
+    }
 }
-
-}
-
 
 </style>

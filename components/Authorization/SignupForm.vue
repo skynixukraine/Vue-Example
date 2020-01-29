@@ -123,11 +123,11 @@
 
                 {{ $t('genegal-translations.i-accept') }}
                 <NuxtLink 
-                    :to="$routes.terms.path" class="link link--terms" exact>{{ $t('links.terms-and-conditions') }}
+                    :to="$routes.terms.path" class="link link--small-blue" exact>{{ $t('links.terms-and-conditions') }}
                 </NuxtLink>
                 {{ $t('genegal-translations.and') }}
                 <NuxtLink 
-                    :to="$routes.privacy.path" class="link link--terms" exact>{{ $t('links.privacy-policy') }}
+                    :to="$routes.privacy.path" class="link link--small-blue" exact>{{ $t('links.privacy-policy') }}
                 </NuxtLink>
 
             </div>
