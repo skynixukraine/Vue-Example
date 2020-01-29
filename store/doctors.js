@@ -1,14 +1,28 @@
-// options (init values)
-const DEFAULT_DOCTORS = []
-
+import DoctorsApi from "../services/api/Doctors"
 
 export const state = () => ({
-    doctors: DEFAULT_DOCTORS,
+    doctorsForHomePage : [],
 })
 
+export const getters = {}
 
-export const getters = {
-    DOCTORS (state) {
-        return state.doctors
+export const mutations = {
+    SET_DOCTORS_DOCTORS_FOR_HOME_PAGE(state, newValue){
+        state.doctorsForHomePage = newValue
+    },
+}
+
+export const actions = {
+    LOAD_AND_SAVE_DOCTORS_FOR_HOME_PAGE({state, commit}, requestConfig){
+        return new Promise((resolve, reject) => {
+            DoctorsApi.loadDoctors(requestConfig)
+                      .then(response => {
+                          commit("SET_DOCTORS_DOCTORS_FOR_HOME_PAGE", response.data);
+                          resolve(response)
+                      })
+                      .catch(error => {
+                          reject(error)
+                      })
+        })
     },
 }
