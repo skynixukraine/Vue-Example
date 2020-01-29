@@ -8,12 +8,13 @@
         </div>
         <div class="section section--default-0 section--bg-right-1">
             <div class="container">
+                <img class="container__dots container__dots--4" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
                 <header class="section-header">
                     <h2 class="section-header__title">{{ $t('headers.our-family-doctors') }}</h2>
                 </header>
                 <ul class="list list--d3">
-                    <li class="list__item" v-for="(user, index) in users" :key="index">
-                         <DoctorCard :doctor="user" />
+                    <li class="list__item" v-for="(doctor, index) in doctors" :key="index">
+                         <DoctorCard :doctor="doctor" />
                     </li>
                 </ul>
                 <footer class="section-footer">
@@ -96,6 +97,8 @@ export default {
                     app.$cookies.remove(app.cookie.names.tokenId)
                 })
         }
+
+        await store.dispatch('doctors/LOAD_AND_SAVE_DOCTORS_FOR_HOME_PAGE', {per_page: 3, order_by: "id", direction: "asc"})
     },
 
     data() {
@@ -142,87 +145,8 @@ export default {
         }
     },
     computed: {
-        users() {
-            /* return this.$store.getters['user/USERS'] */
-            let users = 
-            [
-                {
-                    "id": 1,
-                    "price": 39,
-                    "name": "Leanne Graham",
-                    "username": "Bret",
-                    "email": "Sincere@april.biz",
-                    "address": {
-                    "street": "Kulas Light",
-                    "suite": "Apt. 556",
-                    "city": "Gwenborough",
-                    "zipcode": "92998-3874",
-                    "geo": {
-                        "lat": "-37.3159",
-                        "lng": "81.1496"
-                    }
-                    },
-                    "phone": "1-770-736-8031 x56442",
-                    "website": "hildegard.org",
-                    "company": {
-                    "name": "Romaguera-Crona",
-                    "catchPhrase": "Multi-layered client-server neural-net",
-                    "bs": "harness real-time e-markets"
-                    },
-                    "description" : "111 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam labore dolor, laboriosam autem officiis ipsam incidunt voluptas, quidem reprehenderit vero consequatur, sint deleniti corporis sapiente deserunt provident adipisci reiciendis.",
-                },
-                {
-                    "id": 2,
-                    "price": 25,
-                    "name": "Ervin Howell",
-                    "username": "Antonette",
-                    "email": "Shanna@melissa.tv",
-                    "address": {
-                    "street": "Victor Plains",
-                    "suite": "Suite 879",
-                    "city": "Wisokyburgh",
-                    "zipcode": "90566-7771",
-                    "geo": {
-                        "lat": "-43.9509",
-                        "lng": "-34.4618"
-                    }
-                    },
-                    "phone": "010-692-6593 x09125",
-                    "website": "anastasia.net",
-                    "company": {
-                    "name": "Deckow-Crist",
-                    "catchPhrase": "Proactive didactic contingency",
-                    "bs": "synergize scalable supply-chains"
-                    },
-                    "description" : "222 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam labore dolor, laboriosam autem officiis ipsam incidunt voluptas, quidem reprehenderit vero consequatur, sint deleniti corporis sapiente deserunt provident adipisci reiciendis.",
-                },
-                {
-                    "id": 3,
-                    "price": 45,
-                    "name": "Clementine Bauch",
-                    "username": "Samantha",
-                    "email": "Nathan@yesenia.net",
-                    "address": {
-                    "street": "Douglas Extension",
-                    "suite": "Suite 847",
-                    "city": "McKenziehaven",
-                    "zipcode": "59590-4157",
-                    "geo": {
-                        "lat": "-68.6102",
-                        "lng": "-47.0653"
-                    }
-                    },
-                    "phone": "1-463-123-4447",
-                    "website": "ramiro.info",
-                    "company": {
-                    "name": "Romaguera-Jacobson",
-                    "catchPhrase": "Face to face bifurcated interface",
-                    "bs": "e-enable strategic applications"
-                    },
-                    "description" : "333 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam labore dolor, laboriosam autem officiis ipsam incidunt voluptas, quidem reprehenderit vero consequatur, sint deleniti corporis sapiente deserunt provident adipisci reiciendis.",
-                }
-            ]
-            return users;
+        doctors() {
+            return this.$store.state.doctors.doctorsForHomePage
         }
     },
 
@@ -240,9 +164,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.section-header {
-    &__title{
-        text-align: center;
+    .section-header {
+        &__title {
+            text-align : center;
+        }
     }
-}
+
+    .container__dots--4 {
+        top      : 60px;
+        left     : -56px;
+        position : absolute;
+
+        @media screen and(max-width : 961px) {
+            display : none;
+        }
+    }
 </style>
