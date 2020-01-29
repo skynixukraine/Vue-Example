@@ -189,7 +189,7 @@ export default {
 
 
 
-    @media (min-width: #{394px}) {
+    @media (min-width: #{$screen-phone-irregular-min}) {
         &__section {
             &:last-child {
                 padding: 13px 0 22px;
