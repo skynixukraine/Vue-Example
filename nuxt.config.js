@@ -3,7 +3,7 @@ import configServer from './configs/server'
 import configEnv from './configs/env'
 
 module.exports = {
-    server: configServer,
+    // server: configServer,
     env: configEnv,
     head: {
         title: 'client',

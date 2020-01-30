@@ -5,6 +5,9 @@ export default ({ app }, inject) => {
         home: {
             path: '/'
         },
+        dashboard: {
+            path: '/dashboard'
+        },
         hautarzt: {
             path: '/hautarzt'
         },

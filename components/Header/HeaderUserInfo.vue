@@ -1,24 +1,31 @@
 <template>
-    <div 
-        class="header-user-info" v-if="$store.getters['user/USER']"
-        :class="{ 'header-user-info-dashboard': isDashboard }"
-    >
+    <NuxtLink :to="$routes.dashboard.path" exact>
         <div 
-            class="header-user-info__text">
+            class="header-user-info" v-if="$store.getters['user/USER']"
+            :class="{ 'header-user-info-dashboard': isDashboard }"
+        
+        >
             <div 
-                class="header-user-info__item"
-                :class="{ 'header-user-info__item-dashboard': isDashboard }"
-            >
-                {{ $store.getters['user/USER'].first_name }} {{ $store.getters['user/USER'].last_name }}
+                class="header-user-info__text">
+                <div 
+                    class="header-user-info__item"
+                    :class="{ 'header-user-info__item-dashboard': isDashboard }"
+                >
+                    {{ 
+                        $store.getters['user/USER'].first_name && $store.getters['user/USER'].last_name ? 
+                        $store.getters['user/USER'].first_name + " " + $store.getters['user/USER'].last_name : 
+                        $store.getters['user/USER'].email 
+                    }}
+                </div>
+                <div class="header-user-info__item__is-active-user" v-if="isActiveUser">
+                    <p>Active</p>
+                </div>
+            </div>  
+            <div class="header-user-info__item">
+                <UserAvatar />
             </div>
-            <div class="header-user-info__item__is-active-user" v-if="isActive">
-                <p>Active</p>
-            </div>
-        </div>  
-        <div class="header-user-info__item">
-            <UserAvatar />
         </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <script>
@@ -28,13 +35,23 @@ export default {
     data() {
         return {
             isLogin: true,
-            // Text if user is active
-            isActive: false,
         }
     },
     computed: {
+        links() {
+            return [
+                {
+                    to: this.$routes.dashboard.path,
+                }
+            ]
+        },
+
         isDashboard (){
             return this.$route.name === "dashboard";
+        },
+
+        isActiveUser(){
+            return this.$store.getters['user/USER'] && this.$store.getters['user/USER'].status  !== 'ACTIVATED'
         }
     },
     components: {
@@ -60,14 +77,15 @@ export default {
     }
 
     &__text{
-        line-height: 20px
+        font-size: 18px;
+        line-height: 20px;
+        padding-left: 10px;
     }
 
     &__item {
         margin-bottom: 16px;
         margin-bottom: 0;
         display: block;
-        font-size: 16px;
         font-weight: 400;
         text-decoration: none;
         color: $color-white;
@@ -89,7 +107,6 @@ export default {
             display: none;
             color: $color-user-is-active;
             font-size: 14px;
-            padding-left: 10px;
 
             @media (min-width: #{1130px}) {
                 display: flex;
