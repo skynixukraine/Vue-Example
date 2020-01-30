@@ -14,7 +14,6 @@
             <div class="header-user-info__item__is-active-user" v-if="isActive">
                 <p>Active</p>
             </div>
-        
         </div>  
         <div class="header-user-info__item">
             <UserAvatar />
@@ -22,10 +21,8 @@
     </div>
 </template>
 
-
 <script>
 import UserAvatar from "~/components/User/UserAvatar";
-
 
 export default {
     data() {
@@ -45,7 +42,6 @@ export default {
     }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .header-user-info {
@@ -69,7 +65,6 @@ export default {
 
     &__item {
         margin-bottom: 16px;
-        padding-left: 10px;
         margin-bottom: 0;
         display: block;
         font-size: 16px;
@@ -89,7 +84,6 @@ export default {
         &:last-child {
             margin-bottom: 0;
         }
-
 
         &__is-active-user {
             display: none;
