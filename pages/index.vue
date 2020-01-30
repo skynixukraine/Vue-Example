@@ -34,7 +34,7 @@
                     </li>
                 </ul>
                 <footer class="section-footer">
-                    <NuxtLink :to="$routes.faq.path" class="link link--button link--button-gradient" exact>{{ $t('links.frequently-asked') }}</NuxtLink>
+                    <NuxtLink :to="$routes.faq.path" class="link link--button link--button-mobile-large link--button-gradient" exact>{{ $t('links.frequently-asked') }}</NuxtLink>
                 </footer>
             </div>
         </div>

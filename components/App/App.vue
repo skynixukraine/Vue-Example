@@ -358,6 +358,7 @@ START: COMPONENTS
 
     &--button {
         width: auto;
+        min-width: 240px;
         display: inline-block;
         text-align: center;
         padding: 20px 31px 16px;
@@ -457,6 +458,14 @@ START: COMPONENTS
                     left: 11px;
                 }
             }
+        
+        &-mobile-large{
+            padding: 20px 16px 16px;
+
+            @media (min-width: #{$screen-phone-irregular-min}) {
+            padding: 20px 31px 16px;
+            }
+        }
     }
 
     &--card {
