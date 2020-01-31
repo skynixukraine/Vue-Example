@@ -38,14 +38,6 @@ export default {
         }
     },
     computed: {
-        links() {
-            return [
-                {
-                    to: this.$routes.dashboard.path,
-                }
-            ]
-        },
-
         isDashboard (){
             return this.$route.name === "dashboard";
         },
