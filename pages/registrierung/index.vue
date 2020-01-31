@@ -1,22 +1,22 @@
 <template>
     <div class="page">
-        <div class="section">
+        <div class="section section--authorization">
             <div class="container">
                 <div class="tab-buttons">
                     <button
-                        class="link link--button link--button-blue"
+                        class="link link--button link--button-blue link--button-gradient"
                         @click="setCurrentTab('signin')"
                     >Sign In</button>
                     <button
-                        class="link link--button link--button-blue"
+                        class="link link--button link--button-blue link--button-gradient"
                         @click="setCurrentTab('signup')"
                     >Sign Up</button>
                 </div>
                 <div class="container-forms">
-                    <template v-if="windowWidth  > 962 || currentTab === 'signin'">
+                    <template v-if="windowWidth  >= 962 || currentTab === 'signin'">
                         <Signin />
                     </template>
-                    <template v-if="windowWidth  > 962 || currentTab === 'signup'">
+                    <template v-if="windowWidth  >= 962 || currentTab === 'signup'">
                         <Signup />
                     </template>
                 </div>
@@ -73,13 +73,23 @@ export default {
 
 
 <style lang="scss">
+.section{
+    &--authorization{
+
+        @include tablet-big {
+            padding-top: 51px;
+            padding-bottom: 51px;
+        }
+    }
+}
+
 .container-forms {
     width: 100%;
     max-width: 1160px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 5%;
+    margin: 0;
 
     @media (min-width: #{962px}) {
         flex-direction: row;

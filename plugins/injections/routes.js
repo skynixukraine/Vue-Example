@@ -5,6 +5,9 @@ export default ({ app }, inject) => {
         home: {
             path: '/'
         },
+        dashboard: {
+            path: '/dashboard'
+        },
         hautarzt: {
             path: '/hautarzt'
         },
@@ -59,6 +62,12 @@ export default ({ app }, inject) => {
         enquiries: {
             path: '/enquiries'
         },
+        terms: {
+            path: '/terms-and-conditions'
+        },
+        privacy: {
+            path: '/privacy-policy'
+        }
     }
 
     Vue.prototype.$routes = OPTIONS

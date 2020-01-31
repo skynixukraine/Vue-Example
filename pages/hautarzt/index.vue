@@ -61,6 +61,11 @@
                     app.$cookies.remove(app.cookie.names.tokenId)
                 })
             }
+
+            // Load content
+            await store.dispatch("regions/LOAD_REGIONS")
+            await store.dispatch("specializations/LOAD_SPECIALIZATIONS")
+            await store.dispatch("doctors/LOAD_AND_SAVE_ALL_DOCTORS")
         },
         components : {
             DoctorCard
@@ -68,7 +73,7 @@
         data(){
             return {
                 pageNumber      : null,
-                ITEMS_PER_PAGE  : 4,
+                ITEMS_PER_PAGE  : 16,
                 selectedFilters : {
                     region         : -1,
                     specialization : -1
@@ -125,10 +130,6 @@
         },
         created(){
             this.pageNumber = this.$route.params.page ? (this.$route.params.page + "").replace(/[^0-9]/g, "") : 0
-
-            this.$store.dispatch("regions/LOAD_REGIONS")
-            this.$store.dispatch("specializations/LOAD_SPECIALIZATIONS")
-            this.$store.dispatch("doctors/LOAD_AND_SAVE_ALL_DOCTORS")
         },
         methods    : {
             onChangeFilter(event){

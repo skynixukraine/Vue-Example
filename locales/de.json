@@ -1,4 +1,8 @@
 {
+    "genegal-translations": {
+        "i-accept": "I accept",
+        "and": "and"
+    },
     "links": {
         "logo-link": "Online Hautarzt vor Ort",
         "home": "Home",
@@ -27,7 +31,9 @@
         "data-protection": "Datenschutzerklärung",
         "terms-of-service": "Allgemeine Geschäftsbedingungen",
         "signin": "Sign In",
-        "signup": "Sign Up"
+        "signup": "Sign Up",
+        "terms-and-conditions": "Terms and Conditions",
+        "privacy-policy": "Accept Privacy Policy"
     },
     "states": {
         "loading": "Loading..."
@@ -53,11 +59,11 @@
         }
     },
     "forms": {
-        "enter-email": "Enter Email",
-        "enter-password": "Enter Password",
-        "create-password": "Create Password",
-        "confirm-password": "Confirm Password",
-        "phone-number": "Phone Number",
+        "enter-email": "Email Address",
+        "enter-password": "Password",
+        "create-password": "Password",
+        "confirm-password": "Confirm password",
+        "phone-number": "Phone number",
         "upload-degree": "Upload medical degree (or add later)",
         "upload-certification": "Upload board-certification (or add later)",
         "i-accept": "I accept Terms and Conditions and Privacy Policy",
