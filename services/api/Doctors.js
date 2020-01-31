@@ -6,8 +6,13 @@ export default {
      * @return {Promise}
      */
     async loadDoctors(requestConfig) {
+        const DEFAULT_REQUEST_PARAM = {
+            order_by : "id",
+            direction : "desc",
+        }
+
         return new Promise ((resolve, reject) => {
-            HTTP.get("/doctors", {"params": requestConfig})
+            HTTP.get("/doctors", {"params": Object.assign(DEFAULT_REQUEST_PARAM, requestConfig || {})})
                 .then(response => {
                     const responseData = {
                         success: true,

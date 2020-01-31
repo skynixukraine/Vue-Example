@@ -1,47 +1,69 @@
 <template>
-    <NuxtLink :to = "'/'"
-              class = "link link--card">
-        <div class = "doctor-card">
-            <header class = "doctor-card__header">
-                <div class = "doctor-card__header--image">
-                    <img :src = "doctor.photo || require('~/static/images/images/placeholder_doctor_man_img.jpg')"
-                         alt = "doctor_image">
+    <div class = "doctor-card" :class = "{'doctor-card--is-preview' : isPreview}">
+        <header class = "doctor-card__photo">
+            <NuxtLink :to = "linkToDoctorProfile" class = "link--card">
+                <img :src = "doctor.photo || require('~/static/images/images/placeholder_doctor_man_img.jpg')"
+                     alt = "doctor_image" class = "doctor-card__photo__img">
+            </NuxtLink>
+        </header>
+        <div class = "doctor-card__main">
+            <div class = "doctor-card__main doctor-card__main--title-container">
+                <div class = "doctor-card__main--name">
+                    <div class = "doctor-card__main--name_title">{{doctor.title.name || "Doctor 'title' empty in Admin Panel"}}
+                    </div>
+                    <NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
+                        {{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : "Doctor 'first_name' empty in Admin Panel" : "Doctor 'last_name' empty in Admin Panel"}}
+                    </NuxtLink>
                 </div>
-            </header>
-            <div class = "doctor-card__main">
-                <div class = "doctor-card__main doctor-card__main--title-container">
-                    <div class = "doctor-card__main--name">
-                        <div class = "doctor-card__main--name_title">{{doctor.title.name}}</div>
-                        <span class = "doctor-card__main--name_full">
-                            {{ `${doctor.first_name} ${doctor.last_name}` }}
-                        </span>
-                    </div>
-                    <div class = "doctor-card__main--price">
-                        {{ doctor.enquire_price}}
-                    </div>
-                </div>
-                <div class = "doctor-card__main--description">
-                    {{ doctor.description}}
-                </div>
-                <div class = "doctor-card__main--city">
-                    <div class = "doctor-card__main--city-location">
-                        <img :src = "require('~/static/images/icons/location_marker.svg')" alt = "location_mark">
-                    </div>
-                    <div class = "doctor-card__main--city-name">
-                        {{ doctor.location ? doctor.location.city || "Doctor 'location.city' empty in Data Base" : "Doctor 'location' empty in Data Base" }}
-                    </div>
+                <div class = "doctor-card__main--price" v-if = "!isPreview">
+                    {{ doctor.enquire_price || "Doctor 'price' empty in Admin Panel"}}
                 </div>
             </div>
+            <div class = "doctor-card__main--description" v-if = "!isPreview">
+                {{ doctor.description || "Doctor 'description' empty in Admin Panel"}}
+            </div>
+            <div class = "doctor-card__main--location">
+                {{ doctor.location ? doctor.location.city || "Doctor 'location.city' empty in Admin Panel" : "Doctor 'location' empty in Admin Panel" }}
+            </div>
+            <button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
+                    v-if = "isPreview"
+                    @click.stop = "onClickStartEnquiry">
+                Anfrage starten
+            </button>
         </div>
-    </NuxtLink>
+    </div>
 </template>
 
 <script>
     export default {
-        props : {
-            doctor : {
+        props    : {
+            doctor    : {
                 type     : Object,
                 required : true
+            },
+            isPreview : {
+                type    : Boolean,
+                default : false
+            }
+        },
+        computed : {
+            linkToDoctorProfile(){
+                const regexp_spaces = /[\s]/g
+
+                return this.doctor.title ?
+                    this.doctor.first_name ?
+                        this.doctor.last_name ?
+                            this.$routes.hautarzt.path + "/" + this.doctor.title.name.trim().replace(regexp_spaces, "-").toLowerCase() +
+                            "__" + this.doctor.first_name.trim().replace(regexp_spaces, "-").toLowerCase() +
+                            "-" + this.doctor.last_name.trim().replace(regexp_spaces, "-").toLowerCase() :
+                            "Doctor 'title' empty in Admin Panel" :
+                        "Doctor 'first_name' empty in Admin Panel" :
+                    "Doctor 'last_name' empty in Admin Panel"
+            }
+        },
+        methods  : {
+            onClickStartEnquiry(){
+                alert("Work logic not yet implemented");
             }
         }
     }
@@ -57,43 +79,34 @@
         flex-direction  : column;
         justify-content : center;
 
-        &__header {
-            width      : 100%;
-            max-width  : $size;
-            max-height : $size;
+        &__photo {
+            width         : 100%;
+            overflow      : hidden;
+            max-width     : $size;
+            max-height    : $size;
+            line-height   : 0;
+            border-radius : $border-radius $border-radius 0 0;
 
-            &--image {
-                position : relative;
-
-                &:after {
-                    content        : "";
-                    display        : block;
-                    padding-bottom : 100%;
-                }
-
-                img {
-                    top             : 0;
-                    left            : 0;
-                    width           : 100%;
-                    height          : 100%;
-                    position        : absolute;
-                    object-fit      : cover;
-                    border-radius   : $border-radius $border-radius 0 0;
-                    object-position : center;
-                }
+            &__img {
+                width           : 100%;
+                height          : 100%;
+                object-fit      : cover;
+                transition      : $transition;
+                object-position : center;
             }
         }
 
         &__main {
+            $padding : 2%;
             width            : 100%;
-            padding          : 0 2%;
+            padding          : 0 $padding;
             max-width        : $size;
             border-radius    : 0 0 $border-radius $border-radius;
             background-color : $color-white;
 
             &--title-container {
                 width           : 100%;
-                padding         : 5% 0 2% 5%;
+                padding         : 5% 0 $padding 5%;
                 display         : flex;
                 flex-direction  : row;
                 justify-content : space-between;
@@ -106,6 +119,10 @@
                 font-weight     : 300;
                 line-height     : 30px;
                 text-decoration : none;
+
+                &_full {
+                    color : inherit;
+                }
             }
 
             &--price {
@@ -120,7 +137,7 @@
 
             &--description {
                 color           : $color-river-bed;
-                padding         : 5% 0 2% 5%;
+                padding         : 5% 0 $padding 5%;
                 font-style      : normal;
                 font-size       : 15px;
                 text-align      : left;
@@ -132,26 +149,72 @@
                 &:hover {text-decoration : none;}
             }
 
-            &--city {
-                display        : flex;
-                padding        : 5% 0 6% 5%;
-                flex-wrap      : nowrap;
-                flex-direction : row;
+            &--location {
+                color       : $color-price;
+                padding     : 5% 0 6% 5%;
+                font-size   : 18px;
+                font-style  : normal;
+                font-weight : 500;
+                line-height : 23px;
 
-                &-name {
-                    color        : $color-price;
-                    font-size    : 18px;
-                    font-style   : normal;
-                    font-weight  : 500;
-                    line-height  : 23px;
-                    padding-left : 10px
+                &:before {
+                    width            : 18px;
+                    float            : left;
+                    height           : 22px;
+                    content          : "";
+                    display          : inline-block;
+                    margin-right     : 10px;
+                    background-image : url("~static/images/icons/location_marker.svg");
                 }
+            }
+
+            &--start-enquiry-btn {
+                border        : none;
+                margin        : 0 #{-$padding};
+                border-radius : 0 0 $border-radius $border-radius;
+            }
+        }
+
+        .link--card:hover {
+            transform : none;
+
+            .doctor-card__photo__img {
+                transform : scale(1.1);
             }
         }
 
         &, &__main, &__main--name_title, &__main--name_full, &__main--price, &__main--city, &__main--city-name {
             &:hover {
                 text-decoration : none;
+            }
+        }
+
+        &--is-preview {
+            flex      : 1 0 auto;
+            min-width : 100%;
+
+            .doctor-card {
+                &__main {
+                    flex           : 1 0 auto;
+                    display        : flex;
+                    flex-direction : column;
+
+                    @include tablet {
+                        max-width : none;
+                    }
+                }
+
+                &__photo {
+                    @include tablet {
+                        max-width  : none;
+                        max-height : none;
+                    }
+                }
+            }
+
+            .link--card {
+                flex    : 1 0 auto;
+                display : flex;
             }
         }
     }

@@ -49,7 +49,7 @@ export default {
             position: absolute;
             left: 0px;
             top: -10px;
-            transition: .3s;
+            transition: $transition;
         }
 
         &::after {
@@ -60,7 +60,7 @@ export default {
             position: absolute;
             left: 0px;
             top: 10px;
-            transition: .3s;
+            transition: $transition;
         }
 
     }
@@ -81,7 +81,7 @@ export default {
             position: absolute;
             left: 0px;
             top: -10px;
-            transition: .3s;
+            transition: $transition;
         }
 
         &::after {
@@ -92,7 +92,7 @@ export default {
             position: absolute;
             left: 0px;
             top: 10px;
-            transition: .3s;
+            transition: $transition;
         }
 
     }

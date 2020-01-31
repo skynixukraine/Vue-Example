@@ -9,7 +9,8 @@
 START: GENERAL
 *********************/
 body {
-    font-family: "Sans", sans-serif;
+    /*font-family: "Sans", sans-serif;*/
+    font-family: TheSansB, sans-serif;
     font-size: 18px;
     line-height: 1.55;
     color: $color-rolling-stone;
@@ -346,7 +347,7 @@ START: COMPONENTS
 // link
 .link {
     display: inline;
-    transition: all 200ms ease-in-out;
+    transition: all $transition ease-in-out;
 
     :hover {
         text-decoration: underline;

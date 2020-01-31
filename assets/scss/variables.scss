@@ -3,6 +3,7 @@ $font-family-primary: 'Sans',
 sans-serif;
 $font-family-secondary: 'Antiqua',
 serif;
+
 // colors
 $color-curious-blue: #247EE5;
 $color-tory-blue: #0F44B2;
@@ -27,6 +28,7 @@ $color-cinnabar: #EA4335;
 $color-mercury: #E5E5E5;
 $color-user-is-active: #34A853;
 $color-price: #257EE5;
+
 // Screen viewport
 $screen-phone-irregular-min: 394px;
 $screen-phone-big-min: 480px;
@@ -35,3 +37,5 @@ $screen-tablet-big-min: 962px;
 $screen-desktop-min: 1280px;
 $screen-desktop-l: 1366px;
 $screen-desktop-big-min: 1920px;
+
+$transition: .3s;
