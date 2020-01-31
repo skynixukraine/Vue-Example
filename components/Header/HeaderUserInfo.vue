@@ -43,7 +43,7 @@ export default {
         },
 
         isActiveUser(){
-            return this.$store.getters['user/USER'] && this.$store.getters['user/USER'].status  !== 'ACTIVATED'
+            return this.$store.getters['user/USER'] && this.$store.getters['user/USER'].status  === 'ACTIVATED'
         }
     },
     components: {
