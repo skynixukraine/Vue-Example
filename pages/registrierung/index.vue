@@ -1,14 +1,14 @@
 <template>
     <div class="page">
-        <div class="section">
+        <div class="section section--authorization">
             <div class="container">
                 <div class="tab-buttons">
                     <button
-                        class="link link--button link--button-blue"
+                        class="link link--button link--button-blue link--button-gradient"
                         @click="setCurrentTab('signin')"
                     >Sign In</button>
                     <button
-                        class="link link--button link--button-blue"
+                        class="link link--button link--button-blue link--button-gradient"
                         @click="setCurrentTab('signup')"
                     >Sign Up</button>
                 </div>
@@ -73,6 +73,16 @@ export default {
 
 
 <style lang="scss">
+.section{
+    &--authorization{
+
+        @include tablet-big {
+            padding-top: 51px;
+            padding-bottom: 51px;
+        }
+    }
+}
+
 .container-forms {
     width: 100%;
     max-width: 1160px;
