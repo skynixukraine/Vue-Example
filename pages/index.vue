@@ -48,7 +48,7 @@
                     </li>
                 </ul>
                 <footer class="section-footer">
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-white" exact>{{ $t('links.further-information') }}</NuxtLink>
+                    <NuxtLink :to="$routes.faq.path" class="link link--button link--button-white" exact>{{ $t('links.further-information') }}</NuxtLink>
                 </footer>
             </div>
         </div>
