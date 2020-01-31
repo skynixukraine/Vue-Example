@@ -91,7 +91,6 @@ export default {
         
         &-logo{
             margin-left: auto;
-            margin-right: 0;
 
             @include tablet-big{
                 margin: 0;
