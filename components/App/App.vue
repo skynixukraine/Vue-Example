@@ -396,6 +396,7 @@ START: COMPONENTS
             border-color: $color-torea-bay;
 
             &:hover {
+                // background: $color-torea-bay;
                 background: $color-torea-bay;
             }
 

@@ -28,7 +28,7 @@
         </div>
         <div class="form__item">
             <button
-                class="link link--button link--button-full-width link--button-blue"
+                class="link link--button link--button-full-width link--button-blue link--button-gradient"
                 type="submit"
             >{{ $t('links.signin') }}</button>
         </div>

@@ -18,7 +18,7 @@
                     </li>
                 </ul>
                 <footer class="section-footer">
-                    <NuxtLink :to="$routes.hautarzt.path" class="link link--button link--button-blue" exact>{{ $t('links.show-all') }}</NuxtLink>
+                    <NuxtLink :to="$routes.hautarzt.path" class="link link--button link--button-blue link--button-gradient" exact>{{ $t('links.show-all') }}</NuxtLink>
                 </footer>
             </div>
         </div>
