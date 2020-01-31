@@ -3,7 +3,7 @@
         <div class="why-info__item">
             <h2 class="why-info__title">Die Gründung und die Ziele von Online Hautarzt vor Ort</h2>
             <img class="why-info__image" :src="require('~/static/images/images/iphonehand.jpg')" alt="iphone and hand"
-            v-show="isImageShow || windowWidth >= 720"
+            v-show="windowWidth >= 720"
             >
         </div>
         <div class="why-info__item">
@@ -15,7 +15,7 @@
             <button class="button-more-less" @click="onToggleText" v-if="windowWidth < 720">Weiterlesen</button>
             
             <img class="why-info__image" :src="require('~/static/images/images/iphonehand.jpg')" alt="iphone and hand"
-            v-show="isImageShow || windowWidth < 720 "
+            v-show="windowWidth < 720"
             >
         </div>
     </div>
@@ -30,16 +30,12 @@ export default {
     data() {
         return {
             isTextShow: false,
-            isImageShow: true
         }
     },
     watch: {
         windowWidth(width) {
             if (width >= 720) {
                 this.isTextShow = false
-            }
-             if (width <= 720) {
-                this.isImageShow = false
             }
         }
     },
