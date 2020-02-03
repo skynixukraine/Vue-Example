@@ -52,7 +52,7 @@
 
                 const regexp_spaces = /[\s]/g
 
-                return this.doctor.title.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
+                return this.doctor.title.name.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
                         this.doctor.first_name.trim().replace(regexp_spaces, "-") + "_" +
                         this.doctor.last_name.trim().replace(regexp_spaces, "-")
             }
