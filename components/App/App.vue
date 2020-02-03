@@ -25,7 +25,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Antiqua", serif;
+    font-family: "Antiqua", sans-serif;
     line-height: 1.33;
     color: $color-curious-blue;
     font-weight: 700;
