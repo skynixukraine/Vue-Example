@@ -12,7 +12,7 @@
                     <div class = "doctor-card__main--name_title">{{doctor.title.name || ""}}
                     </div>
                     <NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
-                        {{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : ""}}
+                        {{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : "" : ""}}
                     </NuxtLink>
                 </div>
                 <div class = "doctor-card__main--price" v-if = "!isPreview">
