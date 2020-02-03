@@ -65,7 +65,7 @@ export default {
         background-color: $color-matisse;
         padding: 13px 14px 11px;
         color: $color-white;
-        transition: all 200ms ease-in-out;
+        transition: $transition ease-in-out;
 
         svg {
             width: 22px;
