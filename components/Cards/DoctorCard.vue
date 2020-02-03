@@ -9,21 +9,21 @@
         <div class = "doctor-card__main">
             <div class = "doctor-card__main doctor-card__main--title-container">
                 <div class = "doctor-card__main--name">
-                    <div class = "doctor-card__main--name_title">{{doctor.title.name || "Doctor 'title' empty in Admin Panel"}}
+                    <div class = "doctor-card__main--name_title">{{doctor.title.name || ""}}
                     </div>
                     <NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
-                        {{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : "Doctor 'first_name' empty in Admin Panel" : "Doctor 'last_name' empty in Admin Panel"}}
+                        {{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : ""}}
                     </NuxtLink>
                 </div>
                 <div class = "doctor-card__main--price" v-if = "!isPreview">
-                    {{ doctor.enquire_price || "Doctor 'price' empty in Admin Panel"}}
+                    {{ doctor.enquire_price || "" }}
                 </div>
             </div>
             <div class = "doctor-card__main--description" v-if = "!isPreview">
-                {{ doctor.description || "Doctor 'description' empty in Admin Panel"}}
+                {{ doctor.description || "" }}
             </div>
             <div class = "doctor-card__main--location">
-                {{ doctor.location ? doctor.location.city || "Doctor 'location.city' empty in Admin Panel" : "Doctor 'location' empty in Admin Panel" }}
+                {{ doctor.location ? doctor.location.city || "" : "" }}
             </div>
             <button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
                     v-if = "isPreview"
@@ -48,17 +48,13 @@
         },
         computed : {
             linkToDoctorProfile(){
+                if(!(this.doctor.title && this.doctor.first_name && this.doctor.last_name)) return "/"
+
                 const regexp_spaces = /[\s]/g
 
-                return this.doctor.title ?
-                    this.doctor.first_name ?
-                        this.doctor.last_name ?
-                            this.$routes.hautarzt.path + "/" + this.doctor.title.name.trim().replace(regexp_spaces, "-").toLowerCase() +
-                            "__" + this.doctor.first_name.trim().replace(regexp_spaces, "-").toLowerCase() +
-                            "-" + this.doctor.last_name.trim().replace(regexp_spaces, "-").toLowerCase() :
-                            "Doctor 'title' empty in Admin Panel" :
-                        "Doctor 'first_name' empty in Admin Panel" :
-                    "Doctor 'last_name' empty in Admin Panel"
+                return this.doctor.title.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
+                        this.doctor.first_name.trim().replace(regexp_spaces, "-") + "_" +
+                        this.doctor.last_name.trim().replace(regexp_spaces, "-")
             }
         },
         methods  : {

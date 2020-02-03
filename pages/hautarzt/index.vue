@@ -238,6 +238,7 @@
         &__item {
             margin     : $offset / 8 $offset / 4;
             padding    : $offset / 2 $offset / 1.4 $offset / 2.5;
+            min-width  : auto;
             transition : $transition;
 
             @include tablet {
