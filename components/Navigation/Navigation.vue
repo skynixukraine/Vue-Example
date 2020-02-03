@@ -73,7 +73,7 @@ export default {
     width: 100%;
     height: calc(100% - 64px);
     background: $color-stratos;
-    transition: left 200ms ease-in-out;
+    transition: left $transition ease-in-out;
     padding: 68px;
     display: flex;
     align-items: center;

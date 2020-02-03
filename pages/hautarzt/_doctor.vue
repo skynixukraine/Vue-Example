@@ -64,7 +64,7 @@
 
             let names = route.params.doctor.split("__")[1].split("_");
 
-            await store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR', {first_name : names[0], last_name : names[1]})
+            await store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_FOR_PROFILE_PAGE', {first_name : names[0], last_name : names[1]})
         },
         data(){
             return {

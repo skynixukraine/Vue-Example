@@ -7,8 +7,13 @@ export default {
      * @return {Promise}
      */
     async loadDoctors(requestConfig) {
+        const DEFAULT_REQUEST_PARAM = {
+            order_by : "id",
+            direction : "desc",
+        }
+
         return new Promise ((resolve, reject) => {
-            HTTP.get("/doctors", {"params": requestConfig})
+            HTTP.get("/doctors", {"params": Object.assign(DEFAULT_REQUEST_PARAM, requestConfig || {})})
                 .then(response => {
                     const responseData = {
                         success: true,
@@ -16,6 +21,7 @@ export default {
                         data: response.data.data,
                         message: 'Doctors success loaded.',
                     }
+                    console.log(response)
                     resolve(responseData)
                 })
                 .catch(error => {
@@ -41,7 +47,6 @@ export default {
         return new Promise ((resolve, reject) => {
             HTTP.get("https://maps.googleapis.com/maps/api/geocode/json", {"params": requestConfig})
                 .then(response => {
-                    console.log(response)
                     resolve(response.data.results[0].geometry.location)
                 })
                 .catch(error => {
