@@ -62,7 +62,7 @@
                 })
             }
 
-            let names = route.params.doctor.split("-");
+            let names = route.params.doctor.split("__")[1].split("_");
 
             await store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR', {first_name : names[0], last_name : names[1]})
         },
@@ -89,7 +89,7 @@
             }
         },
         mounted(){
-            DoctorsApi.gMapDecodeAddressToCoords({address : "Tokyo"}).then(coords => {
+            DoctorsApi.gMapDecodeAddressToCoords({address : this.doctorData.region ? this.doctorData.region.name : "Berlin"}).then(coords => {
                 this.gMapPosition = coords
             })
         },
@@ -106,11 +106,6 @@
         methods  : {
             onClickStartEnquiry(){
                 alert("Work logic not yet implemented");
-            },
-            gMapDecodeAddressToCoords(){
-                DoctorsApi.gMapDecodeAddressToCoords({address : "Tokyo"}).then(response => {
-                    console.log(response)
-                })
             }
         }
     }
@@ -228,9 +223,8 @@
     }
 
     .g-map {
-        margin     : $offset calc((100vw - 100%) / -2) 0;
-        height     : 50vh;
-        background : red;
+        margin : $offset calc((100vw - 100%) / -2) 0;
+        height : 50vh;
 
         @include tablet-big {
             height     : $desktop_max_height;
