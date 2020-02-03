@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class = "doctor-card__main--description">
-                    {{ doctor.description}}
+                    {{ doctor.short_description || "" }}
                 </div>
                 <div class = "doctor-card__main--city">
                     <div class = "doctor-card__main--city-location">
