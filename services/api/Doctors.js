@@ -1,4 +1,5 @@
 import { HTTP } from '~/plugins/modules/axios'
+import envConfig from "~/configs/env.js"
 
 export default {
     /**
@@ -35,6 +36,21 @@ export default {
                         message,
                     }
                     reject(responseData)
+                })
+        })
+    },
+    async gMapDecodeAddressToCoords(requestConfig) {
+        requestConfig.key = envConfig.GOOGLE_MAPS_API_KEY;
+        requestConfig.address = requestConfig.address || "Berlin";
+
+        return new Promise ((resolve, reject) => {
+            HTTP.get("https://maps.googleapis.com/maps/api/geocode/json", {"params": requestConfig})
+                .then(response => {
+                    resolve(response.data.results[0].geometry.location)
+                })
+                .catch(error => {
+                    console.error(response)
+                    reject(response)
                 })
         })
     },
