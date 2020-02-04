@@ -173,6 +173,7 @@ export default {
     .container__dots--4 {
         top      : 60px;
         left     : -56px;
+        z-index  : -1;
         position : absolute;
 
         @media screen and(max-width : 961px) {
