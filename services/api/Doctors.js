@@ -21,7 +21,6 @@ export default {
                         data: response.data.data,
                         message: 'Doctors success loaded.',
                     }
-                    console.log(response)
                     resolve(responseData)
                 })
                 .catch(error => {

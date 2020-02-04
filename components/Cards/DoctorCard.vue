@@ -12,7 +12,7 @@
                     <div class = "doctor-card__main--name_title">{{doctor.title.name || ""}}
                     </div>
                     <NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
-                        {{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : "" : ""}}
+                        {{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : doctor.first_name : "" }}
                     </NuxtLink>
                 </div>
                 <div class = "doctor-card__main--price" v-if = "!isPreview">
@@ -22,8 +22,8 @@
             <div class = "doctor-card__main--description" v-if = "!isPreview">
                 {{ doctor.description || "" }}
             </div>
-            <div class = "doctor-card__main--location">
-                {{ doctor.location ? doctor.location.city || "" : "" }}
+            <div class = "doctor-card__main--location" v-if="doctor.location || doctor.region">
+                {{ doctor.location && doctor.location.city || doctor.region && doctor.region.name }}
             </div>
             <button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
                     v-if = "isPreview"
@@ -52,7 +52,8 @@
 
                 const regexp_spaces = /[\s]/g
 
-                return this.doctor.title.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
+                return this.$routes.hautarzt.path + "/" +
+                        this.doctor.title.name.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
                         this.doctor.first_name.trim().replace(regexp_spaces, "-") + "_" +
                         this.doctor.last_name.trim().replace(regexp_spaces, "-")
             }

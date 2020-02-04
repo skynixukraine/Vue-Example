@@ -9,8 +9,8 @@
             <div class = "container">
                 <div class = "profile">
                     <div class = "profile__photo">
-                        <img :src = "require('~/static/images/images/placeholder_doctor_man_img.jpg')" class = "profile__photo__img">
-                        <!--                <img :src = "doctorData.photo || require('~/static/images/images/placeholder_doctor_man_img.jpg')" alt = "Doctor photo" class = "profile__photo">-->
+                        <img :src = "doctorData.photo || require('~/static/images/images/placeholder_doctor_man_img.jpg')" alt = "Doctor photo"
+                             class = "profile__photo">
                     </div>
                     <div class = "profile__info">
                         <h3 class = "profile__info__title">{{ this.doctorData.title ? this.doctorData.title.name : "" }}</h3>
@@ -18,7 +18,7 @@
                         <div class = "profile__info__description">{{ this.doctorData.description }}</div>
                         <div class = "profile__info__price">
                             <span class = "profile__info__price__title">Medical consultation</span>
-                            <div class = "profile__info__price__value">{{ this.doctorData ? this.doctorData.enquire_price : ""}}</div>
+                            <div class = "profile__info__price__value">{{ this.doctorData.enquire_price || "" }}</div>
                         </div>
                         <button class = "profile__info__start-enquiry-btn link--button link--button-blue"
                                 @click.stop = "onClickStartEnquiry">
@@ -26,17 +26,18 @@
                         </button>
                     </div>
                 </div>
-                <div class = "g-map" id = "gMap">
+                <div class = "g-map" v-if = "gMapPosition">
                     <GmapMap :center = "gMapPosition"
                              :zoom = "11"
                              map-type-id = "terrain"
                              style = "width: 100%; height: 100%">
-                        <GmapMarker :key = "index"
+                        <GmapMarker :key = "'gMapMarker_' + index"
                                     v-for = "(m, index) in markers"
+                                    :icon = "require('~/static/images/icons/location_marker.svg')"
                                     :position = "m.position"
                                     :clickable = "true"
                                     :draggable = "true"
-                                    @click = "center=m.position" />
+                                    @click = "center = m.position" />
                     </GmapMap>
                 </div>
             </div>
@@ -50,48 +51,69 @@
     export default {
         async fetch({app, store, route, error}){
             // if token exist and user empty - load User object
-            if(app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null){
+            if(app.$cookies.get(app.cookie.names.token) && store.getters["user/USER"] === null){
                 await store.dispatch('user/LOAD_USER', {
                     id    : app.$cookies.get(app.cookie.names.tokenId),
                     token : app.$cookies.get(app.cookie.names.token)
                 }).catch(error => {
-                    app.$cookies.remove(app.cookie.names.token)
-                    app.$cookies.remove(app.cookie.names.tokenId)
+                    app.$cookies.remove(app.cookie.names.token);
+                    app.$cookies.remove(app.cookie.names.tokenId);
 
-                    console.error(error)
+                    console.error(error);
                 })
             }
 
             let names = route.params.doctor.split("__")[1].split("_");
 
-            await store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_FOR_PROFILE_PAGE', {first_name : names[0], last_name : names[1]})
+            await store.dispatch("doctors/LOAD_AND_SAVE_DOCTOR_FOR_PROFILE_PAGE", {
+                first_name : names[0],
+                last_name  : names[1]
+            })
         },
         data(){
             return {
                 map          : null,
-                gMapPosition : {
-                    lat : 0,
-                    lng : 0
-                },
+                gMapPosition : null,
                 breadcrumbs  : [
                     {
-                        text : this.$t('links.home'),
+                        text : this.$t("links.home"),
                         to   : this.$routes.home.path
                     },
                     {
-                        text : this.$t('links.hautarzt'),
+                        text : this.$t("links.hautarzt"),
                         to   : this.$routes.hautarzt.path
                     },
                     {
-                        text : this.$route.params.doctor.replace("-", " ")
+                        text : this.$route.params.doctor.split("__")[1].replace(/[^a-zA-ZА-Я-а-я]/g, " ")
                     }
                 ]
             }
         },
-        mounted(){
-            DoctorsApi.gMapDecodeAddressToCoords({address : this.doctorData.region ? this.doctorData.region.name : "Berlin"}).then(coords => {
-                this.gMapPosition = coords
-            })
+        created(){
+            // Set coordinates for google map
+            ( async () => {
+                try{
+                    if(this.doctorData.location){
+                        if(this.doctorData.location.latitude !== null && this.doctorData.location.longitude !== null){
+                            this.gMapPosition = {
+                                lat : this.doctorData.location.latitude,
+                                lng : this.doctorData.location.longitude
+                            };
+                        } else{
+                            DoctorsApi.gMapDecodeAddressToCoords({address : this.doctorData.location.city || this.doctorData.region.name})
+                                      .then(coords => {
+                                          if(coords){
+                                              this.gMapPosition = coords;
+                                          }
+                                      })
+                        }
+                    } else{
+                        console.warn("Doctors dont have data for generate google maps");
+                    }
+                } catch(e){
+                    console.error("Doctors dont have data for generate google maps");
+                }
+            })();
         },
         computed : {
             markers(){
@@ -100,7 +122,7 @@
                 }]
             },
             doctorData(){
-                return this.$store.state.doctors.doctor
+                return this.$store.state.doctors.doctorForProfilePage;
             }
         },
         methods  : {
@@ -111,14 +133,16 @@
     }
 </script>
 
-<style lang = "scss">
+<style lang = "scss" scoped>
     $offset : 20px;
     $desktop_max_height : 502px;
+
     .page {
         background : linear-gradient(180deg, #042052 0%, #0F44B2 100%);;
     }
 
-    .section {
+    // Only content section
+    .section:last-child {
         padding-top    : 0;
         padding-bottom : 0;
     }
@@ -141,13 +165,16 @@
             display : block;
 
             @include tablet-big {
-                flex      : 1 0 35%;
-                display   : flex;
-                max-width : 352px;
+                flex       : 1 0 35%;
+                display    : flex;
+                max-width  : 352px;
+                max-height : $desktop_max_height;
+                object-fit : cover;
             }
 
             &__img {
-                width : 100%;
+                width      : 100%;
+                object-fit : cover;
 
                 @include tablet-big {
                     max-height : $desktop_max_height;
@@ -161,6 +188,7 @@
             @include tablet-big {
                 $padding_vertical : 40px;
                 $padding_horizontal : 32px;
+
                 display        : flex;
                 padding        : $padding_vertical $padding_horizontal * 2 $padding_vertical $padding_horizontal;
                 flex-direction : column;
