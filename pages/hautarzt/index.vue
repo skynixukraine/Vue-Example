@@ -33,8 +33,8 @@
                 </div>
                 <div class = "doctors">
                     <div class = "doctors__item"
-                         v-for = "(doctor, index) in filteredDoctors.slice(pageNumber * ITEMS_PER_PAGE, pageNumber * ITEMS_PER_PAGE + ITEMS_PER_PAGE)"
-                         :key = "'doctor_' + index">
+                         v-for = "doctor in doctors"
+                         :key = "'doctor_' + doctor.id">
                         <DoctorCard :doctor = "doctor" :isPreview = true />
                     </div>
                 </div>
@@ -57,15 +57,15 @@
                     id    : app.$cookies.get(app.cookie.names.tokenId),
                     token : app.$cookies.get(app.cookie.names.token)
                 }).catch(error => {
-                    app.$cookies.remove(app.cookie.names.token)
-                    app.$cookies.remove(app.cookie.names.tokenId)
+                    app.$cookies.remove(app.cookie.names.token);
+                    app.$cookies.remove(app.cookie.names.tokenId);
                 })
             }
 
             // Load content
-            await store.dispatch("regions/LOAD_REGIONS")
-            await store.dispatch("specializations/LOAD_SPECIALIZATIONS")
-            await store.dispatch("doctors/LOAD_AND_SAVE_ALL_DOCTORS")
+            await store.dispatch("regions/LOAD_REGIONS");
+            await store.dispatch("specializations/LOAD_SPECIALIZATIONS");
+            await store.dispatch("doctors/LOAD_AND_SAVE_FILTERED_DOCTORS", {per_page : store.state.doctors.MAX_DOCTORS_PER_PAGE});
         },
         components : {
             DoctorCard
@@ -73,7 +73,6 @@
         data(){
             return {
                 pageNumber      : null,
-                ITEMS_PER_PAGE  : 16,
                 selectedFilters : {
                     region         : -1,
                     specialization : -1
@@ -88,62 +87,89 @@
                 return this.$store.state.specializations.specializations;
             },
             doctors(){
-                return this.$store.state.doctors.doctors;
+                return this.$store.state.doctors.doctorsFiltered;
             },
-            filteredDoctors(){
-                if(this.selectedFilters.region < 0 && this.selectedFilters.specialization < 0){ return this.doctors }
+            paginationHTML(){
+                const TOTAL_PAGES = Math.ceil(this.$store.state.doctors.doctorsFilteredTotalCount / this.$store.state.doctors.MAX_DOCTORS_PER_PAGE);
 
-                let result = []
+                if(TOTAL_PAGES < 2){ return ""; }
 
-                for(let i = 0; i < this.doctors.length; i++){
-                    if(this.selectedFilters.region > -1 && this.selectedFilters.specialization > -1){
-                        if(this.doctors[i].region && this.doctors[i].region.id === this.selectedFilters.region && this.doctors[i].specialization && this.doctors[i].specialization.id === this.selectedFilters.specialization){
-                            result.push(this.doctors[i])
-                        }
+                const POINTS_CLASS_NAME = "pagination__item--points";
+                const BTN_CLASS_NAME    = "pagination__item link--button link--button-white";
+                const COUNT_BUTTONS     = 3;
+                const HALF              = Math.ceil(COUNT_BUTTONS / 2);
+
+                let result = "";
+
+                result += `<button type="button" class="${BTN_CLASS_NAME} ${this.pageNumber <= 1 ? 'active' : ''}" value="1">1</button>`;
+
+                if(this.pageNumber - COUNT_BUTTONS > 0 && TOTAL_PAGES / (COUNT_BUTTONS + 2) > 1){
+                    result += `<div class="${POINTS_CLASS_NAME}"><span>...</span></div>`;
+                }
+
+                // Определяем с какого номера начать нумерацию
+                let innerPageNumber = 0;
+                if(this.pageNumber - HALF <= 0){
+                    innerPageNumber = HALF - 1;
+                } else{
+                    if(this.pageNumber + HALF > TOTAL_PAGES){
+                        innerPageNumber = TOTAL_PAGES - COUNT_BUTTONS;
                     } else{
-                        if(this.doctors[i].region && this.doctors[i].region.id === this.selectedFilters.region){
-                            result.push(this.doctors[i])
-                            continue
-                        }
-
-                        if(this.doctors[i].specialization && this.doctors[i].specialization.id === this.selectedFilters.specialization){
-                            result.push(this.doctors[i])
-                        }
+                        innerPageNumber = this.pageNumber - HALF + 1;
                     }
                 }
 
-                return result
-            },
-            paginationHTML(){
-                const countButtons = Math.ceil(this.filteredDoctors.length / this.ITEMS_PER_PAGE)
+                // Основные кнопки пагинации
+                let countToBreak = 0;
+                do{
+                    if(innerPageNumber > 1 && innerPageNumber < TOTAL_PAGES){
+                        result += `<button type="button" class="${BTN_CLASS_NAME} ${this.pageNumber === innerPageNumber ? 'active' : ''}" value="${innerPageNumber}">${innerPageNumber}</button>`;
+                    }
+                } while(++countToBreak < COUNT_BUTTONS && innerPageNumber++ < TOTAL_PAGES - 1);
 
-                if(countButtons < 2){ return "" }
-
-                let result = ""
-
-                for(let i = 0; i < countButtons; i++){
-                    result += `<button type="button" class="pagination__item link--button link--button-white ${this.pageNumber === i ? 'active' : ''}" value="${i}">${i + 1}</button>`
+                if(this.pageNumber + HALF < TOTAL_PAGES && TOTAL_PAGES / (COUNT_BUTTONS + 2) > 1){
+                    result += `<div class="${POINTS_CLASS_NAME}"><span>...</span></div>`;
                 }
 
-                return result
+                result += `<button type="button" class="${BTN_CLASS_NAME} ${TOTAL_PAGES === this.pageNumber ? 'active' : ''}" value="${TOTAL_PAGES}">${TOTAL_PAGES}</button>`;
+
+                return result;
             }
         },
         created(){
-            this.pageNumber = this.$route.params.page ? (this.$route.params.page + "").replace(/[^0-9]/g, "") : 0
+            this.pageNumber = this.$route.params.page ? (this.$route.params.page + "").replace(/[^0-9]/g, "") : 1;
         },
         methods    : {
             onChangeFilter(event){
-                this.selectedFilters[event.target.name] = +event.target.value
+                this.selectedFilters[event.target.name] = +event.target.value;
+                this.pageNumber = 1;
+                this.loadDoctors();
             },
             onClickPagination(event){
                 if(event.target.value !== undefined && +event.target.value !== this.pageNumber){
                     window.scrollTo({
                         top      : +this.$refs.filterContainer.pageY,
                         behavior : "smooth"
-                    })
+                    });
 
-                    this.pageNumber = +event.target.value
+                    this.pageNumber = +event.target.value;
+                    this.loadDoctors();
                 }
+            },
+            loadDoctors(){
+                let requestFiltersParams = {};
+
+                if(this.selectedFilters.region > -1){
+                    requestFiltersParams.region_id = this.selectedFilters.region;
+                }
+
+                if(this.selectedFilters.specialization > -1){
+                    requestFiltersParams.specialization_id = this.selectedFilters.specialization;
+                }
+
+                requestFiltersParams.page = this.pageNumber;
+
+                this.$store.dispatch("doctors/LOAD_AND_SAVE_FILTERED_DOCTORS", requestFiltersParams)
             }
         }
     }
@@ -204,10 +230,10 @@
     }
 
     .doctors {
-        margin           : $offset #{$offset / -2} 0;
-        display          : flex;
-        flex-wrap        : wrap;
-        justify-content  : space-around;
+        margin          : $offset #{$offset / -2} 0;
+        display         : flex;
+        flex-wrap       : wrap;
+        justify-content : space-around;
 
         &__item {
             width          : 100%;
@@ -216,27 +242,29 @@
             flex-direction : column;
 
             @include tablet {
-                flex: 0 1 calc(50% - #{$offset});
+                flex : 0 1 calc(50% - #{$offset});
             }
 
             @include tablet-big {
-                flex: 0 1 calc(100% / 3 - #{$offset});
+                flex : 0 1 calc(100% / 3 - #{$offset});
             }
 
             @include desktop {
-                flex: 0 1 calc(25% - #{$offset});
+                flex : 0 1 calc(25% - #{$offset});
             }
         }
     }
 
     .pagination {
+        margin          : $offset #{-$offset} 0;
         display         : flex;
         flex-wrap       : wrap;
-        margin-top      : $offset;
         justify-content : center;
 
         &__item {
-            margin     : $offset / 8 $offset / 4;
+            $margin : $offset / 8 $offset / 4;
+
+            margin     : $margin;
             padding    : $offset / 2 $offset / 1.4 $offset / 2.5;
             min-width  : auto;
             transition : $transition;
@@ -245,8 +273,22 @@
                 padding : 20px 31px 16px;
             }
 
+            &--points {
+                cursor          : default;
+                display         : flex;
+                flex-direction  : column;
+                justify-content : flex-end;
+
+                @include tablet {
+                    margin      : $margin;
+                    font-size   : 2em;
+                    line-height : 1;
+                }
+            }
+
             &.active {
                 color            : white;
+                cursor           : not-allowed;
                 background-color : $color-tory-blue;
             }
         }
