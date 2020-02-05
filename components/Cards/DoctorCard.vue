@@ -1,11 +1,9 @@
 <template>
     <div class = "doctor-card" :class = "{'doctor-card--is-preview' : isPreview}">
-        <header class = "doctor-card__photo">
-            <NuxtLink :to = "linkToDoctorProfile" class = "link--card">
-                <img :src = "doctor.photo || require('~/static/images/images/placeholder_doctor_man_img.jpg')"
-                     alt = "doctor_image" class = "doctor-card__photo__img">
-            </NuxtLink>
-        </header>
+        <NuxtLink :to = "linkToDoctorProfile" class = "link--card doctor-card__photo">
+            <img :src = "doctor.photo || require('~/static/images/images/placeholder_doctor_man_img.jpg')" class="doctor-card__photo__img"
+                 alt = "doctor_image">
+        </NuxtLink>
         <div class = "doctor-card__main">
             <div class = "doctor-card__main doctor-card__main--title-container">
                 <div class = "doctor-card__main--name">
@@ -20,7 +18,7 @@
                 </div>
             </div>
             <div class = "doctor-card__main--description" v-if = "!isPreview">
-                {{ doctor.description || "" }}
+                {{ doctor.short_description || doctor.description || "" }}
             </div>
             <div class = "doctor-card__main--location" v-if="doctor.location || doctor.region">
                 {{ doctor.location && doctor.location.city || doctor.region && doctor.region.name }}
@@ -78,18 +76,27 @@
 
         &__photo {
             width         : 100%;
+            position      : relative;
             overflow      : hidden;
             max-width     : $size;
             max-height    : $size;
-            line-height   : 0;
             border-radius : $border-radius $border-radius 0 0;
 
             &__img {
+                top             : 0;
+                left            : 0;
                 width           : 100%;
                 height          : 100%;
+                position        : absolute;
                 object-fit      : cover;
                 transition      : $transition;
                 object-position : center;
+            }
+
+            &:after {
+                content        : "";
+                display        : block;
+                padding-bottom : 100%;
             }
         }
 
@@ -200,18 +207,6 @@
                         max-width : none;
                     }
                 }
-
-                &__photo {
-                    @include tablet {
-                        max-width  : none;
-                        max-height : none;
-                    }
-                }
-            }
-
-            .link--card {
-                flex    : 1 0 auto;
-                display : flex;
             }
         }
     }
