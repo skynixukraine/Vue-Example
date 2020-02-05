@@ -27,8 +27,18 @@
                     </div>
                 </div>
                 <div class = "g-map" v-if = "gMapPosition">
+                    <div class = "g-map__location-info" v-if = "doctorData.location">
+                        <div>
+                            <span v-if = "doctorData.location.postal_code" class = "g-map__postal-code">{{ this.doctorData.location.postal_code }}</span>
+                            <span v-if = "doctorData.location.address" class = "g-map__address">{{ this.doctorData.location.address }}</span>
+                        </div>
+                        <div v-if = "doctorData.location.city" class = "g-map__city">{{ this.doctorData.location.city }}
+                        </div>
+                        <div v-if = "doctorData.location.state" class = "g-map__state">{{ this.doctorData.location.state }}</div>
+                        <div v-if = "doctorData.location.country" class = "g-map__country">{{ this.doctorData.location.country }}</div>
+                    </div>
                     <GmapMap :center = "gMapPosition"
-                             :zoom = "11"
+                             :zoom = "13"
                              map-type-id = "terrain"
                              style = "width: 100%; height: 100%">
                         <GmapMarker :key = "'gMapMarker_' + index"
@@ -91,7 +101,7 @@
         },
         created(){
             // Set coordinates for google map
-            ( async () => {
+            (async () => {
                 try{
                     if(this.doctorData.location){
                         if(this.doctorData.location.latitude !== null && this.doctorData.location.longitude !== null){
@@ -135,6 +145,7 @@
 
 <style lang = "scss" scoped>
     $offset : 20px;
+    $border-radius : 20px;
     $desktop_max_height : 502px;
 
     .page {
@@ -148,8 +159,6 @@
     }
 
     .profile {
-        $border-radius : 20px;
-
         color            : $color-river-bed;
         overflow         : hidden;
         border-radius    : $border-radius;
@@ -195,6 +204,7 @@
             }
 
             &__title {
+                color       : $color-river-bed;
                 font-style  : normal;
                 font-weight : 600;
 
@@ -251,12 +261,39 @@
     }
 
     .g-map {
-        margin : $offset calc((100vw - 100%) / -2) 0;
-        height : 50vh;
+        color    : $color-rolling-stone;
+        margin   : $offset calc((100vw - 100%) / -2) 0;
+        height   : 50vh;
+        position : relative;
 
         @include tablet-big {
             height     : $desktop_max_height;
             margin-top : 64px;
+        }
+
+        &__location-info {
+            display : none;
+
+            @include tablet-big {
+                top           : 64px;
+                left          : 9%;
+                display       : block;
+                z-index       : 1;
+                padding       : 34px 24px;
+                position      : absolute;
+                background    : white;
+                box-shadow    : 0 20px 80px rgba(208, 208, 208, .25);
+                border-radius : $border-radius;
+
+                &:before {
+                    width            : 18px;
+                    height           : 22px;
+                    content          : "";
+                    display          : block;
+                    margin-bottom    : 6px;
+                    background-image : url("~static/images/icons/location_marker.svg");
+                }
+            }
         }
     }
 </style>

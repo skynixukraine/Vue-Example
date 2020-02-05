@@ -161,7 +161,7 @@
 
         &__item {
             $bottom_padding : 5px;
-            color       : #7A7D84;
+            color       : $color-rolling-stone;
             margin      : 0 $offset $offset / 2;
             position    : relative;
             font-size   : 18px;
