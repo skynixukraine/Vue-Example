@@ -359,7 +359,7 @@ START: COMPONENTS
 
     &--button {
         width: auto;
-        min-width: 240px;
+        min-width: 265px;
         display: inline-block;
         text-align: center;
         padding: 20px 31px 16px;
