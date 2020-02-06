@@ -1,39 +1,39 @@
 <template>
     <form
         class="single-form"
-        :class="{ 'single-form--edit-mode': isEditMode }"
+        :class="{ 'personal-info__edit-mode': isEditMode }"
         action
         method="PATCH"
         @submit.prevent="onSubmit"
     >
-        <header class="single-form-header">
-            <div class="single-form-header__item">
-                <div class="single-form-header__title">Last name</div>
+        <header class="personal-info__header">
+            <div class="personal-info__header-item">
+                <div class="personal-info__header-title">Nachname</div>
             </div>
-            <div class="single-form-header__item">
+            <div class="personal-info__header-item">
                 <template v-if="!isEditMode && !isFormSending">
-                    <div class="single-form-nav single-form-nav--default">
-                        <div class="single-form-nav__item">
-                            <button type="button" @click="onClickEdit">Edit</button>
+                    <div class="personal-info__nav personal-info__nav--default">
+                        <div class="personal-info__nav-item">
+                            <button class="personal-info__nav-buttom" type="button" @click="onClickEdit">Edit</button>
                         </div>
                     </div>
                 </template>
                 <template v-if="isEditMode && !isFormSending">
-                    <div class="single-form-nav single-form-nav--active">
-                        <div class="single-form-nav__item">
-                            <button type="submit">Save</button>
+                    <div class="personal-info__nav personal-info__nav--active">
+                        <div class="personal-info__nav-item">
+                            <button class="personal-info__nav-buttom" type="submit">Save</button>
                         </div>
-                        <div class="single-form-nav__item">
-                            <button type="button" @click="onClickCancel">Cancel</button>
+                        <div class="personal-info__nav-item">
+                            <button class="personal-info__nav-buttom" type="button" @click="onClickCancel">Cancel</button>
                         </div>
                     </div>
                 </template>
                 <template v-if="isEditMode && isFormSending">
-                    <div class="single-form-loading">loading...</div>
+                    <div class="personal-info__loading">loading...</div>
                 </template>
             </div>
         </header>
-        <div class="single-form-main">
+        <div class="personal-info__main">
             <input
                 class="input"
                 type="text"
@@ -43,7 +43,7 @@
                 @blur="onInputChange"
             />
         </div>
-        <footer class="single-form-footer" v-if="errors.last_name">{{ errors.last_name }}</footer>
+        <footer class="personal-info__footer" v-if="errors.last_name">{{ errors.last_name }}</footer>
     </form>
 </template>
 

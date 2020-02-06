@@ -105,7 +105,7 @@ START: COMPONENTS
     }
 
     @include tablet-big {
-        padding-top: 72px;
+        padding-top: 80px;
 
         &.page--home {
             background: url("~static/images/images/rectangle-right.png") right
@@ -484,13 +484,60 @@ START: COMPONENTS
 }
 
 // input
-.input {
+.input, .select {
+    width: 100%;
+    height: 40px;
+    background: $color-white;
+    border: 2px solid $color-curious-blue;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding-left: 6%;
+
+    @include phone-big {
+        height: 56px;
+    }
+}
+.input{
+        &::placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        &::-moz-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }/* Firefox 19+ */
+
+        &:-moz-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+            }/* Firefox 18- */
+            
+        &:-ms-input-placeholder {
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
+        }
     &--hidden {
         width: 0;
         height: 0;
         position: fixed;
         top: -9999px;
     }
+}
+
+ .select {
+    -moz-appearance    : none;
+    -webkit-appearance : none;
 }
 
 /*********************

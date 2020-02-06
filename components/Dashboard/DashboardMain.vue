@@ -6,7 +6,11 @@
 
 <style lang="scss" scoped>
 .dashboard-main {
-    flex: 1;
+  flex: 1;
+  padding: 20px;
+
+  @include desktop-l {
     padding: 40px 32px;
+  }
 }
 </style>
