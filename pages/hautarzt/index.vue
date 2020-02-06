@@ -1,49 +1,49 @@
 <template>
-    <div class = "page">
-        <div class = "section">
-            <div class = "container">
-                <h1>Hautarzt</h1>
-                <div class = "filters" ref = "filterContainer">
-                    <label class = "filters__item">
-                        <div class = "filters__item__title">Region</div>
-                        <select class = "filters__item__select"
-                                name = "region"
-                                @change = "onChangeFilter">
-                            <option value = "-1">All</option>
-                            <option v-for = "(regionItem) in regionsList"
-                                    :key = "'region_' + regionItem.id"
-                                    :value = "regionItem.id">
-                                {{regionItem.name}}
-                            </option>
-                        </select>
-                    </label>
-                    <label class = "filters__item">
-                        <div class = "filters__item__title">Specialization</div>
-                        <select class = "filters__item__select"
-                                name = "specialization"
-                                @change = "onChangeFilter">
-                            <option value = "-1">All</option>
-                            <option v-for = "specializationItem in specializationsList"
-                                    :key = "'specialization_' + specializationItem.id"
-                                    :value = "specializationItem.id">
-                                {{specializationItem.name}}
-                            </option>
-                        </select>
-                    </label>
-                </div>
-                <div class = "doctors">
-                    <div class = "doctors__item"
-                         v-for = "doctor in doctors"
-                         :key = "'doctor_' + doctor.id">
-                        <DoctorCard :doctor = "doctor" :isPreview = true />
-                    </div>
-                </div>
-                <div class = "pagination"
-                     v-html = "paginationHTML"
-                     @click.stop = "onClickPagination"></div>
-            </div>
-        </div>
-    </div>
+	<div class = "page">
+		<div class = "section">
+			<div class = "container">
+				<h1>Hautarzt</h1>
+				<div class = "filters" ref = "filterContainer">
+					<label class = "filters__item">
+						<div class = "filters__item__title">Region</div>
+						<select class = "filters__item__select"
+								name = "region"
+								@change = "onChangeFilter">
+							<option value = "-1">All</option>
+							<option v-for = "(regionItem) in regionsList"
+									:key = "'region_' + regionItem.id"
+									:value = "regionItem.id">
+								{{regionItem.name}}
+							</option>
+						</select>
+					</label>
+					<label class = "filters__item">
+						<div class = "filters__item__title">Specialization</div>
+						<select class = "filters__item__select"
+								name = "specialization"
+								@change = "onChangeFilter">
+							<option value = "-1">All</option>
+							<option v-for = "specializationItem in specializationsList"
+									:key = "'specialization_' + specializationItem.id"
+									:value = "specializationItem.id">
+								{{specializationItem.name}}
+							</option>
+						</select>
+					</label>
+				</div>
+				<div class = "doctors">
+					<div class = "doctors__item"
+						 v-for = "doctor in doctors"
+						 :key = "'doctor_' + doctor.id">
+						<DoctorCard :doctor = "doctor" :isPreview = true />
+					</div>
+				</div>
+				<div class = "pagination"
+					 v-html = "paginationHTML"
+					 @click.stop = "onClickPagination"></div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -94,10 +94,14 @@
 
                 if(TOTAL_PAGES < 2){ return ""; }
 
+                const COUNT_BUTTONS = 3;
+                const HALF          = Math.ceil(COUNT_BUTTONS / 2);
+
                 const POINTS_CLASS_NAME = "pagination__item--points";
                 const BTN_CLASS_NAME    = "pagination__item link--button link--button-white";
-                const COUNT_BUTTONS     = 3;
-                const HALF              = Math.ceil(COUNT_BUTTONS / 2);
+                
+                // Вся логика работает нормально, кроме этого случая
+				const TROUBLE_TOTAL_PAGES = 5;
 
                 let result = "";
 
@@ -113,7 +117,7 @@
                     innerPageNumber = HALF - 1;
                 } else{
                     if(this.pageNumber + HALF > TOTAL_PAGES){
-                        innerPageNumber = TOTAL_PAGES - COUNT_BUTTONS;
+                        innerPageNumber = TOTAL_PAGES > TROUBLE_TOTAL_PAGES ? TOTAL_PAGES - COUNT_BUTTONS + 1 : TOTAL_PAGES - COUNT_BUTTONS;
                     } else{
                         innerPageNumber = this.pageNumber - HALF + 1;
                     }
@@ -127,6 +131,10 @@
                     }
                 } while(++countToBreak < COUNT_BUTTONS && innerPageNumber++ < TOTAL_PAGES - 1);
 
+				if(TOTAL_PAGES === TROUBLE_TOTAL_PAGES && this.pageNumber < TROUBLE_TOTAL_PAGES - HALF){
+                    result += `<button type="button" class="${BTN_CLASS_NAME} ${this.pageNumber === TROUBLE_TOTAL_PAGES - 1 ? 'active' : ''}" value="${TROUBLE_TOTAL_PAGES - 1}">${TROUBLE_TOTAL_PAGES - 1}</button>`;
+				}
+                
                 if(this.pageNumber + HALF < TOTAL_PAGES && TOTAL_PAGES / (COUNT_BUTTONS + 2) > 1){
                     result += `<div class="${POINTS_CLASS_NAME}"><span>...</span></div>`;
                 }
@@ -142,7 +150,7 @@
         methods    : {
             onChangeFilter(event){
                 this.selectedFilters[event.target.name] = +event.target.value;
-                this.pageNumber = 1;
+                this.pageNumber                         = 1;
                 this.loadDoctors();
             },
             onClickPagination(event){
@@ -176,121 +184,122 @@
 </script>
 
 <style lang = "scss">
-    $offset : 20px;
-
-    .filters {
-        margin          : 0 #{-$offset};
-        display         : flex;
-        flex-wrap       : wrap;
-        max-width       : 100%;
-        justify-content : flex-start;
-
-        &__item {
-            $bottom_padding : 5px;
-            color       : $color-rolling-stone;
-            margin      : 0 $offset $offset / 2;
-            position    : relative;
-            font-size   : 18px;
-            max-width   : 100%;
-            font-style  : normal;
-            font-weight : 500;
-            line-height : 28px;
-
-            &__title { margin-bottom : 4px; }
-
-            &__select {
-                border             : 1px solid #E0E1E3;
-                padding            : 8px $offset * 2 $bottom_padding $offset;
-                position           : relative;
-                font-size          : 18px;
-                max-width          : 100%;
-                background         : #FFF;
-                box-sizing         : border-box;
-                font-style         : normal;
-                font-weight        : 500;
-                line-height        : 28px;
-                border-radius      : 4px;
-                -moz-appearance    : none;
-                -webkit-appearance : none;
-            }
-
-            &:after {
-                $size : 20px;
-                bottom           : calc(.5em + #{$bottom_padding / 2});
-                right            : $offset / 2;
-                width            : $size;
-                height           : $size;
-                content          : "";
-                display          : block;
-                position         : absolute;
-                pointer-events   : none;
-                background-image : url("~static/images/icons/arrow-down.svg");
-            }
-        }
-    }
-
-    .doctors {
-        margin          : $offset #{$offset / -2} 0;
-        display         : flex;
-        flex-wrap       : wrap;
-        justify-content : space-around;
-
-        &__item {
-            width          : 100%;
-            margin         : 0 $offset / 2 $offset;
-            display        : flex;
-            flex-direction : column;
-
-            @include tablet {
-                flex : 0 1 calc(50% - #{$offset});
-            }
-
-            @include tablet-big {
-                flex : 0 1 calc(100% / 3 - #{$offset});
-            }
-
-            @include desktop {
-                flex : 0 1 calc(25% - #{$offset});
-            }
-        }
-    }
-
-    .pagination {
-        margin          : $offset #{-$offset} 0;
-        display         : flex;
-        flex-wrap       : wrap;
-        justify-content : center;
-
-        &__item {
-            $margin : $offset / 8 $offset / 4;
-
-            margin     : $margin;
-            padding    : $offset / 2 $offset / 1.4 $offset / 2.5;
-            min-width  : auto;
-            transition : $transition;
-
-            @include tablet {
-                padding : 20px 31px 16px;
-            }
-
-            &--points {
-                cursor          : default;
-                display         : flex;
-                flex-direction  : column;
-                justify-content : flex-end;
-
-                @include tablet {
-                    margin      : $margin;
-                    font-size   : 2em;
-                    line-height : 1;
-                }
-            }
-
-            &.active {
-                color            : white;
-                cursor           : not-allowed;
-                background-color : $color-tory-blue;
-            }
-        }
-    }
+	$offset : 20px;
+	
+	.filters {
+		margin          : 0 #{-$offset};
+		display         : flex;
+		flex-wrap       : wrap;
+		max-width       : 100%;
+		justify-content : flex-start;
+		
+		&__item {
+			$bottom_padding : 5px;
+			color       : #7A7D84;
+			margin      : 0 $offset $offset / 2;
+			position    : relative;
+			font-size   : 18px;
+			max-width   : 100%;
+			font-style  : normal;
+			font-weight : 500;
+			line-height : 28px;
+			
+			&__title { margin-bottom : 4px; }
+			
+			&__select {
+				border             : 1px solid #E0E1E3;
+				padding            : 8px $offset * 2 $bottom_padding $offset;
+				position           : relative;
+				font-size          : 18px;
+				max-width          : 100%;
+				background         : #FFF;
+				box-sizing         : border-box;
+				font-style         : normal;
+				font-weight        : 500;
+				line-height        : 28px;
+				border-radius      : 4px;
+				-moz-appearance    : none;
+				-webkit-appearance : none;
+			}
+			
+			&:after {
+				$size : 20px;
+				bottom           : calc(.5em + #{$bottom_padding / 2});
+				right            : $offset / 2;
+				width            : $size;
+				height           : $size;
+				content          : "";
+				display          : block;
+				position         : absolute;
+				pointer-events   : none;
+				background-image : url("~static/images/icons/arrow-down.svg");
+			}
+		}
+	}
+	
+	.doctors {
+		margin          : $offset #{$offset / -2} 0;
+		display         : flex;
+		flex-wrap       : wrap;
+		justify-content : space-around;
+		
+		&__item {
+			width          : 100%;
+			margin         : 0 $offset / 2 $offset;
+			display        : flex;
+			flex-direction : column;
+			
+			@include tablet {
+				flex : 0 1 calc(50% - #{$offset});
+			}
+			
+			@include tablet-big {
+				flex : 0 1 calc(100% / 3 - #{$offset});
+			}
+			
+			@include desktop {
+				flex      : 0 1 calc(25% - #{$offset});
+				min-width : calc(25% - #{$offset});
+			}
+		}
+	}
+	
+	.pagination {
+		margin          : $offset #{-$offset} 0;
+		display         : flex;
+		flex-wrap       : wrap;
+		justify-content : center;
+		
+		&__item {
+			$margin : $offset / 8 $offset / 4;
+			
+			margin     : $margin;
+			padding    : $offset / 2 $offset / 1.4 $offset / 2.5;
+			min-width  : auto;
+			transition : $transition;
+			
+			@include tablet {
+				padding : 20px 31px 16px;
+			}
+			
+			&--points {
+				cursor          : default;
+				display         : flex;
+				flex-direction  : column;
+				justify-content : flex-end;
+				
+				@include tablet {
+					margin      : $margin;
+					font-size   : 2em;
+					line-height : 1;
+				}
+			}
+			
+			&.active {
+				color            : white;
+				cursor           : not-allowed;
+				background-color : $color-tory-blue;
+			}
+		}
+	}
 </style>
