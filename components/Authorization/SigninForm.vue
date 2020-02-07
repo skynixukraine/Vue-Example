@@ -199,49 +199,5 @@ export default {
         color: $color-alert-red;
         padding-left: 10px;
     }
-
-    .input {
-        width: 100%;
-        height: 40px;
-        background: $color-white;
-        border: 2px solid $color-curious-blue;
-        box-sizing: border-box;
-        border-radius: 4px;
-        padding-left: 2%;
-
-        @include phone-big {
-            height: 56px;
-        }
-
-        &::placeholder {
-            color: $color-form-input-placeholder;
-            font-style: normal;
-            font-weight: 500;
-        }
-
-        &::-webkit-input-placeholder {
-            color: $color-form-input-placeholder;
-            font-style: normal;
-            font-weight: 500;
-        }
-
-        &::-moz-placeholder {
-            color: $color-form-input-placeholder;
-            font-style: normal;
-            font-weight: 500;
-        }/* Firefox 19+ */
-
-        &:-moz-placeholder {
-            color: $color-form-input-placeholder;
-            font-style: normal;
-            font-weight: 500;
-            }/* Firefox 18- */
-            
-        &:-ms-input-placeholder {
-            color: $color-form-input-placeholder;
-            font-style: normal;
-            font-weight: 500;
-        }
-    }
 }
 </style>
