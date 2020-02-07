@@ -1,14 +1,12 @@
 <template>
-    <form
-        class="single-form"
+    <form class="single-form"
         :class="{ 'personal-info__edit-mode': isEditMode }"
         action
         method="PATCH"
-        @submit.prevent="onSubmit"
-    >
+        @submit.prevent="onSubmit">
         <header class="personal-info__header">
             <div class="personal-info__header-item">
-                <div class="personal-info__header-title">Titel</div>
+                <div class="personal-info__header-title">E-Mail Adresse</div>
             </div>
             <div class="personal-info__header-item">
                 <template v-if="!isEditMode && !isFormSending">
@@ -34,24 +32,24 @@
             </div>
         </header>
         <div class="personal-info__main">
-            <select
-                class="select"
-                name="title_id"
-                ref="title_id"
-                v-model="value"
-            >
-                <option disabled value="">Choose one of the options</option>
-                <option v-for="(option, index) in $store.getters['doctorTitles/DOCTOR_TITLES']" :key="index" :value="option.id">{{ option.name }}</option>
-            </select>
+               <input
+                class="input input--login"
+                type="email"
+                name="email"
+                ref="email"
+                v-model="models.email"
+                :placeholder="$t('forms.enter-email')"
+                @blur="onEmailChange"
+            />
+            <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
         </div>
-        <footer class="personal-info__footer" v-if="errors.title_id">{{ errors.title_id }}</footer>
     </form>
 </template>
 
 <script>
 // mixins
 import singleForm from '~/mixins/singleForm'
-import validator from '~/mixins/validator'
+import validator from "~/mixins/validator"
 
 export default {
     mixins: [
@@ -61,23 +59,33 @@ export default {
 
     data() {
         return {
-            value: this.$store.getters['user/USER'].title.id,
+            models: {
+                email: '',
+            },
+            isFormSending: false,
         }
     },
 
     methods: {
-        async onSubmit() {
-            this.setIsFormSending(true)
-            const searchParams = this.prepareDataForSending('title_id', this.value)
-            this.$store.dispatch('user/UPDATE_USER', { id: this.$cookies.get(this.$cookie.names.tokenId), token: this.$cookies.get(this.$cookie.names.token), params: searchParams })
-                .then(response => {
-                    this.setIsFormSending(false)
-                })
-                .catch(error => {
-                    console.error(error)
-                    this.setIsFormSending(false)
-                })
+         validateForm(models) {
+            // check for required
+            if (!models.email) {
+                this.errors["email"] = this.$t("errors.form.required-field");
+                this.$forceUpdate()
+                this.$root.$emit('showNotify', { type: 'error', text: 'Имейл не заполнен' })
+                return false;
+            }
         },
-    }
+        prepareDataForSending(models) {
+            let formData = new FormData()
+
+            formData.append("email", models.email);
+        }
+    },
+
+    onEmailChange(event) {
+            this.validateEmail(event);
+            this.$forceUpdate();
+        },
 }
 </script>
