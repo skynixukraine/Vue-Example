@@ -8,16 +8,16 @@
 				<h3 class = "enquiries-id__atachments-title">Attachment: </h3>
 				<ul class = "enquiries-id__atachments-items">
 					<li class = "enquiries-id__atachments-item">
-						<button class = "enquiries-id__atachments-link" to = "/" >Attachment 1</button>
+						<button class = "enquiries-id__atachments-link">Attachment 1</button>
 					</li>
 					<li class = "enquiries-id__atachments-item">
-						<button class = "enquiries-id__atachments-link" to = "/" >Attachment 2</button>
+						<button class = "enquiries-id__atachments-link">Attachment 2</button>
 					</li>
 					<li class = "enquiries-id__atachments-item">
-						<button class = "enquiries-id__atachments-link" to = "/" >Attachment 3</button>
+						<button class = "enquiries-id__atachments-link">Attachment 3</button>
 					</li>
 				</ul>
-				<button  class = "link link--button link--button-blue link--button-gradient" to = "/" download>Download all attachments
+				<button  class = "link link--button link--button-blue link--button-gradient" >Download all attachments
 				</button>
 			</div>
 			

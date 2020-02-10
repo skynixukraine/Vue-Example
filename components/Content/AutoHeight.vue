@@ -6,11 +6,11 @@
 				name = "textarea"
 				ref = "textarea"
 				placeholder = "Enter your message ..."
-				@keydown = "init"
-				@keyup = "init"
-				@input = "init"
-				@paste = "init"
-				@change = "init"
+				@keydown = "autoHeight"
+				@keyup = "autoHeight"
+				@input = "autoHeight"
+				@paste = "autoHeight"
+				@change = "autoHeight"
 		>
 		</textarea>
 		<div class = "hidden">
@@ -22,7 +22,7 @@
 <script>
     export default {
         methods : {
-            init(){
+            autoHeight(){
                 this.$refs.textareadiv.innerText = this.$refs.textarea.value;
                 this.$refs.textarea.style.height = this.$refs.textareadiv.scrollHeight + "px";
             }
