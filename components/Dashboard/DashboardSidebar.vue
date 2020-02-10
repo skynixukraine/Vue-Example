@@ -1,9 +1,5 @@
 <template>
-    <aside class="dashboard-sidebar"
-    :class="{ 
-            'app-header--bg-default': scrollTop > 68
-        }"
-        >
+    <aside class="dashboard-sidebar">
         <div class="dashboard-sidebar__main">
             <div class="dashboard-sidebar__items">
                 <ul class="dashboard-sidebar__list">
