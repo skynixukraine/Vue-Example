@@ -54,8 +54,10 @@
             "сonfirmation-password-is-empty": "Confirmation password is empty.",
             "phone-is-empty": "Phone is empty.",
             "accept-terms-and-conditions": "Accept Terms and Conditions and Privacy Policy.",
-            "validation-failed": "Form validation failed"
-
+            "validation-failed": "Form validation failed",
+            "file-type": "Invalid type. Allowed types are PDF/JPG/PNG.",
+            "file-size": "File size should be less than 10Mb.",
+            "password-has-problem": "Password must contain at least 6 and no more than 100 characters. Password must not contain spaces. The password must contain at least one lowercase letter, one uppercase letter, number and a special character."
         }
     },
     "forms": {

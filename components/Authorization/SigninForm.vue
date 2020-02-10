@@ -22,7 +22,6 @@
                 ref="password"
                 v-model="models.password"
                 :placeholder="$t('forms.enter-password')"
-                @blur="onPasswordChange"
             />
             <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
         </div>
@@ -156,10 +155,6 @@ export default {
             this.validateEmail(event);
             this.$forceUpdate();
         },
-        onPasswordChange(event) {
-            this.validatePassword(event);
-            this.$forceUpdate();
-        }
     }
 };
 </script>
