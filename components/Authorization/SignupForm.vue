@@ -60,9 +60,11 @@
                 id="vue-tel-input"
                 name="phone_number"
                 v-model="models.phone_number"
+                v-bind="bindProps"
                 @input="onPhoneChange"
             ></vue-tel-input>
             <div class="form__message" v-if="errors.phone_number">{{ errors.phone_number }}</div>
+            <div class="form__message" v-if="errors.phone_number_invalid">{{ errors.phone_number_invalid }}</div>
         </div>
         <div class="form__item">
             <div class="form__title form__title--degree">{{ $t('forms.upload-degree') }}</div>
@@ -73,7 +75,7 @@
                 ref="degree"
                 @change="onDegreeUpload"
             />
-
+    
             <button
                 class="link link--button link--button-full-width link--button-white link--button-upload"
                 type="button"
@@ -88,8 +90,9 @@
                     {{ models.degree ? models.degree.name :  $t('forms.add-degree') }}
                 </p>
             </button>
-
-            <div class="form__message" v-if="errors.degree">{{ errors.degree }}</div>
+    
+            <div class="form__message"  v-if="errors.degree">{{ errors.degree }}</div>
+            <div class="form__message" v-if="errors.degree_size">{{ errors.degree_size }}</div>
         </div>
         <div class="form__item">
             <div
@@ -115,8 +118,10 @@
                 <p>
                     {{ models.certification ? models.certification.name :  $t('forms.add-certification') }}
                 </p>
+               
             </button>
-            <div class="form__message" v-if="errors.certification">{{ errors.certification }}</div>
+            <div class="form__message"  v-if="errors.certification">{{ errors.certification }}</div>
+            <div class="form__message" v-if="errors.certification_size">{{ errors.certification_size }}</div>
         </div>
         <div class="form__item form__item--checkbox">
             <div class="form__title form__title--accepted">
@@ -138,8 +143,9 @@
                 v-model="models.accepted"
                 @change="onAcceptChange"
             />
-            <div class="form__message" v-if="errors.accepted">{{ errors.accepted }}</div>
         </div>
+        <div class="form__message" v-if="errors.accepted">{{ errors.accepted }}</div>
+    
         <div class="form__item">
             <button
                 class="link link--button link--button-full-width link--button-blue link--button-gradient"
@@ -182,6 +188,21 @@ export default {
                 degree: '',
                 certification: '',
                 accepted: false,
+               
+            },
+            bindProps: {
+                mode: "international",
+                defaultCountry: "",
+                disabledFetchingCountry: false,
+                disabled: false,
+                disabledFormatting: false,
+                placeholder: "Enter a phone number",
+                required: false,
+                enabledCountryCode: false,
+                enabledFlags: true,
+                autocomplete: "off",
+                maxLen: 25,
+                validCharactersOnly: true
             },
             isFormSending: false,
             fieldTypePassword: true
@@ -244,7 +265,7 @@ export default {
                 this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.accept-terms-and-conditions') })
                 return false
             }
-
+            
             // check recaptcha token exist
             if (!this.recaptchaToken) {
                 this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
@@ -254,11 +275,11 @@ export default {
             return true
         },
 
-        validateFilePDF(event){
-            if  ( event.target.files[0].type === 'application/pdf' ){
-                return this;
-            }
-        },
+        // validateFilePDF(event){
+        //     if  ( event.target.files[0].type === 'application/pdf' ){
+        //         return this;
+        //     }
+        // },
 
         handleErrorResponse(errors) {
             if (Object.keys(errors).length === 0) {
@@ -310,26 +331,35 @@ export default {
             this.validateEmail(event)
             this.$forceUpdate()
         },
+        
         onPasswordChange(event) {      
-            this.validateConfirmPassword(event, this.$refs.password_confirmation)
+            this.validatePassword(event, this.$refs.password_confirmation)
             this.$forceUpdate()
         },
+        
         onConfirmPasswordChange(event) {
             this.validateConfirmPassword(event, this.$refs.password)
             this.$forceUpdate()
         },
+        
         onPhoneChange(formattedNumber, telInput) {
             this.validatePhone(telInput);
+            console.log(formattedNumber);
+            this.$forceUpdate()
         },
+        
         onDegreeUpload(event) {
-            if (this.validateFilePDF(event)) {
-                this.models.degree = event.target.files[0]
-            }
+           
+            this.validateFileExtansion(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+            
+            this.$forceUpdate()
         },
         onCertificationUpload(event) {
-            if (this.validateFilePDF(event)) {
-                this.models.certification = event.target.files[0]  
-            }
+           
+            this.validateFileExtansion(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
+
+            this.$forceUpdate()
+
         },
         onAcceptChange(event) {
             this.validateAccept(event, this.models.accepted)
@@ -466,18 +496,7 @@ export default {
         }
 
     }
-
-        .vti__input{
-            max-width: 150px;
-
-            @include phone-big {
-                max-width: 250px;
-            }
-
-            &::placeholder{
-                color: red;
-            }
-        }
+    
     }
 
     input[type="checkbox"] {
@@ -502,6 +521,22 @@ export default {
 
         @include phone-big {
             top: 48px;
+        }
+    }
+</style>
+
+<style lang="scss">
+    
+    .vti__input{
+        max-width: 150px;
+        @include phone-big {
+            max-width: 250px;
+        }
+        
+        &::placeholder{
+            color: $color-form-input-placeholder;
+            font-style: normal;
+            font-weight: 500;
         }
     }
 </style>
