@@ -1,15 +1,18 @@
 <template>
     <div class="modals">
         <RegisterSuccessModal v-if="$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.registerSuccess" />
+        <ContactModal v-if="$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.contactModals" />
     </div>
 </template>
 
 <script>
 import RegisterSuccessModal from "~/components/Modals/RegisterSuccessModal"
+import ContactModal from "~/components/Modals/ContactModal"
 
 export default {
     components: {
-        RegisterSuccessModal
+        RegisterSuccessModal,
+        ContactModal,
     },
 }
 </script>
@@ -24,6 +27,7 @@ export default {
         width: 32px;
         height: 32px;
         background-image: url('~static/images/icons/close.svg');
+        background-color: transparent;
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
@@ -37,10 +41,13 @@ export default {
     }
 
     & .v--modal {
-        padding: 64px 48px;
+        padding: 64px 24px;
         background: $color-white;
         border-radius: 20px;
         text-align: center;
+        @include tablet {
+            padding: 64px 48px;
+        }
     }
 }
 </style>

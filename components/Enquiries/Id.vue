@@ -1,6 +1,5 @@
 <template lang = "html">
 	<div class = "enquiries-id">
-		
 		<div class = "enquiries-id__main">
 			
 			<Table />
@@ -9,38 +8,43 @@
 				<h3 class = "enquiries-id__atachments-title">Attachment: </h3>
 				<ul class = "enquiries-id__atachments-items">
 					<li class = "enquiries-id__atachments-item">
-						<NuxtLink class = "enquiries-id__atachments-link" to = "/">Attachment 1 (download)</NuxtLink>
+						<button class = "enquiries-id__atachments-link" to = "/" >Attachment 1</button>
 					</li>
 					<li class = "enquiries-id__atachments-item">
-						<NuxtLink class = "enquiries-id__atachments-link" to = "/">Attachment 2 (download)</NuxtLink>
+						<button class = "enquiries-id__atachments-link" to = "/" >Attachment 2</button>
 					</li>
 					<li class = "enquiries-id__atachments-item">
-						<NuxtLink class = "enquiries-id__atachments-link" to = "/">Attachment 3 (download)</NuxtLink>
+						<button class = "enquiries-id__atachments-link" to = "/" >Attachment 3</button>
 					</li>
 				</ul>
-				<button class = "link link--button link--button-blue link--button-gradient">Download all attachments
+				<button  class = "link link--button link--button-blue link--button-gradient" to = "/" download>Download all attachments
 				</button>
 			</div>
 			
 			<div class = "enquiries-id__links">
-				<button class = "link link--button link--button-blue link--button-gradient">CONTACT PATIENT</button>
+				<button class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.contactModals)">CONTACT PATIENT</button>
 				<button class = "link link--button link--button-blue link--button-gradient">SUBMIT DIAGNOSIS AND CLOSE THE CASE</button>
 			</div>
 		</div>
 		
 		<div class = "enquiries-id__footer">
-			<button class = "link link--button-transparent">GO BACK</button>
+			<buttom class = "link link--button-transparent">GO BACK</buttom>
 		</div>
 	</div>
-</template>npm run dev
+</template>
 
 <script>
-    import Table from "~/components/Content/Table"
-
+    import Table from "~/components/Enquiries/EnquiriesTable.vue"
+    import modal from '~/mixins/modal'
+	
     export default {
+        mixins : [
+            modal,
+        ],
+		
         components : {
             Table,
-        }
+        },
     }
 </script>
 
@@ -48,11 +52,11 @@
 <style lang = "scss">
 	.enquiries-id {
 		&__answer {
-			flex-basis : 80%;
+			flex-basis : 75%;
 		}
 		
 		&__main {
-			padding-top : 50px;
+			padding-top : 70px;
 		}
 		
 		&__atachments {
@@ -68,6 +72,11 @@
 			&-link {
 				color : $color-rolling-stone;
 				cursor : pointer;
+				border : none;
+				background-color: transparent;
+				&:after {
+					content : ' (download)';
+				}
 			}
 		}
 		
