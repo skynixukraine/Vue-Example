@@ -15,8 +15,6 @@ body {
     line-height: 1.55;
     color: $color-rolling-stone;
     font-weight: 400;
-    overflow-x: hidden;
-    overflow-y: auto;
     background-color: $color-black-squeeze;
 }
 
@@ -89,6 +87,12 @@ button {
         font-weight: 800;
     }
 }
+
+.app {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /*********************
 END: GENERAL
 *********************/
