@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="account-status"><span class="account-status__title">Account status:</span> <span class="account-status__pause">Paused</span></div>
+    <div class="account-status"><span class="account-status__title">Kontostatus:</span> <span class="account-status__active">aktiv</span></div>
 </template>
 
 <style lang="scss" scoped>
@@ -15,6 +15,9 @@
 
     &__pause {
         color: $color-cinnabar;
+    }
+    &__active {
+        color : $color-user-is-active;
     }
 
 }
