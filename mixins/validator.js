@@ -21,12 +21,12 @@ export default {
                 delete this.errors[name]
             }
 
+
             return true
         },
         validateEmail(event) {
             const name = event.target.name
             const value = event.target.value
-
             // empty check
             if (!value) {
                 this.errors[name] = this.$t('errors.form.required-field')
@@ -49,9 +49,18 @@ export default {
             const name = event.target.name
             const value = event.target.value
 
+            const settings = {
+                password: /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*.])(?!.*[\s]).{6,100})/
+            }
+
             // empty check
             if (!value) {
                 this.errors[name] = this.$t('errors.form.required-field')
+                return false
+            }
+
+            if (!settings.password.test(value)) {
+                this.errors[name] = this.$t('errors.form.password-has-problem')
                 return false
             }
 
@@ -68,16 +77,20 @@ export default {
             const compareName = compareInput.name
             const compareValue = compareInput.value
 
+
+
             // empty check
             if (!value) {
                 this.errors[name] = this.$t('errors.form.required-field')
                 return false
             }
+
             // passwords equal check
             if (!this.checkStringEqual(value, compareValue)) {
                 this.errors[name] = this.$t('errors.form.passwords-not-equal')
                 return false
             }
+
 
             // clean error if exist
             if (this.errors.hasOwnProperty(name)) {
@@ -89,19 +102,23 @@ export default {
 
             return true
         },
+
         validatePhone(telInput) {
             // more info about telInput - https://github.com/EducationLink/vue-tel-input
-            const name = telInput.name
-
-            // phone format check
-            if (!telInput.isValid) {
-                this.errors[name] = this.$t('errors.form.invalid-number')
-                return false
-            }
+            const name = 'phone_number'
 
             // clean error if exist
             if (this.errors.hasOwnProperty(name)) {
                 delete this.errors[name]
+            }
+
+            // phone format check
+            if (!telInput.isValid) {
+                this.errors[`${name}_invalid`] = this.$t('errors.form.invalid-number')
+                return false
+            } else {
+                delete  this.errors[`${name}_invalid`];
+                return true
             }
 
             return true
@@ -122,25 +139,29 @@ export default {
 
             return true
         },
-        validateFilePDF(event) {
+        validateFileExtansion(event) {
             const name = event.target.name
             const type = event.target.files[0].type
             const sizeMb = event.target.files[0].size/1024/1024
 
             // type check
-            if (!this.checkFileTypePDF(type)) {
-                this.errors[name] = 'Invalid type. Must be PDF.'
+            if (!this.checkFileType(type)) {
+                this.errors[name] = this.$t('errors.form.file-type')
                 return false
             }
             // size check
             if (!this.checkFileSize(sizeMb)) {
-                this.errors[name] = 'File size is too large.'
+                this.errors[`${name}_size`] = this.$t('errors.form.file-size')
                 return false
             }
+
 
             // clean error if exist
             if (this.errors.hasOwnProperty(name)) {
                 delete this.errors[name]
+            }
+            if (this.errors.hasOwnProperty(`${name}_size`)) {
+                delete this.errors[`${name}_size`]
             }
 
             return true
@@ -189,17 +210,12 @@ export default {
             })
             return false
         },
-        checkFileTypePDF(type) {
-            const allowedTypes = ['application/pdf']
-            allowedTypes.forEach((element) => {
-                if (element === type) {
-                    return true
-                }
-            })
-            return false
+        checkFileType(type) {
+            const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg']
+            return allowedTypes.includes(type)
         },
         checkFileSize(sizeMb) {
-            const allowedSizeMb = 50
+            const allowedSizeMb = 10
             return sizeMb < allowedSizeMb
         },
     },
