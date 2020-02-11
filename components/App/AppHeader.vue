@@ -2,8 +2,8 @@
     <header
         class="app-header"
         :class="{ 
-            'app-header--bg-transparent': isHomePage, 
-            'app-header--bg-white': isDashboard, 
+            'app-header--bg-transparent': isHomePage,
+            'app-header--bg-white': isDashboard,
             'app-header--bg-default': scrollTop > 68 && !isDashboard
         }"
     >

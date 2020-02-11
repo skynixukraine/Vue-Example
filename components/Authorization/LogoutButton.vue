@@ -1,5 +1,5 @@
 <template>
-    <button class="link link--button link--button-transparent" @click="onLogout">Logout</button>
+        <button class="link logout__link" @click="onLogout">Log Out</button>
 </template>
 
 <script>
@@ -20,3 +20,13 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+ .logout__link {
+        padding: 0;
+        line-height: 1.28;
+        color: $color-white;
+        background-color: transparent;
+        border: none;
+    }
+</style>

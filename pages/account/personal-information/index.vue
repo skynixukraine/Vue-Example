@@ -1,17 +1,19 @@
 <template>
     <div class="page">
-        <div class="section">
-            <Dashboard>
-                <DashboardSidebar />
-                <DashboardMain>
-                    <DashboardHeader :title="'Account Settings'">
-                        <AccountStatus />
-                    </DashboardHeader>
-                    <DashboardContent>
-                        <PersonalInfo />
-                    </DashboardContent>
-                </DashboardMain>
-            </Dashboard>
+        <div class="section account-section">
+            <div class="account-container">
+                <Dashboard>
+                    <DashboardSidebar />
+                    <DashboardMain>
+                        <DashboardHeader :title="'Account Settings'">
+                            <AccountStatus />
+                        </DashboardHeader>
+                        <DashboardContent>
+                            <PersonalInfo />
+                        </DashboardContent>
+                    </DashboardMain>
+                </Dashboard>
+            </div>
         </div>
     </div>
 </template>
@@ -64,3 +66,18 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+.account{
+    
+    &-section {
+        padding: 0;
+    }
+    &-container {
+        width: 100%;
+        max-width: 1366px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+}
+</style>

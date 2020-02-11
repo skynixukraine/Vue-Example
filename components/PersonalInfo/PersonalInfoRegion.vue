@@ -8,14 +8,14 @@
   >
     <header class="personal-info__header">
       <div class="personal-info__header-item">
-        <div class="personal-info__header-title">Facharztbezeichnung</div>
+        <div class="personal-info__header-title">Region</div>
       </div>
     </header>
     <div class="personal-info__main personal-info__main-select">
-      <select class="select" name="specialization_id" ref="specialization_id" v-model="value">
+      <select class="select" name="region_id" ref="region_id" v-model="value">
         <option disabled value>Choose one of the options</option>
         <option
-          v-for="(option, index) in $store.getters['specializations/SPECIALIZATIONS']"
+          v-for="(option, index) in $store.getters['regions/REGIONS']"
           :key="index"
           :value="option.id"
         >{{ option.name }}</option>
@@ -23,8 +23,8 @@
     </div>
     <footer
       class="personal-info__footer"
-      v-if="errors.specialization_id"
-    >{{ errors.specialization_id }}</footer>
+      v-if="errors.region_id"
+    >{{ errors.region_id }}</footer>
   </form>
 </template>
 
@@ -34,12 +34,13 @@ import singleForm from "~/mixins/singleForm";
 import validator from "~/mixins/validator";
 
 export default {
-  // TODO transfer validation specialization
+  
+  // TODO transfer validation region
   mixins: [singleForm, validator],
 
   data() {
     return {
-      value: this.$store.getters["user/USER"].specialization.id
+      value: this.$store.getters["user/USER"].region.id
     };
   },
 
@@ -47,7 +48,7 @@ export default {
     async onSubmit() {
       this.setIsFormSending(true);
       const searchParams = this.prepareDataForSending(
-        "specialization_id",
+        "region_id",
         this.value
       );
       this.$store

@@ -1,39 +1,17 @@
 <template>
     <form
         class="single-form"
-        :class="{ 'single-form--edit-mode': isEditMode }"
+        :class="{ 'personal-info__edit-mode': isEditMode }"
         action
         method="PATCH"
         @submit.prevent="onSubmit"
     >
-        <header class="single-form-header">
-            <div class="single-form-header__item">
-                <div class="single-form-header__title">First name</div>
-            </div>
-            <div class="single-form-header__item">
-                <template v-if="!isEditMode && !isFormSending">
-                    <div class="single-form-nav single-form-nav--default">
-                        <div class="single-form-nav__item">
-                            <button type="button" @click="onClickEdit">Edit</button>
-                        </div>
-                    </div>
-                </template>
-                <template v-if="isEditMode && !isFormSending">
-                    <div class="single-form-nav single-form-nav--active">
-                        <div class="single-form-nav__item">
-                            <button type="submit">Save</button>
-                        </div>
-                        <div class="single-form-nav__item">
-                            <button type="button" @click="onClickCancel">Cancel</button>
-                        </div>
-                    </div>
-                </template>
-                <template v-if="isEditMode && isFormSending">
-                    <div class="single-form-loading">loading...</div>
-                </template>
+        <header class="personal-info__header">
+            <div class="personal-info__header-item">
+                <div class="personal-info__header-title">Vorname</div>
             </div>
         </header>
-        <div class="single-form-main">
+        <div class="personal-info__main">
             <input
                 class="input"
                 type="text"
@@ -42,8 +20,13 @@
                 v-model="value"
                 @blur="onInputChange"
             />
+             <img v-if="!errors.email"
+                class="check-icon"
+                :src="require('~/static/images/icons/check-icon.svg')"
+                alt="check-icon"
+            />
         </div>
-        <footer class="single-form-footer" v-if="errors.first_name">{{ errors.first_name }}</footer>
+        <footer class="personal-info__footer" v-if="errors.first_name">{{ errors.first_name }}</footer>
     </form>
 </template>
 
@@ -53,6 +36,7 @@ import singleForm from '~/mixins/singleForm'
 import validator from "~/mixins/validator"
 
 export default {
+    // TODO transfer validation name
     mixins: [
         singleForm,
         validator,

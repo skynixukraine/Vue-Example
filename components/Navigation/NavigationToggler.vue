@@ -49,7 +49,7 @@ export default {
             position: absolute;
             left: 0px;
             top: -10px;
-            transition: .3s;
+            transition: $transition;
         }
 
         &::after {
@@ -60,7 +60,7 @@ export default {
             position: absolute;
             left: 0px;
             top: 10px;
-            transition: .3s;
+            transition: $transition;
         }
 
     }
@@ -69,7 +69,7 @@ export default {
     .navigation-toggler-dashboard{
         width: 32px;
         height: 3px;
-        background-color: #444F5C;
+        background-color: $color-river-bed;
         position: absolute;
         left: 0px;
 
@@ -77,22 +77,22 @@ export default {
             content: '';
             width: 32px;
             height: 3px;
-            background-color: #444F5C;
+            background-color: $color-river-bed;
             position: absolute;
             left: 0px;
             top: -10px;
-            transition: .3s;
+            transition: $transition;
         }
 
         &::after {
             content: '';
             width: 32px;
             height: 3px;
-            background-color: #444F5C;
+            background-color: $color-river-bed;
             position: absolute;
             left: 0px;
             top: 10px;
-            transition: .3s;
+            transition: $transition;
         }
 
     }

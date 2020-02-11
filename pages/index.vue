@@ -49,7 +49,7 @@
                     </li>
                 </ul>
                 <footer class="section-footer">
-                    <NuxtLink :to="$routes.home.path" class="link link--button link--button-white" exact>{{ $t('links.further-information') }}</NuxtLink>
+                    <NuxtLink :to="$routes.faq.path" class="link link--button link--button-white" exact>{{ $t('links.further-information') }}</NuxtLink>
                 </footer>
             </div>
         </div>
@@ -173,6 +173,7 @@ export default {
     .container__dots--4 {
         top      : 60px;
         left     : -56px;
+        z-index  : -1;
         position : absolute;
 
         @media screen and(max-width : 961px) {

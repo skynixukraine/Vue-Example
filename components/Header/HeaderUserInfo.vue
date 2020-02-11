@@ -62,7 +62,7 @@ export default {
     justify-content: center;
     flex-direction: row-reverse;
     background: $color-stratos;
-    transition: left 200ms ease-in-out;
+    transition: left $transition ease-in-out;
 
     &-dashboard{
         background: $color-white;
