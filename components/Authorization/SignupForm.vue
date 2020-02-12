@@ -190,6 +190,13 @@ export default {
                 accepted: false,
                
             },
+            formIsValid: {
+                password: false,
+                confirm_password: false,
+                email: false,
+                phone: false,
+                terms: false
+            },
             bindProps: {
                 mode: "international",
                 defaultCountry: "",
@@ -212,10 +219,16 @@ export default {
     methods: {
         async onSubmit() {
             this.isFormSending = true
-            if ( !this.validateForm(this.models) ) {
+            
+            if (Object.values(this.formIsValid).indexOf(false) > -1) {
                 this.isFormSending = false
                 return false
             }
+            
+            // if ( !this.validateForm(this.models) ) {
+            //     this.isFormSending = false
+            //     return false
+            // }
 
             const formData = this.prepareDataForSending(this.models)
 
@@ -328,41 +341,40 @@ export default {
 
         // inputs changes
         onEmailChange(event) {
-            this.validateEmail(event)
+            this.formIsValid.email = this.validateEmail(event)
             this.$forceUpdate()
         },
         
-        onPasswordChange(event) {      
-            this.validatePassword(event, this.$refs.password_confirmation)
+        onPasswordChange(event) {
+            this.formIsValid.password = this.validatePassword(event, this.$refs.password_confirmation)
             this.$forceUpdate()
         },
         
         onConfirmPasswordChange(event) {
-            this.validateConfirmPassword(event, this.$refs.password)
+            this.formIsValid.confirm_password = this.validateConfirmPassword(event, this.$refs.password)
             this.$forceUpdate()
         },
         
         onPhoneChange(formattedNumber, telInput) {
-            this.validatePhone(telInput);
-            console.log(formattedNumber);
+            this.formIsValid.phone = this.validatePhone(telInput);
             this.$forceUpdate()
         },
         
         onDegreeUpload(event) {
            
-            this.validateFileExtansion(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+            this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
             
             this.$forceUpdate()
         },
         onCertificationUpload(event) {
-           
-            this.validateFileExtansion(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
+
+            this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
 
             this.$forceUpdate()
 
         },
         onAcceptChange(event) {
-            this.validateAccept(event, this.models.accepted)
+            this.formIsValid.terms = this.validateAccept(event, this.models.accepted)
         },
 
         togglePasswordVisibility(){

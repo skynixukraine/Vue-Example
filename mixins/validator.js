@@ -33,7 +33,12 @@ export default {
                 return false
             }
             // name check
-            if (!this.checkEmailName(value)) {
+            if (!this.checkEmailLength(value)) {
+                this.errors[name] = this.$t('errors.form.unvalid-email-length')
+                return false
+            }
+            // length check
+            if (!this.checkEmailLength(value)) {
                 this.errors[name] = this.$t('errors.form.unvalid-email-name')
                 return false
             }
@@ -48,7 +53,6 @@ export default {
         validatePassword(event) {
             const name = event.target.name
             const value = event.target.value
-
             const settings = {
                 password: /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*.])(?!.*[\s]).{6,100})/
             }
@@ -71,13 +75,11 @@ export default {
 
             return true
         },
+
         validateConfirmPassword(event, compareInput) {
             const name = event.target.name
             const value = event.target.value
-            const compareName = compareInput.name
             const compareValue = compareInput.value
-
-
 
             // empty check
             if (!value) {
@@ -95,9 +97,6 @@ export default {
             // clean error if exist
             if (this.errors.hasOwnProperty(name)) {
                 delete this.errors[name]
-            }
-            if (this.errors.hasOwnProperty(compareName)) {
-                delete this.errors[compareName]
             }
 
             return true
@@ -120,9 +119,8 @@ export default {
                 delete  this.errors[`${name}_invalid`];
                 return true
             }
-
-            return true
         },
+
         validateAccept(event, value) {
             const name = event.target.name
 
@@ -139,7 +137,7 @@ export default {
 
             return true
         },
-        validateFileExtansion(event) {
+        validateFileExtension(event) {
             const name = event.target.name
             const type = event.target.files[0].type
             const sizeMb = event.target.files[0].size/1024/1024
@@ -197,6 +195,9 @@ export default {
         checkEmailName(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             return re.test(email)
+        },
+        checkEmailLength(email) {
+            return (email.length < 76);
         },
         checkStringEqual(stringOne, stringTwo) {  
             return stringOne === stringTwo
