@@ -9,23 +9,33 @@
 				<NuxtLink class = "table__info-link table__info-next" to = "/"></NuxtLink>
 			</div>
 		</div>
-		
 		<div class = "table__content">
 			<div class = "table__header">
-				<div class = "table__header-item">Question</div>
-				<div class = "table__header-item enquiries-id__answer">Answer</div>
+				<div class = "table__header-item">Enquiry ID</div>
+				<div class = "table__header-item">First Name</div>
+				<div class = "table__header-item">Last Name</div>
+				<div class = "table__header-item">Enquiry Date</div>
+				<div class = "table__header-item">Last Contact</div>
+				<div class = "table__header-item">Status</div>
 			</div>
 			<div class = "table__main">
-				<div class = "table__main-items">
-					<div class = "table__main-item">Question 1</div>
-					<div class = "table__main-item enquiries-id__answer">Answer 1</div>
-				</div>
-				<div class = "table__main-items">
-					<div class = "table__main-item">Question 2</div>
-					<div class = "table__main-item enquiries-id__answer">Answer 2</div>
-				</div>
+				<NuxtLink :to="$routes" class = "table__main-items">
+					<div class = "table__main-item">1</div>
+					<div class = "table__main-item">Doe</div>
+					<div class = "table__main-item">Jane</div>
+					<div class = "table__main-item">dd/mm/yyyy hh:mm </div>
+					<div class = "table__main-item">dd/mm/yyyy hh:mm </div>
+					<div class = "table__main-item">awaiting patient's response</div>
+				</NuxtLink>
+				<NuxtLink :to="$routes" class = "table__main-items">
+					<div class = "table__main-item">2</div>
+					<div class = "table__main-item">Doe</div>
+					<div class = "table__main-item">Jane</div>
+					<div class = "table__main-item">dd/mm/yyyy hh:mm</div>
+					<div class = "table__main-item">dd/mm/yyyy hh:mm</div>
+					<div class = "table__main-item">awaiting patient's response</div>
+				</NuxtLink>
 			</div>
-		
 		</div>
 	</div>
 </template>
