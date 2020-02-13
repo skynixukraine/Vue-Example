@@ -3,7 +3,7 @@
 		<div class = "faq-block">
 			<h3 class = "faq-block__title">{{ this.$t('page-faq.q1.title')}}</h3>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p1')}}</p>
-			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p1')}}</p>
+			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p2')}}</p>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p3')}}</p>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p4')}}</p>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p5')}}</p>
