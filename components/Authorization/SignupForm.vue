@@ -326,12 +326,16 @@
 
             onDegreeUpload(event){
 
+                if(!event.target.files[0]) { return; }
+                
                 this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
 
                 this.$forceUpdate()
             },
             onCertificationUpload(event){
 
+                if(!event.target.files[0]) { return; }
+                
                 this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
 
                 this.$forceUpdate()
