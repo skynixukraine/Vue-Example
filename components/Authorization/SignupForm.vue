@@ -2,40 +2,32 @@
     <form action class="form form--register" method="POST" @submit.prevent="onSubmit">
         <div class="form__item form__item--login">
             <div class="form__title form__title--login">{{ $t('forms.enter-email') }} <span>*</span></div>
-            <input
-                class="input input--login"
-                type="email"
-                name="email"
-                ref="email"
-                v-model="models.email"
-                :placeholder="$t('forms.enter-email')"
-                @blur="onEmailChange"
-            />
-
+            <input class="input input--login"
+                    type="email"
+                    name="email"
+                    ref="email"
+                    v-model="models.email"
+                    :placeholder="$t('forms.enter-email')"
+                    @blur="onEmailChange" />
             <img v-if="!errors.email"
                 class="check-icon"
                 :src="require('~/static/images/icons/check-icon.svg')"
-                alt="check-icon"
-            />
+                alt="check-icon"/>
             <div class="form__message" v-if="errors.email">{{ errors.email }}</div>
         </div>
         <div class="form__item form__item--password">
             <div class="form__title form__title--password">{{ $t('forms.create-password') }} <span>*</span></div>
-            <input
-                class="input input--password"
-                type= "password"
-                name="password"
-                ref="password"
-                v-model="models.password"
-                :placeholder="$t('forms.create-password')"
-                @blur="onPasswordChange"
-            />
-            <img
-                class="eye-icon"
-                :src="require('~/static/images/icons/eye-icon.svg')"
-                alt="eye-icon"
-                @click="togglePasswordVisibility"
-            />
+            <input class="input input--password"
+                    type= "password"
+                    name="password"
+                    ref="password"
+                    v-model="models.password"
+                    :placeholder="$t('forms.create-password')"
+                    @blur="onPasswordChange" />
+            <img class="eye-icon"
+                 :src="require('~/static/images/icons/eye-icon.svg')"
+                 alt="eye-icon"
+                 @click="togglePasswordVisibility"/>
             <div class="form__message" v-if="errors.password">{{ errors.password }}</div>
         </div>
         <div class="form__item">
@@ -127,11 +119,11 @@
             <div class="form__title form__title--accepted">
 
                 {{ $t('genegal-translations.i-accept') }}
-                <NuxtLink 
+                <NuxtLink
                     :to="$routes.terms.path" class="link link--small-blue" exact>{{ $t('links.terms-and-conditions') }}
                 </NuxtLink>
                 {{ $t('genegal-translations.and') }}
-                <NuxtLink 
+                <NuxtLink
                     :to="$routes.privacy.path" class="link link--small-blue" exact>{{ $t('links.privacy-policy') }}
                 </NuxtLink>
 
@@ -143,9 +135,8 @@
                 v-model="models.accepted"
                 @change="onAcceptChange"
             />
+            <div class="form__message" v-if="errors.accepted">{{ errors.accepted }}</div>
         </div>
-        <div class="form__message" v-if="errors.accepted">{{ errors.accepted }}</div>
-    
         <div class="form__item">
             <button
                 class="link link--button link--button-full-width link--button-blue link--button-gradient"
@@ -187,8 +178,7 @@ export default {
                 phone_number: '',
                 degree: '',
                 certification: '',
-                accepted: false,
-               
+                accepted: false
             },
             formIsValid: {
                 password: false,
@@ -221,15 +211,12 @@ export default {
             this.isFormSending = true
             
             if (Object.values(this.formIsValid).indexOf(false) > -1) {
+                this.validateForm(this.models)
                 this.isFormSending = false
+                this.$forceUpdate()
                 return false
             }
             
-            // if ( !this.validateForm(this.models) ) {
-            //     this.isFormSending = false
-            //     return false
-            // }
-
             const formData = this.prepareDataForSending(this.models)
 
             this.$store.dispatch('user/REGISTER_USER', formData)
@@ -245,54 +232,37 @@ export default {
                     this.isFormSending = false
                 })
         },
-
+        
         validateForm(models) {
             // check required fields
             if (!models.email) {
                 this.errors['email'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
                 this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.email-is-empty') })
-                return false
             }
             if (!models.password) {
                 this.errors['password'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
                 this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.password-is-empty') })
-                return false
             }
             if (!models.password_confirmation) {
                 this.errors['password_confirmation'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
                 this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.сonfirmation-password-is-empty') })
-                return false
             }
             if (!models.phone_number) {
                 this.errors['phone_number'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
                 this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.phone-is-empty') })
-                return false
             }
             if (!models.accepted) {
                 this.errors['accepted'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
                 this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.accept-terms-and-conditions') })
-                return false
             }
-            
+
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
-                return false
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.invalid-recaptcha-tocken') })
             }
 
-            return true
+            return false
         },
-
-        // validateFilePDF(event){
-        //     if  ( event.target.files[0].type === 'application/pdf' ){
-        //         return this;
-        //     }
-        // },
 
         handleErrorResponse(errors) {
             if (Object.keys(errors).length === 0) {
@@ -355,8 +325,10 @@ export default {
             this.$forceUpdate()
         },
         
-        onPhoneChange(formattedNumber, telInput) {
-            this.formIsValid.phone = this.validatePhone(telInput);
+        onPhoneChange(eventValue, telInput) {
+            console.log(eventValue);
+            this.models.telInput = telInput;
+            this.formIsValid.phone = this.validatePhone(eventValue, this.models.telInput);
             this.$forceUpdate()
         },
         

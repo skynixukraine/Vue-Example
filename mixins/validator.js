@@ -38,7 +38,7 @@ export default {
                 return false
             }
             // length check
-            if (!this.checkEmailLength(value)) {
+            if (!this.checkEmailName(value)) {
                 this.errors[name] = this.$t('errors.form.unvalid-email-name')
                 return false
             }
@@ -102,12 +102,19 @@ export default {
             return true
         },
 
-        validatePhone(telInput) {
+        validatePhone(eventValue, telInput) {
             // more info about telInput - https://github.com/EducationLink/vue-tel-input
             const name = 'phone_number'
+            console.log(telInput);
 
-            // clean error if exist
-            if (this.errors.hasOwnProperty(name)) {
+            // empty check
+            if (eventValue.length === 0) {
+                if (!telInput.isValid) {
+                    delete  this.errors[`${name}_invalid`];
+                }
+                this.errors[name] = this.$t('errors.form.required-field')
+                return false
+            } else {
                 delete this.errors[name]
             }
 
