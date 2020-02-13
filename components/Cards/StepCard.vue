@@ -1,7 +1,7 @@
 <template>
     <div class="step-card" :class="`step-card--${step.number}`">
         <header class="step-card__header">
-            <video class="step-card__video" :src="step.video" type="video/mp4" autoplay loop></video>
+            <video class="step-card__video" :src="step.video" type="video/mp4" autoplay loop webkit-playsinline playsinline muted></video>
              <img
                 :class="`step-card__image-dots step-card__image-dots--${step.number}`"
                 :src="require('~/static/images/images/dots.png')"

@@ -4,7 +4,7 @@
             <div class="advantage-card__round">
                 <div class="advantage-card__round-inner">
                     <!-- <img class="advantage-card__image" :src="advantage.icon" :alt="advantage.text"> -->
-                    <video class="" :src="advantage.video" type="video/mp4" autoplay loop playsinline></video>
+                    <video class="" :src="advantage.video" type="video/mp4" autoplay loop webkit-playsinline playsinline muted></video>
                 </div>
             </div>
         </header>
