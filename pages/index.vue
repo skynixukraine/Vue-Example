@@ -28,11 +28,7 @@
                 <header class="section-header">
                     <h2 class="section-header__title">{{ $t('headers.few-steps') }}</h2>
                 </header>
-                <ul class="list list__step--cards">
-                    <li class="list__item" v-for="(step, index) in steps" :key="index" style="margin: 0;">
-                         <StepCard :step="step" />
-                    </li>
-                </ul>
+                <StepCard  />
                 <footer class="section-footer">
                     <NuxtLink :to="$routes.faq.path" class="link link--button link--button-mobile-large link--button-gradient" exact>{{ $t('links.frequently-asked') }}</NuxtLink>
                 </footer>
@@ -124,24 +120,7 @@ export default {
                 // icon: require('~/static/images/advantages/diamond.svg'),
                 video: require('~/static/video/icons/04_icon.mp4'),
                 text: this.$t('advantages.professional-trustworthy')
-            }],
-
-            steps: [{
-                number: '01',
-                video: require('~/static/video/icons/05_icon.mp4'),
-                title: this.$t('steps.choose-dermatologist'),
-                text: this.$t('steps.dermatologist-at-clinic-essen')
-            },{
-                number: '02',
-                video: require('~/static/video/icons/06_icon.mp4'),
-                title: this.$t('steps.describe-symptoms'),
-                text: this.$t('steps.what-complaints-problem')
-            },{
-                number: '03',
-                video: require('~/static/video/icons/07_icon.mp4'),
-                title: this.$t('steps.you-get-specialist-advice'),
-                text: this.$t('steps.specialist-initial-assessment')
-            }],
+            }]
         }
     },
     computed: {
