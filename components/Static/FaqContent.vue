@@ -10,11 +10,7 @@
 		</div>
 		<div class = "faq-block">
 			<h3 class = "faq-block__title">{{ this.$t('page-faq.q2.title')}}</h3>
-			<ul class="list list__step--cards">
-				<li class="list__item" v-for="(step, index) in steps" :key="index" style="margin: 0;">
-					<StepCard :step="step" />
-				</li>
-			</ul>
+			<StepCard/>
 		</div>
 		<div class = "faq-block">
 			<h3 class = "faq-block__title">{{ this.$t('page-faq.q3.title')}}</h3>

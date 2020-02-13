@@ -1,27 +1,43 @@
 <template>
-    <div class="step-card" :class="`step-card--${step.number}`">
-        <header class="step-card__header">
-            <video class="step-card__video" :src="step.video" type="video/mp4" autoplay loop webkit-playsinline playsinline muted></video>
-             <img
-                :class="`step-card__image-dots step-card__image-dots--${step.number}`"
-                :src="require('~/static/images/images/dots.png')"
-                alt="iphone"
-            />
-        </header>
-       
-        <div class="step-card__main">
-            <h3 class="step-card__title">{{ step.title }}</h3>
-            <p class="step-card__text">{{ step.text }}</p>
-        </div>
-    </div>
+    <ul class="list list__step--cards">
+        <li class="list__item" v-for="(step, index) in steps" :key="index" style="margin: 0;">
+            <div class="step-card" :class="`step-card--${step.number}`">
+                <header class="step-card__header">
+                    <video class="step-card__video" :src="step.video" type="video/mp4" autoplay loop webkit-playsinline playsinline muted></video>
+                    <img :class="`step-card__image-dots step-card__image-dots--${step.number}`"
+						 :src="require('~/static/images/images/dots.png')"
+						 alt="iphone" />
+                </header>
+        
+                <div class="step-card__main">
+                    <h3 class="step-card__title">{{ step.title }}</h3>
+                    <p class="step-card__text">{{ step.text }}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
 </template>
 
 <script>
 export default {
-    props: {
-        step: {
-            type: Object,
-            required: true
+    data() {
+        return {
+            steps: [{
+                number: '01',
+                video: require('~/static/video/icons/05_icon.mp4'),
+                title: this.$t('steps.choose-dermatologist'),
+                text: this.$t('steps.dermatologist-at-clinic-essen')
+            },{
+                number: '02',
+                video: require('~/static/video/icons/06_icon.mp4'),
+                title: this.$t('steps.describe-symptoms'),
+                text: this.$t('steps.what-complaints-problem')
+            },{
+                number: '03',
+                video: require('~/static/video/icons/07_icon.mp4'),
+                title: this.$t('steps.you-get-specialist-advice'),
+                text: this.$t('steps.specialist-initial-assessment')
+            }]
         }
     }
 }
@@ -79,7 +95,7 @@ export default {
     &__image-dots{
         position: absolute;
         z-index: -1;
-            
+        
         &--01{ display: none }
         &--02{ display: none }
         &--03{ display: none }
@@ -87,46 +103,46 @@ export default {
 
 
         @media (min-width: #{$screen-tablet-min}) {
-          &--01{ 
+          &--01{
                 display: block;
-                bottom: -119px 
+                bottom: -119px
             }
 
-            &--02{ 
+            &--02{
                 display: block;
-                bottom: -179px 
+                bottom: -179px
             }
         }
 
 
         @media (min-width: #{818px}) {
-            &--01{ 
-                bottom: -72px 
+            &--01{
+                bottom: -72px
             }
 
-            &--02{ 
-                bottom: -113px 
+            &--02{
+                bottom: -113px
             }
         }
 
         @media (min-width: #{898px}) {
-            &--01{ 
+            &--01{
                 display: block;
-                bottom: -72px 
+                bottom: -72px
             }
 
-            &--02{ 
-                bottom: -110px 
+            &--02{
+                bottom: -110px
             }
         }
 
         @include tablet-big {
-            &--01{ 
-                bottom: -61px 
+            &--01{
+                bottom: -61px
             }
 
-            &--02{ 
-                bottom: -97px 
+            &--02{
+                bottom: -97px
             }
        
         }
