@@ -3,3 +3,4 @@ static/sw.js
 configs/env.js
 .idea/
 .nuxt/
+.DS_Store

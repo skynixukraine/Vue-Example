@@ -42,6 +42,8 @@
         "app": {
             "required-field": "This field is required.",
             "unvalid-email-name": "Unvalid email name."
+
+
         },
         "form": {
             "required-field": "This field is required.",
@@ -57,7 +59,8 @@
             "validation-failed": "Form validation failed",
             "file-type": "Invalid type. Allowed types are PDF/JPG/PNG.",
             "file-size": "File size should be less than 10Mb.",
-            "password-has-problem": "Password must contain at least 6 and no more than 100 characters. Password must not contain spaces. The password must contain at least one lowercase letter, one uppercase letter, number and a special character."
+            "unvalid-email-length": "Email length should be less than 75 symbols",
+            "password-has-problem": "Password must contain at least 6 and no more than 100 characters. Password must contain no spaces. The password must contain at least one lowercase letter, one uppercase letter, number and a special character !@#$%^&*. "
         }
     },
     "forms": {
