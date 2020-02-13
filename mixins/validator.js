@@ -105,66 +105,64 @@ export default {
 
         validatePhone(telInput) {
             // more info about telInput - https://github.com/EducationLink/vue-tel-input
-            const name = 'phone_number'
+            const name = 'phone_number';
 
             // clean error if exist
             if (this.errors.hasOwnProperty(name)) {
-                delete this.errors[name]
+                delete this.errors[name];
             }
 
             // phone format check
             if (!telInput.isValid) {
-                this.errors[`${name}_invalid`] = this.$t('errors.form.invalid-number')
-                return false
+                this.errors[`${name}_invalid`] = this.$t('errors.form.invalid-number');
+                return false;
             } else {
                 delete  this.errors[`${name}_invalid`];
-                return true
+                return true;
             }
-
-            return true
         },
         validateAccept(event, value) {
-            const name = event.target.name
+            const name = event.target.name;
 
             // empty check
             if (!value) {
-                this.errors[name] = this.$t('errors.form.required-field')
-                return false
+                this.errors[name] = this.$t('errors.form.required-field');
+                return false;
             }
 
             // clean error if exist
             if (this.errors.hasOwnProperty(name)) {
-                delete this.errors[name]
+                delete this.errors[name];
             }
 
-            return true
+            return true;
         },
-        validateFileExtansion(event) {
-            const name = event.target.name
-            const type = event.target.files[0].type
-            const sizeMb = event.target.files[0].size/1024/1024
+        validateFileExtension(event) {
+            const name = event.target.name;
+            const type = event.target.files[0].type;
+            const sizeMb = event.target.files[0].size/1024/1024;
 
             // type check
             if (!this.checkFileType(type)) {
-                this.errors[name] = this.$t('errors.form.file-type')
-                return false
+                this.errors[name] = this.$t('errors.form.file-type');
+                return false;
             }
             // size check
             if (!this.checkFileSize(sizeMb)) {
-                this.errors[`${name}_size`] = this.$t('errors.form.file-size')
-                return false
+                this.errors[`${name}_size`] = this.$t('errors.form.file-size');
+                return false;
             }
 
 
             // clean error if exist
             if (this.errors.hasOwnProperty(name)) {
-                delete this.errors[name]
+                delete this.errors[name];
             }
             if (this.errors.hasOwnProperty(`${name}_size`)) {
-                delete this.errors[`${name}_size`]
+                delete this.errors[`${name}_size`];
             }
 
-            return true
+            return true;
         },
 
         validateFileImage(event) {

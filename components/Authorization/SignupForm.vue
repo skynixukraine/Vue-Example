@@ -211,24 +211,24 @@ export default {
 
     methods: {
         async onSubmit() {
-            this.isFormSending = true
+            this.isFormSending = true;
             if ( !this.validateForm(this.models) ) {
-                this.isFormSending = false
+                this.isFormSending = false;
                 return false
             }
 
-            const formData = this.prepareDataForSending(this.models)
+            const formData = this.prepareDataForSending(this.models);
 
             this.$store.dispatch('user/REGISTER_USER', formData)
                 .then((response) => {
-                    this.openModal(this.$modals.registerSuccess)
-                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                    this.openModal(this.$modals.registerSuccess);
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor);
                     this.isFormSending = false
                 })
                 .catch((response) => {
-                    this.$root.$emit('showNotify', { type: 'error', text: response.message })
-                    this.handleErrorResponse(response.errors)
-                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
+                    this.$root.$emit('showNotify', { type: 'error', text: response.message });
+                    this.handleErrorResponse(response.errors);
+                    this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor);
                     this.isFormSending = false
                 })
         },
@@ -236,39 +236,39 @@ export default {
         validateForm(models) {
             // check required fields
             if (!models.email) {
-                this.errors['email'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.email-is-empty') })
+                this.errors['email'] = this.$t('errors.form.required-field');
+                this.$forceUpdate();
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.email-is-empty') });
                 return false
             }
             if (!models.password) {
-                this.errors['password'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.password-is-empty') })
+                this.errors['password'] = this.$t('errors.form.required-field');
+                this.$forceUpdate();
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.password-is-empty') });
                 return false
             }
             if (!models.password_confirmation) {
-                this.errors['password_confirmation'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.сonfirmation-password-is-empty') })
+                this.errors['password_confirmation'] = this.$t('errors.form.required-field');
+                this.$forceUpdate();
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.сonfirmation-password-is-empty') });
                 return false
             }
             if (!models.phone_number) {
-                this.errors['phone_number'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.phone-is-empty') })
+                this.errors['phone_number'] = this.$t('errors.form.required-field');
+                this.$forceUpdate();
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.phone-is-empty') });
                 return false
             }
             if (!models.accepted) {
-                this.errors['accepted'] = this.$t('errors.form.required-field')
-                this.$forceUpdate()
-                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.accept-terms-and-conditions') })
+                this.errors['accepted'] = this.$t('errors.form.required-field');
+                this.$forceUpdate();
+                this.$root.$emit('showNotify', { type: 'error', text: this.$t('errors.form.accept-terms-and-conditions') });
                 return false
             }
             
             // check recaptcha token exist
             if (!this.recaptchaToken) {
-                this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' })
+                this.$root.$emit('showNotify', { type: 'error', text: 'Нет токена рекапчи' });
                 return false
             }
 
@@ -294,14 +294,14 @@ export default {
         },
 
         prepareDataForSending(models) {
-            let formData = new FormData()
+            let formData = new FormData();
 
             // required fields
-            formData.append('email', models.email)
-            formData.append('phone_number', models.phone_number)
-            formData.append('password', models.password)
-            formData.append('password_confirmation', models.password_confirmation)
-            formData.append('accepted', models.accepted)
+            formData.append('email', models.email);
+            formData.append('phone_number', models.phone_number);
+            formData.append('password', models.password);
+            formData.append('password_confirmation', models.password_confirmation);
+            formData.append('accepted', models.accepted);
 
             // unrequired fields
             if (models.degree) {
@@ -312,7 +312,7 @@ export default {
             }
 
             // recaptcha token for action 'register_doctor'
-            formData.append('recaptcha', this.recaptchaToken)
+            formData.append('recaptcha', this.recaptchaToken);
 
             return formData
         },
@@ -328,17 +328,17 @@ export default {
 
         // inputs changes
         onEmailChange(event) {
-            this.validateEmail(event)
+            this.validateEmail(event);
             this.$forceUpdate()
         },
         
         onPasswordChange(event) {      
-            this.validatePassword(event, this.$refs.password_confirmation)
+            this.validatePassword(event, this.$refs.password_confirmation);
             this.$forceUpdate()
         },
         
         onConfirmPasswordChange(event) {
-            this.validateConfirmPassword(event, this.$refs.password)
+            this.validateConfirmPassword(event, this.$refs.password);
             this.$forceUpdate()
         },
         
@@ -349,14 +349,18 @@ export default {
         },
         
         onDegreeUpload(event) {
-           
-            this.validateFileExtansion(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+    
+            if(!event.target.files[0]) { return; }
+            
+            this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
             
             this.$forceUpdate()
         },
         onCertificationUpload(event) {
-           
-            this.validateFileExtansion(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
+    
+            if(!event.target.files[0]) { return; }
+    
+            this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
 
             this.$forceUpdate()
 

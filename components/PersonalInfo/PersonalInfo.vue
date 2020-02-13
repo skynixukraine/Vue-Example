@@ -162,14 +162,21 @@
 						<div class = "personal-info__header">Approbationsurkunde hochladen</div>
 						
 						<div class = "personal-info__upload">
-							<div v-html = "selectedDegreeImageHTML" class = "personal-info__upload-image" ref = "selectedDegreeImageHTML"></div>
-							<button type="button" v-if = "selectedDegreeImageHTML" @click = "removeDegreeImage" class = "personal-info__upload-close"></button>
+							<div v-html = "selectedDegreeImageHTML"
+								 class = "personal-info__upload-image"
+								 ref = "selectedDegreeImageHTML"></div>
+							<button type = "button"
+									v-if = "selectedDegreeImageHTML"
+									@click = "removeDegreeImage"
+									class = "personal-info__upload-close">
+							</button>
 						</div>
 						
 						<input class = "input input--hidden"
 							   type = "file"
 							   name = "degree"
 							   ref = "degree"
+							   accept = ".jpg, .jpeg, .png, .pdf"
 							   @change = "onDegreeUpload" />
 						<button class = "link link--button link--button-full-width link--button-upload"
 								type = "button"
@@ -179,18 +186,24 @@
 								 alt = "paper-fastener-button" />
 							<p>{{ selectedDegreeImageHTML ? models.degree.name : $t('forms.add-degree') }}</p>
 						</button>
+						<div class = "form__message" v-if = "errors.degree">{{ errors.degree }}</div>
+						<div class = "form__message" v-if = "errors.degree_size">{{ errors.degree_size }}</div>
 					</div>
 					
 					<div class = "personal-info__item">
 						<div class = "personal-info__header">Facharztzeugnis hochladen</div>
 						<div class = "personal-info__upload">
 							<div v-html = "selectedCertificationImageHTML" class = "personal-info__upload-image"></div>
-							<button type="button" v-if = "selectedCertificationImageHTML" @click = "removeCertificationImage" class = "personal-info__upload-close"></button>
+							<button type = "button"
+									v-if = "selectedCertificationImageHTML"
+									@click = "removeCertificationImage"
+									class = "personal-info__upload-close"></button>
 						</div>
 						<input class = "input input--hidden"
 							   type = "file"
 							   name = "certification"
 							   ref = "certification"
+							   accept = ".jpg, .jpeg, .png, .pdf"
 							   @change = "onCertificationUpload" />
 						<button class = "link link--button link--button-full-width link--button-upload"
 								type = "button"
@@ -198,9 +211,14 @@
 							<img class = "paper-fastener-button-image"
 								 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
 								 alt = "paper-fastener-button" />
-							<p>{{ selectedCertificationImageHTML ? models.certification.name : $t('forms.add-certification') }}</p>
+							<p>{{ selectedCertificationImageHTML ? models.certification.name :
+								$t('forms.add-certification') }}</p>
 						</button>
-					
+						
+						<div class = "form__message" v-if = "errors.certification">{{ errors.certification }}</div>
+						<div class = "form__message" v-if = "errors.certification_size">{{ errors.certification_size
+							}}
+						</div>
 					</div>
 					
 					<div class = "personal-info__item">
@@ -368,9 +386,12 @@
                 value             : this.$store.getters["user/USER"].region.id,
 
                 models        : {
-                    phone_number : '',
-                    email        : '',
-                    password     : '',
+                    phone_number  : '',
+                    email         : '',
+                    password      : '',
+                    degree        : '',
+                    certification : '',
+
                 },
                 isFormSending : false,
 
@@ -390,42 +411,50 @@
             },
 
             onDegreeUpload(event){
-                this.validateFileExtansion(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
-                this.$forceUpdate();
+                if(!event.target.files[0]){ return; }
 
+                let file    = null;
                 const _this = this;
-                const file  = event.target.files[0];
                 let reader  = new FileReader();
 
+                this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+                this.validateFileExtension(event) ? file = event.target.files[0] : file = '';
+
                 reader.onload = function(e){
-                    let uploadImage               = '<img class="personal-info__upload-src" src="' + e.target.result + '"/>';
+                    let uploadImage = null;
+                    (file.type === "application/pdf") ? (uploadImage = '<object type="application/pdf" data="' + e.target.result + '" class="personal-info__upload-src"></object>') : (uploadImage = '<img class="personal-info__upload-src" src="' + e.target.result + '"/>');
                     _this.selectedDegreeImageHTML = uploadImage;
                 };
-                reader.readAsDataURL(file);
-                event.target.value = "";
+                file && reader.readAsDataURL(file);
+                this.$forceUpdate();
             },
 
 
             onCertificationUpload(event){
-                this.validateFileExtansion(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
-                this.$forceUpdate();
+                if(!event.target.files[0]){ return; }
 
+                let file    = null;
                 const _this = this;
-                const file  = event.target.files[0];
                 let reader  = new FileReader();
 
+                this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
+                this.validateFileExtension(event) ? file = event.target.files[0] : file = '';
+
                 reader.onload = function(e){
-                    let uploadImage                      = '<img class="personal-info__upload-src" src="' + e.target.result + '"/>';
+                    let uploadImage = null;
+                    (file.type === "application/pdf") ? (uploadImage = '<object type="application/pdf" data="' + e.target.result + '" class="personal-info__upload-src"></object>') : (uploadImage = '<img class="personal-info__upload-src" src="' + e.target.result + '"/>');
                     _this.selectedCertificationImageHTML = uploadImage;
                 };
-                reader.readAsDataURL(file);
-                event.target.value = "";
+
+                file && reader.readAsDataURL(file);
+                this.$forceUpdate();
             },
+
 
             removeDegreeImage(){
                 this.selectedDegreeImageHTML = ""
             },
-			
+
             removeCertificationImage(){
                 this.selectedCertificationImageHTML = ""
             },
@@ -433,6 +462,7 @@
             onPhoneChange(formattedNumber, telInput){
                 this.validatePhone(telInput);
             },
+
         }
     };
 </script>
@@ -569,7 +599,7 @@
 		}
 		
 		&__upload {
-			display       : flex;
+			display : flex;
 			
 			&-src {
 				width         : 100%;
@@ -640,8 +670,15 @@
 		position : absolute;
 	}
 	
-	.link--button-upload {
+	.link {
 		min-width : auto;
+		overflow  : hidden;
+	}
+	
+	.form__message {
+		color        : $color-alert-red;
+		padding-left : 10px;
+		text-align   : left;
 	}
 
 </style>
