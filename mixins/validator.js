@@ -105,7 +105,6 @@ export default {
         validatePhone(eventValue, telInput){
             // more info about telInput - https://github.com/EducationLink/vue-tel-input
             const name = 'phone_number'
-            console.log(telInput);
 
             // empty check
             if(eventValue.length === 0){
@@ -142,7 +141,7 @@ export default {
                 delete this.errors[name]
             }
 
-            return true
+            return true;
         },
         validateFileExtension(event){
             const name   = event.target.name
@@ -169,7 +168,7 @@ export default {
                 delete this.errors[`${name}_size`]
             }
 
-            return true
+            return true;
         },
 
         validateFileImage(event){

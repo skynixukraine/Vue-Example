@@ -47,7 +47,8 @@
 								 alt = "check-icon"
 							/>
 						</div>
-						<footer class = "personal-info__footer" v-if = "errors.first_name">{{ errors.first_name }}</footer>
+						<footer class = "personal-info__footer" v-if = "errors.first_name">{{ errors.first_name }}
+						</footer>
 					</div>
 					
 					<div class = "personal-info__item">
@@ -65,7 +66,8 @@
 									v-model = "last_name"
 							/>
 						</div>
-						<footer class = "personal-info__footer" v-if = "errors.last_name">{{ errors.last_name }}</footer>
+						<footer class = "personal-info__footer" v-if = "errors.last_name">{{ errors.last_name }}
+						</footer>
 					</div>
 					
 					<div class = "personal-info__item">
@@ -83,7 +85,8 @@
 							></vue-tel-input>
 							<div class = "form__message" v-if = "errors.phone_number">{{ errors.phone_number }}</div>
 						</div>
-						<footer class = "personal-info__footer" v-if = "errors.first_name">{{ errors.first_name }}</footer>
+						<footer class = "personal-info__footer" v-if = "errors.first_name">{{ errors.first_name }}
+						</footer>
 					</div>
 					
 					<div class = "personal-info__item">
@@ -106,7 +109,9 @@
 								</option>
 							</select>
 						</div>
-						<footer class = "personal-info__footer" v-if = "errors.specialization_id">{{ errors.specialization_id }}</footer>
+						<footer class = "personal-info__footer" v-if = "errors.specialization_id">{{
+							errors.specialization_id }}
+						</footer>
 					</div>
 					
 					<div class = "personal-info__item">
@@ -151,77 +156,69 @@
 					</div>
 				
 				</div>
-				<div class = "personal-info__column personal-info__column_big">
+				<div class = "personal-info__column">
 					
 					<div class = "personal-info__item">
 						<div class = "personal-info__header">Approbationsurkunde hochladen</div>
-						<input
-								class = "input input--hidden"
-								type = "file"
-								name = "degree"
-								ref = "degree"
-								@change = "onDegreeUpload"
-						/>
 						
-						<button
-								class = "link link--button link--button-full-width link--button-upload"
+						<div class = "personal-info__upload">
+							<div v-html = "selectedDegreeImageHTML"
+								 class = "personal-info__upload-image"
+								 ref = "selectedDegreeImageHTML"></div>
+							<button type = "button"
+									v-if = "selectedDegreeImageHTML"
+									@click = "removeDegreeImage"
+									class = "personal-info__upload-close">
+							</button>
+						</div>
+						
+						<input class = "input input--hidden"
+							   type = "file"
+							   name = "degree"
+							   ref = "degree"
+							   accept = ".jpg, .jpeg, .png, .pdf"
+							   @change = "onDegreeUpload" />
+						<button class = "link link--button link--button-full-width link--button-upload"
 								type = "button"
-								@click = "addFileDegree"
-						>
-							<img
-									class = "paper-fastener-button-image"
-									:src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
-									alt = "paper-fastener-button"
-							/>
-							<p>Choose file</p>
+								@click = "addFileDegree">
+							<img class = "paper-fastener-button-image"
+								 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
+								 alt = "paper-fastener-button" />
+							<p>{{ selectedDegreeImageHTML ? models.degree.name : $t('forms.add-degree') }}</p>
 						</button>
+						<div class = "form__message" v-if = "errors.degree">{{ errors.degree }}</div>
+						<div class = "form__message" v-if = "errors.degree_size">{{ errors.degree_size }}</div>
 					</div>
 					
-					<div class = "personal-info__item personal-info__item_big">
+					<div class = "personal-info__item">
 						<div class = "personal-info__header">Facharztzeugnis hochladen</div>
 						<div class = "personal-info__upload">
-							<div class = "personal-info__upload-image">
-								<img
-										class = "personal-info__upload-src"
-										:src = "require('~/static/images/images/img-add.jpg')"
-										alt = "single-form"
-								/>
-								<button class = "personal-info__upload-buttom">
-									<img :src = "require('~/static/images/icons/close-icon.svg')"
-										 alt = "personal info close" />
-								</button>
-							</div>
-							<div class = "personal-info__upload-image">
-								<img
-										class = "personal-info__upload-src"
-										:src = "require('~/static/images/images/img-add.jpg')"
-										alt = "personal-info"
-								/>
-								<button class = "personal-info__upload-buttom">
-									<img :src = "require('~/static/images/icons/close-icon.svg')"
-										 alt = "personal info close" />
-								</button>
-							</div>
+							<div v-html = "selectedCertificationImageHTML" class = "personal-info__upload-image"></div>
+							<button type = "button"
+									v-if = "selectedCertificationImageHTML"
+									@click = "removeCertificationImage"
+									class = "personal-info__upload-close"></button>
 						</div>
-						<input
-								class = "input input--hidden"
-								type = "file"
-								name = "certification"
-								ref = "certification"
-								@change = "onCertificationUpload"
-						/>
-						<button
-								class = "link link--button link--button-full-width link--button-upload"
+						<input class = "input input--hidden"
+							   type = "file"
+							   name = "certification"
+							   ref = "certification"
+							   accept = ".jpg, .jpeg, .png, .pdf"
+							   @change = "onCertificationUpload" />
+						<button class = "link link--button link--button-full-width link--button-upload"
 								type = "button"
-								@click = "addFileCertification"
-						>
-							<img
-									class = "paper-fastener-button-image"
-									:src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
-									alt = "paper-fastener-button"
-							/>
-							<p>Choose file</p>
+								@click = "addFileCertification">
+							<img class = "paper-fastener-button-image"
+								 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
+								 alt = "paper-fastener-button" />
+							<p>{{ selectedCertificationImageHTML ? models.certification.name :
+								$t('forms.add-certification') }}</p>
 						</button>
+						
+						<div class = "form__message" v-if = "errors.certification">{{ errors.certification }}</div>
+						<div class = "form__message" v-if = "errors.certification_size">{{ errors.certification_size
+							}}
+						</div>
 					</div>
 					
 					<div class = "personal-info__item">
@@ -389,13 +386,17 @@
                 value             : this.$store.getters["user/USER"].region.id,
 
                 models        : {
-                    phone_number : '',
-                    email        : '',
-                    password     : '',
+                    phone_number  : '',
+                    email         : '',
+                    password      : '',
+                    degree        : '',
+                    certification : '',
+
                 },
                 isFormSending : false,
 
-
+                selectedCertificationImageHTML : "",
+                selectedDegreeImageHTML        : ""
             }
         },
 
@@ -403,22 +404,59 @@
 
             // files upload
             addFileDegree(){
-                this.$refs.degree.click()
+                this.$refs.degree.click();
             },
             addFileCertification(){
                 this.$refs.certification.click()
             },
 
             onDegreeUpload(event){
-                if(this.validateFilePDF(event)){
-                    this.models.degree = event.target.files[0]
-                }
+                if(!event.target.files[0]){ return; }
+
+                let file    = null;
+                const _this = this;
+                let reader  = new FileReader();
+
+                this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+                this.validateFileExtension(event) ? file = event.target.files[0] : file = '';
+
+                reader.onload = function(e){
+                    let uploadImage = null;
+                    (file.type === "application/pdf") ? (uploadImage = '<object type="application/pdf" data="' + e.target.result + '" class="personal-info__upload-src"></object>') : (uploadImage = '<img class="personal-info__upload-src" src="' + e.target.result + '"/>');
+                    _this.selectedDegreeImageHTML = uploadImage;
+                };
+                file && reader.readAsDataURL(file);
+                this.$forceUpdate();
             },
 
+
             onCertificationUpload(event){
-                if(this.validateFilePDF(event)){
-                    this.models.certification = event.target.files[0]
-                }
+                if(!event.target.files[0]){ return; }
+
+                let file    = null;
+                const _this = this;
+                let reader  = new FileReader();
+
+                this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
+                this.validateFileExtension(event) ? file = event.target.files[0] : file = '';
+
+                reader.onload = function(e){
+                    let uploadImage = null;
+                    (file.type === "application/pdf") ? (uploadImage = '<object type="application/pdf" data="' + e.target.result + '" class="personal-info__upload-src"></object>') : (uploadImage = '<img class="personal-info__upload-src" src="' + e.target.result + '"/>');
+                    _this.selectedCertificationImageHTML = uploadImage;
+                };
+
+                file && reader.readAsDataURL(file);
+                this.$forceUpdate();
+            },
+
+
+            removeDegreeImage(){
+                this.selectedDegreeImageHTML = ""
+            },
+
+            removeCertificationImage(){
+                this.selectedCertificationImageHTML = ""
             },
 
             onPhoneChange(formattedNumber, telInput){
@@ -426,8 +464,6 @@
             },
 
         }
-
-
     };
 </script>
 
@@ -465,12 +501,6 @@
 					padding-left : 15px;
 				}
 			}
-			
-			&_big {
-				@include desktop {
-					flex : 0 0 36.5%;
-				}
-			}
 		}
 		
 		&__item {
@@ -479,19 +509,6 @@
 			
 			@include desktop {
 				max-width : 256px;
-			}
-			
-			&_big {
-				@include desktop {
-					max-width : 335px;
-				}
-				
-				.link {
-					@include desktop {
-						max-width : 256px;
-						min-width : auto;
-					}
-				}
 			}
 			
 			&-link {
@@ -582,15 +599,7 @@
 		}
 		
 		&__upload {
-			display       : flex;
-			flex-wrap     : wrap;
-			margin-bottom : 20px;
-			
-			&-image {
-				width         : 50%;
-				position      : relative;
-				padding-right : 10px;
-			}
+			display : flex;
 			
 			&-src {
 				width         : 100%;
@@ -599,21 +608,22 @@
 				max-height    : 90px;
 				object-fit    : cover;
 				border-radius : 4px;
+				margin-bottom : 20px;
 			}
 			
-			&-buttom {
+			&-close {
 				$size : 24px;
-				top              : 0;
-				right            : 10px;
-				width            : $size;
-				height           : $size;
-				border           : none;
-				display          : flex;
-				position         : absolute;
-				align-items      : center;
-				border-radius    : 50%;
-				justify-content  : center;
-				background-color : $color-close;
+				top             : 0;
+				width           : $size;
+				height          : $size;
+				border          : none;
+				display         : flex;
+				background      : url("~static/images/icons/close-icon.svg") no-repeat 50% 50% $color-close;
+				align-items     : center;
+				margin-left     : 10px;
+				border-radius   : 50%;
+				justify-content : center;
+				
 			}
 		}
 		
@@ -658,6 +668,17 @@
 		bottom   : 0;
 		margin   : auto;
 		position : absolute;
+	}
+	
+	.link {
+		min-width : auto;
+		overflow  : hidden;
+	}
+	
+	.form__message {
+		color        : $color-alert-red;
+		padding-left : 10px;
+		text-align   : left;
 	}
 
 </style>
