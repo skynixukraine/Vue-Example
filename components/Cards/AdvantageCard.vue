@@ -60,6 +60,7 @@ export default {
             align-items: center;
             overflow: hidden;
             background: transparent;
+            z-index: -1;
 
 
             video{
