@@ -15,8 +15,6 @@ body {
     line-height: 1.55;
     color: $color-rolling-stone;
     font-weight: 400;
-    overflow-x: hidden;
-    overflow-y: auto;
     background-color: $color-black-squeeze;
 }
 
@@ -89,6 +87,12 @@ button {
         font-weight: 800;
     }
 }
+
+.app {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /*********************
 END: GENERAL
 *********************/
@@ -557,7 +561,11 @@ START: COMPONENTS
 .table {
     position      : relative;
     margin-bottom : 50px;
-    margin-left   : -25px;
+    margin-left   : 0px;
+    
+    @include  desktop-l {
+        margin-left   : -25px;
+    }
     
     &__info {
         top         : -57px;
@@ -604,36 +612,46 @@ START: COMPONENTS
         display        : none;
         position       : relative;
         padding-bottom : 10px;
+        
 		@include tablet {
 			display    : flex;
 		}
         
         &:after {
             right            : 0;
-            width            : calc(100% - 25px);
+            width            : calc(100% - 15px);
             height           : 9px;
             bottom           : 0;
             content          : ' ';
             position         : absolute;
             background-color : $color-table-border;
+            
+            @include  desktop-l {
+                width        : calc(100% - 25px);
+            }
         }
         
         &-item {
             color      : $color-curious-blue;
-            padding    : 0px 0px 5px 25px;
+            padding    : 0px 0px 5px 15px;
             flex-basis : 25%;
+            
+            @include  desktop-l {
+                padding-left : 25px;
+            }
         }
     }
     
     &__main {
 		text-align: left;
         &-items {
+            color          : $color-rolling-stone;
             display        : flex;
             position       : relative;
             min-height     : 57px;
             padding-top    : 10px;
-            padding-bottom : 10px;
             border-radius  : 4px;
+            padding-bottom : 10px;
 			flex-direction : column;
 	
 			@include tablet {
@@ -659,7 +677,11 @@ START: COMPONENTS
         
         &-item {
             flex-basis   : 25%;
-            padding-left : 25px;
+            padding-left : 15px;
+            
+            @include  desktop-l {
+                padding-left : 25px;
+            }
         }
     }
     

@@ -61,8 +61,8 @@
                         to   : this.$routes.home.path
                     },
                     {
-                        text : this.$t("links.hautarzt"),
-                        to   : this.$routes.hautarzt.path
+                        text : this.$t("links.enquiries"),
+                        to   : this.$routes.enquiries.path
                     },
                     {
                         text : this.$route.params.id

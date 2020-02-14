@@ -2,7 +2,7 @@
     <div class="verify-email">
         <h1>Verify Email</h1>
         <p>{{ message }}</p>
-        <p><NuxtLink :to="$routes.home.path" class="link link--button link--button-blue" exact>Back to Home Page</NuxtLink></p>
+        <p><NuxtLink :to="$routes.home.path" class="link link--button link--button-blue link--button-gradient" exact>Back to Home Page</NuxtLink></p>
     </div>
 </template>
 
@@ -51,16 +51,17 @@ export default {
         },
 
         verifyEmail() {
-            if (this.validateQuery(this.$route.query) && this.validateToken(this.$cookies.get(this.$cookie.names.token))) {
+            if (this.validateQuery(this.$route.query) ) {
                 const requestData = this.prepareDataForSending(this.$route.query)
                 
                 this.$store.dispatch('user/VERIFY_USER_EMAIL', requestData)
                     .then(response => {
                         this.message = response.message
-                        this.$store.dispatch('user/LOAD_USER', {
-                            id: this.$cookies.get(this.$cookie.names.tokenId),
-                            token: this.$cookies.get(this.$cookie.names.token)
-                        })
+                        // need this code for new component
+                        // this.$store.dispatch('user/LOAD_USER', {
+                        //     id: this.$cookies.get(this.$cookie.names.tokenId),
+                        //     token: this.$cookies.get(this.$cookie.names.token)
+                        // })
                     })
                     .catch(error => {
                         this.message = error.message

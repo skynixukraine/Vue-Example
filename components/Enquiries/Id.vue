@@ -1,9 +1,7 @@
 <template lang = "html">
 	<div class = "enquiries-id">
 		<div class = "enquiries-id__main">
-			
 			<Table />
-			
 			<div class = "enquiries-id__atachments">
 				<h3 class = "enquiries-id__atachments-title">Attachment: </h3>
 				<ul class = "enquiries-id__atachments-items">
@@ -20,13 +18,11 @@
 				<button  class = "link link--button link--button-blue link--button-gradient" >Download all attachments
 				</button>
 			</div>
-			
 			<div class = "enquiries-id__links">
 				<button class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.contactModals)">CONTACT PATIENT</button>
 				<button class = "link link--button link--button-blue link--button-gradient">SUBMIT DIAGNOSIS AND CLOSE THE CASE</button>
 			</div>
 		</div>
-		
 		<div class = "enquiries-id__footer">
 			<buttom class = "link link--button-transparent">GO BACK</buttom>
 		</div>
@@ -34,7 +30,7 @@
 </template>
 
 <script>
-    import Table from "~/components/Enquiries/EnquiriesTable.vue"
+    import Table from "~/components/Enquiries/EnquiriesIdTable.vue"
     import modal from '~/mixins/modal'
 	
     export default {

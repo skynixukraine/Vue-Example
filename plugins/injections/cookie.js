@@ -11,7 +11,7 @@ export default ({ app }, inject) => {
         },
         getSecondsBetweenTwoData(dateStart, dateEnd) {
             const differenceInTime = dateEnd.getTime() - dateStart.getTime()
-            const differenceInSeconds = differenceInTime / 1000
+            const differenceInSeconds = Math.trunc(differenceInTime / 1000)
             return differenceInSeconds
         }
     }

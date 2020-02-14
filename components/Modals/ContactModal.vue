@@ -45,7 +45,7 @@
 		<footer class = "modal__footer">
 			<div class = "modal__footer-item">
 				<form class = "modal__form">
-					<AutoHeight />
+					<AutoHeight :placeholder_text="'Enter your message ...'" />
 					<buttom class = "link link--button link--button-blue link--button-gradient">Send</buttom>
 				</form>
 			</div>

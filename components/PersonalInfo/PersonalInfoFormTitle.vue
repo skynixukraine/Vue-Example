@@ -10,30 +10,8 @@
             <div class="personal-info__header-item">
                 <div class="personal-info__header-title">Titel</div>
             </div>
-            <div class="personal-info__header-item">
-                <template v-if="!isEditMode && !isFormSending">
-                    <div class="personal-info__nav personal-info__nav--default">
-                        <div class="personal-info__nav-item">
-                            <button class="personal-info__nav-buttom" type="button" @click="onClickEdit">Edit</button>
-                        </div>
-                    </div>
-                </template>
-                <template v-if="isEditMode && !isFormSending">
-                    <div class="personal-info__nav personal-info__nav--active">
-                        <div class="personal-info__nav-item">
-                            <button class="personal-info__nav-buttom" type="submit">Save</button>
-                        </div>
-                        <div class="personal-info__nav-item">
-                            <button class="personal-info__nav-buttom" type="button" @click="onClickCancel">Cancel</button>
-                        </div>
-                    </div>
-                </template>
-                <template v-if="isEditMode && isFormSending">
-                    <div class="personal-info__loading">loading...</div>
-                </template>
-            </div>
         </header>
-        <div class="personal-info__main">
+        <div class="personal-info__main personal-info__main-select">
             <select
                 class="select"
                 name="title_id"
@@ -54,6 +32,7 @@ import singleForm from '~/mixins/singleForm'
 import validator from '~/mixins/validator'
 
 export default {
+// TODO transfer validation
     mixins: [
         singleForm,
         validator,

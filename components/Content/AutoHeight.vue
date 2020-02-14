@@ -5,7 +5,7 @@
 				type = "textarea"
 				name = "textarea"
 				ref = "textarea"
-				placeholder = "Enter your message ..."
+				:placeholder = "placeholder_text"
 				@keydown = "autoHeight"
 				@keyup = "autoHeight"
 				@input = "autoHeight"
@@ -21,6 +21,13 @@
 
 <script>
     export default {
+        props: {
+            placeholder_text: {
+                type: String,
+                required: false,
+                default: ''
+            }
+        },
         methods : {
             autoHeight(){
                 this.$refs.textareadiv.innerText = this.$refs.textarea.value;
@@ -34,7 +41,7 @@
 	
 	.textarea {
 		resize         : none;
-		padding-top    : 5px;
+		padding-top    : 8px;
 		padding-bottom : 5px;
 		
 		@include phone-big {
