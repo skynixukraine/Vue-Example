@@ -143,7 +143,7 @@
 			.link {
 				margin-bottom : 20px;
 				@include tablet {
-					margin-bottom : 20px;
+					margin-bottom : 0;
 				}
 			}
 		}
