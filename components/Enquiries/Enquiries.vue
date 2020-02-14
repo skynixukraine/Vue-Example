@@ -39,7 +39,7 @@
 				<div class = "enquiries__submit">
 					<button class = "link link--button link--button-blue link--button-gradient" type = "submit">Search
 					</button>
-					<button class = "link link--button link--button-blue link--button-gradient" type = "submit">Reset
+					<button class = "link link--button link--button-blue link--button-gradient" type = "reset">Reset
 					</button>
 				</div>
 			</form>
