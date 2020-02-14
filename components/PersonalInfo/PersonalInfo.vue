@@ -79,7 +79,9 @@
 						<div class = "personal-info__main">
 							<vue-tel-input
 									id = "vue-tel-input"
+									class = "personal-info__main-phone"
 									name = "phone_number"
+									v-bind = "bindProps"
 									v-model = "models.phone_number"
 									@input = "onPhoneChange"
 							></vue-tel-input>
@@ -164,7 +166,8 @@
 						<div class = "personal-info__upload">
 							<div v-html = "selectedDegreeImageHTML"
 								 class = "personal-info__upload-image"
-								 ref = "selectedDegreeImageHTML"></div>
+								 ref = "selectedDegreeImageHTML">
+							</div>
 							<button type = "button"
 									v-if = "selectedDegreeImageHTML"
 									@click = "removeDegreeImage"
@@ -216,8 +219,7 @@
 						</button>
 						
 						<div class = "form__message" v-if = "errors.certification">{{ errors.certification }}</div>
-						<div class = "form__message" v-if = "errors.certification_size">{{ errors.certification_size
-							}}
+						<div class = "form__message" v-if = "errors.certification_size">{{ errors.certification_size }}
 						</div>
 					</div>
 					
@@ -233,7 +235,7 @@
 									type = "text"
 									name = "address"
 									ref = "address"
-									v-model = "value"
+									v-model = "address"
 							/>
 						</div>
 					</div>
@@ -246,7 +248,7 @@
 								</div>
 							</header>
 							<div class = "personal-info__main personal-info__main-select">
-								<select class = "select" name = "region_id" ref = "region_id" v-model = "value">
+								<select class = "select" name = "region_id" ref = "region_id" v-model = "region_id">
 									<option disabled value>Choose one of the options</option>
 									<option
 											v-for = "(option, index) in $store.getters['regions/REGIONS']"
@@ -271,7 +273,7 @@
 							</div>
 						</header>
 						<div class = "personal-info__main personal-info__main-select">
-							<select class = "select" name = "language_id" ref = "language_id" v-model = "value">
+							<select class = "select" name = "language_id" ref = "language_id" v-model = "language_id">
 								<option disabled value>Choose one of the options</option>
 								<option></option>
 								<option></option>
@@ -305,14 +307,32 @@
 				
 				<div class = "personal-info__column personal-info__column-image">
 					<div class = "personal-info__item personal-info__avatar">
+						
 						<img
 								class = "personal-info__avatar-image"
 								src = "https://i.ya-webdesign.com/images/anonymous-png-avatar-17.png"
 								alt = "personal-avatar"
+								ref = "avatarImage"
 						/>
-						<button class = "link personal-info__avatar-add">
+						
+						<input class = "input input--hidden"
+							   type = "file"
+							   name = "avatar"
+							   ref = "avatar"
+							   accept = ".jpg, .jpeg, .png"
+							   @change = "onAvatarUpload" />
+						
+						<button class = "link personal-info__avatar-add"
+								type = "button"
+								@click = "addAvatar">
 							<img :src = "require('~/static/images/icons/add-avatar.svg')" />
 						</button>
+						
+						<div v-html = "selectedAvatarImageHTML"
+							 class = "personal-info__upload-image"
+							 ref = "selectedAvatarImageHTML">
+						</div>
+					
 					</div>
 				</div>
 			</div>
@@ -383,7 +403,9 @@
                 first_name        : this.$store.getters['user/USER'].first_name,
                 last_name         : this.$store.getters['user/USER'].last_name,
                 specialization_id : this.$store.getters["user/USER"].specialization.id,
-                value             : this.$store.getters["user/USER"].region.id,
+                region_id         : this.$store.getters["user/USER"].region.id,
+                language_id       : '',
+                address           : '',
 
                 models        : {
                     phone_number  : '',
@@ -393,10 +415,14 @@
                     certification : '',
 
                 },
+                bindProps     : {
+                    placeholder : "Telefonnummer",
+                },
                 isFormSending : false,
 
                 selectedCertificationImageHTML : "",
-                selectedDegreeImageHTML        : ""
+                selectedDegreeImageHTML        : "",
+                selectedAvatarImageHTML        : ""
             }
         },
 
@@ -406,8 +432,13 @@
             addFileDegree(){
                 this.$refs.degree.click();
             },
+
             addFileCertification(){
                 this.$refs.certification.click()
+            },
+
+            addAvatar(){
+                this.$refs.avatar.click()
             },
 
             onDegreeUpload(event){
@@ -429,7 +460,6 @@
                 this.$forceUpdate();
             },
 
-
             onCertificationUpload(event){
                 if(!event.target.files[0]){ return; }
 
@@ -450,13 +480,32 @@
                 this.$forceUpdate();
             },
 
+            onAvatarUpload(event){
+                if(!event.target.files[0]){ return; }
 
+                let file    = null;
+                const _this = this;
+                let reader  = new FileReader();
+
+                this.validateFileExtension(event) ? this.models.avatar = event.target.files[0] : this.models.avatar = '';
+                this.validateFileExtension(event) ? file = event.target.files[0] : file = '';
+
+                reader.onload = function(e){
+                    _this.$refs.avatarImage.src = e.target.result;
+                };
+
+                file && reader.readAsDataURL(file);
+                this.$forceUpdate();
+            },
+			
             removeDegreeImage(){
-                this.selectedDegreeImageHTML = ""
+                this.selectedDegreeImageHTML = "";
+				this.$refs.degree.value = "";
             },
 
             removeCertificationImage(){
-                this.selectedCertificationImageHTML = ""
+                this.selectedCertificationImageHTML = "";
+                this.$refs.certification.value = "";
             },
 
             onPhoneChange(formattedNumber, telInput){
@@ -489,17 +538,17 @@
 			@include desktop {
 				flex : 0 0 28.5%;
 			}
+		}
+		
+		&__column-image {
+			flex          : 0 0 100%;
+			order         : 1;
+			padding-right : 0;
 			
-			&-image {
-				flex          : 0 0 100%;
-				order         : 1;
-				padding-right : 0;
-				
-				@include desktop {
-					flex         : 0 0 28.5%;
-					order        : 3;
-					padding-left : 15px;
-				}
+			@include desktop {
+				flex         : 0 0 28.5%;
+				order        : 3;
+				padding-left : 15px;
 			}
 		}
 		
@@ -510,11 +559,11 @@
 			@include desktop {
 				max-width : 256px;
 			}
-			
-			&-link {
-				padding-left  : 20px;
-				padding-right : 20px;
-			}
+		}
+		
+		&__item-link {
+			padding-left  : 20px;
+			padding-right : 20px;
 		}
 		
 		&__header {
@@ -522,116 +571,47 @@
 			align-items     : center;
 			margin-bottom   : 6px;
 			justify-content : space-between;
+		}
+		
+		&__header-title {
+			font-size : 14px;
 			
-			&-title {
-				font-size : 14px;
-				
-				@include phone-big {
-					font-size : 16px;
-				}
-				
-				@include tablet-big {
-					font-size : 18px;
-				}
+			@include phone-big {
+				font-size : 16px;
+			}
+			
+			@include tablet-big {
+				font-size : 18px;
 			}
 		}
+		
 		
 		&__main {
 			position : relative;
 			overflow : hidden;
-			
-			&-select {
-				position : relative;
-				
-				&:after {
-					$size : 20px;
-					top              : 0;
-					right            : 16px;
-					width            : $size;
-					height           : $size;
-					margin           : auto;
-					bottom           : 0;
-					content          : "";
-					display          : block;
-					position         : absolute;
-					pointer-events   : none;
-					background-image : url("~static/images/icons/arrow-down.svg");
-				}
-			}
 		}
 		
-		&__nav-buttom {
-			color            : $color-curious-blue;
-			border           : none;
-			padding          : 0;
-			font-size        : 15px;
-			line-height      : 22px;
-			border-bottom    : 1px solid rgba(36, 126, 229, 0.2);
-			background-color : transparent;
-		}
-		
-		&__avatar {
-			width         : 100%;
-			position      : relative;
-			overflow      : hidden;
-			max-width     : 256px;
-			margin-left   : auto;
-			margin-right  : auto;
-			border-radius : 50%;
+		&__main-select {
+			position : relative;
 			
-			@include phone-big {
-				margin-left  : 0;
-				margin-right : 0;
-			}
-			
-			&-image {
-				width : 100%;
-			}
-			
-			&-add {
-				left             : 0;
-				width            : 100%;
+			&:after {
+				$size : 20px;
+				top              : 0;
+				right            : 16px;
+				width            : $size;
+				height           : $size;
+				margin           : auto;
 				bottom           : 0;
-				padding          : 10px;
+				content          : "";
+				display          : block;
 				position         : absolute;
-				background-color : rgba(0, 0, 0, 0.24);
+				pointer-events   : none;
+				background-image : url("~static/images/icons/arrow-down.svg");
 			}
 		}
 		
-		&__upload {
-			display : flex;
-			
-			&-src {
-				width         : 100%;
-				height        : 100%;
-				max-width     : 130px;
-				max-height    : 90px;
-				object-fit    : cover;
-				border-radius : 4px;
-				margin-bottom : 20px;
-			}
-			
-			&-close {
-				$size : 24px;
-				top             : 0;
-				width           : $size;
-				height          : $size;
-				border          : none;
-				display         : flex;
-				background      : url("~static/images/icons/close-icon.svg") no-repeat 50% 50% $color-close;
-				align-items     : center;
-				margin-left     : 10px;
-				border-radius   : 50%;
-				justify-content : center;
-				
-			}
-		}
 		
-		&__footer {
-			color : $color-cinnabar;
-		}
-		
-		.vue-tel-input {
+		&__main-phone.vue-tel-input {
 			width         : 100%;
 			height        : 40px;
 			border        : 2px solid $color-curious-blue;
@@ -644,6 +624,84 @@
 			}
 		}
 		
+		
+		&__nav-buttom {
+			color            : $color-curious-blue;
+			border           : none;
+			padding          : 0;
+			font-size        : 15px;
+			line-height      : 22px;
+			border-bottom    : 1px solid rgba(36, 126, 229, 0.2);
+			background-color : transparent;
+		}
+		
+		&__avatar {
+			width         : 256px;
+			height        : 256px;
+			position      : relative;
+			overflow      : hidden;
+			margin-left   : auto;
+			margin-right  : auto;
+			border-radius : 50%;
+			
+			@include phone-big {
+				margin-left  : 0;
+				margin-right : 0;
+			}
+		}
+		
+		&__avatar-image {
+			width      : 100%;
+			height     : 100%;
+			object-fit : cover;
+		}
+		
+		&__avatar-add {
+			left             : 0;
+			width            : 100%;
+			bottom           : 0;
+			padding          : 10px;
+			position         : absolute;
+			background-color : rgba(0, 0, 0, 0.24);
+		}
+		
+		&__upload {
+			display : flex;
+		}
+		
+		&__upload-src {
+			width         : 100%;
+			height        : 100%;
+			max-width     : 130px;
+			max-height    : 90px;
+			object-fit    : cover;
+			border-radius : 4px;
+			margin-bottom : 20px;
+		}
+		
+		&__upload-close {
+			$size : 24px;
+			top             : 0;
+			width           : $size;
+			height          : $size;
+			border          : none;
+			display         : flex;
+			background      : url("~static/images/icons/close-icon.svg") no-repeat 50% 50% $color-close;
+			align-items     : center;
+			margin-left     : 10px;
+			border-radius   : 50%;
+			justify-content : center;
+		}
+		
+		
+		&__footer {
+			color : $color-cinnabar;
+		}
+		
+		.link {
+			min-width : auto;
+			overflow  : hidden;
+		}
 	}
 	
 	.personal-text {
@@ -670,10 +728,6 @@
 		position : absolute;
 	}
 	
-	.link {
-		min-width : auto;
-		overflow  : hidden;
-	}
 	
 	.form__message {
 		color        : $color-alert-red;
