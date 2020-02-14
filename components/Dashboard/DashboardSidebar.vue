@@ -62,7 +62,7 @@ export default {
   &__item {
     position: relative;
     padding-left: 32px;
-    margin-bottom: 20px;
+    margin-bottom: $main_offset;
     line-height: 23px;
     &:before {
       content: " ";

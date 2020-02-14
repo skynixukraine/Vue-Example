@@ -181,8 +181,8 @@ export default {
     }
 
     &-link {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: $main_offset;
+      padding-right: $main_offset;
     }
   }
 
@@ -212,8 +212,8 @@ export default {
       position: relative;
 
       &:after {
-        content: "";
         $size: 20px;
+        content: "";
         position: absolute;
         top: 0;
         right: 16px;
@@ -269,7 +269,7 @@ export default {
   &__upload {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: $main_offset;
 
     &-image {
       position: relative;
@@ -317,7 +317,7 @@ export default {
 
 .personal-link {
   &__column {
-    margin-bottom: 20px;
+    margin-bottom: $main_offset;
   }
 }
 

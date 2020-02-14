@@ -213,7 +213,7 @@ START: COMPONENTS
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 $main_offset;
 
     &__inner {
         width: 33.33%;
@@ -253,7 +253,7 @@ START: COMPONENTS
 .container {
     width: 100%;
     max-width: 1160px;
-    padding: 0 20px;
+    padding: 0 $main_offset;
     margin-right: auto;
     margin-left: auto;
     position: relative;
@@ -374,7 +374,7 @@ START: COMPONENTS
         min-width: 265px;
         display: inline-block;
         text-align: center;
-        padding: 20px 31px 16px;
+        padding: $main_offset 31px 16px;
         border-radius: 5px;
         font-size: 16px;
         line-height: 21px;
@@ -473,10 +473,10 @@ START: COMPONENTS
             }
         
         &-mobile-large{
-            padding: 20px 16px 16px;
+            padding: $main_offset 16px 16px;
 
             @media (min-width: #{$screen-phone-irregular-min}) {
-            padding: 20px 31px 16px;
+            padding: $main_offset 31px 16px;
             }
         }
     }
@@ -591,7 +591,7 @@ START: COMPONENTS
         }
         
         &-next {
-            margin-left : 20px;
+            margin-left : $main_offset;
             
             &:after {
                 transform        : rotate(-90deg);

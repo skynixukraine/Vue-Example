@@ -53,9 +53,9 @@ export default {
 .app-notify {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 20px;
+    bottom: $main_offset;
+    right: $main_offset;
+    padding: $main_offset;
     background: greenyellow;
 
     &--active {

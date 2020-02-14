@@ -202,20 +202,23 @@ export default {
             return stringOne === stringTwo
         },
         checkFileTypeImage(type) {
-            const allowedTypes = ['image/png', 'image/jpeg']
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+            let result = false;
+
             allowedTypes.forEach((element) => {
                 if (element === type) {
-                    return true
+                    result = true;
                 }
-            })
-            return false
+            });
+
+            return result;
         },
         checkFileType(type) {
-            const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg']
-            return allowedTypes.includes(type)
+            const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg'];
+            return allowedTypes.includes(type);
         },
         checkFileSize(sizeMb) {
-            const allowedSizeMb = 10
+            const allowedSizeMb = 1
             return sizeMb < allowedSizeMb
         },
     },
