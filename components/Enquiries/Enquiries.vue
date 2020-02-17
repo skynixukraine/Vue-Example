@@ -149,7 +149,10 @@
 		}
 	}
 	
-	.table__header-item_status {
+	.table__header-item_id,
+	.table__header-item_status,
+	.table__header-item_enquiry-date,
+	.table__header-item_last-contact {
 		position : relative;
 		
 		&:after {
