@@ -16,11 +16,11 @@
     export default {
         computed : {
             getName(){
-                return this.$store.getters['user/USER'].first_name
+                return (this.$store.getters['user/USER'] !== null) ? this.$store.getters['user/USER'].first_name : ''
             },
 
             getLastName(){
-                return this.$store.getters['user/USER'].last_name
+                return (this.$store.getters['user/USER'] !== null)  ? this.$store.getters['user/USER'].last_name : ''
 
             }
         }
