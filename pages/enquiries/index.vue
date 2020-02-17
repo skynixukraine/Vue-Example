@@ -1,7 +1,7 @@
 <template>
     <div class = "page">
         <div class = "section section-not-padding">
-            <div class = "container-big">
+            <div class = "container-fluid">
                 <Dashboard>
                     <DashboardSidebar />
                     <DashboardMain>
