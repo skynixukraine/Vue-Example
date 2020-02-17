@@ -17,7 +17,7 @@
 			<h3 class = "faq-block__title" id="q1">{{ this.$t('page-faq.q1.title')}}</h3>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p1') }}</p>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p2_1') }}
-				<NuxtLink :to="$routes.auszeichnungen.path" class="link link--small-blue">{{this.$t('page-faq.q1.p2_a1')}}</NuxtLink>
+				<NuxtLink :to="$routes.awards.path" class="link link--small-blue">{{this.$t('page-faq.q1.p2_a1')}}</NuxtLink>
 				{{ this.$t('page-faq.q1.p2_2') }}</p>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p3')}}</p>
 			<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p4')}}</p>
@@ -84,8 +84,6 @@
 <style lang = "scss" scoped>
 	.faq-contents{
 		list-style-type: none;
-		scroll-behavior: smooth;
-		
 	}
 	.faq-block {
 		margin-bottom : 28px;
