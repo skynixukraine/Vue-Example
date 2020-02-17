@@ -49,7 +49,7 @@ export default {
   color: $color-white;
   @include tablet-big{ 
     display: flex;
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
   }
 
   &__list {

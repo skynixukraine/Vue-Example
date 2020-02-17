@@ -262,6 +262,11 @@ START: COMPONENTS
     margin-left: auto;
     position: relative;
     
+    &-fluid{
+        width: 100%;
+        position: relative;
+    }
+    
     &-big {
         width: 100%;
         max-width: 1366px;
