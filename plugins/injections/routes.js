@@ -67,6 +67,9 @@ export default ({ app }, inject) => {
         },
         privacy: {
             path: '/privacy-policy'
+        },
+        awards: {
+            path: '/auszeichnungen'
         }
     }
 
