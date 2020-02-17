@@ -497,15 +497,15 @@
                 file && reader.readAsDataURL(file);
                 this.$forceUpdate();
             },
-			
+
             removeDegreeImage(){
                 this.selectedDegreeImageHTML = "";
-				this.$refs.degree.value = "";
+                this.$refs.degree.value      = "";
             },
 
             removeCertificationImage(){
                 this.selectedCertificationImageHTML = "";
-                this.$refs.certification.value = "";
+                this.$refs.certification.value      = "";
             },
 
             onPhoneChange(formattedNumber, telInput){
@@ -621,6 +621,10 @@
 			
 			@include phone-big {
 				height : 56px;
+			}
+			
+			.vti__input {
+				width : 70%;
 			}
 		}
 		
