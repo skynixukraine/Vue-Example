@@ -137,6 +137,8 @@
     import modal from '~/mixins/modal'
 
     export default {
+        
+        
         mixins : [
             validator,
             recaptcha,
