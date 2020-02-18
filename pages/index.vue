@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="section">
-            <div class="container">Unsere Hausärzte
+            <div class="container">
                 <img class="container__dots container__dots--2" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
                 <WhyInfo />
             </div>
