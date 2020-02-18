@@ -681,7 +681,7 @@
 				background-color : $color-table-border;
 				
 				@include tablet {
-					width            : calc(100% - 25px);
+					width : calc(100% - 25px);
 				}
 			}
 			
@@ -705,26 +705,21 @@
 				padding-left : 25px;
 			}
 			
-			@for $i from 1 through 10 {
-				&:nth-child(#{$i}) {
-					&:before {
-						top           : 0;
-						left          : 6px;
-						width         : 45%;
-						color         : $color-curious-blue;
-						display       : block;
-						content       : attr(data-title);
-						position      : absolute;
-						padding-right : 10px;
-						white-space   : nowrap;
-						
-						@include tablet {
-							display : none;
-						}
-					}
+			&:before {
+				top           : 0;
+				left          : 6px;
+				width         : 45%;
+				color         : $color-curious-blue;
+				display       : block;
+				content       : attr(data-title);
+				position      : absolute;
+				padding-right : 10px;
+				white-space   : nowrap;
+				
+				@include tablet {
+					display : none;
 				}
 			}
-			
 		}
 		
 	}
