@@ -5,13 +5,13 @@ export default ({ app }) => {
     const currentHours = today.getHours()
     let timeOfDay = ''
 
-    if (currentHours > 23 && currentHours <= 5) {
+    if (currentHours > 23 && currentHours <= 3) {
         timeOfDay = 'night'
-    } else if (currentHours <= 12) {
+    } else if (currentHours <= 9) {
         timeOfDay = 'morning'
-    } else if (currentHours <= 18) {
+    } else if (currentHours <= 17) {
         timeOfDay = 'afternoon'
-    } else if (currentHours <= 23) {
+    } else if (currentHours <= 22) {
         timeOfDay = 'evening'
     }
     

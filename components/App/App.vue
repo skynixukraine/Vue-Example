@@ -760,4 +760,37 @@
 	/*********************
 	END: CUSTOM BUTTONS
 	*********************/
+	
+	/*********************
+	Cookie banner
+	*********************/
+	.cookie{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(255, 255, 255, 0.9);
+		width: 100%;
+		padding: 25px 20px;
+		z-index: 1;
+		border-radius: 0 20px 20px 0;
+		
+		@include tablet {
+			width: 90%;
+		}
+		.cookie__floating__content{
+			padding-bottom: 14px;
+		}
+		
+		.cookie__floating__buttons__button{
+			padding: 10px 31px 9px;
+			border-radius: 5px;
+			color: white;
+			border: none;
+			background: linear-gradient(270deg, #0F44B2 0%, #042052 100%);
+			font-family: TheSansB, sans-serif;
+			font-size: 18px;
+			margin: 0 20px 0 0;
+			font-weight: 500;
+		}
+	}
 </style>
