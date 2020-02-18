@@ -16,12 +16,12 @@
 			</div>
 			<div class = "table__main">
 				<div class = "table__main-items">
-					<div class = "table__main-item">Question 1</div>
-					<div class = "table__main-item enquiries-id__answer">Answer 1</div>
+					<div class = "table__main-item" data-title="Question">Question 1</div>
+					<div class = "table__main-item enquiries-id__answer" data-title="Answer">Answer 1</div>
 				</div>
 				<div class = "table__main-items">
-					<div class = "table__main-item">Question 2</div>
-					<div class = "table__main-item enquiries-id__answer">Answer 2</div>
+					<div class = "table__main-item" data-title="Question">Question 2</div>
+					<div class = "table__main-item enquiries-id__answer" data-title="Answer" >Answer 2</div>
 				</div>
 			</div>
 		</div>

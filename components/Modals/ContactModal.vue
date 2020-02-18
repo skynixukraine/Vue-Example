@@ -13,7 +13,6 @@
 			<h3 class = "modal__title">Communication</h3>
 		</header>
 		<div class = "modal__main">
-			
 			<div class = "table">
 				<div class = "table__info">
 					<div class = "table__info-count">
@@ -24,7 +23,6 @@
 						<NuxtLink class = "table__info-link table__info-next" to = "/"></NuxtLink>
 					</div>
 				</div>
-				
 				<div class = "table__content">
 					<div class = "table__header">
 						<div class = "table__header-item">Date</div>
@@ -33,17 +31,16 @@
 					</div>
 					<div class = "table__main">
 						<div class = "table__main-items">
-							<div class = "table__main-item">hh:mm dd/mm/yy</div>
-							<div class = "table__main-item"> doctor name</div>
-							<div class = "table__main-item table__item_big"> doctor message</div>
+							<div class = "table__main-item" data-title="Date">hh:mm dd/mm/yy</div>
+							<div class = "table__main-item" data-title="Name"> doctor name</div>
+							<div class = "table__main-item table__item_big" data-title="Message"> doctor message</div>
 						</div>
 						<div class = "table__main-items">
-							<div class = "table__main-item">hh:mm dd/mm/yy</div>
-							<div class = "table__main-item"> patient name</div>
-							<div class = "table__main-item table__item_big"> patient message and/or attachment</div>
+							<div class = "table__main-item" data-title="Date">hh:mm dd/mm/yy</div>
+							<div class = "table__main-item" data-title="Name"> patient name</div>
+							<div class = "table__main-item table__item_big" data-title="Message"> patient message and/or attachment</div>
 						</div>
 					</div>
-				
 				</div>
 			</div>
 		</div>
@@ -57,7 +54,6 @@
 		</footer>
 	</modal>
 </template>
-
 
 <script>
 
