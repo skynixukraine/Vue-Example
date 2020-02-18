@@ -244,6 +244,24 @@
 						<div class = "single-form">
 							<header class = "personal-info__header">
 								<div class = "personal-info__header-item">
+									<div class = "personal-info__header-title">Business address</div>
+								</div>
+							</header>
+							<div class = "personal-info__main personal-info__google-autocomplete">
+								<AddressAutocomplete :value = "location_state" />
+							</div>
+							<footer
+									class = "personal-info__footer"
+									v-if = "errors.region_id"
+							>{{ errors.region_id }}
+							</footer>
+						</div>
+					</div>
+					
+					<div class = "personal-info__item">
+						<div class = "single-form">
+							<header class = "personal-info__header">
+								<div class = "personal-info__header-item">
 									<div class = "personal-info__header-title">Region</div>
 								</div>
 							</header>
@@ -386,6 +404,7 @@
     import singleForm from '~/mixins/singleForm'
     import validator from '~/mixins/validator'
     import AutoHeight from "~/components/Content/AutoHeight"
+    import AddressAutocomplete from "~/components/Content/AddressAutocomplete"
 
     export default {
         mixins : [
@@ -395,6 +414,7 @@
 
         components : {
             AutoHeight,
+            AddressAutocomplete
         },
 
         data(){
@@ -404,6 +424,7 @@
                 last_name         : this.$store.getters['user/USER'].last_name,
                 specialization_id : this.$store.getters["user/USER"].specialization.id,
                 region_id         : this.$store.getters["user/USER"].region.id,
+                location_state    : this.$store.getters['user/USER'].location.state,
                 language_id       : '',
                 address           : '',
 

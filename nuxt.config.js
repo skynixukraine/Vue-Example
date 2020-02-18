@@ -14,6 +14,7 @@ module.exports = {
         ],
         script: [
             { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` },
+            { src: `https://maps.googleapis.com/maps/api/js?key=${configEnv.GOOGLE_MAPS_API_KEY}&libraries=places` },
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
