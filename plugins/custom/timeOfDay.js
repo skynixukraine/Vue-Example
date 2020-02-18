@@ -7,11 +7,11 @@ export default ({ app }) => {
 
     if (currentHours > 23 && currentHours <= 5) {
         timeOfDay = 'night'
-    } else if (currentHours > 5 && currentHours <= 12) {
+    } else if (currentHours <= 12) {
         timeOfDay = 'morning'
-    } else if (currentHours > 12 && currentHours <= 18) {
+    } else if (currentHours <= 18) {
         timeOfDay = 'afternoon'
-    } else if (currentHours > 18 && currentHours <= 23) {
+    } else if (currentHours <= 23) {
         timeOfDay = 'evening'
     }
     
