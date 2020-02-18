@@ -314,7 +314,7 @@
 			flex   : 0 0 100%;
 			margin : 0 0 32px;
 			
-			&:last-child {
+			&--last-child {
 				margin : 0;
 			}
 		}

@@ -10,7 +10,8 @@
 				<div class = "doctor-card__main--name">
 					<div class = "doctor-card__main--name_title">{{doctor.title.name || ""}}</div>
 					<NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
-						{{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : doctor.first_name : "" }}
+						{{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` :
+						doctor.first_name : "" }}
 					</NuxtLink>
 				</div>
 				<div class = "doctor-card__main--price">
@@ -51,9 +52,9 @@
                 const regexp_spaces = /[\s]/g;
 
                 return this.$routes.hautarzt.path + "/" +
-						this.doctor.title.name.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
-						this.doctor.first_name.trim().replace(regexp_spaces, "-") + "_" +
-						this.doctor.last_name.trim().replace(regexp_spaces, "-");
+                    this.doctor.title.name.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
+                    this.doctor.first_name.trim().replace(regexp_spaces, "-") + "_" +
+                    this.doctor.last_name.trim().replace(regexp_spaces, "-");
             }
         },
         methods  : {
@@ -73,6 +74,7 @@
 		align-items     : center;
 		flex-direction  : column;
 		justify-content : center;
+		height          : 100%;
 		
 		&__photo {
 			width         : 100%;
@@ -81,6 +83,10 @@
 			max-width     : $size;
 			max-height    : $size;
 			border-radius : $border-radius $border-radius 0 0;
+			
+			@include tablet {
+				max-width : none;
+			}
 			
 			&__img {
 				top             : 0;
@@ -107,6 +113,9 @@
 			max-width        : $size;
 			border-radius    : 0 0 $border-radius $border-radius;
 			background-color : $color-white;
+			display          : flex;
+			flex-direction   : column;
+			flex: 1 1 auto;
 			
 			&--title-container {
 				width           : 100%;
@@ -120,7 +129,7 @@
 				color           : $color-river-bed;
 				font-size       : 24px;
 				font-style      : normal;
-				font-weight     : 300;
+				font-weight     : 400;
 				line-height     : 30px;
 				text-decoration : none;
 				
@@ -150,6 +159,7 @@
 				font-family     : TheSansB, sans-serif;
 				font-weight     : 500;
 				text-decoration : none;
+				flex-grow       : 2;
 				
 				&:hover {text-decoration : none;}
 			}
