@@ -26,7 +26,6 @@
         },
         methods    : {
             onChange(eventData){
-                console.log("inner change", eventData);
                 this.$emit("place-change", eventData);
             }
             
