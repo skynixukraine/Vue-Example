@@ -260,9 +260,9 @@
 		margin-left  : auto;
 		position     : relative;
 		
-		&-fluid{
-			width: 100%;
-			position: relative;
+		&-fluid {
+			width    : 100%;
+			position : relative;
 		}
 		
 		&-big {
@@ -673,12 +673,16 @@
 			
 			&:after {
 				right            : 0;
-				width            : calc(100% - 25px);
+				width            : 100%;
 				height           : 1px;
 				bottom           : 0;
 				content          : ' ';
 				position         : absolute;
 				background-color : $color-table-border;
+				
+				@include tablet {
+					width : calc(100% - 25px);
+				}
 			}
 			
 			&:hover {
@@ -689,13 +693,35 @@
 		}
 		
 		&__main-item {
+			position     : relative;
 			flex-basis   : 25%;
-			padding-left : 15px;
+			padding-left : 50%;
+			
+			@include tablet {
+				padding-left : 15px;
+			}
 			
 			@include desktop-l {
 				padding-left : 25px;
 			}
+			
+			&:before {
+				top           : 0;
+				left          : 6px;
+				width         : 45%;
+				color         : $color-curious-blue;
+				display       : block;
+				content       : attr(data-title);
+				position      : absolute;
+				padding-right : 10px;
+				white-space   : nowrap;
+				
+				@include tablet {
+					display : none;
+				}
+			}
 		}
+		
 	}
 	
 	
