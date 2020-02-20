@@ -3,7 +3,7 @@
         <li class="list__item" v-for="(step, index) in steps" :key="index" style="margin: 0;">
             <div class="step-card" :class="`step-card--${step.number}`">
                 <header class="step-card__header">
-                    <video class="step-card__video" :src="step.video" type="video/mp4" autoplay loop webkit-playsinline playsinline muted></video>
+                    <video class="step-card__video" :src="step.video" type="video/mp4" autoplay loop playsinline muted></video>
                     <img :class="`step-card__image-dots step-card__image-dots--${step.number}`"
 						 :src="require('~/static/images/images/dots.png')"
 						 alt="iphone" />
@@ -39,6 +39,12 @@ export default {
                 text: this.$t('steps.specialist-initial-assessment')
             }]
         }
+    },
+    mounted: function (){
+        const vidoes = document.getElementsByClassName('step-card__video');
+        [].forEach.call(vidoes, function(item){
+            item.play();
+        });
     }
 }
 </script>
