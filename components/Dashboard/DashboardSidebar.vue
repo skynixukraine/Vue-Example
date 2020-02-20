@@ -4,14 +4,14 @@
             <div class="dashboard-sidebar__items">
                 <ul class="dashboard-sidebar__list">
                     <li class="dashboard-sidebar__item dashboard-sidebar__item-account">
-                         <NuxtLink class="dashboard-sidebar__link dashboard-sidebar__link_active" :to="$routes.personalInformation.path">Personal Information</NuxtLink>
+                         <NuxtLink class="dashboard-sidebar__link dashboard-sidebar__link_active" :to="$routes.personalInformation.path">{{$t('sidebar.proff-info')}}</NuxtLink>
                     </li>
                     <li class="dashboard-sidebar__item dashboard-sidebar__item-billing">
                          <NuxtLink class="dashboard-sidebar__link" :to="$routes.billing.path">Billing</NuxtLink>
                          <span class="dashboard-sidebar__sticker">New</span>
                     </li>
                     <li class="dashboard-sidebar__item dashboard-sidebar__item-enquiries">
-                         <NuxtLink class="dashboard-sidebar__link" :to="$routes.enquiries.path">Anfragen</NuxtLink>
+                         <NuxtLink class="dashboard-sidebar__link" :to="$routes.enquiries.path">{{$t('sidebar.request')}}</NuxtLink>
                     </li>
                 </ul>
             </div>
@@ -49,7 +49,7 @@ export default {
   color: $color-white;
   @include tablet-big{ 
     display: flex;
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
   }
 
   &__list {

@@ -1,10 +1,10 @@
 <template>
     <div class="page">
-        <div class="section">
+        <div class="container-fluid">
             <Dashboard>
                 <DashboardSidebar />
                 <DashboardMain>
-                    <DashboardHeader :title="`Good ${this.$timeOfDay}`" />
+                    <WhatsUpDoc />
                 </DashboardMain>
             </Dashboard>
         </div>
@@ -12,10 +12,12 @@
 </template>
 
 <script>
+
 import Dashboard from "~/components/Dashboard/Dashboard"
 import DashboardSidebar from "~/components/Dashboard/DashboardSidebar"
 import DashboardMain from "~/components/Dashboard/DashboardMain"
 import DashboardHeader from "~/components/Dashboard/DashboardHeader"
+import WhatsUpDoc from "~/components/Content/WhatsUpDoc"
 import DashboardContent from "~/components/Dashboard/DashboardContent"
 import AccountStatus from "~/components/Account/AccountStatus"
 
@@ -42,6 +44,7 @@ export default {
         DashboardHeader,
         DashboardContent,
         AccountStatus,
+        WhatsUpDoc
     }
 }
 </script>

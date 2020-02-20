@@ -240,7 +240,7 @@
 		margin          : $main_offset #{$main_offset / -2} 0;
 		display         : flex;
 		flex-wrap       : wrap;
-		justify-content : space-around;
+		justify-content : flex-start;
 		
 		&__item {
 			width          : 100%;

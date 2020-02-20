@@ -39,6 +39,8 @@
 				<div class = "enquiries__submit">
 					<button class = "link link--button link--button-blue link--button-gradient" type = "submit">Search
 					</button>
+					<button class = "link link--button link--button-blue link--button-gradient" type = "reset">Reset
+					</button>
 				</div>
 			</form>
 		</div>
@@ -85,8 +87,8 @@
 			margin-bottom : 25px;
 			
 			&-wrapper {
-				display       : flex;
-				flex-wrap     : wrap;
+				display        : flex;
+				flex-wrap      : wrap;
 				flex-direction : column;
 				
 				@include tablet-big {
@@ -105,9 +107,9 @@
 			}
 			
 			&-main {
-				display   : flex;
+				display        : flex;
 				flex-direction : column;
-				align-items: flex-start;
+				align-items    : flex-start;
 				
 				@include phone-big {
 					flex-direction : row;
@@ -135,6 +137,37 @@
 			&-input {
 				margin-top : 6px;
 			}
+		}
+		
+		&__submit {
+			.link {
+				margin-bottom : 20px;
+				@include tablet {
+					margin-bottom : 0;
+				}
+			}
+		}
+	}
+	
+	.table__header-item_id,
+	.table__header-item_status,
+	.table__header-item_enquiry-date,
+	.table__header-item_last-contact {
+		position : relative;
+		
+		&:after {
+			$size : 20px;
+			top              : 0;
+			right            : 16px;
+			width            : $size;
+			height           : $size;
+			margin           : auto;
+			bottom           : 0;
+			content          : "";
+			display          : block;
+			position         : absolute;
+			pointer-events   : none;
+			background-image : url("~static/images/icons/arrow-down.svg");
 		}
 	}
 </style>

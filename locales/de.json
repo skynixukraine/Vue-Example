@@ -1,187 +1,206 @@
 {
-    "genegal-translations": {
-        "i-accept": "I accept",
-        "and": "and"
-    },
-    "links": {
-        "logo-link": "Online Hautarzt vor Ort",
-        "home": "Home",
-        "hautarzt": "Hautarzt wählen",
-        "vorteile": "Vorteile",
-        "faq": "FAQ",
-        "about": "Über uns",
-        "jobs": "Jobs",
-        "show-all": "alle anzeigen",
-        "learn-more": "Mehr erfahre",
-        "further-information": "Weitere Informationen",
-        "frequently-asked": "häufig gestellte fragen (FAQ)",
-        "start-inquiry": "Anfrage starten",
-        "our-dermatologists": "Unsere Hautärzte",
-        "send-case": "Fall einsenden",
-        "frequently-questions": "Häufige Fragen",
-        "skin-lexicon": "Hautlexikon",
-        "via-online-dermatologist": "Über Online-Hautarzt",
-        "contact-form": "Kontaktformular",
-        "participate": "Mitmachen",
-        "about-teledermatology": "Über Teledermatologie",
-        "project-group-studies": "Studien der Projektgruppe",
-        "scientific-advisory-board": "Wissenschaftlicher Beirat",
-        "general-teledermatology": "Teledermatologie Allgemein",
-        "imprint": "Impressum",
-        "data-protection": "Datenschutzerklärung",
-        "terms-of-service": "Allgemeine Geschäftsbedingungen",
-        "signin": "Sign In",
-        "signup": "Sign Up",
-        "terms-and-conditions": "Terms and Conditions",
-        "privacy-policy": "Accept Privacy Policy"
-    },
-    "states": {
-        "loading": "Loading..."
-    },
-    "errors": {
-        "app": {
-            "required-field": "This field is required.",
-            "unvalid-email-name": "Unvalid email name."
-
-
-        },
-        "form": {
-            "required-field": "This field is required.",
-            "unvalid-email-name": "Unvalid email name.",
-            "passwords-not-equal": "Passwords not equal.",
-            "invalid-number": "Invalid phone number.",
-            "invalid-recaptcha-tocken": "Invalid reCAPTCHA token.",
-            "email-is-empty": "Email is empty.",
-            "password-is-empty": "Password is empty.",
-            "сonfirmation-password-is-empty": "Confirmation password is empty.",
-            "phone-is-empty": "Phone is empty.",
-            "accept-terms-and-conditions": "Accept Terms and Conditions and Privacy Policy.",
-            "validation-failed": "Form validation failed",
-            "file-type": "Invalid type. Allowed types are PDF/JPG/PNG.",
-            "file-size": "File size should be less than 10Mb.",
-            "unvalid-email-length": "Email length should be less than 75 symbols",
-            "password-has-problem": "Password must contain at least 6 and no more than 100 characters. Password must contain no spaces. The password must contain at least one lowercase letter, one uppercase letter, number and a special character !@#$%^&*. "
-        }
-    },
-    "forms": {
-        "enter-email": "Email Address",
-        "enter-password": "Password",
-        "create-password": "Password",
-        "confirm-password": "Confirm password",
-        "phone-number": "Phone number",
-        "upload-degree": "Upload medical degree (or add later)",
-        "upload-certification": "Upload board-certification (or add later)",
-        "i-accept": "I accept Terms and Conditions and Privacy Policy",
-        "add-degree": "Add degree",
-        "add-certification": "Add certification"
-
-    },
-    "headers": {
-        "our-family-doctors": "Unsere Hausärzte",
-        "your-advantages": "Vorteile von Online Hautarz",
-        "few-steps": "So funktioniert Online Hautarzt vor Ort",
-        "use-us": "Bekannt aus",
-        "for-patients": "Für Patienten",
-        "for-dermatologists": "Für Hautärzte",
-        "research": "Forschung",
-        "formal": "Formales",
-        "start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt",
-        "login": "Log In",
-        "register": "Register"
-    },
-    "banners": {
-        "herobanner": {
-            "title": "Fragen Sie online einen Hautarzt Ihrer Wahl",
-            "description": "Bei Online Hautarzt vor Ort erhalten Sie schnell und kostengünstig (19,-€) eine professionelle Einschätzung Ihres Hautproblems durch einen deutschen Hautfacharzt. Dank der Handlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblems unternehmen sollten. Etwa 70% unserer Patienten müssen nach dem Online-Besuch nicht mehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoher Gewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger als sechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden.",
-            "scroll-to-run": "Runterscrollen"
-        }
-    },
-    "page-home": {
-        "head": {
-            "title": "Home page"
-        }
-    },
-    "page-dermatologists": {
-        "head": {
-            "title": "Home page"
-        }
-    },
-    "page-advantages": {
-        "head": {
-            "title": "Advantages page"
-        }
-    },
-    "page-faq": {
-        "head": {
-            "title": "Häufige Fragen"
-        },
-        "q1": {
-            "title" : "1) Was ist “Online Hautarzt vor Ort“?",
-            "p1" : "Bei Online Hautarzt vor Ort erhalten Sie egal wo Sie sich grade befinden, rund um die Uhr und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen in Deutschland praktizierenden Hautfacharzt Ihrer Wahl. Dank der Handlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblems unternehmen sollten. Unsere externe wissenschaftliche Evaluation zeigt: Etwa 70% unserer Patienten müssen nach dem Online-Besuch nicht mehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoher Gewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger als sechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden.",
-            "p2" : "Der Online Hautarzt ist ein von der Landesärztekammer bereits im Oktober 2018 genehmigtes und mehrfach ausgezeichnetes Modellprojekt, das in kooperativer Zusammenarbeit von Heidelberger Hautärzten und Wissenschaftlern des Nationalen Centrums für Tumorerkrankungen entwickelt wurde. Bis vor wenigen Monaten war das Angebot ausschließlich für Hautärzte in Baden-Württemberg zugelassen. Erst im Dezember 2019 erhielt das Projekt die Genehmigung der Landesärztekammer, auch Hautärzte außerhalb Baden-Württembergs aufnehmen zu dürfen. So wurde der bereits lange geplante „Online Hautarzt vor Ort“ im Rahmen des Modellprojektes möglich. Patienten können nun langfristig auch Hautärzte aus ihrer näheren Umgebung, die sie idealerweise bereits persönlich kennen, für die individuelle Fernbehandlung auswählen, sofern diese bereits hier registriert sind. ",
-            "p3" : "Nicht geändert hat sich unser hoher Anspruch an die Beratungsqualität: Nur Hautärzte aus Deutschland mit bestandener Facharztprüfung und vielen Jahren klinischer Erfahrung dürfen Ihre Anfragen beantworten. Der Dienst wird zudem intern durch einen lokalen Beirat, sowie extern an der Universitäts-Hautklinik Essen wissenschaftlich evaluiert und so stetig verbessert.",
-            "p4" : "Zuletzt arbeiten wir nicht – wie die meisten Anbieter – mit internationalen Versandapotheken zusammen, sondern unterstützen die Apotheken vor Ort, die den größten Teil der Therapeutika in der Dermatologie zum kleinen Betrag frei verkäuflich anbieten, falls diese überhaupt notwendig sein sollten.",
-            "p5" : "Das Modellprojekt Online Hautarzt bleibt somit nachhaltig gut für alle: Für Patienten, für Hautärzte und für die lokalen Apotheken vor Ort."
-        },
-        "q2": {
-            "title" : "2) Wie funktioniert Online Hautarzt vor Ort?",
-            "p1" : "Bei Online Hautarzt vor Ort erhalten Sie egal wo Sie sich grade befinden, rund um die Uhr und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen in Deutschland praktizierenden Hautfacharzt Ihrer Wahl. Dank der Handlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblems unternehmen sollten. Unsere externe wissenschaftliche Evaluation zeigt: Etwa 70% unserer Patienten müssen nach dem Online-Besuch nicht mehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoher Gewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger als sechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden."
-        },
-        "q3": {
-            "title" : "3) Ersetzt der Online Hautarzt den persönlichen Arztbesuch?",
-            "p1" : "Unsere Hautfachärzte verpflichten sich zu höchster Beratungsqualität auf der Grundlage der eingereichten Informationen, sind aber kein gleichwertiger Ersatz für einen persönlichen Arztbesuch in der Praxis. Wir sind bestrebt, auf der Grundlage der erhaltenen Informationen fundierte medizinische Informationen zur Verfügung zu stellen, die gemäß unserer externen Evaluation in etwa 70% der Fälle bereits ausreichen, um das Hautproblem oder Geschlechtskrankheit zu beheben. In über 90% der Fälle ist eine sichere Diagnose möglich. Sie können zur zufriedenstellenden Bearbeitung beitragen, in dem Sie den Anamnesebogen vollständig ausfüllen und nur scharfe, ausreichend belichtete Bilder einsenden. Sie können uns jederzeit über Hilfe@Online-Hautarzt.org erreichen, sofern Sie Fragen, Kommentare oder Bedenken haben, oder sofern Sie sich nicht sicher sind, wie Sie die medizinischen Informationen, die Sie erhalten haben, interpretieren sollen."
-        },
-        "q4": {
-            "title" : "4) Wie ist fachärztliche Beratung zu einem niedrigem Preis möglich?",
-            "p1" : "Online Hautarzt vor Ort möchte Barrieren für die schnelle fachärztliche Diagnostik senken, auch für Geringverdiener: Mit 19,- Euro sind wir der günstigste in Deutschland verfügbare Anbieter, der fachärztliche Beratungsqualität anbietet. Darüber hinaus sind wir der einzige zugelassene Online-Hautarzt-Dienst aus Deutschland. Der niedrige Preis ist möglich, weil wir die Kosten für den Betrieb dieser Plattform gering halten: Wir können den Hautärzten den allergrößten Teil dieses Betrages direkt auszahlen; nur 5,- Euro pro Fall sind notwendig, um den Dienst betreiben sowie weiterentwickeln zu können und von der Anamnese, über die Zahlung, bis zur Rechnung für die Hautfachärzte alles rechtskonform abzuwickeln und zudem unsere Supportmitarbeiter zu bezahlen, die Ihre Fragen beantworten. So bleibt etwa 75% des Gesamtbetrages bei den befundenden Hautärzten; ein deutlich höherer Anteil als bei anderen Telemedizinplattformen.",
-            "p2" : "Zuletzt arbeiten wir nicht – wie die meisten Anbieter – mit internationalen Versandapotheken zusammen, sondern unterstützen die Apotheken vor Ort, die den größten Teil der Therapeutika in der Dermatologie zum kleinen Betrag frei verkäuflich anbieten, falls diese überhaupt notwendig sein sollten.",
-            "p3" : "Das Modellprojekt Online Hautarzt bleibt somit nachhaltig gut für alle: Für Patienten, für Hautärzte und für die lokalen Apotheken vor Ort."
-        },
-        "q5": {
-            "title" : "5) Woher weiß ich, wann mein Fall bearbeitet wurde?",
-            "p1" : "Sobald Ihr Fall bearbeitet wurde, erhalten Sie eine E-Mail von uns an die von Ihnen angegebene E-Mail Adresse.",
-            "p2" : "Wenn Sie keine Antwort von uns erhalten, schicken Sie uns bitte eine E-Mail an Hilfe@Online-Hautarzt.org."
-        },
-        "q6": {
-            "title" : "6) Wie kann ich bezahlen?",
-            "p1" : "Wir bieten die Zahlungsmöglichkeiten Sofortüberweisung, Kreditkarte und Lastschrift an. Auf diese Weise kann jeder Kunde problemlos den Dienst nutzen, auch ganz ohne Online-Banking."
-        },
-        "q7": {
-            "title" : "7) Was passiert, wenn die Online Hautärzte mich falsch beraten?\n",
-            "p1" : "Online Hautarzt vor Ort arbeitet nur mit erfahrenen Hautärzten zusammen, die ihre Facharztausbildung abgeschlossen haben. Unsere Hautärzte sind zu höchster ärztlicher Sorgfalt bei der Beratung verpflichtet. Dennoch gibt es keine Garantie für eine fehlerfreie Beratung. Dieser Dienst ist ausdrücklich kein Ersatz für einen persönlichen Hautarztbesuch.",
-            "p2" : "Die professionellen Ersteinschätzungen, die Ihnen unsere Hautärzte geben, fußen auf den von Ihnen eingegebenen Daten und hochgeladenen Bildern. Daher sollten Sie darauf achten, vollständige Angaben zu machen und scharfe, gut belichtete Bilder hochzuladen. Dieser Dienst ist als medizinische Beratung wahrzunehmen. Die Beratung stellt KEINE endgültige medizinische Diagnose oder einen finalen Therapieplan dar."
-        },
-        "q8": {
-            "title" : "8) Wer hat Online-Hautarzt-Dienste erfunden?",
-            "p1" : "Die Anfänge der Telemedizin sind bereits in den 60er Jahren durch die NASA gelegt worden, um Astronauten im All fernmedizinisch zu betreuen. Früh wurde die Bedeutung dieser neuen Art von Diagnosestellung für die Dermatologie erkannt – denn dieser Fachbereich der Medizin ist überwiegend auf den visuellen Aspekt angewiesen. Eine bereits im Jahre 1972 erschienene erste Teledermatologie-Studie basiert auf Bildern von Hautveränderungen, die mittels Schwarzweiß- und Farbfernsehern übertragen wurden (Murphy R, Fitzpatrick T, Haynes H, Bird K, Sheridan T. Accuracy of dermatologic diagnosis by television. Arch Dermatol 1972;105:833–835).",
-            "p2" : "Fernbehandlung über digitale Geräte in der Dermatologie gibt es also schon länger, als es das Internet gibt. Deutschland war hier viele Jahre Nachzügler, da Fernbehandlung streng reguliert wurde. Nach knapp einem Jahr Zulassungsverfahren war schließlich unser Modellprojekt Online Hautarzt im November 2018 der erste ohne vorherigen persönlichen Patientenkontakt zugelassene Online-Hautarzt-Dienst bundesweit und bleibt bis heute der einzige dezentrale Online-Hautarzt-Dienst aus Deutschland. Zu Beginn durften nur Ärzte aus Baden-Württemberg teilnehmen und das bereits damals angestrebte Projekt „Online Hautarzt vor Ort“ war uns aus berufsrechtlichen Gründen auch im Rahmen unseres Modellprojektes nicht erlaubt. Stattdessen wurde der ursprüngliche Online-Hautarzt-Dienst „AppDoc“ genannt und ist bis heute für iPhones und Android-Smartphones als native App herunterladbar. Bei AppDoc befunden nur drei Hautfachärzte aus Heidelberg mit jeweils über 20 Jahren Praxiserfahrung Ihre Hautprobleme. Im Dezember 2019 erhielten wir schließlich die Genehmigung, unser Modellprojekt auch auf andere Bundesländer auszuweiten. Nun dürfen der Online Hautärzte vor Ort über diese Webseite im Rahmen unseres Modellprojektes Patienten beraten."
-        }
-    },
-    "page-about": {
-        "head": {
-            "title": "About page"
-        }
-    },
-    "page-jobs": {
-        "head": {
-            "title": "Jobs page"
-        }
-    },
-    "phrases": {
-        "copyright": "Online Hautarzt vor Ort © 2019 Alle Rechte vorbehalten"
-    },
-    "advantages": {
-        "professional-trustworthy": "Ausgezeichnet & wissenschaftlich evaluiert",
-        "data-protection-compliant": "Sicher & Made in Germany",
-        "fast-time-saving": "Wegsparend & schnell",
-        "independent-accessible": "Ohne Termin & von überall erreichbar"
-    },
-    "steps": {
-        "choose-dermatologist": "Hautarzt auswählen",
-        "dermatologist-at-clinic-essen": "Über unsere Plattform sind viele Hautärzte aus Deutschland erreichbar. Wer soll Ihr Hautproblem befunden? Ob Sie einen Hautarzt in der Nähe auswählen, oder einen Hautarzt mit hoher Erfahrung aus einer anderen Stadt, bleibt Ihnen überlassen.",
-        "describe-symptoms": "Fotografieren Sie Ihr Hautproblem und beschreiben Sie Ihre Symptome",
-        "what-complaints-problem": "Nachdem Sie den Hautarzt ausgewählt haben, beantworten Sie wenige Fragen zu Ihrem Hautproblem und fotografieren es nach einfacher Anleitung, zum Beispiel mit Ihrer Handykamera. Insgesamt kostet Sie dieser Vorgang etwa fünf Minuten IhrerZeit.",
-        "you-get-specialist-advice": "Sie erhalten Rat von Ihrem Hautarzt",
-        "specialist-initial-assessment": "Meist in weniger als sechs Stunden erhalten Sie fachärztliche Hilfe durch den von Ihnen ausgewählten Hautarzt. Maximal dauert die Beantwortung Ihrer Anfrage 48 Stunden. In etwa 90% der Fälle stellt der Hautarzt eine konkrete Diagnose. Immer erhalten Sie eine Handlungsempfehlung, was Sie tun sollten. Etwa 70% unserer Patienten müssen nicht mehr persönlich in die Praxis, der Rest der Patienten kann das Hautproblem besser einschätzen. Insgesamt kostet dieser Dienst 19,- Euro.Zusätzliche Kosten fallen nicht an."
-    }
+	"genegal-translations": {
+		"i-accept": "Ich akzeptiere die",
+		"and": "und die"
+	},
+	"links": {
+		"logo-link": "Online Hautarzt vor Ort",
+		"home": "Home",
+		"hautarzt": "Hautarzt wählen",
+		"vorteile": "Vorteile",
+		"faq": "FAQ",
+		"about": "Über uns",
+		"jobs": "Jobs",
+		"show-all": "alle anzeigen",
+		"learn-more": "Mehr erfahre",
+		"further-information": "Weitere Informationen",
+		"frequently-asked": "häufig gestellte fragen (FAQ)",
+		"start-inquiry": "Anfrage starten",
+		"our-dermatologists": "Unsere Hautärzte",
+		"send-case": "Fall einsenden",
+		"frequently-questions": "Häufige Fragen",
+		"skin-lexicon": "Hautlexikon",
+		"via-online-dermatologist": "Über Online-Hautarzt",
+		"contact-form": "Kontaktformular",
+		"participate": "Mitmachen",
+		"about-teledermatology": "Über Teledermatologie",
+		"project-group-studies": "Studien der Projektgruppe",
+		"scientific-advisory-board": "Wissenschaftlicher Beirat",
+		"general-teledermatology": "Teledermatologie Allgemein",
+		"imprint": "Impressum",
+		"data-protection": "Datenschutzerklärung",
+		"terms-of-service": "Allgemeine Geschäftsbedingungen",
+		"signin": "EINLOGGEN",
+		"signup": "REGISTRIEREN",
+		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
+		"privacy-policy": " Datenschutzerklärung",
+		"forgot-password": "Wachtwoord vergeten?"
+	},
+	"states": {
+		"loading": "Loading..."
+	},
+	"errors": {
+		"app": {
+			"required-field": "This field is required.",
+			"unvalid-email-name": "Unvalid email name."
+		},
+		"form": {
+			"required-field": "This field is required.",
+			"unvalid-email-name": "Unvalid email name.",
+			"passwords-not-equal": "Passwords not equal.",
+			"invalid-number": "Invalid phone number.",
+			"invalid-recaptcha-tocken": "Invalid reCAPTCHA token.",
+			"email-is-empty": "Email is empty.",
+			"password-is-empty": "Password is empty.",
+			"сonfirmation-password-is-empty": "Confirmation password is empty.",
+			"phone-is-empty": "Phone is empty.",
+			"accept-terms-and-conditions": "Accept Terms and Conditions and Privacy Policy.",
+			"validation-failed": "Form validation failed",
+			"file-type": "Invalid type. Allowed types are PDF/JPG/PNG.",
+			"file-size": "File size should be less than 10Mb.",
+			"unvalid-email-length": "Email length should be less than 75 symbols",
+			"password-has-problem": "Password must contain at least 6 and no more than 100 characters. Password must contain no spaces. The password must contain at least one lowercase letter, one uppercase letter, number and a special character !@#$%^&*. "
+		}
+	},
+	"forms": {
+		"enter-email": "E-Mail eingeben",
+		"enter-password": "Passwort eingeben",
+		"create-password": "Passwort erstellen",
+		"confirm-password": "Passwort bestätigen",
+		"phone-number": "Handynummer",
+		"upload-degree": "Approbationsurkunde hochladen (oder später hinzufügen)",
+		"upload-certification": "Facharztzeugnis hochladen (oder später hinzufügen)",
+		"i-accept": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen und die Datenschutzerklärung.",
+		"add-degree": "Approbationsurkunde hochladen",
+		"add-certification": "Facharztzeugnis hochladen"
+	},
+	"headers": {
+		"our-family-doctors": "Unsere Hausärzte",
+		"your-advantages": "Vorteile von Online Hautarz",
+		"few-steps": "So funktioniert Online Hautarzt vor Ort",
+		"use-us": "Bekannt aus",
+		"for-patients": "Für Patienten",
+		"for-dermatologists": "Für Hautärzte",
+		"research": "Forschung",
+		"formal": "Formales",
+		"start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt",
+		"login": "EINLOGGEN",
+		"register": "REGISTRIEREN"
+	},
+	"banners": {
+		"herobanner": {
+			"title": "Fragen Sie online einen Hautarzt Ihrer Wahl",
+			"description": "Bei Online Hautarzt vor Ort erhalten Sie schnell und kostengünstig (19,-€) eine professionelle Einschätzung Ihres Hautproblems durch einen deutschen Hautfacharzt. Dank der Handlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblems unternehmen sollten. Etwa 70% unserer Patienten müssen nach dem Online-Besuch nicht mehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoher Gewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger als sechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden.",
+			"scroll-to-run": "Runterscrollen"
+		}
+	},
+	"page-home": {
+		"head": {
+			"title": "Home page"
+		}
+	},
+	"page-dermatologists": {
+		"head": {
+			"title": "Home page"
+		}
+	},
+	"page-advantages": {
+		"head": {
+			"title": "Advantages page"
+		}
+	},
+	"page-faq": {
+		"head": {
+			"title": "Häufige Fragen"
+		},
+		"q1": {
+			"title": "1) Was ist “Online Hautarzt vor Ort“?",
+			"p1": "Bei Online Hautarzt vor Ort erhalten Sie egal wo Sie sich grade befinden, rund um die Uhr und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen in Deutschland praktizierenden Hautfacharzt Ihrer Wahl. Dank der Handlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblems unternehmen sollten. Unsere externe wissenschaftliche Evaluation zeigt: Etwa 70% unserer Patienten müssen nach dem Online-Besuch nicht mehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoher Gewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger als sechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden.",
+			"p2_1": "Der Online Hautarzt ist ein von der Landesärztekammer bereits im Oktober 2018 genehmigtes und mehrfach ausgezeichnetes ",
+			"p2_a1": "mehrfach ausgezeichnetes Modellprojekt,",
+			"p2_2": "das in kooperativer Zusammenarbeit von Heidelberger Hautärzten und Wissenschaftlern des Nationalen Centrums für Tumorerkrankungen entwickelt wurde. Bis vor wenigen Monaten war das Angebot ausschließlich für Hautärzte in Baden-Württemberg zugelassen. Erst im Dezember 2019 erhielt das Projekt die Genehmigung der Landesärztekammer, auch Hautärzte außerhalb Baden-Württembergs aufnehmen zu dürfen. So wurde der bereits lange geplante „Online Hautarzt vor Ort“ im Rahmen des Modellprojektes möglich. Patienten können nun langfristig auch Hautärzte aus ihrer näheren Umgebung, die sie idealerweise bereits persönlich kennen, für die individuelle Fernbehandlung auswählen, sofern diese bereits hier registriert sind. ",
+			"p3": "Nicht geändert hat sich unser hoher Anspruch an die Beratungsqualität: Nur Hautärzte aus Deutschland mit bestandener Facharztprüfung und vielen Jahren klinischer Erfahrung dürfen Ihre Anfragen beantworten. Der Dienst wird zudem intern durch einen lokalen Beirat, sowie extern an der Universitäts-Hautklinik Essen wissenschaftlich evaluiert und so stetig verbessert.",
+			"p4": "Zuletzt arbeiten wir nicht – wie die meisten Anbieter – mit internationalen Versandapotheken zusammen, sondern unterstützen die Apotheken vor Ort, die den größten Teil der Therapeutika in der Dermatologie zum kleinen Betrag frei verkäuflich anbieten, falls diese überhaupt notwendig sein sollten.",
+			"p5": "Das Modellprojekt Online Hautarzt bleibt somit nachhaltig gut für alle: Für Patienten, für Hautärzte und für die lokalen Apotheken vor Ort."
+		},
+		"q2": {
+			"title": "2) Wie funktioniert Online Hautarzt vor Ort?",
+			"p1": "Bei Online Hautarzt vor Ort erhalten Sie egal wo Sie sich grade befinden, rund um die Uhr und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen in Deutschland praktizierenden Hautfacharzt Ihrer Wahl. Dank der Handlungsempfehlung wissen Sie außerdem, was Sie wegen Ihres Hautproblems unternehmen sollten. Unsere externe wissenschaftliche Evaluation zeigt: Etwa 70% unserer Patienten müssen nach dem Online-Besuch nicht mehr persönlich in die Praxis. In etwa 90% der Fälle kann eine Diagnose mit hoher Gewissheit online gestellt werden. Durchschnittlich antworten die Hautärzte in weniger als sechs Stunden auf Ihre individuelle Anfrage, maximal dauert die Bearbeitung 48 Stunden."
+		},
+		"q3": {
+			"title": "3) Ersetzt der Online Hautarzt den persönlichen Arztbesuch?",
+			"p1": "Unsere Hautfachärzte verpflichten sich zu höchster Beratungsqualität auf der Grundlage der eingereichten Informationen, sind aber kein gleichwertiger Ersatz für einen persönlichen Arztbesuch in der Praxis. Wir sind bestrebt, auf der Grundlage der erhaltenen Informationen fundierte medizinische Informationen zur Verfügung zu stellen, die gemäß unserer externen Evaluation in etwa 70% der Fälle bereits ausreichen, um das Hautproblem oder Geschlechtskrankheit zu beheben. In über 90% der Fälle ist eine sichere Diagnose möglich. Sie können zur zufriedenstellenden Bearbeitung beitragen, in dem Sie den Anamnesebogen vollständig ausfüllen und nur scharfe, ausreichend belichtete Bilder einsenden. Sie können uns jederzeit über Hilfe@Online-Hautarzt.org erreichen, sofern Sie Fragen, Kommentare oder Bedenken haben, oder sofern Sie sich nicht sicher sind, wie Sie die medizinischen Informationen, die Sie erhalten haben, interpretieren sollen."
+		},
+		"q4": {
+			"title": "4) Wie ist fachärztliche Beratung zu einem niedrigem Preis möglich?",
+			"p1": "Online Hautarzt vor Ort möchte Barrieren für die schnelle fachärztliche Diagnostik senken, auch für Geringverdiener: Mit 19,- Euro sind wir der günstigste in Deutschland verfügbare Anbieter, der fachärztliche Beratungsqualität anbietet. Darüber hinaus sind wir der einzige zugelassene Online-Hautarzt-Dienst aus Deutschland. Der niedrige Preis ist möglich, weil wir die Kosten für den Betrieb dieser Plattform gering halten: Wir können den Hautärzten den allergrößten Teil dieses Betrages direkt auszahlen; nur 5,- Euro pro Fall sind notwendig, um den Dienst betreiben sowie weiterentwickeln zu können und von der Anamnese, über die Zahlung, bis zur Rechnung für die Hautfachärzte alles rechtskonform abzuwickeln und zudem unsere Supportmitarbeiter zu bezahlen, die Ihre Fragen beantworten. So bleibt etwa 75% des Gesamtbetrages bei den befundenden Hautärzten; ein deutlich höherer Anteil als bei anderen Telemedizinplattformen.",
+			"p2": "Zuletzt arbeiten wir nicht – wie die meisten Anbieter – mit internationalen Versandapotheken zusammen, sondern unterstützen die Apotheken vor Ort, die den größten Teil der Therapeutika in der Dermatologie zum kleinen Betrag frei verkäuflich anbieten, falls diese überhaupt notwendig sein sollten.",
+			"p3": "Das Modellprojekt Online Hautarzt bleibt somit nachhaltig gut für alle: Für Patienten, für Hautärzte und für die lokalen Apotheken vor Ort."
+		},
+		"q5": {
+			"title": "5) Woher weiß ich, wann mein Fall bearbeitet wurde?",
+			"p1": "Sobald Ihr Fall bearbeitet wurde, erhalten Sie eine E-Mail von uns an die von Ihnen angegebene E-Mail Adresse.",
+			"p2": "Wenn Sie keine Antwort von uns erhalten, schicken Sie uns bitte eine E-Mail an Hilfe@Online-Hautarzt.org."
+		},
+		"q6": {
+			"title": "6) Wie kann ich bezahlen?",
+			"p1": "Wir bieten die Zahlungsmöglichkeiten Sofortüberweisung, Kreditkarte und Lastschrift an. Auf diese Weise kann jeder Kunde problemlos den Dienst nutzen, auch ganz ohne Online-Banking."
+		},
+		"q7": {
+			"title": "7) Was passiert, wenn die Online Hautärzte mich falsch beraten?\n",
+			"p1": "Online Hautarzt vor Ort arbeitet nur mit erfahrenen Hautärzten zusammen, die ihre Facharztausbildung abgeschlossen haben. Unsere Hautärzte sind zu höchster ärztlicher Sorgfalt bei der Beratung verpflichtet. Dennoch gibt es keine Garantie für eine fehlerfreie Beratung. Dieser Dienst ist ausdrücklich kein Ersatz für einen persönlichen Hautarztbesuch.",
+			"p2": "Die professionellen Ersteinschätzungen, die Ihnen unsere Hautärzte geben, fußen auf den von Ihnen eingegebenen Daten und hochgeladenen Bildern. Daher sollten Sie darauf achten, vollständige Angaben zu machen und scharfe, gut belichtete Bilder hochzuladen. Dieser Dienst ist als medizinische Beratung wahrzunehmen. Die Beratung stellt KEINE endgültige medizinische Diagnose oder einen finalen Therapieplan dar."
+		},
+		"q8": {
+			"title": "8) Wer hat Online-Hautarzt-Dienste erfunden?",
+			"p1": "Die Anfänge der Telemedizin sind bereits in den 60er Jahren durch die NASA gelegt worden, um Astronauten im All fernmedizinisch zu betreuen. Früh wurde die Bedeutung dieser neuen Art von Diagnosestellung für die Dermatologie erkannt – denn dieser Fachbereich der Medizin ist überwiegend auf den visuellen Aspekt angewiesen. Eine bereits im Jahre 1972 erschienene erste Teledermatologie-Studie basiert auf Bildern von Hautveränderungen, die mittels Schwarzweiß- und Farbfernsehern übertragen wurden (Murphy R, Fitzpatrick T, Haynes H, Bird K, Sheridan T. Accuracy of dermatologic diagnosis by television. Arch Dermatol 1972;105:833–835).",
+			"p2_1": "Fernbehandlung über digitale Geräte in der Dermatologie gibt es also schon länger, als es das Internet gibt. Deutschland war hier viele Jahre Nachzügler, da Fernbehandlung streng reguliert wurde. Nach knapp einem Jahr Zulassungsverfahren war schließlich unser",
+			"p2_a1": "Modellprojekt Online Hautarzt",
+			"p2_2": "im November 2018 der erste ohne vorherigen persönlichen Patientenkontakt zugelassene Online-Hautarzt-Dienst bundesweit und bleibt bis heute der einzige dezentrale Online-Hautarzt-Dienst aus Deutschland. Zu Beginn durften nur Ärzte aus Baden-Württemberg teilnehmen und das bereits damals angestrebte Projekt „Online Hautarzt vor Ort“ war uns aus berufsrechtlichen Gründen auch im Rahmen unseres Modellprojektes nicht erlaubt. Stattdessen wurde der ursprüngliche Online-Hautarzt-Dienst",
+			"p2_a2": "„AppDoc“",
+			"p2_3": "genannt und ist bis heute für iPhones und Android-Smartphones als native App herunterladbar. Bei AppDoc befunden nur drei Hautfachärzte aus Heidelberg mit jeweils über 20 Jahren Praxiserfahrung Ihre Hautprobleme. Im Dezember 2019 erhielten wir schließlich die Genehmigung, unser Modellprojekt auch auf andere Bundesländer auszuweiten. Nun dürfen der Online Hautärzte vor Ort über diese Webseite im Rahmen unseres Modellprojektes Patienten beraten."
+		}
+	},
+	"page-about": {
+		"head": {
+			"title": "About page"
+		}
+	},
+	"page-jobs": {
+		"head": {
+			"title": "Jobs page"
+		}
+	},
+	"phrases": {
+		"copyright": "Online Hautarzt vor Ort © 2019 Alle Rechte vorbehalten"
+	},
+	"advantages": {
+		"professional-trustworthy": "Ausgezeichnet & wissenschaftlich evaluiert",
+		"data-protection-compliant": "Sicher & Made in Germany",
+		"fast-time-saving": "Wegsparend & schnell",
+		"independent-accessible": "Ohne Termin & von überall erreichbar"
+	},
+	"steps": {
+		"choose-dermatologist": "Hautarzt auswählen",
+		"dermatologist-at-clinic-essen": "Über unsere Plattform sind viele Hautärzte aus Deutschland erreichbar. Wer soll Ihr Hautproblem befunden? Ob Sie einen Hautarzt in der Nähe auswählen, oder einen Hautarzt mit hoher Erfahrung aus einer anderen Stadt, bleibt Ihnen überlassen.",
+		"describe-symptoms": "Fotografieren Sie Ihr Hautproblem und beschreiben Sie Ihre Symptome",
+		"what-complaints-problem": "Nachdem Sie den Hautarzt ausgewählt haben, beantworten Sie wenige Fragen zu Ihrem Hautproblem und fotografieren es nach einfacher Anleitung, zum Beispiel mit Ihrer Handykamera. Insgesamt kostet Sie dieser Vorgang etwa fünf Minuten IhrerZeit.",
+		"you-get-specialist-advice": "Sie erhalten Rat von Ihrem Hautarzt",
+		"specialist-initial-assessment": "Meist in weniger als sechs Stunden erhalten Sie fachärztliche Hilfe durch den von Ihnen ausgewählten Hautarzt. Maximal dauert die Beantwortung Ihrer Anfrage 48 Stunden. In etwa 90% der Fälle stellt der Hautarzt eine konkrete Diagnose. Immer erhalten Sie eine Handlungsempfehlung, was Sie tun sollten. Etwa 70% unserer Patienten müssen nicht mehr persönlich in die Praxis, der Rest der Patienten kann das Hautproblem besser einschätzen. Insgesamt kostet dieser Dienst 19,- Euro.Zusätzliche Kosten fallen nicht an."
+	},
+	"times": {
+		"night": "Goedenacht",
+		"morning": "Goedemorgen",
+		"afternoon": "Goedemiddag",
+		"evening": "Goedenavond"
+	},
+	"sidebar": {
+		"proff-info": "Konto Informationen",
+		"request": "Anfragen"
+	},
+	"dashboard": {
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit magnam, suscipit modi molestiae repellendus quasi, repellat, fuga est reprehenderit veniam mollitia sunt enim! Aperiam iste temporibus eius impedit, minima, incidunt.",
+		"total-enq": "Anfragen insgesamt",
+		"total-inc": "Einkommen insgesamt"
+	}
 }

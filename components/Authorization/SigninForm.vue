@@ -77,13 +77,14 @@ export default {
             this.$store.dispatch('user/LOGIN_USER', formData)
                 .then((response) => {
                     // set user cookie (login user)
+                    const endDate = new Date(response.data.expires_at.date.replace(' ', 'T'))
                     this.$cookies.set(this.$cookie.names.token, response.data.access_token, {
                         path: this.$cookie.path.root,
-                        maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), new Date(response.data.expires_at.date))
+                        maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), endDate)
                     })
                     this.$cookies.set(this.$cookie.names.tokenId, response.data.id, {
                         path: this.$cookie.path.root,
-                        maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), new Date(response.data.expires_at.date))
+                        maxAge: this.$cookie.getSecondsBetweenTwoData(new Date(), endDate)
                     })
 
                     // load user in state

@@ -33,3 +33,42 @@
         @content;
     }
 }
+
+@mixin breakpoints($media, $xs: 'min-width' ) {
+    @if $media == xs {
+        //480px
+        @media only screen and ($xs: $screen-phone-big-min) {
+            @content;
+        }
+    } @else if $media == s {
+        //720px
+        @media only screen and ($xs: $screen-tablet-min) {
+            @content;
+        }
+    } @else if $media == xm {
+        //962px
+        @media only screen and ($xs: $screen-tablet-big-min) {
+            @content;
+        }
+    } @else if $media == m {
+        //1280px
+        @media only screen and ($xs: $screen-desktop-min) {
+            @content;
+        }
+
+    } @else if $media == l {
+        //1366px
+        @media only screen and ($xs: $screen-desktop-l) {
+            @content;
+        }
+    } @else if $media == xl {
+        //$screen-desktop-big-min: 1920px;
+        @media only screen and ($xs: $screen-desktop-big-min72) {
+            @content;
+        }
+    } @else {
+        @media only screen and ($xs: $media) {
+            @content;
+        }
+    }
+}

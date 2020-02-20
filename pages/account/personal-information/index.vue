@@ -1,7 +1,7 @@
 <template>
     <div class="page">
-        <div class="section account-section">
-            <div class="account-container">
+        <div class="section section--0-0">
+            <div class="container-fluid">
                 <Dashboard>
                     <DashboardSidebar />
                     <DashboardMain>
@@ -74,7 +74,6 @@ export default {
     }
     &-container {
         width: 100%;
-        max-width: 1366px;
         margin-right: auto;
         margin-left: auto;
     }

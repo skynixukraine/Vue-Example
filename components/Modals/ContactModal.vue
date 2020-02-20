@@ -29,14 +29,14 @@
 					</div>
 					<div class = "table__main">
 						<div class = "table__main-items">
-							<div class = "table__main-item">hh:mm dd/mm/yy</div>
-							<div class = "table__main-item"> doctor name</div>
-							<div class = "table__main-item table__item_big"> doctor message</div>
+							<div class = "table__main-item" data-title="Date">hh:mm dd/mm/yy</div>
+							<div class = "table__main-item" data-title="Name"> doctor name</div>
+							<div class = "table__main-item table__item_big" data-title="Message"> doctor message</div>
 						</div>
 						<div class = "table__main-items">
-							<div class = "table__main-item">hh:mm dd/mm/yy</div>
-							<div class = "table__main-item"> patient name</div>
-							<div class = "table__main-item table__item_big"> patient message and/or attachment</div>
+							<div class = "table__main-item" data-title="Date">hh:mm dd/mm/yy</div>
+							<div class = "table__main-item" data-title="Name"> patient name</div>
+							<div class = "table__main-item table__item_big" data-title="Message"> patient message and/or attachment</div>
 						</div>
 					</div>
 				</div>
