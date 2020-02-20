@@ -66,8 +66,7 @@
 </template>
 
 <script>
-    import StepCard from "~/components/Cards/StepCard"
-	//mixins
+    import StepCard from "~/components/Cards/StepCard";
     import smoothScroll from "~/mixins/smooth-scroll";
 
 
@@ -86,23 +85,24 @@
 		list-style-type: none;
 	}
 	.faq-block {
-		margin-bottom : 28px;
+		$offset: 28px;
+		
+		margin-bottom : $offset;
 		
 		&:last-child {
 			margin : 0;
 		}
 		
 		&__title {
-			margin-bottom : 28px;
+			margin-bottom : $offset;
 		}
 		
 		&__paragraph {
-			margin-bottom : 20px;
+			margin-bottom : $main_offset;
 			
 			&:last-child {
 				margin : 0;
 			}
 		}
 	}
-	
 </style>

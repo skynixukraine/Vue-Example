@@ -184,10 +184,9 @@
 </script>
 
 <style lang = "scss">
-	$offset : 20px;
 	
 	.filters {
-		margin          : 0 #{-$offset};
+		margin          : 0 #{-$main_offset};
 		display         : flex;
 		flex-wrap       : wrap;
 		max-width       : 100%;
@@ -195,8 +194,8 @@
 		
 		&__item {
 			$bottom_padding : 5px;
-			color       : #7A7D84;
-			margin      : 0 $offset $offset / 2;
+			color       : $color-rolling-stone;
+			margin      : 0 $main_offset $main_offset / 2;
 			position    : relative;
 			font-size   : 18px;
 			max-width   : 100%;
@@ -208,7 +207,7 @@
 			
 			&__select {
 				border             : 1px solid #E0E1E3;
-				padding            : 8px $offset * 2 $bottom_padding $offset;
+				padding            : 8px $main_offset * 2 $bottom_padding $main_offset;
 				position           : relative;
 				font-size          : 18px;
 				max-width          : 100%;
@@ -225,7 +224,7 @@
 			&:after {
 				$size : 20px;
 				bottom           : calc(.5em + #{$bottom_padding / 2});
-				right            : $offset / 2;
+				right            : $main_offset / 2;
 				width            : $size;
 				height           : $size;
 				content          : "";
@@ -238,48 +237,48 @@
 	}
 	
 	.doctors {
-		margin          : $offset #{$offset / -2} 0;
+		margin          : $main_offset #{$main_offset / -2} 0;
 		display         : flex;
 		flex-wrap       : wrap;
 		justify-content : flex-start;
 		
 		&__item {
 			width          : 100%;
-			margin         : 0 $offset / 2 $offset;
+			margin         : 0 $main_offset / 2 $main_offset;
 			display        : flex;
 			flex-direction : column;
 			
 			@include tablet {
-				flex : 0 1 calc(50% - #{$offset});
+				flex : 0 1 calc(50% - #{$main_offset});
 			}
 			
 			@include tablet-big {
-				flex : 0 1 calc(100% / 3 - #{$offset});
+				flex : 0 1 calc(100% / 3 - #{$main_offset});
 			}
 			
 			@include desktop {
-				flex      : 0 1 calc(25% - #{$offset});
-				min-width : calc(25% - #{$offset});
+				flex      : 0 1 calc(25% - #{$main_offset});
+				min-width : calc(25% - #{$main_offset});
 			}
 		}
 	}
 	
 	.pagination {
-		margin          : $offset #{-$offset} 0;
+		margin          : $main_offset #{-$main_offset} 0;
 		display         : flex;
 		flex-wrap       : wrap;
 		justify-content : center;
 		
 		&__item {
-			$margin : $offset / 8 $offset / 4;
+			$margin : $main_offset / 8 $main_offset / 4;
 			
 			margin     : $margin;
-			padding    : $offset / 2 $offset / 1.4 $offset / 2.5;
+			padding    : $main_offset / 2 $main_offset / 1.4 $main_offset / 2.5;
 			min-width  : auto;
 			transition : $transition;
 			
 			@include tablet {
-				padding : 20px 31px 16px;
+				padding : $main_offset 31px 16px;
 			}
 			
 			&--points {

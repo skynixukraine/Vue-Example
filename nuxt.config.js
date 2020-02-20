@@ -13,6 +13,7 @@ module.exports = {
             { hid: 'description', name: 'description', content: 'Nuxt.js project' },
         ],
         script: [
+            { src: `https://js.stripe.com/v3/` },
             { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` },
             { src: `https://maps.googleapis.com/maps/api/js?key=${configEnv.GOOGLE_MAPS_API_KEY}&libraries=places` },
         ],

@@ -11,7 +11,7 @@ export default {}
 
 <style lang="scss" scoped>
 .request-banner {
-    padding: 48px 20px;
+    padding: 48px $main_offset;
     text-align: center;
     border-radius: 20px;
     background-position: center bottom;

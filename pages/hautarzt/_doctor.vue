@@ -144,7 +144,6 @@
 </script>
 
 <style lang = "scss" scoped>
-    $offset : 20px;
     $border-radius : 20px;
     $desktop_max_height : 502px;
 
@@ -192,7 +191,7 @@
         }
 
         &__info {
-            padding : $offset / 2 $offset $offset;
+            padding : $main_offset / 2 $main_offset $main_offset;
 
             @include tablet-big {
                 $padding_vertical : 40px;
@@ -224,7 +223,7 @@
             }
 
             &__price {
-                margin-top : $offset;
+                margin-top : $main_offset;
 
                 @include tablet-big {
                     margin-top : 25px;
@@ -245,7 +244,7 @@
 
             &__start-enquiry-btn {
                 max-width  : 224px;
-                margin-top : $offset;
+                margin-top : $main_offset;
                 transition : .3s;
                 background : $color-torea-bay;
 
@@ -262,7 +261,7 @@
 
     .g-map {
         color    : $color-rolling-stone;
-        margin   : $offset calc((100vw - 100%) / -2) 0;
+        margin   : $main_offset calc((100vw - 100%) / -2) 0;
         height   : 50vh;
         position : relative;
 

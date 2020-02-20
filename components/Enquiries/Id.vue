@@ -85,9 +85,9 @@
 			}
 			
 			.link {
-				margin-bottom : 20px;
+				margin-bottom : $main_offset;
 				@include tablet {
-					margin-right : 20px;
+					margin-right : $main_offset;
 				}
 			}
 		}
