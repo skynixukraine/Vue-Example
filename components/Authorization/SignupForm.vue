@@ -61,7 +61,6 @@
 				   name = "degree"
 				   ref = "degree"
 				   @change = "onDegreeUpload" />
-			
 			<button class = "link link--button link--button-full-width link--button-white link--button-upload"
 					type = "button"
 					@click = "addFileDegree">
@@ -178,7 +177,7 @@
                     disabledFetchingCountry : false,
                     disabled                : false,
                     disabledFormatting      : false,
-                    placeholder             : "Enter a phone number",
+                    placeholder             : this.$t('forms.phone-number'),
                     required                : false,
                     enabledCountryCode      : false,
                     enabledFlags            : true,
