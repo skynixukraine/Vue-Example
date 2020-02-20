@@ -6,7 +6,8 @@
 		</div>
 		<div class = "news-section">
 			<div class = "img-wrapper">
-				<img :src = "require('~/static/images/images/innovationspreis.jpg')" />
+				<img :src = "require('~/static/images/images/innovationspreis.jpg')"
+					 style = "max-height: 418px;"/>
 			</div>
 			<p>Bild: Vorsitzender des Berufsverbandes der Deutschen Dermatologen (BVDD) Dr. Klaus Strömer (links)
 				überreicht AppDoc-Gründer Dr. Titus J. Brinker den Innovationspreis Dermatologie 2019.</p>
@@ -89,11 +90,7 @@
 		}
 		
 		img {
-			max-height : 418px;
 			max-width  : 100%;
-			@include tablet {
-				max-width : 648px;
-			}
 			
 		}
 	}
