@@ -14,6 +14,7 @@ module.exports = {
         ],
         script: [
             { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` },
+            { src: `https://js.stripe.com/v3/` },
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

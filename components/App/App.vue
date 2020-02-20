@@ -500,14 +500,14 @@ START: COMPONENTS
 }
 
 // input
-.input, .select {
+.input, .select, #vue-tel-input {
     width: 100%;
     height: 40px;
+    padding: 0 6px;
     background: $color-white;
     border: 2px solid $color-curious-blue;
     box-sizing: border-box;
     border-radius: 4px;
-    padding-left: 6%;
 
     @include phone-big {
         height: 56px;

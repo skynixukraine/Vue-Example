@@ -1,9 +1,11 @@
 <template>
-	<div class = "body-parts" :class = "{'body-parts--is-clickable': isClickable}" ref="bodyParts">
+	<div class = "body-parts" :class = "{'body-parts--is-clickable': isClickable}" ref = "bodyParts">
 		<div class = "body-parts__half front"
 			 v-if = "showedHalfPart === 'both' || showedHalfPart === 'front'"
+			 data-half-part = "front"
 			 @click = "onSelectPart">
 			<svg xmlns = "http://www.w3.org/2000/svg"
+				 data-half-part = "front"
 				 width = "364"
 				 height = "850"
 				 viewBox = "0 0 364 850"
@@ -105,8 +107,10 @@
 		</div>
 		<div class = "body-parts__half back"
 			 v-if = "showedHalfPart === 'both' || showedHalfPart === 'back'"
+			 data-half-part = "back"
 			 @click = "onSelectPart">
 			<svg xmlns = "http://www.w3.org/2000/svg"
+				 data-half-part = "back"
 				 width = "364"
 				 height = "850"
 				 viewBox = "0 0 364 850"
@@ -208,8 +212,8 @@
 
 
 <script>
-	const SELECTED_PART_CLASS_NAME = "selected";
-	
+    const SELECTED_PART_CLASS_NAME = "selected";
+
     export default {
         props   : {
             showedHalfPart : {
@@ -225,24 +229,21 @@
                 default : []
             }
         },
-		mounted(){
+        mounted(){
             this.checkSelectedParts();
-		},
-		watch:{
+        },
+        watch   : {
             selectedParts(){
                 this.checkSelectedParts();
-			}
-		},
-        data(){
-            return {}
+            }
         },
         methods : {
             onSelectPart(event){
+				let eventData = {
+					halfPart : event.target.getAttribute("data-half-part") || event.target.parentNode.getAttribute("data-half-part") || event.target.parentNode.parentNode.getAttribute("data-half-part")
+				};
+				
                 if(event.target.getAttribute("data-name")){
-                    let eventData = {
-                        halfPart : event.target.parentNode.parentNode.getAttribute("id")
-                    };
-
                     if(this.isClickable){
                         const isAddNewPart = !event.target.getAttribute("class");
 
@@ -251,36 +252,36 @@
                         eventData.isAddNewPart = isAddNewPart;
                         eventData.targetPartId = event.target.getAttribute("id");
                     }
-
-                    this.$emit("select-body-part", eventData);
                 }
-            },
-			checkSelectedParts(){
-                const previouslySelectedParts = this.$refs.bodyParts.querySelectorAll("." + SELECTED_PART_CLASS_NAME);
-				if(previouslySelectedParts.length){
-				    for(let i = 0; i < previouslySelectedParts.length; i++){
-                        previouslySelectedParts[i].setAttribute("class", "");
-					}
-				}
                 
+				this.$emit("select-body-part", eventData);
+            },
+            checkSelectedParts(){
+                const previouslySelectedParts = this.$refs.bodyParts.querySelectorAll("." + SELECTED_PART_CLASS_NAME);
+                if(previouslySelectedParts.length){
+                    for(let i = 0; i < previouslySelectedParts.length; i++){
+                        previouslySelectedParts[i].setAttribute("class", "");
+                    }
+                }
+
                 if(this.selectedParts.length){
                     for(let i = 0; i < this.selectedParts.length; i++){
                         const elem = this.$refs.bodyParts.querySelector("#" + this.selectedParts[i]);
-                        
+
                         if(elem){
-							elem.setAttribute("class", SELECTED_PART_CLASS_NAME);
-						}
+                            elem.setAttribute("class", SELECTED_PART_CLASS_NAME);
+                        }
                     }
                 }
-			}
+            }
         }
     }
 </script>
 
 <style lang = "scss" scoped>
 	.body-parts {
-		display : flex;
-		max-height: 100%;
+		display    : flex;
+		max-height : 100%;
 		
 		&__half {
 			width  : 50%;
@@ -299,7 +300,7 @@
 			max-height : 100%;
 		}
 		
-		path{
+		path {
 			&.selected {
 				fill : $color-cinnabar;
 			}
@@ -315,6 +316,5 @@
 				}
 			}
 		}
-		
 	}
 </style>

@@ -318,7 +318,6 @@
             },
 
             onPhoneChange(eventValue, telInput){
-                console.log(eventValue);
                 this.models.telInput   = telInput;
                 this.formIsValid.phone = this.validatePhone(eventValue, this.models.telInput);
                 this.$forceUpdate()
