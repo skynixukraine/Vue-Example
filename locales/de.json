@@ -1,7 +1,7 @@
 {
 	"genegal-translations": {
-		"i-accept": "I accept",
-		"and": "and"
+		"i-accept": "Ich akzeptiere die",
+		"and": "und die"
 	},
 	"links": {
 		"logo-link": "Online Hautarzt vor Ort",
@@ -30,10 +30,11 @@
 		"imprint": "Impressum",
 		"data-protection": "Datenschutzerklärung",
 		"terms-of-service": "Allgemeine Geschäftsbedingungen",
-		"signin": "Sign In",
-		"signup": "Sign Up",
-		"terms-and-conditions": "Terms and Conditions",
-		"privacy-policy": "Accept Privacy Policy"
+		"signin": "EINLOGGEN",
+		"signup": "REGISTRIEREN",
+		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
+		"privacy-policy": " Datenschutzerklärung",
+		"forgot-password": "Wachtwoord vergeten?"
 	},
 	"states": {
 		"loading": "Loading..."
@@ -62,16 +63,16 @@
 		}
 	},
 	"forms": {
-		"enter-email": "Email Address",
-		"enter-password": "Password",
-		"create-password": "Password",
-		"confirm-password": "Confirm password",
-		"phone-number": "Phone number",
-		"upload-degree": "Upload medical degree (or add later)",
-		"upload-certification": "Upload board-certification (or add later)",
-		"i-accept": "I accept Terms and Conditions and Privacy Policy",
-		"add-degree": "Add degree",
-		"add-certification": "Add certification"
+		"enter-email": "E-Mail eingeben",
+		"enter-password": "Passwort eingeben",
+		"create-password": "Passwort erstellen",
+		"confirm-password": "Passwort bestätigen",
+		"phone-number": "Handynummer",
+		"upload-degree": "Approbationsurkunde hochladen (oder später hinzufügen)",
+		"upload-certification": "Facharztzeugnis hochladen (oder später hinzufügen)",
+		"i-accept": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen und die Datenschutzerklärung.",
+		"add-degree": "Approbationsurkunde hochladen",
+		"add-certification": "Facharztzeugnis hochladen"
 	},
 	"headers": {
 		"our-family-doctors": "Unsere Hausärzte",
@@ -83,8 +84,8 @@
 		"research": "Forschung",
 		"formal": "Formales",
 		"start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt",
-		"login": "Log In",
-		"register": "Register"
+		"login": "EINLOGGEN",
+		"register": "REGISTRIEREN"
 	},
 	"banners": {
 		"herobanner": {
