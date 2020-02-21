@@ -148,7 +148,7 @@
     $desktop_max_height : 502px;
 
     .page {
-        background : linear-gradient(180deg, #042052 0%, #0F44B2 100%);;
+        background : linear-gradient(180deg, #042052 0%, #0F44B2 100%);
     }
 
     // Only content section

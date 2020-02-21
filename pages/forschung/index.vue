@@ -15,89 +15,93 @@
 							 :id = "`message_${chat_message_index}`">
 							<transition name = "edit-animation">
 								<div class = "edit-answer-area"
+									 :class= "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}"
 									 v-if = "editingData && item.message_id === editingData.message_id">
-									<!--Multi select-->
-									<div class = "custom-checkbox"
-										 ref = "editMultiSelect"
-										 v-if = "editingData.type && editingData.type === QUESTION_TYPES.multiSelect">
-										<div class = "custom-checkbox__item"
-											 v-for = "(option, index) in questions[editingData.message_index].options"
-											 :key = "`edit-message_${editingData.message_id}__multi-select_${option.id}`">
-											<input type = "checkbox"
-												   :id = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
-												   :value = "option.id"
-												   v-model = "editingData.selectedOptions"
-												   :data-index = "index"
-												   class = "custom-checkbox__input">
-											<label :for = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
-												   class = "custom-checkbox__label">
-												<span class = "custom-checkbox__label__icon"></span>
-												{{ option.value }}
-											</label>
+									<div class = "edit-answer-area__wrapper"
+										 :class= "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}">
+										<!--Multi select-->
+										<div class = "custom-checkbox"
+											 ref = "editMultiSelect"
+											 v-if = "editingData.type && editingData.type === QUESTION_TYPES.multiSelect">
+											<div class = "custom-checkbox__item"
+												 v-for = "(option, index) in questions[editingData.message_index].options"
+												 :key = "`edit-message_${editingData.message_id}__multi-select_${option.id}`">
+												<input type = "checkbox"
+													   :id = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
+													   :value = "option.id"
+													   v-model = "editingData.selectedOptions"
+													   :data-index = "index"
+													   class = "custom-checkbox__input">
+												<label :for = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
+													   class = "custom-checkbox__label">
+													<span class = "custom-checkbox__label__icon"></span>
+													{{ option.value }}
+												</label>
+											</div>
 										</div>
-									</div>
-									<!--Radio-->
-									<div class = "custom-radio"
-										 ref = "editRadio"
-										 v-if = "editingData.type && editingData.type === QUESTION_TYPES.radio">
-										<div class = "custom-radio__item"
-											 v-for = "(option, index) in questions[editingData.message_index].options"
-											 :key = "`edit-message_${editingData.message_index}__radio_${option.id}`">
-											<input type = "radio"
-												   name = "edit-answer-area-radio"
-												   :id = "`edit-message_${editingData.message_index}__radio_${option.id}`"
-												   :value = "option.id"
-												   v-model = "editingData.selectedOption[0]"
-												   :data-index = "index"
-												   class = "custom-radio__input">
-											<label :for = "`edit-message_${editingData.message_index}__radio_${option.id}`"
-												   class = "custom-radio__label">
-												<span class = "custom-radio__label__icon"></span>
-												{{ option.value }}
-											</label>
+										<!--Radio-->
+										<div class = "custom-radio"
+											 ref = "editRadio"
+											 v-if = "editingData.type && editingData.type === QUESTION_TYPES.radio">
+											<div class = "custom-radio__item"
+												 v-for = "(option, index) in questions[editingData.message_index].options"
+												 :key = "`edit-message_${editingData.message_index}__radio_${option.id}`">
+												<input type = "radio"
+													   name = "edit-answer-area-radio"
+													   :id = "`edit-message_${editingData.message_index}__radio_${option.id}`"
+													   :value = "option.id"
+													   v-model = "editingData.selectedOption[0]"
+													   :data-index = "index"
+													   class = "custom-radio__input">
+												<label :for = "`edit-message_${editingData.message_index}__radio_${option.id}`"
+													   class = "custom-radio__label">
+													<span class = "custom-radio__label__icon"></span>
+													{{ option.value }}
+												</label>
+											</div>
 										</div>
-									</div>
-									<!--Input Text-->
-									<div class = "edit-answer-area__input-text"
-										 v-if = "editingData.type === QUESTION_TYPES.inputText">
-										<AutoHeight @change = "onInputText"
-													:content = "userAnswers[editingData.message_index].contentForChat" />
-									</div>
-									<!--Select body part-->
-									<div class = "edit-answer-area__select-body-part"
-										 v-if = "editingData.type === QUESTION_TYPES.bodySelect">
-										<div class = "edit-answer-area__select-body-part__parts">
-											<BodyParts @select-body-part = "onSelectBodyPart"
-													   :selectedParts = editingData.selectedBodyParts />
+										<!--Input Text-->
+										<div class = "edit-answer-area__input-text"
+											 v-if = "editingData.type === QUESTION_TYPES.inputText">
+											<AutoHeight @change = "onInputText"
+														:content = "userAnswers[editingData.message_index].contentForChat" />
 										</div>
-									</div>
-									<!--Upload image-->
-									<div class = "edit-answer-area__upload-image"
-										 v-if = "editingData.type === QUESTION_TYPES.uploadImg">
-										<input type = "file"
-											   accept = ".jpeg, .jpg, .png"
-											   class = "edit-answer-area__upload-image__input"
-											   ref = "editUploadImgInput"
-											   @change = "onUploadFile">
-										<div class = "edit-answer-area__upload-image__user-image-container"
-											 v-html = "editingData.fileHTML"
-											 v-if = "editingData.fileHTML"
-											 @click = "$refs.editUploadImgInput[0].click()"></div>
-									</div>
-									<div class = "edit-answer-area__controls">
-										<button type = "button"
-												class = "control-btn--cancel"
-												@click = "onEditMessageCancel">Cancel
-										</button>
-										<button type = "button"
-												class = "control-btn--submit"
-												:class = "{
-													'is-disable': editingData.type === QUESTION_TYPES.multiSelect && !editingData.selectedOptions.length || editingData.type === QUESTION_TYPES.inputText && !editingData.contentForChat,
-													'is-text': lastQuestionData.type === QUESTION_TYPES.inputText,
-													'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
-												}"
-												@click = "onEditMessageSubmit">Confirm
-										</button>
+										<!--Select body part-->
+										<div class = "edit-answer-area__select-body-part"
+											 v-if = "editingData.type === QUESTION_TYPES.bodySelect">
+											<div class = "edit-answer-area__select-body-part__parts">
+												<BodyParts @select-body-part = "onSelectBodyPart"
+														   :selectedParts = editingData.selectedBodyParts />
+											</div>
+										</div>
+										<!--Upload image-->
+										<div class = "edit-answer-area__upload-image"
+											 v-if = "editingData.type === QUESTION_TYPES.uploadImg">
+											<input type = "file"
+												   accept = ".jpeg, .jpg, .png"
+												   class = "edit-answer-area__upload-image__input"
+												   ref = "editUploadImgInput"
+												   @change = "onUploadFile">
+											<div class = "edit-answer-area__upload-image__user-image-container"
+												 v-html = "editingData.fileHTML"
+												 v-if = "editingData.fileHTML"
+												 @click = "$refs.editUploadImgInput[0].click()"></div>
+										</div>
+										<div class = "edit-answer-area__controls">
+											<button type = "button"
+													class = "control-btn--cancel"
+													@click = "onEditMessageCancel">Cancel
+											</button>
+											<button type = "button"
+													class = "control-btn--submit"
+													:class = "{
+														'is-disable': editingData.type === QUESTION_TYPES.multiSelect && !editingData.selectedOptions.length || editingData.type === QUESTION_TYPES.inputText && !editingData.contentForChat,
+														'is-text': lastQuestionData.type === QUESTION_TYPES.inputText,
+														'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
+													}"
+													@click = "onEditMessageSubmit">Confirm
+											</button>
+										</div>
 									</div>
 								</div>
 							</transition>
@@ -131,7 +135,8 @@
 					<div class = "answer-area"
 						 :class = "{'is-wait-loading': !isUserActionArea}"
 						 v-if = "lastQuestionData && !isQuestionsOver">
-						<div class = "answer-area__wrapper">
+						<div class = "answer-area__wrapper"
+							 :class= "{'is-for-input-text': lastQuestionData.type === QUESTION_TYPES.inputText}">
 							<div class = "answer-area__content">
 								<!--Multi select-->
 								<div class = "custom-checkbox"
@@ -212,8 +217,7 @@
 												'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
 											}"
 											@click.stop = "onUserSubmit()">
-										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ?
-										"select upload img" : lastQuestionData.button }}
+										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "select upload img" : lastQuestionData.button }}
 									</button>
 									<button v-else class = "submit-btn"
 											@click = "onStart"
@@ -289,7 +293,7 @@
 						</div>
 						<button type = "button"
 								class = "submit-btn"
-								:class = "{'is-disable': !isValidPersonalInfo}"
+								:class = "{'is-disable': !isValidPersonalInfoBlock}"
 								@click = "onPersonalInfoSubmit">Next
 						</button>
 					</div>
@@ -477,7 +481,7 @@
 
                 return result;
             },
-            isValidPersonalInfo(){
+            isValidPersonalInfoBlock(){
                 let result = true;
 
                 for(let key in this.personalInfoData){
@@ -674,6 +678,7 @@
                                     // Сохраняем индекс удаляемого сообщения, иначе из за цикла будет удалятся не только нужное сообщение
                                     let deleteMessageIndex = null;
                                     for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
+                                        console.log("question.id = ", this.questions[questionsIterator].id, "options[].next_message_id = ", editingQuestion.options[allOptionsIterator].next_message_id) ;
                                         if(this.questions[questionsIterator].id === editingQuestion.options[allOptionsIterator].next_message_id){
                                             if(!deleteMessageIndex || deleteMessageIndex !== questionsIterator){
 
@@ -975,7 +980,7 @@
                 this.$forceUpdate();
             },
             onPersonalInfoSubmit(){
-                if(!this.isValidPersonalInfo){ return; }
+                if(!this.isValidPersonalInfoBlock){ return; }
 
                 this.isPersonalInfoFilled = true;
 
@@ -1019,6 +1024,42 @@
 			cursor           : not-allowed;
 			pointer-events   : none;
 			background-color : $color-rolling-stone;
+		}
+	}
+	
+	@mixin container-for-input-text {
+		&.is-for-input-text {
+			width     : 100%;
+			max-width : 100%;
+		}
+	}
+	
+	.section {
+		&:before {
+			transition       : $transition;
+			background-color : rgba(0, 0, 0, 0);
+		}
+		
+		&--is-editing-message {
+			position : relative;
+			
+			&:before {
+				left             : 0;
+				right            : 0;
+				width            : 100%;
+				height           : 100%;
+				content          : "";
+				z-index          : 1;
+				position         : absolute;
+				background-color : rgba(0, 0, 0, .75);
+			}
+			
+			.message {
+				&--is-editing {
+					z-index  : 2;
+					position : relative;
+				}
+			}
 		}
 	}
 	
@@ -1190,33 +1231,8 @@
 		}
 	}
 	
-	.section {
-		&:before {
-			transition       : $transition;
-			background-color : rgba(0, 0, 0, 0);
-		}
-		
-		&--is-editing-message {
-			position : relative;
-			
-			&:before {
-				left             : 0;
-				right            : 0;
-				width            : 100%;
-				height           : 100%;
-				content          : "";
-				z-index          : 1;
-				position         : absolute;
-				background-color : rgba(0, 0, 0, .75);
-			}
-			
-			.message {
-				&--is-editing {
-					z-index  : 2;
-					position : relative;
-				}
-			}
-		}
+	.chat-container{
+		max-width: 600px;
 	}
 	
 	.message {
@@ -1282,6 +1298,8 @@
 			max-width       : $max_width;
 			flex-direction  : column;
 			justify-content : flex-end;
+			
+			@include container-for-input-text;
 		}
 		
 		&__input-text {
@@ -1336,16 +1354,15 @@
 	}
 	
 	.edit-answer-area {
-		color          : red;
-		display        : flex;
 		position       : absolute;
 		flex-wrap      : wrap;
-		max-width      : $max_width;
 		flex-direction : column;
 		
+		@include container-for-input-text;
+		
 		&__controls {
+			margin          : $main_offset / 2 #{$main_offset / -2} 0;
 			display         : flex;
-			margin-top      : $main_offset / 2;
 			flex-direction  : row;
 			justify-content : flex-end;
 		}
