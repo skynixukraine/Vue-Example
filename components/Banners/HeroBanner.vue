@@ -47,6 +47,8 @@ export default {};
 
     &__title {
         color: $color-white;
+        font-family: $TheAntiquaB;
+        letter-spacing: -0.02em;
     }
 
     &__text {
