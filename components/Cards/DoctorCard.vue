@@ -158,7 +158,7 @@
 				text-align      : left;
 				line-height     : 22px;
 				font-family     : $TheSansB;
-				font-weight     : 500;
+				font-weight     : 400;
 				text-decoration : none;
 				flex-grow       : 2;
 				color           : $color-rolling-stone;
