@@ -14,7 +14,7 @@
 						doctor.first_name : "" }}
 					</NuxtLink>
 				</div>
-				<div class = "doctor-card__main--price" style = "min-width: 70px">
+				<div class = "doctor-card__main--price">
 					{{ `${doctor.enquire_price} €` || "" }}
 				</div>
 			</div>
