@@ -8,7 +8,7 @@
         </div>
         <div class="section section--default-0 section--bg-right-1">
             <div class="container">
-                <img class="container__dots container__dots--4" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
+                <div class="container__dots-svg container__dots-svg--doc-photo"></div>
                 <header class="section-header">
                     <h2 class="section-header__title">{{ $t('headers.our-family-doctors') }}</h2>
                 </header>
@@ -24,7 +24,6 @@
         </div>
         <div class="section section--bg-left-2">
             <div class="container">
-                <img class="container__dots container__dots--3" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
                 <header class="section-header">
                     <h2 class="section-header__title">{{ $t('headers.few-steps') }}</h2>
                 </header>
@@ -51,13 +50,13 @@
         </div>
         <div class="section section--default-0">
             <div class="container">
-                <img class="container__dots container__dots--1" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
+                <div class="container__dots-svg container__dots-svg--consult-block"></div>
                 <RequestBanner />
             </div>
         </div>
         <div class="section">
-            <div class="container">
-                <img class="container__dots container__dots--2" :src="require('~/static/images/images/dots-squere.png')" alt="dots">
+            <div class="container ">
+                <div class="container__dots-svg container__dots-svg--hand-photo"></div>
                 <WhyInfo />
             </div>
         </div>
