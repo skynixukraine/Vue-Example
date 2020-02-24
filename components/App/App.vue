@@ -320,9 +320,13 @@
 		}
 		
 		&--d3 {
+			flex-wrap: nowrap;
 			.list__item {
 				flex    : 0 0 100%;
 				padding : 16px;
+				@include tablet{
+					max-width: 33.33%;
+				}
 			}
 		}
 		

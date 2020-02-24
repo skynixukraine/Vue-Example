@@ -115,7 +115,7 @@
 			background-color : $color-white;
 			display          : flex;
 			flex-direction   : column;
-			flex: 1 1 auto;
+			flex             : 1 1 auto;
 			
 			&--title-container {
 				width           : 100%;
@@ -171,6 +171,7 @@
 				font-style  : normal;
 				font-weight : 500;
 				line-height : 23px;
+				word-wrap   : break-word;
 				
 				&:before {
 					width            : 18px;
