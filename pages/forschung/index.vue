@@ -624,11 +624,11 @@
             },
             onEditMessageSubmit(){
                 let editedUserAnswer  = Object.assign({}, this.userAnswers[this.editingData.message_index]);
-                const editingQuestion = this.questions[this.editingData.message_index];
+                const targetEditingQuestion = this.questions[this.editingData.message_index];
 
                 switch(this.editingData.type){
                     case this.QUESTION_TYPES.radio:{
-                        for(let optionsIterator = 0, option = editingQuestion.options[0]; optionsIterator < editingQuestion.options.length; optionsIterator++, option = editingQuestion.options[optionsIterator]){
+                        for(let optionsIterator = 0, option = targetEditingQuestion.options[0]; optionsIterator < targetEditingQuestion.options.length; optionsIterator++, option = targetEditingQuestion.options[optionsIterator]){
 
                             if(option.id === this.editingData.selectedOption[0]){
                                 editedUserAnswer.contentForChat = option.value + ".";
@@ -661,14 +661,14 @@
                         let selectedOption = [],
                             contentForChat = "";
 
-                        for(let allOptionsIterator = 0; allOptionsIterator < editingQuestion.options.length; allOptionsIterator++){
+                        for(let allOptionsIterator = 0; allOptionsIterator < targetEditingQuestion.options.length; allOptionsIterator++){
                             for(let selectedOptionIterator = 0; selectedOptionIterator < this.editingData.selectedOptions.length; selectedOptionIterator++){
-                                if(this.editingData.selectedOptions[selectedOptionIterator] === editingQuestion.options[allOptionsIterator].id){
-                                    contentForChat += `${editingQuestion.options[allOptionsIterator].value}, `;
-                                    selectedOption.push(editingQuestion.options[allOptionsIterator].id);
+                                if(this.editingData.selectedOptions[selectedOptionIterator] === targetEditingQuestion.options[allOptionsIterator].id){
+                                    contentForChat += `${targetEditingQuestion.options[allOptionsIterator].value}, `;
+                                    selectedOption.push(targetEditingQuestion.options[allOptionsIterator].id);
 
-                                    if(editingQuestion.options[allOptionsIterator].next_message_id){
-                                        this.addNextQuestionsIdInQueue(editingQuestion.options[allOptionsIterator].next_message_id);
+                                    if(targetEditingQuestion.options[allOptionsIterator].next_message_id){
+                                        this.addNextQuestionsIdInQueue(targetEditingQuestion.options[allOptionsIterator].next_message_id);
                                     }
                                 } else{
                                     // К предыдущим выбраным чекбоксом могли уже загрузить 'question'
@@ -678,13 +678,11 @@
                                     // Сохраняем индекс удаляемого сообщения, иначе из за цикла будет удалятся не только нужное сообщение
                                     let deleteMessageIndex = null;
                                     for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
-                                        console.log("question.id = ", this.questions[questionsIterator].id, "options[].next_message_id = ", editingQuestion.options[allOptionsIterator].next_message_id) ;
-                                        if(this.questions[questionsIterator].id === editingQuestion.options[allOptionsIterator].next_message_id){
+                                        if(this.questions[questionsIterator].id === targetEditingQuestion.options[allOptionsIterator].next_message_id){
+											deleteMessageIndex = questionsIterator;
+
+											this.deleteQuestion(questionsIterator);
                                             if(!deleteMessageIndex || deleteMessageIndex !== questionsIterator){
-
-                                                deleteMessageIndex = questionsIterator;
-
-                                                this.deleteQuestion(questionsIterator);
                                             }
                                         }
                                     }
@@ -1231,8 +1229,9 @@
 		}
 	}
 	
-	.chat-container{
-		max-width: 600px;
+	.chat-container, .answer-area {
+		margin    : 0 auto;
+		max-width : 600px;
 	}
 	
 	.message {
