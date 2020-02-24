@@ -78,7 +78,7 @@ export default {
     }
 
     &__text {
-        font-family: $font-family-secondary;
+        font-family: $TheAntiquaB;
         font-size: 18px;
         color: $color-white;
     }

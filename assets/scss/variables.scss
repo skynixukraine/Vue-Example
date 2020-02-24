@@ -1,6 +1,11 @@
 // font families
-$font-family-primary : 'Sans', sans-serif;
-$font-family-secondary : 'Antiqua', sans-serif;
+
+
+$TheSansB : 'TheSansB', sans-serif;
+$TheAntiquaB : 'TheAntiquaB', sans-serif;
+
+$font-family-primary : $TheSansB;
+$font-family-secondary : $TheAntiquaB;
 
 // colors
 $color-curious-blue : #247ee5;

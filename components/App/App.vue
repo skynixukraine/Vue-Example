@@ -10,7 +10,7 @@
 	*********************/
 	body {
 		/*font-family: "Sans", sans-serif;*/
-		font-family      : TheSansB, sans-serif;
+		font-family      : $TheSansB;
 		font-size        : 18px;
 		line-height      : 1.55;
 		color            : $color-rolling-stone;
@@ -24,7 +24,7 @@
 	h4,
 	h5,
 	h6 {
-		font-family : "Antiqua", sans-serif;
+		font-family : $TheAntiquaB;
 		line-height : 1.33;
 		color       : $color-curious-blue;
 		font-weight : 700;
@@ -320,12 +320,14 @@
 		}
 		
 		&--d3 {
-			flex-wrap: nowrap;
+			flex-wrap: wrap;
 			.list__item {
 				flex    : 0 0 100%;
 				padding : 16px;
 				@include tablet{
 					max-width: 33.33%;
+					flex-wrap: nowrap;
+					
 				}
 			}
 		}
@@ -385,15 +387,15 @@
 			min-width      : 265px;
 			display        : inline-block;
 			text-align     : center;
-			padding        : 20px 31px 16px;
-			border-radius  : 5px;
+			padding        : 20px 45px 15px 45px;
+			border-radius  : 4px;
 			font-size      : 16px;
 			line-height    : 21px;
 			font-weight    : 500;
 			text-transform : uppercase;
-			letter-spacing : 2px;
-			border-width   : 1px;
-			border-style   : solid;
+			letter-spacing : 0.14em;
+			/*border-width   : 1px;*/
+			/*border-style   : solid;*/
 			
 			&-full-width {
 				width : 100%
@@ -485,10 +487,10 @@
 			}
 			
 			&-mobile-large {
-				padding : 20px 16px 16px;
+				padding : 20px 16px 15px;
 				
 				@media (min-width : #{$screen-phone-irregular-min}) {
-					padding : 20px 31px 16px;
+					padding : 20px 30px 15px;
 				}
 			}
 		}

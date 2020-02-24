@@ -99,9 +99,10 @@ export default {
     }
 
     &__link {
+        font-family: $TheSansB;
         display: block;
         font-size: 24px;
-        font-weight: 400;
+        font-weight: 500;
         color: $color-white;
         text-decoration: none;
 

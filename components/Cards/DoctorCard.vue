@@ -15,7 +15,7 @@
 					</NuxtLink>
 				</div>
 				<div class = "doctor-card__main--price">
-					{{ doctor.enquire_price || "" }}
+					{{ `${doctor.enquire_price} €` || "" }}
 				</div>
 			</div>
 			<div class = "doctor-card__main--description">
@@ -132,6 +132,7 @@
 				font-weight     : 400;
 				line-height     : 30px;
 				text-decoration : none;
+				font-family     : $TheAntiquaB;
 				
 				&_full {
 					color : inherit;
@@ -146,20 +147,21 @@
 				font-weight   : 500;
 				line-height   : 23px;
 				padding-right : 10px;
+				flex-shrink   : 0;
 			}
 			
 			&--description {
-				color           : $color-river-bed;
 				flex            : 1 0 auto;
 				padding         : 5% 0 $padding 5%;
 				font-size       : 15px;
 				font-style      : normal;
 				text-align      : left;
 				line-height     : 22px;
-				font-family     : TheSansB, sans-serif;
+				font-family     : $TheSansB;
 				font-weight     : 500;
 				text-decoration : none;
 				flex-grow       : 2;
+				color           : $color-rolling-stone;
 				
 				&:hover {text-decoration : none;}
 			}

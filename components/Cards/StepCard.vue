@@ -102,7 +102,17 @@
 			padding       : 48px 16px 32px;
 			border-radius : 20px;
 			text-align    : center;
+			
+			.step-card__title{
+				font-weight: 600;
+			}
+			.step-card__text{
+				font-weight: 500;
+				font-style: normal;
+			}
 		}
+		
+	
 		
 		&__image-dots {
 			position : absolute;

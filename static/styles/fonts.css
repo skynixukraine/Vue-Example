@@ -1,84 +1,84 @@
 /* Antiqua */
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W3Light.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W3LightItalic.otf') format('opentype');
     font-weight: 300;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W4SemiLight.otf') format('opentype');
     font-weight: 200;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W4SemiLightItalic.otf') format('opentype');
     font-weight: 200;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W5Plain.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W5PlainItalic.otf') format('opentype');
     font-weight: 400;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W6SemiBold.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W6SemiBoldItalic.otf') format('opentype');
     font-weight: 500;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W7Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W7BoldItalic.otf') format('opentype');
     font-weight: 700;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W8ExtraBold.otf') format('opentype');
     font-weight: 800;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W8ExtraBoldItalic.otf') format('opentype');
     font-weight: 800;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W9Black.otf') format('opentype');
     font-weight: 900;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Antiqua';
+    font-family: 'TheAntiquaB';
     src: url('../fonts/antiqua/TheAntiquaB-W9BlackItalic.otf') format('opentype');
     font-weight: 900;
     font-style: italic;
@@ -87,97 +87,97 @@
 
 /* Sans */
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W2ExtraLight.otf') format('opentype');
     font-weight: 100;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W2ExtraLightItalic.otf') format('opentype');
     font-weight: 200;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W3Light.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W3LightItalic.otf') format('opentype');
     font-weight: 300;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W4SemiLight.otf') format('opentype');
     font-weight: 200;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W4SemiLightItalic.otf') format('opentype');
     font-weight: 200;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W5Plain.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W5PlainItalic.otf') format('opentype');
     font-weight: 400;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W6SemiBold.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W6SemiBoldItalic.otf') format('opentype');
     font-weight: 500;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W7Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W7BoldItalic.otf') format('opentype');
     font-weight: 700;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W8ExtraBold.otf') format('opentype');
     font-weight: 800;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W8ExtraBoldItalic.otf') format('opentype');
     font-weight: 800;
     font-style: italic;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W9Black.otf') format('opentype');
     font-weight: 900;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Sans';
+    font-family: 'TheSansB';
     src: url('../fonts/sans/TheSansB-W9BlackItalic.otf') format('opentype');
     font-weight: 900;
     font-style: italic;

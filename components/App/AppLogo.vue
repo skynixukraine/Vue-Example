@@ -46,10 +46,11 @@ export default {
     &__text {
         width: 150px;
         margin-left: 10px;
-        font-family: $font-family-secondary;
+        font-family: $TheAntiquaB;
         color: $color-white;
         font-size: 18px;
         line-height: 1.3;
+        font-weight: bold;
 
         &-dashboard{
             color: $color-curious-blue;
