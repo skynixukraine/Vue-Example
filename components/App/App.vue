@@ -276,6 +276,8 @@
 			display : none;
 		}
 		
+		
+		
 		@include tablet-big {
 			&__dots {
 				display : block;
@@ -291,6 +293,8 @@
 					bottom   : -74px;
 					left     : -75px;
 				}
+				
+				
 				
 				&--3 {
 					position : absolute;
@@ -793,10 +797,35 @@
 			color: white;
 			border: none;
 			background: linear-gradient(270deg, #0F44B2 0%, #042052 100%);
-			font-family: TheSansB, sans-serif;
+			font-family: $TheAntiquaB;
 			font-size: 18px;
 			margin: 0 20px 0 0;
 			font-weight: 500;
 		}
+	}
+	
+	.container__dots-svg{
+		@include tablet-big{
+			position: absolute;
+			background-image : url("~static/images/icons/dots.svg");
+			width: 192px;
+			height: 146px;
+		}
+		
+		&--doc-photo{
+			bottom: 691px;
+			right: 1044px;
+		}
+		
+		&--hand-photo{
+			top: 519px;
+			right: 90%;
+		}
+		
+		&--consult-block{
+			bottom: 175px;
+			left: 1044px;
+		}
+		
 	}
 </style>
