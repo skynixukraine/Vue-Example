@@ -113,10 +113,10 @@
 			
 			</div>
 			<input type = "checkbox"
-					name = "accepted"
-					ref = "accepted"
-					v-model = "models.accepted"
-					@change = "onAcceptChange" />
+				   name = "accepted"
+				   ref = "accepted"
+				   v-model = "models.accepted"
+				   @change = "onAcceptChange" />
 			<div class = "form__message" v-if = "errors.accepted">{{ errors.accepted }}</div>
 		</div>
 		<div class = "form__item">
@@ -136,8 +136,8 @@
     import modal from '~/mixins/modal'
 
     export default {
-        
-        
+
+
         mixins : [
             validator,
             recaptcha,
@@ -326,16 +326,16 @@
 
             onDegreeUpload(event){
 
-                if(!event.target.files[0]) { return; }
-                
+                if(!event.target.files[0]){ return; }
+
                 this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
 
                 this.$forceUpdate()
             },
             onCertificationUpload(event){
 
-                if(!event.target.files[0]) { return; }
-                
+                if(!event.target.files[0]){ return; }
+
                 this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
 
                 this.$forceUpdate()
@@ -434,6 +434,7 @@
 			background    : $color-white;
 			box-sizing    : border-box;
 			padding-left  : 2%;
+			padding-top   : 4px;
 			border-radius : 4px;
 			// color: $color-form-input-placeholder;
 			
@@ -448,19 +449,19 @@
 			&::placeholder, input::placeholder {
 				color       : $color-form-input-placeholder;
 				font-style  : normal;
-				font-weight : 500;
+				font-weight : 400;
 			}
 			
 			&::-webkit-input-placeholder {
 				color       : $color-form-input-placeholder;
 				font-style  : normal;
-				font-weight : 500;
+				font-weight : 400;
 			}
 			
 			&::-moz-placeholder {
 				color       : $color-form-input-placeholder;
 				font-style  : normal;
-				font-weight : 500;
+				font-weight : 400;
 			}
 			
 			/* Firefox 19+ */
