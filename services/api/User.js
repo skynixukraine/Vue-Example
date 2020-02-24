@@ -1,310 +1,328 @@
-import { HTTP } from '~/plugins/modules/axios'
+import {HTTP} from "~/plugins/modules/axios";
 
 export default {
-    /**
-     * Register User
-     * @param {Object} registerData
-     * @return {Promise} responseData
-     */
-    async registerUser(registerData) {
-        return new Promise ((resolve, reject) => {
-            HTTP.post('/doctors/register', registerData)
+    async registerUser(registerData){
+        return new Promise((resolve, reject) => {
+            HTTP.post("/doctors/register", registerData)
                 .then(response => {
                     const responseData = {
-                        success: true,
-                        status: response.status,
-                        data: response.data.data,
-                        message: 'User success registered.',
-                    }
-                    resolve(responseData)
+                        success : true,
+                        status  : response.status,
+                        data    : response.data.data,
+                        message : "User success registered.",
+                    };
+                    resolve(responseData);
                 })
                 .catch(error => {
-                    let message = ''
-                    let errors = {}
+                    let message = "";
+                    let errors  = {};
 
-                    if (error.response.status === 422) {
-                        message = 'There are some validation errors.'
-                        errors = error.response.data.errors
+                    if(error.response.status === 422){
+                        message = "There are some validation errors.";
+                        errors  = error.response.data.errors;
                     }
-                    if (error.response.status === 500) {
-                        message = 'Internal technical error was happened.'
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
                     }
-                    
+
                     const responseData = {
-                        success: false,
-                        status: error.response.status,
+                        success : false,
+                        status  : error.response.status,
                         message,
                         errors,
-                    }
-                    reject(responseData)
-                })
-        })
+                    };
+                    reject(responseData);
+                });
+        });
     },
-
-
-
-
-    /**
-     * Login User
-     * @param {Object} loginData
-     * @return {Promise} responseData
-     */
-    async loginUser(loginData) {
-        return new Promise ((resolve, reject) => {
-            HTTP.post('/doctors/login', loginData)
+    async loginUser(loginData){
+        return new Promise((resolve, reject) => {
+            HTTP.post("/doctors/login", loginData)
                 .then(response => {
                     const responseData = {
-                        success: true,
-                        status: response.status,
-                        data: response.data.data,
-                        message: 'User success login.',
-                    }
-                    resolve(responseData)
+                        success : true,
+                        status  : response.status,
+                        data    : response.data.data,
+                        message : "User success login.",
+                    };
+                    resolve(responseData);
                 })
                 .catch(error => {
-                    let message = ''
-                    let errors = {}
+                    let message = "";
+                    let errors  = {};
 
-                    if (error.response.status === 401) {
-                        message = 'An authorization attempt has been failed.'
+                    if(error.response.status === 401){
+                        message = "An authorization attempt has been failed.";
                     }
-                    if (error.response.status === 422) {
-                        message = 'There are some validation errors.'
-                        errors = error.response.data.errors
+                    if(error.response.status === 422){
+                        message = "There are some validation errors.";
+                        errors  = error.response.data.errors;
                     }
-                    if (error.response.status === 500) {
-                        message = 'Internal technical error was happened.'
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
                     }
-                    
+
                     const responseData = {
-                        success: false,
-                        status: error.response.status,
+                        success : false,
+                        status  : error.response.status,
                         message,
                         errors,
-                    }
-                    reject(responseData)
-                })
-        })
+                    };
+                    reject(responseData);
+                });
+        });
     },
-
-
-
-
-    async logoutUser(token) {
-        return new Promise ((resolve, reject) => {
-            HTTP.patch('/doctors/logout', {}, { headers: {'Authorization': `Bearer ${token}`} })
+    async logoutUser(token){
+        return new Promise((resolve, reject) => {
+            HTTP.patch("/doctors/logout", {}, {headers : {"Authorization" : `Bearer ${token}`}})
                 .then(response => {
                     const responseData = {
-                        success: true,
-                        status: response.status,
-                        data: response.data.data,
-                        message: 'User success login.',
-                    }
-                    resolve(responseData)
+                        success : true,
+                        status  : response.status,
+                        data    : response.data.data,
+                        message : "User success login.",
+                    };
+                    resolve(responseData);
                 })
                 .catch(error => {
-                    let message = ''
+                    let message = "";
 
-                    if (error.response.status === 401) {
-                        message = 'Authorization failed.'
+                    if(error.response.status === 401){
+                        message = "Authorization failed.";
                     }
-                    if (error.response.status === 500) {
-                        message = 'Internal technical error was happened.'
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
                     }
 
                     const responseData = {
-                        success: false,
-                        status: error.response.status,
+                        success : false,
+                        status  : error.response.status,
                         message,
-                    }
-                    reject(responseData)
-                })
-        })
+                    };
+                    reject(responseData);
+                });
+        });
     },
-
-
-
-
-    /**
-     * Load User
-     * @param {Object} {id, token}
-     * @return {Promise}
-     */
-    async loadUser({id, token}) {
-        return new Promise ((resolve, reject) => {
-            HTTP.get(`/doctors/${id}`, { headers: {'Authorization': `Bearer ${token}`} })
+    async loadUser({id, token}){
+        return new Promise((resolve, reject) => {
+            HTTP.get(`/doctors/${id}`, {headers : {"Authorization" : `Bearer ${token}`}})
                 .then(response => {
-                    const responseData = {       
-                        success: true,
-                        status: response.status,
-                        data: response.data.data,
-                        message: 'User success loaded',
-                    }
-                    resolve(responseData)
+                    const responseData = {
+                        success : true,
+                        status  : response.status,
+                        data    : response.data.data,
+                        message : "User success loaded",
+                    };
+                    resolve(responseData);
                 })
                 .catch(error => {
-                    let message = ''
+                    let message = "";
 
-                    if (error.response.status === 401) {
-                        message = 'Invalid signature: unauthenticated.'
+                    if(error.response.status === 401){
+                        message = "Invalid signature: unauthenticated.";
                     }
-                    if (error.response.status === 403) {
-                        message = 'Current user has not permissions to do this action.'
+                    if(error.response.status === 403){
+                        message = "Current user has not permissions to do this action.";
                     }
-                    if (error.response.status === 404) {
-                        message = 'Resource not found.'
+                    if(error.response.status === 404){
+                        message = "Resource not found.";
                     }
-                    if (error.response.status === 500) {
-                        message = 'Internal technical error was happened.'
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
                     }
 
                     const responseData = {
-                        success: false,
-                        status: error.response.status,
+                        success : false,
+                        status  : error.response.status,
                         message,
-                    }
-                    reject(responseData)
-                })
-        })
+                    };
+                    reject(responseData);
+                });
+        });
     },
+    async updateUser({id, token, params}){
+        return new Promise((resolve, reject) => {
+            HTTP.patch(`/doctors/${id}`, params, {
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            }).then(response => {
+                const responseData = {
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                    message : "User success updated",
+                };
+                resolve(responseData);
+            }).catch(error => {
+                let message = "";
 
+                if(error.response.status === 401){
+                    message = "Authorization failed.";
+                }
+                if(error.response.status === 403){
+                    message = "Current user has not permissions to do this action.";
+                }
+                if(error.response.status === 404){
+                    message = "Resource not found.";
+                }
+                if(error.response.status === 500){
+                    message = "Internal technical error was happened.";
+                }
 
-
-
-    /**
-     * Update User
-     * @param {Object}
-     * @return {Promise}
-     */
-    async updateUser({id, token, params}) {
-        return new Promise ((resolve, reject) => {
-            HTTP.patch(`/doctors/${id}`, params, { headers: {'Authorization': `Bearer ${token}`, 'Content-Type': 'application/x-www-form-urlencoded'} })
+                const responseData = {
+                    success : false,
+                    status  : error.response.status,
+                    message,
+                };
+                reject(responseData);
+            });
+        });
+    },
+    async verifyUserEmail(verifyData){
+        return new Promise((resolve, reject) => {
+            HTTP.get("/doctors/verify-email", {params : verifyData})
                 .then(response => {
-                    const responseData = {       
-                        success: true,
-                        status: response.status,
-                        data: response.data.data,
-                        message: 'User success updated',
-                    }
-                    resolve(responseData)
+                    const responseData = {
+                        success : true,
+                        status  : response.status,
+                        message : "Email is verify",
+                    };
+                    resolve(responseData);
                 })
                 .catch(error => {
-                    let message = ''
+                    let message = "";
 
-                    if (error.response.status === 401) {
-                        message = 'Authorization failed.'
+                    if(error.response.status === 304){
+                        message = "An e-mail already verified.";
                     }
-                    if (error.response.status === 403) {
-                        message = 'Current user has not permissions to do this action.'
+                    if(error.response.status === 401){
+                        message = "Invalid signature: unauthenticated.";
                     }
-                    if (error.response.status === 404) {
-                        message = 'Resource not found.'
+                    if(error.response.status === 404){
+                        message = "Resource not found."
                     }
-                    if (error.response.status === 500) {
-                        message = 'Internal technical error was happened.'
+                    if(error.response.status === 500){
+                        message = "Something went wrong, please try again later.";
                     }
 
                     const responseData = {
-                        success: false,
-                        status: error.response.status,
+                        success : false,
+                        status  : error.response.status,
                         message,
-                    }
-                    reject(responseData)
-                })
-        })
+                    };
+                    reject(responseData);
+                });
+        });
     },
-
-
-
-
-    /**
-     * Verify User Email
-     * @param {Object} verifyData
-     * @return {Promise} none or Error Object
-     */
-    async verifyUserEmail(verifyData) {
-        return new Promise ((resolve, reject) => {
-            HTTP.get('/doctors/verify-email', { params: verifyData })
+    async sendEmailVerifyLink(requestData){
+        return new Promise((resolve, reject) => {
+            HTTP.post("/doctors/send-email-verification-link", requestData)
                 .then(response => {
-                    const responseData = {          
-                        success: true,
-                        status: response.status,
-                        message: 'Email is verify',
-                    }
-                    resolve(responseData)
+                    console.log("sendEmailVerifyLink response: ", response);
+                    const responseData = {
+                        success : true,
+                        status  : response.status,
+                        message : "Verify link has been send on your email.",
+                    };
+                    resolve(responseData);
                 })
                 .catch(error => {
-                    let message = ''
+                    console.log("sendEmailVerifyLink error: ", error);
+                    let message = "";
 
-                    if (error.response.status === 304) {
-                        message = 'An e-mail already verified.'
+                    if(error.response.status === 304){
+                        message = "An e-mail already verified.";
                     }
-                    if (error.response.status === 401) {
-                        message = 'Invalid signature: unauthenticated.'
+                    if(error.response.status === 404){
+                        message = "The doctor with provided email not found.";
                     }
-                    if (error.response.status === 404) {
-                        message = 'Resource not found.'
+                    if(error.response.status === 422){
+                        message = "An email is not valid.";
                     }
-                    if (error.response.status === 500) {
-                        message = 'Something went wrong, please try again later.'
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
                     }
 
                     const responseData = {
-                        success: false,
-                        status: error.response.status,
+                        success : false,
+                        status  : error.response.status,
                         message,
-                    }
+                    };
 
-                    reject(responseData)
-                })
-        })
+                    reject(responseData);
+                });
+        });
     },
-
-
-
-
-    /**
-     * Resend Verify Email
-     * @param {Object} verifyData
-     * @return {Promise} none or Error Object
-     */
-    async sendEmailVerifyLink(requestData) {
-        return new Promise ((resolve, reject) => {
-            HTTP.post('/doctors/send-email-verification-link', requestData)
+    async loadPaymentData(requestConfig){
+        return new Promise((resolve, reject) => {
+            HTTP.get(`/doctors/${requestConfig.doctor_id}/stripe-connect`, {headers : {Authorization : `Bearer ${requestConfig.token}`}})
                 .then(response => {
-                    console.log('sendEmailVerifyLink response: ', response);
-                    const responseData = {          
-                        success: true,
-                        status: response.status,
-                        message: 'Verify link has been send on your email.',
-                    }
-                    resolve(responseData)
+                    const responseData = {
+                        success : true,
+                        status  : response.status,
+                        data    : response.data,
+                        message : 'Doctors success loaded.',
+                    };
+
+                    resolve(responseData);
                 })
                 .catch(error => {
-                    console.log('sendEmailVerifyLink error: ', error);
-                    let message = ''
+                    let message = '';
 
-                    if (error.response.status === 304) {
-                        message = 'An e-mail already verified.'
-                    }
-                    if (error.response.status === 404) {
-                        message = 'The doctor with provided email not found.'
-                    }
-                    if (error.response.status === 422) {
-                        message = 'An email is not valid.'
-                    }
-                    if (error.response.status === 500) {
-                        message = 'Internal technical error was happened.'
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
                     }
 
                     const responseData = {
-                        success: false,
-                        status: error.response.status,
+                        success : false,
+                        status  : error.response.status,
                         message,
-                    }
+                    };
 
-                    reject(responseData)
-                })
-        })
+                    reject(responseData);
+                });
+        });
     },
+    async connectPaymentStripe(requestData){
+        return new Promise((resolve, reject) => {
+            HTTP.patch(`/doctors/${requestData.doctor_id}/stripe-token`, requestData.requestData, {
+                headers : {
+                    "Authorization" : `Bearer ${requestData.token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            }).then(response => {
+                const responseData = {
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                    message : "User success updated",
+                };
+                resolve(responseData);
+            }).catch(error => {
+                let message = "";
+
+                if(error.response.status === 401){
+                    message = "Authorization failed.";
+                }
+                if(error.response.status === 403){
+                    message = "Current user has not permissions to do this action.";
+                }
+                if(error.response.status === 404){
+                    message = "Resource not found.";
+                }
+                if(error.response.status === 500){
+                    message = "Internal technical error was happened.";
+                }
+
+                const responseData = {
+                    success : false,
+                    status  : error.response.status,
+                    message,
+                };
+                reject(responseData);
+            });
+        });
+    }
 }
