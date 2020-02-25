@@ -3,7 +3,7 @@ import configServer from './configs/server'
 import configEnv from './configs/env'
 
 module.exports = {
-    //server: configServer,
+    server: configServer,
     env: configEnv,
     head: {
         title: 'client',
@@ -13,9 +13,6 @@ module.exports = {
             { hid: 'description', name: 'description', content: 'Nuxt.js project' },
             { name: 'msapplication-TileColor', content: '#ffffff' },
             { name: 'msapplication-TileImage', content: '/favicon512x512.png' },
-
-
-
         ],
         script: [
             { src: `https://js.stripe.com/v3/` },
@@ -38,7 +35,6 @@ module.exports = {
             { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: "192x192", href: '/favicon192x192.png' },
             { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: "384x384", href: '/favicon384x384.png' },
             { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: "512x512", href: '/favicon512x512.png' },
-
         ]
     },
     css: [
