@@ -12,8 +12,8 @@ export default {
             const startLocation = window.pageYOffset;
             this.endLocation    = anchor.offsetTop;
             const distance      = this.endLocation - startLocation;
-            this.increments   = distance / (duration / 16);
-            this.runAnimation = setInterval(() => this.animateScroll(), 16);
+            this.increments   = distance / (duration / 45);
+            this.runAnimation = setInterval(() => this.animateScroll(), 10);
         },
 
         animateScroll(){
@@ -22,7 +22,7 @@ export default {
         },
         stopAnimation(increments, endLocation){
             const travelled = window.pageYOffset;
-            if(travelled >= endLocation){
+            if(travelled >= endLocation - 48){
                 clearInterval(this.runAnimation);
             }
         },
