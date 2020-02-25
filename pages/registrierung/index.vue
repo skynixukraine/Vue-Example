@@ -6,11 +6,11 @@
                     <button
                         class="link link--button link--button-blue link--button-gradient"
                         @click="setCurrentTab('signin')"
-                    >Sign In</button>
+                    >{{this.$t('links.signin')}}</button>
                     <button
                         class="link link--button link--button-blue link--button-gradient"
                         @click="setCurrentTab('signup')"
-                    >Sign Up</button>
+                    >{{this.$t('links.signup')}}</button>
                 </div>
                 <div class="container-forms">
                     <template v-if="windowWidth  >= 962 || currentTab === 'signin'">
