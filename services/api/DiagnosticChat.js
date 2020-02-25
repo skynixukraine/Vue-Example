@@ -10,13 +10,13 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : 'Doctors success loaded.',
+                        message : "First question success loaded.",
                     };
 
                     resolve(responseData);
                 })
                 .catch(error => {
-                    let message = '';
+                    let message = "";
 
                     if(error.response.status === 500){
                         message = "Internal technical error was happened.";
@@ -29,8 +29,8 @@ export default {
                     };
 
                     reject(responseData);
-                })
-        })
+                });
+        });
     },
     async loadNextQuestion(nextQuestionId){
 
@@ -41,13 +41,13 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : 'Doctors success loaded.',
+                        message : "Question success loaded.",
                     };
 
                     resolve(responseData);
                 })
                 .catch(error => {
-                    let message = '';
+                    let message = "";
 
                     if(error.response.status === 500){
                         message = "Internal technical error was happened.";
@@ -60,7 +60,38 @@ export default {
                     };
 
                     reject(responseData);
-                })
-        })
+                });
+        });
     },
+    async loadTargetDoctorForDiagnosticChat(requestConfig){
+
+        return new Promise((resolve, reject) => {
+            HTTP.get("/doctors", {params : requestConfig})
+                .then(response => {
+                    const responseData = {
+                        success : true,
+                        status  : response.status,
+                        data    : response.data,
+                        message : "Doctor success loaded.",
+                    };
+
+                    resolve(responseData);
+                })
+                .catch(error => {
+                    let message = "";
+
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
+                    }
+
+                    const responseData = {
+                        success : false,
+                        status  : error.response.status,
+                        message,
+                    };
+
+                    reject(responseData);
+                });
+        });
+    }
 }

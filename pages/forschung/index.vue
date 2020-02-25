@@ -15,89 +15,93 @@
 							 :id = "`message_${chat_message_index}`">
 							<transition name = "edit-animation">
 								<div class = "edit-answer-area"
+									 :class= "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}"
 									 v-if = "editingData && item.message_id === editingData.message_id">
-									<!--Multi select-->
-									<div class = "custom-checkbox"
-										 ref = "editMultiSelect"
-										 v-if = "editingData.type && editingData.type === QUESTION_TYPES.multiSelect">
-										<div class = "custom-checkbox__item"
-											 v-for = "(option, index) in questions[editingData.message_index].options"
-											 :key = "`edit-message_${editingData.message_id}__multi-select_${option.id}`">
-											<input type = "checkbox"
-												   :id = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
-												   :value = "option.id"
-												   v-model = "editingData.selectedOptions"
-												   :data-index = "index"
-												   class = "custom-checkbox__input">
-											<label :for = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
-												   class = "custom-checkbox__label">
-												<span class = "custom-checkbox__label__icon"></span>
-												{{ option.value }}
-											</label>
+									<div class = "edit-answer-area__wrapper"
+										 :class= "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}">
+										<!--Multi select-->
+										<div class = "custom-checkbox"
+											 ref = "editMultiSelect"
+											 v-if = "editingData.type && editingData.type === QUESTION_TYPES.multiSelect">
+											<div class = "custom-checkbox__item"
+												 v-for = "(option, index) in questions[editingData.message_index].options"
+												 :key = "`edit-message_${editingData.message_id}__multi-select_${option.id}`">
+												<input type = "checkbox"
+													   :id = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
+													   :value = "option.id"
+													   v-model = "editingData.selectedOptions"
+													   :data-index = "index"
+													   class = "custom-checkbox__input">
+												<label :for = "`edit-message_${editingData.message_id}__multi-select_${option.id}`"
+													   class = "custom-checkbox__label">
+													<span class = "custom-checkbox__label__icon"></span>
+													{{ option.value }}
+												</label>
+											</div>
 										</div>
-									</div>
-									<!--Radio-->
-									<div class = "custom-radio"
-										 ref = "editRadio"
-										 v-if = "editingData.type && editingData.type === QUESTION_TYPES.radio">
-										<div class = "custom-radio__item"
-											 v-for = "(option, index) in questions[editingData.message_index].options"
-											 :key = "`edit-message_${editingData.message_index}__radio_${option.id}`">
-											<input type = "radio"
-												   name = "edit-answer-area-radio"
-												   :id = "`edit-message_${editingData.message_index}__radio_${option.id}`"
-												   :value = "option.id"
-												   v-model = "editingData.selectedOption[0]"
-												   :data-index = "index"
-												   class = "custom-radio__input">
-											<label :for = "`edit-message_${editingData.message_index}__radio_${option.id}`"
-												   class = "custom-radio__label">
-												<span class = "custom-radio__label__icon"></span>
-												{{ option.value }}
-											</label>
+										<!--Radio-->
+										<div class = "custom-radio"
+											 ref = "editRadio"
+											 v-if = "editingData.type && editingData.type === QUESTION_TYPES.radio">
+											<div class = "custom-radio__item"
+												 v-for = "(option, index) in questions[editingData.message_index].options"
+												 :key = "`edit-message_${editingData.message_index}__radio_${option.id}`">
+												<input type = "radio"
+													   name = "edit-answer-area-radio"
+													   :id = "`edit-message_${editingData.message_index}__radio_${option.id}`"
+													   :value = "option.id"
+													   v-model = "editingData.selectedOption[0]"
+													   :data-index = "index"
+													   class = "custom-radio__input">
+												<label :for = "`edit-message_${editingData.message_index}__radio_${option.id}`"
+													   class = "custom-radio__label">
+													<span class = "custom-radio__label__icon"></span>
+													{{ option.value }}
+												</label>
+											</div>
 										</div>
-									</div>
-									<!--Input Text-->
-									<div class = "edit-answer-area__input-text"
-										 v-if = "editingData.type === QUESTION_TYPES.inputText">
-										<AutoHeight @change = "onInputText"
-													:content = "userAnswers[editingData.message_index].contentForChat" />
-									</div>
-									<!--Select body part-->
-									<div class = "edit-answer-area__select-body-part"
-										 v-if = "editingData.type === QUESTION_TYPES.bodySelect">
-										<div class = "edit-answer-area__select-body-part__parts">
-											<BodyParts @select-body-part = "onSelectBodyPart"
-													   :selectedParts = editingData.selectedBodyParts />
+										<!--Input Text-->
+										<div class = "edit-answer-area__input-text"
+											 v-if = "editingData.type === QUESTION_TYPES.inputText">
+											<AutoHeight @change = "onInputText"
+														:content = "userAnswers[editingData.message_index].contentForChat" />
 										</div>
-									</div>
-									<!--Upload image-->
-									<div class = "edit-answer-area__upload-image"
-										 v-if = "editingData.type === QUESTION_TYPES.uploadImg">
-										<input type = "file"
-											   accept = ".jpeg, .jpg, .png"
-											   class = "edit-answer-area__upload-image__input"
-											   ref = "editUploadImgInput"
-											   @change = "onUploadFile">
-										<div class = "edit-answer-area__upload-image__user-image-container"
-											 v-html = "editingData.fileHTML"
-											 v-if = "editingData.fileHTML"
-											 @click = "$refs.editUploadImgInput[0].click()"></div>
-									</div>
-									<div class = "edit-answer-area__controls">
-										<button type = "button"
-												class = "control-btn--cancel"
-												@click = "onEditMessageCancel">Cancel
-										</button>
-										<button type = "button"
-												class = "control-btn--submit"
-												:class = "{
-													'is-disable': editingData.type === QUESTION_TYPES.multiSelect && !editingData.selectedOptions.length || editingData.type === QUESTION_TYPES.inputText && !editingData.contentForChat,
-													'is-text': lastQuestionData.type === QUESTION_TYPES.inputText,
-													'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
-												}"
-												@click = "onEditMessageSubmit">Confirm
-										</button>
+										<!--Select body part-->
+										<div class = "edit-answer-area__select-body-part"
+											 v-if = "editingData.type === QUESTION_TYPES.bodySelect">
+											<div class = "edit-answer-area__select-body-part__parts">
+												<BodyParts @select-body-part = "onSelectBodyPart"
+														   :selectedParts = editingData.selectedBodyParts />
+											</div>
+										</div>
+										<!--Upload image-->
+										<div class = "edit-answer-area__upload-image"
+											 v-if = "editingData.type === QUESTION_TYPES.uploadImg">
+											<input type = "file"
+												   accept = ".jpeg, .jpg, .png"
+												   class = "edit-answer-area__upload-image__input"
+												   ref = "editUploadImgInput"
+												   @change = "onUploadFile">
+											<div class = "edit-answer-area__upload-image__user-image-container"
+												 v-html = "editingData.fileHTML"
+												 v-if = "editingData.fileHTML"
+												 @click = "$refs.editUploadImgInput[0].click()"></div>
+										</div>
+										<div class = "edit-answer-area__controls">
+											<button type = "button"
+													class = "control-btn--cancel"
+													@click = "onEditMessageCancel">Cancel
+											</button>
+											<button type = "button"
+													class = "control-btn--submit"
+													:class = "{
+														'is-disable': editingData.type === QUESTION_TYPES.multiSelect && !editingData.selectedOptions.length || editingData.type === QUESTION_TYPES.inputText && !editingData.contentForChat,
+														'is-text': lastQuestionData.type === QUESTION_TYPES.inputText,
+														'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
+													}"
+													@click = "onEditMessageSubmit">Confirm
+											</button>
+										</div>
 									</div>
 								</div>
 							</transition>
@@ -131,7 +135,8 @@
 					<div class = "answer-area"
 						 :class = "{'is-wait-loading': !isUserActionArea}"
 						 v-if = "lastQuestionData && !isQuestionsOver">
-						<div class = "answer-area__wrapper">
+						<div class = "answer-area__wrapper"
+							 :class= "{'is-for-input-text': lastQuestionData.type === QUESTION_TYPES.inputText}">
 							<div class = "answer-area__content">
 								<!--Multi select-->
 								<div class = "custom-checkbox"
@@ -177,7 +182,7 @@
 								<!--Input Text-->
 								<div class = "answer-area__input-text"
 									 v-if = "lastQuestionData.type === QUESTION_TYPES.inputText">
-									<AutoHeight @change = "onInputText" :content = "''" />
+									<AutoHeight @change = "onInputText" :key = "`input_text_${messages.length}`"/>
 								</div>
 								<!--Select body part-->
 								<div class = "answer-area__select-body-part"
@@ -212,13 +217,12 @@
 												'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
 											}"
 											@click.stop = "onUserSubmit()">
-										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ?
-										"select upload img" : lastQuestionData.button }}
+										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "select upload img" : lastQuestionData.button }}
 									</button>
 									<button v-else class = "submit-btn"
 											@click = "onStart"
 											type = "button">
-										{{ this.FIRST_QUESTION_DATA.button }}
+										{{ this.firstQuestion.button }}
 									</button>
 									<transition name = "main-animation">
 										<div class = "answer-area__errors-message"
@@ -289,7 +293,7 @@
 						</div>
 						<button type = "button"
 								class = "submit-btn"
-								:class = "{'is-disable': !isValidPersonalInfo}"
+								:class = "{'is-disable': !isValidPersonalInfoBlock}"
 								@click = "onPersonalInfoSubmit">Next
 						</button>
 					</div>
@@ -302,9 +306,6 @@
 			</div>
 			<transition name = "modal">
 				<div class = "select-body-part-modal" v-if = "isShowSelectBodyPartModal">
-					<header class = "select-body-part-modal__header">
-						<h2>Select trouble zones</h2>
-					</header>
 					<div class = "select-body-part-modal__main">
 						<BodyParts :isClickable = true
 								   :showedHalfPart = showedBodyHalf
@@ -337,16 +338,18 @@
         async fetch({app, store, error}){
             // if token exist and user empty - load User object
             if(app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null){
-                await store.dispatch('user/LOAD_USER', {
+                await store.dispatch("user/LOAD_USER", {
                     id    : app.$cookies.get(app.cookie.names.tokenId),
                     token : app.$cookies.get(app.cookie.names.token)
                 }).catch(error => {
                     app.$cookies.remove(app.cookie.names.token);
                     app.$cookies.remove(app.cookie.names.tokenId);
-                })
+                });
             }
-
-            // await store.dispatch("diagnosticChat/LOAD_AND_SAVE_FIRST_MESSAGE");
+            
+            if(store.state.diagnosticChat.doctorIdForStartDiagnosticChat !== null){
+				await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id: store.state.diagnosticChat.doctorIdForStartDiagnosticChat});
+			}
         },
         mixins     : [
             validator
@@ -361,13 +364,14 @@
         },
         data(){
             return {
-                questions             : [],
-                editingData           : null,
-                userAnswers           : [],
-                isQuestionsOver       : false,
-                isUserActionArea      : false,
-                isPersonalInfoFilled  : false,
-                nextQuestionsId_queue : [],
+                questions                   : [],
+                editingData                 : null,
+                userAnswers                 : [],
+                isQuestionsOver             : false,
+                isUserActionArea            : false,
+                isPersonalInfoFilled        : false,
+                nextQuestionsId_queue       : [],
+                scrollOffsetForForbidScroll : 0,
 
                 // Data for 'body select' question type
                 showedBodyHalf                : "",
@@ -440,11 +444,6 @@
                     validCharactersOnly     : true,
                     disabledFetchingCountry : false,
                 },
-                FIRST_QUESTION_DATA             : {
-                    button         : "lets start",
-                    questioner     : "first message",
-                    contentForChat : "Are you ready?",
-                },
                 QUESTION_TYPES                  : {
                     radio       : "RADIO",
                     uploadImg   : "IMAGE",
@@ -477,7 +476,7 @@
 
                 return result;
             },
-            isValidPersonalInfo(){
+            isValidPersonalInfoBlock(){
                 let result = true;
 
                 for(let key in this.personalInfoData){
@@ -487,21 +486,45 @@
                 }
 
                 return result;
-            }
+            },
+			targetDoctor(){
+                return this.$store.state.diagnosticChat.targetDoctorForDiagnosticChat;
+			},
+			firstQuestion(){
+                if(this.targetDoctor){
+					return {
+						button         : "lets start",
+						questioner     : "first message",
+						contentForChat : `Are you ready to start a chat with ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}?`,
+					}
+				}else{
+                    this.$router.replace(this.$routes.hautarzt.path);
+				}
+			}
         },
         mounted(){
-            this.questions.push(this.FIRST_QUESTION_DATA);
-
-            setTimeout(() => {
-                this.isUserActionArea = true;
-            }, ANIMATION_DURATION);
+            if(this.firstQuestion){
+				this.questions.push(this.firstQuestion);
+	
+				setTimeout(() => {
+					this.isUserActionArea = true;
+				}, ANIMATION_DURATION);
+			}else{
+                this.$router.replace(this.$routes.hautarzt.path);
+			}
         },
         methods    : {
             forbidScroll(){
-                this.body.setAttribute("style", "overflow: hidden;");
+                this.scrollOffsetForForbidScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                this.body.setAttribute("style", `margin-top: -${this.scrollOffsetForForbidScroll}px; top: 0px; left: 0px; width: 100vw; height: 100vh; position: fixed; overflow: hidden;`);
             },
             allowScroll(){
                 this.body.setAttribute("style", "");
+                window.scrollTo({
+                    top     : this.scrollOffsetForForbidScroll,
+                    behavior: "auto"
+                });
             },
             scrollToBottom(){
                 window.scrollTo({
@@ -557,15 +580,8 @@
                 isNewNextMessageId && this.nextQuestionsId_queue.push(message_id);
             },
             deleteQuestion(question_id){
+				// Удаляем из списков 'questions' и 'answers'
                 for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
-                    // Удаляем из очереди загружаемых 'questions'
-                    for(let nextQuestionIterator = 0; nextQuestionIterator < this.nextQuestionsId_queue; nextQuestionIterator++){
-                        if(this.nextQuestionsId_queue[nextQuestionIterator] === question_id){
-                            this.nextQuestionsId_queue.splice(nextQuestionIterator, 1);
-                        }
-                    }
-
-                    // Удаляем из списков 'questions' и 'answers'
                     if(this.questions[questionsIterator].id === question_id){
                         this.questions.splice(questionsIterator, 1);
                         if(this.userAnswers[questionsIterator]){
@@ -573,6 +589,13 @@
                         }
                     }
                 }
+                
+				// Удаляем из очереди загружаемых 'questions'
+				for(let nextQuestionIterator = 0; nextQuestionIterator < this.nextQuestionsId_queue; nextQuestionIterator++){
+					if(this.nextQuestionsId_queue[nextQuestionIterator] === question_id){
+						this.nextQuestionsId_queue.splice(nextQuestionIterator, 1);
+					}
+				}
             },
 
             // Edit message listeners
@@ -620,11 +643,11 @@
             },
             onEditMessageSubmit(){
                 let editedUserAnswer  = Object.assign({}, this.userAnswers[this.editingData.message_index]);
-                const editingQuestion = this.questions[this.editingData.message_index];
+                const targetEditingQuestion = this.questions[this.editingData.message_index];
 
                 switch(this.editingData.type){
                     case this.QUESTION_TYPES.radio:{
-                        for(let optionsIterator = 0, option = editingQuestion.options[0]; optionsIterator < editingQuestion.options.length; optionsIterator++, option = editingQuestion.options[optionsIterator]){
+                        for(let optionsIterator = 0, option = targetEditingQuestion.options[0]; optionsIterator < targetEditingQuestion.options.length; optionsIterator++, option = targetEditingQuestion.options[optionsIterator]){
 
                             if(option.id === this.editingData.selectedOption[0]){
                                 editedUserAnswer.contentForChat = option.value + ".";
@@ -657,40 +680,42 @@
                         let selectedOption = [],
                             contentForChat = "";
 
-                        for(let allOptionsIterator = 0; allOptionsIterator < editingQuestion.options.length; allOptionsIterator++){
+                        let not_sel_opt       = [];
+                        let delete_message_id = undefined;
+                        
+                        for(let allOptionsIterator = 0; allOptionsIterator < targetEditingQuestion.options.length; allOptionsIterator++){
                             for(let selectedOptionIterator = 0; selectedOptionIterator < this.editingData.selectedOptions.length; selectedOptionIterator++){
-                                if(this.editingData.selectedOptions[selectedOptionIterator] === editingQuestion.options[allOptionsIterator].id){
-                                    contentForChat += `${editingQuestion.options[allOptionsIterator].value}, `;
-                                    selectedOption.push(editingQuestion.options[allOptionsIterator].id);
 
-                                    if(editingQuestion.options[allOptionsIterator].next_message_id){
-                                        this.addNextQuestionsIdInQueue(editingQuestion.options[allOptionsIterator].next_message_id);
+                                if(this.editingData.selectedOptions[selectedOptionIterator] === targetEditingQuestion.options[allOptionsIterator].id){
+                                    contentForChat += `${targetEditingQuestion.options[allOptionsIterator].value}, `;
+                                    selectedOption.push(targetEditingQuestion.options[allOptionsIterator].id);
+                                    
+                                    if(targetEditingQuestion.options[allOptionsIterator].next_message_id){
+                                        this.addNextQuestionsIdInQueue(targetEditingQuestion.options[allOptionsIterator].next_message_id);
                                     }
+                                    break;
                                 } else{
                                     // К предыдущим выбраным чекбоксом могли уже загрузить 'question'
                                     // и пользователь мог добавить 'answer'.
                                     // Так как предыдущие чекбоксы более не актуальны, ищем и удаляем соответствующие 'question' и 'answer'
 
-                                    // Сохраняем индекс удаляемого сообщения, иначе из за цикла будет удалятся не только нужное сообщение
-                                    let deleteMessageIndex = null;
-                                    for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
-                                        if(this.questions[questionsIterator].id === editingQuestion.options[allOptionsIterator].next_message_id){
-                                            if(!deleteMessageIndex || deleteMessageIndex !== questionsIterator){
-
-                                                deleteMessageIndex = questionsIterator;
-
-                                                this.deleteQuestion(questionsIterator);
-                                            }
-                                        }
+                                    if(
+                                        targetEditingQuestion.options[allOptionsIterator].next_message_id &&
+                                        targetEditingQuestion.options[allOptionsIterator].next_message_id !== this.lastQuestionData.id &&
+                                        delete_message_id !== targetEditingQuestion.options[allOptionsIterator].next_message_id
+                                    ){
+                                        delete_message_id = targetEditingQuestion.options[allOptionsIterator].id;
+                                        not_sel_opt.push(targetEditingQuestion.options[allOptionsIterator].next_message_id);
                                     }
                                 }
                             }
                         }
+
+                        console.log(not_sel_opt);
                         contentForChat = contentForChat.slice(0, -2) + ".";
 
                         editedUserAnswer.selectedOption = selectedOption.slice();
                         editedUserAnswer.contentForChat = contentForChat;
-
                         break;
                     }
                     default:{
@@ -712,7 +737,7 @@
 
                 setTimeout(() => {
                     const content = {
-                        contentForChat : this.FIRST_QUESTION_DATA.button
+                        contentForChat : this.firstQuestion.button
                     };
 
                     this.userAnswers.push(content);
@@ -975,7 +1000,7 @@
                 this.$forceUpdate();
             },
             onPersonalInfoSubmit(){
-                if(!this.isValidPersonalInfo){ return; }
+                if(!this.isValidPersonalInfoBlock){ return; }
 
                 this.isPersonalInfoFilled = true;
 
@@ -1022,6 +1047,42 @@
 		}
 	}
 	
+	@mixin container-for-input-text {
+		&.is-for-input-text {
+			width     : 100%;
+			max-width : 100%;
+		}
+	}
+	
+	.section {
+		&:before {
+			transition       : $transition;
+			background-color : rgba(0, 0, 0, 0);
+		}
+		
+		&--is-editing-message {
+			position : relative;
+			
+			&:before {
+				left             : 0;
+				right            : 0;
+				width            : 100%;
+				height           : 100%;
+				content          : "";
+				z-index          : 1;
+				position         : absolute;
+				background-color : rgba(0, 0, 0, .75);
+			}
+			
+			.message {
+				&--is-editing {
+					z-index  : 2;
+					position : relative;
+				}
+			}
+		}
+	}
+	
 	.submit-btn {
 		color            : white;
 		border           : none;
@@ -1041,6 +1102,8 @@
 		@include btn--is-disable;
 		
 		&.is-upload-photo {
+			padding-top : 6px;
+			
 			&:after {
 				$size : 24px;
 				width               : $size;
@@ -1190,33 +1253,9 @@
 		}
 	}
 	
-	.section {
-		&:before {
-			transition       : $transition;
-			background-color : rgba(0, 0, 0, 0);
-		}
-		
-		&--is-editing-message {
-			position : relative;
-			
-			&:before {
-				left             : 0;
-				right            : 0;
-				width            : 100%;
-				height           : 100%;
-				content          : "";
-				z-index          : 1;
-				position         : absolute;
-				background-color : rgba(0, 0, 0, .75);
-			}
-			
-			.message {
-				&--is-editing {
-					z-index  : 2;
-					position : relative;
-				}
-			}
-		}
+	.chat-container, .answer-area {
+		margin    : 0 auto;
+		max-width : 600px;
 	}
 	
 	.message {
@@ -1282,6 +1321,8 @@
 			max-width       : $max_width;
 			flex-direction  : column;
 			justify-content : flex-end;
+			
+			@include container-for-input-text;
 		}
 		
 		&__input-text {
@@ -1336,16 +1377,15 @@
 	}
 	
 	.edit-answer-area {
-		color          : red;
-		display        : flex;
 		position       : absolute;
 		flex-wrap      : wrap;
-		max-width      : $max_width;
 		flex-direction : column;
 		
+		@include container-for-input-text;
+		
 		&__controls {
+			margin          : $main_offset / 2 #{$main_offset / -2} 0;
 			display         : flex;
-			margin-top      : $main_offset / 2;
 			flex-direction  : row;
 			justify-content : flex-end;
 		}
@@ -1408,8 +1448,8 @@
 	}
 	
 	.select-body-part-modal {
-		$header_height : 80px;
-		top              : 80px;
+		$header_height : 64px;
+		top              : $header_height;
 		right            : 0;
 		width            : 100%;
 		height           : calc(100vh - #{$header_height});
@@ -1422,12 +1462,20 @@
 		background-color : $color-black-squeeze;
 		
 		&__main {
-			height  : 75%;
+			height  : 82.5%;
 			display : flex;
 		}
 		
-		&__footer {
-			margin-top : $main_offset;
+		&__footer { margin-top : $main_offset; }
+		
+		@include tablet {
+			&__main { height  : 90%; }
+		}
+		
+		@include tablet-big {
+			$header_height : 80px;
+			top    : $header_height;
+			height : calc(100vh - #{$header_height});
 		}
 	}
 	

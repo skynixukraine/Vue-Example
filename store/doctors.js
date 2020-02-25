@@ -6,10 +6,9 @@ export const state = () => ({
 
     doctorsForHomePage   : [],
     doctorForProfilePage : null,
+
     MAX_DOCTORS_PER_PAGE : 16,
 });
-
-export const getters = {};
 
 export const mutations = {
     SET_DOCTORS_DOCTORS_FOR_HOME_PAGE(state, newValue){
