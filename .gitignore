@@ -2,5 +2,5 @@ node_modules/
 static/sw.js
 configs/env.js
 .idea/
-.nuxt/
+.nuxt/**/*
 .DS_Store

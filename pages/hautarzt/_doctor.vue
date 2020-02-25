@@ -21,7 +21,7 @@
                             <div class = "profile__info__price__value">{{ this.doctorData.enquire_price || "" }}</div>
                         </div>
                         <button class = "profile__info__start-enquiry-btn link--button link--button-blue"
-                                @click.stop = "onClickStartEnquiry">
+                                @click.stop = "startDiagnosticChat">
                             Starten
                         </button>
                     </div>
@@ -136,8 +136,9 @@
             }
         },
         methods  : {
-            onClickStartEnquiry(){
-                alert("Work logic not yet implemented");
+            startDiagnosticChat(){
+                this.$store.commit("diagnosticChat/SET_DOCTOR_ID_FOR_START_DIAGNOSTIC_CHAT", this.doctorData.id);
+                this.$router.push(this.$routes.forschung.path);
             }
         }
     }

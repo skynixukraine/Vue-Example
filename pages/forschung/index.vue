@@ -182,7 +182,7 @@
 								<!--Input Text-->
 								<div class = "answer-area__input-text"
 									 v-if = "lastQuestionData.type === QUESTION_TYPES.inputText">
-									<AutoHeight @change = "onInputText" :content = "''" />
+									<AutoHeight @change = "onInputText" :key = "`input_text_${messages.length}`"/>
 								</div>
 								<!--Select body part-->
 								<div class = "answer-area__select-body-part"
@@ -222,7 +222,7 @@
 									<button v-else class = "submit-btn"
 											@click = "onStart"
 											type = "button">
-										{{ this.FIRST_QUESTION_DATA.button }}
+										{{ this.firstQuestion.button }}
 									</button>
 									<transition name = "main-animation">
 										<div class = "answer-area__errors-message"
@@ -306,9 +306,6 @@
 			</div>
 			<transition name = "modal">
 				<div class = "select-body-part-modal" v-if = "isShowSelectBodyPartModal">
-					<header class = "select-body-part-modal__header">
-						<h2>Select trouble zones</h2>
-					</header>
 					<div class = "select-body-part-modal__main">
 						<BodyParts :isClickable = true
 								   :showedHalfPart = showedBodyHalf
@@ -341,16 +338,18 @@
         async fetch({app, store, error}){
             // if token exist and user empty - load User object
             if(app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null){
-                await store.dispatch('user/LOAD_USER', {
+                await store.dispatch("user/LOAD_USER", {
                     id    : app.$cookies.get(app.cookie.names.tokenId),
                     token : app.$cookies.get(app.cookie.names.token)
                 }).catch(error => {
                     app.$cookies.remove(app.cookie.names.token);
                     app.$cookies.remove(app.cookie.names.tokenId);
-                })
+                });
             }
-
-            // await store.dispatch("diagnosticChat/LOAD_AND_SAVE_FIRST_MESSAGE");
+            
+            if(store.state.diagnosticChat.doctorIdForStartDiagnosticChat !== null){
+				await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id: store.state.diagnosticChat.doctorIdForStartDiagnosticChat});
+			}
         },
         mixins     : [
             validator
@@ -365,13 +364,14 @@
         },
         data(){
             return {
-                questions             : [],
-                editingData           : null,
-                userAnswers           : [],
-                isQuestionsOver       : false,
-                isUserActionArea      : false,
-                isPersonalInfoFilled  : false,
-                nextQuestionsId_queue : [],
+                questions                   : [],
+                editingData                 : null,
+                userAnswers                 : [],
+                isQuestionsOver             : false,
+                isUserActionArea            : false,
+                isPersonalInfoFilled        : false,
+                nextQuestionsId_queue       : [],
+                scrollOffsetForForbidScroll : 0,
 
                 // Data for 'body select' question type
                 showedBodyHalf                : "",
@@ -444,11 +444,6 @@
                     validCharactersOnly     : true,
                     disabledFetchingCountry : false,
                 },
-                FIRST_QUESTION_DATA             : {
-                    button         : "lets start",
-                    questioner     : "first message",
-                    contentForChat : "Are you ready?",
-                },
                 QUESTION_TYPES                  : {
                     radio       : "RADIO",
                     uploadImg   : "IMAGE",
@@ -491,21 +486,45 @@
                 }
 
                 return result;
-            }
+            },
+			targetDoctor(){
+                return this.$store.state.diagnosticChat.targetDoctorForDiagnosticChat;
+			},
+			firstQuestion(){
+                if(this.targetDoctor){
+					return {
+						button         : "lets start",
+						questioner     : "first message",
+						contentForChat : `Are you ready to start a chat with ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}?`,
+					}
+				}else{
+                    this.$router.replace(this.$routes.hautarzt.path);
+				}
+			}
         },
         mounted(){
-            this.questions.push(this.FIRST_QUESTION_DATA);
-
-            setTimeout(() => {
-                this.isUserActionArea = true;
-            }, ANIMATION_DURATION);
+            if(this.firstQuestion){
+				this.questions.push(this.firstQuestion);
+	
+				setTimeout(() => {
+					this.isUserActionArea = true;
+				}, ANIMATION_DURATION);
+			}else{
+                this.$router.replace(this.$routes.hautarzt.path);
+			}
         },
         methods    : {
             forbidScroll(){
-                this.body.setAttribute("style", "overflow: hidden;");
+                this.scrollOffsetForForbidScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                this.body.setAttribute("style", `margin-top: -${this.scrollOffsetForForbidScroll}px; top: 0px; left: 0px; width: 100vw; height: 100vh; position: fixed; overflow: hidden;`);
             },
             allowScroll(){
                 this.body.setAttribute("style", "");
+                window.scrollTo({
+                    top     : this.scrollOffsetForForbidScroll,
+                    behavior: "auto"
+                });
             },
             scrollToBottom(){
                 window.scrollTo({
@@ -561,15 +580,8 @@
                 isNewNextMessageId && this.nextQuestionsId_queue.push(message_id);
             },
             deleteQuestion(question_id){
+				// Удаляем из списков 'questions' и 'answers'
                 for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
-                    // Удаляем из очереди загружаемых 'questions'
-                    for(let nextQuestionIterator = 0; nextQuestionIterator < this.nextQuestionsId_queue; nextQuestionIterator++){
-                        if(this.nextQuestionsId_queue[nextQuestionIterator] === question_id){
-                            this.nextQuestionsId_queue.splice(nextQuestionIterator, 1);
-                        }
-                    }
-
-                    // Удаляем из списков 'questions' и 'answers'
                     if(this.questions[questionsIterator].id === question_id){
                         this.questions.splice(questionsIterator, 1);
                         if(this.userAnswers[questionsIterator]){
@@ -577,6 +589,13 @@
                         }
                     }
                 }
+                
+				// Удаляем из очереди загружаемых 'questions'
+				for(let nextQuestionIterator = 0; nextQuestionIterator < this.nextQuestionsId_queue; nextQuestionIterator++){
+					if(this.nextQuestionsId_queue[nextQuestionIterator] === question_id){
+						this.nextQuestionsId_queue.splice(nextQuestionIterator, 1);
+					}
+				}
             },
 
             // Edit message listeners
@@ -661,39 +680,42 @@
                         let selectedOption = [],
                             contentForChat = "";
 
+                        let not_sel_opt       = [];
+                        let delete_message_id = undefined;
+                        
                         for(let allOptionsIterator = 0; allOptionsIterator < targetEditingQuestion.options.length; allOptionsIterator++){
                             for(let selectedOptionIterator = 0; selectedOptionIterator < this.editingData.selectedOptions.length; selectedOptionIterator++){
+
                                 if(this.editingData.selectedOptions[selectedOptionIterator] === targetEditingQuestion.options[allOptionsIterator].id){
                                     contentForChat += `${targetEditingQuestion.options[allOptionsIterator].value}, `;
                                     selectedOption.push(targetEditingQuestion.options[allOptionsIterator].id);
-
+                                    
                                     if(targetEditingQuestion.options[allOptionsIterator].next_message_id){
                                         this.addNextQuestionsIdInQueue(targetEditingQuestion.options[allOptionsIterator].next_message_id);
                                     }
+                                    break;
                                 } else{
                                     // К предыдущим выбраным чекбоксом могли уже загрузить 'question'
                                     // и пользователь мог добавить 'answer'.
                                     // Так как предыдущие чекбоксы более не актуальны, ищем и удаляем соответствующие 'question' и 'answer'
 
-                                    // Сохраняем индекс удаляемого сообщения, иначе из за цикла будет удалятся не только нужное сообщение
-                                    let deleteMessageIndex = null;
-                                    for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
-                                        if(this.questions[questionsIterator].id === targetEditingQuestion.options[allOptionsIterator].next_message_id){
-											deleteMessageIndex = questionsIterator;
-
-											this.deleteQuestion(questionsIterator);
-                                            if(!deleteMessageIndex || deleteMessageIndex !== questionsIterator){
-                                            }
-                                        }
+                                    if(
+                                        targetEditingQuestion.options[allOptionsIterator].next_message_id &&
+                                        targetEditingQuestion.options[allOptionsIterator].next_message_id !== this.lastQuestionData.id &&
+                                        delete_message_id !== targetEditingQuestion.options[allOptionsIterator].next_message_id
+                                    ){
+                                        delete_message_id = targetEditingQuestion.options[allOptionsIterator].id;
+                                        not_sel_opt.push(targetEditingQuestion.options[allOptionsIterator].next_message_id);
                                     }
                                 }
                             }
                         }
+
+                        console.log(not_sel_opt);
                         contentForChat = contentForChat.slice(0, -2) + ".";
 
                         editedUserAnswer.selectedOption = selectedOption.slice();
                         editedUserAnswer.contentForChat = contentForChat;
-
                         break;
                     }
                     default:{
@@ -715,7 +737,7 @@
 
                 setTimeout(() => {
                     const content = {
-                        contentForChat : this.FIRST_QUESTION_DATA.button
+                        contentForChat : this.firstQuestion.button
                     };
 
                     this.userAnswers.push(content);
@@ -1080,6 +1102,8 @@
 		@include btn--is-disable;
 		
 		&.is-upload-photo {
+			padding-top : 6px;
+			
 			&:after {
 				$size : 24px;
 				width               : $size;
@@ -1424,8 +1448,8 @@
 	}
 	
 	.select-body-part-modal {
-		$header_height : 80px;
-		top              : 80px;
+		$header_height : 64px;
+		top              : $header_height;
 		right            : 0;
 		width            : 100%;
 		height           : calc(100vh - #{$header_height});
@@ -1438,12 +1462,20 @@
 		background-color : $color-black-squeeze;
 		
 		&__main {
-			height  : 75%;
+			height  : 82.5%;
 			display : flex;
 		}
 		
-		&__footer {
-			margin-top : $main_offset;
+		&__footer { margin-top : $main_offset; }
+		
+		@include tablet {
+			&__main { height  : 90%; }
+		}
+		
+		@include tablet-big {
+			$header_height : 80px;
+			top    : $header_height;
+			height : calc(100vh - #{$header_height});
 		}
 	}
 	
