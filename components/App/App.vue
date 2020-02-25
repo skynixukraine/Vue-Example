@@ -801,7 +801,7 @@
 			color         : white;
 			border        : none;
 			background    : linear-gradient(270deg, #0F44B2 0%, #042052 100%);
-			font-family   : $TheAntiquaB;
+			font-family   : $TheSansB;
 			font-size     : 18px;
 			margin        : 0 20px 0 0;
 			font-weight   : 500;
