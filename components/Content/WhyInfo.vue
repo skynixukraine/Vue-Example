@@ -62,6 +62,7 @@ export default {
 
         p {
             margin-bottom: 30px;
+            line-height: 1.56;
 
             &:last-child {
                 margin-bottom: 0;

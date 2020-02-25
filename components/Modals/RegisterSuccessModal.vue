@@ -19,7 +19,7 @@
         <footer class="modal__footer">
             <div class="modal__footer-item">
                 <button
-                    class="link link--button link--button-blue"
+                    class="link link--button link--button-blue link--button-gradient"
                     :disabled="countdown > 0"
                     @click="onResendEmail"
                 >Resend email</button>

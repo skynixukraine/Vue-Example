@@ -10,7 +10,7 @@
 	*********************/
 	body {
 		/*font-family: "Sans", sans-serif;*/
-		font-family      : TheSansB, sans-serif;
+		font-family      : $TheSansB;
 		font-size        : 18px;
 		line-height      : 1.55;
 		color            : $color-rolling-stone;
@@ -24,7 +24,7 @@
 	h4,
 	h5,
 	h6 {
-		font-family : "Antiqua", sans-serif;
+		font-family : $TheAntiquaB;
 		line-height : 1.33;
 		color       : $color-curious-blue;
 		font-weight : 700;
@@ -281,6 +281,7 @@
 			display : none;
 		}
 		
+		
 		@include tablet-big {
 			&__dots {
 				display : block;
@@ -296,6 +297,7 @@
 					bottom   : -74px;
 					left     : -75px;
 				}
+				
 				
 				&--3 {
 					position : absolute;
@@ -325,9 +327,16 @@
 		}
 		
 		&--d3 {
+			flex-wrap : wrap;
+			
 			.list__item {
 				flex    : 0 0 100%;
 				padding : 16px;
+				@include tablet {
+					max-width : 33.33%;
+					flex-wrap : nowrap;
+					
+				}
 			}
 		}
 		
@@ -386,25 +395,27 @@
 			min-width      : 265px;
 			display        : inline-block;
 			text-align     : center;
-			padding        : 20px 31px 16px;
-			border-radius  : 5px;
+			padding        : 20px 45px 15px 45px;
+			border-radius  : 4px;
 			font-size      : 16px;
 			line-height    : 21px;
-			font-weight    : 500;
+			font-weight    : 600;
 			text-transform : uppercase;
-			letter-spacing : 2px;
-			border-width   : 1px;
-			border-style   : solid;
+			letter-spacing : 0.14em;
+			border         : none;
 			
 			&-full-width {
 				width : 100%
 			}
 			
+			&--button-upload {
+				font-weight : 500;
+			}
+			
 			
 			&-white {
-				background   : $color-white;
-				color        : $color-curious-blue;
-				border-color : $color-white;
+				background : $color-white;
+				color      : $color-curious-blue;
 				
 				&:hover {
 					background : $color-solitude;
@@ -416,9 +427,8 @@
 			}
 			
 			&-blue {
-				background   : $color-gradient-button-blue;
-				color        : $color-white;
-				border-color : $color-torea-bay;
+				background : $color-gradient-button-blue;
+				color      : $color-white;
 				
 				&:hover {
 					background : $color-torea-bay;
@@ -430,9 +440,8 @@
 			}
 			
 			&-gradient {
-				background   : $color-gradient-blue-light;
-				color        : $color-white;
-				border-color : $color-gradient-blue-light;
+				background : $color-gradient-blue-light;
+				color      : $color-white;
 				
 				&:hover {
 					background : $color-gradient-blue-dark;
@@ -444,9 +453,8 @@
 			}
 			
 			&-transparent {
-				background   : $color-transparent;
-				color        : $color-curious-blue;
-				border-color : $color-transparent;
+				background : $color-transparent;
+				color      : $color-curious-blue;
 				
 				&:hover {
 					background : $color-solitude;
@@ -486,10 +494,10 @@
 			}
 			
 			&-mobile-large {
-				padding : 20px 16px 16px;
+				padding : 20px 16px 15px;
 				
 				@media (min-width : #{$screen-phone-irregular-min}) {
-					padding : 20px 31px 16px;
+					padding : 20px 30px 15px;
 				}
 			}
 		}
@@ -508,6 +516,10 @@
 		}
 	}
 	
+	.link.link--button-upload {
+		font-weight : 400;
+	}
+	
 	// input
 	.input, .select {
 		width         : 100%;
@@ -517,6 +529,7 @@
 		box-sizing    : border-box;
 		border-radius : 4px;
 		padding-left  : 6%;
+		padding-top   : 4px;
 		
 		@include phone-big {
 			height : 56px;
@@ -527,19 +540,19 @@
 		&::placeholder {
 			color       : $color-form-input-placeholder;
 			font-style  : normal;
-			font-weight : 500;
+			font-weight : 400;
 		}
 		
 		&::-webkit-input-placeholder {
 			color       : $color-form-input-placeholder;
 			font-style  : normal;
-			font-weight : 500;
+			font-weight : 400;
 		}
 		
 		&::-moz-placeholder {
 			color       : $color-form-input-placeholder;
 			font-style  : normal;
-			font-weight : 500;
+			font-weight : 400;
 		}
 		
 		/* Firefox 19+ */
@@ -547,7 +560,7 @@
 		&:-moz-placeholder {
 			color       : $color-form-input-placeholder;
 			font-style  : normal;
-			font-weight : 500;
+			font-weight : 400;
 		}
 		
 		/* Firefox 18- */
@@ -555,7 +568,7 @@
 		&:-ms-input-placeholder {
 			color       : $color-form-input-placeholder;
 			font-style  : normal;
-			font-weight : 500;
+			font-weight : 400;
 		}
 		
 		&--hidden {
@@ -769,33 +782,59 @@
 	/*********************
 	Cookie banner
 	*********************/
-	.cookie{
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		background-color: rgba(255, 255, 255, 0.9);
-		width: 100%;
-		padding: 25px 20px;
-		z-index: 1;
-		border-radius: 0 20px 20px 0;
+	.cookie {
+		position         : fixed;
+		bottom           : 0;
+		left             : 0;
+		background-color : rgba(255, 255, 255, 0.9);
+		width            : 100%;
+		padding          : 25px 20px;
+		z-index          : 1;
+		border-radius    : 0 20px 20px 0;
 		
 		@include tablet {
-			width: 90%;
-		}
-		.cookie__floating__content{
-			padding-bottom: 14px;
+			width : 90%;
 		}
 		
-		.cookie__floating__buttons__button{
-			padding: 10px 31px 9px;
-			border-radius: 5px;
-			color: white;
-			border: none;
-			background: linear-gradient(270deg, #0F44B2 0%, #042052 100%);
-			font-family: TheSansB, sans-serif;
-			font-size: 18px;
-			margin: 0 20px 0 0;
-			font-weight: 500;
+		.cookie__floating__content {
+			padding-bottom : 14px;
 		}
+		
+		.cookie__floating__buttons__button {
+			padding       : 10px 31px 9px;
+			border-radius : 5px;
+			color         : white;
+			border        : none;
+			background    : linear-gradient(270deg, #0F44B2 0%, #042052 100%);
+			font-family   : $TheSansB;
+			font-size     : 18px;
+			margin        : 0 20px 0 0;
+			font-weight   : 500;
+		}
+	}
+	
+	.container__dots-svg {
+		@include tablet-big {
+			position         : absolute;
+			background-image : url("~static/images/icons/dots.svg");
+			width            : 192px;
+			height           : 146px;
+		}
+		
+		&--doc-photo {
+			bottom : 691px;
+			right  : 1044px;
+		}
+		
+		&--hand-photo {
+			top   : 519px;
+			right : 90%;
+		}
+		
+		&--consult-block {
+			bottom : 175px;
+			left   : 1044px;
+		}
+		
 	}
 </style>

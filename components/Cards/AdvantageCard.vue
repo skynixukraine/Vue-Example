@@ -9,7 +9,7 @@
             </div>
         </header>
         <div class="advantage-card__main">
-            <p class="advantage-card__text">{{ advantage.text }}</p>
+            <p class="advantage-card__text" v-html="text"></p>
         </div>
     </div>
 </template>
@@ -21,6 +21,16 @@ export default {
             type: Object,
             required: true
         }
+    },
+    computed: {
+        text: function(){
+            const separator = this.advantage.text.indexOf('&');
+            if (separator){
+                return this.advantage.text.slice(0, separator + 1 ) + "<br>" + this.advantage.text.slice(separator + 1)
+            } else {
+                return this.advantage.text;
+            }
+        }
     }
 }
 </script>
@@ -28,11 +38,10 @@ export default {
 <style lang="scss">
 .advantage-card {
     text-align: center;
-    max-width: 170px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-
+    
     &__header {
         display: flex;
         justify-content: center;
@@ -78,8 +87,9 @@ export default {
     }
 
     &__text {
-        font-family: $font-family-secondary;
-        font-size: 18px;
+        font-family: $TheAntiquaB;
+        font-size: 20px;
+        line-height: 1.3;
         color: $color-white;
     }
 }
