@@ -215,12 +215,19 @@
 	}
 	
 	.section-scroll-tooltip {
-		position   : absolute;
+		position: fixed;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		bottom     : 10px;
-		left       : 0;
 		width      : 100%;
 		box-sizing : border-box;
 		padding    : 0 20px;
+		opacity: 1;
+		transition: opacity .3s ease;
+		
+		&--off{
+			opacity: 0;
+		}
 		
 		&__inner {
 			width         : 33.33%;
@@ -229,6 +236,10 @@
 			margin        : 0 auto;
 			border-radius : 10px;
 			text-indent   : -9999px;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
 		}
 		
 		@include tablet-big {
@@ -241,7 +252,7 @@
 				margin-left         : auto;
 				margin-right        : auto;
 				background          : none;
-				background-image    : url("~static/images/icons/mouse-scroll.svg");
+				//background-image    : url("~static/images/icons/mouse-scroll.svg");
 				background-position : left center;
 				background-repeat   : no-repeat;
 				font-size           : 15px;
@@ -250,7 +261,7 @@
 				color               : $color-white;
 				display             : flex;
 				align-items         : center;
-				padding-left        : 34px;
+				//padding-left        : 34px;
 				text-indent         : 0;
 			}
 		}
@@ -837,4 +848,6 @@
 		}
 		
 	}
+	
+	
 </style>
