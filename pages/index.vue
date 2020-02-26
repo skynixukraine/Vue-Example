@@ -172,7 +172,7 @@
         },
         methods    : {
             manageMouseBtn(){
-                if(window.scrollY > 20){
+                if(window.innerWidth > 768 && window.scrollY > 20  ){
                     this.scroll_point = true;
                 } else{
                     this.scroll_point = false;
@@ -226,6 +226,11 @@
 		border-radius : 20px;
 		margin-right  : 20px;
 		z-index       : -1;
+		display: none;
+		
+		@include tablet-big {
+			display: block;
+		}
 	}
 	
 	.mouse-btn-icon {
@@ -237,6 +242,11 @@
 		transform        : translateX(-50%);
 		background-color : white;
 		border-radius    : 2px;
+		display: none;
+		
+		@include tablet-big {
+			display: block;
+		}
 	}
 	
 	@keyframes scroll {
