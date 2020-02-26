@@ -215,7 +215,7 @@
 	}
 	
 	.section-scroll-tooltip {
-		position: fixed;
+		position: absolute;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		bottom     : 6px;
@@ -226,6 +226,9 @@
 		transition: opacity .3s ease;
 		display: flex;
 		
+		@include tablet {
+			position:  fixed;
+		}
 		
 		&--off{
 			opacity: 0;

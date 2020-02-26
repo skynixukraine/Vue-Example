@@ -172,7 +172,7 @@
         },
         methods    : {
             manageMouseBtn(){
-                if(window.scrollY > 20){
+                if(window.innerWidth > 768 && window.scrollY > 20  ){
                     this.scroll_point = true;
                 } else{
                     this.scroll_point = false;
