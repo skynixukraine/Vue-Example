@@ -203,8 +203,6 @@
 	.section-header {
 		&__title {
 			text-align : center;
-			
-		
 		}
 	}
 	
