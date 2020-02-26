@@ -203,6 +203,8 @@
 	.section-header {
 		&__title {
 			text-align : center;
+			
+		
 		}
 	}
 	
@@ -226,6 +228,11 @@
 		border-radius : 20px;
 		margin-right  : 20px;
 		z-index       : -1;
+		display: none;
+		
+		@include tablet-big {
+			display: block;
+		}
 	}
 	
 	.mouse-btn-icon {
@@ -237,6 +244,11 @@
 		transform        : translateX(-50%);
 		background-color : white;
 		border-radius    : 2px;
+		display: none;
+		
+		@include tablet-big {
+			display: block;
+		}
 	}
 	
 	@keyframes scroll {

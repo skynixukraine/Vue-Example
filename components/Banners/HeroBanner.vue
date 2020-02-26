@@ -1,10 +1,10 @@
 <template>
     <div class="hero-banner">
         <header class="hero-banner__header">
-            <h1 class="hero-banner__title">{{ $t('banners.herobanner.title') }}</h1>
+            <h1 class="hero-banner__title" v-bind:class="checkForSqueeze" >{{ $t('banners.herobanner.title') }}</h1>
         </header>
-        <div class="hero-banner__main">
-            <p class="hero-banner__text">{{ $t('banners.herobanner.description') }}</p>
+        <div class="hero-banner__main" v-bind:class="checkForSqueeze" >
+            <p class="hero-banner__text" v-bind:class="checkForSqueeze" >{{ $t('banners.herobanner.description') }}</p>
         </div>
         <footer class="hero-banner__footer">
             <div class="hero-banner__footer-item">
@@ -21,7 +21,7 @@
             </div>
         </footer>
         <img
-            class="hero-banner__phone"
+            class="hero-banner__phone" v-bind:class="checkForSqueeze"
             :src="require('~/static/images/images/iPhone_banner.png')"
             alt="iphone"
         />
@@ -29,7 +29,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+    computed:{
+        checkForSqueeze(){
+            const supportClass = 'height-squeeze';
+            if (this.isHome()){
+                return supportClass;
+            } else {
+                return ''
+            }
+        }
+    },
+    methods: {
+        isHome(){
+            return this.$route.name === "index";
+        }
+    }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -44,11 +60,25 @@ export default {};
     &__main {
         margin-bottom: 64px;
     }
+    
+    &__main.height-squeeze{
+        @include height-squeeze{
+            margin-bottom: 22px ;
+            width: 66%;
+        }
+    }
 
     &__title {
         color: $color-white;
         font-family: $TheAntiquaB;
         letter-spacing: -0.02em;
+    }
+    
+    &__title.height-squeeze{
+        
+        @include height-squeeze{
+            margin: 0 0 16px;
+        }
     }
 
     &__text {
@@ -56,6 +86,13 @@ export default {};
         font-size: 20px;
         line-height: 30px;
         color: $color-white;
+    }
+    
+    &__text.height-squeeze{
+    
+        @include height-squeeze{
+            line-height: 1.3;
+        }
     }
 
     &__footer {
@@ -76,6 +113,15 @@ export default {};
     &__phone {
         display: none;
     }
+    
+    &__phone.height-squeeze{
+    
+        @include height-squeeze{
+            right: -278px;
+            top: -65px;
+        }
+    }
+  
 
     @include tablet {
         &__footer {
@@ -104,12 +150,11 @@ export default {};
         }
 
         &__phone {
-            width: 100%;
+            width: 94%;
             display: block;
             position: absolute;
-            top: 100px;
-            right: -320px;
-            top: 50px;
+            right: -299px;
+            top: -75px;
         }
     }
 

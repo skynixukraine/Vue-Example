@@ -8,7 +8,6 @@
 						   type = "video/mp4"
 						   autoplay
 						   loop
-						   :ref="`video_${index}`"
 						   playsinline
 						   muted></video>
 					<img :class = "`step-card__image-dots step-card__image-dots--${step.number}`"
@@ -45,11 +44,6 @@
                     title  : this.$t('steps.you-get-specialist-advice'),
                     text   : this.$t('steps.specialist-initial-assessment')
                 }]
-            }
-        },
-        mounted : function(){
-            for (let key in this.$refs) {
-                this.$refs[key][0].play()
             }
         }
     }

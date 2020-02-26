@@ -218,12 +218,14 @@
 		position: fixed;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		bottom     : 10px;
+		bottom     : 6px;
 		width      : 100%;
 		box-sizing : border-box;
 		padding    : 0 20px;
 		opacity: 1;
 		transition: opacity .3s ease;
+		display: flex;
+		
 		
 		&--off{
 			opacity: 0;
@@ -243,7 +245,6 @@
 		}
 		
 		@include tablet-big {
-			bottom : 24px;
 			
 			&__inner {
 				width               : 100%;
