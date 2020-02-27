@@ -95,7 +95,7 @@
 		min-height     : 100vh;
 		flex-direction : column;
 		
-		&-main{ flex: 1 0 auto; }
+		&-main { flex : 1 0 auto; }
 	}
 	
 	/*********************
@@ -133,6 +133,7 @@
 		display             : flex;
 		align-items         : center;
 		justify-content     : center;
+		flex-direction      : column;
 		position            : relative;
 		
 		&.section--fullscreen {
@@ -215,36 +216,36 @@
 	}
 	
 	.section-scroll-tooltip {
-		position: absolute;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		position   : absolute;
+		left       : 50%;
+		transform  : translate(-50%, -50%);
 		bottom     : 6px;
 		width      : 100%;
 		box-sizing : border-box;
 		padding    : 0 20px;
-		opacity: 1;
-		transition: opacity .3s ease;
-		display: flex;
+		opacity    : 1;
+		transition : opacity .3s ease;
+		display    : flex;
 		
 		@include tablet {
-			position:  fixed;
+			position : fixed;
 		}
 		
-		&--off{
-			opacity: 0;
+		&--off {
+			opacity : 0;
 		}
 		
 		&__inner {
-			width         : 33.33%;
-			height        : 4px;
-			background    : $color-white;
-			margin        : 0 auto;
-			border-radius : 10px;
-			text-indent   : -9999px;
-			display: flex;
-			flex-direction: row;
-			justify-content: flex-start;
-			align-items: center;
+			width           : 33.33%;
+			height          : 4px;
+			background      : $color-white;
+			margin          : 0 auto;
+			border-radius   : 10px;
+			text-indent     : -9999px;
+			display         : flex;
+			flex-direction  : row;
+			justify-content : flex-start;
+			align-items     : center;
 		}
 		
 		@include tablet-big {
@@ -837,8 +838,9 @@
 		}
 		
 		&--doc-photo {
-			bottom : 691px;
-			right  : 1044px;
+			bottom  : 75.2%;
+			right   : 91.1%;
+			z-index : -1;
 		}
 		
 		&--hand-photo {
@@ -852,6 +854,6 @@
 		}
 		
 	}
-	
-	
+
+
 </style>
