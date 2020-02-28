@@ -1,11 +1,12 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-export default ({ app }, inject) => {
+export default ({app}, inject) => {
     const OPTIONS = {
-        registerSuccess: 'register-success',
-        contactModals: 'contact-modal',
-    }
+        defaultModal    : "default-modal",
+        contactModals   : "contact-modal",
+        registerSuccess : "register-success",
+    };
 
-    Vue.prototype.$modals = OPTIONS
-    app.modals = OPTIONS
+    app.modals            = OPTIONS;
+    Vue.prototype.$modals = OPTIONS;
 }

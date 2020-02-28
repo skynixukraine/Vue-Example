@@ -66,10 +66,8 @@
 					@click = "addFileDegree">
 				<img class = "paper-fastener-button-image"
 					 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
-					 alt = "paper-fastener-button"
-				/>
-				<p>
-					{{ models.degree ? models.degree.name : $t('forms.add-degree') }}</p>
+					 alt = "paper-fastener-button">
+				<p>{{ models.degree ? models.degree.name : $t('forms.add-degree') }}</p>
 			</button>
 			<div class = "form__message" v-if = "errors.degree">{{ errors.degree }}</div>
 			<div class = "form__message" v-if = "errors.degree_size">{{ errors.degree_size }}</div>
@@ -88,27 +86,22 @@
 					@click = "addFileCertification">
 				<img class = "paper-fastener-button-image"
 					 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
-					 alt = "paper-fastener-button"
-				/>
-				<p>
-					{{ models.certification ? models.certification.name : $t('forms.add-certification') }}</p>
-			
+					 alt = "paper-fastener-button">
+				<p>{{ models.certification ? models.certification.name : $t('forms.add-certification') }}</p>
 			</button>
 			<div class = "form__message" v-if = "errors.certification">{{ errors.certification }}</div>
 			<div class = "form__message" v-if = "errors.certification_size">{{ errors.certification_size }}</div>
 		</div>
 		<div class = "form__item form__item--checkbox">
 			<div class = "form__title form__title--accepted">
-				
 				{{ $t('genegal-translations.i-accept') }}
-				<NuxtLink
-					:to = "$routes.terms.path" class = "link link--small-blue" exact>{{ $t('links.terms-and-conditions') }}
+				<NuxtLink :to = "$routes.terms.path" class = "link link--small-blue" exact>
+					{{ $t('links.terms-and-conditions') }}
 				</NuxtLink>
 				{{ $t('genegal-translations.and') }}
-				<NuxtLink
-					:to = "$routes.privacy.path" class = "link link--small-blue" exact>{{ $t('links.privacy-policy') }}
+				<NuxtLink :to = "$routes.privacy.path" class = "link link--small-blue" exact>
+					{{ $t('links.privacy-policy') }}
 				</NuxtLink>
-			
 			</div>
 			<input type = "checkbox"
 				   name = "accepted"
@@ -128,29 +121,24 @@
 </template>
 
 <script>
-    // mixins
-    import validator from '~/mixins/validator'
-    import recaptcha from '~/mixins/recaptcha'
-    import modal from '~/mixins/modal'
+    import modal from '~/mixins/modal';
+    import validator from '~/mixins/validator';
+    import recaptcha from '~/mixins/recaptcha';
 
     export default {
-
-
         mixins : [
             validator,
             recaptcha,
             modal,
         ],
-
         created(){
             if(process.client){
                 this.$recaptchaLoaded()
                     .then(() => {
                         this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
-                    })
+                    });
             }
         },
-
         data(){
             return {
                 models            : {
@@ -190,58 +178,57 @@
 
         methods : {
             async onSubmit(){
-                this.isFormSending = true
+                this.isFormSending = true;
 
                 if(Object.values(this.formIsValid).indexOf(false) > -1){
-                    this.validateForm(this.models)
-                    this.isFormSending = false
-                    this.$forceUpdate()
-                    return false
+                    this.validateForm(this.models);
+                    this.isFormSending = false;
+                    this.$forceUpdate();
+                    return false;
                 }
 
-                const formData = this.prepareDataForSending(this.models)
+                const formData = this.prepareDataForSending(this.models);
 
                 this.$store.dispatch('user/REGISTER_USER', formData)
                     .then((response) => {
-                        this.openModal(this.$modals.registerSuccess)
-                        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
-                        this.isFormSending = false
+                        this.openModal(this.$modals.registerSuccess);
+                        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor);
+                        this.isFormSending = false;
                     })
                     .catch((response) => {
-                        this.$root.$emit('showNotify', {type : 'error', text : response.message})
-                        this.handleErrorResponse(response.errors)
-                        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
-                        this.isFormSending = false
-                    })
+                        this.$root.$emit('showNotify', {type : 'error', text : response.message});
+                        this.handleErrorResponse(response.errors);
+                        this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor);
+                        this.isFormSending = false;
+                    });
             },
-
             validateForm(models){
                 // check required fields
                 if(!models.email){
-                    this.errors['email'] = this.$t('errors.form.required-field')
-                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.email-is-empty')})
+                    this.errors['email'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.email-is-empty')});
                 }
                 if(!models.password){
-                    this.errors['password'] = this.$t('errors.form.required-field')
-                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.password-is-empty')})
+                    this.errors['password'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.password-is-empty')});
                 }
                 if(!models.password_confirmation){
-                    this.errors['password_confirmation'] = this.$t('errors.form.required-field')
+                    this.errors['password_confirmation'] = this.$t('errors.form.required-field');
                     this.$root.$emit('showNotify', {
                         type : 'error',
                         text : this.$t('errors.form.сonfirmation-password-is-empty')
-                    })
+                    });
                 }
                 if(!models.phone_number){
-                    this.errors['phone_number'] = this.$t('errors.form.required-field')
-                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')})
+                    this.errors['phone_number'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')});
                 }
                 if(!models.accepted){
-                    this.errors['accepted'] = this.$t('errors.form.required-field')
+                    this.errors['accepted'] = this.$t('errors.form.required-field');
                     this.$root.$emit('showNotify', {
                         type : 'error',
                         text : this.$t('errors.form.accept-terms-and-conditions')
-                    })
+                    });
                 }
 
                 // check recaptcha token exist
@@ -249,48 +236,46 @@
                     this.$root.$emit('showNotify', {
                         type : 'error',
                         text : this.$t('errors.form.invalid-recaptcha-tocken')
-                    })
+                    });
                 }
 
-                return false
+                return false;
             },
-
             handleErrorResponse(errors){
                 if(Object.keys(errors).length === 0){
-                    return true
+                    return true;
                 }
 
                 for(let fieldName in errors){
-                    this.errors[fieldName] = errors[fieldName][0]
+                    this.errors[fieldName] = errors[fieldName][0];
                 }
-                this.$forceUpdate()
-                return true
+                this.$forceUpdate();
+                return true;
             },
 
             prepareDataForSending(models){
-                let formData = new FormData()
+                let formData = new FormData();
 
                 // required fields
-                formData.append('email', models.email)
-                formData.append('phone_number', models.phone_number)
-                formData.append('password', models.password)
-                formData.append('password_confirmation', models.password_confirmation)
-                formData.append('accepted', models.accepted)
+                formData.append('email', models.email);
+                formData.append('phone_number', models.phone_number);
+                formData.append('password', models.password);
+                formData.append('password_confirmation', models.password_confirmation);
+                formData.append('accepted', models.accepted);
 
                 // unrequired fields
                 if(models.degree){
-                    formData.append('medical_degree', models.degree)
+                    formData.append('medical_degree', models.degree);
                 }
                 if(models.certification){
-                    formData.append('medical_degree', models.certification)
+                    formData.append('medical_degree', models.certification);
                 }
 
                 // recaptcha token for action 'register_doctor'
-                formData.append('recaptcha', this.recaptchaToken)
+                formData.append('recaptcha', this.recaptchaToken);
 
-                return formData
+                return formData;
             },
-
             // files upload
             addFileDegree(){
                 this.$refs.degree.click()
@@ -298,65 +283,52 @@
             addFileCertification(){
                 this.$refs.certification.click()
             },
-
-
             // inputs changes
             onEmailChange(event){
-                this.formIsValid.email = this.validateEmail(event)
-                this.$forceUpdate()
+                this.formIsValid.email = this.validateEmail(event);
+                this.$forceUpdate();
             },
-
             onPasswordChange(event){
-                this.formIsValid.password = this.validatePassword(event, this.$refs.password_confirmation)
-                this.$forceUpdate()
+                this.formIsValid.password = this.validatePassword(event, this.$refs.password_confirmation);
+                this.$forceUpdate();
             },
-
             onConfirmPasswordChange(event){
-                this.formIsValid.confirm_password = this.validateConfirmPassword(event, this.$refs.password)
-                this.$forceUpdate()
+                this.formIsValid.confirm_password = this.validateConfirmPassword(event, this.$refs.password);
+                this.$forceUpdate();
             },
-
             onPhoneChange(eventValue, telInput){
                 this.models.telInput   = telInput;
                 this.formIsValid.phone = this.validatePhone(eventValue, this.models.telInput);
                 this.$forceUpdate()
             },
-
             onDegreeUpload(event){
-
                 if(!event.target.files[0]){ return; }
 
                 this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
 
-                this.$forceUpdate()
+                this.$forceUpdate();
             },
             onCertificationUpload(event){
-
                 if(!event.target.files[0]){ return; }
 
                 this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
 
-                this.$forceUpdate()
+                this.$forceUpdate();
 
             },
             onAcceptChange(event){
-                this.formIsValid.terms = this.validateAccept(event, this.models.accepted)
+                this.formIsValid.terms = this.validateAccept(event, this.models.accepted);
             },
-
             togglePasswordVisibility(){
-                if(this.$refs.password.type === 'password'){
-                    this.$refs.password.type = 'text'
-                } else{
-                    this.$refs.password.type = 'password'
-                }
+                this.$refs.password.type = this.$refs.password.type === 'password' ?
+                    this.$refs.password.type = 'text' :
+                    this.$refs.password.type = 'password';
             }
         }
     }
 </script>
 
-
 <style lang = "scss" scoped>
-	
 	.form {
 		&--register {
 			width           : 100%;
@@ -386,10 +358,7 @@
 				font-size : 18px;
 			}
 			
-			span {
-				color : $color-alert-red;
-			}
-			
+			span { color : $color-alert-red; }
 		}
 		
 		.form__message {
@@ -431,10 +400,9 @@
 			border        : 2px solid $color-curious-blue;
 			background    : $color-white;
 			box-sizing    : border-box;
-			padding-left  : 2%;
 			padding-top   : 4px;
+			padding-left  : 2%;
 			border-radius : 4px;
-			// color: $color-form-input-placeholder;
 			
 			@include phone-big {
 				height : 56px;
@@ -444,45 +412,15 @@
 				width : 544px;
 			}
 			
-			&::placeholder, input::placeholder {
+			&::placeholder, input::placeholder, &::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
 				color       : $color-form-input-placeholder;
 				font-style  : normal;
 				font-weight : 400;
-			}
-			
-			&::-webkit-input-placeholder {
-				color       : $color-form-input-placeholder;
-				font-style  : normal;
-				font-weight : 400;
-			}
-			
-			&::-moz-placeholder {
-				color       : $color-form-input-placeholder;
-				font-style  : normal;
-				font-weight : 400;
-			}
-			
-			/* Firefox 19+ */
-			
-			&:-moz-placeholder {
-				color       : $color-form-input-placeholder;
-				font-style  : normal;
-				font-weight : 500;
-			}
-			
-			/* Firefox 18- */
-			
-			&:-ms-input-placeholder {
-				color       : $color-form-input-placeholder;
-				font-style  : normal;
-				font-weight : 500;
 			}
 		}
 	}
 	
-	input[type="checkbox"] {
-		order : 1;
-	}
+	input[type="checkbox"] { order : 1; }
 	
 	.form__message {
 		text-align   : left;
@@ -507,7 +445,6 @@
 </style>
 
 <style lang = "scss">
-	
 	.vti__input {
 		max-width : 150px;
 		

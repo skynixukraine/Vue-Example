@@ -16,7 +16,7 @@
                 type    : String,
                 default : ""
             },
-            value : {
+            value       : {
                 type    : String,
                 default : ""
             }
@@ -26,9 +26,8 @@
         },
         methods    : {
             onChange(eventData){
-                this.$emit("place-change", eventData);
+                this.$emit("place_change", eventData);
             }
-            
         }
     }
 </script>

@@ -5,13 +5,12 @@ export default {
         return new Promise((resolve, reject) => {
             HTTP.post("/doctors/register", registerData)
                 .then(response => {
-                    const responseData = {
+                    resolve({
                         success : true,
                         status  : response.status,
                         data    : response.data.data,
                         message : "User success registered.",
-                    };
-                    resolve(responseData);
+                    });
                 })
                 .catch(error => {
                     let message = "";
@@ -25,13 +24,12 @@ export default {
                         message = "Internal technical error was happened.";
                     }
 
-                    const responseData = {
+                    reject({
                         success : false,
                         status  : error.response.status,
                         message,
                         errors,
-                    };
-                    reject(responseData);
+                    });
                 });
         });
     },
@@ -39,13 +37,12 @@ export default {
         return new Promise((resolve, reject) => {
             HTTP.post("/doctors/login", loginData)
                 .then(response => {
-                    const responseData = {
+                    resolve({
                         success : true,
                         status  : response.status,
                         data    : response.data.data,
                         message : "User success login.",
-                    };
-                    resolve(responseData);
+                    });
                 })
                 .catch(error => {
                     let message = "";
@@ -62,13 +59,12 @@ export default {
                         message = "Internal technical error was happened.";
                     }
 
-                    const responseData = {
+                    reject({
                         success : false,
                         status  : error.response.status,
                         message,
                         errors,
-                    };
-                    reject(responseData);
+                    });
                 });
         });
     },
@@ -76,13 +72,12 @@ export default {
         return new Promise((resolve, reject) => {
             HTTP.patch("/doctors/logout", {}, {headers : {"Authorization" : `Bearer ${token}`}})
                 .then(response => {
-                    const responseData = {
+                    resolve({
                         success : true,
                         status  : response.status,
                         data    : response.data.data,
                         message : "User success login.",
-                    };
-                    resolve(responseData);
+                    });
                 })
                 .catch(error => {
                     let message = "";
@@ -94,12 +89,11 @@ export default {
                         message = "Internal technical error was happened.";
                     }
 
-                    const responseData = {
+                    reject({
                         success : false,
                         status  : error.response.status,
                         message,
-                    };
-                    reject(responseData);
+                    });
                 });
         });
     },
@@ -107,13 +101,12 @@ export default {
         return new Promise((resolve, reject) => {
             HTTP.get(`/doctors/${id}`, {headers : {"Authorization" : `Bearer ${token}`}})
                 .then(response => {
-                    const responseData = {
+                    resolve({
                         success : true,
                         status  : response.status,
                         data    : response.data.data,
                         message : "User success loaded",
-                    };
-                    resolve(responseData);
+                    });
                 })
                 .catch(error => {
                     let message = "";
@@ -131,30 +124,29 @@ export default {
                         message = "Internal technical error was happened.";
                     }
 
-                    const responseData = {
+                    reject({
                         success : false,
                         status  : error.response.status,
                         message,
-                    };
-                    reject(responseData);
+                    });
                 });
         });
     },
     async updateUser({id, token, params}){
+
         return new Promise((resolve, reject) => {
-            HTTP.patch(`/doctors/${id}`, params, {
+            HTTP.post(`/doctors/${id}`, params, {
                 headers : {
                     "Authorization" : `Bearer ${token}`,
-                    "Content-Type"  : "application/x-www-form-urlencoded"
+                    "Content-Type"  : "application/x-www-form-urlencoded",
                 }
             }).then(response => {
-                const responseData = {
+                resolve({
                     success : true,
                     status  : response.status,
                     data    : response.data.data,
                     message : "User success updated",
-                };
-                resolve(responseData);
+                });
             }).catch(error => {
                 let message = "";
 
@@ -171,12 +163,11 @@ export default {
                     message = "Internal technical error was happened.";
                 }
 
-                const responseData = {
+                reject({
                     success : false,
                     status  : error.response.status,
                     message,
-                };
-                reject(responseData);
+                });
             });
         });
     },
@@ -184,12 +175,11 @@ export default {
         return new Promise((resolve, reject) => {
             HTTP.get("/doctors/verify-email", {params : verifyData})
                 .then(response => {
-                    const responseData = {
+                    resolve({
                         success : true,
                         status  : response.status,
                         message : "Email is verify",
-                    };
-                    resolve(responseData);
+                    });
                 })
                 .catch(error => {
                     let message = "";
@@ -207,12 +197,11 @@ export default {
                         message = "Something went wrong, please try again later.";
                     }
 
-                    const responseData = {
+                    reject({
                         success : false,
                         status  : error.response.status,
                         message,
-                    };
-                    reject(responseData);
+                    });
                 });
         });
     },
@@ -221,12 +210,11 @@ export default {
             HTTP.post("/doctors/send-email-verification-link", requestData)
                 .then(response => {
                     console.log("sendEmailVerifyLink response: ", response);
-                    const responseData = {
+                    resolve({
                         success : true,
                         status  : response.status,
                         message : "Verify link has been send on your email.",
-                    };
-                    resolve(responseData);
+                    });
                 })
                 .catch(error => {
                     console.log("sendEmailVerifyLink error: ", error);
@@ -245,13 +233,11 @@ export default {
                         message = "Internal technical error was happened.";
                     }
 
-                    const responseData = {
+                    reject({
                         success : false,
                         status  : error.response.status,
                         message,
-                    };
-
-                    reject(responseData);
+                    });
                 });
         });
     },
@@ -259,14 +245,12 @@ export default {
         return new Promise((resolve, reject) => {
             HTTP.get(`/doctors/${requestConfig.doctor_id}/stripe-connect`, {headers : {Authorization : `Bearer ${requestConfig.token}`}})
                 .then(response => {
-                    const responseData = {
+                    resolve({
                         success : true,
                         status  : response.status,
                         data    : response.data,
                         message : 'Doctors success loaded.',
-                    };
-
-                    resolve(responseData);
+                    });
                 })
                 .catch(error => {
                     let message = '';
@@ -275,13 +259,11 @@ export default {
                         message = "Internal technical error was happened.";
                     }
 
-                    const responseData = {
+                    reject({
                         success : false,
                         status  : error.response.status,
                         message,
-                    };
-
-                    reject(responseData);
+                    });
                 });
         });
     },
@@ -293,13 +275,12 @@ export default {
                     "Content-Type"  : "application/x-www-form-urlencoded"
                 }
             }).then(response => {
-                const responseData = {
+                resolve({
                     success : true,
                     status  : response.status,
                     data    : response.data.data,
                     message : "User success updated",
-                };
-                resolve(responseData);
+                });
             }).catch(error => {
                 let message = "";
 
@@ -316,13 +297,119 @@ export default {
                     message = "Internal technical error was happened.";
                 }
 
-                const responseData = {
+                reject({
                     success : false,
                     status  : error.response.status,
                     message,
-                };
-                reject(responseData);
+                });
             });
         });
-    }
+    },
+    async requestActivation({id, token}){
+        return new Promise((resolve, reject) => {
+            HTTP.patch(`/doctors/${id}/request-activation`, {}, {
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            }).then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                    message : "The request has been successfully sent for consideration by the administration",
+                });
+            }).catch(error => {
+                let message = "";
+
+                if(error.response.status === 401){
+                    message = "Authorization failed.";
+                }
+                if(error.response.status === 403){
+                    message = "Current user has not permissions to do this action.";
+                }
+                if(error.response.status === 404){
+                    message = "Resource not found.";
+                }
+                if(error.response.status === 500){
+                    message = "Internal technical error was happened.";
+                }
+
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message,
+                });
+            });
+        });
+    },
+    async deleteUserAccount({id, token}){
+        return new Promise((resolve, reject) => {
+            HTTP.patch(`/doctors/${id}/close`, {}, {
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            }).then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                    message : "Account successful delete",
+                });
+            }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
+    async pauseAccount({id, token}){
+        return new Promise((resolve, reject) => {
+            HTTP.patch(`/doctors/${id}/deactivate`, {}, {
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            }).then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                    message : "Your account has been successfully suspended",
+                });
+            }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
+    async unPauseAccount({id, token}){
+        return new Promise((resolve, reject) => {
+            HTTP.patch(`/doctors/${id}/activate`, {}, {
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            }).then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                    message : "Your account has been successfully restored",
+                });
+            }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
 }

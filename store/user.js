@@ -72,6 +72,7 @@ export const actions = {
                        resolve(response);
                    })
                    .catch(error => {
+                       console.error(error);
                        reject(error);
                    });
         })
