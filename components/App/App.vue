@@ -679,7 +679,7 @@
 		
 		&__header-item {
 			color      : $color-curious-blue;
-			padding    : 0px 0px 5px 15px;
+			padding    : 0 0 5px 15px;
 			flex-basis : 25%;
 			
 			@include desktop-l {
@@ -747,8 +747,8 @@
 				display       : block;
 				content       : attr(data-title);
 				position      : absolute;
-				padding-right : 10px;
 				white-space   : nowrap;
+				padding-right : 10px;
 				
 				@include tablet {
 					display : none;
@@ -784,8 +784,8 @@
 			font-size       : 28px;
 			width           : 32px;
 			height          : 32px;
-			border          : 1px solid rgba(36, 126, 229, 0.1);
-			box-shadow      : 0px 20px 80px rgba(208, 208, 208, 0.25);
+			border          : 1px solid rgba(36, 126, 229, .1);
+			box-shadow      : 0 20px 80px rgba(208, 208, 208, .25);
 			border-radius   : 50%;
 			margin-right    : 8px;
 		}
@@ -801,31 +801,39 @@
 	.cookie {
 		position         : fixed;
 		bottom           : 0;
-		left             : 0;
-		background-color : rgba(255, 255, 255, 0.9);
+		left             : 50%;
+		transform        : translateX(-50%);
+		background-color : rgba(255, 255, 255, .9);
 		width            : 100%;
 		padding          : 25px 20px;
-		z-index          : 1;
-		border-radius    : 0 20px 20px 0;
-		
-		@include tablet {
-			width : 90%;
-		}
+		z-index          : 9;
+		border-radius    : 4px;
 		
 		.cookie__floating__content {
 			padding-bottom : 14px;
 		}
 		
+		.cookie__floating__wrap {
+			float     : none;
+			margin    : 0 auto;
+			max-width : 1160px;
+		}
+		
 		.cookie__floating__buttons__button {
-			padding       : 10px 31px 9px;
+			padding       : 10px 20px 9px;
 			border-radius : 5px;
 			color         : white;
 			border        : none;
 			background    : linear-gradient(270deg, #0F44B2 0%, #042052 100%);
 			font-family   : $TheSansB;
-			font-size     : 18px;
-			margin        : 0 20px 0 0;
+			font-size     : 16px;
+			margin        : 0 10px 0 0;
 			font-weight   : 500;
+			@include tablet {
+				margin    : 0 20px 0 0;
+				font-size : 18px;
+				padding   : 10px 31px 9px;
+			}
 		}
 	}
 	
@@ -852,8 +860,5 @@
 			bottom : 175px;
 			left   : 1044px;
 		}
-		
 	}
-
-
 </style>

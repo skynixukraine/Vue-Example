@@ -1,16 +1,19 @@
 <template>
 	<div class = "modals">
+		<Default v-if = "$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.defaultModal" />
 		<ContactModal v-if = "$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.contactModals" />
 		<RegisterSuccessModal v-if = "$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.registerSuccess" />
 	</div>
 </template>
 
 <script>
+    import Default from "~/components/Modals/Default";
     import ContactModal from "~/components/Modals/ContactModal";
     import RegisterSuccessModal from "~/components/Modals/RegisterSuccessModal";
 
     export default {
         components : {
+            Default,
             ContactModal,
             RegisterSuccessModal,
         },
@@ -20,8 +23,7 @@
 <style lang = "scss">
 	.modal {
 		&__close-button {
-			$size: 32px;
-			
+			$size : 32px;
 			top                 : $size / 2;
 			right               : $size / 2;
 			width               : $size;
@@ -37,13 +39,10 @@
 			background-position : center center;
 		}
 		
-		&__main {
-			margin-bottom : 40px;
-		}
+		&__main { margin-bottom : 40px; }
 		
-		& .v--modal {
-			$vertical_padding: 64px;
-			
+		.v--modal {
+			$vertical_padding : 64px;
 			padding       : $vertical_padding 24px;
 			background    : $color-white;
 			text-align    : center;

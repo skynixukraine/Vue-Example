@@ -1,17 +1,16 @@
 <template>
-	<label class = "input-text__label">
-		<span class = "input-text__label__txt"
-			  :class = "{'input-text__label__txt--is-required': isRequired}"
+	<label class = "input-text">
+		<span class = "input-text__title"
+			  :class = "{'input-text__title--is-required': isRequired}"
 			  v-if = "labelTxt">{{ labelTxt }}</span>
 		<input type = "text"
 			   :placeholder = "placeholder"
 			   :name = "name"
+			   :value = "value"
 			   class = "input-text__input"
 			   @blur = "onBlur"
 			   @focus = "onFocus"
-			   @input = "onChange"
-			   @change = "onChange"
-			   @keyup.stop = "onChange">
+			   @input = "onInput">
 	</label>
 </template>
 
@@ -33,12 +32,15 @@
             name        : {
                 type    : String,
                 default : ""
+            },
+            value       : {
+                type    : String,
+                default : ""
             }
         },
-        mounted(){
-        },
-        data(){
-            return {}
+        model   : {
+            prop  : "value",
+            event : "inner_input"
         },
         methods : {
             onFocus(event){
@@ -47,8 +49,9 @@
             onBlur(event){
                 this.$emit("blur", event);
             },
-            onChange(event){
-                this.$emit("change", event);
+            onInput(event){
+                this.$emit("inner_input", event.target.value);
+                this.$emit("input", event);
             },
         }
     }
@@ -56,30 +59,27 @@
 
 <style lang = "scss" scoped>
 	.input-text {
-		&__label {
-			color       : $color-rolling-stone;
-			cursor      : pointer;
-			font-size   : 14px;
-			font-style  : normal;
-			font-weight : 500;
-			line-height : 28px;
-			
-			@include phone-big {
-				font-size : 16px;
-			}
-			
-			@include desktop {
-				font-size : 18px;
-			}
-			
-			&__txt {
-				&--is-required {
-					&:after {
-						color   : $color-alert-red;
-						content : "*";
-						display : inline-block;
-						
-					}
+		color       : $color-rolling-stone;
+		cursor      : pointer;
+		font-size   : 14px;
+		font-style  : normal;
+		font-weight : 500;
+		line-height : 28px;
+		
+		@include phone-big {
+			font-size : 16px;
+		}
+		
+		@include desktop {
+			font-size : 18px;
+		}
+		
+		&__title {
+			&--is-required {
+				&:after {
+					color   : $color-alert-red;
+					content : "*";
+					display : inline-block;
 				}
 			}
 		}
