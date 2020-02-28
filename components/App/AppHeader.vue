@@ -12,7 +12,7 @@
 			<div class = "app-header__item">
 				<Navigation :isPersonalOffice = "isPersonalOffice" />
 			</div>
-			<div class = "app-header__item app-header__item-logo">
+			<div class = "app-header__item app-header__item-logo" v-bind:class = "userIsLogIn">
 				<HeaderUserInfo :isPersonalOffice = "isPersonalOffice" />
 			</div>
 			<div class = "app-header__item" v-if = "windowWidth < 962">
@@ -46,6 +46,9 @@
 						  ~this.$route.fullPath.indexOf(this.$routes.personalInformation.path) ||
 						  ~this.$route.fullPath.indexOf(this.$routes.billing.path) ||
 						  ~this.$route.fullPath.indexOf(this.$routes.enquiries.path));
+            },
+            userIsLogIn(){
+                return this.$store.getters["user/USER"] === null ? "app-header__item--off" : '';
             }
         }
     };
@@ -86,6 +89,10 @@
 				@include tablet-big {
 					margin : 0;
 				}
+			}
+			
+			&--off {
+				display : none;
 			}
 		}
 		

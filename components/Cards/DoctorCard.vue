@@ -83,6 +83,7 @@
 			max-width     : $size;
 			max-height    : $size;
 			border-radius : $border-radius $border-radius 0 0;
+			background-color: $color-black-squeeze;
 			
 			@include tablet {
 				max-width : none;

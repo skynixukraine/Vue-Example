@@ -95,7 +95,7 @@
 		min-height     : 100vh;
 		flex-direction : column;
 		
-		&-main{ flex: 1 0 auto; }
+		&-main { flex : 1 0 auto; }
 	}
 	
 	/*********************
@@ -133,6 +133,7 @@
 		display             : flex;
 		align-items         : center;
 		justify-content     : center;
+		flex-direction      : column;
 		position            : relative;
 		
 		&.section--fullscreen {
@@ -216,23 +217,38 @@
 	
 	.section-scroll-tooltip {
 		position   : absolute;
-		bottom     : 10px;
-		left       : 0;
+		left       : 50%;
+		transform  : translate(-50%, -50%);
+		bottom     : 6px;
 		width      : 100%;
 		box-sizing : border-box;
 		padding    : 0 20px;
+		opacity    : 1;
+		transition : opacity .3s ease;
+		display    : flex;
+		
+		@include tablet {
+			position : fixed;
+		}
+		
+		&--off {
+			opacity : 0;
+		}
 		
 		&__inner {
-			width         : 33.33%;
-			height        : 4px;
-			background    : $color-white;
-			margin        : 0 auto;
-			border-radius : 10px;
-			text-indent   : -9999px;
+			width           : 33.33%;
+			height          : 4px;
+			background      : $color-white;
+			margin          : 0 auto;
+			border-radius   : 10px;
+			text-indent     : -9999px;
+			display         : flex;
+			flex-direction  : row;
+			justify-content : flex-start;
+			align-items     : center;
 		}
 		
 		@include tablet-big {
-			bottom : 24px;
 			
 			&__inner {
 				width               : 100%;
@@ -241,7 +257,7 @@
 				margin-left         : auto;
 				margin-right        : auto;
 				background          : none;
-				background-image    : url("~static/images/icons/mouse-scroll.svg");
+				//background-image    : url("~static/images/icons/mouse-scroll.svg");
 				background-position : left center;
 				background-repeat   : no-repeat;
 				font-size           : 15px;
@@ -250,7 +266,7 @@
 				color               : $color-white;
 				display             : flex;
 				align-items         : center;
-				padding-left        : 34px;
+				//padding-left        : 34px;
 				text-indent         : 0;
 			}
 		}
@@ -822,8 +838,9 @@
 		}
 		
 		&--doc-photo {
-			bottom : 691px;
-			right  : 1044px;
+			bottom  : 75.2%;
+			right   : 91.1%;
+			z-index : -1;
 		}
 		
 		&--hand-photo {
@@ -837,4 +854,6 @@
 		}
 		
 	}
+
+
 </style>

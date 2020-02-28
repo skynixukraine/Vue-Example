@@ -34,6 +34,12 @@
     }
 }
 
+@mixin height-squeeze{
+    @media screen and (max-height: #{$screen-height}) and (min-width: #{$screen-tablet-big-min}) {
+        @content;
+    }
+}
+
 @mixin breakpoints($media, $xs: 'min-width' ) {
     @if $media == xs {
         //480px
