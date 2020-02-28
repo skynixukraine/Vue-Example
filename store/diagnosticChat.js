@@ -16,7 +16,6 @@ export const mutations = {
 
 export const actions = {
     LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT({state, commit}, requestConfig){
-
         return new Promise((resolve, reject) => {
             DiagnosticChatApi.loadTargetDoctorForDiagnosticChat(requestConfig)
                       .then(response => {

@@ -239,10 +239,10 @@
         },
         methods : {
             onSelectPart(event){
-				let eventData = {
-					halfPart : event.target.getAttribute("data-half-part") || event.target.parentNode.getAttribute("data-half-part") || event.target.parentNode.parentNode.getAttribute("data-half-part")
-				};
-				
+                let eventData = {
+                    halfPart : event.target.getAttribute("data-half-part") || event.target.parentNode.getAttribute("data-half-part") || event.target.parentNode.parentNode.getAttribute("data-half-part")
+                };
+
                 if(event.target.getAttribute("data-name")){
                     if(this.isClickable){
                         const isAddNewPart = !event.target.getAttribute("class");
@@ -253,8 +253,9 @@
                         eventData.targetPartId = event.target.getAttribute("id");
                     }
                 }
-                
-				this.$emit("select-body-part", eventData);
+
+                this.$emit("select-body-part", eventData);
+                this.$forceUpdate();
             },
             checkSelectedParts(){
                 const previouslySelectedParts = this.$refs.bodyParts.querySelectorAll("." + SELECTED_PART_CLASS_NAME);

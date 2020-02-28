@@ -64,6 +64,7 @@
 										<div class = "edit-answer-area__input-text"
 											 v-if = "editingData.type === QUESTION_TYPES.inputText">
 											<AutoHeight @change = "onInputText"
+														:maxLength = "255"
 														:content = "userAnswers[editingData.message_index].contentForChat" />
 										</div>
 										<!--Select body part-->
@@ -111,7 +112,7 @@
 										 'message__container--hide': editingData && item.message_id === editingData.message_id
 									 }">
 									<span class = "message__questioner">{{ item.questioner || "Me" }}</span>
-									<h4 class = "message__title" v-if = "item.title">{{ item.title }}</h4>
+<!--									<h4 class = "message__title" v-if = "item.title">{{ item.title }}</h4>-->
 									<div class = "message__content">
 										<div v-if = "item.contentForChat && item.type === QUESTION_TYPES.uploadImg"
 											 v-html = "item.contentForChat"></div>
@@ -182,7 +183,9 @@
 								<!--Input Text-->
 								<div class = "answer-area__input-text"
 									 v-if = "lastQuestionData.type === QUESTION_TYPES.inputText">
-									<AutoHeight @change = "onInputText" :key = "`input_text_${messages.length}`"/>
+									<AutoHeight @change = "onInputText"
+												:maxLength = "255"
+												:key = "`input_text_${messages.length}`" />
 								</div>
 								<!--Select body part-->
 								<div class = "answer-area__select-body-part"
@@ -300,6 +303,7 @@
 				</transition>
 				<transition name = "main-animation">
 					<div class = "payment-details" v-if = "isQuestionsOver && isPersonalInfoFilled">
+						<h3>{{ `Services ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} cost ${this.targetDoctor.enquire_price}` }}</h3>
 						<StripePaymentSystem @create-token = "onCreateToken" />
 					</div>
 				</transition>
@@ -850,11 +854,14 @@
             },
             onSelectBodyPart(eventData){
                 const context = this.editingData || this;
-
-                if(eventData.targetPartId){ // Add or delete part
-                    if(eventData.isAddNewPart){ // Add new part
+                
+                if(eventData.targetPartId){
+                    // Add or delete part
+                    if(eventData.isAddNewPart){
+                        // Add new part
                         context.notConfirmedSelectedBodyParts.push(eventData.targetPartId);
-                    } else{ // Delete part
+                    } else{
+                        // Delete part
                         for(let i = 0, newNotConfirmSelectedBodyParts = []; i < context.notConfirmedSelectedBodyParts.length; i++){
                             if(context.notConfirmedSelectedBodyParts[i] === eventData.targetPartId){
                                 context.notConfirmedSelectedBodyParts = newNotConfirmSelectedBodyParts.concat(context.notConfirmedSelectedBodyParts.slice(i + 1, context.notConfirmedSelectedBodyParts.length));
@@ -864,12 +871,15 @@
                             }
                         }
                     }
-                } else{ // Open modal
-                    this.showedBodyHalf                   = eventData.halfPart;
-                    context.notConfirmedSelectedBodyParts = context.selectedBodyParts.slice();
-
-                    this.isShowSelectBodyPartModal = true;
-                    this.forbidScroll();
+                } else{
+                    // Open modal
+					if(!this.isShowSelectBodyPartModal){
+						this.showedBodyHalf                   = eventData.halfPart;
+						context.notConfirmedSelectedBodyParts = context.selectedBodyParts.slice();
+	
+						this.isShowSelectBodyPartModal = true;
+						this.forbidScroll();
+					}
                 }
             },
             onConfirmBodySelectParts(){
@@ -886,11 +896,11 @@
                 this.isShowSelectBodyPartModal = false;
                 this.allowScroll();
             },
-            onInputText(event){
+            onInputText(targetValue){
                 if(this.editingData){
-                    this.editingData.contentForChat = event.target.value;
+                    this.editingData.contentForChat = targetValue;
                 } else{
-                    this.lastInputTextText = event.target.value;
+                    this.lastInputTextText = targetValue;
                 }
             },
             onUploadFile(event){
@@ -1184,7 +1194,7 @@
 				$inner_offset : 6px;
 				
 				display          : flex;
-				padding          : $inner_offset $main_offset / 2;
+				padding          : $inner_offset * 4 / 3 $main_offset / 2 $inner_offset;
 				transition       : $transition;
 				align-items      : center;
 				border-radius    : $border-radius / 4;
@@ -1197,6 +1207,7 @@
 					height           : $size;
 					display          : inline-block;
 					position         : relative;
+					margin-top       : -.125em;
 					margin-right     : $inner_offset;
 					background-color : white;
 					
@@ -1255,6 +1266,7 @@
 	
 	.chat-container, .answer-area {
 		margin    : 0 auto;
+		position  : relative;
 		max-width : 600px;
 	}
 	
