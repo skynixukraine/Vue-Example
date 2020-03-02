@@ -1405,10 +1405,6 @@
 		transition : $animation_duration;
 	}
 	
-	.main-animation-enter, .main-animation-leave-to {
-		@include main-animation;
-	}
-	
 	.edit-animation-enter-active, .edit-animation-leave-active {
 		transition : $animation_duration;
 	}
