@@ -18,12 +18,7 @@
 		background-color : $color-black-squeeze;
 	}
 	
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
+	h1, h2,	h3,	h4, h5,	h6 {
 		font-family : $TheAntiquaB;
 		line-height : 1.33;
 		color       : $color-curious-blue;
@@ -56,20 +51,15 @@
 		line-height : 26px;
 	}
 	
-	p {
-		margin : 0;
-	}
+	p { margin : 0; }
 	
-	a {
-		text-decoration : none;
-	}
+	a { text-decoration : none; }
 	
 	button {
 		cursor                      : pointer;
 		-webkit-tap-highlight-color : transparent;
 		
-		&:active,
-		&:focus {
+		&:active, &:focus {
 			outline : none;
 		}
 	}
@@ -107,7 +97,7 @@
 	
 	// page
 	.page {
-		padding-top : 68px;
+		padding-top : 64px;
 		
 		&.page--no-padding {
 			padding-top : 0;
@@ -181,10 +171,7 @@
 		}
 	}
 	
-	
-	.section-not-padding {
-		padding : 0;
-	}
+	.section-not-padding { padding : 0; }
 	
 	.section-header {
 		margin-bottom : 32px;
@@ -276,7 +263,7 @@
 	.container {
 		width        : 100%;
 		max-width    : 1160px;
-		padding      : 0 20px;
+		padding      : 0 $main_offset;
 		margin-right : auto;
 		margin-left  : auto;
 		position     : relative;
@@ -323,7 +310,6 @@
 			}
 		}
 	}
-	
 	
 	// list
 	.list {
@@ -411,7 +397,7 @@
 			min-width      : 265px;
 			display        : inline-block;
 			text-align     : center;
-			padding        : 20px 45px 15px 45px;
+			padding        : $main_offset 45px 15px 45px;
 			border-radius  : 4px;
 			font-size      : 16px;
 			line-height    : 21px;
@@ -553,35 +539,7 @@
 	}
 	
 	.input {
-		&::placeholder {
-			color       : $color-form-input-placeholder;
-			font-style  : normal;
-			font-weight : 400;
-		}
-		
-		&::-webkit-input-placeholder {
-			color       : $color-form-input-placeholder;
-			font-style  : normal;
-			font-weight : 400;
-		}
-		
-		&::-moz-placeholder {
-			color       : $color-form-input-placeholder;
-			font-style  : normal;
-			font-weight : 400;
-		}
-		
-		/* Firefox 19+ */
-		
-		&:-moz-placeholder {
-			color       : $color-form-input-placeholder;
-			font-style  : normal;
-			font-weight : 400;
-		}
-		
-		/* Firefox 18- */
-		
-		&:-ms-input-placeholder {
+		&::placeholder, &::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
 			color       : $color-form-input-placeholder;
 			font-style  : normal;
 			font-weight : 400;
@@ -600,7 +558,6 @@
 		-moz-appearance    : none;
 		-webkit-appearance : none;
 	}
-	
 	
 	//table
 	.table {
@@ -645,7 +602,7 @@
 		}
 		
 		&__info-next {
-			margin-left : 20px;
+			margin-left : $main_offset;
 			
 			&:after {
 				transform        : rotate(-90deg);
@@ -656,7 +613,7 @@
 		&__header {
 			display        : none;
 			position       : relative;
-			padding-bottom : 10px;
+			padding-bottom : $main_offset / 2;
 			
 			@include tablet {
 				display : flex;
@@ -755,7 +712,6 @@
 				}
 			}
 		}
-		
 	}
 	
 	
@@ -776,14 +732,15 @@
 		padding    : 0;
 		
 		&::before {
+			$size: 32px;
 			content         : "+";
 			display         : inline-flex;
 			justify-content : center;
 			align-items     : center;
 			line-height     : 1;
 			font-size       : 28px;
-			width           : 32px;
-			height          : 32px;
+			width           : $size;
+			height          : $size;
 			border          : 1px solid rgba(36, 126, 229, .1);
 			box-shadow      : 0 20px 80px rgba(208, 208, 208, .25);
 			border-radius   : 50%;
@@ -805,7 +762,7 @@
 		transform        : translateX(-50%);
 		background-color : rgba(255, 255, 255, .9);
 		width            : 100%;
-		padding          : 25px 20px;
+		padding          : 25px $main_offset;
 		z-index          : 9;
 		border-radius    : 4px;
 		
@@ -829,6 +786,7 @@
 			font-size     : 16px;
 			margin        : 0 10px 0 0;
 			font-weight   : 500;
+			
 			@include tablet {
 				margin    : 0 20px 0 0;
 				font-size : 18px;
@@ -859,6 +817,110 @@
 		&--consult-block {
 			bottom : 175px;
 			left   : 1044px;
+		}
+	}
+	
+	.custom {
+		&-checkbox, &-radio {
+			margin          : 0 #{-$main_offset / 2};
+			display         : flex;
+			flex-wrap       : wrap;
+			justify-content : flex-end;
+			
+			&__item {
+				color       : $color-solitude;
+				margin      : $main_offset / 4 $main_offset / 2;
+				display     : flex;
+				position    : relative;
+				align-items : center;
+				
+			}
+			
+			&__input {
+				opacity  : 0;
+				z-index  : -1;
+				position : absolute;
+				
+				&:checked + .custom-checkbox__label, &:checked + .custom-radio__label {
+					background-color : $color-matisse;
+					
+					.custom-checkbox__label__icon, .custom-radio__label__icon {
+						&:before {
+							opacity : 1;
+						}
+					}
+				}
+			}
+			
+			&__label {
+				$inner_offset : 6px;
+				display          : flex;
+				padding          : $inner_offset * 4 / 3 $main_offset / 2 $inner_offset;
+				transition       : $transition;
+				align-items      : center;
+				border-radius    : 6px;
+				background-color : $color-curious-blue;
+				
+				&__icon {
+					$size : 14px;
+					width            : $size;
+					height           : $size;
+					display          : inline-block;
+					position         : relative;
+					margin-top       : -.125em;
+					margin-right     : $inner_offset;
+					background-color : white;
+					
+					&:before {
+						top        : 0;
+						left       : 0;
+						width      : 100%;
+						height     : 100%;
+						opacity    : 0;
+						display    : block;
+						position   : absolute;
+						transition : $transition;
+					}
+				}
+			}
+		}
+		
+		&-checkbox {
+			&__label {
+				&__icon {
+					border-radius : 2px;
+					
+					&:before {
+						$different_size : 25%;
+						top              : $different_size / -2;
+						left             : $different_size / -2;
+						color            : $color-matisse;
+						width            : 100% + $different_size;
+						height           : 100% + $different_size;
+						content          : "";
+						background-image : url("~static/images/icons/checkbox-checked.svg");
+					}
+				}
+			}
+		}
+		
+		&-radio {
+			&__label {
+				&__icon {
+					border-radius : 50%;
+					
+					&:before {
+						$size : 8px;
+						top              : calc(50% - #{$size / 2});
+						left             : calc(50% - #{$size / 2});
+						width            : $size;
+						height           : $size;
+						content          : " ";
+						border-radius    : 50%;
+						background-color : $color-matisse;
+					}
+				}
+			}
 		}
 	}
 </style>

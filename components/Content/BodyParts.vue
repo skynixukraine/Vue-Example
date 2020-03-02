@@ -231,6 +231,10 @@
         },
         mounted(){
             this.checkSelectedParts();
+
+            if(!(("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch)){
+                this.$refs.bodyParts.classList.add("hover");
+            }
         },
         watch   : {
             selectedParts(){
@@ -302,18 +306,21 @@
 		}
 		
 		path {
+			transition : $transition;
+			
 			&.selected {
 				fill : $color-cinnabar;
 			}
 		}
 		
 		&--is-clickable {
-			path {
-				transition : $transition;
-				
-				&:hover {
-					fill   : $color-torea-bay;
-					cursor : pointer;
+			&.hover {
+				path {
+					
+					&:hover {
+						fill   : $color-torea-bay;
+						cursor : pointer;
+					}
 				}
 			}
 		}

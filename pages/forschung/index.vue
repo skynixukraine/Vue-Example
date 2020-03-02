@@ -111,7 +111,7 @@
 									 :class = "{
 										 'message__container--hide': editingData && item.message_id === editingData.message_id
 									 }">
-									<span class = "message__questioner">{{ item.questioner || "Me" }}</span>
+									<span class = "message__questioner">{{ item.questioner || "Ich" }}</span>
 <!--									<h4 class = "message__title" v-if = "item.title">{{ item.title }}</h4>-->
 									<div class = "message__content">
 										<div v-if = "item.contentForChat && item.type === QUESTION_TYPES.uploadImg"
@@ -125,7 +125,7 @@
 									<button v-if = "!editingData && item.message_id"
 											type = "button"
 											class = "control-btn edit-answer-area__edit-btn"
-											@click = "onEditMessageStart(item.message_id)">Edit
+											@click = "onEditMessageStart(item.message_id)">bearbeiten
 									</button>
 								</div>
 							</transition>
@@ -498,7 +498,7 @@
                 if(this.targetDoctor){
 					return {
 						button         : "lets start",
-						questioner     : "first message",
+						questioner     : "OnlineDoctor",
 						contentForChat : `Are you ready to start a chat with ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}?`,
 					}
 				}else{
@@ -1159,112 +1159,6 @@
 		}
 	}
 	
-	.custom {
-		&-checkbox, &-radio {
-			margin          : 0 #{-$main_offset / 2};
-			display         : flex;
-			flex-wrap       : wrap;
-			justify-content : flex-end;
-			
-			&__item {
-				color       : $color-solitude;
-				margin      : $main_offset / 4 $main_offset / 2;
-				display     : flex;
-				position    : relative;
-				align-items : center;
-				
-			}
-			
-			&__input {
-				opacity  : 0;
-				z-index  : -1;
-				position : absolute;
-				
-				&:checked + .custom-checkbox__label, &:checked + .custom-radio__label {
-					background-color : $color-matisse;
-					
-					.custom-checkbox__label__icon, .custom-radio__label__icon {
-						&:before {
-							opacity : 1;
-						}
-					}
-				}
-			}
-			
-			&__label {
-				$inner_offset : 6px;
-				
-				display          : flex;
-				padding          : $inner_offset * 4 / 3 $main_offset / 2 $inner_offset;
-				transition       : $transition;
-				align-items      : center;
-				border-radius    : $border-radius / 4;
-				background-color : $color-curious-blue;
-				
-				&__icon {
-					$size : 14px;
-					
-					width            : $size;
-					height           : $size;
-					display          : inline-block;
-					position         : relative;
-					margin-top       : -.125em;
-					margin-right     : $inner_offset;
-					background-color : white;
-					
-					&:before {
-						top        : 0;
-						left       : 0;
-						width      : 100%;
-						height     : 100%;
-						opacity    : 0;
-						display    : block;
-						position   : absolute;
-						transition : $transition;
-					}
-				}
-			}
-		}
-		
-		&-checkbox {
-			&__label {
-				&__icon {
-					border-radius : 2px;
-					
-					&:before {
-						$different_size : 25%;
-						top              : $different_size / -2;
-						left             : $different_size / -2;
-						color            : $color-matisse;
-						width            : 100% + $different_size;
-						height           : 100% + $different_size;
-						content          : "";
-						background-image : url("~static/images/icons/checkbox-checked.svg");
-					}
-				}
-			}
-		}
-		
-		&-radio {
-			&__label {
-				&__icon {
-					border-radius : 50%;
-					
-					&:before {
-						$size : 8px;
-						top              : calc(50% - #{$size / 2});
-						left             : calc(50% - #{$size / 2});
-						width            : $size;
-						height           : $size;
-						content          : " ";
-						border-radius    : 50%;
-						background-color : $color-matisse;
-					}
-				}
-			}
-		}
-	}
-	
 	.chat-container, .answer-area {
 		margin    : 0 auto;
 		position  : relative;
@@ -1474,15 +1368,12 @@
 		background-color : $color-black-squeeze;
 		
 		&__main {
-			height  : 82.5%;
+			$controls_btns_height: 40px;
+			height  : calc(100% - #{$main_offset + $controls_btns_height});
 			display : flex;
 		}
 		
 		&__footer { margin-top : $main_offset; }
-		
-		@include tablet {
-			&__main { height  : 90%; }
-		}
 		
 		@include tablet-big {
 			$header_height : 80px;
