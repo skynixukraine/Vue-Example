@@ -18,7 +18,7 @@
 		background-color : $color-black-squeeze;
 	}
 	
-	h1, h2,	h3,	h4, h5,	h6 {
+	h1, h2, h3, h4, h5, h6 {
 		font-family : $TheAntiquaB;
 		line-height : 1.33;
 		color       : $color-curious-blue;
@@ -115,16 +115,17 @@
 	
 	// section
 	.section {
-		padding-top         : 64px;
-		padding-bottom      : 64px;
-		background-position : center center;
-		background-repeat   : no-repeat;
-		background-size     : cover;
+		$padding: 64px;
 		display             : flex;
-		align-items         : center;
-		justify-content     : center;
-		flex-direction      : column;
 		position            : relative;
+		padding-top         : $padding;
+		align-items         : center;
+		flex-direction      : column;
+		padding-bottom      : $padding;
+		justify-content     : center;
+		background-size     : cover;
+		background-repeat   : no-repeat;
+		background-position : center center;
 		
 		&.section--fullscreen {
 			min-height : 100vh;
@@ -136,26 +137,28 @@
 		}
 		
 		&.section--32-32 {
-			padding-top    : 32px;
-			padding-bottom : 32px;
+			$padding: 32px;
+			padding-top    : $padding;
+			padding-bottom : $padding;
 		}
 		
 		&.section--64-64 {
-			padding-top    : 64px;
-			padding-bottom : 64px;
+			padding-top    : $padding;
+			padding-bottom : $padding;
 		}
 		
 		&.section--0-default {
-			padding-top : 0px;
+			padding-top : 0;
 		}
 		
 		&.section--default-0 {
-			padding-bottom : 0px;
+			padding-bottom : 0;
 		}
 		
 		@include tablet-big {
-			padding-top    : 112px;
-			padding-bottom : 112px;
+			$padding: 112px;
+			padding-top    : $padding;
+			padding-bottom : $padding;
 			
 			&.section--bg-right-1 {
 				background-image    : url("~static/images/images/rectangle-right.png");
@@ -203,16 +206,16 @@
 	}
 	
 	.section-scroll-tooltip {
-		position   : absolute;
 		left       : 50%;
-		transform  : translate(-50%, -50%);
-		bottom     : 6px;
 		width      : 100%;
-		box-sizing : border-box;
+		bottom     : 6px;
 		padding    : 0 20px;
 		opacity    : 1;
-		transition : opacity .3s ease;
 		display    : flex;
+		position   : absolute;
+		transform  : translate(-50%, -50%);
+		transition : opacity $transition ease;
+		box-sizing : border-box;
 		
 		@include tablet {
 			position : fixed;
@@ -224,19 +227,18 @@
 		
 		&__inner {
 			width           : 33.33%;
-			height          : 4px;
-			background      : $color-white;
 			margin          : 0 auto;
-			border-radius   : 10px;
-			text-indent     : -9999px;
+			height          : 4px;
 			display         : flex;
+			background      : $color-white;
+			align-items     : center;
+			text-indent     : -9999px;
+			border-radius   : 10px;
 			flex-direction  : row;
 			justify-content : flex-start;
-			align-items     : center;
 		}
 		
 		@include tablet-big {
-			
 			&__inner {
 				width               : 100%;
 				height              : 33px;
@@ -262,11 +264,11 @@
 	// container
 	.container {
 		width        : 100%;
-		max-width    : 1160px;
 		padding      : 0 $main_offset;
-		margin-right : auto;
-		margin-left  : auto;
 		position     : relative;
+		max-width    : 1160px;
+		margin-left  : auto;
+		margin-right : auto;
 		
 		&-fluid {
 			width    : 100%;
@@ -276,34 +278,35 @@
 		&-big {
 			width        : 100%;
 			max-width    : 1366px;
-			margin-right : auto;
 			margin-left  : auto;
+			margin-right : auto;
 		}
 		
 		&__dots {
 			display : none;
 		}
 		
-		
 		@include tablet-big {
 			&__dots {
+				$vertical_offset: -74px;
+				$horizontal_offset: -75px;
 				display : block;
 				
-				&--1 {
+				&--1, &--2, &--3 {
 					position : absolute;
-					top      : -74px;
-					right    : -75px;
+				}
+				
+				&--1 {
+					top      : $vertical_offset;
+					right    : $horizontal_offset;
 				}
 				
 				&--2 {
-					position : absolute;
-					bottom   : -74px;
-					left     : -75px;
+					left     : $horizontal_offset;
+					bottom   : $vertical_offset;
 				}
 				
-				
 				&--3 {
-					position : absolute;
 					top      : -186px;
 					right    : 0;
 				}
@@ -315,8 +318,8 @@
 	.list {
 		margin     : 0;
 		padding    : 0;
-		list-style : none;
 		display    : flex;
+		list-style : none;
 		flex-wrap  : wrap;
 		
 		&__item {
@@ -394,36 +397,27 @@
 		
 		&--button {
 			width          : auto;
-			min-width      : 265px;
+			border         : none;
 			display        : inline-block;
-			text-align     : center;
 			padding        : $main_offset 45px 15px 45px;
-			border-radius  : 4px;
+			min-width      : 265px;
 			font-size      : 16px;
+			text-align     : center;
 			line-height    : 21px;
 			font-weight    : 600;
+			border-radius  : 4px;
 			text-transform : uppercase;
-			letter-spacing : 0.14em;
-			border         : none;
+			letter-spacing : .14em;
 			
-			&-full-width {
-				width : 100%
-			}
+			&-full-width { width : 100% }
 			
-			&--button-upload {
-				font-weight : 500;
-			}
-			
+			&--button-upload { font-weight : 500; }
 			
 			&-white {
 				background : $color-white;
 				color      : $color-curious-blue;
 				
-				&:hover {
-					background : $color-solitude;
-				}
-				
-				&:active {
+				&:hover, &:active {
 					background : $color-solitude;
 				}
 			}
@@ -442,64 +436,54 @@
 			}
 			
 			&-gradient {
-				background : $color-gradient-blue-light;
 				color      : $color-white;
+				background : $color-gradient-blue-light;
 				
-				&:hover {
-					background : $color-gradient-blue-dark;
-				}
-				
-				&:active {
+				&:hover, &:active {
 					background : $color-gradient-blue-dark;
 				}
 			}
 			
 			&-transparent {
-				background : $color-transparent;
 				color      : $color-curious-blue;
+				background : $color-transparent;
 				
-				&:hover {
-					background : $color-solitude;
-				}
-				
-				&:active {
+				&:hover, &:active {
 					background : $color-solitude;
 				}
 			}
 			
 			&-upload {
+				color          : rgba(122, 125, 132, .5);
+				border         : 2px solid $color-curious-blue;
 				position       : relative;
+				font-size      : 18px;
 				text-align     : left;
 				background     : $color-white;
-				border         : 2px solid $color-curious-blue;
 				box-sizing     : border-box;
-				border-radius  : 4px;
-				color          : rgba(122, 125, 132, 0.5);
-				font-size      : 18px;
-				text-transform : lowercase;
 				line-height    : 18px;
+				border-radius  : 4px;
+				text-transform : lowercase;
 				letter-spacing : normal;
 				
 				::first-letter {
 					text-transform : uppercase;
 				}
 				
-				p {
-					padding-left : 12px;
-				}
+				p { padding-left : 12px; }
 				
 				img {
-					position : absolute;
 					top      : 12px;
 					left     : 11px;
+					position : absolute;
 				}
 			}
 			
 			&-mobile-large {
-				padding : 20px 16px 15px;
+				padding : $main_offset 16px 15px;
 				
 				@media (min-width : #{$screen-phone-irregular-min}) {
-					padding : 20px 30px 15px;
+					padding : $main_offset 30px 15px;
 				}
 			}
 		}
@@ -518,20 +502,18 @@
 		}
 	}
 	
-	.link.link--button-upload {
-		font-weight : 400;
-	}
+	.link.link--button-upload { font-weight : 400; }
 	
 	// input
 	.input, .select {
 		width         : 100%;
 		height        : 40px;
-		background    : $color-white;
 		border        : 2px solid $color-curious-blue;
+		background    : $color-white;
 		box-sizing    : border-box;
-		border-radius : 4px;
-		padding-left  : 6%;
 		padding-top   : 4px;
+		padding-left  : 6%;
+		border-radius : 4px;
 		
 		@include phone-big {
 			height : 56px;
@@ -546,10 +528,10 @@
 		}
 		
 		&--hidden {
+			top      : -9999px;
 			width    : 0;
 			height   : 0;
 			position : fixed;
-			top      : -9999px;
 		}
 	}
 	
@@ -562,8 +544,8 @@
 	//table
 	.table {
 		position      : relative;
+		margin-left   : 0;
 		margin-bottom : 50px;
-		margin-left   : 0px;
 		
 		@include desktop-l {
 			margin-left : -25px;
@@ -724,27 +706,27 @@
 	
 	// buttons with icons
 	.button-more-less {
-		display    : inline-block;
-		background : none;
-		border     : none;
 		color      : $color-curious-blue;
 		cursor     : pointer;
+		border     : none;
 		padding    : 0;
+		display    : inline-block;
+		background : none;
 		
 		&::before {
-			$size: 32px;
-			content         : "+";
-			display         : inline-flex;
-			justify-content : center;
-			align-items     : center;
-			line-height     : 1;
-			font-size       : 28px;
+			$size : 32px;
 			width           : $size;
 			height          : $size;
 			border          : 1px solid rgba(36, 126, 229, .1);
+			content         : "+";
+			display         : inline-flex;
+			font-size       : 28px;
 			box-shadow      : 0 20px 80px rgba(208, 208, 208, .25);
-			border-radius   : 50%;
+			align-items     : center;
+			line-height     : 1;
 			margin-right    : 8px;
+			border-radius   : 50%;
+			justify-content : center;
 		}
 	}
 	
@@ -756,15 +738,15 @@
 	Cookie banner
 	*********************/
 	.cookie {
-		position         : fixed;
-		bottom           : 0;
 		left             : 50%;
-		transform        : translateX(-50%);
-		background-color : rgba(255, 255, 255, .9);
 		width            : 100%;
+		bottom           : 0;
 		padding          : 25px $main_offset;
 		z-index          : 9;
+		position         : fixed;
+		transform        : translateX(-50%);
 		border-radius    : 4px;
+		background-color : rgba(255, 255, 255, .9);
 		
 		.cookie__floating__content {
 			padding-bottom : 14px;
@@ -777,35 +759,35 @@
 		}
 		
 		.cookie__floating__buttons__button {
-			padding       : 10px 20px 9px;
-			border-radius : 5px;
 			color         : white;
 			border        : none;
+			margin        : 0 $main_offset / 2 0 0;
+			padding       : 10px $main_offset 9px;
+			font-size     : 16px;
+			font-weight   : 500;
 			background    : linear-gradient(270deg, #0F44B2 0%, #042052 100%);
 			font-family   : $TheSansB;
-			font-size     : 16px;
-			margin        : 0 10px 0 0;
-			font-weight   : 500;
+			border-radius : 5px;
 			
 			@include tablet {
-				margin    : 0 20px 0 0;
+				margin    : 0 $main_offset 0 0;
+				padding   : $main_offset / 2 31px 9px;
 				font-size : 18px;
-				padding   : 10px 31px 9px;
 			}
 		}
 	}
 	
 	.container__dots-svg {
 		@include tablet-big {
-			position         : absolute;
-			background-image : url("~static/images/icons/dots.svg");
 			width            : 192px;
 			height           : 146px;
+			position         : absolute;
+			background-image : url("~static/images/icons/dots.svg");
 		}
 		
 		&--doc-photo {
-			bottom  : 75.2%;
 			right   : 91.1%;
+			bottom  : 75.2%;
 			z-index : -1;
 		}
 		
@@ -815,11 +797,12 @@
 		}
 		
 		&--consult-block {
-			bottom : 175px;
 			left   : 1044px;
+			bottom : 175px;
 		}
 	}
 	
+	// Custom radio and checkboxes
 	.custom {
 		&-checkbox, &-radio {
 			margin          : 0 #{-$main_offset / 2};
@@ -922,5 +905,15 @@
 				}
 			}
 		}
+	}
+	
+	// Vue transition
+	.main-animation-enter-active, .main-animation-leave-active {
+		transition : $transition;
+	}
+	
+	.main-animation-enter, .main-animation-leave-to {
+		opacity   : 0;
+		transform : translateY(50px);
 	}
 </style>
