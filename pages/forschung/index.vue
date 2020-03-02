@@ -498,7 +498,7 @@
                 if(this.targetDoctor){
 					return {
 						button         : "lets start",
-						questioner     : "OnlineDoctor",
+						questioner     : "Online Hautarzt vor Ort",
 						contentForChat : `Are you ready to start a chat with ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}?`,
 					}
 				}else{
