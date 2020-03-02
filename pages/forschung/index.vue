@@ -185,7 +185,7 @@
 									 v-if = "lastQuestionData.type === QUESTION_TYPES.inputText">
 									<AutoHeight @change = "onInputText"
 												:maxLength = "255"
-												:key = "`input_text_${messages.length}`" />
+												:key = "`input_text_${lastQuestionData.id}`" />
 								</div>
 								<!--Select body part-->
 								<div class = "answer-area__select-body-part"
@@ -583,7 +583,14 @@
 
                 isNewNextMessageId && this.nextQuestionsId_queue.push(message_id);
             },
-            deleteQuestion(question_id){
+			deleteFromNextQuestionsIdQueue(question_id){
+                for(let nextQuestionIterator = 0; nextQuestionIterator < this.nextQuestionsId_queue; nextQuestionIterator++){
+                    if(this.nextQuestionsId_queue[nextQuestionIterator] === question_id){
+                        this.nextQuestionsId_queue.splice(nextQuestionIterator, 1);
+                    }
+                }
+			},
+            deleteQuestion(question_id, isLoadNextQuestion){
 				// Удаляем из списков 'questions' и 'answers'
                 for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
                     if(this.questions[questionsIterator].id === question_id){
@@ -594,12 +601,9 @@
                     }
                 }
                 
-				// Удаляем из очереди загружаемых 'questions'
-				for(let nextQuestionIterator = 0; nextQuestionIterator < this.nextQuestionsId_queue; nextQuestionIterator++){
-					if(this.nextQuestionsId_queue[nextQuestionIterator] === question_id){
-						this.nextQuestionsId_queue.splice(nextQuestionIterator, 1);
-					}
-				}
+                this.deleteFromNextQuestionsIdQueue(question_id);
+
+                isLoadNextQuestion && this.loadNextQuestion();
             },
 
             // Edit message listeners
@@ -661,10 +665,49 @@
                                     this.addNextQuestionsIdInQueue(option.next_message_id);
                                 }
                             } else{
-                                this.deleteQuestion(option.id);
+                                // К предыдущему выбраному radio мог уже загрузиться 'question'
+                                // и пользователь мог добавить 'answer'.
+                                // Так как предыдущий radio более не актуальны, ищем и удаляем соответствующий 'question' и 'answer'
+                                if(option.next_message_id){
+                                    this.deleteQuestion(option.next_message_id, option.next_message_id === this.lastQuestionData.id);
+                                    this.deleteFromNextQuestionsIdQueue(option.next_message_id);
+                                }
                             }
                         }
 
+                        break;
+                    }
+                    case this.QUESTION_TYPES.multiSelect:{
+                        let selectedOption = [],
+                            contentForChat = "";
+
+                        for(let allOptionsIterator = 0; allOptionsIterator < targetEditingQuestion.options.length; allOptionsIterator++){
+                            for(let selectedOptionIterator = 0; selectedOptionIterator < this.editingData.selectedOptions.length; selectedOptionIterator++){
+
+                                if(this.editingData.selectedOptions[selectedOptionIterator] === targetEditingQuestion.options[allOptionsIterator].id){
+                                    contentForChat += `${targetEditingQuestion.options[allOptionsIterator].value}, `;
+                                    selectedOption.push(targetEditingQuestion.options[allOptionsIterator].id);
+
+                                    if(targetEditingQuestion.options[allOptionsIterator].next_message_id){
+                                        this.addNextQuestionsIdInQueue(targetEditingQuestion.options[allOptionsIterator].next_message_id);
+                                    }
+                                    break;
+                                } else{
+                                    // К предыдущим выбраным чекбоксом могли уже загрузить 'question'
+                                    // и пользователь мог добавить 'answer'.
+                                    // Так как предыдущие чекбоксы более не актуальны, ищем и удаляем соответствующие 'question' и 'answer'
+                                    if(targetEditingQuestion.options[allOptionsIterator].next_message_id){
+                                        this.deleteQuestion(targetEditingQuestion.options[allOptionsIterator].next_message_id, targetEditingQuestion.options[allOptionsIterator].next_message_id === this.lastQuestionData.id);
+                                        this.deleteFromNextQuestionsIdQueue(targetEditingQuestion.options[allOptionsIterator].next_message_id);
+                                    }
+                                }
+                            }
+                        }
+
+                        contentForChat = contentForChat.slice(0, -2) + ".";
+
+                        editedUserAnswer.selectedOption = selectedOption.slice();
+                        editedUserAnswer.contentForChat = contentForChat;
                         break;
                     }
                     case this.QUESTION_TYPES.uploadImg:{
@@ -678,48 +721,6 @@
                     }
                     case this.QUESTION_TYPES.bodySelect:{
                         editedUserAnswer.selectedBodyParts = this.editingData.selectedBodyParts.slice();
-                        break;
-                    }
-                    case this.QUESTION_TYPES.multiSelect:{
-                        let selectedOption = [],
-                            contentForChat = "";
-
-                        let not_sel_opt       = [];
-                        let delete_message_id = undefined;
-                        
-                        for(let allOptionsIterator = 0; allOptionsIterator < targetEditingQuestion.options.length; allOptionsIterator++){
-                            for(let selectedOptionIterator = 0; selectedOptionIterator < this.editingData.selectedOptions.length; selectedOptionIterator++){
-
-                                if(this.editingData.selectedOptions[selectedOptionIterator] === targetEditingQuestion.options[allOptionsIterator].id){
-                                    contentForChat += `${targetEditingQuestion.options[allOptionsIterator].value}, `;
-                                    selectedOption.push(targetEditingQuestion.options[allOptionsIterator].id);
-                                    
-                                    if(targetEditingQuestion.options[allOptionsIterator].next_message_id){
-                                        this.addNextQuestionsIdInQueue(targetEditingQuestion.options[allOptionsIterator].next_message_id);
-                                    }
-                                    break;
-                                } else{
-                                    // К предыдущим выбраным чекбоксом могли уже загрузить 'question'
-                                    // и пользователь мог добавить 'answer'.
-                                    // Так как предыдущие чекбоксы более не актуальны, ищем и удаляем соответствующие 'question' и 'answer'
-
-                                    if(
-                                        targetEditingQuestion.options[allOptionsIterator].next_message_id &&
-                                        targetEditingQuestion.options[allOptionsIterator].next_message_id !== this.lastQuestionData.id &&
-                                        delete_message_id !== targetEditingQuestion.options[allOptionsIterator].next_message_id
-                                    ){
-                                        delete_message_id = targetEditingQuestion.options[allOptionsIterator].id;
-                                        not_sel_opt.push(targetEditingQuestion.options[allOptionsIterator].next_message_id);
-                                    }
-                                }
-                            }
-                        }
-
-                        console.log(not_sel_opt);
-                        contentForChat = contentForChat.slice(0, -2) + ".";
-
-                        editedUserAnswer.selectedOption = selectedOption.slice();
-                        editedUserAnswer.contentForChat = contentForChat;
                         break;
                     }
                     default:{
@@ -1338,7 +1339,8 @@
 		}
 		
 		&__input-text {
-			position : relative;
+			position      : relative;
+			margin-bottom : $main_offset / 2;
 			
 			&__textarea {
 				width       : 100%;
@@ -1368,9 +1370,7 @@
 		&__upload-image {
 			position : relative;
 			
-			&__user-image-container {
-				cursor : pointer;
-			}
+			&__user-image-container { cursor : pointer; }
 			
 			&__input {
 				opacity  : 0;
