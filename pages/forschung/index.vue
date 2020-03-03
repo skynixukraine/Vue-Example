@@ -307,6 +307,12 @@
 						<StripePaymentSystem @create-token = "onCreateToken" />
 					</div>
 				</transition>
+				<transition name = "main-animation">
+					<div class = "payment-finish" v-if = "isQuestionsOver && isPersonalInfoFilled && isStripeTokenCreated">
+						<h3>Everything is ready to start a consultation</h3>
+						<button type = "button" class = "submit-btn" @click = "onFinish">Pay and start consultation</button>
+					</div>
+				</transition>
 			</div>
 			<transition name = "modal">
 				<div class = "select-body-part-modal" v-if = "isShowSelectBodyPartModal">
@@ -327,6 +333,7 @@
 </template>
 
 <script>
+    import modal from "~/mixins/modal";
     import validator from "~/mixins/validator";
     import BodyParts from "~/components/Content/BodyParts";
     import InputText from "~/components/Content/InputText";
@@ -356,7 +363,8 @@
 			}
         },
         mixins     : [
-            validator
+            validator,
+            modal
         ],
         components : {
             BodyParts,
@@ -374,6 +382,7 @@
                 isQuestionsOver             : false,
                 isUserActionArea            : false,
                 isPersonalInfoFilled        : false,
+                isStripeTokenCreated        : false,
                 nextQuestionsId_queue       : [],
                 scrollOffsetForForbidScroll : 0,
 
@@ -390,7 +399,7 @@
                     errorMessage : "",
                 },
                 lastInputTextText                    : "",
-                lastSelectedRadioIndex               : null, // Array, что бы не делать проверки по typeof на number, ибо может быть 0, и 0 это норма
+                lastSelectedRadioIndex               : null, // Array, что бы не делать проверки по typeof на number, ибо может быть 0
                 lastMultiSelectSelectedValuesIndexes : null,
 
                 personalInfoData : {
@@ -416,6 +425,7 @@
                             isValid : false,
                         },
                         isValid : false,
+						eventData: null
                     },
                     mail        : {
                         value   : "",
@@ -423,15 +433,17 @@
                     },
                 },
 
+				stripeToken : null,
+				
                 // Constants, do not edit this values in code, please
                 PERSONAL_INFO__RADIO_GENDER     : [
                     {
-                        txt   : "woman",
-                        value : "woman"
+                        txt   : "Female",
+                        value : "FEMALE"
                     },
                     {
-                        txt   : "man",
-                        value : "man"
+                        txt   : "Male",
+                        value : "MALE"
                     },
                 ],
                 PERSONAL_INFO__PHONE_BIND_PROPS : {
@@ -765,7 +777,8 @@
                 }
 
                 let userAnswerData = {
-                    message_id : this.lastQuestionData.id
+                    message_id : this.lastQuestionData.id,
+					type: this.lastQuestionData.type
                 };
 
                 switch(this.lastQuestionData.type){
@@ -972,6 +985,7 @@
             onPersonalInfoPhoneChange(eventValue, eventData){
                 this.personalInfoData.phone.value   = eventValue;
                 this.personalInfoData.phone.isValid = eventData.isValid;
+                this.personalInfoData.phone.eventData   = eventData;
 
                 if(eventData.isValid){
                     delete this.errors.phone;
@@ -1021,7 +1035,66 @@
             },
             onCreateToken(eventData){
                 console.log("token created", eventData);
-            }
+                this.stripeToken = eventData.token.id;
+                this.isStripeTokenCreated = true;
+                this.scrollToBottom();
+            },
+
+            onFinish(){
+                let data = new FormData();
+
+                data.append("code", this.stripeToken);
+                data.append("email", this.personalInfoData.mail.value);
+                data.append("gender", this.personalInfoData.gender.value);
+                data.append("doctor_id", this.targetDoctor.id);
+                data.append("last_name", this.personalInfoData.lastName.value);
+                data.append("first_name", this.personalInfoData.firstName.value);
+                data.append("phone_number", this.personalInfoData.phone.value);
+                data.append("country_code", this.personalInfoData.phone.eventData.country.dialCode);
+                data.append("date_of_birth", this.personalInfoData.dateOfBirth.value);
+                
+                for(let i = 1, answer = null; answer = this.userAnswers[i++];){
+					
+                    switch(answer.type){
+                        case this.QUESTION_TYPES.radio:{
+							data.append(`answers[${answer.message_id}]`, answer.selectedOption[0]);
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.uploadImg:{
+							data.append(`answers[${answer.message_id}]`, "image");
+							data.append(`image`, answer.file);
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.inputText:{
+							data.append(`answers[${answer.message_id}]`, answer.contentForChat);
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.bodySelect:{
+							data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedBodyParts));
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.multiSelect:{
+							data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedOption));
+                            
+                            break;
+                        }
+                        default:{
+                            console.error("Invalid 'lastQuestionData.type' \n\n 'this.lastQuestionData' = ", this.lastQuestionData);
+                        }
+                    }
+                    
+				}
+                
+                diagnosticChatApi.createEnquires(data).then((response) => {
+                    this.openModal(this.$modals.defaultModal, response.message, "Congratulations");
+                }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Something was wrong!");
+                });
+			}
         }
     }
 </script>

@@ -65,7 +65,7 @@ export default {
                     });
                 })
                 .catch(error => {
-                    let message = "";
+                    let message = error.message;
 
                     if(error.response.status === 500){
                         message = "Internal technical error was happened.";
@@ -81,17 +81,18 @@ export default {
     },
     async createEnquires(requestConfig){
         return new Promise((resolve, reject) => {
-            HTTP.post("/enquires", {params : requestConfig})
+            HTTP.post("/enquires", requestConfig)
                 .then(response => {
                     resolve({
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : "Doctor success loaded.",
+                        message : "Enquires success created.",
                     });
                 })
                 .catch(error => {
-                    let message = "";
+                    console.log(error);
+                    let message = error.message;
 
                     if(error.response.status === 500){
                         message = "Internal technical error was happened.";
