@@ -1,16 +1,15 @@
 <template>
 	<div class = "payment">
-		<h2>Please give us your payment details:</h2>
+		<h3>Please give us your payment details:</h3>
 		<card class = "payment__card input"
 			  :class = "{ 'payment__card--is-success': isAllFieldsFilled }"
 			  stripe = "pk_test_uLERvbfCVskiJ0eQcEfeoYDZ00huQC1MwH"
 			  :options = "stripeOptions"
-			  @change = "onChange"
-		/>
+			  @change = "onChange" />
 		<button class = "payment__submit-btn"
 				:class = "{'payment__submit-btn--is-disabled': !isAllFieldsFilled}"
 				type = "button"
-				@click = "onPay">Pay with credit card
+				@click = "onPay">Next
 		</button>
 	</div>
 </template>

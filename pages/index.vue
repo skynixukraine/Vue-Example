@@ -7,18 +7,14 @@
 			</div>
 			<div class = "section-scroll-tooltip" v-bind:class = "{  'section-scroll-tooltip--off' : scroll_point }">
 				<div class = "section-scroll-tooltip__inner">
-					<a href = "#doctors" class="scroll-link" @click = "scrollToElement">
+					<a href = "#doctors" class = "scroll-link" @click = "scrollToElement">
 						<div class = "mouse-icon" @click = "scrollToElement">
 							<div class = "mouse-btn-icon scroll"></div>
 						</div>
-					
-					{{ $t('banners.herobanner.scroll-to-run') }}
+						{{ $t("banners.herobanner.scroll-to-run") }}
 					</a>
-				
 				</div>
-			
 			</div>
-			>
 		</div>
 		<div class = "section section--default-0 section--bg-right-1" id = "doctors">
 			<div class = "container">
@@ -58,8 +54,7 @@
 			 style = "position:relative;z-index:1;">
 			<div class = "container">
 				<header class = "section-header">
-					<h2 class = "section-header__title section-header__title--white">{{ $t('headers.your-advantages')
-						}}</h2>
+					<h2 class = "section-header__title section-header__title--white">{{ $t("headers.your-advantages") }}</h2>
 				</header>
 				<ul class = "list list--d4">
 					<li class = "list__item" v-for = "(advantage, index) in advantages" :key = "index">
@@ -67,8 +62,8 @@
 					</li>
 				</ul>
 				<footer class = "section-footer">
-					<NuxtLink :to = "$routes.faq.path" class = "link link--button link--button-white" exact>{{
-						$t('links.further-information') }}
+					<NuxtLink :to = "$routes.faq.path" class = "link link--button link--button-white" exact>
+						{{ $t("links.further-information") }}
 					</NuxtLink>
 				</footer>
 			</div>
@@ -94,34 +89,30 @@
 </template>
 
 <script>
-    import HeroBanner from "~/components/Banners/HeroBanner"
-    import DoctorCard from "~/components/Cards/DoctorCard"
-    import AdvantageCard from "~/components/Cards/AdvantageCard"
-    import StepCard from "~/components/Cards/StepCard"
-    import LogoCard from "~/components/Cards/LogoCard"
-    import RequestBanner from "~/components/Banners/RequestBanner"
-    import WhyInfo from "~/components/Content/WhyInfo"
-    import DiseasesInfo from "~/components/Content/DiseasesInfo"
-
     import smoothScroll from "~/mixins/smooth-scroll";
-
-
+    import StepCard from "~/components/Cards/StepCard";
+    import LogoCard from "~/components/Cards/LogoCard";
+    import WhyInfo from "~/components/Content/WhyInfo";
+    import DoctorCard from "~/components/Cards/DoctorCard";
+    import HeroBanner from "~/components/Banners/HeroBanner";
+    import AdvantageCard from "~/components/Cards/AdvantageCard";
+    import DiseasesInfo from "~/components/Content/DiseasesInfo";
+    import RequestBanner from "~/components/Banners/RequestBanner";
+	
     export default {
         head(){
-            return {title : this.$t('page-home.head.title')}
+            return {title : this.$t("page-home.head.title")}
         },
-
         async fetch({app, store, error}){
             // if token exist and user empty - load User object
             if(app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null){
                 await store.dispatch('user/LOAD_USER', {
                     id    : app.$cookies.get(app.cookie.names.tokenId),
                     token : app.$cookies.get(app.cookie.names.token)
+                }).catch(error => {
+                    app.$cookies.remove(app.cookie.names.token);
+                    app.$cookies.remove(app.cookie.names.tokenId);
                 })
-                           .catch(error => {
-                               app.$cookies.remove(app.cookie.names.token)
-                               app.$cookies.remove(app.cookie.names.tokenId)
-                           })
             }
 
             await store.dispatch('doctors/LOAD_AND_SAVE_DOCTORS_FOR_HOME_PAGE', {
@@ -130,11 +121,10 @@
                 direction : "asc"
             })
         },
-
         data(){
             return {
                 breadcrumbs : [{
-                    text : this.$t('links.home'),
+                    text : this.$t("links.home"),
                     to   : this.$routes.home.path
                 }],
 
@@ -168,15 +158,11 @@
             window.addEventListener('scroll', this.manageMouseBtn);
         },
         beforeDestroy(){
-            window.removeEventListener('scroll', this.manageMouseBtn);
+            window.removeEventListener("scroll", this.manageMouseBtn);
         },
         methods    : {
             manageMouseBtn(){
-                if(window.innerWidth > 768 && window.scrollY > 20  ){
-                    this.scroll_point = true;
-                } else{
-                    this.scroll_point = false;
-                }
+                return window.innerWidth > 768 && window.scrollY > 20;
             },
             scrollToDoctors(event){
                 const container = this.$el.querySelector("#doctors");
@@ -218,18 +204,18 @@
 	}
 	
 	.mouse-icon {
-		position      : relative;
-		height        : 32px;
 		width         : 20px;
-		box-sizing    : border-box;
 		border        : 2px solid white;
-		border-radius : 20px;
-		margin-right  : 20px;
+		height        : 32px;
 		z-index       : -1;
-		display: none;
+		display       : none;
+		position      : relative;
+		box-sizing    : border-box;
+		border-radius : 20px;
+		margin-right  : $main_offset;
 		
 		@include tablet-big {
-			display: block;
+			display : block;
 		}
 	}
 	
@@ -239,13 +225,13 @@
 		height           : 6px;
 		top              : 6px;
 		left             : 50%;
+		display          : none;
 		transform        : translateX(-50%);
 		background-color : white;
 		border-radius    : 2px;
-		display: none;
 		
 		@include tablet-big {
-			display: block;
+			display : block;
 		}
 	}
 	
@@ -269,13 +255,11 @@
 		will-change               : transform;
 	}
 	
-	.scroll-link{
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		color : white;
-		font-family: $TheSansB;
-		
+	.scroll-link {
+		color           : white;
+		display         : flex;
+		align-items     : center;
+		font-family     : $TheSansB;
+		justify-content : flex-start;
 	}
-
 </style>
