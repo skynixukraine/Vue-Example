@@ -12,7 +12,7 @@
 						$store.getters["user/USER"].email
 					}}
 				</div>
-				<div class = "header-user-info__item__account-status">
+				<div class = "header-user-info__item__account-status" v-if = "$store.getters['user/USER'] && $store.getters['user/USER'].status">
 					<p>{{ $store.getters["user/USER"].status.toLowerCase() }}</p>
 				</div>
 			</div>

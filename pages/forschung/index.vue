@@ -777,7 +777,8 @@
                 }
 
                 let userAnswerData = {
-                    message_id : this.lastQuestionData.id
+                    message_id : this.lastQuestionData.id,
+					type: this.lastQuestionData.type
                 };
 
                 switch(this.lastQuestionData.type){
@@ -1053,7 +1054,39 @@
                 data.append("date_of_birth", this.personalInfoData.dateOfBirth.value);
                 
                 for(let i = 1, answer = null; answer = this.userAnswers[i++];){
-                    data.append(`answers[${answer.message_id}]`, answer.selectedOption[0]);
+					
+                    switch(answer.type){
+                        case this.QUESTION_TYPES.radio:{
+							data.append(`answers[${answer.message_id}]`, answer.selectedOption[0]);
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.uploadImg:{
+							data.append(`answers[${answer.message_id}]`, "image");
+							data.append(`image`, answer.file);
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.inputText:{
+							data.append(`answers[${answer.message_id}]`, answer.contentForChat);
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.bodySelect:{
+							data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedBodyParts));
+                            
+                            break;
+                        }
+                        case this.QUESTION_TYPES.multiSelect:{
+							data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedOption));
+                            
+                            break;
+                        }
+                        default:{
+                            console.error("Invalid 'lastQuestionData.type' \n\n 'this.lastQuestionData' = ", this.lastQuestionData);
+                        }
+                    }
+                    
 				}
                 
                 diagnosticChatApi.createEnquires(data).then((response) => {

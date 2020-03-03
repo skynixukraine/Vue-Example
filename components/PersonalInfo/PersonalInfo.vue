@@ -468,7 +468,7 @@
                 return !!result;
             },
 			isPauseAccount(){
-                return this.$store.state.user.user.status === "DEACTIVATED";
+                return this.$store.state.user.user && this.$store.state.user.user.status && this.$store.state.user.user.status === "DEACTIVATED";
 			}
         },
         methods : {
