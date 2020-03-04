@@ -7,6 +7,7 @@
 		<ul class = "navigation__list">
 			<li class = "navigation__item"
 				v-for = "(link, index) in links"
+				@click.stop = "toggleNavigationActive"
 				:key = "index">
 				<NuxtLink class = "link navigation__link" :to = "link.to"
 						  :class = "{ 'navigation__link--personal-office': isPersonalOffice }">
@@ -61,6 +62,11 @@
             '$store.state.app.isNavigationActive'(isNavigationActive){
                 isNavigationActive ? scrollLock.disablePageScroll() : scrollLock.enablePageScroll()
             },
+        },
+        methods  : {
+            toggleNavigationActive(){
+                this.$store.commit("app/SET_IS_NAVIGATION_ACTIVE", !this.$store.getters["app/IS_NAVIGATION_ACTIVE"]);
+            }
         }
     }
 </script>
