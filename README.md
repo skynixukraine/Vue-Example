@@ -6,7 +6,13 @@
 
 ``` bash
 # install dependencies
-$ npm run install
+$ npm install
+
+# copy project config
+$ cp configs/env-example.js configs/env.js
+
+# edit config and replace all variables like {{.Env.BASE_API_URL}} with values for staging server that are available in configs/env.js
+$ nano configs/env.js
 
 # serve with hot reload at localhost:3000
 $ npm run dev
