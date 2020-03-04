@@ -3,13 +3,13 @@
         <h3 class="diseases-info__title">Bei welchen Hauterkrankungen kann Online Hautarzt vor Ort genutzt werden?</h3>
         <p class="diseases-info__text">Unsere Fachärzte für Haut- & Geschlechtskrankheiten behandeln Hautprobleme jeder Art und in jeder Region des Körpers. Zur allgemeinen Orientierung sind hier die häufigsten Erkrankungsbilder mit teilweise weiterführenden Informationen zu Ursachen, Symptomen und Therapie aufgeführt:</p>
         <ul class="diseases-info__list diseases-info__list--col1">
-            <li class="diseases-info__list-item" v-for="(problem, index) in problems.col1" :key="index"><span>{{ problem.title }}</span></li>
+            <li class="diseases-info__list-item" v-for="(problem, index) in problems.col1" :key="index + '-col1'"><span>{{ problem.title }}</span></li>
         </ul>
         <ul class="diseases-info__list diseases-info__list--col2">
-            <li class="diseases-info__list-item" v-for="(problem, index) in problems.col2" :key="index"><span>{{ problem.title }}</span></li>
+            <li class="diseases-info__list-item" v-for="(problem, index) in problems.col2" :key="index + '-col2'"><span>{{ problem.title }}</span></li>
         </ul>
         <ul class="diseases-info__list diseases-info__list--col3">
-            <li class="diseases-info__list-item" v-for="(problem, index) in problems.col3" :key="index"><span>{{ problem.title }}</span></li>
+            <li class="diseases-info__list-item" v-for="(problem, index) in problems.col3" :key="index + '-col3'"><span>{{ problem.title }}</span></li>
         </ul>
     </div>
 </template>
