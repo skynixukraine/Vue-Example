@@ -16,8 +16,7 @@ module.exports = {
         ],
         script: [
             { src: `https://js.stripe.com/v3/` },
-            { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` },
-            { src: `https://maps.googleapis.com/maps/api/js?key=${configEnv.GOOGLE_MAPS_API_KEY}&libraries=places` },
+            { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` }
         ],
         link: [
             { rel: 'shortcut icon', type: 'image/x-icon', sizes: "72x72", href: '/favicon72x72.png' },
