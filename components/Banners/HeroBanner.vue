@@ -150,11 +150,11 @@ export default {
         }
 
         &__phone {
-            width: 94%;
+            width: 65%;
             display: block;
             position: absolute;
-            right: -299px;
-            top: -75px;
+            right: -191px;
+            top: 2px;
         }
     }
 
