@@ -5,7 +5,7 @@
 			<div class = "container">
 				<HeroBanner />
 			</div>
-			<div class = "section-scroll-tooltip" v-bind:class = "{  'section-scroll-tooltip--off' : scroll_point }">
+			<div class = "section-scroll-tooltip" v-if="show" v-bind:class = "{  'section-scroll-tooltip--off' : scroll_point }">
 				<div class = "section-scroll-tooltip__inner">
 					<a href = "#doctors" class = "scroll-link" @click = "scrollToElement">
 						<svg class="mouse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 130" href = "#doctors" @click = "scrollToElement">
@@ -149,7 +149,8 @@
                     // icon: require('~/static/images/advantages/diamond.svg'),
                     video : require('~/static/video/icons/04_icon.mp4'),
                     text  : this.$t('advantages.professional-trustworthy')
-                }]
+                }],
+                show: true
             }
         },
         computed   : {
@@ -165,7 +166,16 @@
         },
         methods    : {
             manageMouseBtn(){
-                return window.innerWidth > 768 && window.scrollY > 20;
+
+                let scrollY =  window.scrollY;
+
+                if(scrollY >= 50 && this.show === true){
+                    this.show = false;
+				} else if(scrollY < 50 && this.show === false) {
+                    this.show = true;
+				}
+
+                return window.innerWidth > 768 && scrollY > 20;
             },
             scrollToDoctors(event){
                 const container = this.$el.querySelector("#doctors");
