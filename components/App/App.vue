@@ -216,6 +216,7 @@
 		transform  : translate(-50%, -50%);
 		transition : opacity $transition ease;
 		box-sizing : border-box;
+		z-index: 10;
 		
 		@include tablet {
 			position : fixed;
@@ -742,7 +743,7 @@
 		width            : 100%;
 		bottom           : 0;
 		padding          : 25px $main_offset;
-		z-index          : 9;
+		z-index          : 10;
 		position         : fixed;
 		transform        : translateX(-50%);
 		border-radius    : 4px;
