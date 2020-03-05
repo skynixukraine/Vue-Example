@@ -8,9 +8,12 @@
 			<div class = "section-scroll-tooltip" v-bind:class = "{  'section-scroll-tooltip--off' : scroll_point }">
 				<div class = "section-scroll-tooltip__inner">
 					<a href = "#doctors" class = "scroll-link" @click = "scrollToElement">
-						<div class = "mouse-icon" @click = "scrollToElement">
-							<div class = "mouse-btn-icon scroll"></div>
-						</div>
+						<svg class="mouse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 130" href = "#doctors" @click = "scrollToElement">
+							<g fill="none" fill-rule="evenodd">
+								<rect width="70" height="118" x="1.5" y="1.5" stroke="#FFF" stroke-width="3" rx="36"/>
+								<circle class="scroll" cx="36.5" cy="31.5" r="4.5" fill="#FFF"/>
+							</g>
+						</svg>
 						{{ $t("banners.herobanner.scroll-to-run") }}
 					</a>
 				</div>
@@ -202,23 +205,6 @@
 			display : none;
 		}
 	}
-	
-	.mouse-icon {
-		width         : 20px;
-		border        : 2px solid white;
-		height        : 32px;
-		z-index       : -1;
-		display       : none;
-		position      : relative;
-		box-sizing    : border-box;
-		border-radius : 20px;
-		margin-right  : $main_offset;
-		
-		@include tablet-big {
-			display : block;
-		}
-	}
-	
 	.mouse-btn-icon {
 		position         : absolute;
 		width            : 2px;
@@ -234,9 +220,24 @@
 			display : block;
 		}
 	}
-	
+	@-webkit-keyframes scroll {
+		0%, 20% {
+			-webkit-transform: translateY(0) scaleY(1);
+			transform: translateY(0) scaleY(1);
+		}
+		10% {
+			opacity: 1;
+		}
+		100% {
+			-webkit-transform: translateY(36px) scaleY(2);
+			transform: translateY(36px) scaleY(2);
+			opacity: 0.01;
+		}
+	}
 	@keyframes scroll {
-		
+		0%, 20% {
+			transform: translateY(0) scaleY(1);
+		}
 		10% {
 			opacity : 1;
 		}
@@ -261,5 +262,15 @@
 		align-items     : center;
 		font-family     : $TheSansB;
 		justify-content : flex-start;
+	}
+	.mouse {
+		width         : 20px;
+		height        : 32px;
+		margin-right  : $main_offset;
+		display       : none;
+
+		@include tablet-big {
+			display : block;
+		}
 	}
 </style>
