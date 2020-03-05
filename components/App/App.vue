@@ -286,6 +286,10 @@
 		&__dots {
 			display : none;
 		}
+
+		&__mobile-adaptation{
+			padding: 50px 20px 0 20px;
+		}
 		
 		@include tablet-big {
 			&__dots {
@@ -311,6 +315,9 @@
 					top      : -186px;
 					right    : 0;
 				}
+			}
+			&__mobile-adaptation{
+				padding: 80px;
 			}
 		}
 	}

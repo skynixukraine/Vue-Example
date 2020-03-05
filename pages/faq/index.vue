@@ -2,7 +2,7 @@
 	<div class = "page">
 		<div class = "section faq-section"
 			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}">
-			<div class = "container" :style = "{padding: '80px'}">
+			<div class = "container container__mobile-adaptation">
 				<h3>Häufig gestellte Fragen (FAQ)</h3>
 				<h1>Sie haben Fragen, wir die Antworten.</h1>
 				<!--<h1>{{this.$t('page-faq.head.title')}}</h1>-->
