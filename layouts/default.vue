@@ -18,7 +18,7 @@
 					@clickedDecline="cookieClickedDecline">
 				<div slot="message">
 					We use cookies to ensure you get the best experience on our website.
-					<a href="https://cookiesandyou.com/" target="_blank">Learn More...</a>
+					<a href="/cookies">Learn More...</a>
 				</div>
 			</VueCookieAcceptDecline>
 		</App>
