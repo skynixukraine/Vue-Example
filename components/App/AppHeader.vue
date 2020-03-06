@@ -3,7 +3,7 @@
 			:class = "{
 				'app-header--bg-transparent': isHomePage,
 				'app-header--bg-white': isPersonalOffice,
-				'app-header--bg-default': scrollTop > 68 && !isPersonalOffice
+				'app-header--bg-default': scrollTop > 57 && !isPersonalOffice
 			}">
 		<div class = "app-header__inner">
 			<div class = "app-header__item">
