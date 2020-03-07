@@ -135,19 +135,19 @@
 
                 advantages : [{
                     // icon: require('~/static/images/advantages/loupe.svg'),
-                    video : require('~/static/video/icons/01_icon.mp4'),
+                    video : 'https://ohn-public.s3.eu-central-1.amazonaws.com/media/01_icon.mp4',
                     text  : this.$t('advantages.independent-accessible')
                 }, {
                     // icon: require('~/static/images/advantages/clock.svg'),
-                    video : require('~/static/video/icons/02_icon.mp4'),
+                    video : 'https://ohn-public.s3.eu-central-1.amazonaws.com/media/02_icon.mp4',
                     text  : this.$t('advantages.fast-time-saving')
                 }, {
                     // icon: require('~/static/images/advantages/shield.svg'),
-                    video : require('~/static/video/icons/03_icon.mp4'),
+                    video : 'https://ohn-public.s3.eu-central-1.amazonaws.com/media/03_icon.mp4',
                     text  : this.$t('advantages.data-protection-compliant')
                 }, {
                     // icon: require('~/static/images/advantages/diamond.svg'),
-                    video : require('~/static/video/icons/04_icon.mp4'),
+                    video : 'https://ohn-public.s3.eu-central-1.amazonaws.com/media/04_icon.mp4',
                     text  : this.$t('advantages.professional-trustworthy')
                 }],
                 show: true
