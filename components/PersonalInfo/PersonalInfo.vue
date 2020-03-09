@@ -594,7 +594,7 @@
                     if(this.$store.state.user.user.region){
                         this.$store.state.user.user.region.id != this.userInputData.region_id && formData.append("title_id", this.userInputData.region_id);
                     } else{
-                        formData.append("title_id", this.userInputData.region_id);
+                        formData.append("region_id", this.userInputData.region_id);
                     }
                 }
 
