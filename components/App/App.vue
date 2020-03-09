@@ -924,4 +924,6 @@
 		opacity   : 0;
 		transform : translateY(50px);
 	}
+	//Hide recaptcha badge on all pages @see https://jira.skynix.co/browse/OH-220
+	.grecaptcha-badge { opacity:0;}
 </style>
