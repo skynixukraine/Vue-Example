@@ -51,7 +51,6 @@
                 const regexp_spaces = /[\s]/g;
 
                 return this.$routes.hautarzt.path + "/" +
-                    this.doctor.title.name.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
                     this.doctor.first_name.trim().replace(regexp_spaces, "-") + "_" +
                     this.doctor.last_name.trim().replace(regexp_spaces, "-");
             }

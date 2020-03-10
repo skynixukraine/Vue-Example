@@ -17,12 +17,12 @@
                         <h1 class = "profile__info__name">{{ `${this.doctorData.first_name} ${this.doctorData.last_name}` }}</h1>
                         <div class = "profile__info__description">{{ this.doctorData.description }}</div>
                         <div class = "profile__info__price">
-                            <span class = "profile__info__price__title">Medical consultation</span>
-                            <div class = "profile__info__price__value">{{ this.doctorData.enquire_price || "" }}</div>
+                            <span class = "profile__info__price__title">Professionelle Einschätzung & Handlungsempfehlung</span>
+                            <div class = "profile__info__price__value">{{ `${this.doctorData.enquire_price} €` || "" }}</div>
                         </div>
                         <button class = "profile__info__start-enquiry-btn link--button link--button-blue"
                                 @click.stop = "startDiagnosticChat">
-                            Starten
+                            ANFRAGE STARTEN
                         </button>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 })
             }
 
-            let names = route.params.doctor.split("__")[1].split("_");
+            let names = route.params.doctor.split("_");
 
             await store.dispatch("doctors/LOAD_AND_SAVE_DOCTOR_FOR_PROFILE_PAGE", {
                 first_name : names[0],
@@ -94,7 +94,7 @@
                         to   : this.$routes.hautarzt.path
                     },
                     {
-                        text : this.$route.params.doctor.split("__")[1].replace(/[^a-zA-ZА-Я-а-я]/g, " ")
+                        text : this.$route.params.doctor.replace(/[^a-zA-ZА-Я-а-я]/g, " ")
                     }
                 ]
             }
