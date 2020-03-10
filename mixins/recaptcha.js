@@ -1,9 +1,9 @@
-const DEFAULT_RECAPTCHA_TOKEN = ''
+const DEFAULT_RECAPTCHA_TOKEN = "";
 
 export default {
-    data() {
+    data(){
         return {
-            recaptchaToken: DEFAULT_RECAPTCHA_TOKEN
+            recaptchaToken : DEFAULT_RECAPTCHA_TOKEN
         }
     },
 

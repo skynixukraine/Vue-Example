@@ -1,17 +1,19 @@
 <template>
-	<label class = "input-text">
-		<span class = "input-text__title"
-			  :class = "{'input-text__title--is-required': isRequired}"
-			  v-if = "labelTxt">{{ labelTxt }}</span>
-		<input type = "text"
-			   :placeholder = "placeholder"
-			   :name = "name"
-			   :value = "value"
-			   class = "input-text__input"
-			   @blur = "onBlur"
-			   @focus = "onFocus"
-			   @input = "onInput">
-	</label>
+	<div class="custom-input">
+		<label class = "custom-input__label">
+			<span class = "custom-input__title"
+				  :class = "{'custom-input__title--is-required': isRequired}"
+				  v-if = "labelTxt">{{ labelTxt }}</span>
+			<input type = "text"
+				   :placeholder = "placeholder"
+				   :name = "name"
+				   :value = "value"
+				   class = "custom-input__input"
+				   @blur = "onBlur"
+				   @focus = "onFocus"
+				   @input = "onInput">
+		</label>
+	</div>
 </template>
 
 <script>
@@ -56,46 +58,3 @@
         }
     }
 </script>
-
-<style lang = "scss" scoped>
-	.input-text {
-		color       : $color-rolling-stone;
-		cursor      : pointer;
-		font-size   : 14px;
-		font-style  : normal;
-		font-weight : 500;
-		line-height : 28px;
-		
-		@include phone-big {
-			font-size : 16px;
-		}
-		
-		@include desktop {
-			font-size : 18px;
-		}
-		
-		&__title {
-			&--is-required {
-				&:after {
-					color   : $color-alert-red;
-					content : "*";
-					display : inline-block;
-				}
-			}
-		}
-		
-		&__input {
-			width         : 100%;
-			height        : 40px;
-			border        : 2px solid $color-curious-blue;
-			background    : #FFF;
-			box-sizing    : border-box;
-			padding-left  : $main_offset / 2;
-			border-radius : 4px;
-			
-			@include phone-big {
-				height : 56px;
-			}
-		}
-	}
-</style>

@@ -2,9 +2,12 @@ import Vue from "vue";
 
 export default ({app}, inject) => {
     const OPTIONS = {
-        defaultModal    : "default-modal",
-        contactModals   : "contact-modal",
-        registerSuccess : "register-success",
+        defaultModal                 : "default-modal",
+        contactModals                : "contact-modal",
+        registerSuccess              : "register-success",
+        personalInfoChangeEmail      : "personal-info-change-email",
+        personalInfoChangePassword   : "personal-info-change-password",
+        diagnosticChatConfirmEnquire : "diagnostic-chat-confirm-enquire",
     };
 
     app.modals            = OPTIONS;

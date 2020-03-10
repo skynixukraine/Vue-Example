@@ -1,7 +1,6 @@
-import Vue from "vue"
+import Vue from "vue";
 
 // page
-import Breadcrumbs from "~/components/Page/Breadcrumbs"
+import Breadcrumbs from "~/components/Page/Breadcrumbs";
 
-
-Vue.component('Breadcrumbs', Breadcrumbs)
+Vue.component("Breadcrumbs", Breadcrumbs);

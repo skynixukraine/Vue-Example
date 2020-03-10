@@ -1,20 +1,16 @@
 <template lang = "html">
 	<div>
-		<form class = "personal-info" @submit.prevent="">
+		<form class = "personal-info" @submit.prevent = "">
 			<div class = "personal-info__items">
 				<div class = "personal-info__column">
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">Title</div>
-							</div>
-						</header>
+						<header class = "personal-info__header">Titel</header>
 						<div class = "personal-info__main personal-info__main-select">
 							<select class = "select"
 									name = "title_id"
 									ref = "title_id"
 									v-model = "userInputData.title_id">
-								<option disabled value = "">Choose one of the options</option>
+								<option disabled value = "">Wählen Sie eine der Optionen</option>
 								<option v-for = "(option, index) in $store.getters['doctorTitles/DOCTOR_TITLES']"
 										:key = "`title_${index}`"
 										:value = "option.id">
@@ -24,53 +20,37 @@
 						</div>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">First name</div>
-							</div>
-						</header>
+						<header class = "personal-info__header">Vorname</header>
 						<div class = "personal-info__main">
 							<InputText v-model = "userInputData.first_name" />
 						</div>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">Last name</div>
-							</div>
-						</header>
+						<header class = "personal-info__header">Familienname</header>
 						<div class = "personal-info__main">
 							<InputText v-model = "userInputData.last_name" />
 						</div>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">Phone number</div>
-							</div>
-						</header>
+						<header class = "personal-info__header">Telefonnummer</header>
 						<div class = "personal-info__main">
 							<vue-tel-input id = "vue-tel-input"
 										   class = "personal-info__main-phone"
 										   name = "phone"
-										   v-bind = "userInputData.phone.configs"
+										   v-bind = "userInputData.phone.CONFIG"
 										   v-model = "userInputData.phone.value"
 										   @input = "onPhoneChange" />
 						</div>
 						<footer class = "personal-info__footer" v-if = "errors.phone">{{ errors.phone }}</footer>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">Specialization</div>
-							</div>
-						</header>
+						<header class = "personal-info__header">Spezialisierung</header>
 						<div class = "personal-info__main personal-info__main-select">
 							<select class = "select"
 									name = "specialization_id"
 									ref = "specialization_id"
 									v-model = "userInputData.specialization_id">
-								<option disabled value = "">Choose one of the options</option>
+								<option disabled value = "">Wählen Sie eine der Optionen</option>
 								<option v-for = "(option, index) in $store.getters['specializations/SPECIALIZATIONS']"
 										:key = "`specialization_${index}`"
 										:value = "option.id">
@@ -78,65 +58,34 @@
 								</option>
 							</select>
 						</div>
-						<footer class = "personal-info__footer" v-if = "errors.specialization_id">
-							{{errors.specialization_id }}
-						</footer>
-					</div>
-					<div class = "personal-info__item">
-						<div class = "single-form">
-							<header class = "personal-info__header">
-								<div class = "personal-info__header-item">
-									<div class = "personal-info__header-title">E-Mail</div>
-								</div>
-							</header>
-							<div class = "personal-info__main">
-								<input class = "input input--login"
-									   type = "email"
-									   name = "email"
-									   ref = "email"
-									   v-model = "userInputData.email"
-									   :placeholder = "$t('forms.enter-email')">
-								<div class = "form__message" v-if = "errors.email">{{ errors.email }}</div>
-							</div>
-						</div>
-					</div>
-					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">Password</div>
-							</div>
-						</header>
-						<div class = "personal-info__main">
-							<input class = "input"
-								   type = "password"
-								   name = "password"
-								   ref = "password"
-								   v-model = "userInputData.password"
-								   :placeholder = "$t('forms.enter-password')">
-							<div class = "form__message" v-if = "errors.password">{{ errors.password }}</div>
-						</div>
 					</div>
 				</div>
 				<div class = "personal-info__column">
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Medical Degree</header>
-						<div class = "personal-info__upload"
-							 @click.stop = "$refs.medicalDegreeInputFile.click();">
+						<header class = "personal-info__header">Medizinischer Grad</header>
+						<div class = "personal-info__file">
 							<div v-if = "userInputData.medical_degree.fileBase64 && !userInputData.medical_degree.userInput.HTML"
-								 class = "personal-info__upload-image">
-								<img :src = "userInputData.medical_degree.fileBase64"
-									 class = "personal-info__upload-src">
+								 class = "personal-info__file__container"
+								 @click.stop = "$refs.medicalDegreeInputFile.click();">
+								<embed class = "personal-info__file-src"
+									   v-if = "userInputData.medical_degree.fileBase64.indexOf('data:application/pdf') > -1"
+									   :src = "userInputData.medical_degree.fileBase64"
+									   type = "application/pdf">
+								<img v-else
+									 :src = "userInputData.medical_degree.fileBase64"
+									 class = "personal-info__file-src">
+								<img :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
+									 class = "paper-fastener-button-image">
 							</div>
 							<div v-else-if = "userInputData.medical_degree.userInput.HTML"
-								 class = "personal-info__upload">
-								<div class = "personal-info__upload-image">
-									<div v-html = "userInputData.medical_degree.userInput.HTML"></div>
-								</div>
+								 class = "personal-info__file"
+								 @click.stop = "$refs.medicalDegreeInputFile.click();">
+								<div v-html = "userInputData.medical_degree.userInput.HTML"></div>
 							</div>
 							<button v-if = "userInputData.medical_degree.userInput.HTML"
 									type = "button"
 									@click.stop = "removeMedicalDegreeImage"
-									class = "personal-info__upload-close">
+									class = "personal-info__file-remove">
 							</button>
 						</div>
 						<button class = "link link--button link--button-full-width link--button-upload"
@@ -157,25 +106,27 @@
 							   @change = "onMedicalDegreeUpload" />
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Certification</header>
-						<div class="personal-info__upload">
+						<header class = "personal-info__header">Zertifizierung</header>
+						<div class = "personal-info__file">
 							<div v-if = "userInputData.board_certification.fileBase64 && !userInputData.board_certification.userInput.HTML"
-								class =	"personal-info__upload-image"
+								 class = "personal-info__file__container"
 								 @click.stop = "$refs.board_certificationInputFile.click();">
-								<div v-if = "userInputData.board_certification.fileBase64 && !userInputData.board_certification.userInput.HTML"
-									 class = "personal-info__upload-image">
-									<img :src = "userInputData.board_certification.fileBase64"
-										 class = "personal-info__upload-src">
-								</div>
+								<embed class = "personal-info__file-src"
+									   v-if = "userInputData.board_certification.fileBase64.indexOf('data:application/pdf') > -1"
+									   :src = "userInputData.board_certification.fileBase64"
+									   type = "application/pdf">
+								<img v-else
+									 :src = "userInputData.board_certification.fileBase64"
+									 class = "personal-info__file-src">
+								<img :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
+									 class = "paper-fastener-button-image">
 							</div>
 							<div v-else-if = "userInputData.board_certification.userInput.HTML"
-								 class = "personal-info__upload">
-								<div class = "personal-info__upload-image">
-									<div v-html = "userInputData.board_certification.userInput.HTML"></div>
-								</div>
+								 class = "personal-info__file">
+								<div v-html = "userInputData.board_certification.userInput.HTML"></div>
 								<button type = "button"
 										@click.stop = "removeCertificationImage"
-										class = "personal-info__upload-close">
+										class = "personal-info__file-remove">
 								</button>
 							</div>
 							<button class = "link link--button link--button-full-width link--button-upload"
@@ -198,26 +149,16 @@
 					</div>
 					<div class = "personal-info__item">
 						<div class = "single-form">
-							<header class = "personal-info__header">
-								<div class = "personal-info__header-item">
-									<div class = "personal-info__header-title">Business address</div>
-								</div>
-							</header>
+							<header class = "personal-info__header">Geschäftsadresse</header>
 							<div class = "personal-info__main personal-info__google-autocomplete">
 								<AddressAutocomplete :value = "userInputData.location.fullAddress"
 													 @place_change = "onAddressChange" />
 							</div>
-							<footer class = "personal-info__footer" v-if = "errors.region_id">{{ errors.region_id }}
-							</footer>
 						</div>
 					</div>
 					<div class = "personal-info__item">
 						<div class = "single-form">
-							<header class = "personal-info__header">
-								<div class = "personal-info__header-item">
-									<div class = "personal-info__header-title">Region</div>
-								</div>
-							</header>
+							<header class = "personal-info__header">Region</header>
 							<div class = "personal-info__main personal-info__main-select">
 								<select class = "select"
 										name = "region_id"
@@ -231,53 +172,6 @@
 									</option>
 								</select>
 							</div>
-							<footer class = "personal-info__footer" v-if = "errors.region_id">{{ errors.region_id }}
-							</footer>
-						</div>
-					</div>
-					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">Languages</div>
-							</div>
-						</header>
-						<div class = "personal-info__main personal-info__main-select">
-							<select class = "select"
-									name = "languages"
-									ref = "languages"
-									multiple
-									v-model = "userInputData.languages">
-								<option disabled value = "">Choose one of the options</option>
-								<option v-for = "(option, index) in $store.state.languages.languages"
-										:key = "index"
-										:value = "option.id">
-									{{ option.name }}
-								</option>
-							</select>
-						</div>
-					</div>
-					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">BIO Short</div>
-							</div>
-						</header>
-						<div class = "personal-info__main">
-							<AutoHeight :placeholder_text = "'BIO Short'"
-										:maxLength = '170'
-										@change = "(newValue) => {userInputData.short_description = newValue}" />
-						</div>
-					</div>
-					<div class = "personal-info__item">
-						<header class = "personal-info__header">
-							<div class = "personal-info__header-item">
-								<div class = "personal-info__header-title">BIO</div>
-							</div>
-						</header>
-						<div class = "personal-info__main">
-							<AutoHeight :placeholder_text = "'BIO'"
-										:maxLength = '3000'
-										@change = "(newValue) => {userInputData.description = newValue}" />
 						</div>
 					</div>
 				</div>
@@ -304,45 +198,102 @@
 				</div>
 			</div>
 			<div class = "personal-info__items">
+				<div class = "personal-info__item personal-info__item--desktop-full-width">
+					<h3>Sprachen</h3>
+					<div class = "personal-info__main personal-info__main-languages">
+						<div class = "custom-checkbox__item"
+							 v-for = "(option) in $store.state.languages.languages"
+							 :key = "`language_${option.id}`">
+							<input type = "checkbox"
+								   :id = "`language_${option.id}`"
+								   :value = "option.id"
+								   v-model = "userInputData.languages"
+								   class = "custom-checkbox__input">
+							<label :for = "`language_${option.id}`"
+								   class = "custom-checkbox__label">
+								<span class = "custom-checkbox__label__icon"></span>
+								{{ option.name }}
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class = "personal-info__items">
+				<h3>Deine Beschreibung</h3>
+				<div class = "personal-info__item personal-info__item--desktop-full-width">
+					<header class = "personal-info__header">Beschreibung Kurze
+						<small>(zur vorschau)</small>
+					</header>
+					<div class = "personal-info__main">
+						<AutoHeight :placeholder_text = "'BIO Short'"
+									:maxLength = '170'
+									:minHeight = "'5em'"
+									:value = "userInputData.short_description || $store.state.user.user.short_description || ''"
+									@change = "(newValue) => {userInputData.short_description = newValue}" />
+					</div>
+				</div>
+				<div class = "personal-info__item personal-info__item--desktop-full-width">
+					<header class = "personal-info__header">Beschreibung</header>
+					<div class = "personal-info__main">
+						<AutoHeight :placeholder_text = "'BIO'"
+									:maxLength = '3000'
+									:minHeight = "'5em'"
+									:value = "userInputData.description || $store.state.user.user.description || ''"
+									@change = "(newValue) => {userInputData.description = newValue}" />
+					</div>
+				</div>
+			</div>
+			<transition name = "main-animation">
+				<button class = "control-btn control-btn--submit personal-info__item--submit"
+						type = "button"
+						v-if = "isSomethingEdited"
+						@click.stop = "onSave">
+					SPEICHERN
+				</button>
+			</transition>
+		</form>
+		<div class = "personal-text">
+			<p>Please fill in all information in order to request Administrator’s approval and appear in search on Online Hautarzt.</p>
+			<p>Once approved, you will be able to add your bank details and begin servicing your patients through Online Hautarzt platform.</p>
+		</div>
+		<div class = "personal-link">
+			<div class = "personal-info__items">
 				<div class = "personal-info__column">
-					<div class = "personal-info__item" v-if = "'true'">
+					<div class = "personal-info__item">
 						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-								@click.stop = "onApproveRequest">
-							Approve Request
+								@click.stop = "onChangeEmail">Ändern Sie die E-Mail
 						</button>
 					</div>
 				</div>
 				<div class = "personal-info__column">
-					<transition name = "main-animation">
-						<div class = "personal-info__item" v-if = "isSomethingEdited">
-							<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-									type = "button"
-									@click.stop = "onSave">
-								Save
-							</button>
-						</div>
-					</transition>
+					<div class = "personal-info__item">
+						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
+								type = "button"
+								@click.stop = "onChangePassword">Passwort ändern
+						</button>
+					</div>
 				</div>
 			</div>
-		</form>
-		<div class = "personal-text">
-			<p>Please fill in all information in order to request Administrator’s approval and appear in search on
-				Online Hautarzt.</p>
-			<p>Once approved, you will be able to add your bank details and begin servicing your patients through Online
-				Hautarzt platform.</p>
-		</div>
-		<div class = "personal-link">
+			<div class = "personal-info__items">
+				<div class = "personal-info__column">
+					<div class = "personal-info__item" v-if = "'approved'">
+						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
+								v-if = "!isApproved"
+								@click.stop = "onApproveRequest">ANTRAG GENEHMEN
+						</button>
+					</div>
+				</div>
+			</div>
 			<div class = "personal-info__items">
 				<div class = "personal-info__column personal-link__column">
 					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
 							@click.stop = "onPauseOrUnpauseAccount">
-						{{ `${isPauseAccount ? "UNPAUSE" : "PAUSE"} MY ACCOUNT` }}
+						{{ `${isPauseAccount ? "UNPAUSE" : "PAUSE"} MEIN KONTO` }}
 					</button>
 				</div>
 				<div class = "personal-info__column personal-link__column">
 					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-							@click.stop = "onDeleteAccount">
-						DELETE MY ACCOUNT
+							@click.stop = "onDeleteAccount">LÖSCHE MEIN KONTO
 					</button>
 				</div>
 			</div>
@@ -355,7 +306,9 @@
     import UserApi from "~/services/api/User";
     import validator from "~/mixins/validator";
     import singleForm from "~/mixins/singleForm";
+    import statuses from "~/assets/js/accountStatuses";
     import InputText from "~/components/Content/InputText";
+    import InputEmail from "~/components/Content/InputEmail";
     import AutoHeight from "~/components/Content/AutoHeight";
     import AddressAutocomplete from "~/components/Content/AddressAutocomplete";
 
@@ -367,47 +320,43 @@
         ],
         components : {
             InputText,
+            InputEmail,
             AutoHeight,
             AddressAutocomplete
         },
         data(){
             return {
-                // By defaults equal to server data
                 userInputData : {
-                    email             : this.$store.state.user.user.email || "",
-                    password          : "",
-                    languages         : this.$store.state.user.user.language || [],
-                    last_name         : this.$store.state.user.user.last_name || "",
-                    first_name        : this.$store.state.user.user.first_name || "",
-                    description       : this.$store.state.user.user.description || "",
-                    short_description : this.$store.state.user.user.short_description || "",
+                    languages         : [],
+                    last_name         : "",
+                    first_name        : "",
+                    description       : "",
+                    short_description : "",
 
-                    title_id          : this.$store.state.user.user.title && this.$store.state.user.user.title.id || "",
-                    region_id         : this.$store.state.user.user.region && this.$store.state.user.user.region.id || "",
-                    specialization_id : this.$store.state.user.user.specialization && this.$store.state.user.user.specialization.id || "",
+                    title_id          : "",
+                    region_id         : "",
+                    specialization_id : "",
 
                     avatar              : {
-                        fileBase64 : this.$store.state.user.user.photo,
+                        fileBase64 : "",
                         userInput  : {
                             file : null,
                             HTML : ""
                         }
                     },
                     location            : {
-                        fullAddress : this.$store.state.user.user.location ?
-                            this.$store.state.user.user.location.city :
-							"",
+                        fullAddress : "",
                         eventData   : null
                     },
                     medical_degree      : {
-                        fileBase64 : this.$store.state.user.user.medical_degree && this.$store.state.user.user.medical_degree.data || "",
+                        fileBase64 : "",
                         userInput  : {
                             file : null,
                             HTML : ""
                         }
                     },
                     board_certification : {
-                        fileBase64 : this.$store.state.user.user.board_certification && this.$store.state.user.user.board_certification.data || "",
+                        fileBase64 : "",
                         userInput  : {
                             file : null,
                             HTML : ""
@@ -416,7 +365,7 @@
                     phone               : {
                         value     : this.$store.state.user.user.phone_number || "",
                         eventData : null,
-                        configs   : {
+                        CONFIG    : {
                             mode                    : "international",
                             maxLen                  : 25,
                             disabled                : false,
@@ -434,77 +383,182 @@
                 },
             }
         },
-        computed : {
+        computed   : {
             doctorDefaultData(){
                 return this.$store.state.user.user;
             },
             isSomethingEdited(){
-                let result = !!(this.userInputData.last_name && this.userInputData.last_name != this.$store.state.user.user.last_name ||
-							this.userInputData.first_name && this.userInputData.first_name != this.$store.state.user.user.first_name ||
-							this.userInputData.phone.eventData && this.userInputData.phone.value != this.$store.state.user.user.phone_number ||
-							this.userInputData.description && this.userInputData.description != this.$store.state.user.user.description ||
-                    		this.userInputData.short_description && this.userInputData.short_description != this.$store.state.user.user.short_description);
+                if(this.$store.state.user.user){
+                    let result = !!(this.userInputData.last_name && this.userInputData.last_name != this.$store.state.user.user.last_name ||
+                        this.userInputData.first_name && this.userInputData.first_name != this.$store.state.user.user.first_name ||
+                        this.userInputData.phone.eventData && this.userInputData.phone.eventData.isValid && this.userInputData.phone.value != this.$store.state.user.user.phone_number ||
+                        this.userInputData.description && this.userInputData.description != this.$store.state.user.user.description ||
+                        this.userInputData.short_description && this.userInputData.short_description != this.$store.state.user.user.short_description);
 
-                if(!result && this.userInputData.title_id){
-					result = this.$store.state.user.user.title ?
-						!!this.$store.state.user.user.title.id != this.userInputData.title_id :
-						true;
+                    if(!result){
+                        result = this.$store.state.user.user.title ?
+                            this.$store.state.user.user.title.id !== this.userInputData.title_id :
+                            !!this.userInputData.title_id;
+                    }
+                    if(!result){
+                        result = this.$store.state.user.user.region ?
+                            this.$store.state.user.user.region.id !== this.userInputData.region_id :
+                            !!this.userInputData.region_id;
+                    }
+                    if(!result){
+                        result = this.$store.state.user.user.specialization ?
+                            this.$store.state.user.user.specialization.id !== this.userInputData.specialization_id :
+                            !!this.userInputData.specialization_id;
+                    }
+
+                    if(!result){
+                        result = this.$store.state.user.user.specialization ?
+                            this.$store.state.user.user.specialization.id !== this.userInputData.specialization_id :
+                            !!this.userInputData.specialization_id;
+                    }
+
+                    result = !result ?
+                        !!this.userInputData.board_certification.userInput.file || !!this.userInputData.avatar.userInput.file || this.userInputData.medical_degree.userInput.file :
+                        result;
+
+                    if(!result){
+                        result = this.userInputData.location.fullAddress !== this.defaultFullAddress;
+                    }
+                    
+                    if(!result){
+                        result = JSON.stringify(this.userInputData.languages) !== JSON.stringify(this.defaultLanguages);
+                    }
+					
+                    return !!result;
+                } else{
+                    return false;
                 }
-                if(!result && this.userInputData.region_id){
-					result = this.$store.state.user.user.region ?
-						!!this.$store.state.user.user.region.id != this.userInputData.region_id :
-						true;
-                }
-                if(!result && this.userInputData.specialization_id){
-					result = this.$store.state.user.user.specialization ?
-						!!this.$store.state.user.user.specialization.id != this.userInputData.specialization_id :
-						true;
-                }
-                
-                result = !result ?
-                    !!this.userInputData.board_certification.userInput.file || !!this.userInputData.avatar.userInput.file || this.userInputData.medical_degree.userInput.file:
-					result;
-                
-                return !!result;
             },
-			isPauseAccount(){
-                return this.$store.state.user.user && this.$store.state.user.user.status && this.$store.state.user.user.status === "DEACTIVATED";
+            isPauseAccount(){
+                return this.$store.state.user.user && this.$store.state.user.user.status && this.$store.state.user.user.status === statuses.deactivated;
+            },
+            isApproved(){
+                return this.$store.state.user.user && this.$store.state.user.user.status && this.$store.state.user.user.status === statuses.approved;
+            },
+            defaultFullAddress(){
+                let res = "";
+
+                if(this.$store.state.user.user.location){
+                    if(this.$store.state.user.user.location.country){
+                        res += " " + this.$store.state.user.user.location.country;
+                    }
+                    if(this.$store.state.user.user.location.city){
+                        res += " " + this.$store.state.user.user.location.city;
+                    }
+                    if(this.$store.state.user.user.location.address){
+                        res += " " + this.$store.state.user.user.location.address;
+                    }
+                }
+
+                return res.trim();
+            },
+			defaultLanguages(){
+                let res = [];
+                
+                for(let i = 0, languages = this.$store.state.user.user.languages; i < languages.length; i++){
+                    res.push(languages[i].id);
+				}
+                
+                return res;
 			}
         },
-        methods : {
+        mounted(){
+            this.setDefaultValues();
+        },
+        methods    : {
+            setDefaultValues(){
+                this.userInputData.last_name         = this.$store.state.user.user.last_name || "";
+                this.userInputData.first_name        = this.$store.state.user.user.first_name || "";
+                this.userInputData.description       = this.$store.state.user.user.description || "";
+                this.userInputData.short_description = this.$store.state.user.user.short_description || "";
+
+                this.userInputData.title_id          = this.$store.state.user.user.title && this.$store.state.user.user.title.id || "";
+                this.userInputData.region_id         = this.$store.state.user.user.region && this.$store.state.user.user.region.id || "";
+                this.userInputData.specialization_id = this.$store.state.user.user.specialization && this.$store.state.user.user.specialization.id || "";
+
+                this.userInputData.languages = this.defaultLanguages.slice();
+                
+                this.userInputData.avatar              = {
+                    fileBase64 : this.$store.state.user.user.photo,
+                    userInput  : {
+                        file : null,
+                        HTML : ""
+                    }
+                };
+                this.userInputData.location            = {
+                    fullAddress : this.defaultFullAddress,
+                    eventData   : null
+                };
+                this.userInputData.medical_degree      = {
+                    fileBase64 : this.$store.state.user.user.medical_degree && this.$store.state.user.user.medical_degree.data || "",
+                    userInput  : {
+                        file : null,
+                        HTML : ""
+                    }
+                };
+                this.userInputData.board_certification = {
+                    fileBase64 : this.$store.state.user.user.board_certification && this.$store.state.user.user.board_certification.data || "",
+                    userInput  : {
+                        file : null,
+                        HTML : ""
+                    }
+                };
+                this.userInputData.phone               = {
+                    value     : this.$store.state.user.user.phone_number || "",
+                    eventData : null,
+                };
+            },
             onPauseOrUnpauseAccount(){
                 UserApi[`${this.isPauseAccount ? "unPauseAccount" : "pauseAccount"}`]({
-                    id: this.$store.state.user.user.id,
-                    token: this.$cookies.get(this.$cookie.names.token)
+                    id    : this.$store.state.user.user.id,
+                    token : this.$cookies.get(this.$cookie.names.token)
                 }).then((response) => {
                     this.openModal(this.$modals.defaultModal, response.message);
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Something was wrong!");
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
-			},
+            },
             onDeleteAccount(){
                 UserApi.deleteUserAccount({
-                    id: this.$store.state.user.user.id,
-                    token: this.$cookies.get(this.$cookie.names.token)
+                    id    : this.$store.state.user.user.id,
+                    token : this.$cookies.get(this.$cookie.names.token)
                 }).then((response) => {
                     this.openModal(this.$modals.defaultModal, response.message, "We will miss you!");
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Something was wrong!");
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
-			},
+            },
             onApproveRequest(){
                 UserApi.requestActivation({
-					id: this.$store.state.user.user.id,
-					token: this.$cookies.get(this.$cookie.names.token)
-				}).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "Congratulations!");
+                    id    : this.$store.state.user.user.id,
+                    token : this.$cookies.get(this.$cookie.names.token)
+                }).then((response) => {
+                    this.openModal(this.$modals.defaultModal, response.message, "Herzliche Glückwünsche!");
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Something was wrong!");
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
             },
             onAddressChange(eventData){
-                console.log("address change", eventData);
                 this.userInputData.location.eventData = eventData;
+
+                let newFullAddress = "";
+
+                if(eventData.country){
+                    newFullAddress += " " + eventData.country;
+                }
+                if(eventData.locality){
+                    newFullAddress += " " + eventData.locality;
+                }
+                if(eventData.route){
+                    newFullAddress += " " + eventData.route + " " + (eventData.street_number || "");
+                }
+
+                this.userInputData.location.fullAddress = newFullAddress.trim();
             },
             onMedicalDegreeUpload(event){
                 if(!event.target.files[0]){ return; }
@@ -519,8 +573,8 @@
                 reader.onload = function(e){
                     _this.userInputData.medical_degree.userInput.HTML =
                         file.type === "application/pdf" ?
-                            `<object type = "application/pdf" data = "${e.target.result}" class = "personal-info__upload-src"></object>` :
-                            `<img class = "personal-info__upload-src" src = "${e.target.result}">`;
+                            `<object type = "application/pdf" data = "${e.target.result}" class = "personal-info__file-src"></object>` :
+                            `<img class = "personal-info__file-src" src = "${e.target.result}">`;
                 };
 
                 file && reader.readAsDataURL(file);
@@ -539,8 +593,8 @@
                 reader.onload = function(e){
                     _this.userInputData.board_certification.userInput.HTML =
                         file.type === "application/pdf" ?
-                            `<object type = "application/pdf" data = "${e.target.result}" class = "personal-info__upload-src"></object>` :
-                            `<img class = "personal-info__upload-src" src = "${e.target.result}">`;
+                            `<object type = "application/pdf" data = "${e.target.result}" class = "personal-info__file-src"></object>` :
+                            `<img class = "personal-info__file-src" src = "${e.target.result}">`;
                 };
 
                 file && reader.readAsDataURL(file);
@@ -573,13 +627,27 @@
             },
             onPhoneChange(formattedNumber, telInputData){
                 this.userInputData.phone.eventData = telInputData;
+
+                if(this.errors.phone){
+                    delete this.errors.phone;
+                    this.$forceUpdate();
+                }
             },
             onSave(){
                 let formData = new FormData();
+                
+                if(this.userInputData.phone.eventData){
+                    if(this.userInputData.phone.eventData.isValid){
+                        this.userInputData.phone.value != this.$store.state.user.user.phone_number && formData.append("phone_number", this.userInputData.phone.value);
+                    } else{
+                        this.errors.phone = "Ungültige telefonnummer";
+                        this.$forceUpdate();
+                        return;
+                    }
+                }
 
                 this.userInputData.last_name && this.userInputData.last_name != this.$store.state.user.user.last_name && formData.append("last_name", this.userInputData.last_name);
                 this.userInputData.first_name && this.userInputData.first_name != this.$store.state.user.user.first_name && formData.append("first_name", this.userInputData.first_name);
-                this.userInputData.phone.eventData && this.userInputData.phone.value != this.$store.state.user.user.phone_number && formData.append("phone_number", this.userInputData.phone.value);
                 this.userInputData.description && this.userInputData.description != this.$store.state.user.user.description && formData.append("description", this.userInputData.description);
                 this.userInputData.short_description && this.userInputData.short_description != this.$store.state.user.user.short_description && formData.append("short_description", this.userInputData.short_description);
 
@@ -592,52 +660,59 @@
                 }
                 if(this.userInputData.region_id){
                     if(this.$store.state.user.user.region){
-                        this.$store.state.user.user.region.id != this.userInputData.region_id && formData.append("title_id", this.userInputData.region_id);
+                        this.$store.state.user.user.region.id != this.userInputData.region_id && formData.append("region_id", this.userInputData.region_id);
                     } else{
                         formData.append("region_id", this.userInputData.region_id);
                     }
                 }
+                if(this.userInputData.specialization_id){
+                    if(this.$store.state.user.user.specialization){
+                        this.$store.state.user.user.specialization.id != this.userInputData.specialization_id && formData.append("specialization_id", this.userInputData.specialization_id);
+                    } else{
+                        formData.append("specialization_id", this.userInputData.specialization_id);
+                    }
+                }
+
+                if(this.userInputData.languages.length){
+                    for(let i = 0; i < this.userInputData.languages.length; i++){
+                        formData.append(`language_ids[${i}]`, this.userInputData.languages[i]);
+                    }
+                }
 
                 if(this.userInputData.location.eventData){
-                    this.userInputData.location.eventData.locality && formData.append("city", this.userInputData.location.eventData.locality);
-                    this.userInputData.location.eventData.country && formData.append("state", this.userInputData.location.eventData.country);
                     this.userInputData.location.eventData.country && formData.append("country", this.userInputData.location.eventData.country);
+                    this.userInputData.location.eventData.locality && formData.append("city", this.userInputData.location.eventData.locality);
                     this.userInputData.location.eventData.route && formData.append("address", this.userInputData.location.eventData.route + " " + (this.userInputData.location.eventData.street_number || ""));
                     this.userInputData.location.eventData.postal_code && formData.append("postal_code", this.userInputData.location.eventData.postal_code);
 
                     this.userInputData.location.eventData.latitude && formData.append("latitude", this.userInputData.location.eventData.latitude);
                     this.userInputData.location.eventData.longitude && formData.append("longitude", this.userInputData.location.eventData.longitude);
                 }
-                
+
                 this.userInputData.avatar.userInput.file && formData.append("photo", this.userInputData.avatar.userInput.file);
                 this.userInputData.board_certification.userInput.file && formData.append("board_certification", this.userInputData.board_certification.userInput.file);
                 this.userInputData.medical_degree.userInput.file && formData.append("medical_degree", this.userInputData.medical_degree.userInput.file);
-				
+
                 formData.append("_method", "PATCH");
-                
+
                 this.$store.dispatch("user/UPDATE_USER", {
                     id     : this.$store.state.user.user.id,
                     token  : this.$cookies.get(this.$cookie.names.token),
                     params : formData
                 }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "Congratulations!");
-                    clear();
-				}).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Something was wrong!");
-                    clear();
-				});
-            	
-                let clear = () => {
-					this.userInputData.avatar.userInput.file = "";
-					this.userInputData.avatar.userInput.HTML = "";
-					this.userInputData.medical_degree.userInput.file = "";
-					this.userInputData.medical_degree.userInput.HTML = "";
-					this.userInputData.board_certification.userInput.file = "";
-					this.userInputData.board_certification.userInput.HTML = "";
-					
-                    this.userInputData.location.eventData = null;
-                    this.userInputData.phone.eventData = null;
-                }
+                    this.openModal(this.$modals.defaultModal, response.message, "Herzliche Glückwünsche!");
+                    this.setDefaultValues();
+                }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.setDefaultValues();
+                });
+            },
+            onChangeEmail(){
+                this.$store.commit("modals/SET_NEW_EMAIL", this.$store.state.user.user.email);
+                this.openModal(this.$modals.personalInfoChangeEmail);
+            },
+            onChangePassword(){
+                this.openModal(this.$modals.personalInfoChangePassword);
             }
         }
     };
@@ -654,8 +729,9 @@
 		}
 		
 		&__column {
-			flex  : 0 0 100%;
-			order : 2;
+			flex      : 0 0 100%;
+			order     : 2;
+			max-width : 100%;
 			
 			@include tablet {
 				$size : 50%;
@@ -685,10 +761,29 @@
 		
 		&__item {
 			width         : 100%;
+			font-size     : 14px;
 			margin-bottom : 15px;
 			
-			@include desktop {
-				max-width : 256px;
+			@include phone-big {
+				font-size : 16px;
+			}
+			
+			@include tablet-big {
+				font-size : 18px;
+			}
+			
+			&--desktop-full-width {
+				@include desktop {
+					max-width : 100%;
+				}
+			}
+			
+			&--submit {
+				right    : $main_offset;
+				bottom   : 10vh;
+				margin   : 0;
+				position : fixed;
+				padding  : $main_offset / 2 * 1.2 $main_offset $main_offset / 2;
 			}
 		}
 		
@@ -698,22 +793,9 @@
 		}
 		
 		&__header {
-			display         : flex;
-			align-items     : center;
-			margin-bottom   : 6px;
-			justify-content : space-between;
-		}
-		
-		&__header-title {
-			font-size : 14px;
-			
-			@include phone-big {
-				font-size : 16px;
-			}
-			
-			@include tablet-big {
-				font-size : 18px;
-			}
+			display       : flex;
+			align-items   : center;
+			margin-bottom : 6px;
 		}
 		
 		&__main { position : relative; }
@@ -735,6 +817,14 @@
 				pointer-events   : none;
 				background-image : url("~static/images/icons/arrow-down.svg");
 			}
+		}
+		
+		&__main-languages {
+			display        : flex;
+			flex-wrap      : wrap;
+			margin-left    : $main_offset / -2;
+			margin-right   : $main_offset / -2;
+			flex-direction : row;
 		}
 		
 		&__main-phone.vue-tel-input {
@@ -794,9 +884,21 @@
 			background-color : rgba(0, 0, 0, .24);
 		}
 		
-		&__upload { display : flex; }
+		&__file {
+			display : flex;
+			
+			&__container {
+				display     : flex;
+				align-items : flex-start;
+			}
+			
+			.paper-fastener-button-image {
+				cursor      : pointer;
+				margin-left : $main_offset / 2;
+			}
+		}
 		
-		/deep/ &__upload-src {
+		/deep/ &__file-src {
 			width         : 100%;
 			height        : 100%;
 			cursor        : pointer;
@@ -806,7 +908,7 @@
 			border-radius : 4px;
 		}
 		
-		/deep/ &__upload-close {
+		/deep/ &__file-remove {
 			$size : 24px;
 			top             : 0;
 			width           : $size;
@@ -820,11 +922,23 @@
 			justify-content : center;
 		}
 		
-		&__footer { color : $color-cinnabar; }
+		&__footer {
+			color     : $color-cinnabar;
+			font-size : .75em;
+		}
 		
 		.link {
 			overflow  : hidden;
 			min-width : auto;
+			font-size : inherit;
+			
+			@media screen and (max-width : $screen-phone-big-min - 1) {
+				&--button-upload {
+					padding : 11px 24px 7px 38px;
+					
+					img { top : 5px; }
+				}
+			}
 			
 			&__txt {
 				overflow      : hidden;

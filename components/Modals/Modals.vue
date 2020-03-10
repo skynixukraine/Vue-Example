@@ -1,8 +1,11 @@
 <template>
 	<div class = "modals">
-		<Default v-if = "$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.defaultModal" />
-		<ContactModal v-if = "$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.contactModals" />
-		<RegisterSuccessModal v-if = "$store.getters['app/CURRENT_ACTIVE_MODAL'] === $modals.registerSuccess" />
+		<Default v-if = "activeModal === $modals.defaultModal" />
+		<ContactModal v-if = "activeModal === $modals.contactModals" />
+		<RegisterSuccessModal v-if = "activeModal === $modals.registerSuccess" />
+		<PersonalInfoChangeEmail v-if = "activeModal === $modals.personalInfoChangeEmail" />
+		<PersonalInfoChangePassword v-if = "activeModal === $modals.personalInfoChangePassword" />
+		<DiagnosticChatConfirmEnquire v-if = "activeModal === $modals.diagnosticChatConfirmEnquire" />
 	</div>
 </template>
 
@@ -10,13 +13,24 @@
     import Default from "~/components/Modals/Default";
     import ContactModal from "~/components/Modals/ContactModal";
     import RegisterSuccessModal from "~/components/Modals/RegisterSuccessModal";
+    import PersonalInfoChangeEmail from "~/components/Modals/PersonalInfoChangeEmail";
+    import PersonalInfoChangePassword from "~/components/Modals/PersonalInfoChangePassword";
+    import DiagnosticChatConfirmEnquire from "~/components/Modals/DiagnosticChatConfirmEnquire";
 
     export default {
         components : {
             Default,
             ContactModal,
             RegisterSuccessModal,
+            PersonalInfoChangeEmail,
+            PersonalInfoChangePassword,
+            DiagnosticChatConfirmEnquire,
         },
+		computed:{
+            activeModal(){
+                return this.$store.state.modals.currentActiveModal;
+			}
+		}
     }
 </script>
 
@@ -39,7 +53,7 @@
 			background-position : center center;
 		}
 		
-		&__main { margin-bottom : 40px; }
+		&__footer { margin-top : $main_offset * 2; }
 		
 		.v--modal {
 			$vertical_padding : 64px;
