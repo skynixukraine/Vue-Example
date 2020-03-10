@@ -567,7 +567,7 @@
                 const _this = this;
                 let reader  = new FileReader();
 
-                this.validateFileExtension(event) ? this.userInputData.medical_degree.userInput.file = event.target.files[0] : this.userInputData.degree = "";
+                this.validateFileExtension(event) ? this.userInputData.medical_degree.userInput.file = event.target.files[0] : this.userInputData.medical_degree.userInput.HTML = "";
                 this.validateFileExtension(event) ? file = event.target.files[0] : file = "";
 
                 reader.onload = function(e){
@@ -587,7 +587,7 @@
                 let reader  = new FileReader();
                 const _this = this;
 
-                this.validateFileExtension(event) ? this.userInputData.board_certification.userInput.file = event.target.files[0] : this.userInputData.board_certification = "";
+                this.validateFileExtension(event) ? this.userInputData.board_certification.userInput.file = event.target.files[0] : this.userInputData.board_certification.userInput.HTML = "";
                 this.validateFileExtension(event) ? file = event.target.files[0] : file = "";
 
                 reader.onload = function(e){
