@@ -158,7 +158,7 @@
 		&:after {
 			$size : 20px;
 			top              : 0;
-			right            : 16px;
+			right            : 5px;
 			width            : $size;
 			height           : $size;
 			margin           : auto;
@@ -168,6 +168,12 @@
 			position         : absolute;
 			pointer-events   : none;
 			background-image : url("~static/images/icons/arrow-down.svg");
+		}
+
+		@include desktop{
+			&:after {
+				right: 16px;
+			}
 		}
 	}
 </style>

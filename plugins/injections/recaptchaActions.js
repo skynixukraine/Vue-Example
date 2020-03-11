@@ -1,12 +1,13 @@
-import Vue from 'vue'
+import Vue from "vue"
 
-export default ({ app }, inject) => {
+export default ({app}, inject) => {
     const OPTIONS = {
-        registerDoctor: 'register_doctor',
-        loginDoctor: 'login_doctor',
-        sendEmailVerificationLink: 'send_email_verification_link'
-    }
-    
-    Vue.prototype.$recaptchaActions = OPTIONS
-    app.recaptchaActions = OPTIONS
+        loginDoctor                 : "login_doctor",
+        registerDoctor              : "register_doctor",
+        sendEmailVerificationLink   : "send_email_verification_link",
+        changeEmailVerificationLink : "change_email_verification_link",
+    };
+
+    Vue.prototype.$recaptchaActions = OPTIONS;
+    app.recaptchaActions            = OPTIONS;
 }

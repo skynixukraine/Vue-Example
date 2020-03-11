@@ -1,7 +1,7 @@
 <template>
 	<nav class = "navigation"
 		 :class = "{
-		 	'navigation--active': $store.getters['app/IS_NAVIGATION_ACTIVE'],
+		 	'navigation--active': $store.state.app.isNavigationActive,
 		 	'navigation--personal-office': isPersonalOffice
 		 }">
 		<ul class = "navigation__list">
@@ -32,7 +32,7 @@
         },
         computed : {
             links(){
-                return [
+                const MAIN = [
                     {
                         to   : this.$routes.hautarzt.path,
                         text : this.$t('links.hautarzt')
@@ -49,14 +49,34 @@
                         to   : this.$routes.about.path,
                         text : this.$t('links.about')
                     },
-                ]
+                ];
+                const PERSONAL_OFFICE = [
+                    {
+                        to   : this.$routes.personalInformation.path,
+                        text : this.$t('sidebar.proff-info')
+                    },
+                    {
+                        to   : this.$routes.billing.path,
+                        text : "Billing"
+                    },
+                    {
+                        to   : this.$routes.enquiries.path,
+                        text : this.$t('sidebar.request')
+                    }
+                ];
+
+                return this.isPersonalOffice ?
+                    this.windowWidth > 961 ?
+                        MAIN :
+                        MAIN.concat(PERSONAL_OFFICE) :
+                    MAIN;
             },
         },
         watch    : {
             windowWidth(width){
-                // if return to desktop viewport - reset 'app/IS_NAVIGATION_ACTIVE' to default state
-                if(width > 961 && this.$store.getters['app/IS_NAVIGATION_ACTIVE']){
-                    this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', !this.$store.getters['app/IS_NAVIGATION_ACTIVE'])
+                // if return to desktop viewport - reset state.app.isNavigationActive to default state
+                if(width > 961 && this.$store.state.app.isNavigationActive){
+                    this.$store.commit('app/SET_IS_NAVIGATION_ACTIVE', !this.$store.state.app.isNavigationActive)
                 }
             },
             '$store.state.app.isNavigationActive'(isNavigationActive){

@@ -6,15 +6,15 @@
 				  autocomplete = "off"
 				  ref = "textarea"
 				  :placeholder = "placeholder_text"
-				  @input = "onInput">{{ value }}</textarea>
+				  @input = "onInput">{{ inner_value }}</textarea>
 		<div v-if = "isMaxLengthCorrect"
 			 class = "auto-height__limit"
-			 :class = "{'auto-height__limit--enough': value.length === maxLength}">
-			<var class = "auto-height__limit__current-length">{{ value.length }}</var>
+			 :class = "{'auto-height__limit--enough': inner_value.length === maxLength}">
+			<var class = "auto-height__limit__current-length">{{ inner_value.length }}</var>
 			<span class = "auto-height__limit__max-length">{{ maxLength }}</span>
 		</div>
 		<div class = "auto-height__hidden">
-			<div class = "auto-height__textarea-div input" ref = "textareadiv"></div>
+			<div class = "auto-height__textarea-div input" ref = "autoheightContainer"></div>
 		</div>
 	</div>
 </template>
@@ -26,22 +26,30 @@
                 type    : String,
                 default : "",
             },
-            content          : {
+            value            : {
                 type    : String,
                 default : "",
             },
             maxLength        : {
                 type    : Number,
                 default : null
+            },
+            minHeight        : {
+                type    : String,
+                default : ""
             }
         },
         mounted(){
-            this.value = this.content + "";
+            this.inner_value = this.value + "";
+            if(this.minHeight){
+                this.$refs.textarea.style.minHeight = this.minHeight;
+                this.$refs.autoheightContainer.style.minHeight = this.minHeight;
+			}
             this.onInput();
         },
         data(){
             return {
-                value : ""
+                inner_value : ""
             }
         },
         computed : {
@@ -51,19 +59,21 @@
         },
         methods  : {
             onInput(event){
-                let newValue = this.$refs.textarea.value;
-                this.value   = newValue;
-
-                if(this.isMaxLengthCorrect && this.value.length > this.maxLength){
-                    newValue                  = newValue.slice(0, this.maxLength);
-                    this.value                = newValue;
-                    this.$refs.textarea.value = newValue;
-                }
-
-                this.$refs.textareadiv.innerText = newValue;
-                this.$refs.textarea.style.height = this.$refs.textareadiv.scrollHeight + "px";
-
-                event && this.$emit("change", newValue);
+                if(event){
+					let newValue     = this.$refs.textarea.value;
+					this.inner_value = newValue;
+	
+					if(this.isMaxLengthCorrect && this.inner_value.length > this.maxLength){
+						newValue                        = newValue.slice(0, this.maxLength);
+						this.inner_value                = newValue;
+						this.$refs.textarea.value = newValue;
+					}
+	
+					this.$refs.autoheightContainer.innerText = newValue;
+					this.$refs.textarea.style.height = this.$refs.autoheightContainer.scrollHeight + "px";
+	
+					this.$emit("change", newValue);
+				}
             }
         }
     }

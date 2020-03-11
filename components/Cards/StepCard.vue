@@ -30,17 +30,17 @@
             return {
                 steps : [{
                     number : '01',
-                    video  : require('~/static/video/icons/05_icon.mp4'),
+                    video  : 'https://ohn-public.s3.eu-central-1.amazonaws.com/media/05_icon.mp4',
                     title  : this.$t('steps.choose-dermatologist'),
                     text   : this.$t('steps.dermatologist-at-clinic-essen')
                 }, {
                     number : '02',
-                    video  : require('~/static/video/icons/06_icon.mp4'),
+                    video  : 'https://ohn-public.s3.eu-central-1.amazonaws.com/media/06_icon.mp4',
                     title  : this.$t('steps.describe-symptoms'),
                     text   : this.$t('steps.what-complaints-problem')
                 }, {
                     number : '03',
-                    video  : require('~/static/video/icons/07_icon.mp4'),
+                    video  : 'https://ohn-public.s3.eu-central-1.amazonaws.com/media/07_icon.mp4',
                     title  : this.$t('steps.you-get-specialist-advice'),
                     text   : this.$t('steps.specialist-initial-assessment')
                 }]

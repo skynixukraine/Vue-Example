@@ -15,10 +15,10 @@
 							 :id = "`message_${chat_message_index}`">
 							<transition name = "edit-animation">
 								<div class = "edit-answer-area"
-									 :class= "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}"
+									 :class = "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}"
 									 v-if = "editingData && item.message_id === editingData.message_id">
 									<div class = "edit-answer-area__wrapper"
-										 :class= "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}">
+										 :class = "{'is-for-input-text': editingData.type === QUESTION_TYPES.inputText}">
 										<!--Multi select-->
 										<div class = "custom-checkbox"
 											 ref = "editMultiSelect"
@@ -65,7 +65,7 @@
 											 v-if = "editingData.type === QUESTION_TYPES.inputText">
 											<AutoHeight @change = "onInputText"
 														:maxLength = "255"
-														:content = "userAnswers[editingData.message_index].contentForChat" />
+														:value = "userAnswers[editingData.message_index].contentForChat" />
 										</div>
 										<!--Select body part-->
 										<div class = "edit-answer-area__select-body-part"
@@ -112,7 +112,7 @@
 										 'message__container--hide': editingData && item.message_id === editingData.message_id
 									 }">
 									<span class = "message__questioner">{{ item.questioner || "Ich" }}</span>
-<!--									<h4 class = "message__title" v-if = "item.title">{{ item.title }}</h4>-->
+									<!--<h4 class = "message__title" v-if = "item.title">{{ item.title }}</h4>-->
 									<div class = "message__content">
 										<div v-if = "item.contentForChat && item.type === QUESTION_TYPES.uploadImg"
 											 v-html = "item.contentForChat"></div>
@@ -134,10 +134,10 @@
 				</div>
 				<transition name = "main-animation">
 					<div class = "answer-area"
-						 :class = "{'is-wait-loading': !isUserActionArea}"
+						 :class = "{'is-wait-loading': !isShowUserAnswerArea}"
 						 v-if = "lastQuestionData && !isQuestionsOver">
 						<div class = "answer-area__wrapper"
-							 :class= "{'is-for-input-text': lastQuestionData.type === QUESTION_TYPES.inputText}">
+							 :class = "{'is-for-input-text': lastQuestionData.type === QUESTION_TYPES.inputText}">
 							<div class = "answer-area__content">
 								<!--Multi select-->
 								<div class = "custom-checkbox"
@@ -276,6 +276,13 @@
 							</label>
 						</div>
 						<div class = "personal-info__field">
+							<InputEmail :labelTxt = "'Email Address'"
+										:isRequired = true
+										:placeholder = "'Email Address'"
+										:name = "'mail'"
+										@blur = "onPersonalInfoMailBlur" />
+						</div>
+						<div class = "personal-info__field">
 							<label>
 								<div class = "personal-info__field__title is-required">Date of birth</div>
 								<input type = "date"
@@ -285,14 +292,6 @@
 									   name = "dateOfBirth">
 								<span class = "error-message" v-show = "errors.dateOfBirth">{{ this.errors.dateOfBirth }}</span>
 							</label>
-						</div>
-						<div class = "personal-info__field">
-							<InputEmail :labelTxt = "'Email Address'"
-										:isRequired = true
-										:placeholder = "'Email Address'"
-										:name = "'mail'"
-										@blur = "onPersonalInfoMailBlur" />
-							<span class = "error-message" v-show = "errors.mail">{{ this.errors.mail }}</span>
 						</div>
 						<button type = "button"
 								class = "submit-btn"
@@ -307,12 +306,6 @@
 						<StripePaymentSystem @create-token = "onCreateToken" />
 					</div>
 				</transition>
-				<transition name = "main-animation">
-					<div class = "payment-finish" v-if = "isQuestionsOver && isPersonalInfoFilled && isStripeTokenCreated">
-						<h3>Everything is ready to start a consultation</h3>
-						<button type = "button" class = "submit-btn" @click = "onFinish">Pay and start consultation</button>
-					</div>
-				</transition>
 			</div>
 			<transition name = "modal">
 				<div class = "select-body-part-modal" v-if = "isShowSelectBodyPartModal">
@@ -323,8 +316,8 @@
 								   :selectedParts = "editingData ? editingData.notConfirmedSelectedBodyParts : notConfirmedSelectedBodyParts" />
 					</div>
 					<footer class = "select-body-part-modal__footer">
-						<button class = "control-btn--submit" @click.stop = "onConfirmBodySelectParts">Confirm</button>
-						<button class = "control-btn--cancel" @click = "onCancelBodySelectParts">Cancel</button>
+						<button class = "control-btn control-btn--submit" @click.stop = "onConfirmBodySelectParts">Bestätigen</button>
+						<button class = "control-btn control-btn--cancel" @click.stop = "onCancelBodySelectParts">Abbrechen</button>
 					</footer>
 				</div>
 			</transition>
@@ -357,10 +350,10 @@
                     app.$cookies.remove(app.cookie.names.tokenId);
                 });
             }
-            
+
             if(store.state.diagnosticChat.doctorIdForStartDiagnosticChat !== null){
-				await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id: store.state.diagnosticChat.doctorIdForStartDiagnosticChat});
-			}
+                await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id : store.state.diagnosticChat.doctorIdForStartDiagnosticChat});
+            }
         },
         mixins     : [
             validator,
@@ -380,9 +373,8 @@
                 editingData                 : null,
                 userAnswers                 : [],
                 isQuestionsOver             : false,
-                isUserActionArea            : false,
+                isShowUserAnswerArea        : false,
                 isPersonalInfoFilled        : false,
-                isStripeTokenCreated        : false,
                 nextQuestionsId_queue       : [],
                 scrollOffsetForForbidScroll : 0,
 
@@ -420,12 +412,12 @@
                         isValid : false,
                     },
                     phone       : {
-                        value   : {
+                        value     : {
                             value   : "",
                             isValid : false,
                         },
-                        isValid : false,
-						eventData: null
+                        isValid   : false,
+                        eventData : null
                     },
                     mail        : {
                         value   : "",
@@ -433,8 +425,8 @@
                     },
                 },
 
-				stripeToken : null,
-				
+                stripeToken : null,
+
                 // Constants, do not edit this values in code, please
                 PERSONAL_INFO__RADIO_GENDER     : [
                     {
@@ -503,31 +495,33 @@
 
                 return result;
             },
-			targetDoctor(){
+            targetDoctor(){
                 return this.$store.state.diagnosticChat.targetDoctorForDiagnosticChat;
-			},
-			firstQuestion(){
+            },
+            firstQuestion(){
                 if(this.targetDoctor){
-					return {
-						button         : "lets start",
-						questioner     : "Online Hautarzt vor Ort",
-						contentForChat : `Are you ready to start a chat with ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}?`,
-					}
-				}else{
+                    return {
+                        button         : "lets start",
+                        questioner     : "Online Hautarzt vor Ort",
+                        contentForChat : `Are you ready to start a chat with ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}?`,
+                    }
+                } else{
                     this.$router.replace(this.$routes.hautarzt.path);
-				}
-			}
+                }
+            }
         },
         mounted(){
             if(this.firstQuestion){
-				this.questions.push(this.firstQuestion);
-	
-				setTimeout(() => {
-					this.isUserActionArea = true;
-				}, ANIMATION_DURATION);
-			}else{
+                this.questions.push(this.firstQuestion);
+
+                setTimeout(() => {
+                    this.isShowUserAnswerArea = true;
+                }, ANIMATION_DURATION);
+            } else{
                 this.$router.replace(this.$routes.hautarzt.path);
-			}
+            }
+
+            this.$root.$on("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatConfirmEnquire);
         },
         methods    : {
             forbidScroll(){
@@ -538,8 +532,8 @@
             allowScroll(){
                 this.body.setAttribute("style", "");
                 window.scrollTo({
-                    top     : this.scrollOffsetForForbidScroll,
-                    behavior: "auto"
+                    top      : this.scrollOffsetForForbidScroll,
+                    behavior : "auto"
                 });
             },
             scrollToBottom(){
@@ -549,33 +543,20 @@
                 });
             },
             loadNextQuestion(){
-                this.isUserActionArea = false;
+                this.isShowUserAnswerArea = false;
 
                 let nextQuestionId = this.nextQuestionsId_queue.length ?
                     this.nextQuestionsId_queue.shift() :
                     this.questions[this.questions.length - 1].next_message_id;
 
                 diagnosticChatApi.loadNextQuestion(nextQuestionId).then((response) => {
-                    if(!this.isQuestionsOver && this.lastQuestionData.type === this.QUESTION_TYPES.bodySelect){
-                        this.questions.push(response.data.data);
+                    this.questions.push(response.data.data);
+                    this.scrollToBottom();
 
-                        setTimeout(() => {
-                            this.scrollToBottom();
-
-                            setTimeout(() => {
-                                this.scrollToBottom();
-                                this.isUserActionArea = true;
-                            }, ANIMATION_DURATION);
-                        }, ANIMATION_DURATION / 2);
-                    } else{
-                        this.questions.push(response.data.data);
+                    setTimeout(() => {
+                        this.isShowUserAnswerArea = true;
                         this.scrollToBottom();
-
-                        setTimeout(() => {
-                            this.scrollToBottom();
-                            this.isUserActionArea = true;
-                        }, ANIMATION_DURATION);
-                    }
+                    }, ANIMATION_DURATION);
                 });
             },
             addNextQuestionsIdInQueue(message_id){
@@ -595,15 +576,15 @@
 
                 isNewNextMessageId && this.nextQuestionsId_queue.push(message_id);
             },
-			deleteFromNextQuestionsIdQueue(question_id){
+            deleteFromNextQuestionsIdQueue(question_id){
                 for(let nextQuestionIterator = 0; nextQuestionIterator < this.nextQuestionsId_queue; nextQuestionIterator++){
                     if(this.nextQuestionsId_queue[nextQuestionIterator] === question_id){
                         this.nextQuestionsId_queue.splice(nextQuestionIterator, 1);
                     }
                 }
-			},
+            },
             deleteQuestion(question_id, isLoadNextQuestion){
-				// Удаляем из списков 'questions' и 'answers'
+                // Удаляем из списков 'questions' и 'answers'
                 for(let questionsIterator = 0; questionsIterator < this.questions.length; questionsIterator++){
                     if(this.questions[questionsIterator].id === question_id){
                         this.questions.splice(questionsIterator, 1);
@@ -612,7 +593,7 @@
                         }
                     }
                 }
-                
+
                 this.deleteFromNextQuestionsIdQueue(question_id);
 
                 isLoadNextQuestion && this.loadNextQuestion();
@@ -662,7 +643,7 @@
                 }
             },
             onEditMessageSubmit(){
-                let editedUserAnswer  = Object.assign({}, this.userAnswers[this.editingData.message_index]);
+                let editedUserAnswer        = Object.assign({}, this.userAnswers[this.editingData.message_index]);
                 const targetEditingQuestion = this.questions[this.editingData.message_index];
 
                 switch(this.editingData.type){
@@ -750,22 +731,21 @@
 
             // Answer && Edit area listeners
             onStart(){
-                this.isUserActionArea = false;
+                this.isShowUserAnswerArea = false;
 
                 setTimeout(() => {
-                    const content = {
+                    this.userAnswers.push({
                         contentForChat : this.firstQuestion.button
-                    };
-
-                    this.userAnswers.push(content);
+                    });
 
                     setTimeout(() => {
                         diagnosticChatApi.loadFirsQuestion().then((response) => {
                             this.questions.push(response.data.data);
+                            this.scrollToBottom();
 
                             setTimeout(() => {
+                                this.isShowUserAnswerArea = true;
                                 this.scrollToBottom();
-                                this.isUserActionArea = true;
                             }, ANIMATION_DURATION);
                         });
                     }, ANIMATION_DURATION);
@@ -773,12 +753,12 @@
             },
             onUserSubmit(){
                 if(this.lastQuestionData.type !== this.QUESTION_TYPES.uploadImg){
-                    this.isUserActionArea = false;
+                    this.isShowUserAnswerArea = false;
                 }
 
                 let userAnswerData = {
                     message_id : this.lastQuestionData.id,
-					type: this.lastQuestionData.type
+                    type       : this.lastQuestionData.type
                 };
 
                 switch(this.lastQuestionData.type){
@@ -854,21 +834,21 @@
 
                 this.userAnswers.push(userAnswerData);
 
-                if(this.nextQuestionsId_queue.length === 0){
-                    this.isQuestionsOver = true;
-
-                    setTimeout(() => {
-                        this.scrollToBottom();
-                    }, ANIMATION_DURATION * 1.5);
-                } else{
-                    setTimeout(() => {
-                        this.loadNextQuestion();
-                    }, ANIMATION_DURATION);
-                }
+				setTimeout(() => {
+					if(this.nextQuestionsId_queue.length){
+						this.loadNextQuestion();
+					} else{
+						this.isQuestionsOver = true;
+						
+						setTimeout(() => {
+							this.scrollToBottom();
+						}, ANIMATION_DURATION * 1.25);
+					}
+				}, ANIMATION_DURATION * 1.25);
             },
             onSelectBodyPart(eventData){
                 const context = this.editingData || this;
-                
+
                 if(eventData.targetPartId){
                     // Add or delete part
                     if(eventData.isAddNewPart){
@@ -887,13 +867,13 @@
                     }
                 } else{
                     // Open modal
-					if(!this.isShowSelectBodyPartModal){
-						this.showedBodyHalf                   = eventData.halfPart;
-						context.notConfirmedSelectedBodyParts = context.selectedBodyParts.slice();
-	
-						this.isShowSelectBodyPartModal = true;
-						this.forbidScroll();
-					}
+                    if(!this.isShowSelectBodyPartModal){
+                        this.showedBodyHalf                   = eventData.halfPart;
+                        context.notConfirmedSelectedBodyParts = context.selectedBodyParts.slice();
+
+                        this.isShowSelectBodyPartModal = true;
+                        this.forbidScroll();
+                    }
                 }
             },
             onConfirmBodySelectParts(){
@@ -983,9 +963,9 @@
                 this.$forceUpdate();
             },
             onPersonalInfoPhoneChange(eventValue, eventData){
-                this.personalInfoData.phone.value   = eventValue;
-                this.personalInfoData.phone.isValid = eventData.isValid;
-                this.personalInfoData.phone.eventData   = eventData;
+                this.personalInfoData.phone.value     = eventValue;
+                this.personalInfoData.phone.isValid   = eventData.isValid;
+                this.personalInfoData.phone.eventData = eventData;
 
                 if(eventData.isValid){
                     delete this.errors.phone;
@@ -1025,22 +1005,20 @@
                 this.$forceUpdate();
             },
             onPersonalInfoSubmit(){
-                if(!this.isValidPersonalInfoBlock){ return; }
-
-                this.isPersonalInfoFilled = true;
-
-                setTimeout(() => {
-                    this.scrollToBottom();
-                }, ANIMATION_DURATION);
+                if(this.isValidPersonalInfoBlock){
+                    this.isPersonalInfoFilled = true;
+                    
+                    setTimeout(() => {
+						this.scrollToBottom();
+					}, ANIMATION_DURATION * 2);
+                }
             },
             onCreateToken(eventData){
-                console.log("token created", eventData);
                 this.stripeToken = eventData.token.id;
-                this.isStripeTokenCreated = true;
-                this.scrollToBottom();
+                this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
 
-            onFinish(){
+            onSubmitDiagnosticChatConfirmEnquire(){
                 let data = new FormData();
 
                 data.append("code", this.stripeToken);
@@ -1052,49 +1030,51 @@
                 data.append("phone_number", this.personalInfoData.phone.value);
                 data.append("country_code", this.personalInfoData.phone.eventData.country.dialCode);
                 data.append("date_of_birth", this.personalInfoData.dateOfBirth.value);
-                
+
                 for(let i = 1, answer = null; answer = this.userAnswers[i++];){
-					
+
                     switch(answer.type){
                         case this.QUESTION_TYPES.radio:{
-							data.append(`answers[${answer.message_id}]`, answer.selectedOption[0]);
-                            
+                            data.append(`answers[${answer.message_id}]`, answer.selectedOption[0]);
+
                             break;
                         }
                         case this.QUESTION_TYPES.uploadImg:{
-							data.append(`answers[${answer.message_id}]`, "image");
-							data.append(`image`, answer.file);
-                            
+                            data.append(`answers[${answer.message_id}]`, "image");
+                            data.append(`image`, answer.file);
+
                             break;
                         }
                         case this.QUESTION_TYPES.inputText:{
-							data.append(`answers[${answer.message_id}]`, answer.contentForChat);
-                            
+                            data.append(`answers[${answer.message_id}]`, answer.contentForChat);
+
                             break;
                         }
                         case this.QUESTION_TYPES.bodySelect:{
-							data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedBodyParts));
-                            
+                            data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedBodyParts));
+
                             break;
                         }
                         case this.QUESTION_TYPES.multiSelect:{
-							data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedOption));
-                            
+                            data.append(`answers[${answer.message_id}]`, JSON.stringify(answer.selectedOption));
+
                             break;
                         }
-                        default:{
-                            console.error("Invalid 'lastQuestionData.type' \n\n 'this.lastQuestionData' = ", this.lastQuestionData);
-                        }
                     }
-                    
-				}
-                
+                }
+
                 diagnosticChatApi.createEnquires(data).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "Congratulations");
+                    this.openModal(
+                        this.$modals.defaultModal,
+                        `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
+                        "Ihre Anfrage erstellt");
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Something was wrong!");
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
-			}
+            }
+        },
+        beforeDestroy(){
+            this.$root.$off("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatConfirmEnquire);
         }
     }
 </script>
@@ -1202,36 +1182,6 @@
 		}
 	}
 	
-	.control-btn {
-		color         : $color-black-squeeze;
-		border        : none;
-		margin        : 0 $main_offset / 2;
-		padding       : $main_offset / 2 $main_offset;
-		transition    : $transition;
-		line-height   : 1;
-		border-radius : 4px;
-		
-		&--cancel {
-			@extend .control-btn;
-			background-color : transparentize($color-cinnabar, .25);
-			
-			&:hover {
-				background-color : $color-cinnabar;
-			}
-		}
-		
-		&--submit {
-			@extend .control-btn;
-			background-color : transparentize($color-user-is-active, .25);
-			
-			@include btn--is-disable;
-			
-			&:hover {
-				background-color : $color-user-is-active;
-			}
-		}
-	}
-	
 	.chat-container, .answer-area {
 		margin    : 0 auto;
 		position  : relative;
@@ -1241,7 +1191,7 @@
 	.message {
 		color         : white;
 		display       : flex;
-		margin-bottom : $main_offset * 2;
+		margin-bottom : $main_offset * 3;
 		
 		&__container {
 			padding          : $main_offset;
@@ -1441,7 +1391,7 @@
 		background-color : $color-black-squeeze;
 		
 		&__main {
-			$controls_btns_height: 40px;
+			$controls_btns_height : 40px;
 			height  : calc(100% - #{$main_offset + $controls_btns_height});
 			display : flex;
 		}

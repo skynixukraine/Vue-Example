@@ -26,7 +26,7 @@
 			<button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
 					v-if = "isPreview"
 					@click.stop = "startDiagnosticChat">
-				Anfrage starten
+				ANFRAGE STARTEN
 			</button>
 		</div>
 	</div>
@@ -46,12 +46,11 @@
         },
         computed : {
             linkToDoctorProfile(){
-                if(!(this.doctor.title && this.doctor.first_name && this.doctor.last_name)) return "/";
+                if(!(this.doctor.first_name && this.doctor.last_name)) return "/";
 
                 const regexp_spaces = /[\s]/g;
 
                 return this.$routes.hautarzt.path + "/" +
-                    this.doctor.title.name.trim().replace(".", "").replace(regexp_spaces, "-") + "__" +
                     this.doctor.first_name.trim().replace(regexp_spaces, "-") + "_" +
                     this.doctor.last_name.trim().replace(regexp_spaces, "-");
             }

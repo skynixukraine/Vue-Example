@@ -122,11 +122,12 @@
 		
 		&__section {
 			&:first-child {
-				$height : 565px;
+				/*$height : 565px;
 				height     : $height;
+				max-height : $height;*/
+				
 				padding    : 48px 0;
 				background : $color-gradient-blue-dark;
-				max-height : $height;
 			}
 			
 			&:last-child {
@@ -151,8 +152,7 @@
 		&__column {
 			width : 50%;
 			
-			&:nth-child(1),
-			&:nth-child(2) {
+			&:nth-child(1), &:nth-child(2) {
 				margin-bottom : 32px;
 			}
 		}
@@ -221,24 +221,23 @@
 			&__column {
 				width : 25%;
 				
-				&:nth-child(1),
-				&:nth-child(2) {
+				&:nth-child(1), &:nth-child(2) {
 					margin-bottom : 0;
 				}
 			}
 			
 			&__section {
+				/*
 				&:first-child {
 					$height : 364px;
 					height     : $height;
 					max-height : $height;
 				}
-				
+				*/
 				&:last-child {
 					max-height : 70px;
 				}
 			}
-			
 		}
 	}
 </style>

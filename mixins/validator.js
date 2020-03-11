@@ -16,7 +16,7 @@ export default {
                 return false
             }
 
-            this.cleanError(name);
+            this.clearError(name);
             return true;
         },
         validateEmail(event){
@@ -38,27 +38,24 @@ export default {
                 return false;
             }
 
-            this.cleanError(name);
+            this.clearError(name);
             return true;
         },
         validatePassword(event){
             const name     = event.target.name;
             const value    = event.target.value;
-            const settings = {
-                password : /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*.])(?!.*[\s]).{6,100})/
-            };
 
             // empty check
             if(!value){
                 this.errors[name] = this.$t('errors.form.required-field');
                 return false;
             }
-            if(!settings.password.test(value)){
+            if(!this.checkPassword(value)){
                 this.errors[name] = this.$t('errors.form.password-has-problem');
                 return false;
             }
 
-            this.cleanError(name);
+            this.clearError(name);
             return true;
         },
         validateConfirmPassword(event, compareInput){
@@ -77,7 +74,7 @@ export default {
                 return false;
             }
 
-            this.cleanError(name);
+            this.clearError(name);
             return true;
         },
         validatePhone(eventValue, telInput){
@@ -112,7 +109,7 @@ export default {
                 return false;
             }
 
-            this.cleanError(name);
+            this.clearError(name);
             return true;
         },
         validateFileExtension(event){
@@ -135,7 +132,7 @@ export default {
                 delete this.errors[`${name}_size`];
             }
 
-            this.cleanError(name);
+            this.clearError(name);
             return true;
         },
 
@@ -143,6 +140,10 @@ export default {
         checkEmailName(email){
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
+        },
+        checkPassword(pass){
+            var re = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*.])(?!.*[\s]).{6,100})/;
+            return re.test(pass);
         },
         checkEmailLength(email){
             return (email.length < 76);
@@ -171,7 +172,7 @@ export default {
             return sizeMb < allowedSizeMb;
         },
 
-        cleanError(name){
+        clearError(name){
             if(this.errors.hasOwnProperty(name)){
                 delete this.errors[name];
             }

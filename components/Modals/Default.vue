@@ -8,9 +8,9 @@
 		   :class = "'modal'">
 		<button class = "modal__close-button" @click.stop = "closeModal($modals.defaultModal)"></button>
 		<header class = "modal__header">
-			<h3 class = "modal__title">{{ $store.state.app.modalTitle }}</h3>
+			<h3 class = "modal__title">{{ $store.state.modals.modalTitle }}</h3>
 		</header>
-		<div class = "modal__main" v-html = "$store.state.app.modalMessageHTML"></div>
+		<div class = "modal__main" v-html = "$store.state.modals.modalMessageHTML"></div>
 	</modal>
 </template>
 
@@ -22,8 +22,8 @@
             modal,
         ],
 		beforeDestroy(){
-            this.$store.commit("app/SET_MODAL_TITLE", "");
-            this.$store.commit("app/SET_MODAL_MESSAGE_HTML", "");
+            this.$store.commit("modals/SET_MODAL_TITLE", "");
+            this.$store.commit("modals/SET_MODAL_MESSAGE_HTML", "");
 		}
     }
 </script>

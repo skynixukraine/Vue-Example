@@ -25,6 +25,11 @@
         @content;
     }
 }
+@mixin desktop-max {
+    @media (max-width: #{$screen-desktop-min}) {
+        @content;
+    }
+}
 
 @mixin desktop-l {
     @media (min-width: #{$screen-desktop-l}) {
