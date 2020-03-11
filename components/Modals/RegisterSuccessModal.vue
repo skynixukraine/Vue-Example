@@ -11,7 +11,10 @@
 			<h3 class = "modal__title">Register Success</h3>
 		</header>
 		<div class = "modal__main">
-			<p>We have sent you a confirmation email to the email address specified during registration.</p>
+			<p>This email confirmation will be valid for 3 hours.
+				Once your email is confirmed, you will be requested to add more information about yourself, and you may
+				be contacted by one of our representatives to verify your credentials.
+			</p>
 			<h3>{{ countdown }}</h3>
 		</div>
 		<footer class = "modal__footer">
