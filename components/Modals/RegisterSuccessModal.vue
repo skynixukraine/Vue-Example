@@ -11,7 +11,7 @@
 			<h3 class = "modal__title">Register Success</h3>
 		</header>
 		<div class = "modal__main">
-			<p>We have sent you a confirmation email to the email address specified during registration.</p>
+			<p>The pop-up also informs Doctor that he/she will be contacted in order to verify their identity and allow initial access to the dashboard</p>
 			<h3>{{ countdown }}</h3>
 		</div>
 		<footer class = "modal__footer">
@@ -31,12 +31,14 @@
     import modal from "~/mixins/modal";
     import recaptcha from "~/mixins/recaptcha";
     import countdown from "~/mixins/countdown";
+    import localStorage from '~/mixins/localStorage';
 
     export default {
         mixins : [
             modal,
             recaptcha,
             countdown,
+            localStorage,
         ],
         created(){
             if(process.client){
@@ -62,7 +64,7 @@
             onResendEmail(){
                 this.startCountdown(10);
                 const requestData = this.prepareDataForSending({
-                    email          : this.$store.getters["user/USER"].email,
+                    email          : this.email,
                     recaptchaToken : this.recaptchaToken
                 });
 
