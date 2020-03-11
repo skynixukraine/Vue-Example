@@ -31,12 +31,14 @@
     import modal from "~/mixins/modal";
     import recaptcha from "~/mixins/recaptcha";
     import countdown from "~/mixins/countdown";
+    import localStorage from '~/mixins/localStorage';
 
     export default {
         mixins : [
             modal,
             recaptcha,
             countdown,
+            localStorage,
         ],
         created(){
             if(process.client){
@@ -62,7 +64,7 @@
             onResendEmail(){
                 this.startCountdown(10);
                 const requestData = this.prepareDataForSending({
-                    email          : this.$store.getters["user/USER"].email,
+                    email          : this.email,
                     recaptchaToken : this.recaptchaToken
                 });
 
