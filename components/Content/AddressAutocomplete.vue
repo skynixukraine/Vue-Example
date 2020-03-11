@@ -1,17 +1,15 @@
 <template>
-	<vue-google-autocomplete
-			id = "map"
-			classname = "input"
-			:placeholder = "placeholder"
-			:value = "value"
-			@placechanged = "onChange" />
+	<label class = "custom-input__label">
+		<gmap-autocomplete :class = "'custom-input__input'"
+						   :placeholder = "placeholder"
+						   :value = "value"
+						   @place_changed = "onChange" />
+	</label>
 </template>
 
 <script>
-    import VueGoogleAutocomplete from "~/node_modules/vue-google-autocomplete";
-
     export default {
-        props      : {
+        props   : {
             placeholder : {
                 type    : String,
                 default : ""
@@ -21,10 +19,7 @@
                 default : ""
             }
         },
-        components : {
-            VueGoogleAutocomplete
-        },
-        methods    : {
+        methods : {
             onChange(eventData){
                 this.$emit("place_change", eventData);
             }
@@ -33,6 +28,5 @@
 </script>
 
 <style lang = "scss">
-
 
 </style>

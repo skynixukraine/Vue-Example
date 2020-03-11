@@ -845,6 +845,7 @@
 			
 			&__label {
 				$inner_offset : 6px;
+				cursor           : pointer;
 				display          : flex;
 				padding          : $inner_offset * 4 / 3 $main_offset / 2 $inner_offset;
 				transition       : $transition;
@@ -873,6 +874,8 @@
 						transition : $transition;
 					}
 				}
+				
+				&:hover{ background-color : $color-matisse; }
 			}
 		}
 		
@@ -911,6 +914,98 @@
 						background-color : $color-matisse;
 					}
 				}
+			}
+		}
+		
+		&-input{
+			position : relative;
+			
+			&__label{
+				color          : $color-rolling-stone;
+				width          : 100%;
+				cursor         : pointer;
+				display        : flex;
+				position       : relative;
+				font-size      : 14px;
+				font-style     : normal;
+				font-weight    : 500;
+				line-height    : 28px;
+				align-items    : flex-start;
+				flex-direction : column;
+				
+				@include phone-big {
+					font-size : 16px;
+				}
+				
+				@include desktop {
+					font-size : 18px;
+				}
+				
+				&__txt {
+					&--is-required {
+						&:after {
+							color   : $color-alert-red;
+							content : "*";
+							display : inline-block;
+						}
+					}
+				}
+			}
+			
+			&__input {
+				width         : 100%;
+				height        : 40px;
+				border        : 2px solid $color-curious-blue;
+				background    : #FFF;
+				box-sizing    : border-box;
+				padding-left  : $main_offset / 2;
+				border-radius : 4px;
+				
+				@include phone-big {
+					height : 56px;
+				}
+			}
+			
+			&__error {
+				$font_size : .75em;
+				top         : calc(100% + .25em);
+				left        : 0;
+				color       : $color-alert-red;
+				position    : absolute;
+				font-size   : $font_size;
+				line-height : $font_size;
+			}
+		}
+	}
+	
+	.control-btn {
+		color         : $color-black-squeeze;
+		border        : none;
+		margin        : 0 $main_offset / 2;
+		padding       : $main_offset / 2 $main_offset;
+		transition    : $transition;
+		line-height   : 1;
+		border-radius : 4px;
+		
+		&--cancel {
+			background-color : transparentize($color-cinnabar, .25);
+			
+			&:hover {
+				background-color : $color-cinnabar;
+			}
+		}
+		
+		&--submit {
+			background-color : transparentize($color-user-is-active, .25);
+			
+			&.is-disable {
+				cursor           : not-allowed;
+				pointer-events   : none;
+				background-color : $color-rolling-stone;
+			}
+			
+			&:hover {
+				background-color : $color-user-is-active;
 			}
 		}
 	}

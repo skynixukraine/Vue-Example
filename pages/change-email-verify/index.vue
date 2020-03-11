@@ -2,17 +2,16 @@
 	<div class = "page">
 		<div class = "section">
 			<div class = "container">
-				<h1>Account</h1>
+				<VerifyEmail :isChangeEmail = "true"/>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+    import VerifyEmail from "~/components/Authorization/VerifyEmail";
+
     export default {
-        middleware : [
-            "auth",
-        ],
         async fetch({app, store, error}){
             // if token exist and user empty - load User object
             if(app.$cookies.get(app.cookie.names.token) && store.getters["user/USER"] === null){
@@ -25,5 +24,8 @@
                 })
             }
         },
+        components : {
+            VerifyEmail,
+        }
     }
 </script>

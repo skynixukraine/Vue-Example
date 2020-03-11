@@ -56,7 +56,7 @@
 </template>
 
 <script>
-    import DoctorsApi from "~/services/api/Doctors"
+    import DoctorsApi from "~/services/api/Doctors";
 
     export default {
         async fetch({app, store, route, error}){
@@ -240,6 +240,11 @@
                     color       : $color-curious-blue;
                     font-size   : 1.3em;
                     font-weight : 500;
+    
+                    &:after {
+                        content     : "€";
+                        margin-left : 6px;
+                    }
                 }
             }
 

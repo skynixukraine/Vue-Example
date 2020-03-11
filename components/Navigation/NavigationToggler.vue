@@ -1,6 +1,6 @@
 <template>
 	<button class = "navigation-toggle"
-			:class = "{ 'navigation-toggle--active': $store.getters['app/IS_NAVIGATION_ACTIVE'] }"
+			:class = "{ 'navigation-toggle--active': $store.state.app.isNavigationActive }"
 			@click.stop = "toggleNavigationActive">
 		<span :class = "{'navigation-toggle--personal-office': isPersonalOffice }"></span>
 	</button>
@@ -16,7 +16,7 @@
         },
         methods  : {
             toggleNavigationActive(){
-                this.$store.commit("app/SET_IS_NAVIGATION_ACTIVE", !this.$store.getters["app/IS_NAVIGATION_ACTIVE"])
+                this.$store.commit("app/SET_IS_NAVIGATION_ACTIVE", !this.$store.state.app.isNavigationActive)
             }
         }
     }
@@ -41,7 +41,6 @@
 			position         : absolute;
 			background-color : #FFF;
 			
-			
 			&:before, &:after {
 				left             : 0;
 				width            : $size;
@@ -58,16 +57,16 @@
 		}
 		
 		.navigation-toggle--personal-office {
-			background-color : $color-river-bed;
+			background-color : $color-tory-blue;
 			
 			&:before {
 				top              : -$offset;
-				background-color : $color-river-bed;
+				background-color : $color-tory-blue;
 			}
 			
 			&:after {
 				top              : $offset;
-				background-color : $color-river-bed;
+				background-color : $color-tory-blue;
 			}
 		}
 		

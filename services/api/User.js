@@ -133,7 +133,6 @@ export default {
         });
     },
     async updateUser({id, token, params}){
-
         return new Promise((resolve, reject) => {
             HTTP.post(`/doctors/${id}`, params, {
                 headers : {
@@ -155,6 +154,9 @@ export default {
                 }
                 if(error.response.status === 403){
                     message = "Current user has not permissions to do this action.";
+                }
+                if(error.response.status === 422){
+                    message = "Versuchen Sie, die Seite zu aktualisieren, und versuchen Sie es erneut.";
                 }
                 if(error.response.status === 404){
                     message = "Resource not found.";
@@ -194,7 +196,7 @@ export default {
                         message = "Resource not found."
                     }
                     if(error.response.status === 500){
-                        message = "Something went wrong, please try again later.";
+                        message = "Etwas ist schief gelaufen, please try again later.";
                     }
 
                     reject({
@@ -404,6 +406,49 @@ export default {
                     message : "Your account has been successfully restored",
                 });
             }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
+    async sendChangeEmailLink({requestData, token}){
+        return new Promise((resolve, reject) => {
+            HTTP.post(`/doctors/send-change-email-request-link`, requestData, {
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            }).then(response => {
+                console.log(response);
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                    message : "Eine Bestätigungs-E-Mail wurde an Ihre neue E-Mail gesendet",
+                });
+            }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
+    async verifyChangeEmail(requestData){
+        return new Promise((resolve, reject) => {
+            HTTP.post(`/doctors/change-email`, requestData)
+                .then(response => {
+                    resolve({
+                        success : true,
+                        status  : response.status,
+                        data    : response.data.data,
+                        message : "Success",
+                    });
+                }).catch(error => {
                 reject({
                     success : false,
                     status  : error.response.status,

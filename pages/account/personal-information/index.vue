@@ -5,7 +5,7 @@
 				<Dashboard>
 					<DashboardSidebar />
 					<DashboardMain>
-						<DashboardHeader :title = "'Account Settings'">
+						<DashboardHeader :title = "'Account Einstellungen'">
 							<AccountStatus />
 						</DashboardHeader>
 						<DashboardContent>

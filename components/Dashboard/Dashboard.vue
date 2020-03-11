@@ -1,12 +1,12 @@
-<template lang="html">
-        <div class="dashboard">
-        <slot></slot>
-    </div>
+<template lang = "html">
+	<div class = "dashboard">
+		<slot></slot>
+	</div>
 </template>
 
-<style lang="scss" scoped>
-.dashboard {
-    display: flex;
-    width: 100%;
-}
+<style lang = "scss" scoped>
+	.dashboard {
+		width   : 100%;
+		display : flex;
+	}
 </style>
