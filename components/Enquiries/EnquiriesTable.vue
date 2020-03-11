@@ -11,11 +11,11 @@
 		</div>
 		<div class = "table__content">
 			<div class = "table__header">
-				<div class = "table__header-item table__header-item_id">Enquiry ID</div>
-				<div class = "table__header-item">First Name</div>
-				<div class = "table__header-item">Last Name</div>
-				<div class = "table__header-item table__header-item_enquiry-date">Enquiry Date</div>
-				<div class = "table__header-item table__header-item_last-contact">Last Contact</div>
+				<div class = "table__header-item table__header-item_id">Enquiry<br class = "table__br"> ID</div>
+				<div class = "table__header-item">First<br class = "table__br"> Name</div>
+				<div class = "table__header-item">Last<br class = "table__br"> Name</div>
+				<div class = "table__header-item table__header-item_enquiry-date">Enquiry<br class = "table__br"> Date</div>
+				<div class = "table__header-item table__header-item_last-contact">Last<br class = "table__br"> Contact</div>
 				<div class = "table__header-item table__header-item_status">Status</div>
 			</div>
 			<div class = "table__main">
