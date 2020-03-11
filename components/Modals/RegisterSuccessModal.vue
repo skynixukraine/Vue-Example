@@ -11,7 +11,7 @@
 			<h3 class = "modal__title">Register Success</h3>
 		</header>
 		<div class = "modal__main">
-			<p>The pop-up also informs Doctor that he/she will be contacted in order to verify their identity and allow initial access to the dashboard</p>
+			<p>We have sent you a confirmation email to the email address specified during registration.</p>
 			<h3>{{ countdown }}</h3>
 		</div>
 		<footer class = "modal__footer">
