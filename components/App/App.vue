@@ -629,10 +629,6 @@
 			padding    : 0 0 5px 15px;
 			flex-basis : 25%;
 
-
-
-
-			
 			@include desktop-l {
 				padding-left : 25px;
 			}
