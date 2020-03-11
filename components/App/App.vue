@@ -628,12 +628,26 @@
 			color      : $color-curious-blue;
 			padding    : 0 0 5px 15px;
 			flex-basis : 25%;
+
+
+
+
 			
 			@include desktop-l {
 				padding-left : 25px;
 			}
+			@include desktop-max{
+				line-height: 1;
+				white-space: pre-line;
+				vertical-align: middle;
+			}
 		}
-		
+		&__br{
+			display: none;
+			@include desktop-max{
+				display: inline;
+			}
+		}
 		&__main {
 			text-align : left;
 		}
@@ -684,6 +698,11 @@
 			
 			@include desktop-l {
 				padding-left : 25px;
+			}
+			@include tablet-max {
+				&:not(:last-child){
+					border-bottom: 1px solid #f3f3f3;
+				}
 			}
 			
 			&:before {
