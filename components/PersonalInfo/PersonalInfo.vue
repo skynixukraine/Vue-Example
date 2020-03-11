@@ -346,7 +346,8 @@
                     },
                     location            : {
                         fullAddress : "",
-                        eventData   : null
+                        placeData   : null,
+                        customData   : null,
                     },
                     medical_degree      : {
                         fileBase64 : "",
@@ -384,9 +385,6 @@
             }
         },
         computed   : {
-            doctorDefaultData(){
-                return this.$store.state.user.user;
-            },
             isSomethingEdited(){
                 if(this.$store.state.user.user){
                     let result = !!(this.userInputData.last_name && this.userInputData.last_name != this.$store.state.user.user.last_name ||
@@ -442,20 +440,21 @@
             },
             defaultFullAddress(){
                 let res = "";
-
+				const SEPARATOR = "___";
+				
                 if(this.$store.state.user.user.location){
                     if(this.$store.state.user.user.location.country){
-                        res += " " + this.$store.state.user.user.location.country;
+                        res += `${this.$store.state.user.user.location.country}${SEPARATOR}`;
                     }
                     if(this.$store.state.user.user.location.city){
-                        res += " " + this.$store.state.user.user.location.city;
+                        res += `${this.$store.state.user.user.location.city}${SEPARATOR}`;
                     }
                     if(this.$store.state.user.user.location.address){
-                        res += " " + this.$store.state.user.user.location.address;
+                        res += `${this.$store.state.user.user.location.address}${SEPARATOR}`;
                     }
                 }
 
-                return res.trim();
+                return res.trim().split(SEPARATOR).join(", ").slice(0, -2);
             },
 			defaultLanguages(){
                 let res = [];
@@ -492,7 +491,7 @@
                 };
                 this.userInputData.location            = {
                     fullAddress : this.defaultFullAddress,
-                    eventData   : null
+                    placeData   : null
                 };
                 this.userInputData.medical_degree      = {
                     fileBase64 : this.$store.state.user.user.medical_degree && this.$store.state.user.user.medical_degree.data || "",
@@ -543,21 +542,46 @@
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
             },
-            onAddressChange(eventData){
-                this.userInputData.location.eventData = eventData;
-
+            onAddressChange(placeData){
                 let newFullAddress = "";
 
-                if(eventData.country){
-                    newFullAddress += " " + eventData.country;
-                }
-                if(eventData.locality){
-                    newFullAddress += " " + eventData.locality;
-                }
-                if(eventData.route){
-                    newFullAddress += " " + eventData.route + " " + (eventData.street_number || "");
-                }
+				if(placeData.address_components){
+					this.userInputData.location.customData = {};
+					for(let param = null, i = placeData.address_components.length - 1; i > -1; i--){
+						param = placeData.address_components[i];
 
+						if(param.types){
+							switch(param.types[0]){
+								case "country":{
+									this.userInputData.location.customData.country = param.long_name;
+									newFullAddress += ` ${param.long_name},`;
+									break;
+								}
+								case "locality":{
+									this.userInputData.location.customData.city = param.long_name;
+									newFullAddress += ` ${param.long_name},`;
+									break;
+								}
+								case "route":{
+									this.userInputData.location.customData.street = param.long_name;
+									newFullAddress += ` ${param.long_name},`;
+									break;
+								}
+								case "street_number":{
+									this.userInputData.location.customData.street_number = param.long_name;
+									newFullAddress += ` ${param.long_name},`;
+									break;
+								}
+							}
+						}
+					}
+					
+					newFullAddress = newFullAddress.slice(0, -2);
+				} else{
+					newFullAddress = placeData.formatted_address || placeData.name || "";
+				}
+				
+                this.userInputData.location.placeData   = placeData;
                 this.userInputData.location.fullAddress = newFullAddress.trim();
             },
             onMedicalDegreeUpload(event){
@@ -679,14 +703,15 @@
                     }
                 }
 
-                if(this.userInputData.location.eventData){
-                    this.userInputData.location.eventData.country && formData.append("country", this.userInputData.location.eventData.country);
-                    this.userInputData.location.eventData.locality && formData.append("city", this.userInputData.location.eventData.locality);
-                    this.userInputData.location.eventData.route && formData.append("address", this.userInputData.location.eventData.route + " " + (this.userInputData.location.eventData.street_number || ""));
-                    this.userInputData.location.eventData.postal_code && formData.append("postal_code", this.userInputData.location.eventData.postal_code);
+                if(this.userInputData.location.placeData){
+                    this.userInputData.location.customData.country && formData.append("country", this.userInputData.location.customData.country);
+                    this.userInputData.location.customData.city && formData.append("city", this.userInputData.location.customData.city);
+                    this.userInputData.location.customData.street && formData.append("address", this.userInputData.location.customData.street + ", " + (this.userInputData.location.customData.street_number || ""));
 
-                    this.userInputData.location.eventData.latitude && formData.append("latitude", this.userInputData.location.eventData.latitude);
-                    this.userInputData.location.eventData.longitude && formData.append("longitude", this.userInputData.location.eventData.longitude);
+                    if(this.userInputData.location.placeData.geometry && this.userInputData.location.placeData.geometry.location){
+                        formData.append("latitude", this.userInputData.location.placeData.geometry.location.lat());
+                        formData.append("longitude", this.userInputData.location.placeData.geometry.location.lng());
+					}
                 }
 
                 this.userInputData.avatar.userInput.file && formData.append("photo", this.userInputData.avatar.userInput.file);
