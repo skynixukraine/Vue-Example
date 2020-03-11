@@ -17,8 +17,8 @@
                         <h1 class = "profile__info__name">{{ `${this.doctorData.first_name} ${this.doctorData.last_name}` }}</h1>
                         <div class = "profile__info__description">{{ this.doctorData.description }}</div>
                         <div class = "profile__info__price">
-                            <span class = "profile__info__price__title">Professionelle Einschätzung & Handlungsempfehlung:</span>
-                            <div class = "profile__info__price__value">{{ this.doctorData.enquire_price || "" }}</div>
+                            <span class = "profile__info__price__title">Professionelle Einschätzung & Handlungsempfehlung</span>
+                            <div class = "profile__info__price__value">{{ `${this.doctorData.enquire_price} €` || "" }}</div>
                         </div>
                         <button class = "profile__info__start-enquiry-btn link--button link--button-blue"
                                 @click.stop = "startDiagnosticChat">

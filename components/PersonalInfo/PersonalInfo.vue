@@ -422,11 +422,11 @@
                     if(!result){
                         result = this.userInputData.location.fullAddress !== this.defaultFullAddress;
                     }
-                    
+
                     if(!result){
                         result = JSON.stringify(this.userInputData.languages) !== JSON.stringify(this.defaultLanguages);
                     }
-					
+
                     return !!result;
                 } else{
                     return false;
@@ -439,9 +439,9 @@
                 return this.$store.state.user.user && this.$store.state.user.user.status && this.$store.state.user.user.status === statuses.approved;
             },
             defaultFullAddress(){
-                let res = "";
-				const SEPARATOR = "___";
-				
+                let res         = "";
+                const SEPARATOR = "___";
+
                 if(this.$store.state.user.user.location){
                     if(this.$store.state.user.user.location.country){
                         res += `${this.$store.state.user.user.location.country}${SEPARATOR}`;
