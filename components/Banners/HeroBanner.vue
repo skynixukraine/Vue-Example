@@ -122,6 +122,7 @@ export default {
         }
     }
 
+
     @include tablet {
         &__footer {
             flex-direction: row;
