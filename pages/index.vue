@@ -236,15 +236,13 @@
 		height: 98px;
 		position: absolute;
 		right: 20px;
+		bottom: 20px;
 		background-image    : url("~static/images/images/made-in-germany-min.png");
 		background-size     : auto;
 		background-position : right center;
 
-		@include tablet {
-			bottom: 20px;
-		}
 		@include tablet-max{
-			bottom: -45px;
+			display: none;
 		}
 	}
 
