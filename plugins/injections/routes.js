@@ -5,6 +5,9 @@ export default ({app}, inject) => {
         home                : {
             path : "/"
         },
+        cookies             : {
+            path : "/cookies"
+        },
         dashboard           : {
             path : "/dashboard"
         },

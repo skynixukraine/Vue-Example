@@ -9,7 +9,11 @@
         @content;
     }
 }
-
+@mixin tablet-max {
+    @media (max-width: #{$screen-tablet-min}) {
+        @content;
+    }
+}
 @mixin tablet-big {
     @media (min-width: #{$screen-tablet-big-min}) {
         @content;
@@ -18,6 +22,11 @@
 
 @mixin desktop {
     @media (min-width: #{$screen-desktop-min}) {
+        @content;
+    }
+}
+@mixin desktop-max {
+    @media (max-width: #{$screen-desktop-min}) {
         @content;
     }
 }

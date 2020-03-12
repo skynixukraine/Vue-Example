@@ -132,8 +132,8 @@
                         });
                     } else{
                         this.$store.dispatch("user/VERIFY_USER_EMAIL", {
-                            id        : this.$route.query.id,
-                            expires   : this.$route.query.expires,
+							expires   : this.$route.query.expires,
+							id        : this.$route.query.id,
                             signature : this.$route.query.signature,
                         }).then(response => {
                             this.title           = "Glückwunsch!";

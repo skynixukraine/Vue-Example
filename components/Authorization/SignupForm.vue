@@ -124,12 +124,14 @@
     import modal from '~/mixins/modal';
     import validator from '~/mixins/validator';
     import recaptcha from '~/mixins/recaptcha';
+    import localStorage from '~/mixins/localStorage';
 
     export default {
         mixins : [
             validator,
             recaptcha,
             modal,
+            localStorage,
         ],
         created(){
             if(process.client){
@@ -287,6 +289,7 @@
             onEmailChange(event){
                 this.formIsValid.email = this.validateEmail(event);
                 this.$forceUpdate();
+               this.setObjLocalStorage({email: event.target.value});
             },
             onPasswordChange(event){
                 this.formIsValid.password = this.validatePassword(event, this.$refs.password_confirmation);
