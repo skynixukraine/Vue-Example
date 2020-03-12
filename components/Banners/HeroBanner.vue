@@ -121,7 +121,7 @@ export default {
             top: -65px;
         }
     }
-  
+
 
     @include tablet {
         &__footer {
