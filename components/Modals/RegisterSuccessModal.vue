@@ -6,7 +6,7 @@
 		   :delay = "100"
 		   :adaptive = "true"
 		   :class = "'modal'">
-		<button class = "modal__close-button" @click = "closeModal($modals.registerSuccess)"></button>
+		<button class = "modal__close-button" @click.stop = "closeModal($modals.registerSuccess)"></button>
 		<header class = "modal__header">
 			<h3 class = "modal__title">Register Success</h3>
 		</header>
@@ -19,7 +19,7 @@
 				<button class = "link link--button link--button-blue link--button-gradient"
 						:disabled = "countdown > 0"
 						@click = "onResendEmail">
-					Resend email
+					E-Mail zurücksenden
 				</button>
 			</div>
 		</footer>
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-    // mixins
     import modal from "~/mixins/modal";
     import recaptcha from "~/mixins/recaptcha";
     import countdown from "~/mixins/countdown";
@@ -45,7 +44,7 @@
                         this.loadAndSetRecaptchaToken(this.$recaptchaActions.sendEmailVerificationLink)
                     });
 
-                this.startCountdown(10);
+                this.startCountdown();
             }
         },
 
@@ -60,7 +59,7 @@
 
         methods : {
             onResendEmail(){
-                this.startCountdown(10);
+                this.startCountdown();
                 const requestData = this.prepareDataForSending({
                     email          : this.$store.getters["user/USER"].email,
                     recaptchaToken : this.recaptchaToken
@@ -68,7 +67,7 @@
 
                 this.$store.dispatch("user/SEND_EMAIL_VERIFICATION_LINK", requestData)
                     .then(response => {
-                        this.$root.$emit("showNotify", {type : "success", text : response.message})
+                        this.$root.$emit("showNotify", {type : "success", text : response.message});
                     })
                     .catch(error => {
                         this.$root.$emit("showNotify", {type : "error", text : error.message});

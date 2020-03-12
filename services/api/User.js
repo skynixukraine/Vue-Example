@@ -147,22 +147,23 @@ export default {
                     message : "User success updated",
                 });
             }).catch(error => {
-                let message = "";
+                let message = error.message;
 
-                if(error.response.status === 401){
-                    message = "Authorization failed.";
-                }
-                if(error.response.status === 403){
-                    message = "Current user has not permissions to do this action.";
-                }
-                if(error.response.status === 422){
-                    message = "Versuchen Sie, die Seite zu aktualisieren, und versuchen Sie es erneut.";
-                }
-                if(error.response.status === 404){
-                    message = "Resource not found.";
-                }
-                if(error.response.status === 500){
-                    message = "Internal technical error was happened.";
+                try{
+                    switch(error.response.status){
+                        case 422: {
+                            if(error.response.data.errors.old_password){
+                                message = "Sie haben ein falsches Aktuelles Passwort eingegeben";
+                            }
+                            break;
+                        }
+                        case 500: {
+                            message = "Etwas ist schief gelaufen";
+                            break;
+                        }
+                    }
+                }catch(e){
+                    console.error(e);
                 }
 
                 reject({
@@ -211,7 +212,6 @@ export default {
         return new Promise((resolve, reject) => {
             HTTP.post("/doctors/send-email-verification-link", requestData)
                 .then(response => {
-                    console.log("sendEmailVerifyLink response: ", response);
                     resolve({
                         success : true,
                         status  : response.status,
@@ -219,7 +219,6 @@ export default {
                     });
                 })
                 .catch(error => {
-                    console.log("sendEmailVerifyLink error: ", error);
                     let message = "";
 
                     if(error.response.status === 304){
@@ -422,7 +421,6 @@ export default {
                     "Content-Type"  : "application/x-www-form-urlencoded"
                 }
             }).then(response => {
-                console.log(response);
                 resolve({
                     success : true,
                     status  : response.status,
@@ -449,10 +447,34 @@ export default {
                         message : "Success",
                     });
                 }).catch(error => {
+                let message = error.message;
+
+                try{
+                    switch(error.response.status){
+                        case 500: {
+                            message = "Etwas ist schief gelaufen";
+                            break;
+                        }
+                        case 422: {
+
+                            if(error.response.data.errors.password){
+                                message = "Falsches Passwort";
+                            }
+                            if(error.response.data.errors.token){
+                                message = "Ihr Token ist abgelaufen.\n" + "Versuchen Sie, die Anfrage zum erneuten Ändern der E-Mail zu senden";
+                            }
+
+                            break;
+                        }
+                    }
+                }catch(e){
+                    console.error(e);
+                }
+
                 reject({
                     success : false,
                     status  : error.response.status,
-                    message : error.message,
+                    message,
                 });
             });
         });

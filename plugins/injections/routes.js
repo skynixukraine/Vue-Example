@@ -1,78 +1,78 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-export default ({ app }, inject) => {
+export default ({app}, inject) => {
     const OPTIONS = {
-        home: {
-            path: '/'
+        home                : {
+            path : "/"
         },
-        dashboard: {
-            path: '/dashboard'
+        dashboard           : {
+            path : "/dashboard"
         },
-        hautarzt: {
-            path: '/hautarzt'
+        hautarzt            : {
+            path : "/hautarzt"
         },
-        vorteile: {
-            path: '/vorteile'
+        vorteile            : {
+            path : "/vorteile"
         },
-        faq: {
-            path: '/faq'
+        faq                 : {
+            path : "/faq"
         },
-        about: {
-            path: '/ueber-uns'
+        about               : {
+            path : "/ueber-uns"
         },
-        contact: {
-            path: '/kontakt'
+        contact             : {
+            path : "/kontakt"
         },
-        authorisation: {
-            path: '/authorisation'
+        authorisation       : {
+            path : "/authorisation"
         },
-        registrierung: {
-            path: '/registrierung'
+        registrierung       : {
+            path : "/registrierung"
         },
-        login: {
-            path: '/registrierung'
+        login               : {
+            path : "/registrierung"
         },
-        konditionen: {
-            path: '/konditionen'
+        konditionen         : {
+            path : "/konditionen"
         },
-        studien: {
-            path: '/studien'
+        studien             : {
+            path : "/studien"
         },
-        forschung: {
-            path: '/forschung'
+        forschung           : {
+            path : "/forschung"
         },
-        datenschutz: {
-            path: '/datenschutz'
+        datenschutz         : {
+            path : "/datenschutz"
         },
-        agb: {
-            path: '/agb'
+        agb                 : {
+            path : "/agb"
         },
-        impressum: {
-            path: '/impressum'
+        impressum           : {
+            path : "/impressum"
         },
-        account: {
-            path: '/account'
+        account             : {
+            path : "/account"
         },
-        billing: {
-            path: '/account/billing'
+        billing             : {
+            path : "/account/billing"
         },
-        personalInformation: {
-            path: '/account/personal-information'
+        personalInformation : {
+            path : "/account/personal-information"
         },
-        enquiries: {
-            path: '/enquiries'
+        enquiries           : {
+            path : "/enquiries"
         },
-        terms: {
-            path: '/terms-and-conditions'
+        terms               : {
+            path : "/terms-and-conditions"
         },
-        privacy: {
-            path: '/privacy-policy'
+        privacy             : {
+            path : "/privacy-policy"
         },
-        awards: {
-            path: '/auszeichnungen'
+        awards              : {
+            path : "/auszeichnungen"
         }
-    }
+    };
 
-    Vue.prototype.$routes = OPTIONS
-    app.routes = OPTIONS
+    Vue.prototype.$routes = OPTIONS;
+    app.routes            = OPTIONS;
 }

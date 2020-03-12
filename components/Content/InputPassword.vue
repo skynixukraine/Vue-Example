@@ -8,7 +8,6 @@
 				   ref = "password"
 				   :placeholder = "placeholder"
 				   :name = "name"
-				   :value = "value"
 				   class = "custom-input__input"
 				   @blur = "onBlur"
 				   @focus = "onFocus"
@@ -34,7 +33,7 @@
         props   : {
             placeholder : {
                 type    : String,
-                default : ""
+                default : "Passwort"
             },
             isRequired  : {
                 type    : Boolean,
@@ -55,10 +54,6 @@
             name        : {
                 type    : String,
                 default : "password"
-            },
-            value        : {
-                type    : String,
-                default : ""
             }
         },
         mixins  : [
@@ -74,6 +69,11 @@
                 this.$emit("blur", event);
             },
             onChange(event){
+                if(this.errors.hasOwnProperty(this.name)){
+                    delete this.errors[this.name];
+                    this.$forceUpdate();
+                }
+                
                 this.$emit("change", event);
             },
             onTogglePasswordVisibility(){

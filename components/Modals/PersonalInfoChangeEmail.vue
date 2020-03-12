@@ -7,38 +7,55 @@
 		   :adaptive = "true"
 		   :class = "'modal'">
 		<button class = "modal__close-button" @click.stop = "closeModal($modals.personalInfoChangeEmail)"></button>
-		<transition name = "main-animation">
-			<div class = "modal__content" v-if = "!isSubmit">
-				<header class = "modal__header">
-					<h3 class = "modal__title">Geben Sie eine neue E-Mail-Adresse ein</h3>
+		<div class = "modal__content">
+			<transition name = "main-animation">
+				<header class = "modal__header" v-if = "!isAwaitRequestSending">
+					<h3>{{ title }}</h3>
+					<span>{{ message }}</span>
 				</header>
-				<div class = "modal__main">
-					<InputEmail :value = "newEmail"
-								@change = "onChange"
-								@blur = "onBlur" />
+			</transition>
+			<transition name = "main-animation">
+				<div v-if = "!isSending">
+					<div class = "modal__main">
+						<InputEmail :value = "newEmail"
+									@change = "onChange"
+									@blur = "onBlur" />
+					</div>
 				</div>
-				<footer class = "modal__footer">
-					<button class = "control-btn control-btn--cancel"
+			</transition>
+			<div class = "modal__loader" v-if = "isSending && isAwaitRequestSending">
+				<Loader />
+			</div>
+			<transition name = "main-animation">
+				<div class = "s" v-if = "isCounterFinishForResend && !isAwaitRequestSending">
+					<div class = "modal__main">
+						<p>Wir haben eine E-Mail gesendet, in der die Änderung der E-Mail-Adresse in Ihre neue E-Mail-Adresse bestätigt wird.</p>
+						<p>Diese E-Mail-Bestätigung ist 3 Stunden gültig.</p>
+						<h3>{{ countdown }}</h3>
+					</div>
+				</div>
+			</transition>
+			<transition name = "main-animation">
+				<footer class = "modal__footer" v-if = "isSending && isCanResend && !isAwaitRequestSending || !isSending">
+					<button class = "control-btn--cancel"
 							@click.stop = "closeModal($modals.personalInfoChangeEmail)">
 						Abbrechen
 					</button>
-					<button class = "control-btn control-btn--submit"
-							:class = "{'is-disable': !newEmail || !isValid || newEmail === $store.state.modals.newEmail}"
+					<button class = "control-btn--submit"
+							:class = "{'is-disable': !newEmail || !isValid || newEmail === $store.state.modals.newEmail || isCounterFinishForResend}"
 							@click.stop = "onSubmit">
-						Bestätigen
+						{{ isCanResend ? `E-Mail zurücksenden` : `Bestätigen` }}
 					</button>
 				</footer>
-			</div>
-			<div class = "modal__loader" v-else>
-				<Loader />
-			</div>
-		</transition>
+			</transition>
+		</div>
 	</modal>
 </template>
 
 <script>
     import modal from "~/mixins/modal";
     import UserApi from "~/services/api/User";
+    import countdown from "~/mixins/countdown";
     import validator from "~/mixins/validator";
     import Loader from "~/components/App/Loader";
     import InputEmail from "~/components/Content/InputEmail";
@@ -47,6 +64,7 @@
         mixins     : [
             modal,
             validator,
+            countdown,
         ],
         components : {
             Loader,
@@ -54,14 +72,24 @@
         },
         data(){
             return {
-                isSubmit : false,
-                newEmail : this.$store.state.modals.newEmail,
-                isValid  : false
+                title            : "Bitte geben Sie eine neue E-Mail-Adresse ein",
+                message          : "",
+                isValid          : false,
+                newEmail         : this.$store.state.modals.newEmail,
+                isSending        : false,
+                isCanResend      : false,
+                isAwaitRequestSending : false,
+            }
+        },
+        computed   : {
+            isCounterFinishForResend(){
+                return this.isCanResend && this.countdown > 0;
             }
         },
         methods    : {
             onSubmit(){
-                this.isSubmit = true;
+                this.isSending = true;
+                this.isAwaitRequestSending = true;
 
                 let formData = new FormData;
 
@@ -71,11 +99,20 @@
                     token       : this.$cookies.get(this.$cookie.names.token),
                     requestData : formData,
                 }).then(response => {
-                    console.log(response);
-                    this.openModal(this.$modals.defaultModal, response.message, "Herzliche Glückwünsche!");
-				}).catch(error => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
-				});
+                    this.isCanResend      = true;
+                    this.isAwaitRequestSending = false;
+
+                    this.title   = `Die Bestätigung wurde an ${this.newEmail} gesendet.`;
+                    this.message = "Bitte überprüfen Sie Ihre E-Mails und folgen Sie den Anweisungen. Die Bestätigungs-E-Mail ist 1 Stunde lang gültig";
+                }).catch(error => {
+                    this.isCanResend      = true;
+                    this.isAwaitRequestSending = false;
+
+                    this.title   = "Etwas ist schief gelaufen!";
+                    this.message = error.message;
+                });
+
+                this.startCountdown();
             },
             onChange(event){
                 this.isValid  = this.validateEmail(event);

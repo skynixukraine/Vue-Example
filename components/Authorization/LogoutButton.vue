@@ -1,5 +1,5 @@
 <template>
-	<button class = "link logout__link" @click = "onLogout">Log Out</button>
+	<button class = "link logout__link" @click.stop = "onLogout">Log Out</button>
 </template>
 
 <script>
@@ -10,9 +10,8 @@
                     .then(response => {
                         this.removeUserCookie();
                         this.$router.push({path : this.$routes.home.path});
-                    })
+                    });
             },
-
             removeUserCookie(){
                 this.$cookies.remove(this.$cookie.names.token);
                 this.$cookies.remove(this.$cookie.names.tokenId);
