@@ -24,18 +24,32 @@ export default {
         }
     },
     methods : {
-        setObjLocalStorage(newObj) {  /**to write JSON to the localStorage**/
-            if (!newObj || typeof(newObj) != "object") {
+        setObjLocalStorage(newVal, key) {  /**to write JSON to the localStorage**/
+
+            if(key){
+                /**
+                 * newVal = string || number
+                 * **/
+                localStorage.setItem(key, newVal);
+            } else if (newVal && typeof(newVal) === "object"){
+                /**
+                 * newVal = object
+                 * **/
+                let _newObj = Object.assign(newVal, this._addDate()),
+                    data = localStorage.getItem(configLS.localName)
+                        ? JSON.parse(localStorage.getItem(configLS.localName))
+                        : false,
+                    obj = data ? Object.assign(data, _newObj) : _newObj;
+
+                for(let prop in newVal){
+                    this[prop] = newVal[prop];
+                }
+                localStorage.setItem(configLS.localName, JSON.stringify(obj));
+            } else {
                 return false;
             }
-            let _newObj = Object.assign(newObj, this._addDate()),
-                data = localStorage.getItem(configLS.localName) ? JSON.parse(localStorage.getItem(configLS.localName)) : false,
-                obj = data ? Object.assign(data, _newObj) : _newObj;
 
-            for(let prop in newObj){
-                this[prop] = newObj[prop];
-            }
-            localStorage.setItem(configLS.localName, JSON.stringify(obj));
+
         },
 
         getPropLocalStorage(prop) {  /** to read the property values from a localStorage**/
