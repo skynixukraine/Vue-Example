@@ -110,12 +110,28 @@
                                 lng : this.doctorData.location.longitude
                             };
                         } else{
-                            DoctorsApi.gMapDecodeAddressToCoords({address : this.doctorData.location.city || this.doctorData.region.name})
+                            let location = "";
+                            
+                            if(this.doctorData.location.country){
+                                location += this.doctorData.location.country;
+                            }
+                            if(this.doctorData.location.city){
+                                location += this.doctorData.location.city;
+                            }
+                            if(this.doctorData.location.address){
+                                location += this.doctorData.location.address;
+                            }
+                            
+                            if(!location && this.doctorData.region && this.doctorData.region.name){
+                                location += this.doctorData.region.name;
+                            }
+                            
+                            DoctorsApi.gMapDecodeAddressToCoords({address : location})
                                       .then(coords => {
                                           if(coords){
                                               this.gMapPosition = coords;
                                           }
-                                      })
+                                      });
                         }
                     } else{
                         console.warn("Doctors dont have data for generate google maps");
@@ -240,11 +256,6 @@
                     color       : $color-curious-blue;
                     font-size   : 1.3em;
                     font-weight : 500;
-    
-                    &:after {
-                        content     : "€";
-                        margin-left : 6px;
-                    }
                 }
             }
 

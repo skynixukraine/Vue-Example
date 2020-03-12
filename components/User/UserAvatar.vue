@@ -1,5 +1,5 @@
 <template>
-	<div class = "user-avatar user-avatar__container" v-if = "isLogin">
+	<div class = "user-avatar" v-if = "isLogin">
 		<img class = "user-avatar__image"
 			 :src = "this.$store.state.user.user.photo || require('~/static/images/images/placeholder_doctor_man_img.jpg')"
 			 alt = "user-avatar">
@@ -18,10 +18,11 @@
 
 <style lang = "scss" scoped>
 	.user-avatar {
-		display     : flex;
-		align-items : center;
-		
-		&__container { position : relative; }
+		display      : flex;
+		position     : relative;
+		align-items  : center;
+		margin-left  : -$main_offset / 2;
+		margin-right : $main_offset / 2;
 		
 		&__image {
 			$size : 48px;

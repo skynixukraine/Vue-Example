@@ -17,11 +17,11 @@
 				<p>Zahlen und anfangen?</p>
 			</div>
 			<footer class = "modal__footer">
-				<button class = "control-btn control-btn--cancel"
+				<button class = "control-btn--cancel"
 						@click.stop = "closeModal($modals.diagnosticChatConfirmEnquire)">
 					Abbrechen
 				</button>
-				<button class = "control-btn control-btn--submit" @click.stop = "onSubmit">
+				<button class = "control-btn--submit" @click.stop = "onSubmit">
 					Bestätigen
 				</button>
 			</footer>

@@ -8,9 +8,12 @@
 		   :class = "'modal'">
 		<button class = "modal__close-button" @click.stop = "closeModal($modals.personalInfoChangePassword)"></button>
 		<transition name = "main-animation">
-			<div class = "modal__content" v-if = "!isSubmit">
+			<div class = "modal__content" v-if = "!isAwaitRequestSending">
 				<header class = "modal__header">
 					<h3 class = "modal__title">Passwort ändern</h3>
+					<transition name = "main-animation">
+						<h5 v-if = "responseErrorMessage" class = "error">{{ responseErrorMessage }}</h5>
+					</transition>
 				</header>
 				<div class = "modal__main">
 					<div class = "modal__main__item current-password">
@@ -38,13 +41,13 @@
 					</div>
 				</div>
 				<transition name = "main-animation">
-					<span v-if = "errors.password" class = "equal-error">{{ errors.password }}</span>
+					<span v-if = "errors.password" class = "error">{{ errors.password }}</span>
 				</transition>
 				<footer class = "modal__footer">
-					<button class = "control-btn control-btn--cancel"
+					<button class = "control-btn--cancel"
 							@click.stop = "closeModal($modals.personalInfoChangeEmail)">Abbrechen
 					</button>
-					<button class = "control-btn control-btn--submit"
+					<button class = "control-btn--submit"
 							:class = "{'is-disable': isSubmitDisabled}"
 							@click.stop = "onSubmit">Bestätigen
 					</button>
@@ -74,11 +77,12 @@
         },
         data(){
             return {
-                isSubmit              : false,
                 isPasswordsEqual      : false,
-                currentPassword       : "",
+                isAwaitRequestSending : false,
                 newPassword           : "",
-                password_confirmation : ""
+                currentPassword       : "",
+                responseErrorMessage  : "",
+                password_confirmation : "",
             }
         },
         computed   : {
@@ -91,7 +95,7 @@
         },
         methods    : {
             onSubmit(){
-                this.isSubmit = true;
+                this.isAwaitRequestSending = true;
 
                 let formData = new FormData();
 
@@ -106,11 +110,11 @@
                     token  : this.$cookies.get(this.$cookie.names.token),
                     params : formData
                 }).then((response) => {
-                    this.closeModal(this.$modals.personalInfoChangePassword);
-                    this.openModal(this.$modals.defaultModal, "Password success changed", "Herzliche Glückwünsche!");
+                    this.responseErrorMessage = "";
+                    this.openModal(this.$modals.defaultModal, "Ihr Kennwort wurde erfolgreich geändert. Verwenden Sie es beim nächsten Anmelden.", "Herzliche Glückwünsche!");
                 }).catch((error) => {
-                    // this.closeModal(this.$modals.personalInfoChangePassword);
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.isAwaitRequestSending = false;
+                    this.responseErrorMessage  = error.message;
                 });
             },
             onBlur(event){
@@ -165,7 +169,7 @@
 		}
 	}
 	
-	.equal-error {
+	.error {
 		color     : $color-alert-red;
 		float     : left;
 		font-size : .75em;

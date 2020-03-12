@@ -67,10 +67,10 @@
 							<div v-if = "userInputData.medical_degree.fileBase64 && !userInputData.medical_degree.userInput.HTML"
 								 class = "personal-info__file__container"
 								 @click.stop = "$refs.medicalDegreeInputFile.click();">
-								<embed class = "personal-info__file-src"
-									   v-if = "userInputData.medical_degree.fileBase64.indexOf('data:application/pdf') > -1"
-									   :src = "userInputData.medical_degree.fileBase64"
-									   type = "application/pdf">
+								<object class = "personal-info__file-src"
+										v-if = "userInputData.medical_degree.fileBase64.indexOf('data:application/pdf') > -1"
+										:src = "userInputData.medical_degree.fileBase64"
+										type = "application/pdf"></object>
 								<img v-else
 									 :src = "userInputData.medical_degree.fileBase64"
 									 class = "personal-info__file-src">
@@ -111,10 +111,10 @@
 							<div v-if = "userInputData.board_certification.fileBase64 && !userInputData.board_certification.userInput.HTML"
 								 class = "personal-info__file__container"
 								 @click.stop = "$refs.board_certificationInputFile.click();">
-								<embed class = "personal-info__file-src"
-									   v-if = "userInputData.board_certification.fileBase64.indexOf('data:application/pdf') > -1"
-									   :src = "userInputData.board_certification.fileBase64"
-									   type = "application/pdf">
+								<object class = "personal-info__file-src"
+										v-if = "userInputData.board_certification.fileBase64.indexOf('data:application/pdf') > -1"
+										:src = "userInputData.board_certification.fileBase64"
+										type = "application/pdf"></object>
 								<img v-else
 									 :src = "userInputData.board_certification.fileBase64"
 									 class = "personal-info__file-src">
@@ -197,8 +197,8 @@
 					</div>
 				</div>
 			</div>
-			<div class = "personal-info__items">
-				<div class = "personal-info__item personal-info__item--desktop-full-width">
+			<div class = "personal-info__items personal-info__items--max-width">
+				<div class = "personal-info__item">
 					<h3>Sprachen</h3>
 					<div class = "personal-info__main personal-info__main-languages">
 						<div class = "custom-checkbox__item"
@@ -218,9 +218,9 @@
 					</div>
 				</div>
 			</div>
-			<div class = "personal-info__items">
+			<div class = "personal-info__items personal-info__items--max-width">
 				<h3>Deine Beschreibung</h3>
-				<div class = "personal-info__item personal-info__item--desktop-full-width">
+				<div class = "personal-info__item">
 					<header class = "personal-info__header">Beschreibung Kurze
 						<small>(zur vorschau)</small>
 					</header>
@@ -228,29 +228,21 @@
 						<AutoHeight :placeholder_text = "'BIO Short'"
 									:maxLength = '170'
 									:minHeight = "'5em'"
-									:value = "userInputData.short_description || $store.state.user.user.short_description || ''"
+									:value = "userInputData.short_description || $store.state.user.user && $store.state.user.user.short_description || ''"
 									@change = "(newValue) => {userInputData.short_description = newValue}" />
 					</div>
 				</div>
-				<div class = "personal-info__item personal-info__item--desktop-full-width">
+				<div class = "personal-info__item">
 					<header class = "personal-info__header">Beschreibung</header>
 					<div class = "personal-info__main">
 						<AutoHeight :placeholder_text = "'BIO'"
 									:maxLength = '3000'
 									:minHeight = "'5em'"
-									:value = "userInputData.description || $store.state.user.user.description || ''"
+									:value = "userInputData.description || $store.state.user.user && $store.state.user.user.description || ''"
 									@change = "(newValue) => {userInputData.description = newValue}" />
 					</div>
 				</div>
 			</div>
-			<transition name = "main-animation">
-				<button class = "control-btn control-btn--submit personal-info__item--submit"
-						type = "button"
-						v-if = "isSomethingEdited"
-						@click.stop = "onSave">
-					SPEICHERN
-				</button>
-			</transition>
 		</form>
 		<div class = "personal-text">
 			<p>Please fill in all information in order to request Administrator’s approval and appear in search on Online Hautarzt.</p>
@@ -275,16 +267,6 @@
 				</div>
 			</div>
 			<div class = "personal-info__items">
-				<div class = "personal-info__column">
-					<div class = "personal-info__item" v-if = "'approved'">
-						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-								v-if = "!isApproved"
-								@click.stop = "onApproveRequest">ANTRAG GENEHMEN
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class = "personal-info__items">
 				<div class = "personal-info__column personal-link__column">
 					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
 							@click.stop = "onPauseOrUnpauseAccount">
@@ -295,6 +277,26 @@
 					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
 							@click.stop = "onDeleteAccount">LÖSCHE MEIN KONTO
 					</button>
+				</div>
+			</div>
+			<div class = "personal-info__items">
+				<div class = "personal-info__column">
+					<div class = "personal-info__item"
+						 v-if = "!isApproved">
+						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
+								@click.stop = "onApproveRequest">ANTRAG GENEHMEN
+						</button>
+					</div>
+				</div>
+				<div class = "personal-info__column">
+					<div class = "personal-info__item">
+						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link personal-info__item--submit"
+								:class = "{'personal-info__item--submit-disabled': !isSomethingEdited}"
+								type = "button"
+								@click.stop = "onSave">
+							SPEICHERN
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -387,11 +389,11 @@
         computed   : {
             isSomethingEdited(){
                 if(this.$store.state.user.user){
-                    let result = !!(this.userInputData.last_name && this.userInputData.last_name != this.$store.state.user.user.last_name ||
-                        this.userInputData.first_name && this.userInputData.first_name != this.$store.state.user.user.first_name ||
-                        this.userInputData.phone.eventData && this.userInputData.phone.eventData.isValid && this.userInputData.phone.value != this.$store.state.user.user.phone_number ||
-                        this.userInputData.description && this.userInputData.description != this.$store.state.user.user.description ||
-                        this.userInputData.short_description && this.userInputData.short_description != this.$store.state.user.user.short_description);
+                    let result = !!(this.userInputData.last_name && this.userInputData.last_name !== this.$store.state.user.user.last_name ||
+                        this.userInputData.first_name && this.userInputData.first_name !== this.$store.state.user.user.first_name ||
+                        this.userInputData.phone.eventData && this.userInputData.phone.eventData.isValid && this.userInputData.phone.value !== this.$store.state.user.user.phone_number ||
+                        this.userInputData.description && this.userInputData.description !== this.$store.state.user.user.description ||
+                        this.userInputData.short_description && this.userInputData.short_description !== this.$store.state.user.user.short_description);
 
                     if(!result){
                         result = this.$store.state.user.user.title ?
@@ -436,7 +438,9 @@
                 return this.$store.state.user.user && this.$store.state.user.user.status && this.$store.state.user.user.status === statuses.deactivated;
             },
             isApproved(){
-                return this.$store.state.user.user && this.$store.state.user.user.status && this.$store.state.user.user.status === statuses.approved;
+                return this.$store.state.user.user && this.$store.state.user.user.status &&
+					this.$store.state.user.user.status === statuses.approved ||
+					this.$store.state.user.user.status === statuses.activationRequested;
             },
             defaultFullAddress(){
                 let res         = "";
@@ -528,6 +532,17 @@
                     token : this.$cookies.get(this.$cookie.names.token)
                 }).then((response) => {
                     this.openModal(this.$modals.defaultModal, response.message, "We will miss you!");
+                    
+                    setTimeout(() => {
+                        this.$store.dispatch("user/LOGOUT_USER", this.$cookies.get(this.$cookie.names.token))
+                            .then(response => {
+                                this.closeModal(this.$modals.defaultModal);
+                                
+                                this.$cookies.remove(this.$cookie.names.token);
+                                this.$cookies.remove(this.$cookie.names.tokenId);
+                                this.$router.push({path : this.$routes.home.path});
+                            });
+					}, 2500);
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
@@ -744,6 +759,10 @@
 </script>
 
 <style lang = "scss" scoped>
+	$tablet_padding_right: 33px;
+	$avatar_img_size: 256px;
+	$desktop_max_column_width: 28.5%;
+	
 	.personal-info {
 		margin-bottom : $main_offset * 2;
 		
@@ -751,6 +770,16 @@
 			margin    : $main_offset * 1.5 0 $main_offset 0;
 			display   : flex;
 			flex-wrap : wrap;
+			
+			&--max-width {
+				@include tablet {
+					padding-right : $tablet_padding_right;
+				}
+				
+				@include desktop {
+					max-width : calc(#{$desktop_max_column_width * 2} + #{$avatar_img_size} + #{$main_offset});
+				}
+			}
 		}
 		
 		&__column {
@@ -762,13 +791,12 @@
 				$size : 50%;
 				flex          : 0 0 $size;
 				width         : $size;
-				padding-right : 33px;
+				padding-right : $tablet_padding_right;
 			}
 			
 			@include desktop {
-				$size : 28.5%;
-				flex  : 0 0 $size;
-				width : $size;
+				flex  : 0 0 $desktop_max_column_width;
+				width : $desktop_max_column_width;
 			}
 		}
 		
@@ -778,7 +806,7 @@
 			padding-right : 0;
 			
 			@include desktop {
-				flex         : 0 0 28.5%;
+				flex         : 0 0 $desktop_max_column_width;
 				order        : 3;
 				padding-left : 15px;
 			}
@@ -797,18 +825,19 @@
 				font-size : 18px;
 			}
 			
-			&--desktop-full-width {
-				@include desktop {
-					max-width : 100%;
-				}
-			}
-			
 			&--submit {
-				right    : $main_offset;
-				bottom   : 10vh;
-				margin   : 0;
-				position : fixed;
-				padding  : $main_offset / 2 * 1.2 $main_offset $main_offset / 2;
+				transition : $transition;
+				background : transparentize($color-user-is-active, .25);
+				
+				&-disabled {
+					cursor           : not-allowed;
+					pointer-events   : none;
+					background-color : $color-rolling-stone;
+				}
+				
+				&:hover {
+					background : $color-user-is-active;
+				}
 			}
 		}
 		
@@ -878,9 +907,8 @@
 		}
 		
 		&__avatar {
-			$size : 256px;
-			width         : $size;
-			height        : $size;
+			width         : $avatar_img_size;
+			height        : $avatar_img_size;
 			position      : relative;
 			overflow      : hidden;
 			margin-left   : auto;

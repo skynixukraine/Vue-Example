@@ -2,7 +2,7 @@
 	<div class = "page">
 		<div class = "section">
 			<div class = "container">
-				<VerifyEmail :isChangeEmail = "true"/>
+				<VerifyEmail :isChangeEmail = "true" />
 			</div>
 		</div>
 	</div>

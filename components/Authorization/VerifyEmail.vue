@@ -4,22 +4,45 @@
 		<transition name = "main-animation">
 			<p class = "verify-email__message" v-if = "message">{{ message }}</p>
 		</transition>
-		<Loader v-if = "!isLoadingFinish" />
-		<div class = "verify-email__sign-in-container" v-else>
+		<Loader v-if = "!isLoadingFinish && (isChangeEmail && isHideContent && !isSuccess || !isChangeEmail)" />
+		<div class = "verify-email__sign-in-container" v-if = "isLoadingFinish && !isChangeEmail">
 			<transition name = "main-animation">
 				<SigninForm v-if = "isSuccess" />
 			</transition>
 		</div>
-		<NuxtLink :to = "$routes.home.path"
-				  class = "link link--button link--button-blue link--button-gradient"
-				  exact>Zurück zur Homepage
-		</NuxtLink>
+		<transition name = "main-animation">
+			<form class = "verify-email__change-email-form"
+				  v-if = "!isHideContent && isChangeEmail"
+				  @submit.prevent = "onSubmitChangeEmail">
+				<InputPassword :labelTxt = "'Bestätigen Sie die Änderung der E-Mail-Adresse'"
+							   @change = "onPasswordChange" />
+				<button type = "submit"
+						class = "control-btn--submit"
+						:class = "{'control-btn--disabled': !isPasswordValid}">Bestätigen Sie
+				</button>
+			</form>
+		</transition>
+		<div class = "verify-email__links">
+			<NuxtLink :to = "$routes.home.path"
+					  class = "link link--button link--button-blue link--button-gradient"
+					  exact>Zurück zur Homepage
+			</NuxtLink>
+			<transition name = "main-animation">
+				<NuxtLink :to = "$routes.account.path"
+						  class = "link link--button link--button-blue link--button-gradient"
+						  exact>Mein Konto
+				</NuxtLink>
+			</transition>
+		</div>
 	</div>
 </template>
 
 <script>
-    import Loader from "~/components/App/Loader";
+    import modal from "~/mixins/modal";
     import UserApi from "~/services/api/User";
+    import validator from "~/mixins/validator";
+    import Loader from "~/components/App/Loader";
+    import InputPassword from "~/components/Content/InputPassword";
     import SigninForm from "~/components/Authorization/SigninForm";
 
     export default {
@@ -31,35 +54,58 @@
         },
         components : {
             Loader,
-            SigninForm
+            SigninForm,
+            InputPassword
         },
-        created(){
-            if(process.client){
-                this.verifyEmail();
+        mixins     : [
+            modal,
+            validator,
+        ],
+        mounted(){
+            if(this.isChangeEmail){
+
+            } else{
+                if(process.client){
+                    this.verifyEmail();
+                }
             }
         },
         data(){
             return {
-                title           : "Überprüfen Sie Ihre E-Mails.",
-                message         : "",
-                isSuccess       : false,
-                isLoadingFinish : false,
+                title               : "Überprüfen Sie Ihre E-Mails.",
+                message             : "",
+                isSuccess           : false,
+                isHideContent       : false,
+                isPasswordValid     : false,
+                isLoadingFinish     : false,
+                changeEmailPassword : "",
             }
         },
         methods    : {
+            onPasswordChange(event){
+                this.isPasswordValid     = this.validatePassword(event);
+                this.changeEmailPassword = event.target.value;
+            },
+            onSubmitChangeEmail(){
+                this.isHideContent = true;
+
+                this.verifyEmail();
+            },
             validateQuery(){
                 if(this.isChangeEmail){
                     if(this.$route.query.hasOwnProperty("token") && this.$route.query.hasOwnProperty("id")){
                         return true;
                     } else{
-                        this.message = "Ungültige Überprüfungsdaten für das Senden.";
+                        this.message         = "Ungültige Überprüfungsdaten für das Senden.";
+                        this.isLoadingFinish = true;
                         return false;
                     }
                 } else{
                     if(this.$route.query.hasOwnProperty("expires") && this.$route.query.hasOwnProperty("id") && this.$route.query.hasOwnProperty("signature")){
                         return true;
                     } else{
-                        this.message = "Ungültige Überprüfungsdaten für das Senden.";
+                        this.message         = "Ungültige Überprüfungsdaten für das Senden.";
+                        this.isLoadingFinish = true;
                         return false;
                     }
                 }
@@ -71,15 +117,17 @@
 
                         formData.append("id", this.$route.query.id);
                         formData.append("token", this.$route.query.token);
+                        formData.append("password", this.changeEmailPassword);
 
                         UserApi.verifyChangeEmail(formData).then(response => {
                             this.title           = "Glückwunsch!";
-                            this.message         = "Ihre E-Mail wurde erfolgreich bestätigt. Jetzt können Sie Ihr persönliches Konto eingeben.";
+                            this.message         = "Ihre E-Mail wurde erfolgreich geändert.";
                             this.isSuccess       = true;
                             this.isLoadingFinish = true;
                         }).catch(error => {
                             this.title           = "Etwas ist schief gelaufen";
                             this.message         = error.message;
+                            this.isHideContent   = false;
                             this.isLoadingFinish = true;
                         });
                     } else{
@@ -112,6 +160,14 @@
 
 <style lang = "scss" scoped>
 	.verify-email {
+		&__message {
+			margin-bottom : $main_offset / 2;
+		}
+		
+		.link {
+			margin-top : $main_offset;
+		}
+		
 		&__sign-in-container {
 			margin         : 0 auto $main_offset / 2;
 			display        : flex;
@@ -120,12 +176,13 @@
 			flex-direction : column;
 		}
 		
-		&__message {
-			margin-bottom : $main_offset / 2;
-		}
-		
-		.link {
-			margin-top : $main_offset;
+		&__change-email-form {
+			margin    : 0 auto;
+			max-width : 600px;
+			
+			.control-btn--submit {
+				margin : $main_offset / 2 0;
+			}
 		}
 	}
 </style>

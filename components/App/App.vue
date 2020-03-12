@@ -526,6 +526,11 @@
 		@include phone-big {
 			height : 56px;
 		}
+		
+		@include tablet {
+			padding-left  : $main_offset / 2;
+			padding-right : $main_offset / 2;
+		}
 	}
 	
 	.input {
@@ -997,12 +1002,13 @@
 		color         : $color-black-squeeze;
 		border        : none;
 		margin        : 0 $main_offset / 2;
-		padding       : $main_offset / 2 $main_offset;
+		padding       : $main_offset / 2 + 4 $main_offset $main_offset / 2;
 		transition    : $transition;
 		line-height   : 1;
 		border-radius : 4px;
 		
 		&--cancel {
+			@extend .control-btn;
 			background-color : transparentize($color-cinnabar, .25);
 			
 			&:hover {
@@ -1011,6 +1017,7 @@
 		}
 		
 		&--submit {
+			@extend .control-btn;
 			background-color : transparentize($color-user-is-active, .25);
 			
 			&.is-disable {
@@ -1022,6 +1029,12 @@
 			&:hover {
 				background-color : $color-user-is-active;
 			}
+		}
+		
+		&--disabled {
+			cursor           : not-allowed;
+			pointer-events   : none;
+			background-color : $color-rolling-stone;
 		}
 	}
 	

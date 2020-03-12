@@ -316,8 +316,8 @@
 								   :selectedParts = "editingData ? editingData.notConfirmedSelectedBodyParts : notConfirmedSelectedBodyParts" />
 					</div>
 					<footer class = "select-body-part-modal__footer">
-						<button class = "control-btn control-btn--submit" @click.stop = "onConfirmBodySelectParts">Bestätigen</button>
-						<button class = "control-btn control-btn--cancel" @click.stop = "onCancelBodySelectParts">Abbrechen</button>
+						<button class = "control-btn--submit" @click.stop = "onConfirmBodySelectParts">Bestätigen</button>
+						<button class = "control-btn--cancel" @click.stop = "onCancelBodySelectParts">Abbrechen</button>
 					</footer>
 				</div>
 			</transition>

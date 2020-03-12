@@ -1,4 +1,4 @@
-const DEFAULT_COUNTDOWN = 60
+const DEFAULT_COUNTDOWN = 60;
 
 export default {
     data() {
@@ -9,15 +9,17 @@ export default {
 
     methods: {
         startCountdown(number) {
+            number = number === undefined ? DEFAULT_COUNTDOWN : number;
+
             if (!arguments[1]) {
-                this.countdown = number
+                this.countdown = number;
             }
 
             if(this.countdown > 0) {
                 setTimeout(() => {
-                    this.countdown -= 1
-                    this.startCountdown(number, true)
-                }, 1000)
+                    this.countdown -= 1;
+                    this.startCountdown(number, true);
+                }, 1000);
             }
         }
     }
