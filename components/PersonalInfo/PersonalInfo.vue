@@ -275,7 +275,7 @@
 				</div>
 				<div class = "personal-info__column personal-link__column">
 					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-							@click.stop = "onDeleteAccount">LÖSCHE MEIN KONTO
+							@click.stop = "openModal($modals.personalInfoConfirmDeleteAccount)">LÖSCHE MEIN KONTO
 					</button>
 				</div>
 			</div>
@@ -522,27 +522,6 @@
                     token : this.$cookies.get(this.$cookie.names.token)
                 }).then((response) => {
                     this.openModal(this.$modals.defaultModal, response.message);
-                }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
-                });
-            },
-            onDeleteAccount(){
-                UserApi.deleteUserAccount({
-                    id    : this.$store.state.user.user.id,
-                    token : this.$cookies.get(this.$cookie.names.token)
-                }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "We will miss you!");
-                    
-                    setTimeout(() => {
-                        this.$store.dispatch("user/LOGOUT_USER", this.$cookies.get(this.$cookie.names.token))
-                            .then(response => {
-                                this.closeModal(this.$modals.defaultModal);
-                                
-                                this.$cookies.remove(this.$cookie.names.token);
-                                this.$cookies.remove(this.$cookie.names.tokenId);
-                                this.$router.push({path : this.$routes.home.path});
-                            });
-					}, 2500);
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
