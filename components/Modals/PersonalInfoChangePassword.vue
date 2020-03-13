@@ -19,21 +19,18 @@
 					<div class = "modal__main__item current-password">
 						<InputPassword :isToggle = 'true'
 									   :labelTxt = "'Aktuelles Passwort'"
-									   :value = "currentPassword"
 									   :isRequired = 'true'
 									   @change = "event => currentPassword = event.target.value.replace(/\s/g, '')" />
 					</div>
 					<div class = "modal__main__item new-password">
 						<InputPassword :isToggle = 'true'
 									   :labelTxt = "'Neues Passwort'"
-									   :value = "newPassword"
 									   :isRequired = 'true'
 									   @change = "onChangeNewPassword"
 									   @blur = "onBlur" />
 					</div>
 					<div class = "modal__main__item confirm-new-password">
 						<InputPassword :labelTxt = "'Bestätigen Sie das neue Passwort'"
-									   :value = "password_confirmation"
 									   :isRequired = 'true'
 									   :isValidate = 'false'
 									   @change = "onChangePasswordConfirmation"

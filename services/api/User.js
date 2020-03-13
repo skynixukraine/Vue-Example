@@ -344,12 +344,15 @@ export default {
             });
         });
     },
-    async deleteUserAccount({id, token}){
+    async deleteUserAccount({id, token, password}){
         return new Promise((resolve, reject) => {
-            HTTP.patch(`/doctors/${id}/close`, {}, {
+            HTTP.delete(`/doctors/${id}/delete`, {
                 headers : {
-                    "Authorization" : `Bearer ${token}`,
+                    Authorization : `Bearer ${token}`,
                     "Content-Type"  : "application/x-www-form-urlencoded"
+                },
+                params    : {
+                    "password" : password
                 }
             }).then(response => {
                 resolve({
@@ -359,10 +362,30 @@ export default {
                     message : "Account successful delete",
                 });
             }).catch(error => {
+                let message = error.message;
+
+                try{
+                    switch(error.response.status){
+                        case 500:{
+                            message = "Etwas ist schief gelaufen";
+                            break;
+                        }
+                        case 422:{
+                            if(error.response.data.errors.password){
+                                message = "Falsches Passwort";
+                            }
+
+                            break;
+                        }
+                    }
+                } catch(e){
+                    console.error(e);
+                }
+
                 reject({
                     success : false,
                     status  : error.response.status,
-                    message : error.message,
+                    message,
                 });
             });
         });
@@ -456,7 +479,6 @@ export default {
                             break;
                         }
                         case 422: {
-
                             if(error.response.data.errors.password){
                                 message = "Falsches Passwort";
                             }

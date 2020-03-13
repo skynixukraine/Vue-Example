@@ -1,11 +1,12 @@
 <template>
 	<div class = "modals">
-		<Default v-if = "activeModal === $modals.defaultModal" />
-		<ContactModal v-if = "activeModal === $modals.contactModals" />
-		<RegisterSuccessModal v-if = "activeModal === $modals.registerSuccess" />
-		<PersonalInfoChangeEmail v-if = "activeModal === $modals.personalInfoChangeEmail" />
-		<PersonalInfoChangePassword v-if = "activeModal === $modals.personalInfoChangePassword" />
-		<DiagnosticChatConfirmEnquire v-if = "activeModal === $modals.diagnosticChatConfirmEnquire" />
+		<Default v-if = "$store.state.modals.currentActiveModal === $modals.defaultModal" />
+		<ContactModal v-if = "$store.state.modals.currentActiveModal === $modals.contactModals" />
+		<RegisterSuccessModal v-if = "$store.state.modals.currentActiveModal === $modals.registerSuccess" />
+		<PersonalInfoChangeEmail v-if = "$store.state.modals.currentActiveModal === $modals.personalInfoChangeEmail" />
+		<PersonalInfoChangePassword v-if = "$store.state.modals.currentActiveModal === $modals.personalInfoChangePassword" />
+		<DiagnosticChatConfirmEnquire v-if = "$store.state.modals.currentActiveModal === $modals.diagnosticChatConfirmEnquire" />
+		<PersonalInfoConfirmDeleteAccount v-if = "$store.state.modals.currentActiveModal === $modals.personalInfoConfirmDeleteAccount" />
 	</div>
 </template>
 
@@ -16,6 +17,7 @@
     import PersonalInfoChangeEmail from "~/components/Modals/PersonalInfoChangeEmail";
     import PersonalInfoChangePassword from "~/components/Modals/PersonalInfoChangePassword";
     import DiagnosticChatConfirmEnquire from "~/components/Modals/DiagnosticChatConfirmEnquire";
+    import PersonalInfoConfirmDeleteAccount from "~/components/Modals/PersonalInfoConfirmDeleteAccount";
 
     export default {
         components : {
@@ -25,12 +27,8 @@
             PersonalInfoChangeEmail,
             PersonalInfoChangePassword,
             DiagnosticChatConfirmEnquire,
-        },
-		computed:{
-            activeModal(){
-                return this.$store.state.modals.currentActiveModal;
-			}
-		}
+            PersonalInfoConfirmDeleteAccount,
+        }
     }
 </script>
 
