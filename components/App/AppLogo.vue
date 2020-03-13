@@ -2,9 +2,9 @@
 	<NuxtLink :to = "$routes.home.path" class = "link app-logo__link">
 		<div class = "app-logo">
 			<div class = "app-logo__image"
-				 :class = "{ 'app-logo__image--personal-office': isPersonalOffice }"></div>
+				 :class = "{ 'app-logo__image--personal-office': $store.state.app.isPersonalOfficePage }"></div>
 			<div class = "app-logo__text"
-				 :class = "{ 'app-logo__text--personal-office': isPersonalOffice }">
+				 :class = "{ 'app-logo__text--personal-office': $store.state.app.isPersonalOfficePage }">
 				{{ $t("links.logo-link") }}
 			</div>
 		</div>
@@ -13,12 +13,6 @@
 
 <script>
     export default {
-        props : {
-            isPersonalOffice : {
-                type    : Boolean,
-                default : false
-            }
-        }
     }
 </script>
 

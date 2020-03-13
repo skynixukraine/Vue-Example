@@ -2,18 +2,12 @@
 	<button class = "navigation-toggle"
 			:class = "{ 'navigation-toggle--active': $store.state.app.isNavigationActive }"
 			@click.stop = "toggleNavigationActive">
-		<span :class = "{'navigation-toggle--personal-office': isPersonalOffice }"></span>
+		<span :class = "{'navigation-toggle--personal-office': $store.state.app.isPersonalOfficePage }"></span>
 	</button>
 </template>
 
 <script>
     export default {
-        props    : {
-            isPersonalOffice : {
-                type    : Boolean,
-                default : false
-            }
-        },
         methods  : {
             toggleNavigationActive(){
                 this.$store.commit("app/SET_IS_NAVIGATION_ACTIVE", !this.$store.state.app.isNavigationActive)

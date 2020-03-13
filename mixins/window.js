@@ -1,30 +1,30 @@
 export default {
-    data() {
+    data(){
         return {
-            windowWidth: null,
-            windowHeight: null,
-            scrollTop: null,
+            windowWidth  : null,
+            windowHeight : null,
+            scrollTop    : null,
         }
     },
-    mounted() {
+    mounted(){
         this.$nextTick(() => {
-            window.addEventListener('resize', this.handleResize)
-            window.addEventListener('scroll', this.handleScroll)
-            this.handleResize()
-            this.handleScroll()
+            window.addEventListener("resize", this.handleResize);
+            window.addEventListener("scroll", this.handleScroll);
+            this.handleResize();
+            this.handleScroll();
         })
     },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.handleResize)
-        window.removeEventListener('scroll', this.handleScroll)
+    beforeDestroy(){
+        window.removeEventListener("resize", this.handleResize);
+        window.removeEventListener("scroll", this.handleScroll);
     },
-    methods: {
-        handleResize() {
-            this.windowWidth = window.innerWidth
-            this.windowHeight = window.innerHeight
+    methods : {
+        handleResize(){
+            this.windowWidth  = window.innerWidth;
+            this.windowHeight = window.innerHeight;
         },
-        handleScroll() {
-            this.scrollTop = window.pageYOffset
+        handleScroll(){
+            this.scrollTop = window.pageYOffset;
         },
     },
 }
