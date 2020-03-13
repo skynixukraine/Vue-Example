@@ -18,6 +18,7 @@
 					</a>
 				</div>
 			</div>
+			<div class="label-made-in-germany"></div>
 		</div>
 		<div class = "section section--default-0 section--bg-right-1" id = "doctors">
 			<div class = "container">
@@ -230,6 +231,22 @@
 			display : block;
 		}
 	}
+	.label-made-in-germany{
+		width: 146px;
+		height: 98px;
+		position: absolute;
+		right: 20px;
+		bottom: 20px;
+		background-image    : url("~static/images/images/made-in-germany-min.png");
+		background-size     : auto;
+		background-position : right center;
+
+		@include tablet-max{
+			display: none;
+		}
+	}
+
+
 	@-webkit-keyframes scroll {
 		0%, 20% {
 			-webkit-transform: translateY(0) scaleY(1);
