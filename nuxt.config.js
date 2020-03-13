@@ -61,7 +61,9 @@ module.exports = {
         theme_color: '#2F495E',
         lang: 'de',
     },
-    router: {},
+    router: {
+        middleware: "route_switch_pages"
+    },
     plugins: [
         { src: '~/plugins/injections/cookie' },
         { src: '~/plugins/injections/routes' },
