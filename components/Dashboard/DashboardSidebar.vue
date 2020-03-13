@@ -1,6 +1,8 @@
 <template>
 	<aside class = "dashboard-sidebar">
-		<div class = "dashboard-sidebar__main">
+		<div class = "dashboard-sidebar__main"
+			 :class = "{'dashboard-sidebar__main--stick': isStickSidebarMain}"
+			 ref = "sidebarMain">
 			<div class = "dashboard-sidebar__items">
 				<ul class = "dashboard-sidebar__list">
 					<li class = "dashboard-sidebar__item dashboard-sidebar__item-account">
@@ -20,7 +22,9 @@
 				</ul>
 			</div>
 		</div>
-		<footer class = "dashboard-sidebar__footer">
+		<footer class = "dashboard-sidebar__footer"
+				:class = "{'dashboard-sidebar__main--stick': isStickSidebarFooter}"
+				ref = "sidebarFooter">
 			<ul class = "dashboard-sidebar__list">
 				<li class = "dashboard-sidebar__item dashboard-sidebar__item-logout">
 					<LogoutButton />
@@ -34,11 +38,61 @@
 </template>
 
 <script>
+    import constants from "~/assets/js/appConstans";
     import LogoutButton from "~/components/Authorization/LogoutButton";
 
     export default {
         components : {
             LogoutButton,
+        },
+        mounted(){
+            this.onResize();
+            window.addEventListener("resize", this.onResize);
+        },
+        beforeDestroy(){
+            window.removeEventListener("resize", this.onResize);
+        },
+        data(){
+            return {
+                isStickSidebarMain   : false,
+                isStickSidebarFooter : false,
+            }
+        },
+        computed   : {
+            appHeader(){
+                return document.querySelector(".app-header");
+            },
+            appMain(){
+                return document.querySelector(".app-main");
+            }
+        },
+        methods    : {
+            onScroll(){
+                if(window.innerWidth >= constants.mediaScreenTabletBigMin){
+                    if(window.pageYOffset + this.appHeader.clientHeight + this.$refs.sidebarMain.clientHeight > this.appMain.clientHeight - this.$refs.sidebarFooter.clientHeight){
+                        if(!this.isStickSidebarMain){
+                            this.isStickSidebarMain = true;
+                            this.$refs.sidebarMain.setAttribute("style", `bottom: ${this.$refs.sidebarFooter.clientHeight}px`);
+                        }
+                    } else{
+                        this.isStickSidebarMain = false;
+                        this.$refs.sidebarMain.setAttribute("style", ``);
+                    }
+					
+                    if(window.pageYOffset + window.innerHeight > this.appMain.clientHeight){
+                        if(!this.isStickSidebarFooter){
+                            this.isStickSidebarFooter = true;
+                        }
+                    } else{
+                        this.isStickSidebarFooter = false;
+                    }
+                }
+            },
+			onResize(){
+                window.innerWidth >= constants.mediaScreenTabletBigMin ?
+                    window.addEventListener("scroll", this.onScroll) :
+                    window.removeEventListener("scroll", this.onScroll);
+			}
         }
     }
 </script>
@@ -48,14 +102,32 @@
 		color          : $color-white;
 		width          : 283px;
 		display        : none;
-		padding        : 40px 30px;
+		padding        : 0 30px;
 		background     : $color-gradient-blue-light-revert;
 		flex-direction : column;
 		
 		@include tablet-big {
-			$header_height: 80px;
+			$header_height : 80px;
+			$vertical_offset : $main_offset * 2;
 			display    : flex;
 			min-height : calc(100vh - #{$header_height});
+			
+			&__main, &__footer {
+				position : fixed;
+				
+				&--stick {
+					position : absolute;
+				}
+			}
+			
+			&__main {
+				padding-top : $vertical_offset;
+			}
+			
+			&__footer {
+				bottom         : 0;
+				padding-bottom : $vertical_offset;
+			}
 		}
 		
 		&__list {
@@ -72,7 +144,7 @@
 			margin-bottom : $main_offset;
 			
 			&:before {
-				$size: 24px;
+				$size : 24px;
 				left                : 0;
 				width               : $size;
 				height              : $size;
@@ -126,10 +198,6 @@
 			background    : rgba(255, 255, 255, .16);
 			line-height   : 1.27;
 			border-radius : 4px;
-		}
-		
-		&__footer {
-			margin-top : auto;
 		}
 	}
 </style>
