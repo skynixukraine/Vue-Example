@@ -24,8 +24,8 @@
 		"vue-select": "^3.8.1",
 		"vue-stripe-elements-plus": "^0.3.2",
 		"vue-tel-input": "^4.1.1",
-		"vue2-google-maps": "^0.10.7",
-		"vuex-shared-mutations": "^1.0.2"
+		"vuex-shared-mutations": "^1.0.2",
+		"vue2-google-maps": "^0.10.7"
 	},
 	"devDependencies": {
 		"@nuxtjs/pwa": "^3.0.0-beta.19",
