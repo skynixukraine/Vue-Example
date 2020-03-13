@@ -34,7 +34,7 @@
 		"signup": "REGISTRIEREN",
 		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
 		"privacy-policy": " Datenschutzerklärung",
-		"forgot-password": "Wachtwoord vergeten?"
+		"forgot-password": "Vergessenes passwort?"
 	},
 	"states": {
 		"loading": "Loading..."
@@ -45,21 +45,21 @@
 			"unvalid-email-name": "Unvalid email name."
 		},
 		"form": {
-			"required-field": "This field is required.",
-			"unvalid-email-name": "Unvalid email name.",
-			"passwords-not-equal": "Passwords not equal.",
-			"invalid-number": "Invalid phone number.",
-			"invalid-recaptcha-tocken": "Invalid reCAPTCHA token.",
-			"email-is-empty": "Email is empty.",
-			"password-is-empty": "Password is empty.",
-			"сonfirmation-password-is-empty": "Confirmation password is empty.",
-			"phone-is-empty": "Phone is empty.",
-			"accept-terms-and-conditions": "Accept Terms and Conditions and Privacy Policy.",
-			"validation-failed": "Form validation failed",
-			"file-type": "Invalid type. Allowed types are PDF/JPG/PNG.",
-			"file-size": "File size should be less than 10Mb.",
-			"unvalid-email-length": "Email length should be less than 75 symbols",
-			"password-has-problem": "Password must contain at least 6 and no more than 100 characters. Password must contain no spaces. The password must contain at least one lowercase letter, one uppercase letter, number and a special character !@#$%^&*. "
+			"required-field": "Dieses Feld ist erforderlich.",
+			"unvalid-email-name": "Ungültiger E-Mail-Name.",
+			"passwords-not-equal": "Passwörter nicht gleich.",
+			"invalid-number": "Ungültige Telefonnummer.",
+			"invalid-recaptcha-tocken": "Ungültiges reCAPTCHA-Token.",
+			"email-is-empty": "E-Mail ist leer.",
+			"password-is-empty": "Passwort ist leer.",
+			"сonfirmation-password-is-empty": "Das Bestätigungskennwort ist leer.",
+			"phone-is-empty": "Telefon ist leer.",
+			"accept-terms-and-conditions": "Akzeptieren Sie die Allgemeinen Geschäftsbedingungen und Datenschutzbestimmungen.",
+			"validation-failed": "Formularüberprüfung fehlgeschlagen",
+			"file-type": "Ungültiger Typ. Zulässige Typen sind PDF/JPG/PNG.",
+			"file-size": "Die Dateigröße sollte kleiner sein als 10Mb.",
+			"unvalid-email-length": "Die E-Mail-Länge sollte weniger als 75 Symbole betragen",
+			"password-has-problem": "Das Passwort muss mindestens 6 und nicht mehr als 100 Zeichen enthalten. Das Passwort darf keine Leerzeichen enthalten. Das Passwort muss mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten !@#$%^&*. "
 		}
 	},
 	"forms": {
