@@ -1,47 +1,55 @@
 <template>
 	<div class = "page">
-		<div class = "section">
-			<div class = "container">
-				<h1>Hautarzt</h1>
-				<div class = "filters" ref = "filterContainer">
-					<label class = "filters__item">
-						<div class = "filters__item__title">Region</div>
-						<select class = "filters__item__select"
-								name = "region"
-								@change = "onChangeFilter">
-							<option value = "-1">All</option>
-							<option v-for = "(regionItem) in regionsList"
-									:key = "'region_' + regionItem.id"
-									:value = "regionItem.id">
-								{{regionItem.name}}
-							</option>
-						</select>
-					</label>
-					<label class = "filters__item">
-						<div class = "filters__item__title">Specialization</div>
-						<select class = "filters__item__select"
-								name = "specialization"
-								@change = "onChangeFilter">
-							<option value = "-1">All</option>
-							<option v-for = "specializationItem in specializationsList"
-									:key = "'specialization_' + specializationItem.id"
-									:value = "specializationItem.id">
-								{{specializationItem.name}}
-							</option>
-						</select>
-					</label>
-				</div>
-				<div class = "doctors">
-					<div class = "doctors__item"
-						 v-for = "doctor in doctors"
-						 :key = "'doctor_' + doctor.id">
-						<DoctorCard :doctor = "doctor" :isPreview = true />
-					</div>
-				</div>
-				<div class = "pagination"
-					 v-html = "paginationHTML"
-					 @click.stop = "onClickPagination"></div>
+		<div class = "section hautarzt-section"
+			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}"
+		>
+			<div class = "container container__mobile-adaptation">
+				<h1 class ="title">Hautarzt wählen & Online-Anfrage starten</h1>
+				<h3 class ="subtext">
+					Jeder Hautarzt kann Ihr Hautproblem ortsunabhängig online begutachten & eine Handlungsempfehlung mitteilen.
+					Geben Sie Ihre Stadt und den Umkreis an, falls Sie jemanden aus der näheren Umgebung wünschen.
+				</h3>
 			</div>
+		</div>
+		<div class = "container">
+			<div class = "filters" ref = "filterContainer">
+				<label class = "filters__item">
+					<div class = "filters__item__title">Region</div>
+					<select class = "filters__item__select"
+							name = "region"
+							@change = "onChangeFilter">
+						<option value = "-1">All</option>
+						<option v-for = "(regionItem) in regionsList"
+								:key = "'region_' + regionItem.id"
+								:value = "regionItem.id">
+							{{regionItem.name}}
+						</option>
+					</select>
+				</label>
+				<label class = "filters__item">
+					<div class = "filters__item__title">Specialization</div>
+					<select class = "filters__item__select"
+							name = "specialization"
+							@change = "onChangeFilter">
+						<option value = "-1">All</option>
+						<option v-for = "specializationItem in specializationsList"
+								:key = "'specialization_' + specializationItem.id"
+								:value = "specializationItem.id">
+							{{specializationItem.name}}
+						</option>
+					</select>
+				</label>
+			</div>
+			<div class = "doctors">
+				<div class = "doctors__item"
+					 v-for = "doctor in doctors"
+					 :key = "'doctor_' + doctor.id">
+					<DoctorCard :doctor = "doctor" :isPreview = true />
+				</div>
+			</div>
+			<div class = "pagination"
+				 v-html = "paginationHTML"
+				 @click.stop = "onClickPagination"></div>
 		</div>
 	</div>
 </template>
@@ -184,7 +192,28 @@
 </script>
 
 <style lang = "scss">
-	
+
+	.title,
+	.subtext{
+		color: white;
+	}
+	.page{
+		padding-top: 64px;
+
+		@include tablet-big{
+			padding-top: 68px;
+		}
+	}
+
+	.hautarzt-section{
+		margin: 0 0 32px 0;
+		padding: 0;
+
+		@include tablet-big{
+			margin: 0 0 60px 0;
+		}
+	}
+
 	.filters {
 		margin          : 0 #{-$main_offset};
 		display         : flex;
