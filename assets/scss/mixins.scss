@@ -42,7 +42,16 @@
         @content;
     }
 }
-
+@mixin screen-tablet-big {
+    @media (min-width: #{$screen-tablet-big}) { //1120px
+        @content;
+    }
+}
+@mixin tablet-big-min--big {
+    @media screen and (max-width: #{$screen-tablet-big }) and (min-width: #{$screen-tablet-big-min}) { //962px -  1120px;
+        @content;
+    }
+}
 @mixin height-squeeze{
     @media screen and (max-height: #{$screen-height}) and (min-width: #{$screen-tablet-big-min}) {
         @content;
