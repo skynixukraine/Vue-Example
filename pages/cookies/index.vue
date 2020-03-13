@@ -91,6 +91,15 @@
                             <div class = "table__main-item" data-title="duration">session</div>
                         </div>
 
+                        <div class = "table__main table__main-items">
+                            <div class = "table__main-item" data-title="Name">oh-token, oh-token-id</div>
+                            <div class = "table__main-item" data-title="Service">Authentication cookies</div>
+                            <div class = "table__main-item" data-title="Purpose">
+                                Authentication info
+                            </div>
+                            <div class = "table__main-item" data-title="duration">14 days</div>
+                        </div>
+
                     </div>
                 </div>
 
