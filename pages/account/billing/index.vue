@@ -8,12 +8,14 @@
 				   target = "_blank"
 				   class = "link link--button link--button-blue link--button-gradient">Connect stripe account</a>
 				<span v-else-if = "userPaymentData.stripe_account_id">You stripe account already connected!</span>
+				<BillingTable />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+    import BillingTable from "~/components/Account/BillingTable.vue";
     export default {
         middleware : [
             "auth",
@@ -39,6 +41,9 @@
             userPaymentData(){
                 return this.$store.state.user.userPaymentData;
             }
+        },
+        components : {
+            BillingTable,
         }
     }
 </script>
