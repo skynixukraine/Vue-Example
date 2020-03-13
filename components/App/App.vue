@@ -654,10 +654,10 @@
 		}
 		
 		&__main-items {
+			min-height: 112px;
 			color          : $color-rolling-stone;
 			display        : flex;
 			position       : relative;
-			min-height     : 57px;
 			padding-top    : 10px;
 			border-radius  : 4px;
 			padding-bottom : 10px;
