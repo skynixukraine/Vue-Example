@@ -1,9 +1,80 @@
 <template>
     <div class="page">
-        <div class="section">
-            <div class="container">
-                <h1>Ueber Uns</h1>
+        <div class = "section ueber-uns-section"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}"
+        >
+            <div class = "container container__mobile-adaptation">
+                <h1 class ="title">Ueber Uns</h1>
+
             </div>
+        </div>
+        <div class="container">
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p1_1')}}
+                <a href="https://www.nct-heidelberg.de/das-nct/newsroom/pressemitteilungen/details/fachaerztliche-diagnose-mit-appdoc-verdaechtige-hautflecken-digital-ueberpruefen-lassen.html" class="link link--small-blue">
+                    {{this.$t('ueber-uns.p1_a1')}}
+                </a>
+                {{this.$t('ueber-uns.p1_2')}}
+            </p>
+            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title1')}}</h3>
+            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title2')}}</h3>
+            <img class="ueber-uns-block__photo"
+                 :src = "require('~/static/images/photo-1.jpg')"
+                 alt = "photo" />
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p2')}}
+            </p>
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p3_1')}}<br>
+                {{this.$t('ueber-uns.p3_2')}}<br>
+                {{this.$t('ueber-uns.p3_3')}}
+            </p>
+            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title3')}}</h3>
+            <img class="ueber-uns-block__photo"
+                 :src = "require('~/static/images/photo-2.jpg')"
+                 alt = "photo" />
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p4_1')}}
+                <a href="https://online-hautarzt.net" class="link link--small-blue">
+                    {{this.$t('ueber-uns.p4_a1')}}
+                </a>
+                {{this.$t('ueber-uns.p4_2')}}
+            </p>
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p5_1')}}<br>
+                {{this.$t('ueber-uns.p5_2')}}<br>
+                {{this.$t('ueber-uns.p5_3')}}
+            </p>
+            <img class="ueber-uns-block__photo"
+                 :src = "require('~/static/images/photo-3.jpg')"
+                 alt = "photo" />
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p6')}}
+            </p>
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p7_1')}}<br>
+                {{this.$t('ueber-uns.p7_2')}}<br>
+                {{this.$t('ueber-uns.p7_3')}}
+            </p>
+            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title4')}}</h3>
+            <img class="ueber-uns-block__photo"
+                 :src = "require('~/static/images/photo-4.jpg')"
+                 alt = "photo" />
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p8')}}
+            </p>
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p9_1')}}<br>
+                {{this.$t('ueber-uns.p9_2')}}
+            </p>
+            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title5')}}</h3>
+            <p class="ueber-uns-block__paragraph">
+                {{this.$t('ueber-uns.p10')}}
+                <NuxtLink :to = "$routes.hautarzt.path" class = "link link--small-blue">
+                    {{this.$t('ueber-uns.p10_a1')}}
+                </NuxtLink>
+            </p>
+
         </div>
     </div>
 </template>
@@ -22,3 +93,46 @@ export default {
     },
 }
 </script>
+<style lang = "scss">
+
+    .title{
+        color: white;
+    }
+    .page{
+        padding-top: 64px;
+
+        @include tablet-big{
+            padding-top: 68px;
+        }
+    }
+
+    .ueber-uns-section{
+        margin: 0 0 32px 0;
+        padding: 0;
+
+        @include tablet-big{
+            margin: 0 0 60px 0;
+        }
+    }
+    .ueber-uns-block{
+        &__paragraph{
+            margin-bottom: 20px;
+        }
+        &__title{
+            margin: 35px 0 25px 0;
+        }
+        &__photo{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 0 25px 0;
+        }
+        @include tablet-max{
+            &__title{
+                margin: 25px 0 15px 0;
+            }
+        }
+    }
+
+
+</style>
