@@ -231,5 +231,37 @@
 		"title5": "Fernbehandelnde Fachärzte für Hautkrankheiten",
 		"p10": "Bei Online Hautarzt vor Ort dürfen ausschließlich in Deutschland, Österreich oder der Schweiz zugelassene Fachärzte für Haut- und Geschlechtskrankheiten befunden. Dies heißt, dass erstens das Medizinstudium erfolgreich abgeschlossen wurde und zweitens eine mindestens fünfjährige Facharztausbildung mit Facharztprüfung für das Fach Haut- & Geschlechtskrankheiten erfolgreich absolviert wurde. Nur wenn diese Kriterien erfüllt sind, kann bei Online Hautarzt vor Ort befundet werden. Die aktuell bei uns tätigen Hautärzte finden Sie",
 		"p10_a1": "hier."
+	},
+	"page-vorteile":{
+		"v1": {
+			"question":"Was sind die Vorteile für Patientinnen und Patienten?",
+			"li":["Sie bekommen eine schnelle, ortsunabhängige und kostengünstige (19,- €) fachärztliche Einschätzung von einem Hautarzt Ihrer Wahl, ohne dass Sie das Haus verlassen müssen.",
+				"Wir sind der kostengünstigste Dienst, der fachärztliche Beratungsqualität von Hautärzten aus Deutschland anbietet.",
+				"Unsere Hautärzte haben jeweils über fünf Jahre Berufserfahrung und ihre Facharztausbildung erfolgreich abgeschlossen. Sie können sich aussuchen, welcher Hautarzt Ihr Hautproblem begutachten darf.",
+				"Etwa 70% unserer Patienten können rezeptfrei behandelt werden und müssen nicht mehr in die Praxis. Damit ersparen Sie sich lange Anfahrtswege, ggf. einen Urlaubstag und unnötige Zeit im Wartezimmer. ",
+				"Der Hautarzt antwortet auf Ihre Bild-Text-Einsendung in meist weniger als 3 Stunden. Dank der Handlungsempfehlung wissen Sie nun, was Sie wegen Ihres Hautproblems unternehmen sollten und worum es sich dabei handelt.",
+				"Der Online Hautarzt vor Ort wurde in Heidelberg als Modellprojekt der Landesärztekammer von Ärzten entwickelt und ist zu 100% ein deutsches Produkt.",
+				"Wir sind der einzige nach Prüfungsverfahren durch eine Landesärztekammer zugelassene Online-Hautarzt-Dienst in Deutschland.",
+				"Wir sind verpflichtet zu externer Qualitätssicherung und wissenschaftlicher Evaluation, die am Universitätsklinikum in Essen durch die dermatologische Oberärztin Dr. Wiebke Sondermann erfolgt."
+			],
+			"p1":"Wählen Sie hier einen Hautarzt aus und starten Sie die Behandlung."
+		},
+		"v2": {
+			"question":"Was sind die Vorteile für Hautärzte?",
+			"p1":"Der Online Hautarzt vor Ort ist der Dienst, der den mit Abstand größten Anteil des Gesamtbetrages (73,7%) direkt an Sie weitergibt und trotzdem keine Kompromisse macht: Wir unterstützen Sie bei der telemedizinischen Anbindung Ihrer Praxis über moderne Technologie und kümmern uns darüber hinaus um sowohl um die Anamnese, das Marketing, als auch die Zahlungsabwicklung für Sie. Wie schaffen wir das? Indem wir die Betriebskosten auf ein Minimum reduzieren und nicht gewinnorientiert arbeiten.",
+			"p2":"Lohnt sich der Online Hautarzt vor Ort finanziell für Sie? Entscheiden Sie selber: Bei 14 Euro die Sie pro Fall direkt ausgezahlt bekommen, liegt Ihr Stundenlohn bei etwa 300 Euro (die Beantwortung eines Falles dauert durchschnittlich 2-3 Minuten). Und zwar egal, ob Sie die Fälle in Ihrer Praxis bearbeiten, oder daheim auf der Couch. Ein internetfähiges Gerät ist ausreichend. Weitere Deteils finden Sie hier."
+		},
+		"v3": {
+			"question":"Wie hilft unser Dienst den Apotheken vor Ort?",
+			"p1":"Das Modellprojekt Online Hautarzt hat unter dem Namen „AppDoc“ seit seinem Start im November 2018 bereits über 4.000 Patienten versorgt, ganz ohne Versandapotheken zu nutzen. Wir glauben, dass die Apotheken vor Ort falls eine Arznei notwendig ist, verweisen wir auf die Apotheken vor Ort, bei denen sich der Patient das frei verkäufliche Medikament persönlich abholen kann. Der Gründer von Online Hautarzt vor Ort hat bereits in der Pressemitteilung des Nationalen Centrums für Tumorerkrankungen in Heidelberg zur Verleihung des Innovationspreises Dermatologie im März 2019 formuliert: „Telemedizin kann nur dann nachhaltig erfolgreich sein, wenn sie die qualifizierte Apotheke vor Ort mit ihrer wichtigen Beratungs- und Kontrollfunktion gerade auch für ältere Menschen langfristig nicht schwächt, sondern stärkt.“"
+		},
+		"v4": {
+			"question": "Warum sind wir gut für Bürgerinnen und Bürger?",
+			"p1": "Die Patientenversorgung fand bis vor wenigen Jahren fast ausschließlich offline statt. Ärztinnen und Ärzte in niedergelassenen Praxen behandelten und lokale Apotheken berieten die Patienten bei der Medikamenteneinnahme. Alle beteiligten Menschen kannten sich in der Regel persönlich und das Geld im beratenden System blieb im Wesentlichen im Land, denn fast jeder der etwas an der Behandlung verdiente, zahlte Steuern in Deutschland.",
+			"p2": "Mit der Digitalisierung der Patientenversorgung hat sich dies geändert: Erstens ist die Beratung oft nicht mehr persönlich. Arzt und Patient kennen sich nicht. Dies hat zum Einen den Mehrwert, dass Distanzen überbrückt und Barrieren gesenkt werden können, was die Früherkennung von Erkrankungen erleichtern kann.",
+			"p3": "Andererseits macht Fernbehandlung die Diagnostik jedoch fehleranfälliger, sodass insbesondere die Kontrollfunktion der Apotheken vor Ort wichtig wäre. Diese fällt in aller Regel jedoch ebenfalls weg, da fast alle uns bekannten Anbieter eine Versandapotheke aus dem Ausland wählen, die sich mit einer Provision für den vermittelten Auftrag beim Anbieter bedankt. Im Regelfall sitzt also sowohl der Anbieter der Leistung im Ausland (meist im vereinigten Königreich, Niederlande oder den USA), als auch die Versandapotheke. Beide Anbieter zahlen in Deutschland keine Steuern. Durch geringere Kontrollfunktionen kommt es eher zu Behandlungsfehlern, die wiederum das Offline-System finanziell belangen.",
+			"p4": "Da mittlerweile mehr als 500.000 digitale Fernbehandlungen in Deutschland jedes Jahr durchgeführt werden, sind die entgangenen Steuereinnahmen durchaus relevant. Relevant für bessere Straßen, Schulen und vor allem ein Gesundheitssystem, welches ebenfalls auf eine Steuerfinanzierung angewiesen ist.",
+			"p5": "Mit Online Hautarzt vor Ort sind Sie bei dem einzigen Teledermatologie-Anbieter aus Deutschland gelandet, der hier seine Steuern zahlt und keine internationalen Verbindlichkeiten hat, hier Arbeitsplätze schafft und dabei nachhaltig gut für alle Beteiligten im System ist: Die Hautärzte, die Patienten, die Apotheker vor Ort und damit auch für Sie."
+		}
 	}
 }
