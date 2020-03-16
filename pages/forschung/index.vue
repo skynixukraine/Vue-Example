@@ -112,7 +112,6 @@
 										 'message__container--hide': editingData && item.message_id === editingData.message_id
 									 }">
 									<span class = "message__questioner">{{ item.questioner || "Ich" }}</span>
-									<!--<h4 class = "message__title" v-if = "item.title">{{ item.title }}</h4>-->
 									<div class = "message__content">
 										<div v-if = "item.contentForChat && item.type === QUESTION_TYPES.uploadImg"
 											 v-html = "item.contentForChat"></div>
@@ -501,9 +500,11 @@
             firstQuestion(){
                 if(this.targetDoctor){
                     return {
-                        button         : "lets start",
-                        questioner     : "Online Hautarzt vor Ort",
-                        contentForChat : `Are you ready to start a chat with ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}?`,
+                        button     : "Okay!",
+                        content    : `Willkommen beim Online Hautarzt vor Ort!<br>` +
+                            			`In wenigen Minuten leiten wir Ihre Anfrage an ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} weiter.<br>` +
+                            			`Damit dieser sich ein gutes Bild von Ihrem Hautproblem machen kann, stellen wir Ihnen vorab einige Fragen.`,
+                        questioner : "Online Hautarzt vor Ort",
                     }
                 } else{
                     this.$router.replace(this.$routes.hautarzt.path);
@@ -1119,6 +1120,8 @@
 	}
 	
 	.section {
+		background-color: $color-mercury;
+		
 		&:before {
 			transition       : $transition;
 			background-color : rgba(0, 0, 0, 0);
@@ -1199,7 +1202,7 @@
 			max-width        : $max_width;
 			transition       : $animation_duration;
 			border-radius    : 0 $border-radius $border-radius $border-radius;
-			background-color : $color-price;
+			background-color : $color-stratos;
 			
 			&--hide { @include edit-animation; }
 		}
@@ -1231,6 +1234,7 @@
 		.message {
 			&__container {
 				border-radius : $border-radius 0 $border-radius $border-radius;
+				background-color : $color-curious-blue;
 			}
 			
 			&__questioner {
