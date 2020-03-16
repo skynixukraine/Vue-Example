@@ -4,8 +4,9 @@
              :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}"
         >
             <div class = "container container__mobile-adaptation">
-                <h1 class ="title">Ueber Uns</h1>
-
+                <h1 class ="title">Über uns</h1>
+                <h3>Der Online Hautarzt vor Ort ist nachhaltig gut für alle:</h3>
+                <h3>Für Hautarztpraxen, für Betroffene, für Apotheken und für gesunde Bürgerinnen und Bürger.</h3>
             </div>
         </div>
         <div class="container">
@@ -94,6 +95,10 @@ export default {
 }
 </script>
 <style lang = "scss">
+
+    h4, h3, h1{
+		color: white;
+	}
 
     .title{
         color: white;
