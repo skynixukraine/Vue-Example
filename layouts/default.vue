@@ -90,7 +90,7 @@
 			let _funktion = 0,
 				_analyse = 0,
 				_info = {},
-                _lStorage = this.getPropLocalStorage('checkedCookies'); //is there information about the checked cookies
+                _lStorage = this.getPropLocalStorage('checkedCookies'); //get information about cookies that will be stored in the browser
             this.$t('cookie').forEach(item => {
                 item.funktion ? ++_funktion : null;
                 item.analyse ? ++_analyse : null;
@@ -108,7 +108,6 @@
                 this.checkedCookies = _info;
                 this.setObjLocalStorage({'checkedCookies': _info});
 			}
-            console.log('mounted **********************', this.checkedCookies)
 		},
         mixins : [
             localStorage,
