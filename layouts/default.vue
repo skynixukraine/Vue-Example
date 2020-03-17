@@ -86,7 +86,7 @@
                 checkedCookies:{}
             }
 		},
-		mounted(){
+		beforeMount(){
 			let _funktion = 0,
 				_analyse = 0,
 				_info = {},
@@ -108,6 +108,7 @@
                 this.checkedCookies = _info;
                 this.setObjLocalStorage({'checkedCookies': _info});
 			}
+            console.log('mounted **********************', this.checkedCookies)
 		},
         mixins : [
             localStorage,
