@@ -10,94 +10,16 @@
                     <div class = "table__content">
                         <div class = "table__header">
                             <div class = "table__header-item table__header-item_id">Name</div>
-                            <div class = "table__header-item">Service</div>
+                            <div class = "table__header-item">Provider</div>
                             <div class = "table__header-item">Purpose</div>
                             <div class = "table__header-item table__header-item_enquiry-date">Cookie type and duration</div>
                         </div>
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">1P_JAR</div>
-                            <div class = "table__main-item" data-title="Service">google.com</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                These cookies are set via embedded youtube-videos. They register anonymous statistical data
-                                on for example how many times the video is displayed and what settings are used for playback.
-                                This data can also be used to present targeted ads to the user.
-                                No sensitive data is collected unless you log in to your google account,
-                                in that case your choices are linked with your account.
+                        <div class = "table__main table__main-items" v-for="(item, index) in this.$t('cookie')" :key="'cookie-' + index">
+                            <div class = "table__main-item" data-title="Name">{{item.name}}</div>
+                            <div class = "table__main-item" data-title="Provider">{{item.provider}}</div>
+                            <div class = "table__main-item" data-title="Purpose">{{item.purpose}}
                             </div>
-                            <div class = "table__main-item" data-title="duration">1 month</div>
-                        </div>
-
-
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">NID</div>
-                            <div class = "table__main-item" data-title="Service">google.com</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                These cookies are set via embedded youtube-videos. They register anonymous statistical
-                                data on for example how many times the video is displayed and what settings are used for
-                                playback. This data can also be used to present targeted ads to the user.
-                                No sensitive data is collected unless you log in to your google account,
-                                in that case your choices are linked with your account.
-                            </div>
-                            <div class = "table__main-item" data-title="duration">6 month</div>
-                        </div>
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">OGPC</div>
-                            <div class = "table__main-item" data-title="Service">google.com</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                These cookies are used by Google to store preferences and user information each time they
-                                visit web pages containing geographical maps of Google Maps.
-                            </div>
-                            <div class = "table__main-item" data-title="duration">1 month</div>
-                        </div>
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">HSID, SSID, APISID, SAPISID</div>
-                            <div class = "table__main-item" data-title="Service">Google Targeting / Advertising</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                HSID, SSID, APISID and SAPISID cookies enable Google to collect user information for
-                                videos hosted by YouTube.
-                            </div>
-                            <div class = "table__main-item" data-title="duration">1 - 10 years</div>
-                        </div>
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">APISID, NID, SID, 1P_JAR, SIDCC, CONSENT</div>
-                            <div class = "table__main-item" data-title="Service">Google Targeting / Advertising</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                These cookies are used by Google to display personalized advertisements on Google sites,
-                                based on recent searches and previous interactions, including Google Maps.
-                            </div>
-                            <div class = "table__main-item" data-title="duration">1 - 10 years</div>
-                        </div>
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">
-                                __stripe_mid, __stripe_sid, __stripe_orig_props
-                            </div>
-                            <div class = "table__main-item" data-title="Service">Stripe Payment Processor</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                Stripe is used to making credit card payments. Stripe uses a cookie to remember who you
-                                are and to enable Online Hautarzt vor Ort to process payments without storing any credit
-                                card information on its own servers. The main purpose of this cookie is: Functionality
-                            </div>
-                            <div class = "table__main-item" data-title="duration">1 year</div>
-                        </div>
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">cid</div>
-                            <div class = "table__main-item" data-title="Service">Stripe Payment Processor</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                Stripe is used to making credit card payments. Stripe uses a cookie to
-                                remember who you are and to enable Online Hautarzt vor Ort to process payments without
-                                storing any credit card information on its own servers. The main purpose of this cookie
-                                is: Functionality
-                            </div>
-                            <div class = "table__main-item" data-title="duration">session</div>
-                        </div>
-
-                        <div class = "table__main table__main-items">
-                            <div class = "table__main-item" data-title="Name">oh-token, oh-token-id</div>
-                            <div class = "table__main-item" data-title="Service">Authentication cookies</div>
-                            <div class = "table__main-item" data-title="Purpose">
-                                Authentication info
-                            </div>
-                            <div class = "table__main-item" data-title="duration">14 days</div>
+                            <div class = "table__main-item" data-title="duration">{{item.duration}}</div>
                         </div>
 
                     </div>
