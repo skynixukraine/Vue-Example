@@ -14,14 +14,15 @@
                     <div class="table__main-item table__main-item-list" data-title="Purpose">{{item.purpose}}
                     </div>
                     <div class = "table__main-item table__main-item-list" data-title="akzeptiert">
-                        <input name="checkedCookies[]"
+                        <input class="table__checkbox--position"
+                               name="checkedCookies[]"
                                :value="item.name"
                                type="checkbox"
                                v-if="item.selectedDefault"
                                v-model="checked[item.name]"
                                disabled>
 
-                        <input class="table__checkbox"
+                        <input class="table__checkbox table__checkbox--position"
                                name="checkedCookies[]"
                                :value="item.name"
                                type="checkbox"
@@ -94,9 +95,10 @@
             }
         }
         &__checkbox{
-            position: relative;
-            top: 5px;
-
+            &--position{
+                position: relative;
+                top: 5px;
+            }
             &:not([disabled]){
                 cursor: pointer;
             }
@@ -106,8 +108,9 @@
                 padding-left: 35%;
             }
             &__checkbox{
-                left: 25px;
-
+                &--position{
+                    left: 25px;
+                }
             }
         }
     }

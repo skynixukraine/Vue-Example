@@ -16,7 +16,7 @@
 				</p>
 			</div>
 		</div>
-		<div class = "konditionen-block konditionen-block--step">
+		<div class = "konditionen-block">
 			<div class = "konditionen-block__header" @click = "openTab" id = "q2">
 				<h3 class = "konditionen-block__title">{{ this.$t('page-konditionen.q2.title')}}</h3>
 				<svg class = "icon icon__small" width = "20" height = "20" viewBox = "0 0 20 20" fill = "none" xmlns = "http://www.w3.org/2000/svg">

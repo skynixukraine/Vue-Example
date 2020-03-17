@@ -1,52 +1,55 @@
 <template>
     <div class="page">
-        <div class="section section--cookies">
-            <div class="container">
+        <div class = "section cookie-section"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})`}">
+            <div class = "container container__mobile-adaptation">
                 <h1>Wie verwenden wir Cookies?</h1>
+            </div>
+        </div>
 
 
 
-                <div class = "table">
-                    <div class = "table__content">
-                        <div class = "table__header">
-                            <div class = "table__header-item table__header-item_id">Name</div>
-                            <div class = "table__header-item">Provider</div>
-                            <div class = "table__header-item">Purpose</div>
-                            <div class = "table__header-item table__header-item_enquiry-date">Cookie type and duration</div>
-                        </div>
-                        <div class = "table__main table__main-items" v-for="(item, index) in this.$t('cookie')" :key="'cookie-' + index">
-                            <div class = "table__main-item" data-title="Name">{{item.name}}</div>
-                            <div class = "table__main-item" data-title="Provider">{{item.provider}}</div>
-                            <div class = "table__main-item" data-title="Purpose">{{item.purpose}}
-                            </div>
-                            <div class = "table__main-item" data-title="duration">{{item.duration}}</div>
-                        </div>
-
+        <div class="container section--cookies">
+            <div class = "table">
+                <div class = "table__content">
+                    <div class = "table__header">
+                        <div class = "table__header-item table__header-item_id">Name</div>
+                        <div class = "table__header-item">Provider</div>
+                        <div class = "table__header-item">Purpose</div>
+                        <div class = "table__header-item table__header-item_enquiry-date">Cookie type and duration</div>
                     </div>
-                </div>
+                    <div class = "table__main table__main-items" v-for="(item, index) in this.$t('cookie')" :key="'cookie-' + index">
+                        <div class = "table__main-item" data-title="Name">{{item.name}}</div>
+                        <div class = "table__main-item" data-title="Provider">{{item.provider}}</div>
+                        <div class = "table__main-item" data-title="Purpose">{{item.purpose}}
+                        </div>
+                        <div class = "table__main-item" data-title="duration">{{item.duration}}</div>
+                    </div>
 
-                <p class="text-block">
-                    The names of these cookies may change, for technical reasons (
-                    <strong>particularly __Secure-3PAPISID</strong>,
-                    <strong>__Secure-3PSID</strong>,
-                    <strong>__Secure-APISID</strong>,
-                    <strong>__Secure-HSID</strong>,
-                    <strong>__Secure-SSID</strong>)
-                </p>
-                <div class="button-block">
-                    <a
+                </div>
+            </div>
+
+            <p class="text-block">
+                The names of these cookies may change, for technical reasons (
+                <strong>particularly __Secure-3PAPISID</strong>,
+                <strong>__Secure-3PSID</strong>,
+                <strong>__Secure-APISID</strong>,
+                <strong>__Secure-HSID</strong>,
+                <strong>__Secure-SSID</strong>)
+            </p>
+            <div class="button-block">
+                <a
                         href="https://cookiesandyou.com/"
                         class="link link--button link--button-mobile-large link--button-gradient"
                         target="_blank">
-                        Was sind Cookies?
-                    </a>
-                    <button type = "button"
-                            class = "button-remove-cookie control-btn--cancel"
-                            @click = "removeCookie">Remove Browser Cookie
-                    </button>
-                </div>
-
+                    Was sind Cookies?
+                </a>
+                <button type = "button"
+                        class = "button-remove-cookie control-btn--cancel"
+                        @click = "removeCookie">Remove Browser Cookie
+                </button>
             </div>
+
         </div>
     </div>
 </template>
@@ -74,6 +77,14 @@
     }
 </script>
 <style lang="scss">
+    .cookie-section{
+        margin: 0 0 32px 0;
+        padding: 0;
+
+        @include tablet-big{
+            margin: 0 0 60px 0;
+        }
+    }
     .section{
         &--cookies{
 

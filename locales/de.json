@@ -89,8 +89,8 @@
 	},
 	"banners": {
 		"herobanner": {
-			"title": "Fragen Sie einen Hautarzt - wann und wo Sie wollen",
-			"description": "Ganz ohne Termin und ohne Wartezimmer: Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der Handlungsempfehlung wissen Sie darüber hinaus, was Sie wegen Ihres Hautproblems unternehmen sollten",
+			"title": "Fragen Sie einen Hautarzt - wann und wo Sie wollen.",
+			"description": "Ganz ohne Termin und ohne Wartezimmer: Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der Handlungsempfehlung wissen Sie darüber hinaus, was Sie wegen Ihres Hautproblems unternehmen sollten.",
 			"scroll-to-run": "Runterscrollen"
 		}
 	},
@@ -239,6 +239,11 @@
 		"total-inc": "Einkommen insgesamt"
 	},
 	"ueber-uns": {
+		"head": {
+			"title1": "Über uns",
+			"title2": "Der Online Hautarzt vor Ort ist nachhaltig gut für alle:",
+			"title3": "Für Hautarztpraxen, für Betroffene, für Apotheken und für gesunde Bürgerinnen und Bürger."
+		},
 		"p1_1":"Der Online Hautarzt ist ein von der Landesärztekammer bereits im Oktober 2018 genehmigtes und mehrfach ausgezeichnetes",
 		"p1_a1":"Modellprojekt",
 		"p1_2":", das in kooperativer Zusammenarbeit von Heidelberger Hautärzten und Wissenschaftlern entwickelt wurde. Bis vor wenigen Monaten war das Angebot ausschließlich für Hautärzte in Baden-Württemberg zugelassen. Erst im Dezember 2019 erhielt das Projekt die Genehmigung der Landesärztekammer, auch Hautärzte außerhalb Baden-Württembergs aufnehmen zu dürfen. So wurde der bereits lange geplante „Online Hautarzt vor Ort“ möglich. Patienten können nun langfristig auch Hautärzte aus ihrer näheren Umgebung, die sie idealerweise bereits persönlich kennen, für die individuelle Fernbehandlung über eine neu geschaffene Radiusfunktion auswählen.",
@@ -445,3 +450,4 @@
 		}
 	]
 }
+

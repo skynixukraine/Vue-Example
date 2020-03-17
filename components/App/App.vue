@@ -156,7 +156,7 @@
 		}
 		
 		@include tablet-big {
-			$padding: 112px;
+			$padding: 60px;
 			padding-top    : $padding;
 			padding-bottom : $padding;
 			
@@ -188,7 +188,7 @@
 		}
 		
 		@include tablet {
-			margin-bottom : 48px;
+			margin-bottom : 8px;
 			
 			&__title {
 				text-align : center;
@@ -201,7 +201,7 @@
 		margin-top : 32px;
 		
 		@include tablet {
-			margin-top : 48px;
+			margin-top : 8px;
 		}
 	}
 	
@@ -337,6 +337,10 @@
 			&--last-child {
 				margin : 0;
 			}
+
+			@include tablet {
+				margin : 0;
+			}
 		}
 		
 		&--d3 {
@@ -346,7 +350,7 @@
 				flex    : 0 0 100%;
 				padding : 16px;
 				@include tablet {
-					max-width : 33.33%;
+					max-width : 31.33%;
 					flex-wrap : nowrap;
 					
 				}
