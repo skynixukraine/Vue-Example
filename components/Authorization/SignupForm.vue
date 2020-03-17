@@ -55,7 +55,7 @@
 			<div class = "form__message" v-if = "errors.phone_number_invalid">{{ errors.phone_number_invalid }}</div>
 		</div>
 		<div class = "form__item">
-			<div class = "form__title form__title--degree">{{ $t('forms.upload-degree') }}</div>
+			<div class = "form__title form__title--degree">{{ $t('forms.upload-degree') }} <span>*</span></div>
 			<input class = "input input--hidden"
 				   type = "file"
 				   name = "degree"
@@ -74,7 +74,7 @@
 		</div>
 		<div class = "form__item">
 			<div class = "form__title form__title--certification">
-				{{ $t('forms.upload-certification') }}
+				{{ $t('forms.upload-certification') }} <span>*</span>
 			</div>
 			<input class = "input input--hidden"
 				   type = "file"
@@ -157,7 +157,9 @@
                     confirm_password : false,
                     email            : false,
                     phone            : false,
-                    terms            : false
+					terms            : false,
+					degree           : false,
+                    certification    : false,
                 },
                 bindProps         : {
                     mode                    : "international",
@@ -231,6 +233,14 @@
                         type : 'error',
                         text : this.$t('errors.form.accept-terms-and-conditions')
                     });
+				}
+				if(!models.certification){
+                    this.errors['certification'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')});
+				}
+				if(!models.degree){
+                    this.errors['degree'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')});
                 }
 
                 // check recaptcha token exist
@@ -270,7 +280,7 @@
                     formData.append('medical_degree', models.degree);
                 }
                 if(models.certification){
-                    formData.append('medical_degree', models.certification);
+                    formData.append('medical_certification', models.certification);
                 }
 
                 // recaptcha token for action 'register_doctor'
@@ -305,8 +315,8 @@
                 this.$forceUpdate()
             },
             onDegreeUpload(event){
-                if(!event.target.files[0]){ return; }
-
+				if(!event.target.files[0]){ return; }
+				
                 this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
 
                 this.$forceUpdate();
