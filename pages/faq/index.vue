@@ -1,7 +1,7 @@
 <template>
 	<div class = "page">
 		<div class = "section faq-section"
-			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}">
+			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})`}">
 			<div class = "container container__mobile-adaptation">
 				<h3>Häufig gestellte Fragen (FAQ)</h3>
 				<h1>Sie haben Fragen, wir die Antworten.</h1>
