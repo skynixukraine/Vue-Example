@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class = "section ueber-uns-section"
-             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})`}"
         >
             <div class = "container container__mobile-adaptation">
                 <h1 class ="title">{{this.$t('ueber-uns.head.title1')}}</h1>
