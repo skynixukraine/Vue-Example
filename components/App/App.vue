@@ -156,7 +156,7 @@
 		}
 		
 		@include tablet-big {
-			$padding: 112px;
+			$padding: 60px;
 			padding-top    : $padding;
 			padding-bottom : $padding;
 			
@@ -188,7 +188,7 @@
 		}
 		
 		@include tablet {
-			margin-bottom : 48px;
+			margin-bottom : 8px;
 			
 			&__title {
 				text-align : center;
@@ -201,7 +201,7 @@
 		margin-top : 32px;
 		
 		@include tablet {
-			margin-top : 48px;
+			margin-top : 8px;
 		}
 	}
 	
@@ -337,6 +337,10 @@
 			&--last-child {
 				margin : 0;
 			}
+
+			@include tablet {
+				margin : 0;
+			}
 		}
 		
 		&--d3 {
@@ -346,7 +350,7 @@
 				flex    : 0 0 100%;
 				padding : 16px;
 				@include tablet {
-					max-width : 33.33%;
+					max-width : 31.33%;
 					flex-wrap : nowrap;
 					
 				}
@@ -774,7 +778,7 @@
 		position         : fixed;
 		transform        : translateX(-50%);
 		border-radius    : 4px;
-		background-color : rgba(255, 255, 255, .9);
+		background-color : rgba(255, 255, 255, 1);
 		
 		.cookie__floating__content {
 			padding-bottom : 14px;
@@ -784,6 +788,7 @@
 			float     : none;
 			margin    : 0 auto;
 			max-width : 1160px;
+			position  : relative;
 		}
 		
 		.cookie__floating__buttons__button {
@@ -801,6 +806,15 @@
 				margin    : 0 $main_offset 0 0;
 				padding   : $main_offset / 2 31px 9px;
 				font-size : 18px;
+			}
+		}
+		&__floating__buttons{
+			padding: 0 0 0 211px;
+			@include tablet {
+				padding: 0 0 0 265px;
+			}
+			@include phone-big-max{
+				padding: 45px 0 0;
 			}
 		}
 	}

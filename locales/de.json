@@ -89,8 +89,8 @@
 	},
 	"banners": {
 		"herobanner": {
-			"title": "Fragen Sie einen Hautarzt - wann und wo Sie wollen",
-			"description": "Ganz ohne Termin und ohne Wartezimmer: Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der Handlungsempfehlung wissen Sie darüber hinaus, was Sie wegen Ihres Hautproblems unternehmen sollten",
+			"title": "Fragen Sie einen Hautarzt - wann und wo Sie wollen.",
+			"description": "Ganz ohne Termin und ohne Wartezimmer: Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der Handlungsempfehlung wissen Sie darüber hinaus, was Sie wegen Ihres Hautproblems unternehmen sollten.",
 			"scroll-to-run": "Runterscrollen"
 		}
 	},
@@ -239,6 +239,11 @@
 		"total-inc": "Einkommen insgesamt"
 	},
 	"ueber-uns": {
+		"head": {
+			"title1": "Über uns",
+			"title2": "Der Online Hautarzt vor Ort ist nachhaltig gut für alle:",
+			"title3": "Für Hautarztpraxen, für Betroffene, für Apotheken und für gesunde Bürgerinnen und Bürger."
+		},
 		"p1_1":"Der Online Hautarzt ist ein von der Landesärztekammer bereits im Oktober 2018 genehmigtes und mehrfach ausgezeichnetes",
 		"p1_a1":"Modellprojekt",
 		"p1_2":", das in kooperativer Zusammenarbeit von Heidelberger Hautärzten und Wissenschaftlern entwickelt wurde. Bis vor wenigen Monaten war das Angebot ausschließlich für Hautärzte in Baden-Württemberg zugelassen. Erst im Dezember 2019 erhielt das Projekt die Genehmigung der Landesärztekammer, auch Hautärzte außerhalb Baden-Württembergs aufnehmen zu dürfen. So wurde der bereits lange geplante „Online Hautarzt vor Ort“ möglich. Patienten können nun langfristig auch Hautärzte aus ihrer näheren Umgebung, die sie idealerweise bereits persönlich kennen, für die individuelle Fernbehandlung über eine neu geschaffene Radiusfunktion auswählen.",
@@ -298,5 +303,151 @@
 			"p4": "Da mittlerweile mehr als 500.000 digitale Fernbehandlungen in Deutschland jedes Jahr durchgeführt werden, sind die entgangenen Steuereinnahmen durchaus relevant. Relevant für bessere Straßen, Schulen und vor allem ein Gesundheitssystem, welches ebenfalls auf eine Steuerfinanzierung angewiesen ist.",
 			"p5": "Mit Online Hautarzt vor Ort sind Sie bei dem einzigen Teledermatologie-Anbieter aus Deutschland gelandet, der hier seine Steuern zahlt und keine internationalen Verbindlichkeiten hat, hier Arbeitsplätze schafft und dabei nachhaltig gut für alle Beteiligten im System ist: Die Hautärzte, die Patienten, die Apotheker vor Ort und damit auch für Sie."
 		}
-	}
+	},
+	"cookie": [
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":true,
+			"name":"OGPC",
+			"provider":"google.com",
+			"purpose":"These cookies are used by Google to store preferences and user information each time they visit web pages containing geographical maps of Google Maps.",
+			"duration": "1 month"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":false,
+			"analyse":true,
+			"name":"HSID",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":false,
+			"analyse":true,
+			"name":"SSID",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":true,
+			"name":"APISID",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube. These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":false,
+			"analyse":true,
+			"name":"SAPISID",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"NID",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"SID",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"1P_JAR",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"SIDCC",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"CONSENT",
+			"provider":"Google Targeting / Advertising",
+			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"duration": "1 - 10 years"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"__stripe_mid",
+			"provider":"Stripe Payment Processor",
+			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"duration": "1 year"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"__stripe_sid",
+			"provider":"Stripe Payment Processor",
+			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"duration": "1 year"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"__stripe_orig_props",
+			"provider":"Stripe Payment Processor",
+			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"duration": "1 year"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"cid",
+			"provider":"Stripe Payment Processor",
+			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"duration": "session"
+		},
+		{
+			"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"oh-token",
+			"provider":"Authentication cookies",
+			"purpose":"Authentication info",
+			"duration": "14 days"
+		},
+		{	"selectedDefault": true,
+			"funktion":true,
+			"analyse":false,
+			"name":"oh-token-id",
+			"provider":"Authentication cookies",
+			"purpose":"Authentication info",
+			"duration": "14 days"
+		}
+	]
 }
+

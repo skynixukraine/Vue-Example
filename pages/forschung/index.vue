@@ -1392,11 +1392,12 @@
 		position         : fixed;
 		align-items      : center;
 		flex-direction   : column;
+        overflow         : hidden;
 		background-color : $color-black-squeeze;
 		
 		&__main {
 			$controls_btns_height : 40px;
-			height  : calc(100% - #{$main_offset + $controls_btns_height});
+			height  : calc(100% - #{$main_offset + $controls_btns_height * 2});
 			display : flex;
 		}
 		
