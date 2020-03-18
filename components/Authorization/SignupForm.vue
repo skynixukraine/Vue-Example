@@ -182,8 +182,8 @@
 
         methods : {
             async onSubmit(){
-                this.isFormSending = true;
-
+				this.isFormSending = true;
+				
                 if(Object.values(this.formIsValid).indexOf(false) > -1){
                     this.validateForm(this.models);
                     this.isFormSending = false;
@@ -191,7 +191,7 @@
                     return false;
                 }
 
-                const formData = this.prepareDataForSending(this.models);
+				const formData = this.prepareDataForSending(this.models);
 
                 this.$store.dispatch('user/REGISTER_USER', formData)
                     .then((response) => {
@@ -316,18 +316,21 @@
             },
             onDegreeUpload(event){
 				if(!event.target.files[0]){ return; }
-				
-                this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+
+				// added this for submit button		
+				this.models.degree = event.target.files[0];
+				this.formIsValid.degree = this.validateFileExtension(event);
 
                 this.$forceUpdate();
             },
             onCertificationUpload(event){
-                if(!event.target.files[0]){ return; }
-
-                this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
+				if(!event.target.files[0]){ return; }
+				
+				// added this for submit button
+				this.models.certification = event.target.files[0];
+				this.formIsValid.certification = this.validateFileExtension(event);
 
                 this.$forceUpdate();
-
             },
             onAcceptChange(event){
                 this.formIsValid.terms = this.validateAccept(event, this.models.accepted);
