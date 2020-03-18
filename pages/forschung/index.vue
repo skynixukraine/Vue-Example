@@ -239,33 +239,33 @@
 				</transition>
 				<transition name = "main-animation">
 					<div class = "personal-info" v-if = "isQuestionsOver">
-						<h2>Your personal information</h2>
+						<h2>Persönliche Angaben</h2>
 						<div class = "personal-info__field">
-							<InputText :labelTxt = "'First name'"
+							<InputText :labelTxt = "'Vorname'"
 									   :isRequired = true
-									   :placeholder = "'First name'"
+									   :placeholder = "'Vorname'"
 									   :name = "'firstName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.firstName">{{ this.errors.firstName }}</span>
 						</div>
 						<div class = "personal-info__field">
-							<InputText :labelTxt = "'Last name'"
+							<InputText :labelTxt = "'Nachname'"
 									   :isRequired = true
-									   :placeholder = "'Last name'"
+									   :placeholder = "'Nachname'"
 									   :name = "'lastName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.lastName">{{ this.errors.lastName }}</span>
 						</div>
 						<div class = "personal-info__field">
 							<InputRadio :radioList = "PERSONAL_INFO__RADIO_GENDER"
-										:groupTitle = "'Gender'"
+										:groupTitle = "'Geschlecht'"
 										:isRequired = true
 										@change = "onPersonalInfoChangeGender" />
 							<span class = "error-message" v-show = "errors.gender">{{ this.errors.gender }}</span>
 						</div>
 						<div class = "personal-info__field">
 							<label>
-								<div class = "personal-info__field__title is-required">Mobile phone</div>
+								<div class = "personal-info__field__title is-required">Telefonnummer</div>
 								<vue-tel-input id = "vue-tel-input"
 											   name = "phone_number"
 											   v-bind = "PERSONAL_INFO__PHONE_BIND_PROPS"
@@ -275,15 +275,15 @@
 							</label>
 						</div>
 						<div class = "personal-info__field">
-							<InputEmail :labelTxt = "'Email Address'"
+							<InputEmail :labelTxt = "'E-Mail Addresse'"
 										:isRequired = true
-										:placeholder = "'Email Address'"
+										:placeholder = "'E-Mail Addresse'"
 										:name = "'mail'"
 										@blur = "onPersonalInfoMailBlur" />
 						</div>
 						<div class = "personal-info__field">
 							<label>
-								<div class = "personal-info__field__title is-required">Date of birth</div>
+								<div class = "personal-info__field__title is-required">Geburtsdatum</div>
 								<input type = "date"
 									   class = "input"
 									   style = "color: inherit"
@@ -429,12 +429,12 @@
                 // Constants, do not edit this values in code, please
                 PERSONAL_INFO__RADIO_GENDER     : [
                     {
-                        txt   : "Female",
-                        value : "FEMALE"
+                        txt   : "Weiblich",
+                        value : "WEIBLICH"
                     },
                     {
-                        txt   : "Male",
-                        value : "MALE"
+                        txt   : "Männlich",
+                        value : "MANNLICH"
                     },
                 ],
                 PERSONAL_INFO__PHONE_BIND_PROPS : {
@@ -442,7 +442,7 @@
                     maxLen                  : 25,
                     disabled                : false,
                     required                : true,
-                    placeholder             : "Enter a phone number",
+                    placeholder             : "Geben Sie eine Telefonnummer ein",
                     enabledFlags            : true,
                     autocomplete            : "off",
                     defaultCountry          : "",
