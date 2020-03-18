@@ -58,7 +58,7 @@ export default {
                 /**
                  * prop = key LocalStorage
                  * **/
-                return localStorage.getItem(configLS.localName);
+                return localStorage.getItem(prop);
             } else {
                 /**
                  * prop = properties name for object from LocalStorage key = configLS.localName
