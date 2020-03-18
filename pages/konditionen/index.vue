@@ -38,9 +38,9 @@
 </script>
 
 <style lang = "scss" scoped>
-	h4, h3, h1{
+	.konditionen-section h4, h3, h1{
 		color: white;
-	}
+	} 
 	
 	.page{
 		padding-top: 64px;
