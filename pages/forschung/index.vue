@@ -239,33 +239,33 @@
 				</transition>
 				<transition name = "main-animation">
 					<div class = "personal-info" v-if = "isQuestionsOver">
-						<h2>Persönliche Angaben</h2>
+						<h2>{{ this.$t('page-forschung.feedback-form.title')}}</h2>
 						<div class = "personal-info__field">
-							<InputText :labelTxt = "'Vorname'"
+							<InputText :labelTxt = personalInfoData.firstName.txt
 									   :isRequired = true
-									   :placeholder = "'Vorname'"
+									   :placeholder = personalInfoData.firstName.txt
 									   :name = "'firstName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.firstName">{{ this.errors.firstName }}</span>
 						</div>
 						<div class = "personal-info__field">
-							<InputText :labelTxt = "'Nachname'"
+							<InputText :labelTxt = personalInfoData.lastName.txt
 									   :isRequired = true
-									   :placeholder = "'Nachname'"
+									   :placeholder = personalInfoData.lastName.txt
 									   :name = "'lastName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.lastName">{{ this.errors.lastName }}</span>
 						</div>
 						<div class = "personal-info__field">
 							<InputRadio :radioList = "PERSONAL_INFO__RADIO_GENDER"
-										:groupTitle = "'Geschlecht'"
+										:groupTitle = personalInfoData.gender.txt
 										:isRequired = true
 										@change = "onPersonalInfoChangeGender" />
 							<span class = "error-message" v-show = "errors.gender">{{ this.errors.gender }}</span>
 						</div>
 						<div class = "personal-info__field">
 							<label>
-								<div class = "personal-info__field__title is-required">Telefonnummer</div>
+								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.mobile')}}</div>
 								<vue-tel-input id = "vue-tel-input"
 											   name = "phone_number"
 											   v-bind = "PERSONAL_INFO__PHONE_BIND_PROPS"
@@ -275,15 +275,15 @@
 							</label>
 						</div>
 						<div class = "personal-info__field">
-							<InputEmail :labelTxt = "'E-Mail Addresse'"
+							<InputEmail :labelTxt = personalInfoData.mail.txt
 										:isRequired = true
-										:placeholder = "'E-Mail Addresse'"
+										:placeholder = personalInfoData.mail.txt
 										:name = "'mail'"
 										@blur = "onPersonalInfoMailBlur" />
 						</div>
 						<div class = "personal-info__field">
 							<label>
-								<div class = "personal-info__field__title is-required">Geburtsdatum</div>
+								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.birth')}}</div>
 								<input type = "date"
 									   class = "input"
 									   style = "color: inherit"
@@ -395,22 +395,27 @@
 
                 personalInfoData : {
                     lastName    : {
+                        txt     : this.$t('page-forschung.feedback-form.lastName'),
                         value   : "",
                         isValid : false,
                     },
                     firstName   : {
+                        txt     : this.$t('page-forschung.feedback-form.firstName'),
                         value   : "",
                         isValid : false,
                     },
                     gender      : {
+                        txt     : this.$t('page-forschung.feedback-form.gender'),
                         value   : "",
                         isValid : false,
                     },
                     dateOfBirth : {
+                        txt     : this.$t('page-forschung.feedback-form.birth'),
                         value   : "",
                         isValid : false,
                     },
                     phone       : {
+                        txt       : this.$t('page-forschung.feedback-form.mobile'),
                         value     : {
                             value   : "",
                             isValid : false,
@@ -419,6 +424,7 @@
                         eventData : null
                     },
                     mail        : {
+                        txt     : this.$t('page-forschung.feedback-form.email'),
                         value   : "",
                         isValid : false,
                     },
@@ -429,11 +435,11 @@
                 // Constants, do not edit this values in code, please
                 PERSONAL_INFO__RADIO_GENDER     : [
                     {
-                        txt   : "Weiblich",
+                        txt   : this.$t('page-forschung.feedback-form.female'),
                         value : "WEIBLICH"
                     },
                     {
-                        txt   : "Männlich",
+                        txt   : this.$t('page-forschung.feedback-form.male'),
                         value : "MANNLICH"
                     },
                 ],
@@ -442,7 +448,7 @@
                     maxLen                  : 25,
                     disabled                : false,
                     required                : true,
-                    placeholder             : "Geben Sie eine Telefonnummer ein",
+                    placeholder             : this.$t('page-forschung.feedback-form.typeNumber'),
                     enabledFlags            : true,
                     autocomplete            : "off",
                     defaultCountry          : "",

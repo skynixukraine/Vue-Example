@@ -304,6 +304,20 @@
 			"p5": "Mit Online Hautarzt vor Ort sind Sie bei dem einzigen Teledermatologie-Anbieter aus Deutschland gelandet, der hier seine Steuern zahlt und keine internationalen Verbindlichkeiten hat, hier Arbeitsplätze schafft und dabei nachhaltig gut für alle Beteiligten im System ist: Die Hautärzte, die Patienten, die Apotheker vor Ort und damit auch für Sie."
 		}
 	},
+	"page-forschung": {
+			"feedback-form": {
+				"title": "Persönliche Angaben",
+				"firstName": "Vorname",
+				"lastName": "Nachname",
+				"gender": "Geschlecht",
+				"female": "Weiblich",
+				"male": "Männlich",
+				"mobile": "Telefonnummer",
+				"email": "E-Mail Addresse",
+				"birth": "Geburtsdatum",
+				"typeNumber": "Geben Sie eine Telefonnummer ein"
+			}
+	},
 	"cookie": [
 		{
 			"selectedDefault": true,
