@@ -1,9 +1,15 @@
 <template lang = "html">
 	<div class = "enquiries">
 		<div class = "enquiries__filter">
-			<form>
+			<form @submit.prevent = "onSubmit">
 				<div class = "enquiries__search">
-					<input type = "search" placeholder = "Search" class = "input enquiries__search-input">
+					<input
+                        type = "search"
+                        name = "search"
+                        ref = "search"
+                        v-model = "models.search"
+                        placeholder = "Search"
+                        class = "input enquiries__search-input">
 				</div>
 				<div class = "enquiries__date">
 					<h3>Filter by:</h3>
@@ -13,11 +19,21 @@
 							<div class = "enquiries__date-main">
 								<label class = "enquiries__date-field">
 									from:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "created_at_from"
+                                        ref = "created_at_from"
+                                        v-model = "models.created_at_from"
+                                        class = "enquiries__date-input input">
 								</label>
 								<label class = "enquiries__date-field">
 									to:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "created_at_to"
+                                        ref = "created_at_to"
+                                        v-model = "models.created_at_to"
+                                        class = "enquiries__date-input input">
 								</label>
 							</div>
 						</div>
@@ -26,18 +42,28 @@
 							<div class = "enquiries__date-main">
 								<label class = "enquiries__date-field">
 									from:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "last_contact_from"
+                                        ref = "last_contact_from"
+                                        v-model = "models.last_contact_from"
+                                        class = "enquiries__date-input input">
 								</label>
 								<label class = "enquiries__date-field">
 									to:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "last_contact_to"
+                                        ref = "last_contact_to"
+                                        v-model = "models.last_contact_to"
+                                        class = "enquiries__date-input input">
 								</label>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class = "enquiries__submit">
-					<button class = "link link--button link--button-blue link--button-gradient" type = "submit">Search
+					<button class = "link link--button link--button-blue link--button-gradient" type = "submit" >Search
 					</button>
 					<button class = "link link--button link--button-blue link--button-gradient" type = "reset">Reset
 					</button>
@@ -62,6 +88,55 @@
         components : {
             Table,
         },
+        data(){
+            return {
+                models        : {
+                    search             : "",
+                    created_at_from    : "",
+                    created_at_to      : "",
+                    last_contact_from  : "",
+                    last_contact_to    : "",
+                },
+                isFormSending : false,
+            };
+        },
+        methods  : {
+            onSubmit(){
+                this.isFormSending = true;
+
+                var requestParams = {
+                    per_page          : 3,
+                    order_by          : "id",
+                    direction         : "asc",
+                    search            : "",
+                    created_at_from   : "",
+                    created_at_to     : "",
+                    last_contact_from : "",
+                    last_contact_to   : "",
+                };
+
+                requestParams = this.prepareDataForSending(this.models, requestParams);
+
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : requestParams
+                });
+
+            },
+            prepareDataForSending(models, requestParams){
+
+                // optional fields
+                requestParams.search = models.search;
+                requestParams.created_at_from = models.created_at_from;
+                requestParams.created_at_to = models.created_at_to;
+                requestParams.last_contact_from = models.last_contact_from;
+                requestParams.last_contact_to = models.last_contact_to;
+
+                return requestParams;
+            },
+
+        }
     }
 </script>
 

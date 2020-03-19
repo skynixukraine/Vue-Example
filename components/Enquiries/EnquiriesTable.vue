@@ -2,11 +2,11 @@
 	<div class = "table">
 		<div class = "table__info">
 			<div class = "table__info-count">
-				1-50 from 120
+                {{doctorEnquiresMeta.from}}-{{doctorEnquiresMeta.to}} from {{doctorEnquiresMeta.total}}
 			</div>
 			<div class = "table__info-nav">
-				<NuxtLink class = "table__info-link table__info-prev" to = "/"></NuxtLink>
-				<NuxtLink class = "table__info-link table__info-next" to = "/"></NuxtLink>
+				<div class = "table__info-link table__info-prev" @click="prev"></div>
+				<div class = "table__info-link table__info-next" @click="next"></div>
 			</div>
 		</div>
 		<div class = "table__content">
@@ -19,22 +19,17 @@
 				<div class = "table__header-item table__header-item_status">Status</div>
 			</div>
 			<div class = "table__main">
-				<NuxtLink :to="$routes" class = "table__main-items">
-					<div class = "table__main-item" data-title="Enquiry ID">1</div>
-					<div class = "table__main-item" data-title="First Name">Doe</div>
-					<div class = "table__main-item" data-title="Last Name">Jane</div>
-					<div class = "table__main-item" data-title="Enquiry Date">dd/mm/yyyy hh:mm </div>
-					<div class = "table__main-item" data-title="Last Contact">dd/mm/yyyy hh:mm </div>
+
+				<NuxtLink :to="$routes" class = "table__main-items" v-for = "(enquire, index) in doctorEnquiresData" :key = "index">
+					<div class = "table__main-item" data-title="Enquiry ID">{{enquire.id}}</div>
+					<div class = "table__main-item" data-title="First Name">{{enquire.first_name}}</div>
+					<div class = "table__main-item" data-title="Last Name">{{enquire.last_name}}</div>
+					<div class = "table__main-item" data-title="Enquiry Date">{{enquire.created_at.date}} </div>
+					<div class = "table__main-item" data-title="Last Contact">{{enquire.last_contacted_at}} </div>
 					<div class = "table__main-item" data-title="Status"><select2 /></div>
 				</NuxtLink>
-				<NuxtLink :to="$routes" class = "table__main-items">
-					<div class = "table__main-item" data-title="Enquiry ID">2</div>
-					<div class = "table__main-item" data-title="First Name">Doe</div>
-					<div class = "table__main-item" data-title="Last Name">Jane</div>
-					<div class = "table__main-item" data-title="Enquiry Date">dd/mm/yyyy hh:mm</div>
-					<div class = "table__main-item" data-title="Last Contact">dd/mm/yyyy hh:mm</div>
-					<div class = "table__main-item" data-title="Status"><select2 /></div>
-				</NuxtLink>
+
+
 			</div>
 		</div>
 	</div>
@@ -42,11 +37,59 @@
 
 <script>
     import select2 from "~/components/select2/select2.vue"
+    import {requestParams} from "~/components/Enquiries/Enquiries.vue"
+
     export default {
         components : {
-            select2,
+            select2
+
         },
+        computed   : {
+            doctorEnquiresData() {
+                return this.$store.state.doctors.doctorEnquires.data;
+            },
+            doctorEnquiresLinks() {
+                return this.$store.state.doctors.doctorEnquires.links;
+            },
+
+            doctorEnquiresMeta() {
+                return this.$store.state.doctors.doctorEnquires.meta;
+            },
+        },
+        methods  : {
+            next() {
+
+                var page = this.doctorEnquiresMeta.current_page;
+
+                if (page < this.doctorEnquiresMeta.last_page) {
+                    page = page + 1
+                }
+
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : { page: page }
+                })
+            },
+
+            prev() {
+
+                var page = this.doctorEnquiresMeta.current_page;
+
+                if (page > 1) {
+                    page = page - 1
+                }
+
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : { page: page }
+                })
+            },
+        }
     }
+
+
 </script>
 <style lang="scss" scoped>
 
