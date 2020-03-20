@@ -111,7 +111,7 @@
                 },
                 isFormSending : false,
                 requestParams : {
-                    per_page          : 3,
+                    per_page          : this.$store.state.doctors.MAX_DOCTOR_ENQUIRES_PER_PAGE,
                     search            : "",
                     created_at_from   : "",
                     created_at_to     : "",

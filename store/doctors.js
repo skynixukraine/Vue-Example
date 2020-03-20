@@ -9,6 +9,8 @@ export const state = () => ({
 
     MAX_DOCTORS_PER_PAGE : 16,
 
+    MAX_DOCTOR_ENQUIRES_PER_PAGE : 50,
+
 
 });
 

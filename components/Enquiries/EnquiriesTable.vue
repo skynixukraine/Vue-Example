@@ -10,7 +10,7 @@
         </div>
         <div class = "table__main">
 
-            <NuxtLink :to="$routes" class = "table__main-items" v-for = "(enquire, index) in doctorEnquiresData" :key = "index">
+            <NuxtLink class = "table__main-items" v-for = "(enquire, index) in doctorEnquiresData" :key = "index" :to="routes(enquire.id)">
                 <div class = "table__main-item" data-title="Enquiry ID">{{enquire.id}}</div>
                 <div class = "table__main-item" data-title="First Name">{{enquire.first_name}}</div>
                 <div class = "table__main-item" data-title="Last Name">{{enquire.last_name}}</div>
@@ -38,6 +38,9 @@
             },
         },
         methods: {
+            routes(id) {
+                return this.$routes.enquiries.path + '/' + id;
+            },
             sort(column) {
                 this.$parent.requestParams.order_field = column;
                 let direction = this.$parent.requestParams.order_direction;
