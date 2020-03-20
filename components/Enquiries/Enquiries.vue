@@ -71,7 +71,19 @@
 			</form>
 		</div>
 		<div class = "enquiries__main">
-			<Table />
+			<div class = "table">
+                <div class = "table__info">
+                    <div class = "table__info-count">
+                        {{doctorEnquiresMeta.from}}-{{doctorEnquiresMeta.to}} from {{doctorEnquiresMeta.total}}
+                    </div>
+                    <div class = "table__info-nav">
+                        <div class = "table__info-link table__info-prev" @click="prev"></div>
+                        <div class = "table__info-link table__info-next" @click="next"></div>
+                    </div>
+                </div>
+
+			    <Table />
+			</div>
 		</div>
 	</div>
 </template>
@@ -98,13 +110,7 @@
                     last_contact_to    : "",
                 },
                 isFormSending : false,
-            };
-        },
-        methods  : {
-            onSubmit(){
-                this.isFormSending = true;
-
-                var requestParams = {
+                requestParams : {
                     per_page          : 3,
                     order_by          : "id",
                     direction         : "asc",
@@ -113,14 +119,25 @@
                     created_at_to     : "",
                     last_contact_from : "",
                     last_contact_to   : "",
-                };
+                    page              : 1
+                }
+            };
+        },
+        computed   : {
+            doctorEnquiresMeta() {
+                return this.$store.state.doctors.doctorEnquires.meta;
+            },
+        },
+        methods  : {
+            onSubmit(){
+                this.isFormSending = true;
 
-                requestParams = this.prepareDataForSending(this.models, requestParams);
+                this.requestParams = this.prepareDataForSending(this.models, this.requestParams);
 
                 this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
                     token       : this.$cookies.get(this.$cookie.names.token),
                     doctor_id   : this.$store.state.user.user.id,
-                    requestData : requestParams
+                    requestData : this.requestParams
                 });
 
             },
@@ -134,6 +151,35 @@
                 requestParams.last_contact_to = models.last_contact_to;
 
                 return requestParams;
+            },
+
+            next() {
+
+                this.requestParams.page = this.doctorEnquiresMeta.current_page;
+
+                if (this.requestParams.page < this.doctorEnquiresMeta.last_page) {
+                    this.requestParams.page += 1;
+                }
+
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : this.requestParams
+                })
+            },
+            prev() {
+
+                this.requestParams.page = this.doctorEnquiresMeta.current_page;
+
+                if (this.requestParams.page > 1) {
+                    this.requestParams.page -= 1;
+                }
+
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : this.requestParams
+                })
             },
 
         }

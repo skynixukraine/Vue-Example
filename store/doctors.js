@@ -27,10 +27,7 @@ export const mutations = {
     },
     SET_DOCTOR_ENQUIRES(state, newValue){
         state.doctorEnquires = newValue;
-    },
-    SET_DOCTOR_ENQUIRES_REQUEST(state, newValue){
-        state.doctorEnquiresRequest = newValue;
-    },
+    }
 };
 
 export const actions = {
@@ -85,7 +82,6 @@ export const actions = {
                     .then(response => {
 
                     commit("SET_DOCTOR_ENQUIRES", response.data);
-                    commit("SET_DOCTOR_ENQUIRES_REQUEST", requestConfig);
                     resolve(response);
                 })
                 .catch(error => {

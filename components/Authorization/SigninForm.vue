@@ -114,8 +114,8 @@
 
                 // check recaptcha token exist
                 if(!this.recaptchaToken){
-                    this.$root.$emit("showNotify", {type : "error", text : "Recaptcha not exist."});
-                    return false;
+//                    this.$root.$emit("showNotify", {type : "error", text : "Recaptcha not exist."});
+//                    return false;
                 }
 
                 return true;
