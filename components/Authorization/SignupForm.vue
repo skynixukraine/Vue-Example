@@ -280,7 +280,7 @@
                     formData.append('medical_degree', models.degree);
                 }
                 if(models.certification){
-                    formData.append('medical_certification', models.certification);
+                    formData.append('board_certification', models.certification);
                 }
 
                 // recaptcha token for action 'register_doctor'
@@ -316,16 +316,25 @@
             },
             onDegreeUpload(event){
 				if(!event.target.files[0]){ return; }
-				
-                this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+
+				if(this.validateFileExtension(event)){
+                    this.models.degree = event.target.files[0];
+                    this.formIsValid.degree = true;
+                } else {
+                    this.models.degree = '';
+				}
 
                 this.$forceUpdate();
             },
             onCertificationUpload(event){
                 if(!event.target.files[0]){ return; }
 
-                this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
-
+                if(this.validateFileExtension(event)){
+                    this.models.certification = event.target.files[0];
+                    this.formIsValid.certification = true;
+                } else {
+                    this.models.certification = '';
+				}
                 this.$forceUpdate();
 
             },
