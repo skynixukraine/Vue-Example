@@ -1,12 +1,12 @@
 <template>
     <div class = "table__content">
         <div class = "table__header">
-            <div class = "table__header-item table__header-item_id">Enquiry<br class = "table__br"> ID</div>
+            <div class = "table__header-item table__header-item_id" @click="sort('id')">Enquiry<br class = "table__br"> ID</div>
             <div class = "table__header-item">First<br class = "table__br"> Name</div>
             <div class = "table__header-item">Last<br class = "table__br"> Name</div>
-            <div class = "table__header-item table__header-item_enquiry-date">Enquiry<br class = "table__br"> Date</div>
-            <div class = "table__header-item table__header-item_last-contact">Last<br class = "table__br"> Contact</div>
-            <div class = "table__header-item table__header-item_status">Status</div>
+            <div class = "table__header-item table__header-item_enquiry-date" @click="sort('created_at')">Enquiry<br class = "table__br"> Date</div>
+            <div class = "table__header-item table__header-item_last-contact" @click="sort('last_contacted_at')">Last<br class = "table__br"> Contact</div>
+            <div class = "table__header-item table__header-item_status" @click="sort('status')">Status</div>
         </div>
         <div class = "table__main">
 
@@ -14,9 +14,9 @@
                 <div class = "table__main-item" data-title="Enquiry ID">{{enquire.id}}</div>
                 <div class = "table__main-item" data-title="First Name">{{enquire.first_name}}</div>
                 <div class = "table__main-item" data-title="Last Name">{{enquire.last_name}}</div>
-                <div class = "table__main-item" data-title="Enquiry Date">{{enquire.created_at.date}} </div>
-                <div class = "table__main-item" data-title="Last Contact">{{enquire.last_contacted_at}} </div>
-                <div class = "table__main-item" data-title="Status"><select2 /></div>
+                <div class = "table__main-item" data-title="Enquiry Date">{{enquire.created_at.date}}</div>
+                <div class = "table__main-item" data-title="Last Contact">{{enquire.last_contacted_at}}</div>
+                <div class = "table__main-item" data-title="Status">{{enquire.status}}</div>
             </NuxtLink>
 
 
@@ -37,6 +37,19 @@
                 return this.$store.state.doctors.doctorEnquires.data;
             },
         },
+        methods: {
+            sort(column) {
+                this.$parent.requestParams.order_field = column;
+                let direction = this.$parent.requestParams.order_direction;
+                this.$parent.requestParams.order_direction = direction === "asc" ? "desc" : "asc" ;
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : this.$parent.requestParams
+                })
+            }
+        },
+        props: ['request-params']
     }
 
 

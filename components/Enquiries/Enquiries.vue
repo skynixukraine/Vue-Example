@@ -1,7 +1,7 @@
 <template lang = "html">
 	<div class = "enquiries">
 		<div class = "enquiries__filter">
-			<form @submit.prevent = "onSubmit">
+			<form @submit.prevent = "onSubmit" @reset.prevent="onReset">
 				<div class = "enquiries__search">
 					<input
                         type = "search"
@@ -112,14 +112,14 @@
                 isFormSending : false,
                 requestParams : {
                     per_page          : 3,
-                    order_by          : "id",
-                    direction         : "asc",
                     search            : "",
                     created_at_from   : "",
                     created_at_to     : "",
                     last_contact_from : "",
                     last_contact_to   : "",
-                    page              : 1
+                    page              : 1,
+                    order_field       : "id",
+                    order_direction   : "asc"
                 }
             };
         },
@@ -130,15 +130,17 @@
         },
         methods  : {
             onSubmit(){
-                this.isFormSending = true;
-
                 this.requestParams = this.prepareDataForSending(this.models, this.requestParams);
 
-                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
-                    token       : this.$cookies.get(this.$cookie.names.token),
-                    doctor_id   : this.$store.state.user.user.id,
-                    requestData : this.requestParams
-                });
+                this.sendRequest();
+
+            },
+            onReset(){
+
+                this.models = this.setToDefaultModel(this.models);
+                this.requestParams = this.prepareDataForSending(this.models, this.requestParams);
+
+                this.sendRequest();
 
             },
             prepareDataForSending(models, requestParams){
@@ -149,10 +151,10 @@
                 requestParams.created_at_to = models.created_at_to;
                 requestParams.last_contact_from = models.last_contact_from;
                 requestParams.last_contact_to = models.last_contact_to;
+                requestParams.page = 1;
 
                 return requestParams;
             },
-
             next() {
 
                 this.requestParams.page = this.doctorEnquiresMeta.current_page;
@@ -161,11 +163,7 @@
                     this.requestParams.page += 1;
                 }
 
-                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
-                    token       : this.$cookies.get(this.$cookie.names.token),
-                    doctor_id   : this.$store.state.user.user.id,
-                    requestData : this.requestParams
-                })
+                this.sendRequest();
             },
             prev() {
 
@@ -175,12 +173,24 @@
                     this.requestParams.page -= 1;
                 }
 
+                this.sendRequest();
+
+            },
+            sendRequest() {
                 this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
                     token       : this.$cookies.get(this.$cookie.names.token),
                     doctor_id   : this.$store.state.user.user.id,
                     requestData : this.requestParams
                 })
             },
+            setToDefaultModel(models) {
+                models.search = "";
+                models.created_at_from = "";
+                models.created_at_to = "";
+                models.last_contact_from = "";
+                models.last_contact_to = "";
+                return models;
+            }
 
         }
     }
