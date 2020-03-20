@@ -52,7 +52,6 @@
                 })
             }
         },
-        props: ['request-params']
     }
 
 
