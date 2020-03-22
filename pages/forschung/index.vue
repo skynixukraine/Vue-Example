@@ -112,7 +112,7 @@
 										 'message__container--hide': editingData && item.message_id === editingData.message_id
 									 }">
 									<span class = "message__questioner">{{ item.questioner || "Ich" }}</span>
-									<div class = "message__content">
+									<div class = "message__content ddddddddddd">
 										<div v-if = "item.contentForChat && item.type === QUESTION_TYPES.uploadImg"
 											 v-html = "item.contentForChat"></div>
 										<span v-else-if = "item.contentForChat && item.contentForChat !== QUESTION_TYPES.bodySelect">{{ item.contentForChat }}</span>
@@ -219,7 +219,7 @@
 												'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
 											}"
 											@click.stop = "onUserSubmit()">
-										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "select upload img" : lastQuestionData.button }}
+										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "Bild hochladen" : lastQuestionData.button }}
 									</button>
 									<button v-else class = "submit-btn"
 											@click = "onStart"
