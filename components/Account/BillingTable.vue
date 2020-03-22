@@ -57,25 +57,17 @@
         data(){
             return {
                 data:null,
-                links: {
-                    prev: null,
-                    next: null
-                },
-                meta: {
-
-                },
+                links: {},
+                meta: {},
                 query:{
                     page: 1,
                     perPage: 50,
                     search: '',
                     field: null,
                     direction: null
-
                 },
                 sortingName: null,
-
-                responseErrorMessage  : ""
-
+                responseErrorMessage : ""
             }
         },
         props:{
@@ -86,10 +78,6 @@
                 }
             }
         },
-        computed:{
-
-
-        },
         watch:{
             querySearch() {
                 this.query.search          = this.querySearch.search;
@@ -97,11 +85,8 @@
                 this.query.data            = this.querySearch.data;
                 this.query.dateTransaction = this.querySearch.dateTransaction;
 
-                console.log('********************************************1', this.querySearch);
-
                 this.requestSO();
             }
-
         },
         methods : {
             requestSO(search, field, direction){
@@ -112,8 +97,6 @@
                     order_field: field || this.query.field,
                     order_direction: direction ||  this.query.direction
                 };
-                console.log('2 query =', query);
-
                 UserApi.requestStripeOperations({
                     id    : this.$store.state.user.user.id,
                     token : this.$cookies.get(this.$cookie.names.token),
@@ -142,13 +125,12 @@
                         this.query.direction = 'desc';
                     }
 
-                    if(prop === 'enquiryID'){
+                    if(prop === 'enquiryID'){ //get data from server for sorting to enquiryID
                         this.query.field = 'enquire_id';
                         this.requestSO();
-
                     }
-                    if(prop === 'date'){}
-                    if(prop === 'status'){}
+                    if(prop === 'date'){} //get data from server for sorting to date
+                    if(prop === 'status'){} //get data from server for sorting to status
                     _prop = prop;
 
                 } else if(this.sortingName) {
@@ -156,7 +138,6 @@
                 } else {
                     return false;
                 }
-
                 if( this.query.direction === 'desc'){
                     this.data.sort(function (a, b) {
                         let _a=0, _b;
@@ -196,7 +177,6 @@
                         return 0;
                     });
                 }
-
             }
         },
         mounted(){
