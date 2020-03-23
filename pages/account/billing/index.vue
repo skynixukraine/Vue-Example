@@ -8,15 +8,24 @@
 				   target = "_blank"
 				   class = "link link--button link--button-blue link--button-gradient">Connect stripe account</a>
 				<span v-else-if = "userPaymentData.stripe_account_id">You stripe account already connected!</span>
-				<BillingTable />
+				<SearchStripeOperations @search="search"/>
+				<BillingTable v-bind:querySearch="querySearch"/>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+    import SearchStripeOperations from "~/components/Account/SearchStripeOperations.vue";
     import BillingTable from "~/components/Account/BillingTable.vue";
+
+
     export default {
+        data() {
+            return {
+                querySearch: ''
+			}
+        },
         middleware : [
             "auth",
         ],
@@ -42,7 +51,13 @@
                 return this.$store.state.user.userPaymentData;
             }
         },
+        methods:{
+            search(query){
+                this.querySearch = query;
+			}
+		},
         components : {
+            SearchStripeOperations,
             BillingTable,
         }
     }

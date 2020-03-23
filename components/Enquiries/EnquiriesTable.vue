@@ -1,52 +1,60 @@
 <template>
-	<div class = "table">
-		<div class = "table__info">
-			<div class = "table__info-count">
-				1-50 from 120
-			</div>
-			<div class = "table__info-nav">
-				<NuxtLink class = "table__info-link table__info-prev" to = "/"></NuxtLink>
-				<NuxtLink class = "table__info-link table__info-next" to = "/"></NuxtLink>
-			</div>
-		</div>
-		<div class = "table__content">
-			<div class = "table__header">
-				<div class = "table__header-item table__header-item_id">Enquiry<br class = "table__br"> ID</div>
-				<div class = "table__header-item">First<br class = "table__br"> Name</div>
-				<div class = "table__header-item">Last<br class = "table__br"> Name</div>
-				<div class = "table__header-item table__header-item_enquiry-date">Enquiry<br class = "table__br"> Date</div>
-				<div class = "table__header-item table__header-item_last-contact">Last<br class = "table__br"> Contact</div>
-				<div class = "table__header-item table__header-item_status">Status</div>
-			</div>
-			<div class = "table__main">
-				<NuxtLink :to="$routes" class = "table__main-items">
-					<div class = "table__main-item" data-title="Enquiry ID">1</div>
-					<div class = "table__main-item" data-title="First Name">Doe</div>
-					<div class = "table__main-item" data-title="Last Name">Jane</div>
-					<div class = "table__main-item" data-title="Enquiry Date">dd/mm/yyyy hh:mm </div>
-					<div class = "table__main-item" data-title="Last Contact">dd/mm/yyyy hh:mm </div>
-					<div class = "table__main-item" data-title="Status"><select2 /></div>
-				</NuxtLink>
-				<NuxtLink :to="$routes" class = "table__main-items">
-					<div class = "table__main-item" data-title="Enquiry ID">2</div>
-					<div class = "table__main-item" data-title="First Name">Doe</div>
-					<div class = "table__main-item" data-title="Last Name">Jane</div>
-					<div class = "table__main-item" data-title="Enquiry Date">dd/mm/yyyy hh:mm</div>
-					<div class = "table__main-item" data-title="Last Contact">dd/mm/yyyy hh:mm</div>
-					<div class = "table__main-item" data-title="Status"><select2 /></div>
-				</NuxtLink>
-			</div>
-		</div>
-	</div>
+    <div class = "table__content">
+        <div class = "table__header">
+            <div class = "table__header-item table__header-item_id" @click="sort('id')">Enquiry<br class = "table__br"> ID</div>
+            <div class = "table__header-item">First<br class = "table__br"> Name</div>
+            <div class = "table__header-item">Last<br class = "table__br"> Name</div>
+            <div class = "table__header-item table__header-item_enquiry-date" @click="sort('created_at')">Enquiry<br class = "table__br"> Date</div>
+            <div class = "table__header-item table__header-item_last-contact" @click="sort('last_contacted_at')">Last<br class = "table__br"> Contact</div>
+            <div class = "table__header-item table__header-item_status" @click="sort('status')">Status</div>
+        </div>
+        <div class = "table__main">
+
+            <NuxtLink class = "table__main-items" v-for = "(enquire, index) in doctorEnquiresData" :key = "index" :to="routes(enquire.id)">
+                <div class = "table__main-item" data-title="Enquiry ID">{{enquire.id}}</div>
+                <div class = "table__main-item" data-title="First Name">{{enquire.first_name}}</div>
+                <div class = "table__main-item" data-title="Last Name">{{enquire.last_name}}</div>
+                <div class = "table__main-item" data-title="Enquiry Date">{{enquire.created_at.date}}</div>
+                <div class = "table__main-item" data-title="Last Contact">{{enquire.last_contacted_at}}</div>
+                <div class = "table__main-item" data-title="Status">{{enquire.status}}</div>
+            </NuxtLink>
+
+
+        </div>
+    </div>
 </template>
 
 <script>
     import select2 from "~/components/select2/select2.vue"
+
     export default {
         components : {
-            select2,
+            select2
+
+        },
+        computed   : {
+            doctorEnquiresData() {
+                return this.$store.state.doctors.doctorEnquires.data;
+            },
+        },
+        methods: {
+            routes(id) {
+                return this.$routes.enquiries.path + '/' + id;
+            },
+            sort(column) {
+                this.$parent.requestParams.order_field = column;
+                let direction = this.$parent.requestParams.order_direction;
+                this.$parent.requestParams.order_direction = direction === "asc" ? "desc" : "asc" ;
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : this.$parent.requestParams
+                })
+            }
         },
     }
+
+
 </script>
 <style lang="scss" scoped>
 

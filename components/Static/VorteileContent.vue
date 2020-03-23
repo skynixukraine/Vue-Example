@@ -159,12 +159,15 @@
             list-style: none;
         }
         &__list-item{
+            position: relative;
             margin-bottom: 16px;
             &:before{
                 display: inline-block;
+                position: absolute;
+                left: -30px;
+                top: 6px;
                 width: 17px;
                 height: 14px;
-                margin-right: 10px;
                 background-image: url("~static/images/icons/check-icon.svg");
                 content: "";
             }
