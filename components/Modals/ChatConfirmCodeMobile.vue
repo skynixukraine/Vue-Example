@@ -35,6 +35,7 @@
 
 <script>
     import modal from "~/mixins/modal";
+    import diagnosticChatApi from "~/services/api/DiagnosticChat";
 
     export default {
         mixins : [
@@ -46,8 +47,13 @@
         },
         data(){
             return {
-                confirmCodeValue: null
+                confirmCodeValue: null,
 			}
+        },
+        computed:{
+            targetDoctor(){
+				return this.$store.state.diagnosticChat.targetDoctorForDiagnosticChat;
+            }
 		},
 		mounted(){
             this.confirmCodeValue = this.confirmCodeValue;
@@ -60,10 +66,22 @@
                 this.confirmCodeValue = event.target.value;
             },
             confirmCode() {
-                // API to Back-End
+                diagnosticChatApi.sendSmsCode(data).then((response) => {
+                    conosle.log('OK')
+                        this.openModal(
+                        this.$modals.defaultModal,
+                        `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
+                        "Ihre Anfrage erstellt");
+                }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                });
             },
             resendCode() {
-                // API to Back-End
+                diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
+                    conosle.log('resend')
+                }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                });
             }
         }
     }

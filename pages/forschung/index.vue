@@ -1006,7 +1006,6 @@
                 this.$forceUpdate();
             },
             onPersonalInfoSubmit(){
-                this.openModal(this.$modals.chatConfirmCodeMobile, "Confirm code", "We've sent a verification code to your phone number. Please enter this code below:");
                 if(this.isValidPersonalInfoBlock){
                     this.isPersonalInfoFilled = true;
                     
@@ -1016,7 +1015,7 @@
                 }
             },
             onCreateToken(eventData){
-                this.stripeToken = eventData.token.id;
+              //  this.stripeToken = eventData.token.id;
                 this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
             onSubmitDiagnosticChatConfirmEnquire(){
@@ -1065,10 +1064,12 @@
                 }
 
                 diagnosticChatApi.createEnquires(data).then((response) => {
-                    this.openModal(
-                        this.$modals.defaultModal,
-                        `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-                        "Ihre Anfrage erstellt");
+                    let enquireId = response.data.data.id;
+                    diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
+                        this.openModal(this.$modals.chatConfirmCodeMobile, 
+                            "Confirm code", 
+                            "We've sent a verification code to your phone number. Please enter this code below:");
+                    });
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
