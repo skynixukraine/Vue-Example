@@ -603,7 +603,13 @@
 
                 this.deleteFromNextQuestionsIdQueue(question_id);
 
-                isLoadNextQuestion && this.loadNextQuestion();
+                setTimeout(() => {
+					if(isLoadNextQuestion){
+						this.loadNextQuestion();
+					} else{
+                        return false;
+					}
+				}, ANIMATION_DURATION);
             },
 
             // Edit message listeners
@@ -650,7 +656,7 @@
                 }
             },
             onEditMessageSubmit(){
-                let editedUserAnswer        = Object.assign({}, this.userAnswers[this.editingData.message_index]);
+                 let editedUserAnswer        = Object.assign({}, this.userAnswers[this.editingData.message_index]);
                 const targetEditingQuestion = this.questions[this.editingData.message_index];
 
                 switch(this.editingData.type){
