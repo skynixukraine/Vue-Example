@@ -34,6 +34,16 @@
                                    app.$cookies.remove(app.cookie.names.tokenId)
                                })
                 }
+
+                await store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : app.$cookies.get(app.cookie.names.token),
+                    doctor_id   : store.state.user.user.id,
+                    requestData : {
+                        per_page  : store.state.doctors.MAX_DOCTOR_ENQUIRES_PER_PAGE,
+                        order_by  : "id",
+                        direction : "asc"
+                    }
+                })
             },
         components : {
             Dashboard,

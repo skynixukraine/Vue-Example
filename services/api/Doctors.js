@@ -56,4 +56,27 @@ export default {
                 });
         });
     },
+    async loadDoctorEnquires(requestData){
+        return new Promise((resolve, reject) => {
+            HTTP.get(`/doctors/${requestData.doctor_id}/enquires`, {
+            params  : requestData.requestData,
+            headers : {
+                "Authorization" : `Bearer ${requestData.token}`,
+                "Content-Type"  : "application/x-www-form-urlencoded"
+            }
+            }).then(response => {
+                resolve({
+                        success : true,
+                        status  : response.status,
+                        data    : response.data,
+                });
+            }).catch(error => {
+                    reject({
+                               success : false,
+                               status  : error.response.status,
+                               message : error.message,
+                          });
+            });
+        });
+    },
 }
