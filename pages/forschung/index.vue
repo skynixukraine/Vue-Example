@@ -1006,6 +1006,7 @@
                 this.$forceUpdate();
             },
             onPersonalInfoSubmit(){
+                this.openModal(this.$modals.chatConfirmCodeMobile, "Confirm code", "We've sent a verification code to your phone number. Please enter this code below:");
                 if(this.isValidPersonalInfoBlock){
                     this.isPersonalInfoFilled = true;
                     
@@ -1018,7 +1019,6 @@
                 this.stripeToken = eventData.token.id;
                 this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
-
             onSubmitDiagnosticChatConfirmEnquire(){
                 let data = new FormData();
 
