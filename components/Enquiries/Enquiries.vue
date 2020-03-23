@@ -77,8 +77,15 @@
                         {{doctorEnquiresMeta.from}}-{{doctorEnquiresMeta.to}} from {{doctorEnquiresMeta.total}}
                     </div>
                     <div class = "table__info-nav">
-                        <div class = "table__info-link table__info-prev" @click="prev"></div>
-                        <div class = "table__info-link table__info-next" @click="next"></div>
+                        <div
+                        class = "table__info-link table__info-prev"
+                        :class="[doctorEnquiresMeta.current_page === 1 ? 'disabled' : '']"
+                        @click="prev"></div>
+
+                        <div
+                        class = "table__info-link table__info-next"
+                        :class="[doctorEnquiresMeta.current_page === doctorEnquiresMeta.last_page ? 'disabled' : '']"
+                        @click="next"></div>
                     </div>
                 </div>
 
@@ -279,12 +286,24 @@
 			}
 		}
 	}
-	
+
+    .table__info-prev,
+    .table__info-next {
+        cursor: pointer;
+
+        &.disabled{
+            &:after {
+                background-image: url("~static/images/icons/arrow-down-disabled.svg");
+            }
+        }
+    }
+
 	.table__header-item_id,
 	.table__header-item_status,
 	.table__header-item_enquiry-date,
 	.table__header-item_last-contact {
 		position : relative;
+        cursor: pointer;
 		
 		&:after {
 			$size : 20px;
@@ -306,5 +325,11 @@
 				right: 16px;
 			}
 		}
+
+        &.desc{
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
 	}
 </style>

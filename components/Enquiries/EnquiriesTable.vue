@@ -4,9 +4,18 @@
             <div class = "table__header-item table__header-item_id" @click="sort('id')">Enquiry<br class = "table__br"> ID</div>
             <div class = "table__header-item">First<br class = "table__br"> Name</div>
             <div class = "table__header-item">Last<br class = "table__br"> Name</div>
-            <div class = "table__header-item table__header-item_enquiry-date" @click="sort('created_at')">Enquiry<br class = "table__br"> Date</div>
-            <div class = "table__header-item table__header-item_last-contact" @click="sort('last_contacted_at')">Last<br class = "table__br"> Contact</div>
-            <div class = "table__header-item table__header-item_status" @click="sort('status')">Status</div>
+            <div
+                    class = "table__header-item table__header-item_enquiry-date"
+                    :class="[sortingName === 'created_at' ? query.direction : '']"
+                    @click="sort('created_at')">Enquiry<br class = "table__br"> Date</div>
+            <div
+                    class = "table__header-item table__header-item_last-contact"
+                    :class="[sortingName === 'last_contacted_at' ? query.direction : '']"
+                    @click="sort('last_contacted_at')">Last<br class = "table__br"> Contact</div>
+            <div
+                    class = "table__header-item table__header-item_status"
+                    :class="[sortingName === 'status' ? query.direction : '']"
+                    @click="sort('status')">Status</div>
         </div>
         <div class = "table__main">
 
@@ -32,6 +41,14 @@
             select2
 
         },
+        data(){
+            return {
+                query:{
+                    direction: null
+                },
+                sortingName: "asc",
+            }
+        },
         computed   : {
             doctorEnquiresData() {
                 return this.$store.state.doctors.doctorEnquires.data;
@@ -44,12 +61,14 @@
             sort(column) {
                 this.$parent.requestParams.order_field = column;
                 let direction = this.$parent.requestParams.order_direction;
-                this.$parent.requestParams.order_direction = direction === "asc" ? "desc" : "asc" ;
+                this.$parent.requestParams.order_direction = direction === "asc" ? "desc" : "asc";
                 this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
                     token       : this.$cookies.get(this.$cookie.names.token),
                     doctor_id   : this.$store.state.user.user.id,
                     requestData : this.$parent.requestParams
-                })
+                });
+                this.sortingName = column;
+                this.query.direction = this.$parent.requestParams.order_direction;
             }
         },
     }
