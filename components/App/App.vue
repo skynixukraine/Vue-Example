@@ -638,6 +638,10 @@
 			padding    : 0 0 5px 15px;
 			flex-basis : 25%;
 
+			@include tablet{
+				display: flex;
+				align-items: center;
+			}
 			@include desktop-l {
 				padding-left : 25px;
 			}
