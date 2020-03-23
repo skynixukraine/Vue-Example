@@ -719,10 +719,10 @@
                     token  : this.$cookies.get(this.$cookie.names.token),
                     params : formData
                 }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "Herzliche Glückwünsche!");
+                    this.openModal(this.$modals.defaultModal, "", "Herzliche Glückwünsche!");
                     this.setDefaultValues();
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.openModal(this.$modals.defaultModal, "", "Etwas ist schief gelaufen!");
                     this.setDefaultValues();
                 });
             },
