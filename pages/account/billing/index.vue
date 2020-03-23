@@ -18,10 +18,12 @@
 <script>
     import SearchStripeOperations from "~/components/Account/SearchStripeOperations.vue";
     import BillingTable from "~/components/Account/BillingTable.vue";
+
+
     export default {
         data() {
             return {
-                querySearch: {}
+                querySearch: ''
 			}
         },
         middleware : [

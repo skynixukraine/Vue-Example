@@ -1,64 +1,55 @@
 <template>
-    <div class = "table">
-        <div class = "table__info">
-            <div class = "table__info-count">
-                1-50 from 120
-                <!--{{meta.total}}-->
-            </div>
-            <div class = "table__info-nav">
-                <NuxtLink class = "table__info-link table__info-prev" to = "/"></NuxtLink>
-                <NuxtLink class = "table__info-link table__info-next" to = "/"></NuxtLink>
-            </div>
-        </div>
-        <div class = "table__content">
-            <div class = "table__header">
-                <div class = "table__header-item">Transaction<br class = "table__br"> ID</div>
-                <div class = "table__header-item table__header-item--date"
+    <div class="table">
+
+        <h3>Payments</h3>
+        <div class="table__content">
+            <div class="table__header">
+                <div class="table__header-item">Transaction<br class="table__br"> ID</div>
+                <div class="table__header-item table__header-item--date"
                      :class="[ sortingName === 'date' ? query.direction : '' ]"
-                     @click.stop = "sortingData('date')"
+                     @click.stop="sortingData('date')"
                 >
                     Date
                 </div>
-                <div class = "table__header-item table__header-item--enquiry"
+                <div class="table__header-item table__header-item--enquiry"
                      :class="[ sortingName === 'enquiryID' ? query.direction : '' ]"
-                     @click.stop = "sortingData('enquiryID')">
-                    Enquiry<br class = "table__br"> ID
+                     @click.stop="sortingData('enquiryID')">
+                    Enquiry<br class="table__br"> ID
                 </div>
-                <div class = "table__header-item">Patient's<br class = "table__br"> full name</div>
-                <div class = "table__header-item">Amount</div>
-                <div class = "table__header-item table__header-item--status"
+                <div class="table__header-item">Patient's<br class="table__br"> full name</div>
+                <div class="table__header-item">Amount</div>
+                <div class="table__header-item table__header-item--status"
                      :class="[ sortingName === 'status' ? query.direction : '' ]"
-                     @click.stop = "sortingData('status')">
+                     @click.stop="sortingData('status')">
                     Status
                 </div>
             </div>
-            <div class = "table__main-items table__main-items--billing" v-for="(item, index) in data" :key="'billing2-' + index">
-                <div class = "table__main-item" data-title="Transaction ID">{{item.id}}</div>
-                <div class = "table__main-item" data-title="Date">{{item.enquire.created_at.date | dateFormat}}</div>
-                <div class = "table__main-item" data-title="Enquiry ID">{{item.enquire.id}}</div>
-                <div class = "table__main-item table__main-item--full-name" data-title="Patient's full name">
+            <div class="table__main-items table__main-items--billing" v-for="(item, index) in data" :key="'billing2-' + index">
+                <div class="table__main-item" data-title="Transaction ID">{{item.id}}</div>
+                <div class="table__main-item" data-title="Date">{{item.enquire.created_at.date | dateFormat}}</div>
+                <div class="table__main-item" data-title="Enquiry ID">{{item.enquire.id}}</div>
+                <div class="table__main-item table__main-item--full-name" data-title="Patient's full name">
                     {{item.enquire.first_name}} {{item.enquire.last_name}}
                 </div>
-                <div class = "table__main-item" data-title="Amount">
-                    <span class = "table__currency" >{{item.currency}}</span> {{item.amount}}</div>
-                <div class = "table__main-item" data-title="Status">{{item.enquire.status}}</div>
+                <div class="table__main-item" data-title="Amount">
+                    <span class="table__currency" >{{item.currency}}</span> {{item.amount}}</div>
+                <div class="table__main-item" data-title="Status">{{item.enquire.status}}</div>
             </div>
         </div>
-        <span v-if = "responseErrorMessage">{{ responseErrorMessage }}</span>
+        <span v-if="responseErrorMessage">{{ responseErrorMessage }}</span>
+        <div class="table__pagination">
+            <div class="table__pagination-label">Page</div>
+        </div>
     </div>
 </template>
 
-
 <script>
     import UserApi from "~/services/api/User";
-
 
     export default {
         data(){
             return {
                 data:null,
-                links: {},
-                meta: {},
                 query:{
                     page: 1,
                     perPage: 50,
@@ -72,30 +63,26 @@
         },
         props:{
             querySearch:{
-                type:Object,
+                type:String,
                 default(){
-                    return {};
+                    return '';
                 }
             }
         },
         watch:{
             querySearch() {
-                this.query.search          = this.querySearch.search;
-                this.query.enquiryID       = this.querySearch.enquiryID;
-                this.query.data            = this.querySearch.data;
-                this.query.dateTransaction = this.querySearch.dateTransaction;
-
+                this.query.search = this.querySearch;
                 this.requestSO();
             }
         },
         methods : {
-            requestSO(search, field, direction){
+            requestSO(){
                 let query = {
-                    page: this.query.page,
-                    per_page:  this.query.perPage,
-                    search : search || this.query.search,
-                    order_field: field || this.query.field,
-                    order_direction: direction ||  this.query.direction
+                    page:            this.query.page,
+                    per_page:        this.query.perPage,
+                    search :         this.query.search,
+                    order_field:     this.query.field,
+                    order_direction: this.query.direction
                 };
                 UserApi.requestStripeOperations({
                     id    : this.$store.state.user.user.id,
@@ -103,8 +90,8 @@
                     query : query
                 }).then((response) => {
                     this.data = response.data.data;
-                    this.links = response.data.links;
-                    this.meta = response.data.meta;
+
+
 
                 }).catch((error) => {
                     this.responseErrorMessage = error.message;
@@ -177,7 +164,7 @@
                         return 0;
                     });
                 }
-            }
+            },
         },
         mounted(){
             this.requestSO();
@@ -196,6 +183,14 @@
 
     .table{
         margin-top: 30px;
+
+
+        &__pagination{
+            padding: 25px 0 0 0;
+        }
+        &__pagination-label{
+            float: left;
+        }
 
         &__header-item{
             &--date,
@@ -240,6 +235,9 @@
         }
         &__currency{
             text-transform: uppercase;
+        }
+        &__pagination{
+
         }
 
         @include tablet {
