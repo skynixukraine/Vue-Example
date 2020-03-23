@@ -116,8 +116,16 @@
                         this.query.field = 'enquire_id';
                         this.requestSO();
                     }
-                    if(prop === 'date'){} //get data from server for sorting to date
-                    if(prop === 'status'){} //get data from server for sorting to status
+                    if(prop === 'date'){
+                        this.query.field = 'created_at';
+                        this.requestSO();
+
+                    } //get data from server for sorting to date
+                    if(prop === 'status'){
+                        this.query.field = 'status';
+                        this.requestSO();
+
+                    } //get data from server for sorting to status
                     _prop = prop;
 
                 } else if(this.sortingName) {
