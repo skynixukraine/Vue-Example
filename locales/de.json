@@ -306,16 +306,16 @@
 	},
 	"page-forschung": {
 			"feedback-form": {
-				"title": "Persönliche Angaben",
+				"title": "Ihre persönlichen Informationen",
 				"firstName": "Vorname",
 				"lastName": "Nachname",
 				"gender": "Geschlecht",
 				"female": "Weiblich",
 				"male": "Männlich",
-				"mobile": "Telefonnummer",
-				"email": "E-Mail Addresse",
+				"mobile": "Handynummer",
+				"email": "E-Mail Adresse",
 				"birth": "Geburtsdatum",
-				"typeNumber": "Geben Sie eine Telefonnummer ein"
+				"typeNumber": "Geben Sie Ihre Handynummer ein"
 			}
 	},
 	"cookie": [

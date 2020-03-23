@@ -219,7 +219,7 @@
 												'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
 											}"
 											@click.stop = "onUserSubmit()">
-										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "select upload img" : lastQuestionData.button }}
+										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "Bild hochladen" : lastQuestionData.button }}
 									</button>
 									<button v-else class = "submit-btn"
 											@click = "onStart"
