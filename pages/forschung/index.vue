@@ -239,13 +239,11 @@
 				</transition>
 				<transition name = "main-animation">
 					<div class = "personal-info" v-if = "isQuestionsOver">
-
 						<h2>{{ this.$t('page-forschung.feedback-form.title')}}</h2>
 						<div class = "personal-info__field">
 							<InputText :labelTxt = personalInfoData.firstName.txt
 									   :isRequired = true
 									   :placeholder = personalInfoData.firstName.txt
-
 									   :name = "'firstName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.firstName">{{ this.errors.firstName }}</span>
@@ -254,14 +252,12 @@
 							<InputText :labelTxt = personalInfoData.lastName.txt
 									   :isRequired = true
 									   :placeholder = personalInfoData.lastName.txt
-
 									   :name = "'lastName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.lastName">{{ this.errors.lastName }}</span>
 						</div>
 						<div class = "personal-info__field">
 							<InputRadio :radioList = "PERSONAL_INFO__RADIO_GENDER"
-
 										:groupTitle = personalInfoData.gender.txt
 										:isRequired = true
 										@change = "onPersonalInfoChangeGender" />
@@ -279,7 +275,6 @@
 							</label>
 						</div>
 						<div class = "personal-info__field">
-
 							<InputEmail :labelTxt = personalInfoData.mail.txt
 										:isRequired = true
 										:placeholder = personalInfoData.mail.txt
@@ -440,7 +435,6 @@
                 // Constants, do not edit this values in code, please
                 PERSONAL_INFO__RADIO_GENDER     : [
                     {
-
                         txt   : this.$t('page-forschung.feedback-form.female'),
                         value : "WEIBLICH"
                     },
