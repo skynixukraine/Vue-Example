@@ -1030,16 +1030,13 @@
                 this.stripeToken = eventData.token.id;
                 this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
-            getGenderTranslate(gender){
-                return this.$t("page-forschung.feedback-form.validation-failed")
-            },
 
             onSubmitDiagnosticChatConfirmEnquire(){
                 let data = new FormData();
 
                 data.append("code", this.stripeToken);
                 data.append("email", this.personalInfoData.mail.value);
-                data.append("gender",  this.personalInfoData.gender.value);
+                data.append("gender", this.personalInfoData.gender.value);
                 data.append("doctor_id", this.targetDoctor.id);
                 data.append("last_name", this.personalInfoData.lastName.value);
                 data.append("first_name", this.personalInfoData.firstName.value);
