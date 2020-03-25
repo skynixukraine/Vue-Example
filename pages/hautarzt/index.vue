@@ -296,6 +296,7 @@
 
 	.distance-block label {
 		font-weight: bold;
+		color: black;
 	}
 
 	.filters-distance {
