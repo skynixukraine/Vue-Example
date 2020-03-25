@@ -156,7 +156,7 @@
 							</div>
 						</div>
 					</div>
-					<div class = "personal-info__item">
+					<div class = "personal-info__item hide-region">
 						<div class = "single-form">
 							<header class = "personal-info__header">Region</header>
 							<div class = "personal-info__main personal-info__main-select">
@@ -741,7 +741,7 @@
 	$tablet_padding_right: 33px;
 	$avatar_img_size: 256px;
 	$desktop_max_column_width: 28.5%;
-	
+
 	.personal-info {
 		margin-bottom : $main_offset * 2;
 		
@@ -1019,5 +1019,9 @@
 	.main-animation-enter, .main-animation-leave-to {
 		opacity   : 0;
 		transform : translateY(50px);
+	}
+
+	.hide-region {
+		display: none
 	}
 </style>
