@@ -1,5 +1,5 @@
 <template>
-    <div class="table">
+    <div class="table table--billing">
 
         <h3>Payments</h3>
         <div class="table__content">
@@ -192,7 +192,11 @@
     .table{
         margin-top: 30px;
 
-
+        &--billing{
+            @include desktop-l {
+                margin-left : 0;
+            }
+        }
         &__pagination{
             padding: 25px 0 0 0;
         }
@@ -239,6 +243,11 @@
             cursor: default;
             &--billing{
                 min-height: 50px;
+            }
+            @include desktop-l {
+                &:after{
+                    width : calc(100% - 25px);
+                }
             }
         }
         &__currency{
