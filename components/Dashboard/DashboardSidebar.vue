@@ -12,12 +12,12 @@
 					</li>
 					<li class = "dashboard-sidebar__item dashboard-sidebar__item-billing">
 						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.billing.path">Billing</NuxtLink>
-						<span class = "dashboard-sidebar__sticker">New</span>
 					</li>
 					<li class = "dashboard-sidebar__item dashboard-sidebar__item-enquiries">
 						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.enquiries.path">
 							{{ $t("sidebar.request") }}
 						</NuxtLink>
+						<span class = "dashboard-sidebar__sticker">New</span>
 					</li>
 				</ul>
 			</div>
@@ -29,7 +29,7 @@
 				<li class = "dashboard-sidebar__item dashboard-sidebar__item-logout">
 					<LogoutButton />
 				</li>
-				<li class = "dashboard-sidebar__item dashboard-sidebar__item">
+				<li class = "dashboard-sidebar__item dashboard-sidebar__item-hilfe">
 					<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.contact.path">Hilfe</NuxtLink>
 				</li>
 			</ul>
@@ -168,6 +168,13 @@
 			}
 			
 			&-billing {
+				&:before {
+					background-image : url("~static/images/icons/credit-card.svg");
+					background-size: cover;
+				}
+			}
+			
+			&-hilfe {
 				&:before {
 					background-image : url("~static/images/icons/question-icon.svg");
 				}
