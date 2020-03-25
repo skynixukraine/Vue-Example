@@ -1254,6 +1254,15 @@
 				right : 0;
 			}
 		}
+		
+		&#message_11 {
+			.message {
+				&__container {
+					border-radius    : $border-radius 0 $border-radius $border-radius;
+					background-color : rgba(1,1,1,0);
+				}
+			}
+		}
 	}
 	
 	.answer-area, .edit-answer-area {
