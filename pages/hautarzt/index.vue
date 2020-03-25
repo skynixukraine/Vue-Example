@@ -187,6 +187,12 @@
 					return Math.sqrt(dx * dx + dy * dy) <= km;
 				}
 
+				if(address === '') {
+					doctorsArr.forEach(function(doctor) { 
+						document.getElementById(`${doctor.id}`).style.display = 'block';
+					});
+				} 
+				
 				if (address) {
 					console.log(address)
 					let geocoder = new google.maps.Geocoder();
@@ -200,15 +206,15 @@
 					
 					let isFindDoctor = false;
 					
-					doctorsArr.forEach(function(item, index, arr) {
-						isFindDoctor = arePointsNear(centerLng, centerLat, item.lng, item.lat, km);
+					doctorsArr.forEach(function(doctor) {
+						isFindDoctor = arePointsNear(centerLng, centerLat, doctor.lng, doctor.lat, km);
 						if (isFindDoctor) {
 							// uncomment in production
-							// document.getElementById(`${item.id}`).style.display = 'none';
+							document.getElementById(`${doctor.id}`).style.display = 'block';
 							console.log('hide other doctors, target in range')
 						} else {
 							// comment it in production
-							document.getElementById(`${item.id}`).style.display = 'none';
+							document.getElementById(`${doctor.id}`).style.display = 'none';
 							console.log('outside of range, no current doctor');
 					} 
 					
