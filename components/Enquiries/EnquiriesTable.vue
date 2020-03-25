@@ -34,7 +34,6 @@
 </template>
 
 <script>
-g
     export default {
 
         data(){
