@@ -253,7 +253,7 @@
 			transition : $transition;
 			
 			&.selected {
-				fill : $color-user-is-active;
+				fill : $color-alert-red;
 			}
 		}
 		

@@ -8,6 +8,7 @@
 							 class = "message"
 							 :class = "{
 								 'message--is-me': !item.questioner,
+								 'message--is-body': item.type === QUESTION_TYPES.bodySelect,
 								 'message--is-delete': false,
 								 'message--is-editing': editingData && item.message_id === editingData.message_id,
 								 'message--editing-question': editingData && messages[chat_message_index] && messages[chat_message_index].id === editingData.message_id
@@ -1255,7 +1256,7 @@
 			}
 		}
 		
-		&#message_11 {
+		&.message--is-body {
 			.message {
 				&__container {
 					border-radius    : $border-radius 0 $border-radius $border-radius;
