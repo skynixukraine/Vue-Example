@@ -12,37 +12,35 @@
 			</div>
 		</div>
 		<div class = "container">
-			<div class = "filters" ref = "filterContainer">
-				<label class = "filters__item">
-					<div class = "filters__item__title">Region</div>
-					<select class = "filters__item__select"
-							name = "region"
-							@change = "onChangeFilter">
-						<option value = "-1">All</option>
-						<option v-for = "(regionItem) in regionsList"
-								:key = "'region_' + regionItem.id"
-								:value = "regionItem.id">
-							{{regionItem.name}}
-						</option>
-					</select>
-				</label>
-				<label class = "filters__item">
-					<div class = "filters__item__title">Specialization</div>
-					<select class = "filters__item__select"
-							name = "specialization"
-							@change = "onChangeFilter">
-						<option value = "-1">All</option>
-						<option v-for = "specializationItem in specializationsList"
-								:key = "'specialization_' + specializationItem.id"
-								:value = "specializationItem.id">
-							{{specializationItem.name}}
-						</option>
-					</select>
-				</label>
+			<div class = "filters-distance" ref = "filterContainer">
+				
+				<div class="distance-block">
+				<label>Enter Zip-Code or City</label>
+				<input ref="autocomplete" 
+					   placeholder="Search" 
+					   class="search-location"
+					   @focus="setPlace"
+					   @place_changed="setPlace" 
+					   type="text" />
+				</div>
+
+				<div class="distance-block">
+				<label>In the radius (Dropdown)</label>
+				<select class="search-location"
+						name="distance_select"
+						v-model="distance_selected">
+					<option v-for="option in options" v-bind:value="option.value" :key="option.value">
+    					{{ option.text }}
+  					</option>
+				</select>
+				</div>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsyz2Io_tDucVQaqtbWmiWWvK7tqDUOLo&libraries=places"></script>
 			</div>
 			<div class = "doctors">
 				<div class = "doctors__item"
+					 v-show = "showDoctor === true"
 					 v-for = "doctor in doctors"
+					 :id = "doctor.id"
 					 :key = "'doctor_' + doctor.id">
 					<DoctorCard :doctor = "doctor" :isPreview = true />
 				</div>
@@ -55,7 +53,7 @@
 </template>
 
 <script>
-    import DoctorCard from "~/components/Cards/DoctorCard"
+	import DoctorCard from "~/components/Cards/DoctorCard"
 
     export default {
         async fetch({app, store, error}){
@@ -76,17 +74,28 @@
             await store.dispatch("doctors/LOAD_AND_SAVE_FILTERED_DOCTORS", {per_page : store.state.doctors.MAX_DOCTORS_PER_PAGE});
         },
         components : {
-            DoctorCard
+			DoctorCard,
         },
         data(){
             return {
-                pageNumber      : null,
-                selectedFilters : {
-                    region         : -1,
-                    specialization : -1
-                }
+				pageNumber      : null,
+				name			: 'map',
+				autocomplete	: null,
+				showDoctor		: true,
+				distance_selected	: 100,
+				options			: [
+					{ text: '100km', value: 100 },
+					{ text: '200km', value: 200 },
+					{ text: '500km', value: 500 },
+				],
             }
-        },
+		},
+		mounted: function() {
+			this.autocomplete = new google.maps.places.Autocomplete(
+				(this.$refs.autocomplete),
+				{types: ['geocode']}
+			);
+		},
         computed   : {
             regionsList(){
                 return this.$store.state.regions.regions;
@@ -156,6 +165,70 @@
             this.pageNumber = this.$route.params.page ? (this.$route.params.page + "").replace(/[^0-9]/g, "") : 1;
         },
         methods    : {
+			setPlace(place){
+
+				let address = place.target.value;
+				let km = this.distance_selected;
+				let doctorsArr = [];
+
+				for (let i = 0; i < this.$store.state.doctors.doctorsFiltered.length; i ++) {
+					doctorsArr.push({	
+						id: this.$store.state.doctors.doctorsFiltered[i].id,
+						lat: this.$store.state.doctors.doctorsFiltered[i].location.latitude,
+						lng: this.$store.state.doctors.doctorsFiltered[i].location.longitude,
+					})
+				}
+				
+				function arePointsNear(centerLng, centerLat, checkLng, checkLat, km) {
+					let ky = 40000 / 360;
+					let kx = Math.cos(Math.PI * centerLat / 180.0) * ky;
+					let dx = Math.abs(centerLng - checkLng) * kx;
+					let dy = Math.abs(centerLat - checkLat) * ky;
+					return Math.sqrt(dx * dx + dy * dy) <= km;
+				}
+
+				if (address) {
+					console.log(address)
+					let geocoder = new google.maps.Geocoder();
+					geocoder.geocode({
+					'address': address
+					}, function(results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+					
+					let centerLat = results[0].geometry.location.lat();
+					let centerLng = results[0].geometry.location.lng();
+					
+					let isFindDoctor = false;
+					
+					doctorsArr.forEach(function(item, index, arr) {
+						isFindDoctor = arePointsNear(centerLng, centerLat, item.lng, item.lat, km);
+						if (isFindDoctor) {
+							// uncomment in production
+							// document.getElementById(`${item.id}`).style.display = 'none';
+							console.log('hide other doctors, target in range')
+						} else {
+							// comment it in production
+							document.getElementById(`${item.id}`).style.display = 'none';
+							console.log('outside of range, no current doctor');
+					} 
+					
+					})					
+					} else {
+					alert("Something got wrong " + status);
+					}
+				});
+				}
+			},
+			autoCompleteFocus(event) {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						this.geolocation = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+					};
+					})
+				}
+			},
             onChangeFilter(event){
                 this.selectedFilters[event.target.name] = +event.target.value;
                 this.pageNumber                         = 1;
@@ -191,6 +264,7 @@
     }
 </script>
 
+
 <style lang = "scss">
 
 	.title,
@@ -214,12 +288,21 @@
 		}
 	}
 
-	.filters {
+	.distance-block label {
+		font-weight: bold;
+	}
+
+	.filters-distance {
 		margin          : 0 #{-$main_offset};
 		display         : flex;
-		flex-wrap       : wrap;
+		flex-wrap       : nowrap;
+		width			: 500px;
 		max-width       : 100%;
-		justify-content : flex-start;
+		justify-content : space-around;
+
+		background: white;
+    	padding: 20px;
+
 		
 		&__item {
 			$bottom_padding : 5px;
@@ -330,4 +413,19 @@
 			}
 		}
 	}
+
+	.search-location {
+		display: block;
+		width: 16vw;
+		margin: 0 auto;
+		margin-top: 1vw;
+		font-size: 20px;
+		font-weight: 400;
+		outline: none;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		border-radius: 10px;
+}
+
 </style>
