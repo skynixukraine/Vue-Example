@@ -182,8 +182,8 @@
 
         methods : {
             async onSubmit(){
-                this.isFormSending = true;
-
+				this.isFormSending = true;
+				
                 if(Object.values(this.formIsValid).indexOf(false) > -1){
                     this.validateForm(this.models);
                     this.isFormSending = false;
@@ -191,7 +191,7 @@
                     return false;
                 }
 
-                const formData = this.prepareDataForSending(this.models);
+				const formData = this.prepareDataForSending(this.models);
 
                 this.$store.dispatch('user/REGISTER_USER', formData)
                     .then((response) => {
@@ -336,7 +336,6 @@
                     this.models.certification = '';
 				}
                 this.$forceUpdate();
-
             },
             onAcceptChange(event){
                 this.formIsValid.terms = this.validateAccept(event, this.models.accepted);
