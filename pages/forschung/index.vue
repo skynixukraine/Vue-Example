@@ -436,11 +436,11 @@
                 PERSONAL_INFO__RADIO_GENDER     : [
                     {
                         txt   : this.$t('page-forschung.feedback-form.female'),
-                        value : "WEIBLICH"
+                        value : "FEMALE"
                     },
                     {
                         txt   : this.$t('page-forschung.feedback-form.male'),
-                        value : "MANNLICH"
+                        value : "MALE"
                     },
                 ],
                 PERSONAL_INFO__PHONE_BIND_PROPS : {
