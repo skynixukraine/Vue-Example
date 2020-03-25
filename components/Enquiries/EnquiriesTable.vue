@@ -34,13 +34,8 @@
 </template>
 
 <script>
-    import select2 from "~/components/select2/select2.vue"
-
     export default {
-        components : {
-            select2
 
-        },
         data(){
             return {
                 query:{
