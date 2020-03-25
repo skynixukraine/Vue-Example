@@ -406,7 +406,17 @@
 		:focus {
 			outline : none;
 		}
-		
+		&--line{
+			font-style: normal;
+			font-weight: 500;
+			font-size: 15px;
+			line-height: 22px;
+			text-transform: none;
+			border: none;
+		}
+		&--underline{
+			text-decoration: underline;
+		}
 		&--button {
 			width          : auto;
 			border         : none;
@@ -520,13 +530,17 @@
 	.input, .select {
 		width         : 100%;
 		height        : 40px;
-		border        : 2px solid $color-curious-blue;
+		border        : 1px solid $color-table-border;
 		background    : $color-white;
 		box-sizing    : border-box;
 		padding-top   : 4px;
 		padding-left  : 6%;
 		border-radius : 4px;
-		
+
+			&:focus{
+				border: 1px solid $color-curious-blue;
+			}
+
 		@include phone-big {
 			height : 56px;
 		}
@@ -993,12 +1007,15 @@
 			&__input {
 				width         : 100%;
 				height        : 40px;
-				border        : 2px solid $color-curious-blue;
+				border        : 1px solid $color-table-border;
 				background    : #FFF;
 				box-sizing    : border-box;
 				padding-left  : $main_offset / 2;
 				border-radius : 4px;
-				
+
+				&:focus{
+					border    : 1px solid $color-curious-blue;
+				}
 				@include phone-big {
 					height : 56px;
 				}
