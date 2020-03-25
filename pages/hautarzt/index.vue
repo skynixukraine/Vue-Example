@@ -16,12 +16,13 @@
 				
 				<div class="distance-block">
 				<label>Enter Zip-Code or City</label>
-				<input ref="autocomplete" 
-					   placeholder="Search" 
-					   class="search-location"
-					   @focus="setPlace"
-					   @place_changed="setPlace" 
-					   type="text" />
+				<gmap-autocomplete
+					:placeholder="placeholder"
+					:value="autocompleteVal"
+					@place_changed="setPlace"
+					class="search-location"
+				>
+        		</gmap-autocomplete>
 				</div>
 
 				<div class="distance-block">
@@ -34,7 +35,6 @@
   					</option>
 				</select>
 				</div>
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsyz2Io_tDucVQaqtbWmiWWvK7tqDUOLo&libraries=places"></script>
 			</div>
 			<div class = "doctors">
 				<div class = "doctors__item"
@@ -80,7 +80,8 @@
             return {
 				pageNumber      : null,
 				name			: 'map',
-				autocomplete	: null,
+				placeholder		: '',
+				autocompleteVal : '',
 				showDoctor		: true,
 				distance_selected	: 100,
 				options			: [
@@ -89,12 +90,6 @@
 					{ text: '500km', value: 500 },
 				],
             }
-		},
-		mounted: function() {
-			this.autocomplete = new google.maps.places.Autocomplete(
-				(this.$refs.autocomplete),
-				{types: ['geocode']}
-			);
 		},
         computed   : {
             regionsList(){
@@ -167,7 +162,8 @@
         methods    : {
 			setPlace(place){
 
-				let address = place.target.value;
+				let address = place.place_id;
+
 				let km = this.distance_selected;
 				let doctorsArr = [];
 
@@ -187,17 +183,17 @@
 					return Math.sqrt(dx * dx + dy * dy) <= km;
 				}
 
-				if(address === '') {
+				if(!address || address === '') {
 					doctorsArr.forEach(function(doctor) { 
 						document.getElementById(`${doctor.id}`).style.display = 'block';
 					});
 				} 
 				
 				if (address) {
-					console.log(address)
 					let geocoder = new google.maps.Geocoder();
+					
 					geocoder.geocode({
-					'address': address
+					'placeId': address
 					}, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
 					
@@ -209,30 +205,16 @@
 					doctorsArr.forEach(function(doctor) {
 						isFindDoctor = arePointsNear(centerLng, centerLat, doctor.lng, doctor.lat, km);
 						if (isFindDoctor) {
-							// uncomment in production
 							document.getElementById(`${doctor.id}`).style.display = 'block';
-							console.log('hide other doctors, target in range')
 						} else {
-							// comment it in production
 							document.getElementById(`${doctor.id}`).style.display = 'none';
-							console.log('outside of range, no current doctor');
-					} 
+						} 
 					
 					})					
 					} else {
 					alert("Something got wrong " + status);
 					}
 				});
-				}
-			},
-			autoCompleteFocus(event) {
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(function(position) {
-						this.geolocation = {
-							lat: position.coords.latitude,
-							lng: position.coords.longitude
-					};
-					})
 				}
 			},
             onChangeFilter(event){
