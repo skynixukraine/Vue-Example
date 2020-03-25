@@ -268,6 +268,7 @@
 							<label>
 								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.mobile')}}</div>
 								<vue-tel-input id = "vue-tel-input"
+											   class="custom-input__input"
 											   name = "phone_number"
 											   v-bind = "PERSONAL_INFO__PHONE_BIND_PROPS"
 											   @blur = "onPersonalInfoPhoneBlur"
@@ -1470,5 +1471,8 @@
 	
 	.modal-enter, .modal-leave-to {
 		opacity : 0;
+	}
+	.vue-tel-input#vue-tel-input {
+		border: 1px solid $color-table-border;
 	}
 </style>

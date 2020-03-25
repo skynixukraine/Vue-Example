@@ -479,4 +479,13 @@
 			font-weight : 500;
 		}
 	}
+	.vue-tel-input#vue-tel-input {
+		.vti__input {
+			max-width : 180px;
+			
+			@include phone-big {
+				max-width : 300px;
+			}
+		}
+	}
 </style>
