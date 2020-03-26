@@ -13,7 +13,6 @@
 		</div>
 		<div class = "container">
 			<div class = "filters-distance" ref = "filterContainer">
-				
 				<div class="distance-block">
 				<label>Enter Zip-Code or City</label>
 				<gmap-autocomplete
@@ -40,6 +39,9 @@
 				</div>
 			</div>
 			<div class = "doctors">
+				<div class="no-doctors-find doctor-card__main--description">
+					Entschuldigung, keine Hautärzte wurden in diesem Umkreis gefunden. Bitte erhöhen Sie den Umkreis.
+				</div>
 				<div class = "doctors__item"
 					 v-show = "showDoctor === true"
 					 v-for = "doctor in doctors"
@@ -183,17 +185,12 @@
 					let dy = Math.abs(centerLat - checkLat) * ky;
 					return Math.sqrt(dx * dx + dy * dy) <= km;
 				}
-
-				if (!address) {
-					doctorsArr.forEach(function(doctor) { 
-						document.getElementById(`${doctor.id}`).style.display = 'block';
-					});
-				}				
 				
 				if (place.target && place.target.value === '') {
-					doctorsArr.forEach(function(doctor) { 
-						document.getElementById(`${doctor.id}`).style.display = 'block';
-					});
+						doctorsArr.forEach(function(doctor) { 
+							document.getElementById(`${doctor.id}`).style.display = 'block';
+						});
+						document.querySelector('.no-doctors-find').style.display = 'none';
 				}
 				
 				if (address) {
@@ -208,19 +205,30 @@
 					let centerLng = results[0].geometry.location.lng();
 					
 					let isFindDoctor = false;
+
+					let doctorsCount = [];
+					let doctorsCountHidden = [];
 					
-					doctorsArr.forEach(function(doctor) {
+					doctorsArr.forEach(function(doctor, index) {
+						doctorsCount.push(index);
 						isFindDoctor = arePointsNear(centerLng, centerLat, doctor.lng, doctor.lat, km);
 						if (isFindDoctor) {
 							document.getElementById(`${doctor.id}`).style.display = 'block';
 						} else {
 							document.getElementById(`${doctor.id}`).style.display = 'none';
 						} 
-					
-					})					
-					} else {
-					alert("Something got wrong " + status);
+
+						if (document.querySelectorAll('.doctors .doctors__item')[index].style.display === 'none') {
+							doctorsCountHidden.push(index)
+						}
+					});
+					if (doctorsCount.length === doctorsCountHidden.length) {
+						document.querySelector('.no-doctors-find').style.display = 'block';
 					}
+					} else {
+					console.error(status);
+					}
+					
 				});
 				}
 			},
@@ -369,6 +377,10 @@
 		display         : flex;
 		flex-wrap       : wrap;
 		justify-content : flex-start;
+
+		.no-doctors-find {
+		display: none;
+		}
 		
 		&__item {
 			width          : 100%;
