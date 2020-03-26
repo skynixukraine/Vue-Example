@@ -145,6 +145,15 @@
 		&.section--64-64 {
 			padding-top    : $padding;
 			padding-bottom : $padding;
+			
+			.section-footer {
+				text-align : center;
+				margin-top : 32px;
+				
+				@include tablet {
+					margin-top : 35px;
+				}
+			}
 		}
 		
 		&.section--0-default {
