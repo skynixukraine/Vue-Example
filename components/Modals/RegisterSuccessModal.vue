@@ -8,12 +8,10 @@
 		   :class = "'modal'">
 		<button class = "modal__close-button" @click.stop = "closeModal($modals.registerSuccess)"></button>
 		<header class = "modal__header">
-			<h3 class = "modal__title">Register Success</h3>
+			<h3 class = "modal__title">Erfolgreich registriert</h3>
 		</header>
 		<div class = "modal__main">
-			<p>This email confirmation will be valid for 3 hours.
-				Once your email is confirmed, you will be requested to add more information about yourself, and you may
-				be contacted by one of our representatives to verify your credentials.
+			<p>Wir haben Ihnen eine E-Mail mit einem Bestätigungslink zugeschickt, der nur für drei Stunden gültig ist. Bitte prüfen Sie daher jetzt Ihre E-Mails, um die Anmeldung abzuschließen.
 			</p>
 			<h3>{{ countdown }}</h3>
 		</div>
@@ -22,7 +20,7 @@
 				<button class = "link link--button link--button-blue link--button-gradient"
 						:disabled = "countdown > 0"
 						@click = "onResendEmail">
-					E-Mail zurücksenden
+					E-Mail erneut zusenden
 				</button>
 			</div>
 		</footer>

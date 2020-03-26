@@ -59,92 +59,122 @@
 							</select>
 						</div>
 					</div>
-				</div>
-				<div class = "personal-info__column">
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Medizinischer Grad</header>
-						<div class = "personal-info__file">
-							<div v-if = "userInputData.medical_degree.fileBase64 && !userInputData.medical_degree.userInput.HTML"
-								 class = "personal-info__file__container"
-								 @click.stop = "$refs.medicalDegreeInputFile.click();">
-								<object class = "personal-info__file-src"
-										v-if = "userInputData.medical_degree.fileBase64.indexOf('data:application/pdf') > -1"
-										:src = "userInputData.medical_degree.fileBase64"
-										type = "application/pdf"></object>
-								<img v-else
-									 :src = "userInputData.medical_degree.fileBase64"
-									 class = "personal-info__file-src">
-								<img :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
-									 class = "paper-fastener-button-image">
-							</div>
-							<div v-else-if = "userInputData.medical_degree.userInput.HTML"
-								 class = "personal-info__file"
-								 @click.stop = "$refs.medicalDegreeInputFile.click();">
-								<div v-html = "userInputData.medical_degree.userInput.HTML"></div>
-							</div>
-							<button v-if = "userInputData.medical_degree.userInput.HTML"
-									type = "button"
-									@click.stop = "removeMedicalDegreeImage"
-									class = "personal-info__file-remove">
+						<header class = "personal-info__header personal-info__header--edit-box">
+							<div class = "personal-info__label">Sie die E-Mail</div>
+							<button class = "link--button-transparent link--line link--underline"
+									@click.stop = "onChangeEmail">Ändern
 							</button>
-						</div>
-						<button class = "link link--button link--button-full-width link--button-upload"
-								type = "button"
-								v-if = "!userInputData.medical_degree.userInput.HTML && !userInputData.medical_degree.fileBase64"
-								@click.stop = "$refs.medicalDegreeInputFile.click();">
-							<img class = "paper-fastener-button-image"
-								 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
-								 alt = "paper-fastener-button" />
-							<p class = "link__txt">{{ $t("forms.add-degree") }}</p>
-						</button>
-						<div class = "form__message" v-if = "errors.medicalDegree">{{ errors.medicalDegree }}</div>
-						<input class = "input input--hidden"
-							   type = "file"
+						</header>
+						<input class = "input"
+							   type = "email"
 							   name = "medicalDegree"
-							   ref = "medicalDegreeInputFile"
-							   accept = ".jpg, .jpeg, .png, .pdf"
-							   @change = "onMedicalDegreeUpload" />
+							   v-model="userInputData.email"
+							   disabled
+						/>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Zertifizierung</header>
-						<div class = "personal-info__file">
-							<div v-if = "userInputData.board_certification.fileBase64 && !userInputData.board_certification.userInput.HTML"
-								 class = "personal-info__file__container"
-								 @click.stop = "$refs.board_certificationInputFile.click();">
-								<object class = "personal-info__file-src"
-										v-if = "userInputData.board_certification.fileBase64.indexOf('data:application/pdf') > -1"
-										:src = "userInputData.board_certification.fileBase64"
-										type = "application/pdf"></object>
-								<img v-else
-									 :src = "userInputData.board_certification.fileBase64"
-									 class = "personal-info__file-src">
-								<img :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
-									 class = "paper-fastener-button-image">
-							</div>
-							<div v-else-if = "userInputData.board_certification.userInput.HTML"
-								 class = "personal-info__file">
-								<div v-html = "userInputData.board_certification.userInput.HTML"></div>
-								<button type = "button"
-										@click.stop = "removeCertificationImage"
+						<header class = "personal-info__header personal-info__header--edit-box">
+							<div class = "personal-info__label">Passwort</div>
+							<button class = "link--button-transparent link--line link--underline"
+									@click.stop = "onChangePassword">Ändern
+							</button>
+						</header>
+						<input class = "input"
+							   type = "password"
+							   name = "medicalDegree"
+							   v-model="userInputData.password"
+							   disabled
+						/>
+					</div>
+				</div>
+				<div class = "personal-info__column">
+					<div class = "personal-info__item-group">
+						<div class = "personal-info__item">
+							<header class = "personal-info__header">Medizinischer Grad</header>
+							<div class = "personal-info__file">
+								<div v-if = "userInputData.medical_degree.fileBase64 && !userInputData.medical_degree.userInput.HTML"
+									 class = "personal-info__file__container"
+									 @click.stop = "$refs.medicalDegreeInputFile.click();">
+									<object class = "personal-info__file-src"
+											v-if = "userInputData.medical_degree.fileBase64.indexOf('data:application/pdf') > -1"
+											:src = "userInputData.medical_degree.fileBase64"
+											type = "application/pdf"></object>
+									<img v-else
+										 :src = "userInputData.medical_degree.fileBase64"
+										 class = "personal-info__file-src">
+									<img :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
+										 class = "paper-fastener-button-image">
+								</div>
+								<div v-else-if = "userInputData.medical_degree.userInput.HTML"
+									 class = "personal-info__file"
+									 @click.stop = "$refs.medicalDegreeInputFile.click();">
+									<div v-html = "userInputData.medical_degree.userInput.HTML"></div>
+								</div>
+								<button v-if = "userInputData.medical_degree.userInput.HTML"
+										type = "button"
+										@click.stop = "removeMedicalDegreeImage"
 										class = "personal-info__file-remove">
 								</button>
 							</div>
 							<button class = "link link--button link--button-full-width link--button-upload"
 									type = "button"
-									v-if = "!userInputData.board_certification.userInput.HTML && !userInputData.board_certification.fileBase64"
-									@click.stop = "$refs.board_certificationInputFile.click();">
+									v-if = "!userInputData.medical_degree.userInput.HTML && !userInputData.medical_degree.fileBase64"
+									@click.stop = "$refs.medicalDegreeInputFile.click();">
 								<img class = "paper-fastener-button-image"
 									 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
 									 alt = "paper-fastener-button" />
-								<p class = "link__txt">{{ $t("forms.add-certification") }}</p>
+								<p class = "link__txt">{{ $t("forms.add-degree") }}</p>
 							</button>
-							<div class = "form__message" v-if = "errors.board_certification">{{ errors.board_certification }}</div>
+							<div class = "form__message" v-if = "errors.medicalDegree">{{ errors.medicalDegree }}</div>
 							<input class = "input input--hidden"
 								   type = "file"
-								   name = "board_certification"
-								   ref = "board_certificationInputFile"
+								   name = "medicalDegree"
+								   ref = "medicalDegreeInputFile"
 								   accept = ".jpg, .jpeg, .png, .pdf"
-								   @change = "onCertificationUpload" />
+								   @change = "onMedicalDegreeUpload" />
+						</div>
+						<div class = "personal-info__item">
+							<header class = "personal-info__header">Zertifizierung</header>
+							<div class = "personal-info__file">
+								<div v-if = "userInputData.board_certification.fileBase64 && !userInputData.board_certification.userInput.HTML"
+									 class = "personal-info__file__container"
+									 @click.stop = "$refs.board_certificationInputFile.click();">
+									<object class = "personal-info__file-src"
+											v-if = "userInputData.board_certification.fileBase64.indexOf('data:application/pdf') > -1"
+											:src = "userInputData.board_certification.fileBase64"
+											type = "application/pdf"></object>
+									<img v-else
+										 :src = "userInputData.board_certification.fileBase64"
+										 class = "personal-info__file-src">
+									<img :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
+										 class = "paper-fastener-button-image">
+								</div>
+								<div v-else-if = "userInputData.board_certification.userInput.HTML"
+									 class = "personal-info__file">
+									<div v-html = "userInputData.board_certification.userInput.HTML"></div>
+									<button type = "button"
+											@click.stop = "removeCertificationImage"
+											class = "personal-info__file-remove">
+									</button>
+								</div>
+								<button class = "link link--button link--button-full-width link--button-upload"
+										type = "button"
+										v-if = "!userInputData.board_certification.userInput.HTML && !userInputData.board_certification.fileBase64"
+										@click.stop = "$refs.board_certificationInputFile.click();">
+									<img class = "paper-fastener-button-image"
+										 :src = "require('~/static/images/icons/paper-fastener-button-icon.svg')"
+										 alt = "paper-fastener-button" />
+									<p class = "link__txt">{{ $t("forms.add-certification") }}</p>
+								</button>
+								<div class = "form__message" v-if = "errors.board_certification">{{ errors.board_certification }}</div>
+								<input class = "input input--hidden"
+									   type = "file"
+									   name = "board_certification"
+									   ref = "board_certificationInputFile"
+									   accept = ".jpg, .jpeg, .png, .pdf"
+									   @change = "onCertificationUpload" />
+							</div>
 						</div>
 					</div>
 					<div class = "personal-info__item">
@@ -156,7 +186,7 @@
 							</div>
 						</div>
 					</div>
-					<div class = "personal-info__item">
+					<div class = "personal-info__item hide-region">
 						<div class = "single-form">
 							<header class = "personal-info__header">Region</header>
 							<div class = "personal-info__main personal-info__main-select">
@@ -172,6 +202,18 @@
 									</option>
 								</select>
 							</div>
+						</div>
+					</div>
+					<div class = "personal-info__item">
+						<header class = "personal-info__header">Sprachen</header>
+						<div class = "personal-info__item">
+							<select2 v-bind:config="{
+								options:$store.state.languages.languages,
+								multiple:true,
+								selected:userInputData.languages
+							}"
+									 @selectedData="onLanguagesChang"
+							/>
 						</div>
 					</div>
 				</div>
@@ -194,27 +236,6 @@
 							   ref = "avatarInputFile"
 							   accept = ".jpg, .jpeg, .png"
 							   @change = "onAvatarUpload" />
-					</div>
-				</div>
-			</div>
-			<div class = "personal-info__items personal-info__items--max-width">
-				<div class = "personal-info__item">
-					<h3>Sprachen</h3>
-					<div class = "personal-info__main personal-info__main-languages">
-						<div class = "custom-checkbox__item"
-							 v-for = "(option) in $store.state.languages.languages"
-							 :key = "`language_${option.id}`">
-							<input type = "checkbox"
-								   :id = "`language_${option.id}`"
-								   :value = "option.id"
-								   v-model = "userInputData.languages"
-								   class = "custom-checkbox__input">
-							<label :for = "`language_${option.id}`"
-								   class = "custom-checkbox__label">
-								<span class = "custom-checkbox__label__icon"></span>
-								{{ option.name }}
-							</label>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -244,61 +265,46 @@
 				</div>
 			</div>
 		</form>
-		<div class = "personal-text">
-			<p>Please fill in all information in order to request Administrator’s approval and appear in search on Online Hautarzt.</p>
-			<p>Once approved, you will be able to add your bank details and begin servicing your patients through Online Hautarzt platform.</p>
-		</div>
-		<div class = "personal-link">
-			<div class = "personal-info__items">
-				<div class = "personal-info__column">
-					<div class = "personal-info__item">
-						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-								@click.stop = "onChangeEmail">Ändern Sie die E-Mail
-						</button>
-					</div>
-				</div>
-				<div class = "personal-info__column">
-					<div class = "personal-info__item">
-						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-								type = "button"
-								@click.stop = "onChangePassword">Passwort ändern
-						</button>
-					</div>
+		<div class = "personal-info__items">
+			<div class = "personal-info__column">
+				<div class = "personal-info__item">
+					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link personal-info__item--submit"
+							:class = "{'personal-info__item--submit-disabled': !isSomethingEdited}"
+							type = "button"
+							@click.stop = "onSave">
+						SPEICHERN
+					</button>
 				</div>
 			</div>
+			<div class = "personal-info__column">
+				<div class = "personal-info__item"
+					 v-if = "!isApproved">
+					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
+							@click.stop = "onApproveRequest">ANTRAG GENEHMEN
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class = "personal-text">
+			<p>{{this.$t('page-personal-information.p1')}}</p>
+			<p>{{this.$t('page-personal-information.p2')}}</p>
+		</div>
+		<div class = "personal-link">
+
 			<div class = "personal-info__items">
 				<div class = "personal-info__column personal-link__column">
-					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
+					<button class = "link link--button-transparent link--button link--line"
 							@click.stop = "onPauseOrUnpauseAccount">
 						{{ `${isPauseAccount ? "UNPAUSE" : "PAUSE"} MEIN KONTO` }}
 					</button>
 				</div>
 				<div class = "personal-info__column personal-link__column">
-					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
+					<button class = "link link--button-transparent link--button link--line"
 							@click.stop = "openModal($modals.personalInfoConfirmDeleteAccount)">LÖSCHE MEIN KONTO
 					</button>
 				</div>
 			</div>
-			<div class = "personal-info__items">
-				<div class = "personal-info__column">
-					<div class = "personal-info__item"
-						 v-if = "!isApproved">
-						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-								@click.stop = "onApproveRequest">ANTRAG GENEHMEN
-						</button>
-					</div>
-				</div>
-				<div class = "personal-info__column">
-					<div class = "personal-info__item">
-						<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link personal-info__item--submit"
-								:class = "{'personal-info__item--submit-disabled': !isSomethingEdited}"
-								type = "button"
-								@click.stop = "onSave">
-							SPEICHERN
-						</button>
-					</div>
-				</div>
-			</div>
+
 		</div>
 	</div>
 </template>
@@ -313,6 +319,7 @@
     import InputEmail from "~/components/Content/InputEmail";
     import AutoHeight from "~/components/Content/AutoHeight";
     import AddressAutocomplete from "~/components/Content/AddressAutocomplete";
+    import select2 from "~/components/select2/select2.vue"
 
     export default {
         mixins     : [
@@ -324,7 +331,8 @@
             InputText,
             InputEmail,
             AutoHeight,
-            AddressAutocomplete
+            AddressAutocomplete,
+            select2
         },
         data(){
             return {
@@ -334,8 +342,10 @@
                     first_name        : "",
                     description       : "",
                     short_description : "",
+                    email			  : "",
+                    password		  : "********",
 
-                    title_id          : "",
+                title_id          : "",
                     region_id         : "",
                     specialization_id : "",
 
@@ -475,6 +485,7 @@
         },
         methods    : {
             setDefaultValues(){
+                this.userInputData.email 			 = this.$store.state.user.user.email;
                 this.userInputData.last_name         = this.$store.state.user.user.last_name || "";
                 this.userInputData.first_name        = this.$store.state.user.user.first_name || "";
                 this.userInputData.description       = this.$store.state.user.user.description || "";
@@ -516,6 +527,9 @@
                     eventData : null,
                 };
             },
+    		onLanguagesChang(val){
+                this.userInputData.languages = val.id ? val.id : [];
+			},
             onPauseOrUnpauseAccount(){
                 UserApi[`${this.isPauseAccount ? "unPauseAccount" : "pauseAccount"}`]({
                     id    : this.$store.state.user.user.id,
@@ -719,10 +733,10 @@
                     token  : this.$cookies.get(this.$cookie.names.token),
                     params : formData
                 }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "Herzliche Glückwünsche!");
+                    this.openModal(this.$modals.defaultModal, "", "Herzliche Glückwünsche!");
                     this.setDefaultValues();
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.openModal(this.$modals.defaultModal, "", "Etwas ist schief gelaufen!");
                     this.setDefaultValues();
                 });
             },
@@ -741,7 +755,15 @@
 	$tablet_padding_right: 33px;
 	$avatar_img_size: 256px;
 	$desktop_max_column_width: 28.5%;
-	
+	.v-select__multiple{
+		width: 100%;
+	}
+	.link {
+
+		&--line {
+			min-width: auto;
+		}
+	}
 	.personal-info {
 		margin-bottom : $main_offset * 2;
 		
@@ -760,7 +782,12 @@
 				}
 			}
 		}
-		
+		&__item-group{
+			height: 303px;
+			@include tablet-big{
+				height: 311px;
+			}
+		}
 		&__column {
 			flex      : 0 0 100%;
 			order     : 2;
@@ -829,6 +856,10 @@
 			display       : flex;
 			align-items   : center;
 			margin-bottom : 6px;
+
+			&--edit-box{
+				justify-content:space-between;
+			}
 		}
 		
 		&__main { position : relative; }
@@ -863,11 +894,14 @@
 		&__main-phone.vue-tel-input {
 			width         : 100%;
 			height        : 40px;
-			border        : 2px solid $color-curious-blue;
+			border        : 1px solid $color-table-border;
 			background    : $color-white;
 			box-sizing    : border-box;
 			border-radius : 4px;
-			
+
+			&:focus{
+				border: 1px solid $color-curious-blue;
+			}
 			@include phone-big {
 				height : 56px;
 			}
@@ -963,7 +997,7 @@
 			overflow  : hidden;
 			min-width : auto;
 			font-size : inherit;
-			
+
 			@media screen and (max-width : $screen-phone-big-min - 1) {
 				&--button-upload {
 					padding : 11px 24px 7px 38px;
@@ -1019,5 +1053,9 @@
 	.main-animation-enter, .main-animation-leave-to {
 		opacity   : 0;
 		transform : translateY(50px);
+	}
+
+	.hide-region {
+		display: none
 	}
 </style>

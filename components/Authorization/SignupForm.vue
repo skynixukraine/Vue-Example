@@ -55,7 +55,7 @@
 			<div class = "form__message" v-if = "errors.phone_number_invalid">{{ errors.phone_number_invalid }}</div>
 		</div>
 		<div class = "form__item">
-			<div class = "form__title form__title--degree">{{ $t('forms.upload-degree') }}</div>
+			<div class = "form__title form__title--degree">{{ $t('forms.upload-degree') }} <span>*</span></div>
 			<input class = "input input--hidden"
 				   type = "file"
 				   name = "degree"
@@ -74,7 +74,7 @@
 		</div>
 		<div class = "form__item">
 			<div class = "form__title form__title--certification">
-				{{ $t('forms.upload-certification') }}
+				{{ $t('forms.upload-certification') }} <span>*</span>
 			</div>
 			<input class = "input input--hidden"
 				   type = "file"
@@ -136,7 +136,7 @@
         created(){
             if(process.client){
                 this.$recaptchaLoaded()
-                    .then(() => {
+                    .then(() =>{
                         this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor)
                     });
             }
@@ -157,7 +157,9 @@
                     confirm_password : false,
                     email            : false,
                     phone            : false,
-                    terms            : false
+                    terms            : false,
+                    degree           : false,
+                    certification    : false,
                 },
                 bindProps         : {
                     mode                    : "international",
@@ -192,12 +194,12 @@
                 const formData = this.prepareDataForSending(this.models);
 
                 this.$store.dispatch('user/REGISTER_USER', formData)
-                    .then((response) => {
+                    .then((response) =>{
                         this.openModal(this.$modals.registerSuccess);
                         this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor);
                         this.isFormSending = false;
                     })
-                    .catch((response) => {
+                    .catch((response) =>{
                         this.$root.$emit('showNotify', {type : 'error', text : response.message});
                         this.handleErrorResponse(response.errors);
                         this.loadAndSetRecaptchaToken(this.$recaptchaActions.registerDoctor);
@@ -231,6 +233,14 @@
                         type : 'error',
                         text : this.$t('errors.form.accept-terms-and-conditions')
                     });
+                }
+                if(!models.certification){
+                    this.errors['certification'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')});
+                }
+                if(!models.degree){
+                    this.errors['degree'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')});
                 }
 
                 // check recaptcha token exist
@@ -270,7 +280,7 @@
                     formData.append('medical_degree', models.degree);
                 }
                 if(models.certification){
-                    formData.append('medical_degree', models.certification);
+                    formData.append('board_certification', models.certification);
                 }
 
                 // recaptcha token for action 'register_doctor'
@@ -289,7 +299,7 @@
             onEmailChange(event){
                 this.formIsValid.email = this.validateEmail(event);
                 this.$forceUpdate();
-               this.setObjLocalStorage({email: event.target.value});
+                this.setObjLocalStorage({email : event.target.value});
             },
             onPasswordChange(event){
                 this.formIsValid.password = this.validatePassword(event, this.$refs.password_confirmation);
@@ -307,17 +317,25 @@
             onDegreeUpload(event){
                 if(!event.target.files[0]){ return; }
 
-                this.validateFileExtension(event) ? this.models.degree = event.target.files[0] : this.models.degree = '';
+                if(this.validateFileExtension(event)){
+                    this.models.degree      = event.target.files[0];
+                    this.formIsValid.degree = true;
+                } else{
+                    this.models.degree = '';
+                }
 
                 this.$forceUpdate();
             },
             onCertificationUpload(event){
                 if(!event.target.files[0]){ return; }
 
-                this.validateFileExtension(event) ? this.models.certification = event.target.files[0] : this.models.certification = '';
-
+                if(this.validateFileExtension(event)){
+                    this.models.certification      = event.target.files[0];
+                    this.formIsValid.certification = true;
+                } else{
+                    this.models.certification = '';
+                }
                 this.$forceUpdate();
-
             },
             onAcceptChange(event){
                 this.formIsValid.terms = this.validateAccept(event, this.models.accepted);
@@ -341,7 +359,6 @@
 			justify-content : center;
 		}
 	}
-	
 	.form__item {
 		width  : 100%;
 		margin : 2% auto;
@@ -392,7 +409,6 @@
 				
 				@include tablet {
 					text-align : left;
-					
 				}
 			}
 		}
@@ -400,7 +416,6 @@
 		.input, #vue-tel-input {
 			width         : 100%;
 			height        : 40px;
-			border        : 2px solid $color-curious-blue;
 			background    : $color-white;
 			box-sizing    : border-box;
 			padding-top   : 4px;
@@ -422,9 +437,7 @@
 			}
 		}
 	}
-	
 	input[type="checkbox"] { order : 1; }
-	
 	.form__message {
 		text-align   : left;
 		padding-left : 15px;
@@ -433,7 +446,6 @@
 			padding-left : 15px;
 		}
 	}
-	
 	.check-icon,
 	.eye-icon {
 		top      : 40px;
@@ -460,5 +472,18 @@
 			font-style  : normal;
 			font-weight : 500;
 		}
+	}
+	.vue-tel-input#vue-tel-input {
+		border : 1px solid $color-table-border;
+		.vti__input {
+			max-width : 180px;
+			
+			@include phone-big {
+				max-width : 300px;
+			}
+		}
+	}
+	.form__message {
+		font-size: 13px;
 	}
 </style>

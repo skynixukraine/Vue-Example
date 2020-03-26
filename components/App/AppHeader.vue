@@ -61,7 +61,10 @@
 		
 		&--bg-transparent { background : transparent; }
 		
-		&--bg-white { background : $color-white; }
+		&--bg-white {
+			background : $color-white;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+		}
 		
 		&--bg-default { background : $color-stratos; }
 		

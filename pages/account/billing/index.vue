@@ -1,22 +1,38 @@
 <template>
-	<div class = "page">
-		<div class = "section">
-			<div class = "container">
-				<h1>Billing</h1>
-				<a v-if = "!userPaymentData.stripe_account_id && userPaymentData.url"
-				   :href = "userPaymentData.url"
-				   target = "_blank"
-				   class = "link link--button link--button-blue link--button-gradient">Connect stripe account</a>
-				<span v-else-if = "userPaymentData.stripe_account_id">You stripe account already connected!</span>
-				<BillingTable />
+	<div class = "page page-billing">
+		<div class = "section section--0-0">
+			<div class = "container-fluid">
+				<Dashboard>
+					<DashboardSidebar />
+					<DashboardMain>
+							<BillingStatus />
+						<DashboardContent>
+							<SearchStripeOperations @search="search"/>
+							<BillingTable v-bind:querySearch="querySearch"/>
+						</DashboardContent>
+					</DashboardMain>
+				</Dashboard>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+    import Dashboard from "~/components/Dashboard/Dashboard";
+    import BillingStatus from "~/components/Account/BillingStatus.vue";
+    import DashboardMain from "~/components/Dashboard/DashboardMain";
     import BillingTable from "~/components/Account/BillingTable.vue";
+    import DashboardHeader from "~/components/Dashboard/DashboardHeader";
+    import DashboardSidebar from "~/components/Dashboard/DashboardSidebar";
+    import DashboardContent from "~/components/Dashboard/DashboardContent";
+    import SearchStripeOperations from "~/components/Account/SearchStripeOperations.vue";
+
     export default {
+        data() {
+            return {
+                querySearch: ''
+			}
+        },
         middleware : [
             "auth",
         ],
@@ -42,10 +58,24 @@
                 return this.$store.state.user.userPaymentData;
             }
         },
+        methods:{
+            search(query){
+                this.querySearch = query;
+			}
+		},
         components : {
+            Dashboard,
+            SearchStripeOperations,
             BillingTable,
+            DashboardMain,
+            BillingStatus,
+            DashboardHeader,
+            DashboardSidebar,
+            DashboardContent,
         }
     }
 </script>
 
-<style lang = "scss"></style>
+<style lang = "scss">
+
+</style>

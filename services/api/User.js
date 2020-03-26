@@ -501,4 +501,53 @@ export default {
             });
         });
     },
+    async requestStripeOperations({id, token, query }){
+
+        return new Promise((resolve, reject) => {
+            HTTP.get(`/doctors/${id}/billings`, {
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                },
+                params    : {
+                    page: query.page,
+                    per_page:  query.per_page,
+                    search : query.search,
+                    order_field: query.order_field,
+                    order_direction: query.order_direction //asc || desc
+                }
+
+            }).then(response => {
+
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data,
+                    message : "Abrechnungen wurden erfolgreich empfangen",
+                });
+            }).catch(error => {
+                let message = error.message;
+                try{
+                    switch(error.response.status){
+                        case 500:{
+                            message = "Interner technischer Fehler ist aufgetreten";
+                            break;
+                        }
+                        case 404:{
+                            message = "Ressource nicht gefunden";
+                            break;
+                        }
+                    }
+                } catch(e){
+                    console.error(e);
+                }
+
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message,
+                });
+            });
+        });
+    }
 }
