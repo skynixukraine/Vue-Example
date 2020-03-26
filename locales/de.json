@@ -34,7 +34,8 @@
 		"signup": "REGISTRIEREN",
 		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
 		"privacy-policy": " Datenschutzerklärung",
-		"forgot-password": "Vergessenes passwort?"
+		"forgot-password": "Vergessenes passwort?",
+        "enquiries": "Anfragen"
 	},
 	"states": {
 		"loading": "Loading..."
