@@ -511,7 +511,7 @@
                         button     : "Okay!",
                         content    : `Willkommen beim Online Hautarzt vor Ort!<br>` +
                             			`In wenigen Minuten leiten wir Ihre Anfrage an ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} weiter.<br>` +
-                            			`Damit dieser sich ein gutes Bild von Ihrem Hautproblem machen kann, stellen wir Ihnen vorab einige Fragen.`,
+                            			`Damit diese(r) sich ein gutes Bild von Ihrem Hautproblem machen kann, stellen wir Ihnen vorab einige Fragen und lassen Sie Fotos davon aufnehmen.`,
                         questioner : "Online Hautarzt vor Ort",
                     }
                 } else{
