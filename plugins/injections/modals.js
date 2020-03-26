@@ -9,6 +9,7 @@ export default ({app}, inject) => {
         personalInfoChangePassword       : "personal-info-change-password",
         diagnosticChatConfirmEnquire     : "diagnostic-chat-confirm-enquire",
         personalInfoConfirmDeleteAccount : "personal-info-confirm-delete-account",
+        chatConfirmCodeMobile            : "confirm-code-modal",
     };
 
     app.modals            = OPTIONS;

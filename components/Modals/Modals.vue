@@ -7,6 +7,7 @@
 		<PersonalInfoChangePassword v-if = "$store.state.modals.currentActiveModal === $modals.personalInfoChangePassword" />
 		<DiagnosticChatConfirmEnquire v-if = "$store.state.modals.currentActiveModal === $modals.diagnosticChatConfirmEnquire" />
 		<PersonalInfoConfirmDeleteAccount v-if = "$store.state.modals.currentActiveModal === $modals.personalInfoConfirmDeleteAccount" />
+		<ChatConfirmCodeMobile v-if = "$store.state.modals.currentActiveModal === $modals.chatConfirmCodeMobile" />
 	</div>
 </template>
 
@@ -17,7 +18,8 @@
     import PersonalInfoChangeEmail from "~/components/Modals/PersonalInfoChangeEmail";
     import PersonalInfoChangePassword from "~/components/Modals/PersonalInfoChangePassword";
     import DiagnosticChatConfirmEnquire from "~/components/Modals/DiagnosticChatConfirmEnquire";
-    import PersonalInfoConfirmDeleteAccount from "~/components/Modals/PersonalInfoConfirmDeleteAccount";
+	import PersonalInfoConfirmDeleteAccount from "~/components/Modals/PersonalInfoConfirmDeleteAccount";
+	import ChatConfirmCodeMobile from "~/components/Modals/ChatConfirmCodeMobile";
 
     export default {
         components : {
@@ -27,7 +29,8 @@
             PersonalInfoChangeEmail,
             PersonalInfoChangePassword,
             DiagnosticChatConfirmEnquire,
-            PersonalInfoConfirmDeleteAccount,
+			PersonalInfoConfirmDeleteAccount,
+			ChatConfirmCodeMobile,
         }
     }
 </script>
