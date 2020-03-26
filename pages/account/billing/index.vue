@@ -7,7 +7,8 @@
 					<DashboardMain>
 							<BillingStatus />
 						<DashboardContent>
-							<BillingTable />
+							<SearchStripeOperations @search="search"/>
+							<BillingTable v-bind:querySearch="querySearch"/>
 						</DashboardContent>
 					</DashboardMain>
 				</Dashboard>
