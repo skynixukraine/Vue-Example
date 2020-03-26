@@ -6,7 +6,8 @@
 			<div class = "dashboard-sidebar__items">
 				<ul class = "dashboard-sidebar__list">
 					<li class = "dashboard-sidebar__item dashboard-sidebar__item--account">
-						<NuxtLink class = "dashboard-sidebar__link dashboard-sidebar__link_active" :to = "$routes.personalInformation.path">
+						<NuxtLink class = "dashboard-sidebar__link dashboard-sidebar__link_active"
+								  :to = "$routes.personalInformation.path">
 							{{ $t("sidebar.proff-info") }}
 						</NuxtLink>
 					</li>
@@ -78,7 +79,7 @@
                         this.isStickSidebarMain = false;
                         this.$refs.sidebarMain.setAttribute("style", ``);
                     }
-					
+
                     if(window.pageYOffset + window.innerHeight > this.appMain.clientHeight){
                         if(!this.isStickSidebarFooter){
                             this.isStickSidebarFooter = true;
@@ -88,11 +89,11 @@
                     }
                 }
             },
-			onResize(){
+            onResize(){
                 window.innerWidth >= constants.mediaScreenTabletBigMin ?
                     window.addEventListener("scroll", this.onScroll) :
                     window.removeEventListener("scroll", this.onScroll);
-			}
+            }
         }
     }
 </script>
@@ -145,6 +146,7 @@
 			
 			&:before {
 				$size : 24px;
+				top                 : -2px;
 				left                : 0;
 				width               : $size;
 				height              : $size;
@@ -170,7 +172,7 @@
 			&--billing {
 				&:before {
 					background-image : url("~static/images/icons/credit-card.svg");
-					background-size: cover;
+					background-size  : cover;
 				}
 			}
 			
