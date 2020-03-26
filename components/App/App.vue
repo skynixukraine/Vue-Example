@@ -17,7 +17,6 @@
 		font-weight      : 400;
 		background-color : $color-black-squeeze;
 	}
-	
 	h1, h2, h3, h4, h5, h6 {
 		font-family : $TheAntiquaB;
 		line-height : 1.33;
@@ -25,36 +24,29 @@
 		font-weight : 700;
 		margin      : 0 0 16px;
 	}
-	
 	h1 {
 		font-size   : 36px;
 		line-height : 46px;
 		margin      : 0 0 32px;
 	}
-	
 	h2 {
 		font-size   : 36px;
 		line-height : 46px;
 		font-weight : 800;
 		margin      : 0 0 32px;
 	}
-	
 	h3 {
 		font-weight : 400;
 		font-size   : 24px;
 		line-height : 30px;
 	}
-	
 	h4 {
 		font-weight : 600;
 		font-size   : 20px;
 		line-height : 26px;
 	}
-	
 	p { margin : 0; }
-	
 	a { text-decoration : none; }
-	
 	button {
 		cursor                      : pointer;
 		-webkit-tap-highlight-color : transparent;
@@ -63,7 +55,6 @@
 			outline : none;
 		}
 	}
-	
 	@include tablet {
 		h1 {
 			font-size   : 64px;
@@ -77,7 +68,6 @@
 			font-weight : 800;
 		}
 	}
-	
 	.app {
 		display        : flex;
 		overflow-x     : hidden;
@@ -87,7 +77,6 @@
 		
 		&-main { flex : 1 0 auto; }
 	}
-	
 	/*********************
 	END: GENERAL
 	*********************/
@@ -112,10 +101,9 @@
 			}
 		}
 	}
-	
 	// section
 	.section {
-		$padding: 64px;
+		$padding : 64px;
 		display             : flex;
 		position            : relative;
 		padding-top         : $padding;
@@ -137,7 +125,7 @@
 		}
 		
 		&.section--32-32 {
-			$padding: 32px;
+			$padding : 32px;
 			padding-top    : $padding;
 			padding-bottom : $padding;
 		}
@@ -156,7 +144,7 @@
 		}
 		
 		@include tablet-big {
-			$padding: 60px;
+			$padding : 60px;
 			padding-top    : $padding;
 			padding-bottom : $padding;
 			
@@ -173,9 +161,7 @@
 			}
 		}
 	}
-	
 	.section-not-padding { padding : 0; }
-	
 	.section-header {
 		margin-bottom : 32px;
 		
@@ -195,7 +181,6 @@
 			}
 		}
 	}
-	
 	.section-footer {
 		text-align : center;
 		margin-top : 32px;
@@ -204,7 +189,6 @@
 			margin-top : 8px;
 		}
 	}
-	
 	.section-scroll-tooltip {
 		left       : 50%;
 		width      : 100%;
@@ -216,7 +200,7 @@
 		transform  : translate(-50%, -50%);
 		transition : opacity $transition ease;
 		box-sizing : border-box;
-		z-index: 10;
+		z-index    : 10;
 		
 		@include tablet {
 			position : fixed;
@@ -261,7 +245,6 @@
 			}
 		}
 	}
-	
 	// container
 	.container {
 		width        : 100%;
@@ -286,15 +269,15 @@
 		&__dots {
 			display : none;
 		}
-
-		&__mobile-adaptation{
-			padding: 50px 20px 0 20px;
+		
+		&__mobile-adaptation {
+			padding : 50px 20px 0 20px;
 		}
 		
 		@include tablet-big {
 			&__dots {
-				$vertical_offset: -74px;
-				$horizontal_offset: -75px;
+				$vertical_offset : -74px;
+				$horizontal_offset : -75px;
 				display : block;
 				
 				&--1, &--2, &--3 {
@@ -302,26 +285,25 @@
 				}
 				
 				&--1 {
-					top      : $vertical_offset;
-					right    : $horizontal_offset;
+					top   : $vertical_offset;
+					right : $horizontal_offset;
 				}
 				
 				&--2 {
-					left     : $horizontal_offset;
-					bottom   : $vertical_offset;
+					left   : $horizontal_offset;
+					bottom : $vertical_offset;
 				}
 				
 				&--3 {
-					top      : -186px;
-					right    : 0;
+					top   : -186px;
+					right : 0;
 				}
 			}
-			&__mobile-adaptation{
-				padding: 80px;
+			&__mobile-adaptation {
+				padding : 80px;
 			}
 		}
 	}
-	
 	// list
 	.list {
 		margin     : 0;
@@ -337,7 +319,7 @@
 			&--last-child {
 				margin : 0;
 			}
-
+			
 			@include tablet {
 				margin : 0;
 			}
@@ -352,7 +334,6 @@
 				@include tablet {
 					max-width : 31.33%;
 					flex-wrap : nowrap;
-					
 				}
 			}
 		}
@@ -393,7 +374,6 @@
 			}
 		}
 	}
-	
 	// link
 	.link {
 		display    : inline;
@@ -406,16 +386,16 @@
 		:focus {
 			outline : none;
 		}
-		&--line{
-			font-style: normal;
-			font-weight: 500;
-			font-size: 15px;
-			line-height: 22px;
-			text-transform: none;
-			border: none;
+		&--line {
+			font-style     : normal;
+			font-weight    : 500;
+			font-size      : 15px;
+			line-height    : 22px;
+			text-transform : none;
+			border         : none;
 		}
-		&--underline{
-			text-decoration: underline;
+		&--underline {
+			text-decoration : underline;
 		}
 		&--button {
 			width          : auto;
@@ -477,7 +457,7 @@
 			
 			&-upload {
 				color          : rgba(122, 125, 132, .5);
-				border         : 2px solid $color-curious-blue;
+				border         : 1px solid $color-table-border;
 				position       : relative;
 				font-size      : 18px;
 				text-align     : left;
@@ -523,9 +503,7 @@
 			border-bottom : 1px solid $color-terms-text-decoration
 		}
 	}
-	
 	.link.link--button-upload { font-weight : 400; }
-	
 	// input
 	.input, .select {
 		width         : 100%;
@@ -536,11 +514,11 @@
 		padding-top   : 4px;
 		padding-left  : 6%;
 		border-radius : 4px;
-
-			&:focus{
-				border: 1px solid $color-curious-blue;
-			}
-
+		
+		&:focus {
+			border : 1px solid $color-curious-blue;
+		}
+		
 		@include phone-big {
 			height : 56px;
 		}
@@ -550,7 +528,6 @@
 			padding-right : $main_offset / 2;
 		}
 	}
-	
 	.input {
 		&::placeholder, &::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
 			color       : $color-form-input-placeholder;
@@ -565,13 +542,11 @@
 			position : fixed;
 		}
 	}
-	
 	.select {
 		padding-right      : 40px;
 		-moz-appearance    : none;
 		-webkit-appearance : none;
 	}
-	
 	//table
 	.table {
 		position      : relative;
@@ -610,7 +585,6 @@
 			&:after {
 				transform        : rotate(90deg);
 				background-image : url("~static/images/icons/arrow-down.svg");
-				
 			}
 		}
 		
@@ -651,24 +625,24 @@
 			color      : $color-curious-blue;
 			padding    : 0 0 5px 15px;
 			flex-basis : 25%;
-
-			@include tablet{
-				display: flex;
-				align-items: center;
+			
+			@include tablet {
+				display     : flex;
+				align-items : center;
 			}
 			@include desktop-l {
 				padding-left : 25px;
 			}
-			@include desktop-max{
-				line-height: 1;
-				white-space: pre-line;
-				vertical-align: middle;
+			@include desktop-max {
+				line-height    : 1;
+				white-space    : pre-line;
+				vertical-align : middle;
 			}
 		}
-		&__br{
-			display: none;
-			@include desktop-max{
-				display: inline;
+		&__br {
+			display : none;
+			@include desktop-max {
+				display : inline;
 			}
 		}
 		&__main {
@@ -676,7 +650,7 @@
 		}
 		
 		&__main-items {
-			min-height: 112px;
+			min-height     : 112px;
 			color          : $color-rolling-stone;
 			display        : flex;
 			position       : relative;
@@ -723,8 +697,8 @@
 				padding-left : 25px;
 			}
 			@include tablet-max {
-				&:not(:last-child){
-					border-bottom: 1px solid #f3f3f3;
+				&:not(:last-child) {
+					border-bottom : 1px solid #F3F3F3;
 				}
 			}
 			
@@ -745,8 +719,6 @@
 			}
 		}
 	}
-	
-	
 	/*********************
 	END: COMPONENTS
 	*********************/
@@ -779,7 +751,6 @@
 			justify-content : center;
 		}
 	}
-	
 	/*********************
 	END: CUSTOM BUTTONS
 	*********************/
@@ -826,17 +797,16 @@
 				font-size : 18px;
 			}
 		}
-		&__floating__buttons{
-			padding: 0 0 0 211px;
+		&__floating__buttons {
+			padding : 0 0 0 211px;
 			@include tablet {
-				padding: 0 0 0 265px;
+				padding : 0 0 0 265px;
 			}
-			@include phone-big-max{
-				padding: 45px 0 0;
+			@include phone-big-max {
+				padding : 45px 0 0;
 			}
 		}
 	}
-	
 	.container__dots-svg {
 		@include tablet-big {
 			width            : 192px;
@@ -861,7 +831,6 @@
 			bottom : 175px;
 		}
 	}
-	
 	// Custom radio and checkboxes
 	.custom {
 		&-checkbox, &-radio {
@@ -876,7 +845,6 @@
 				display     : flex;
 				position    : relative;
 				align-items : center;
-				
 			}
 			
 			&__input {
@@ -927,7 +895,7 @@
 					}
 				}
 				
-				&:hover{ background-color : $color-matisse; }
+				&:hover { background-color : $color-matisse; }
 			}
 		}
 		
@@ -969,10 +937,10 @@
 			}
 		}
 		
-		&-input{
+		&-input {
 			position : relative;
 			
-			&__label{
+			&__label {
 				color          : $color-rolling-stone;
 				width          : 100%;
 				cursor         : pointer;
@@ -1012,9 +980,9 @@
 				box-sizing    : border-box;
 				padding-left  : $main_offset / 2;
 				border-radius : 4px;
-
-				&:focus{
-					border    : 1px solid $color-curious-blue;
+				
+				&:focus {
+					border : 1px solid $color-curious-blue;
 				}
 				@include phone-big {
 					height : 56px;
@@ -1032,7 +1000,6 @@
 			}
 		}
 	}
-	
 	.control-btn {
 		color         : $color-black-squeeze;
 		border        : none;
@@ -1072,16 +1039,14 @@
 			background-color : $color-rolling-stone;
 		}
 	}
-	
 	// Vue transition
 	.main-animation-enter-active, .main-animation-leave-active {
 		transition : $transition;
 	}
-	
 	.main-animation-enter, .main-animation-leave-to {
 		opacity   : 0;
 		transform : translateY(50px);
 	}
 	//Hide recaptcha badge on all pages @see https://jira.skynix.co/browse/OH-220
-	.grecaptcha-badge { opacity:0;}
+	.grecaptcha-badge { opacity : 0;}
 </style>
