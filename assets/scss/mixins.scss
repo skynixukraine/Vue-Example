@@ -3,7 +3,11 @@
         @content;
     }
 }
-
+@mixin phone-big-max {
+    @media (max-width: #{$screen-phone-big-min}) {
+        @content;
+    }
+}
 @mixin tablet {
     @media (min-width: #{$screen-tablet-min}) {
         @content;

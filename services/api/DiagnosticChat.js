@@ -105,5 +105,24 @@ export default {
                     });
                 });
         });
-    }
+    },
+    async sendSmsCode(id){
+        return new Promise((resolve, reject) => {
+            HTTP.get(`/enquires/${id}/verify-sms`, {})
+                .then(response => {
+                    resolve({
+                        success : true,
+                        status  : response.status,
+                        data    : response.data.data,
+                        message : "SMS has been send",
+                    });
+                }).catch(error => {
+                    reject({
+                        success : false,
+                        status  : error.response.status,
+                        message : error.message,
+                    });
+                });
+        });
+    },
 }

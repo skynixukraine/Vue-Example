@@ -5,19 +5,20 @@
 			 ref = "sidebarMain">
 			<div class = "dashboard-sidebar__items">
 				<ul class = "dashboard-sidebar__list">
-					<li class = "dashboard-sidebar__item dashboard-sidebar__item-account">
-						<NuxtLink class = "dashboard-sidebar__link dashboard-sidebar__link_active" :to = "$routes.personalInformation.path">
+					<li class = "dashboard-sidebar__item dashboard-sidebar__item--account">
+						<NuxtLink class = "dashboard-sidebar__link dashboard-sidebar__link_active"
+								  :to = "$routes.personalInformation.path">
 							{{ $t("sidebar.proff-info") }}
 						</NuxtLink>
 					</li>
-					<li class = "dashboard-sidebar__item dashboard-sidebar__item-billing">
+					<li class = "dashboard-sidebar__item dashboard-sidebar__item--billing">
 						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.billing.path">Billing</NuxtLink>
-						<span class = "dashboard-sidebar__sticker">New</span>
 					</li>
-					<li class = "dashboard-sidebar__item dashboard-sidebar__item-enquiries">
+					<li class = "dashboard-sidebar__item dashboard-sidebar__item--enquiries">
 						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.enquiries.path">
 							{{ $t("sidebar.request") }}
 						</NuxtLink>
+						<span class = "dashboard-sidebar__sticker">New</span>
 					</li>
 				</ul>
 			</div>
@@ -26,10 +27,10 @@
 				:class = "{'dashboard-sidebar__main--stick': isStickSidebarFooter}"
 				ref = "sidebarFooter">
 			<ul class = "dashboard-sidebar__list">
-				<li class = "dashboard-sidebar__item dashboard-sidebar__item-logout">
+				<li class = "dashboard-sidebar__item dashboard-sidebar__item--logout">
 					<LogoutButton />
 				</li>
-				<li class = "dashboard-sidebar__item dashboard-sidebar__item">
+				<li class = "dashboard-sidebar__item dashboard-sidebar__item--help">
 					<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.contact.path">Hilfe</NuxtLink>
 				</li>
 			</ul>
@@ -78,7 +79,7 @@
                         this.isStickSidebarMain = false;
                         this.$refs.sidebarMain.setAttribute("style", ``);
                     }
-					
+
                     if(window.pageYOffset + window.innerHeight > this.appMain.clientHeight){
                         if(!this.isStickSidebarFooter){
                             this.isStickSidebarFooter = true;
@@ -88,11 +89,11 @@
                     }
                 }
             },
-			onResize(){
+            onResize(){
                 window.innerWidth >= constants.mediaScreenTabletBigMin ?
                     window.addEventListener("scroll", this.onScroll) :
                     window.removeEventListener("scroll", this.onScroll);
-			}
+            }
         }
     }
 </script>
@@ -145,6 +146,7 @@
 			
 			&:before {
 				$size : 24px;
+				top                 : -2px;
 				left                : 0;
 				width               : $size;
 				height              : $size;
@@ -155,25 +157,32 @@
 				background-position : center;
 			}
 			
-			&-account {
+			&--account {
 				&:before {
 					background-image : url("~static/images/icons/account-icon.svg");
 				}
 			}
 			
-			&-enquiries {
+			&--enquiries {
 				&:before {
 					background-image : url("~static/images/icons/heart-icon.svg");
 				}
 			}
 			
-			&-billing {
+			&--billing {
+				&:before {
+					background-image : url("~static/images/icons/credit-card.svg");
+					background-size  : cover;
+				}
+			}
+			
+			&--help {
 				&:before {
 					background-image : url("~static/images/icons/question-icon.svg");
 				}
 			}
 			
-			&-logout {
+			&--logout {
 				&:before {
 					background-image : url("~static/images/icons/logout-icon.svg");
 				}

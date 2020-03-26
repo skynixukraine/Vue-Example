@@ -8,6 +8,10 @@ export const state = () => ({
     doctorForProfilePage : null,
 
     MAX_DOCTORS_PER_PAGE : 16,
+
+    MAX_DOCTOR_ENQUIRES_PER_PAGE : 50,
+
+
 });
 
 export const mutations = {
@@ -23,6 +27,9 @@ export const mutations = {
     SET_FILTERED_DOCTORS_TOTAL_COUNT(state, newValue){
         state.doctorsFilteredTotalCount = newValue;
     },
+    SET_DOCTOR_ENQUIRES(state, newValue){
+        state.doctorEnquires = newValue;
+    }
 };
 
 export const actions = {
@@ -68,6 +75,21 @@ export const actions = {
                           console.error(error);
                           reject(error);
                       })
+        })
+    },
+    LOAD_AND_SAVE_DOCTOR_ENQUIRES({state, commit}, requestConfig){
+
+        return new Promise((resolve, reject) => {
+                DoctorsApi.loadDoctorEnquires(requestConfig)
+                    .then(response => {
+
+                    commit("SET_DOCTOR_ENQUIRES", response.data);
+                    resolve(response);
+                })
+                .catch(error => {
+                        console.error(error);
+                    reject(error);
+                })
         })
     },
 };

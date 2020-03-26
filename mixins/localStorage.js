@@ -28,7 +28,7 @@ export default {
 
             if(key){
                 /**
-                 * newVal = string || number
+                 * newVal = string || number... (not object)
                  * **/
                 localStorage.setItem(key, newVal);
             } else if (newVal && typeof(newVal) === "object"){
@@ -54,16 +54,27 @@ export default {
 
         getPropLocalStorage(prop) {  /** to read the property values from a localStorage**/
 
-            let data = localStorage.getItem(configLS.localName) ? JSON.parse(localStorage.getItem(configLS.localName)) : false;
-            if(this._checkDate(data)){
+            if(localStorage.getItem(prop)){
+                /**
+                 * prop = key LocalStorage
+                 * **/
+                return localStorage.getItem(prop);
+            } else {
+                /**
+                 * prop = properties name for object from LocalStorage key = configLS.localName
+                 * **/
 
-                if (data && data.hasOwnProperty(prop)) {
-                    return data[prop];
+                let data = localStorage.getItem(configLS.localName) ? JSON.parse(localStorage.getItem(configLS.localName)) : false;
+                if (this._checkDate(data)) {
+
+                    if (data && data.hasOwnProperty(prop)) {
+                        return data[prop];
+                    } else {
+                        return false;
+                    }
                 } else {
                     return false;
                 }
-            } else {
-                return false;
             }
         },
         _addDate() {  /** sets shelf life localStorage**/

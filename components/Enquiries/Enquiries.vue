@@ -1,9 +1,15 @@
 <template lang = "html">
 	<div class = "enquiries">
 		<div class = "enquiries__filter">
-			<form>
+			<form @submit.prevent = "onSubmit" @reset.prevent="onReset">
 				<div class = "enquiries__search">
-					<input type = "search" placeholder = "Search" class = "input enquiries__search-input">
+					<input
+                        type = "search"
+                        name = "search"
+                        ref = "search"
+                        v-model = "models.search"
+                        placeholder = "Search"
+                        class = "input enquiries__search-input">
 				</div>
 				<div class = "enquiries__date">
 					<h3>Filter by:</h3>
@@ -13,11 +19,21 @@
 							<div class = "enquiries__date-main">
 								<label class = "enquiries__date-field">
 									from:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "created_at_from"
+                                        ref = "created_at_from"
+                                        v-model = "models.created_at_from"
+                                        class = "enquiries__date-input input">
 								</label>
 								<label class = "enquiries__date-field">
 									to:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "created_at_to"
+                                        ref = "created_at_to"
+                                        v-model = "models.created_at_to"
+                                        class = "enquiries__date-input input">
 								</label>
 							</div>
 						</div>
@@ -26,18 +42,28 @@
 							<div class = "enquiries__date-main">
 								<label class = "enquiries__date-field">
 									from:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "last_contact_from"
+                                        ref = "last_contact_from"
+                                        v-model = "models.last_contact_from"
+                                        class = "enquiries__date-input input">
 								</label>
 								<label class = "enquiries__date-field">
 									to:
-									<input type = "date" class = "enquiries__date-input input">
+									<input
+                                        type = "date"
+                                        name = "last_contact_to"
+                                        ref = "last_contact_to"
+                                        v-model = "models.last_contact_to"
+                                        class = "enquiries__date-input input">
 								</label>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class = "enquiries__submit">
-					<button class = "link link--button link--button-blue link--button-gradient" type = "submit">Search
+					<button class = "link link--button link--button-blue link--button-gradient" type = "submit" >Search
 					</button>
 					<button class = "link link--button link--button-blue link--button-gradient" type = "reset">Reset
 					</button>
@@ -45,7 +71,26 @@
 			</form>
 		</div>
 		<div class = "enquiries__main">
-			<Table />
+			<div class = "table">
+                <div class = "table__info">
+                    <div class = "table__info-count">
+                        {{doctorEnquiresMeta.from}}-{{doctorEnquiresMeta.to}} from {{doctorEnquiresMeta.total}}
+                    </div>
+                    <div class = "table__info-nav">
+                        <div
+                        class = "table__info-link table__info-prev"
+                        :class="[doctorEnquiresMeta.current_page === 1 ? 'disabled' : '']"
+                        @click="prev"></div>
+
+                        <div
+                        class = "table__info-link table__info-next"
+                        :class="[doctorEnquiresMeta.current_page === doctorEnquiresMeta.last_page ? 'disabled' : '']"
+                        @click="next"></div>
+                    </div>
+                </div>
+
+			    <Table />
+			</div>
 		</div>
 	</div>
 </template>
@@ -62,6 +107,99 @@
         components : {
             Table,
         },
+        data(){
+            return {
+                models        : {
+                    search             : "",
+                    created_at_from    : "",
+                    created_at_to      : "",
+                    last_contact_from  : "",
+                    last_contact_to    : "",
+                },
+                isFormSending : false,
+                requestParams : {
+                    per_page          : this.$store.state.doctors.MAX_DOCTOR_ENQUIRES_PER_PAGE,
+                    search            : "",
+                    created_at_from   : "",
+                    created_at_to     : "",
+                    last_contact_from : "",
+                    last_contact_to   : "",
+                    page              : 1,
+                    order_field       : "id",
+                    order_direction   : "asc"
+                }
+            };
+        },
+        computed   : {
+            doctorEnquiresMeta() {
+                return this.$store.state.doctors.doctorEnquires.meta;
+            },
+        },
+        methods  : {
+            onSubmit(){
+                this.requestParams = this.prepareDataForSending(this.models, this.requestParams);
+
+                this.sendRequest();
+
+            },
+            onReset(){
+
+                this.models = this.setToDefaultModel(this.models);
+                this.requestParams = this.prepareDataForSending(this.models, this.requestParams);
+
+                this.sendRequest();
+
+            },
+            prepareDataForSending(models, requestParams){
+
+                // optional fields
+                requestParams.search = models.search;
+                requestParams.created_at_from = models.created_at_from;
+                requestParams.created_at_to = models.created_at_to;
+                requestParams.last_contact_from = models.last_contact_from;
+                requestParams.last_contact_to = models.last_contact_to;
+                requestParams.page = 1;
+
+                return requestParams;
+            },
+            next() {
+
+                this.requestParams.page = this.doctorEnquiresMeta.current_page;
+
+                if (this.requestParams.page < this.doctorEnquiresMeta.last_page) {
+                    this.requestParams.page += 1;
+                }
+
+                this.sendRequest();
+            },
+            prev() {
+
+                this.requestParams.page = this.doctorEnquiresMeta.current_page;
+
+                if (this.requestParams.page > 1) {
+                    this.requestParams.page -= 1;
+                }
+
+                this.sendRequest();
+
+            },
+            sendRequest() {
+                this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    doctor_id   : this.$store.state.user.user.id,
+                    requestData : this.requestParams
+                })
+            },
+            setToDefaultModel(models) {
+                models.search = "";
+                models.created_at_from = "";
+                models.created_at_to = "";
+                models.last_contact_from = "";
+                models.last_contact_to = "";
+                return models;
+            }
+
+        }
     }
 </script>
 
@@ -148,12 +286,24 @@
 			}
 		}
 	}
-	
+
+    .table__info-prev,
+    .table__info-next {
+        cursor: pointer;
+
+        &.disabled{
+            &:after {
+                background-image: url("~static/images/icons/arrow-down-disabled.svg");
+            }
+        }
+    }
+
 	.table__header-item_id,
 	.table__header-item_status,
 	.table__header-item_enquiry-date,
 	.table__header-item_last-contact {
 		position : relative;
+        cursor: pointer;
 		
 		&:after {
 			$size : 20px;
@@ -175,5 +325,11 @@
 				right: 16px;
 			}
 		}
+
+        &.desc{
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
 	}
 </style>

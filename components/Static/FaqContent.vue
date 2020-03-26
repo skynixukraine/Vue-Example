@@ -197,6 +197,7 @@
 		&__title {
 			margin  : 0;
 			padding : 15px 0;
+			color: #247ee5;
 		}
 		
 		&__content-wrap {

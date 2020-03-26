@@ -1,5 +1,13 @@
 <template>
-    <v-select :options="this.options"></v-select>
+    <v-select v-if="multiple"
+              multiple
+              v-model="selected"
+              :options="this.optionsName"
+              @input="setSelected"
+              class="v-select__multiple"
+
+    ></v-select>
+    <v-select v-else :options="this.optionsName"></v-select>
 </template>
 <script>
     import Vue from 'vue';
@@ -8,18 +16,75 @@
     export default {
         data(){
             return{
-                options:["new", "awaiting your response", "awaiting patient's response", "resolved", "archived"],
-
+                multiple: false,
+                building: false,
+                selected: [],
+                selectedId: [],
+                optionsName: [],
+                map: new Map()
             }
+        },
+        props:{
+            config:{
+                type:Object,
+                default(){
+                    return {}
+                }
+            }
+        },
+        mounted(){
+            let options = this.config.options;
+            this.multiple = this.config.multiple;
 
+            options.forEach(item=>{
+                this.optionsName.push(item.name);
+                this.map.set(item.name, item.id);
+            });
+        },
+        beforeUpdate(){
+            let _o={},
+                _selected=[];
+            for (let [key, value] of this.map) {
+                _o[value] = key;
+            }
+            this.config.selected.forEach(item=>{
+                _selected.push(_o[item]);
+            });
+            this.selected = _selected;
+        },
+        methods: {
+            setSelected(value) {
+                if(!this.building){
+                    this.building = !this.building;
+                    return false;
+                }
+                let idArr = [];
+                for(let i=0; i<value.length; i++){
+                    idArr.push(this.map.get(value[i]));
+                }
+                this.selectedId = idArr;
+                this.$emit('selectedData', {id:this.selectedId, selected:this.selected});
+            }
         }
     }
-
 </script>
 <style>
     .v-select {
         position: relative;
         font-family: inherit;
+        border-radius: 4px;
+    }
+    .v-select__multiple {
+        border: 1px solid #e0e1e3;
+    }
+    .v-select__multiple .vs__dropdown-toggle {
+        min-height: 40px;
+
+    }
+    @media (min-width: 480px){
+        .v-select__multiple .vs__dropdown-toggle {
+            min-height: 56px;
+        }
     }
     @media (min-width: 720px) and (max-width: 962px) {
         .v-select {
@@ -97,6 +162,7 @@
         background: none;
         border-radius: 4px;
         white-space: normal;
+        background: #ffffff;
     }
     .vs__selected-options {
         display: flex;
@@ -124,7 +190,7 @@
         border-bottom-right-radius: 0;
     }
     .vs__open-indicator {
-        fill: rgba(60, 60, 60, .5);
+        fill: rgba(35, 125, 229, 1);
         transform: scale(1);
         transition: transform .15s cubic-bezier(1, -.115, .975, .855);
         transition-timing-function: cubic-bezier(1, -.115, .975, .855);
@@ -193,13 +259,13 @@
     .vs__selected {
         display: flex;
         align-items: center;
-        background-color: #f0f0f0;
+        background-color: #247ee5;
         border: 1px solid rgba(60, 60, 60, .26);
         border-radius: 4px;
-        color: #333;
         line-height: 1.4;
         margin: 4px 2px 0 0;
-        padding: 0 .25em 0 0;
+        padding: 2px 10px 2px;
+        color: #eef6fe;
     }
     .vs__deselect {
         display: inline-flex;
@@ -213,6 +279,9 @@
         background: none;
         fill: rgba(60, 60, 60, .5);
         text-shadow: 0 1px 0 #fff;
+    }
+    .vs__deselect svg {
+        fill: #66bd7e;
     }
     .vs--single .vs__selected {
         background-color: transparent;

@@ -1,11 +1,12 @@
 <template>
     <div class="page">
         <div class = "section ueber-uns-section"
-             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})`}"
         >
             <div class = "container container__mobile-adaptation">
-                <h1 class ="title">Ueber Uns</h1>
-
+                <h1 class ="ueber-uns-title title">{{this.$t('ueber-uns.head.title1')}}</h1>
+                <h3 class ="ueber-uns-h3">{{this.$t('ueber-uns.head.title2')}}</h3>
+                <h3 class ="ueber-uns-h3">{{this.$t('ueber-uns.head.title3')}}</h3>
             </div>
         </div>
         <div class="container">
@@ -95,7 +96,11 @@ export default {
 </script>
 <style lang = "scss">
 
-    .title{
+    .ueber-uns-section .ueber-uns-h3{
+		color: white;
+	}
+
+    .ueber-uns-section .title{
         color: white;
     }
     .page{

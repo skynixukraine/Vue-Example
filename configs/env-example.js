@@ -1,5 +1,5 @@
 /*
-    BASE_API_URL: 'https://staging.onl-haut.skynix.co/api/v1',
+    BASE_API_URL: 'https://staging.xyzx.g-inc.pro/api/v1',
     GOOGLE_API_RECAPTCHA_URL: 'https://www.google.com/recaptcha/api',
     GOOGLE_MAPS_API_KEY: 'AIzaSyAsyz2Io_tDucVQaqtbWmiWWvK7tqDUOLo',
     RECAPTCHA_SITE_KEY: '6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI',

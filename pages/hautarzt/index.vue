@@ -1,7 +1,7 @@
 <template>
 	<div class = "page">
 		<div class = "section hautarzt-section"
-			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}"
+			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})`}"
 		>
 			<div class = "container container__mobile-adaptation">
 				<h1 class ="title">Hautarzt wählen & Online-Anfrage starten</h1>

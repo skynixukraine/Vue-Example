@@ -13,13 +13,13 @@ export default {
         };
 
         return new Promise((resolve, reject) => {
-            HTTP.get("/doctors", {params : Object.assign(DEFAULT_REQUEST_PARAM, requestConfig || {})})
+            HTTP.get("/enquires", {params : Object.assign(DEFAULT_REQUEST_PARAM, requestConfig || {})})
                 .then(response => {
                     const responseData = {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : 'Doctors success loaded.',
+                        message : 'Enquires success loaded.',
                     };
 
                     resolve(responseData);
@@ -41,24 +41,10 @@ export default {
                 });
         });
     },
-    async gMapDecodeAddressToCoords(requestConfig){
-        requestConfig.key     = envConfig.GOOGLE_MAPS_API_KEY;
-        requestConfig.address = requestConfig.address || "Berlin";
 
+    async loadEnquire(requestData){
         return new Promise((resolve, reject) => {
-            HTTP.get("https://maps.googleapis.com/maps/api/geocode/json", {params : requestConfig})
-                .then(response => {
-                    resolve(response.data.results[0].geometry.location);
-                })
-                .catch(error => {
-                    console.error(error);
-                    reject(error);
-                });
-        });
-    },
-    async loadDoctorEnquires(requestData){
-        return new Promise((resolve, reject) => {
-            HTTP.get(`/doctors/${requestData.doctor_id}/enquires`, {
+            HTTP.get(`/enquires/${requestData.enquire_id}`, {
             params  : requestData.requestData,
             headers : {
                 "Authorization" : `Bearer ${requestData.token}`,

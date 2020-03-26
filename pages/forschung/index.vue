@@ -8,6 +8,7 @@
 							 class = "message"
 							 :class = "{
 								 'message--is-me': !item.questioner,
+								 'message--is-body': item.type === QUESTION_TYPES.bodySelect,
 								 'message--is-delete': false,
 								 'message--is-editing': editingData && item.message_id === editingData.message_id,
 								 'message--editing-question': editingData && messages[chat_message_index] && messages[chat_message_index].id === editingData.message_id
@@ -219,7 +220,7 @@
 												'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
 											}"
 											@click.stop = "onUserSubmit()">
-										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "select upload img" : lastQuestionData.button }}
+										{{ lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file ? "Bild hochladen" : lastQuestionData.button }}
 									</button>
 									<button v-else class = "submit-btn"
 											@click = "onStart"
@@ -239,34 +240,35 @@
 				</transition>
 				<transition name = "main-animation">
 					<div class = "personal-info" v-if = "isQuestionsOver">
-						<h2>Your personal information</h2>
+						<h2>{{ this.$t('page-forschung.feedback-form.title')}}</h2>
 						<div class = "personal-info__field">
-							<InputText :labelTxt = "'First name'"
+							<InputText :labelTxt = personalInfoData.firstName.txt
 									   :isRequired = true
-									   :placeholder = "'First name'"
+									   :placeholder = personalInfoData.firstName.txt
 									   :name = "'firstName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.firstName">{{ this.errors.firstName }}</span>
 						</div>
 						<div class = "personal-info__field">
-							<InputText :labelTxt = "'Last name'"
+							<InputText :labelTxt = personalInfoData.lastName.txt
 									   :isRequired = true
-									   :placeholder = "'Last name'"
+									   :placeholder = personalInfoData.lastName.txt
 									   :name = "'lastName'"
 									   @blur = "onPersonalInfoNameBlur" />
 							<span class = "error-message" v-show = "errors.lastName">{{ this.errors.lastName }}</span>
 						</div>
 						<div class = "personal-info__field">
 							<InputRadio :radioList = "PERSONAL_INFO__RADIO_GENDER"
-										:groupTitle = "'Gender'"
+										:groupTitle = personalInfoData.gender.txt
 										:isRequired = true
 										@change = "onPersonalInfoChangeGender" />
 							<span class = "error-message" v-show = "errors.gender">{{ this.errors.gender }}</span>
 						</div>
 						<div class = "personal-info__field">
 							<label>
-								<div class = "personal-info__field__title is-required">Mobile phone</div>
+								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.mobile')}}</div>
 								<vue-tel-input id = "vue-tel-input"
+											   class="custom-input__input"
 											   name = "phone_number"
 											   v-bind = "PERSONAL_INFO__PHONE_BIND_PROPS"
 											   @blur = "onPersonalInfoPhoneBlur"
@@ -275,15 +277,15 @@
 							</label>
 						</div>
 						<div class = "personal-info__field">
-							<InputEmail :labelTxt = "'Email Address'"
+							<InputEmail :labelTxt = personalInfoData.mail.txt
 										:isRequired = true
-										:placeholder = "'Email Address'"
+										:placeholder = personalInfoData.mail.txt
 										:name = "'mail'"
 										@blur = "onPersonalInfoMailBlur" />
 						</div>
 						<div class = "personal-info__field">
 							<label>
-								<div class = "personal-info__field__title is-required">Date of birth</div>
+								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.birth')}}</div>
 								<input type = "date"
 									   class = "input"
 									   style = "color: inherit"
@@ -395,22 +397,27 @@
 
                 personalInfoData : {
                     lastName    : {
+                        txt     : this.$t('page-forschung.feedback-form.lastName'),
                         value   : "",
                         isValid : false,
                     },
                     firstName   : {
+                        txt     : this.$t('page-forschung.feedback-form.firstName'),
                         value   : "",
                         isValid : false,
                     },
                     gender      : {
+                        txt     : this.$t('page-forschung.feedback-form.gender'),
                         value   : "",
                         isValid : false,
                     },
                     dateOfBirth : {
+                        txt     : this.$t('page-forschung.feedback-form.birth'),
                         value   : "",
                         isValid : false,
                     },
                     phone       : {
+                        txt       : this.$t('page-forschung.feedback-form.mobile'),
                         value     : {
                             value   : "",
                             isValid : false,
@@ -419,6 +426,7 @@
                         eventData : null
                     },
                     mail        : {
+                        txt     : this.$t('page-forschung.feedback-form.email'),
                         value   : "",
                         isValid : false,
                     },
@@ -429,11 +437,11 @@
                 // Constants, do not edit this values in code, please
                 PERSONAL_INFO__RADIO_GENDER     : [
                     {
-                        txt   : "Female",
+                        txt   : this.$t('page-forschung.feedback-form.female'),
                         value : "FEMALE"
                     },
                     {
-                        txt   : "Male",
+                        txt   : this.$t('page-forschung.feedback-form.male'),
                         value : "MALE"
                     },
                 ],
@@ -442,7 +450,7 @@
                     maxLen                  : 25,
                     disabled                : false,
                     required                : true,
-                    placeholder             : "Enter a phone number",
+                    placeholder             : this.$t('page-forschung.feedback-form.typeNumber'),
                     enabledFlags            : true,
                     autocomplete            : "off",
                     defaultCountry          : "",
@@ -503,7 +511,7 @@
                         button     : "Okay!",
                         content    : `Willkommen beim Online Hautarzt vor Ort!<br>` +
                             			`In wenigen Minuten leiten wir Ihre Anfrage an ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} weiter.<br>` +
-                            			`Damit dieser sich ein gutes Bild von Ihrem Hautproblem machen kann, stellen wir Ihnen vorab einige Fragen.`,
+                            			`Damit diese(r) sich ein gutes Bild von Ihrem Hautproblem machen kann, stellen wir Ihnen vorab einige Fragen und lassen Sie Fotos davon aufnehmen.`,
                         questioner : "Online Hautarzt vor Ort",
                     }
                 } else{
@@ -597,7 +605,13 @@
 
                 this.deleteFromNextQuestionsIdQueue(question_id);
 
-                isLoadNextQuestion && this.loadNextQuestion();
+                setTimeout(() => {
+					if(isLoadNextQuestion){
+						this.loadNextQuestion();
+					} else{
+                        return false;
+					}
+				}, ANIMATION_DURATION);
             },
 
             // Edit message listeners
@@ -644,7 +658,7 @@
                 }
             },
             onEditMessageSubmit(){
-                let editedUserAnswer        = Object.assign({}, this.userAnswers[this.editingData.message_index]);
+                 let editedUserAnswer        = Object.assign({}, this.userAnswers[this.editingData.message_index]);
                 const targetEditingQuestion = this.questions[this.editingData.message_index];
 
                 switch(this.editingData.type){
@@ -1015,10 +1029,9 @@
                 }
             },
             onCreateToken(eventData){
-                this.stripeToken = eventData.token.id;
+              //  this.stripeToken = eventData.token.id;
                 this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
-
             onSubmitDiagnosticChatConfirmEnquire(){
                 let data = new FormData();
 
@@ -1065,10 +1078,12 @@
                 }
 
                 diagnosticChatApi.createEnquires(data).then((response) => {
-                    this.openModal(
-                        this.$modals.defaultModal,
-                        `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-                        "Ihre Anfrage erstellt");
+                    let enquireId = response.data.data.id;
+                    diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
+                        this.openModal(this.$modals.chatConfirmCodeMobile, 
+                            "Confirm code", 
+                            "We've sent a verification code to your phone number. Please enter this code below:");
+                    });
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
@@ -1242,6 +1257,15 @@
 				right : 0;
 			}
 		}
+		
+		&.message--is-body {
+			.message {
+				&__container {
+					border-radius    : $border-radius 0 $border-radius $border-radius;
+					background-color : rgba(1,1,1,0);
+				}
+			}
+		}
 	}
 	
 	.answer-area, .edit-answer-area {
@@ -1392,11 +1416,12 @@
 		position         : fixed;
 		align-items      : center;
 		flex-direction   : column;
+        overflow         : hidden;
 		background-color : $color-black-squeeze;
 		
 		&__main {
 			$controls_btns_height : 40px;
-			height  : calc(100% - #{$main_offset + $controls_btns_height});
+			height  : calc(100% - #{$main_offset + $controls_btns_height * 2});
 			display : flex;
 		}
 		
@@ -1447,5 +1472,8 @@
 	
 	.modal-enter, .modal-leave-to {
 		opacity : 0;
+	}
+	.vue-tel-input#vue-tel-input {
+		border: 1px solid $color-table-border;
 	}
 </style>
