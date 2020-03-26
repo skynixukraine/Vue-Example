@@ -31,7 +31,7 @@
     import Id from "~/components/Enquiries/Id"
 
     export default {
-        async fetch({app, store, error}){
+        async fetch({app, store, params: { id }, error}){
             // if token exist and user empty - load User object
             if(app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null){
                 await store.dispatch('user/LOAD_USER', {
@@ -43,6 +43,12 @@
                                app.$cookies.remove(app.cookie.names.tokenId)
                            })
             }
+
+            await store.dispatch('enquires/LOAD_AND_SAVE_ENQUIRE', {
+                token       : app.$cookies.get(app.cookie.names.token),
+                enquire_id  : id
+            });
+
         },
         components : {
             Dashboard,
