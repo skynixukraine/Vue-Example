@@ -12,13 +12,13 @@
 		</header>
 		<div class = "modal__main">
             <input type = "number"
+                   name = "verifyCode"
 				   :placeholder = "'Enter code...'"
-				   :value = "confirmCodeValue"
-				   class = "custom-input__input"
-				   @blur = "onBlur"
-				   @input = "onChange"
-				   @change = "onChange"
-				   @keyup.stop = "onChange">
+                   ref = "verifyCodeInput"
+                   v-model = "models.verifyCode"
+                   @blur = "onVerifyCodeChange"
+				   class = "custom-input__input">
+            <div class = "form__message" v-if = "errors.verifyCode">{{ errors.verifyCode }}</div>
             <div class = "buttons-confirm-code-wrapper">
             <button type = "button"
                     class = "control-btn--submit"
@@ -36,10 +36,13 @@
 <script>
     import modal from "~/mixins/modal";
     import diagnosticChatApi from "~/services/api/DiagnosticChat";
+    import validator from "~/mixins/validator";
+    
 
     export default {
         mixins : [
             modal,
+            validator,
         ],
 		beforeDestroy(){
             this.$store.commit("modals/SET_MODAL_TITLE", "");
@@ -47,34 +50,51 @@
         },
         data(){
             return {
-                confirmCodeValue: null,
+                models : {
+                    verifyCode  : "",
+                },
+                formIsValid : {
+                    verifyCode    : "",
+                },
+                isCodeVerify : false,
 			}
         },
         computed:{
             targetDoctor(){
 				return this.$store.state.diagnosticChat.targetDoctorForDiagnosticChat;
+            },
+            userEnquireId() {
+                return this.$store.state.user.userEnquireId;
             }
 		},
-		mounted(){
-            this.confirmCodeValue = this.confirmCodeValue;
-		},
         methods : {
-            onBlur(event){
+            onVerifyCodeChange(event) {
+                this.formIsValid.verifyCode = this.validateVerifyCode(event, this.$refs.verifyCodeInput);
                 this.$forceUpdate();
             },
-            onChange(event){
-                this.confirmCodeValue = event.target.value;
-            },
             confirmCode() {
-                diagnosticChatApi.sendSmsCode(data).then((response) => {
-                    conosle.log('OK')
+                this.isCodeVerify = true;
+                let requestConfig = {};
+
+                if(Object.values(this.formIsValid).indexOf(false) > -1){
+                    this.validateForm(this.models);
+                    this.isFormSending = false;
+                    this.$forceUpdate();
+                    return false;
+                }
+                    
+                    requestConfig.id = userEnquireId;
+                    requestConfig.verification_code = this.models.verifyCode;
+                    requestConfig.recaptcha = 'verify_sms';
+
+                    diagnosticChatApi.verifySmsCode(requestConfig).then((response) => {
                         this.openModal(
                         this.$modals.defaultModal,
                         `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
                         "Ihre Anfrage erstellt");
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
-                });
+                });   
             },
             resendCode() {
                 diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
@@ -82,7 +102,17 @@
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
-            }
+            },
+            validateForm(models){
+                // check required fields
+                if(!models.verifyCode){
+                    this.errors["verifyCode"] = 'Error';
+                    this.$forceUpdate();
+                    this.$root.$emit("showNotify", {type : "error", text : "Error"});
+                    return false;
+                }
+                return true;
+            },
         }
     }
 </script>
