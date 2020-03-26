@@ -20,20 +20,23 @@
 					:placeholder="placeholder"
 					:value="autocompleteVal"
 					@place_changed="setPlace"
-					class="search-location"
+					@click="setPlace"
+					class="custom-input__input"
 				>
         		</gmap-autocomplete>
 				</div>
 
 				<div class="distance-block">
 				<label>In the radius (Dropdown)</label>
-				<select class="search-location"
+				<div class="distance-block__select">
+				<select class="select"
 						name="distance_select"
 						v-model="distance_selected">
 					<option v-for="option in options" v-bind:value="option.value" :key="option.value">
     					{{ option.text }}
   					</option>
 				</select>
+				</div>
 				</div>
 			</div>
 			<div class = "doctors">
@@ -161,9 +164,7 @@
         },
         methods    : {
 			setPlace(place){
-
 				let address = place.place_id;
-
 				let km = this.distance_selected;
 				let doctorsArr = [];
 
@@ -183,11 +184,17 @@
 					return Math.sqrt(dx * dx + dy * dy) <= km;
 				}
 
-				if(!address || address === '') {
+				if (!address) {
 					doctorsArr.forEach(function(doctor) { 
 						document.getElementById(`${doctor.id}`).style.display = 'block';
 					});
-				} 
+				}				
+				
+				if (place.target && place.target.value === '') {
+					doctorsArr.forEach(function(doctor) { 
+						document.getElementById(`${doctor.id}`).style.display = 'block';
+					});
+				}
 				
 				if (address) {
 					let geocoder = new google.maps.Geocoder();
@@ -276,18 +283,13 @@
 		}
 	}
 
-	.distance-block label {
-		font-weight: bold;
-		color: black;
-	}
-
 	.filters-distance {
 		margin          : 0 #{-$main_offset};
 		display         : flex;
 		flex-wrap       : nowrap;
 		width			: 500px;
 		max-width       : 100%;
-		justify-content : space-around;
+		justify-content : space-between;
 
 		background: white;
     	padding: 20px;
@@ -335,6 +337,31 @@
 				background-image : url("~static/images/icons/arrow-down.svg");
 			}
 		}
+	}
+
+	.distance-block {
+		&__select {
+			position: relative;
+			}
+		&__select:after {
+			top: 0;
+			right: 16px;
+			width: 20px;
+			height: 20px;
+			margin: auto;
+			bottom: 0;
+			content: "";
+			display: block;
+			position: absolute;
+			pointer-events: none;
+			background-image : url("~static/images/icons/arrow-down.svg");
+			}
+		
+		label {
+			display: flex;
+			align-items: center;
+			margin-bottom: 6px;
+			}
 	}
 	
 	.doctors {
