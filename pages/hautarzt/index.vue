@@ -12,37 +12,35 @@
 			</div>
 		</div>
 		<div class = "container">
-			<div class = "filters" ref = "filterContainer">
-				<label class = "filters__item">
-					<div class = "filters__item__title">Region</div>
-					<select class = "filters__item__select"
-							name = "region"
-							@change = "onChangeFilter">
-						<option value = "-1">All</option>
-						<option v-for = "(regionItem) in regionsList"
-								:key = "'region_' + regionItem.id"
-								:value = "regionItem.id">
-							{{regionItem.name}}
-						</option>
-					</select>
-				</label>
-				<label class = "filters__item">
-					<div class = "filters__item__title">Specialization</div>
-					<select class = "filters__item__select"
-							name = "specialization"
-							@change = "onChangeFilter">
-						<option value = "-1">All</option>
-						<option v-for = "specializationItem in specializationsList"
-								:key = "'specialization_' + specializationItem.id"
-								:value = "specializationItem.id">
-							{{specializationItem.name}}
-						</option>
-					</select>
-				</label>
+			<div class = "filters-distance" ref = "filterContainer">
+				
+				<div class="distance-block">
+				<label>Enter Zip-Code or City</label>
+				<gmap-autocomplete
+					:placeholder="placeholder"
+					:value="autocompleteVal"
+					@place_changed="setPlace"
+					class="search-location"
+				>
+        		</gmap-autocomplete>
+				</div>
+
+				<div class="distance-block">
+				<label>In the radius (Dropdown)</label>
+				<select class="search-location"
+						name="distance_select"
+						v-model="distance_selected">
+					<option v-for="option in options" v-bind:value="option.value" :key="option.value">
+    					{{ option.text }}
+  					</option>
+				</select>
+				</div>
 			</div>
 			<div class = "doctors">
 				<div class = "doctors__item"
+					 v-show = "showDoctor === true"
 					 v-for = "doctor in doctors"
+					 :id = "doctor.id"
 					 :key = "'doctor_' + doctor.id">
 					<DoctorCard :doctor = "doctor" :isPreview = true />
 				</div>
@@ -55,7 +53,7 @@
 </template>
 
 <script>
-    import DoctorCard from "~/components/Cards/DoctorCard"
+	import DoctorCard from "~/components/Cards/DoctorCard"
 
     export default {
         async fetch({app, store, error}){
@@ -76,17 +74,23 @@
             await store.dispatch("doctors/LOAD_AND_SAVE_FILTERED_DOCTORS", {per_page : store.state.doctors.MAX_DOCTORS_PER_PAGE});
         },
         components : {
-            DoctorCard
+			DoctorCard,
         },
         data(){
             return {
-                pageNumber      : null,
-                selectedFilters : {
-                    region         : -1,
-                    specialization : -1
-                }
+				pageNumber      : null,
+				name			: 'map',
+				placeholder		: '',
+				autocompleteVal : '',
+				showDoctor		: true,
+				distance_selected	: 100,
+				options			: [
+					{ text: '100km', value: 100 },
+					{ text: '200km', value: 200 },
+					{ text: '500km', value: 500 },
+				],
             }
-        },
+		},
         computed   : {
             regionsList(){
                 return this.$store.state.regions.regions;
@@ -156,6 +160,63 @@
             this.pageNumber = this.$route.params.page ? (this.$route.params.page + "").replace(/[^0-9]/g, "") : 1;
         },
         methods    : {
+			setPlace(place){
+
+				let address = place.place_id;
+
+				let km = this.distance_selected;
+				let doctorsArr = [];
+
+				for (let i = 0; i < this.$store.state.doctors.doctorsFiltered.length; i ++) {
+					doctorsArr.push({	
+						id: this.$store.state.doctors.doctorsFiltered[i].id,
+						lat: this.$store.state.doctors.doctorsFiltered[i].location.latitude,
+						lng: this.$store.state.doctors.doctorsFiltered[i].location.longitude,
+					})
+				}
+				
+				function arePointsNear(centerLng, centerLat, checkLng, checkLat, km) {
+					let ky = 40000 / 360;
+					let kx = Math.cos(Math.PI * centerLat / 180.0) * ky;
+					let dx = Math.abs(centerLng - checkLng) * kx;
+					let dy = Math.abs(centerLat - checkLat) * ky;
+					return Math.sqrt(dx * dx + dy * dy) <= km;
+				}
+
+				if(!address || address === '') {
+					doctorsArr.forEach(function(doctor) { 
+						document.getElementById(`${doctor.id}`).style.display = 'block';
+					});
+				} 
+				
+				if (address) {
+					let geocoder = new google.maps.Geocoder();
+					
+					geocoder.geocode({
+					'placeId': address
+					}, function(results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+					
+					let centerLat = results[0].geometry.location.lat();
+					let centerLng = results[0].geometry.location.lng();
+					
+					let isFindDoctor = false;
+					
+					doctorsArr.forEach(function(doctor) {
+						isFindDoctor = arePointsNear(centerLng, centerLat, doctor.lng, doctor.lat, km);
+						if (isFindDoctor) {
+							document.getElementById(`${doctor.id}`).style.display = 'block';
+						} else {
+							document.getElementById(`${doctor.id}`).style.display = 'none';
+						} 
+					
+					})					
+					} else {
+					alert("Something got wrong " + status);
+					}
+				});
+				}
+			},
             onChangeFilter(event){
                 this.selectedFilters[event.target.name] = +event.target.value;
                 this.pageNumber                         = 1;
@@ -191,6 +252,7 @@
     }
 </script>
 
+
 <style lang = "scss">
 
 	.title,
@@ -214,12 +276,22 @@
 		}
 	}
 
-	.filters {
+	.distance-block label {
+		font-weight: bold;
+		color: black;
+	}
+
+	.filters-distance {
 		margin          : 0 #{-$main_offset};
 		display         : flex;
-		flex-wrap       : wrap;
+		flex-wrap       : nowrap;
+		width			: 500px;
 		max-width       : 100%;
-		justify-content : flex-start;
+		justify-content : space-around;
+
+		background: white;
+    	padding: 20px;
+
 		
 		&__item {
 			$bottom_padding : 5px;
@@ -330,4 +402,19 @@
 			}
 		}
 	}
+
+	.search-location {
+		display: block;
+		width: 16vw;
+		margin: 0 auto;
+		margin-top: 1vw;
+		font-size: 20px;
+		font-weight: 400;
+		outline: none;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		border-radius: 10px;
+}
+
 </style>

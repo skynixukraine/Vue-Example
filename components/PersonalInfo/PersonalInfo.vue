@@ -186,7 +186,7 @@
 							</div>
 						</div>
 					</div>
-					<div class = "personal-info__item">
+					<div class = "personal-info__item hide-region">
 						<div class = "single-form">
 							<header class = "personal-info__header">Region</header>
 							<div class = "personal-info__main personal-info__main-select">
@@ -1053,5 +1053,9 @@
 	.main-animation-enter, .main-animation-leave-to {
 		opacity   : 0;
 		transform : translateY(50px);
+	}
+
+	.hide-region {
+		display: none
 	}
 </style>
