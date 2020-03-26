@@ -488,4 +488,7 @@
 			}
 		}
 	}
+	.form__message {
+		font-size: 13px;
+	}
 </style>
