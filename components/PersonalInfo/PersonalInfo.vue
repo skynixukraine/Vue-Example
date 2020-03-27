@@ -4,13 +4,13 @@
 			<div class = "personal-info__items">
 				<div class = "personal-info__column">
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Titel</header>
+						<header class = "personal-info__header">{{ $t("page-personal-information.title") }}</header>
 						<div class = "personal-info__main personal-info__main-select">
 							<select class = "select"
 									name = "title_id"
 									ref = "title_id"
 									v-model = "userInputData.title_id">
-								<option disabled value = "">Wählen Sie eine der Optionen</option>
+								<option disabled value = "">{{ $t("page-personal-information.behavior.chooseOptions") }}</option>
 								<option v-for = "(option, index) in $store.getters['doctorTitles/DOCTOR_TITLES']"
 										:key = "`title_${index}`"
 										:value = "option.id">
@@ -20,19 +20,19 @@
 						</div>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Vorname</header>
+						<header class = "personal-info__header">{{ $t("page-personal-information.firstName") }}</header>
 						<div class = "personal-info__main">
 							<InputText v-model = "userInputData.first_name" />
 						</div>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Familienname</header>
+						<header class = "personal-info__header">{{ $t("page-personal-information.lastName") }}</header>
 						<div class = "personal-info__main">
 							<InputText v-model = "userInputData.last_name" />
 						</div>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Telefonnummer</header>
+						<header class = "personal-info__header">{{ $t("page-personal-information.numberMobile") }}</header>
 						<div class = "personal-info__main">
 							<vue-tel-input id = "vue-tel-input"
 										   class = "personal-info__main-phone"
@@ -44,13 +44,13 @@
 						<footer class = "personal-info__footer" v-if = "errors.phone">{{ errors.phone }}</footer>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Spezialisierung</header>
+						<header class = "personal-info__header">{{ $t("page-personal-information.specialist") }}</header>
 						<div class = "personal-info__main personal-info__main-select">
 							<select class = "select"
 									name = "specialization_id"
 									ref = "specialization_id"
 									v-model = "userInputData.specialization_id">
-								<option disabled value = "">Wählen Sie eine der Optionen</option>
+								<option disabled value = "">{{ $t("page-personal-information.behavior.chooseOptions") }}</option>
 								<option v-for = "(option, index) in $store.getters['specializations/SPECIALIZATIONS']"
 										:key = "`specialization_${index}`"
 										:value = "option.id">
@@ -61,9 +61,9 @@
 					</div>
 					<div class = "personal-info__item">
 						<header class = "personal-info__header personal-info__header--edit-box">
-							<div class = "personal-info__label">Sie die E-Mail</div>
+							<div class = "personal-info__label">{{ $t("page-personal-information.email") }}</div>
 							<button class = "link--button-transparent link--line link--underline"
-									@click.stop = "onChangeEmail">Ändern
+									@click.stop = "onChangeEmail">{{ $t("page-personal-information.behavior.changeIt") }}
 							</button>
 						</header>
 						<input class = "input"
@@ -75,9 +75,9 @@
 					</div>
 					<div class = "personal-info__item">
 						<header class = "personal-info__header personal-info__header--edit-box">
-							<div class = "personal-info__label">Passwort</div>
+							<div class = "personal-info__label">{{ $t("page-personal-information.password") }}</div>
 							<button class = "link--button-transparent link--line link--underline"
-									@click.stop = "onChangePassword">Ändern
+									@click.stop = "onChangePassword">{{ $t("page-personal-information.behavior.changeIt") }}
 							</button>
 						</header>
 						<input class = "input"
@@ -91,7 +91,7 @@
 				<div class = "personal-info__column">
 					<div class = "personal-info__item-group">
 						<div class = "personal-info__item">
-							<header class = "personal-info__header">Medizinischer Grad</header>
+							<header class = "personal-info__header">{{ $t("page-personal-information.medCert") }}</header>
 							<div class = "personal-info__file">
 								<div v-if = "userInputData.medical_degree.fileBase64 && !userInputData.medical_degree.userInput.HTML"
 									 class = "personal-info__file__container"
@@ -135,7 +135,7 @@
 								   @change = "onMedicalDegreeUpload" />
 						</div>
 						<div class = "personal-info__item">
-							<header class = "personal-info__header">Zertifizierung</header>
+							<header class = "personal-info__header">{{ $t("page-personal-information.approvalCert") }}</header>
 							<div class = "personal-info__file">
 								<div v-if = "userInputData.board_certification.fileBase64 && !userInputData.board_certification.userInput.HTML"
 									 class = "personal-info__file__container"
@@ -179,7 +179,7 @@
 					</div>
 					<div class = "personal-info__item">
 						<div class = "single-form">
-							<header class = "personal-info__header">Geschäftsadresse</header>
+							<header class = "personal-info__header">{{ $t("page-personal-information.regionAndStreet") }}</header>
 							<div class = "personal-info__main personal-info__google-autocomplete">
 								<AddressAutocomplete :value = "userInputData.location.fullAddress"
 													 @place_change = "onAddressChange" />
@@ -188,13 +188,13 @@
 					</div>
 					<div class = "personal-info__item hide-region">
 						<div class = "single-form">
-							<header class = "personal-info__header">Region</header>
+							<header class = "personal-info__header">{{ $t("page-personal-information.region") }}</header>
 							<div class = "personal-info__main personal-info__main-select">
 								<select class = "select"
 										name = "region_id"
 										ref = "region_id"
 										v-model = "userInputData.region_id">
-									<option disabled value = "">Choose one of the options</option>
+									<option disabled value = "">{{ $t("page-personal-information.behavior.chooseOptions") }}</option>
 									<option v-for = "(option, index) in $store.state.regions.regions"
 											:key = "index"
 											:value = "option.id">
@@ -205,7 +205,7 @@
 						</div>
 					</div>
 					<div class = "personal-info__item">
-						<header class = "personal-info__header">Sprachen</header>
+						<header class = "personal-info__header">{{ $t("page-personal-information.lang") }}</header>
 						<div class = "personal-info__item">
 							<select2 v-bind:config="{
 								options:$store.state.languages.languages,
@@ -240,10 +240,10 @@
 				</div>
 			</div>
 			<div class = "personal-info__items personal-info__items--max-width">
-				<h3>Deine Beschreibung</h3>
+				<h3>{{ $t("page-personal-information.bio.title") }}</h3>
 				<div class = "personal-info__item">
-					<header class = "personal-info__header">Beschreibung Kurze
-						<small>(zur vorschau)</small>
+					<header class = "personal-info__header">{{ $t("page-personal-information.bio.bioShort.title") }}
+						<small>({{ $t("page-personal-information.bio.bioShort.previewText") }})</small>
 					</header>
 					<div class = "personal-info__main">
 						<AutoHeight :placeholder_text = "'BIO Short'"
@@ -254,7 +254,7 @@
 					</div>
 				</div>
 				<div class = "personal-info__item">
-					<header class = "personal-info__header">Beschreibung</header>
+					<header class = "personal-info__header">{{ $t("page-personal-information.bio.bioFull") }}</header>
 					<div class = "personal-info__main">
 						<AutoHeight :placeholder_text = "'BIO'"
 									:maxLength = '3000'
@@ -272,7 +272,7 @@
 							:class = "{'personal-info__item--submit-disabled': !isSomethingEdited}"
 							type = "button"
 							@click.stop = "onSave">
-						SPEICHERN
+						{{ $t("page-personal-information.buttons.btnSave") }}
 					</button>
 				</div>
 			</div>
@@ -280,7 +280,7 @@
 				<div class = "personal-info__item"
 					 v-if = "!isApproved">
 					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
-							@click.stop = "onApproveRequest">ANTRAG GENEHMEN
+							@click.stop = "onApproveRequest">{{ $t("page-personal-information.buttons.btnApply") }}
 					</button>
 				</div>
 			</div>
@@ -295,12 +295,12 @@
 				<div class = "personal-info__column personal-link__column">
 					<button class = "link link--button-transparent link--button link--line"
 							@click.stop = "onPauseOrUnpauseAccount">
-						{{ `${isPauseAccount ? "UNPAUSE" : "PAUSE"} MEIN KONTO` }}
+						{{ `${isPauseAccount ? "REAKTIVIEREN" : "PAUSIEREN"} MEIN KONTO` }}
 					</button>
 				</div>
 				<div class = "personal-info__column personal-link__column">
 					<button class = "link link--button-transparent link--button link--line"
-							@click.stop = "openModal($modals.personalInfoConfirmDeleteAccount)">LÖSCHE MEIN KONTO
+							@click.stop = "openModal($modals.personalInfoConfirmDeleteAccount)">{{ $t("page-personal-information.buttons.btnDel") }}
 					</button>
 				</div>
 			</div>

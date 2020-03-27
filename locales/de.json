@@ -164,7 +164,38 @@
 	},
 	"page-personal-information": {
 		"p1": "Bitte geben Sie alle Informationen ein, um die Genehmigung des Administrators anzufordern, und erscheinen Sie bei der Suche im Online-Hautarzt.",
-		"p2": "Nach der Genehmigung können Sie Ihre Bankdaten hinzufügen und Ihre Patienten über die Online Hautarzt-Plattform betreuen."
+		"p2": "Nach der Genehmigung können Sie Ihre Bankdaten hinzufügen und Ihre Patienten über die Online Hautarzt-Plattform betreuen.",
+		"buttons": {
+			"btnDel": "MEIN KONTO LÖSCHEN",
+			"btnApply": "Freischaltung beantragen",
+			"btnSave": "SPEICHERN"
+		},
+		"behavior": {
+			"chooseOptions": "Wählen Sie eine der Optionen",
+			"changeIt": "Ändern"
+		},
+		"status": "Kontostatus",
+		"title": "Titel",
+		"firstName": "Vorname",
+		"lastName": "Nachname",
+		"numberMobile": "Handynummer",
+		"specialist": "Facharztbezeichnung",
+		"email": "Sie die E-Mail",
+		"password": "Passwort",
+		"regionAndStreet": "Straße/Hausnummer",
+		"region": "Hausnummer",
+		"lang": "Sprachen",
+		"medCert": "Facharztzeugnis hochladen",
+		"approvalCert": "Approbationsurkunde hochladen",
+		"bio": {
+			"title": "Deine Beschreibung",
+			"bioShort": {
+				"title": "Drei Sätze über Ihre Erfahrung",
+				"previewText": "zur vorschau"
+			},
+			"bioFull": "Ihre Erfahrung:"
+		}
+
 	},
 	"page-konditionen": {
 		"head": {
