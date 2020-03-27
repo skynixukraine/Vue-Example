@@ -1033,7 +1033,6 @@
                 this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
             onSubmitDiagnosticChatConfirmEnquire(){
-				console.log(1)
                 let data = new FormData();
 
                 data.append("code", this.stripeToken);
@@ -1077,7 +1076,6 @@
                         }
                     }
 				}
-				console.log(data)
 
                 diagnosticChatApi.createEnquires(data).then((response) => {
                     let enquireId = response.data.data.id;

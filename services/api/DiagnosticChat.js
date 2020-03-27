@@ -91,7 +91,6 @@ export default {
                     });
                 })
                 .catch(error => {
-                    console.log(error);
                     let message = error.message;
 
                     if(error.response.status === 500){
@@ -125,15 +124,15 @@ export default {
                 });
         });
     },
-    async verifySmsCode(requestConfig){
+    async verifySmsCode(id, requestConfig){
         return new Promise((resolve, reject) => {
-            HTTP.post(`/enquires/${requestConfig.id}/verify-sms`, requestConfig)
+            HTTP.post(`/enquires/${id}/verify-sms`, requestConfig)
                 .then(response => {
                     resolve({
                         success : true,
                         status  : response.status,
                         data    : response.data.data,
-                        message : "SMS has been send",
+                        message : "SMS has been veryfied",
                     });
                 }).catch(error => {
                     reject({

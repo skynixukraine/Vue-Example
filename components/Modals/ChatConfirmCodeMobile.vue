@@ -84,7 +84,8 @@
             },
             confirmCode() {
                 this.isCodeVerify = true;
-                let requestConfig = {};
+                let userEnquireId = this.userEnquireId;
+                let requestConfig = new FormData();
 
                 this.loadAndSetRecaptchaToken(this.$recaptchaActions.submitVerificationSmsCode)
 
@@ -94,29 +95,21 @@
                     this.$forceUpdate();
                     return false;
                 }
-                    
-                    
-                    requestConfig.id = this.userEnquireId;
-                    requestConfig.verification_code = this.models.verifyCode;
-                    requestConfig.recaptcha = this.recaptchaToken;
+                    requestConfig.append("verification_code", this.models.verifyCode);
+                    requestConfig.append("recaptcha", this.recaptchaToken);
 
-                    console.log(requestConfig)
-
-                    diagnosticChatApi.verifySmsCode(requestConfig).then((response) => {
-                        console.log(response)
-                        this.openModal(
-                        this.$modals.defaultModal,
-                        `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-                        "Ihre Anfrage erstellt");
+                    diagnosticChatApi.verifySmsCode(userEnquireId, requestConfig).then((response) => {
+                        this.$root.$emit("showNotify", {type : "success", text : response.message});
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                        this.$root.$emit("showNotify", {type : "error", text : error.message});
                 });   
             },
             resendCode() {
-                diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
-                    conosle.log('resend')
+                let userEnquireId = this.userEnquireId;
+                diagnosticChatApi.sendSmsCode(userEnquireId).then((response) => {
+                    this.$root.$emit("showNotify", {type : "success", text : response.message});
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.$root.$emit("showNotify", {type : "error", text : error.message});
                 });
             },
             validateForm(models){
@@ -124,7 +117,7 @@
                 if(!models.verifyCode){
                     this.errors["verifyCode"] = 'Error';
                     this.$forceUpdate();
-                    this.$root.$emit("showNotify", {type : "error", text : "Error"});
+                    this.$root.$emit("showNotify", {type : "error", text : "Validation SMS-code Error"});
                     return false;
                 }
                 return true;
