@@ -535,7 +535,11 @@
                     id    : this.$store.state.user.user.id,
                     token : this.$cookies.get(this.$cookie.names.token)
                 }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message);
+					let translateResponseMessage = response.message === 'Your account has been successfully suspended' ?
+					 'Ihr Konto wurde erfolgreich pausiert. Sie können es jederzeit wieder reaktivieren.' :
+					 'Ihr Konto wurde erfolgreich wiederhergestellt';
+					 
+                    this.openModal(this.$modals.defaultModal, translateResponseMessage);
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
