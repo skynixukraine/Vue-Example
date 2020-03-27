@@ -136,14 +136,17 @@ export default {
             return true;
         },
         validateVerifyCode(event, name) {
+            console.log('validatefunc')
             const value = event.target.value;
 
             // empty check
             if(!value){
+                console.log(888)
                 this.errors[name] = this.$t('errors.form.required-field');
                 return false;
             }
             if(!this.checkSmsByNumberType(value)) {
+                console.log(999)
                 this.errors[name] = this.$t('errors.form.invalid-number');
                 return false;
             }
@@ -151,7 +154,7 @@ export default {
         },
         // checkers
         checkSmsByNumberType(value) {
-            return typeof value === 'number'
+            return (typeof parseInt(value) === 'number')
         },
         checkEmailName(email){
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

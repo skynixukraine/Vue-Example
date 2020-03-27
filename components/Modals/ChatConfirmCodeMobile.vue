@@ -75,19 +75,25 @@
             confirmCode() {
                 this.isCodeVerify = true;
                 let requestConfig = {};
+                console.log(6)
+                console.log(this.formIsValid)
 
                 if(Object.values(this.formIsValid).indexOf(false) > -1){
+                    console.log(7)
                     this.validateForm(this.models);
                     this.isFormSending = false;
                     this.$forceUpdate();
                     return false;
                 }
                     
-                    requestConfig.id = userEnquireId;
+                    requestConfig.id = this.userEnquireId;
                     requestConfig.verification_code = this.models.verifyCode;
-                    requestConfig.recaptcha = 'verify_sms';
+                    requestConfig.recaptcha = 12345;
+
+                    console.log(requestConfig)
 
                     diagnosticChatApi.verifySmsCode(requestConfig).then((response) => {
+                        console.log(response)
                         this.openModal(
                         this.$modals.defaultModal,
                         `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
