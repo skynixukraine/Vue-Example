@@ -37,13 +37,23 @@
     import modal from "~/mixins/modal";
     import diagnosticChatApi from "~/services/api/DiagnosticChat";
     import validator from "~/mixins/validator";
+    import recaptcha from '~/mixins/recaptcha';
     
 
     export default {
         mixins : [
             modal,
             validator,
+            recaptcha,
         ],
+        created(){
+            if(process.client){
+                this.$recaptchaLoaded()
+                    .then(() => {
+                        this.loadAndSetRecaptchaToken(this.$recaptchaActions.submitVerificationSmsCode)
+                    });
+            }
+        },
 		beforeDestroy(){
             this.$store.commit("modals/SET_MODAL_TITLE", "");
             this.$store.commit("modals/SET_MODAL_MESSAGE_HTML", "");
@@ -75,20 +85,20 @@
             confirmCode() {
                 this.isCodeVerify = true;
                 let requestConfig = {};
-                console.log(6)
-                console.log(this.formIsValid)
+
+                this.loadAndSetRecaptchaToken(this.$recaptchaActions.submitVerificationSmsCode)
 
                 if(Object.values(this.formIsValid).indexOf(false) > -1){
-                    console.log(7)
                     this.validateForm(this.models);
                     this.isFormSending = false;
                     this.$forceUpdate();
                     return false;
                 }
                     
+                    
                     requestConfig.id = this.userEnquireId;
                     requestConfig.verification_code = this.models.verifyCode;
-                    requestConfig.recaptcha = 12345;
+                    requestConfig.recaptcha = this.recaptchaToken;
 
                     console.log(requestConfig)
 

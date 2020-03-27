@@ -6,6 +6,7 @@ export default ({app}, inject) => {
         registerDoctor              : "register_doctor",
         sendEmailVerificationLink   : "send_email_verification_link",
         changeEmailVerificationLink : "change_email_verification_link",
+        submitVerificationSmsCode   : "verify_sms",
     };
 
     Vue.prototype.$recaptchaActions = OPTIONS;
