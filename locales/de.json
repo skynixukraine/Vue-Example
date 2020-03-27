@@ -197,6 +197,20 @@
 		}
 
 	},
+	"page-billing": {
+		"table": {
+			"transactionId": "Transaktions",
+			"date": "Datum",
+			"enquireId": "Anfrage",
+			"fullName": "Name des Patienten",
+			"amount": "Betrag",
+			"status": "Status"
+		},
+		"stripe": {
+			"connecting": "Connect stripe account",
+			"connectDone": "You stripe account already connected!"
+		}
+	},
 	"page-konditionen": {
 		"head": {
 			"title": "Teilnahmekonditionen für Hautärzte"
