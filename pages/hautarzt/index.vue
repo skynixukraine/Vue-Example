@@ -14,7 +14,7 @@
 		<div class = "container">
 			<div class = "filters-distance" ref = "filterContainer">
 				<div class="distance-block">
-				<label>Enter Zip-Code or City</label>
+				<label>Ort eingeben</label>
 				<gmap-autocomplete
 					:placeholder="placeholder"
 					:value="autocompleteVal"
@@ -26,7 +26,7 @@
 				</div>
 
 				<div class="distance-block">
-				<label>In the radius (Dropdown)</label>
+				<label>Entfernung</label>
 				<div class="distance-block__select">
 				<select class="select"
 						name="distance_select"
@@ -224,6 +224,8 @@
 					});
 					if (doctorsCount.length === doctorsCountHidden.length) {
 						document.querySelector('.no-doctors-find').style.display = 'block';
+					} else {
+						document.querySelector('.no-doctors-find').style.display = 'none';
 					}
 					} else {
 					console.error(status);
@@ -295,11 +297,9 @@
 		margin          : 0 #{-$main_offset};
 		display         : flex;
 		flex-wrap       : nowrap;
-		width			: 500px;
+		width			: 395px;
 		max-width       : 100%;
 		justify-content : space-between;
-
-		background: white;
     	padding: 20px;
 
 		
