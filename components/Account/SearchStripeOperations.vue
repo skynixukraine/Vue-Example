@@ -3,7 +3,7 @@
         <form>
             <div class="enquiries__search">
                 <input type="search"
-                       placeholder="patient's full name"
+                       placeholder="Name des Patienten"
                        class="input enquiries__search-input"
                        @change="querySearch"
                        @search="querySearch('clean')"
@@ -16,7 +16,7 @@
                         type="button"
                         @click.stop="resetResults"
                 >
-                    Reset Results
+                   Zurücksetzen
                 </button>
             </div>
         </form>

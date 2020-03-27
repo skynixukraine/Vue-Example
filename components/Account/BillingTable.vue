@@ -4,24 +4,24 @@
         <h3>Payments</h3>
         <div class="table__content">
             <div class="table__header">
-                <div class="table__header-item">Transaction<br class="table__br"> ID</div>
+                <div class="table__header-item">{{ $t("page-billing.table.transactionId") }}<br class="table__br"> ID</div>
                 <div class="table__header-item table__header-item--date"
                      :class="[ sortingName === 'date' ? query.direction : '' ]"
                      @click.stop="sortingData('date')"
                 >
-                    Date
+                    {{ $t("page-billing.table.date") }}
                 </div>
                 <div class="table__header-item table__header-item--enquiry"
                      :class="[ sortingName === 'enquiryID' ? query.direction : '' ]"
                      @click.stop="sortingData('enquiryID')">
-                    Enquiry<br class="table__br"> ID
+                    {{ $t("page-billing.table.enquireId") }}<br class="table__br"> ID
                 </div>
-                <div class="table__header-item">Patient's<br class="table__br"> full name</div>
-                <div class="table__header-item">Amount</div>
+                <div class="table__header-item">{{ $t("page-billing.table.fullName") }}<br class="table__br"></div>
+                <div class="table__header-item">{{ $t("page-billing.table.amount") }}</div>
                 <div class="table__header-item table__header-item--status"
                      :class="[ sortingName === 'status' ? query.direction : '' ]"
                      @click.stop="sortingData('status')">
-                    Status
+                    {{ $t("page-billing.table.status") }}
                 </div>
             </div>
             <div class="table__main-items table__main-items--billing" v-for="(item, index) in data" :key="'billing2-' + index">

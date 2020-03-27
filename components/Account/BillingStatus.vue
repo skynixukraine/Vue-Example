@@ -6,8 +6,8 @@
 				<a v-if = "!userPaymentData.stripe_account_id && userPaymentData.url"
 				   :href = "userPaymentData.url"
 				   target = "_blank"
-				   class = "link link--button link--button-blue link--button-gradient">Connect stripe account</a>
-				<span v-else-if = "userPaymentData.stripe_account_id">You stripe account already connected!</span>
+				   class = "link link--button link--button-blue link--button-gradient">{{ $t("page-billing.stripe.connecting") }}</a>
+				<span v-else-if = "userPaymentData.stripe_account_id">{{ $t("page-billing.stripe.connectDone") }}</span>
 			</div>
 		</div>
 	</div>
