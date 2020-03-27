@@ -1,6 +1,6 @@
 <template lang = "html">
 	<div class = "account-status">
-		<span class = "account-status__title">Kontostatus:</span>
+		<span class = "account-status__title">{{ $t("page-personal-information.status") }}:</span>
 		<span class = "account-status__value">{{ status }}</span>
 	</div>
 </template>
