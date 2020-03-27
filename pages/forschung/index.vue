@@ -1075,10 +1075,11 @@
                             break;
                         }
                     }
-                }
+				}
 
                 diagnosticChatApi.createEnquires(data).then((response) => {
                     let enquireId = response.data.data.id;
+                    this.$store.commit("user/SET_USER_ENQUIRE_ID", enquireId);
                     diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
                         this.openModal(this.$modals.chatConfirmCodeMobile, 
                             "Confirm code", 

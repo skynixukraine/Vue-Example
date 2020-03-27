@@ -5,7 +5,8 @@ const DEFAULT_USER = null;
 
 export const state = () => ({
     user : DEFAULT_USER,
-    userPaymentData: null
+    userPaymentData: null,
+    userEnquireId : null,
 });
 
 export const mutations = {
@@ -14,6 +15,9 @@ export const mutations = {
     },
     SET_USER_PAYMENT_DATA(state, newData){
         state.userPaymentData = newData;
+    },
+    SET_USER_ENQUIRE_ID(state, newData){
+        state.userEnquireId = newData;
     },
 };
 
