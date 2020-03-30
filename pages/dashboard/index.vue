@@ -26,7 +26,7 @@ export default {
         'auth',
     ],
     head(){
-            return {title : this.$t("dashbord.head.title")}
+            return {title : this.$t("dashboard.head.title")}
         },
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        

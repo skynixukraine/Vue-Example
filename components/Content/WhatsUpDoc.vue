@@ -14,7 +14,7 @@
 		<div class = "text-block">
 			{{ $t('dashboard.description')}}
 		</div>
-		<div class = "salary__box">
+		<!-- <div class = "salary__box">
 			<div class = "salary__total-enq">
 				<h3>{{$t('dashboard.total-enq')}}</h3>
 				<p>$999 999</p>
@@ -23,7 +23,7 @@
 				<h3>{{$t('dashboard.total-inc')}}</h3>
 				<p>$999 999</p>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </template>
 
