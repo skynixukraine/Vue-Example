@@ -549,7 +549,7 @@
                     id    : this.$store.state.user.user.id,
                     token : this.$cookies.get(this.$cookie.names.token)
                 }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "Herzliche Glückwünsche!");
+                    this.openModal(this.$modals.defaultModal, response.message, "Aktualisierung erfolgreich.");
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
