@@ -12,7 +12,7 @@
 						</NuxtLink>
 					</li>
 					<li class = "dashboard-sidebar__item dashboard-sidebar__item--billing">
-						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.billing.path">Billing</NuxtLink>
+						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.billing.path">Abrechnung</NuxtLink>
 					</li>
 					<li class = "dashboard-sidebar__item dashboard-sidebar__item--enquiries">
 						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.enquiries.path">
