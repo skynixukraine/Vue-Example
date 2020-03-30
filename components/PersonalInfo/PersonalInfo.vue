@@ -537,7 +537,7 @@
                 }).then((response) => {
 					let translateResponseMessage = response.message === 'Your account has been successfully suspended' ?
 					 'Ihr Konto wurde erfolgreich pausiert. Sie können es jederzeit wieder reaktivieren.' :
-					 'Ihr Konto wurde erfolgreich wiederhergestellt';
+					 'Ihr Konto wurde erfolgreich reaktiviert. Sie können es jederzeit wieder pausieren.';
 					 
                     this.openModal(this.$modals.defaultModal, translateResponseMessage);
                 }).catch((error) => {
