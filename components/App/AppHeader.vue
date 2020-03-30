@@ -1,7 +1,6 @@
 <template>
 	<header class = "app-header"
 			:class = "{
-				'app-header--bg-transparent': isHomePage,
 				'app-header--bg-white': $store.state.app.isPersonalOfficePage,
 				'app-header--bg-default': scrollTop > 57 && !$store.state.app.isPersonalOfficePage
 			}">
@@ -39,8 +38,8 @@
         },
         computed   : {
             isHomePage(){
-                return this.$route.name === "index";
-            },
+				return this.$route.name === "index";
+			},
             userIsLogIn(){
                 return this.$store.getters["user/USER"] === null ? "app-header__item--off" : '';
             }
