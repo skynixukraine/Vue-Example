@@ -2,29 +2,14 @@
 	<div class = "enquiries-id">
 		<div class = "enquiries-id__main">
 			<Table />
-			<div class = "enquiries-id__atachments">
-				<h3 class = "enquiries-id__atachments-title">Attachment: </h3>
-				<ul class = "enquiries-id__atachments-items">
-					<li class = "enquiries-id__atachments-item">
-						<button class = "enquiries-id__atachments-link">Attachment 1</button>
-					</li>
-					<li class = "enquiries-id__atachments-item">
-						<button class = "enquiries-id__atachments-link">Attachment 2</button>
-					</li>
-					<li class = "enquiries-id__atachments-item">
-						<button class = "enquiries-id__atachments-link">Attachment 3</button>
-					</li>
-				</ul>
-				<button  class = "link link--button link--button-blue link--button-gradient" >Download all attachments
-				</button>
-			</div>
 			<div class = "enquiries-id__links">
-				<button class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.contactModals)">CONTACT PATIENT</button>
-				<button class = "link link--button link--button-blue link--button-gradient">SUBMIT DIAGNOSIS AND CLOSE THE CASE</button>
+				<button class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.sendFindings)">{{ $t('page-enquiries.submit-diagnosis') }}</button>
 			</div>
 		</div>
 		<div class = "enquiries-id__footer">
-			<buttom class = "link link--button-transparent">GO BACK</buttom>
+			<NuxtLink :to = "$routes.enquiries.path" class = "link link--button-transparent">
+				GO BACK
+			</NuxtLink>
 		</div>
 	</div>
 </template>
@@ -53,6 +38,33 @@
 		
 		&__main {
 			padding-top : 70px;
+			
+			.table__header-item {
+				flex-basis: 50%;
+			}
+			
+			&-items {
+				min-height: 40px;
+				
+			}
+		}
+		
+		.table__main {
+			&-item {
+				flex-basis: 50%;
+				font-weight: 600;
+				
+				&.enquiries-id__answer {
+					font-weight: 100;
+				}
+			}
+		}
+		
+		.edit-answer-area__upload-image__user-image-container {
+			width: 40%;
+			img {
+				width: 100%;
+			}
 		}
 		
 		&__atachments {

@@ -206,6 +206,10 @@
 			"title": "About page"
 		}
 	},
+	"page-enquiries": {
+		"submit-diagnosis": "BEFUND ABSCHICKEN & FALL SCHLIEßEN",
+		"send-findings": "BEFUND ABSCHICKEN "
+	},
 	"page-jobs": {
 		"head": {
 			"title": "Jobs page"

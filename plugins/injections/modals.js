@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-export default ({app}, inject) => {
+export default ({app}, inject) =>{
     const OPTIONS = {
         defaultModal                     : "default-modal",
         contactModals                    : "contact-modal",
@@ -10,6 +10,7 @@ export default ({app}, inject) => {
         diagnosticChatConfirmEnquire     : "diagnostic-chat-confirm-enquire",
         personalInfoConfirmDeleteAccount : "personal-info-confirm-delete-account",
         chatConfirmCodeMobile            : "confirm-code-modal",
+        sendFindings                     : "send-findings",
     };
 
     app.modals            = OPTIONS;

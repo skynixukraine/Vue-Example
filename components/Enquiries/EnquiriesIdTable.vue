@@ -7,12 +7,12 @@
 			</div>
 			<div class = "table__main">
 				<div class = "table__main-items" v-for = "(answer, index) in getAnswers" :key = "index">
-					<div class = "table__main-item" data-title="Question">{{answer.message.title}}</div>
+					<div class = "table__main-item" data-title="Question">{{getQuestion(answer)}}</div>
                     <div class = "edit-answer-area__upload-image__user-image-container"
                          v-if = "isImage(getType(answer))">
                         <img :src="getValue(answer)" v-bind:alt="pic">
                     </div>
-                    <div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else>{{getValue(answer)}}</div>
+					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else> {{getValue(answer)}}</div>
 				</div>
 			</div>
 		</div>
@@ -42,6 +42,11 @@
             },
             getType(answer) {
                 return answer.message.type;
+            },
+            getQuestion(answer) {
+                let question = answer.message.content
+                question = question.replace(/(&nbsp;|<\/?[^>]+>)/g,'');
+                return question;
             },
             isImage(type) {
                 return type === 'IMAGE';
