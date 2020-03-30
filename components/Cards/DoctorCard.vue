@@ -17,9 +17,9 @@
 					{{ `${doctor.enquire_price} €` || "" }}
 				</div>
 			</div>
-			<div class = "doctor-card__main--description">
+			<!-- <div class = "doctor-card__main--description">
 				{{ doctor.short_description || !isPreview && doctor.description || "" }}
-			</div>
+			</div> -->
 			<div class = "doctor-card__main--location" v-if = "doctor.location || doctor.region">
 				{{ doctor.location && doctor.location.city || doctor.region && doctor.region.name }}
 			</div>
