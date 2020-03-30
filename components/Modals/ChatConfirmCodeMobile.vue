@@ -87,7 +87,7 @@
                 let userEnquireId = this.userEnquireId;
                 let requestConfig = new FormData();
 
-                this.loadAndSetRecaptchaToken(this.$recaptchaActions.submitVerificationSmsCode)
+                this.loadAndSetRecaptchaToken(this.$recaptchaActions.submitVerificationSmsCode);
 
                 if(Object.values(this.formIsValid).indexOf(false) > -1){
                     this.validateForm(this.models);
@@ -95,14 +95,18 @@
                     this.$forceUpdate();
                     return false;
                 }
-                    requestConfig.append("verification_code", this.models.verifyCode);
-                    requestConfig.append("recaptcha", this.recaptchaToken);
+                requestConfig.append("verification_code", this.models.verifyCode);
+                requestConfig.append("recaptcha", this.recaptchaToken);
 
-                    diagnosticChatApi.verifySmsCode(userEnquireId, requestConfig).then((response) => {
-                        this.$root.$emit("showNotify", {type : "success", text : response.message});
+                diagnosticChatApi.verifySmsCode(userEnquireId, requestConfig).then((response) => {
+                    this.$root.$emit("showNotify", {type : "success", text : response.message});
+                    this.$store.commit("user/SET_USER_IS_VERIFY_PHONE", 1);
+                    this.$root.$emit("submitDiagnosticChatChargeEnquire");
+                    this.closeModal(this.$modals.chatConfirmCodeMobile);
+
                 }).catch((error) => {
-                        this.$root.$emit("showNotify", {type : "error", text : error.message});
-                });   
+                    this.$root.$emit("showNotify", {type : "error", text : error.message});
+                });
             },
             resendCode() {
                 let userEnquireId = this.userEnquireId;

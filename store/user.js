@@ -19,6 +19,9 @@ export const mutations = {
     SET_USER_ENQUIRE_ID(state, newData){
         state.userEnquireId = newData;
     },
+    SET_USER_IS_VERIFY_PHONE(state, newData){
+        state.isVerifyPhone = newData;
+    },
 };
 
 export const actions = {
