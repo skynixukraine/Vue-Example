@@ -551,7 +551,7 @@
                 }).then((response) => {
                     this.openModal(this.$modals.defaultModal, response.message, "Herzliche Glückwünsche!");
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.openModal(this.$modals.defaultModal, error.message, "Bitte füllen Sie alle Felder aus und richten Sie die Zahlung ein, bevor Sie weitermachen.");
                 });
             },
             onAddressChange(placeData){
