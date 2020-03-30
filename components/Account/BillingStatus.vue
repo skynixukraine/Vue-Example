@@ -2,7 +2,6 @@
 	<div class = "page-billing-inner">
 		<div class = "section">
 			<div class = "container">
-				<h1>Billing</h1>
 				<a v-if = "!userPaymentData.stripe_account_id && userPaymentData.url"
 				   :href = "userPaymentData.url"
 				   target = "_blank"
