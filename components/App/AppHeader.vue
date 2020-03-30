@@ -63,6 +63,7 @@
 			background : transparent;
 			height: 115px;
     		padding: 25px 15px;
+			transition: height 1s;
 		}
 		
 		&--bg-white {
