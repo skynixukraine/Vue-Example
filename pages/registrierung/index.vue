@@ -38,9 +38,10 @@ export default {
     middleware: [
         'nonauth',
     ],
-
-    mixins: [windowWidth],
-
+    mixins: [windowWidth],   
+    head(){
+            return {title : this.$t("page-auth.head.title")}
+        },
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
         if (app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null) {
@@ -56,13 +57,12 @@ export default {
         Signin,
         Signup
     },
-
+    
     data() {
         return {
             currentTab: DEFAULT_CURRENT_TAB
         };
     },
-
     methods: {
         setCurrentTab(tabName) {
             this.currentTab = tabName;

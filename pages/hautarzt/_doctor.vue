@@ -59,6 +59,9 @@
     import DoctorsApi from "~/services/api/Doctors";
 
     export default {
+        head(){
+            return {title : `${this.doctorData.first_name} ${this.doctorData.last_name} ${this.doctorData.location.city} | Online Hautarzt vor Ort`}
+        },
         async fetch({app, store, route, error}){
             // if token exist and user empty - load User object
             if(app.$cookies.get(app.cookie.names.token) && store.getters["user/USER"] === null){
@@ -74,6 +77,8 @@
             }
 
             let names = route.params.doctor.split("_");
+            this.firstName = names[0];
+            this.lastName = names[1];
 
             await store.dispatch("doctors/LOAD_AND_SAVE_DOCTOR_FOR_PROFILE_PAGE", {
                 first_name : names[0],
@@ -82,6 +87,8 @@
         },
         data(){
             return {
+                firstName    : '',
+                lastName     : '',
                 map          : null,
                 gMapPosition : null,
                 breadcrumbs  : [

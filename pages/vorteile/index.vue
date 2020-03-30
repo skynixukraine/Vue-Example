@@ -23,6 +23,9 @@
 <script>
     import VorteileContent from "~/components/Static/VorteileContent"
 export default {
+    head(){
+            return {title : this.$t("page-vorteile.head.title")}
+        },
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
         if (app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null) {
