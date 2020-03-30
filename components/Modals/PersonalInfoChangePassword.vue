@@ -108,7 +108,7 @@
                     params : formData
                 }).then((response) => {
                     this.responseErrorMessage = "";
-                    this.openModal(this.$modals.defaultModal, "Ihr Kennwort wurde erfolgreich geändert. Verwenden Sie es beim nächsten Anmelden.", "Herzliche Glückwünsche!");
+                    this.openModal(this.$modals.defaultModal, "Ihr Passwort wurde erfolgreich geändert. Bitte verwenden Sie es beim nächsten einloggen.", "Herzliche Glückwünsche!");
                 }).catch((error) => {
                     this.isAwaitRequestSending = false;
                     this.responseErrorMessage  = error.message;
