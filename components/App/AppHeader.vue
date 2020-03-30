@@ -1,6 +1,7 @@
 <template>
 	<header class = "app-header"
 			:class = "{
+				'app-header--bg-transparent': isHomePage,
 				'app-header--bg-white': $store.state.app.isPersonalOfficePage,
 				'app-header--bg-default': scrollTop > 57 && !$store.state.app.isPersonalOfficePage
 			}">
@@ -52,20 +53,30 @@
 		top        : 0;
 		left       : 0;
 		width      : 100%;
-		height     : 64px;
+		height     : 80px;
 		z-index    : 100;
 		padding    : 8px 15px;
 		position   : fixed;
 		background : $color-stratos;
 		
-		&--bg-transparent { background : transparent; }
+		&--bg-transparent { 
+			background : transparent;
+			height: 115px;
+    		padding: 25px 15px;
+		}
 		
 		&--bg-white {
 			background : $color-white;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+			height     : 80px;
+			padding    : 8px 15px;
 		}
 		
-		&--bg-default { background : $color-stratos; }
+		&--bg-default { 
+			background : $color-stratos;
+			height     : 80px;
+			padding    : 8px 15px; 
+		}
 		
 		&__inner {
 			width           : 100%;
@@ -90,11 +101,6 @@
 			&--off {
 				display : none;
 			}
-		}
-		
-		@include tablet-big {
-			height  : 80px;
-			padding : 8px 15px;
 		}
 	}
 </style>
