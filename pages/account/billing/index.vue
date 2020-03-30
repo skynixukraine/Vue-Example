@@ -36,6 +36,9 @@
         middleware : [
             "auth",
         ],
+        head(){
+            return {title : this.$t("page-billing.head.title")}
+        },
         async fetch({app, store, error}){
             // if token exist and user empty - load User object
             if(app.$cookies.get(app.cookie.names.token) && store.getters["user/USER"] === null){
