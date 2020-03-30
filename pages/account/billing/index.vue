@@ -5,7 +5,10 @@
 				<Dashboard>
 					<DashboardSidebar />
 					<DashboardMain>
+							
+                        <DashboardHeader :title = "'Billing'">
 							<BillingStatus />
+						</DashboardHeader>    
 						<DashboardContent>
 							<SearchStripeOperations @search="search"/>
 							<BillingTable v-bind:querySearch="querySearch"/>
