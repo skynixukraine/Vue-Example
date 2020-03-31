@@ -1133,7 +1133,7 @@
                 diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
                     this.openModal(this.$modals.chatConfirmCodeMobile,
                         "Confirm code",
-                        "We've sent a verification code to your phone number. Please enter this code below:");
+                        "Wir haben einen Bestätigungscode an Ihre Telefonnummer gesendet. Bitte geben Sie diesen Code unten ein:");
 
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
