@@ -72,7 +72,7 @@
 		</div>
 		<div class = "enquiries__main">
 			<div class = "table">
-                <div class = "table__info">
+                <div class = "table__info" v-if="doctorEnquiresMeta.total > 0">
                     <div class = "table__info-count">
                         {{doctorEnquiresMeta.from}}-{{doctorEnquiresMeta.to}} from {{doctorEnquiresMeta.total}}
                     </div>
@@ -126,7 +126,7 @@
                     last_contact_to   : "",
                     page              : 1,
                     order_field       : "id",
-                    order_direction   : "asc"
+                    order_direction   : "desc"
                 }
             };
         },

@@ -1,7 +1,10 @@
 <template>
     <div class = "table__content">
         <div class = "table__header">
-            <div class = "table__header-item table__header-item_id" @click="sort('id')">Enquiry<br class = "table__br"> ID</div>
+            <div class = "table__header-item table__header-item_id"
+                 :class="[sortingName === 'id' ? query.direction : '']"
+                 @click="sort('id')">Enquiry<br class = "table__br"> ID
+            </div>
             <div class = "table__header-item">First<br class = "table__br"> Name</div>
             <div class = "table__header-item">Last<br class = "table__br"> Name</div>
             <div
@@ -23,7 +26,7 @@
                 <div class = "table__main-item" data-title="Enquiry ID">{{enquire.id}}</div>
                 <div class = "table__main-item" data-title="First Name">{{enquire.first_name}}</div>
                 <div class = "table__main-item" data-title="Last Name">{{enquire.last_name}}</div>
-                <div class = "table__main-item" data-title="Enquiry Date">{{enquire.created_at.date}}</div>
+                <div class = "table__main-item" data-title="Enquiry Date">{{enquire.created_at.date | dateFormat}}</div>
                 <div class = "table__main-item" data-title="Last Contact">{{enquire.last_contacted_at}}</div>
                 <div class = "table__main-item" data-title="Status">{{enquire.status}}</div>
             </NuxtLink>
@@ -39,9 +42,9 @@
         data(){
             return {
                 query:{
-                    direction: null
+                    direction: 'desc'
                 },
-                sortingName: "asc",
+                sortingName: "id",
             }
         },
         computed   : {
@@ -49,14 +52,25 @@
                 return this.$store.state.doctors.doctorEnquires.data;
             },
         },
+        filters:{
+            dateFormat(val){  //dd/mm/yyyy hh:mm
+                let _date = new Date(val).toJSON();
+
+                return _date.slice(8,10) + '/' + _date.slice(5,7)+ '/'+ _date.slice(0,4) + ' ' + _date.slice(11,16);
+            }
+        },
         methods: {
             routes(id) {
                 return this.$routes.enquiries.path + '/' + id;
             },
             sort(column) {
-                this.$parent.requestParams.order_field = column;
-                let direction = this.$parent.requestParams.order_direction;
-                this.$parent.requestParams.order_direction = direction === "asc" ? "desc" : "asc";
+                if (this.$parent.requestParams.order_field == column) {
+                    let direction = this.$parent.requestParams.order_direction;
+                    this.$parent.requestParams.order_direction = direction === "desc" ? "asc" : "desc";
+                } else {
+                    this.$parent.requestParams.order_field = column;
+                    this.$parent.requestParams.order_direction = "desc";
+                }
                 this.$store.dispatch('doctors/LOAD_AND_SAVE_DOCTOR_ENQUIRES', {
                     token       : this.$cookies.get(this.$cookie.names.token),
                     doctor_id   : this.$store.state.user.user.id,

@@ -42,9 +42,7 @@
                     token       : app.$cookies.get(app.cookie.names.token),
                     doctor_id   : store.state.user.user.id,
                     requestData : {
-                        per_page  : store.state.doctors.MAX_DOCTOR_ENQUIRES_PER_PAGE,
-                        order_by  : "id",
-                        direction : "asc"
+                        per_page  : store.state.doctors.MAX_DOCTOR_ENQUIRES_PER_PAGE
                     }
                 })
             },
