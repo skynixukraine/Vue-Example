@@ -65,4 +65,26 @@ export default {
             });
         });
     },
+    async sendFindings(id, token, requestConfig){
+        return new Promise((resolve, reject) => {
+            HTTP.post(`/enquires/${id}/update-conclusion`,requestConfig,{
+                headers : {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }
+            } ).then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data,
+                });
+            }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
 }

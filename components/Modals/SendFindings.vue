@@ -39,7 +39,16 @@
         ],
         methods : {
             onSubmit(){
-            
+                let id = this.$store.state.enquires.doctorEnquire.id;
+                let token = this.$cookies.get(this.$cookie.names.token);
+                let requestConfig = new FormData();
+                requestConfig.append("_method", "PATCH");
+                requestConfig.append("conclusion", "2222")
+                EnquiresApi.sendFindings(id, token, requestConfig).then((response) =>{
+                    console.log(response)
+                }).catch((error) =>{
+                    console.log(error)
+                });
             },
         }
     }
