@@ -57,7 +57,7 @@
 	}
 	@include tablet {
 		h1 {
-			font-size   : 64px;
+			font-size   : 62px;
 			line-height : 76px;
 			margin      : 0 0 32px;
 		}
@@ -117,7 +117,9 @@
 		
 		&.section--fullscreen {
 			min-height : 100vh;
-			padding-top: 130px; 
+			padding-top: 170px;
+			padding-left: 124px;
+    		padding-right: 124px; 
 		}
 		
 		&.section--0-0 {

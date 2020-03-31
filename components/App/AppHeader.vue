@@ -84,7 +84,7 @@
 			width           : 100%;
 			margin          : 0 auto;
 			display         : flex;
-			max-width       : 1120px;
+			max-width       : 1008px;
 			justify-content : space-between;
 		}
 		
