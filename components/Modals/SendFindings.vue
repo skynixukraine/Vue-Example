@@ -39,14 +39,7 @@
         ],
         methods : {
             onSubmit(){
-
-                let requestData = 2;
-                let enquire_id  = this.$store.state.enquires.doctorEnquire.id
-                EnquiresApi.sendFindings(enquire_id, {requestData}).then((response) =>{
-                    console.log(response);
-                }).catch((error) =>{
-                    console.log(error);
-                });
+            
             },
         }
     }

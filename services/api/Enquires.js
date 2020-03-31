@@ -65,10 +65,4 @@ export default {
             });
         });
     },
-
-    async sendFindings(id, requestData){
-        return new Promise((resolve, reject) =>{
-            HTTP.patch(`/enquires/${id}/update-conclusion`, {requestData})
-        })
-    }
 }
