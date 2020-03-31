@@ -117,7 +117,7 @@
 		
 		&.section--fullscreen {
 			min-height : 100vh;
-			padding-top: 170px;
+			padding-top: 130px;
 		}
 
 		&.section--fullscreen .container {
