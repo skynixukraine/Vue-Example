@@ -1,7 +1,7 @@
 <template>
 	<div class = "page page--home page--no-padding">
 		<div class = "section section--fullscreen"
-			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-2.jpg')})` }">
+			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})` }">
 			<div class = "container">
 				<HeroBanner />
 			</div>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div class = "section section--64-64"
-			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})` }"
+			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})` }"
 			 style = "position:relative;z-index:1;">
 			<div class = "container">
 				<header class = "section-header">

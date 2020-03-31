@@ -1,7 +1,7 @@
 <template>
 	<div class = "page">
 		<div class = "section konditionen-section"
-			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-1.jpg')})`}">
+			 :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
 			<div class = "container container__mobile-adaptation">
 				<h3>Konditionen</h3>
 				<h1>Teilnahmekonditionen für Hautärzte</h1>
