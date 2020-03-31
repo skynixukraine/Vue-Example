@@ -63,8 +63,9 @@ export default {
     
     &__main.height-squeeze{
         @include height-squeeze{
-            margin-bottom: 22px ;
-            width: 66%;
+            margin-top: 42px;
+            margin-bottom: 62px ;
+            width: 60%;
         }
     }
 
@@ -117,8 +118,8 @@ export default {
     &__phone.height-squeeze{
     
         @include height-squeeze{
-            right: -278px;
-            top: -65px;
+            right: -150px;
+            top: 76px;
         }
     }
 
@@ -150,7 +151,7 @@ export default {
         }
 
         &__phone {
-            width: 65%;
+            width: 58%;
             display: block;
             position: absolute;
             right: -191px;
