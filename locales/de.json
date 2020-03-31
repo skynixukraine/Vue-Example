@@ -176,7 +176,7 @@
 		"q5": {
 			"title": "5) Woher weiß ich, wann mein Fall bearbeitet wurde?",
 			"p1": "Sobald Ihr Fall bearbeitet wurde, erhalten Sie eine E-Mail von uns an die von Ihnen angegebene E-Mail Adresse.",
-			"p2": "Wenn Sie keine Antwort von uns erhalten, schicken Sie uns bitte eine E-Mail an Hilfe@Online-Hautarzt.org."
+			"p2": "Wenn Sie keine Antwort von uns erhalten, schicken Sie uns bitte eine E-Mail an Hilfe@Online-Hautarzt.de."
 		},
 		"q6": {
 			"title": "6) Wie kann ich bezahlen?",
@@ -275,7 +275,7 @@
 		"q4": {
 			"title": "4) Wie hoch ist die Anzahl der Online-Anfragen?",
 			"p1": "Durch den niedrigen Gesamtpreis von 19,- Euro – der günstigste Gesamtpreis sämtlicher uns bekannten fachärztlichen Teledermatologieplattformen – ist die Barriere auch für Ihre Patienten reduziert und Sie erreichen mit dem niedrigen Preis auch Geringverdiener. Dadurch erhalten Sie deutlich mehr Anfragen und damit Einkünfte, als bei teureren Diensten. ",
-			"p2": "Wieviele Anfragen Sie erhalten, können Sie selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B. Online-Hautarzt.org/hautarzt/Max-Mustermann), auf dass Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können. Dieser Mustertext hat sich bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig (19,- Euro) eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten: Online-Hautarzt.org/Hautarzt/Max-Mustermann“. Darüber hinaus kommt ein Teil der Patienten auch über die Radiussuche über online-hautarzt.org zu Ihnen.",
+			"p2": "Wieviele Anfragen Sie erhalten, können Sie selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B. Online-Hautarzt.de/hautarzt/Max-Mustermann), auf dass Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können. Dieser Mustertext hat sich bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig (19,- Euro) eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten: Online-Hautarzt.de/Hautarzt/Max-Mustermann“. Darüber hinaus kommt ein Teil der Patienten auch über die Radiussuche über online-hautarzt.de zu Ihnen.",
 			"p3": "Um teilnehmen zu dürfen, muss die Facharztausbildung vollständig abgeschlossen und der Praxissitz in Deutschland, Österreich oder der Schweiz sein"
 		},
 		"q5": {
@@ -319,9 +319,9 @@
 		"choose-dermatologist": "Hautarzt auswählen",
 		"dermatologist-at-clinic-essen": "Über unsere Plattform sind viele Hautärzte aus Deutschland erreichbar. Wer soll Ihr Hautproblem befunden? Ob Sie einen Hautarzt in der Nähe auswählen, oder einen Hautarzt mit hoher Erfahrung aus einer anderen Stadt, bleibt Ihnen überlassen.",
 		"describe-symptoms": "Fotografieren Sie Ihr Hautproblem und beschreiben Sie Ihre Symptome",
-		"what-complaints-problem": "Nachdem Sie den Hautarzt ausgewählt haben, beantworten Sie wenige Fragen zu Ihrem Hautproblem und fotografieren es nach einfacher Anleitung, zum Beispiel mit Ihrer Handykamera. Insgesamt kostet Sie dieser Vorgang etwa fünf Minuten IhrerZeit.",
+		"what-complaints-problem": "Nachdem Sie den Hautarzt ausgewählt haben, beantworten Sie wenige Fragen zu Ihrem Hautproblem und fotografieren es nach einfacher Anleitung, zum Beispiel mit Ihrer Handykamera. Insgesamt kostet Sie dieser Vorgang etwa fünf Minuten Ihrer Zeit.",
 		"you-get-specialist-advice": "Sie erhalten Rat von Ihrem Hautarzt",
-		"specialist-initial-assessment": "Meist in weniger als sechs Stunden erhalten Sie fachärztliche Hilfe durch den von Ihnen ausgewählten Hautarzt. Maximal dauert die Beantwortung Ihrer Anfrage 48 Stunden. In etwa 90% der Fälle stellt der Hautarzt eine konkrete Diagnose. Immer erhalten Sie eine Handlungsempfehlung, was Sie tun sollten. Etwa 70% unserer Patienten müssen nicht mehr persönlich in die Praxis, der Rest der Patienten kann das Hautproblem besser einschätzen. Insgesamt kostet dieser Dienst 19,- Euro.Zusätzliche Kosten fallen nicht an."
+		"specialist-initial-assessment": "Meist in weniger als sechs Stunden erhalten Sie fachärztliche Hilfe durch den von Ihnen ausgewählten Hautarzt. Maximal dauert die Beantwortung Ihrer Anfrage 48 Stunden. In etwa 90% der Fälle stellt der Hautarzt eine konkrete Diagnose. Immer erhalten Sie eine Handlungsempfehlung, was Sie tun sollten. Etwa 70% unserer Patienten müssen nicht mehr persönlich in die Praxis, der Rest der Patienten kann das Hautproblem besser einschätzen. Insgesamt kostet dieser Dienst 19,- Euro. Zusätzliche Kosten fallen nicht an."
 	},
 	"times": {
 		"night": "Goedenacht",
