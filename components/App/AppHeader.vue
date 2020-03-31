@@ -58,12 +58,13 @@
 		padding    : 8px 15px;
 		position   : fixed;
 		background : $color-stratos;
+		transition: all 0.5s;
 		
 		&--bg-transparent { 
 			background : transparent;
 			height: 115px;
     		padding: 25px 15px;
-			transition: height 1s;
+			/* transition: height 1s; */
 		}
 		
 		&--bg-white {
