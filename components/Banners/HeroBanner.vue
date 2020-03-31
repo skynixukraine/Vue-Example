@@ -13,12 +13,6 @@
                     class="link link--button link--button-white"
                 >{{ $t('links.start-inquiry') }}</NuxtLink>
             </div>
-            <div class="hero-banner__footer-item">
-                <NuxtLink
-                    :to="this.$routes.hautarzt.path"
-                    class="link link--button link--button-white"
-                >{{ $t('links.our-dermatologists') }}</NuxtLink>
-            </div>
         </footer>
         <img
             class="hero-banner__phone" v-bind:class="checkForSqueeze"
