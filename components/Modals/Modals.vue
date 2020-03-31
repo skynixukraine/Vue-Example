@@ -8,6 +8,7 @@
 		<DiagnosticChatConfirmEnquire v-if = "$store.state.modals.currentActiveModal === $modals.diagnosticChatConfirmEnquire" />
 		<PersonalInfoConfirmDeleteAccount v-if = "$store.state.modals.currentActiveModal === $modals.personalInfoConfirmDeleteAccount" />
 		<ChatConfirmCodeMobile v-if = "$store.state.modals.currentActiveModal === $modals.chatConfirmCodeMobile" />
+		<SendFindings v-if = "$store.state.modals.currentActiveModal === $modals.sendFindings" />
 	</div>
 </template>
 
@@ -20,6 +21,7 @@
     import DiagnosticChatConfirmEnquire from "~/components/Modals/DiagnosticChatConfirmEnquire";
 	import PersonalInfoConfirmDeleteAccount from "~/components/Modals/PersonalInfoConfirmDeleteAccount";
 	import ChatConfirmCodeMobile from "~/components/Modals/ChatConfirmCodeMobile";
+    import SendFindings from "~/components/Modals/SendFindings";
 
     export default {
         components : {
@@ -31,6 +33,7 @@
             DiagnosticChatConfirmEnquire,
 			PersonalInfoConfirmDeleteAccount,
 			ChatConfirmCodeMobile,
+            SendFindings
         }
     }
 </script>
