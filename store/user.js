@@ -7,6 +7,8 @@ export const state = () => ({
     user : DEFAULT_USER,
     userPaymentData: null,
     userEnquireId : null,
+    isVerifyPhone : null,
+    enquire : null,
 });
 
 export const mutations = {
@@ -18,6 +20,12 @@ export const mutations = {
     },
     SET_USER_ENQUIRE_ID(state, newData){
         state.userEnquireId = newData;
+    },
+    SET_USER_IS_VERIFY_PHONE(state, newData){
+        state.isVerifyPhone = newData;
+    },
+    SET_USER_ENQUIRE(state, newData){
+        state.enquire = newData;
     },
 };
 

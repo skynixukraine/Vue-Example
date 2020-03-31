@@ -304,7 +304,19 @@
 				<transition name = "main-animation">
 					<div class = "payment-details" v-if = "isQuestionsOver && isPersonalInfoFilled">
 						<h3>{{ `Services ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} cost ${this.targetDoctor.enquire_price}` }}</h3>
-						<StripePaymentSystem @create-token = "onCreateToken" />
+                        <select v-model="userInputData.paymentMethods" class="select payment">
+                            <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name">
+                                {{ option.title }}
+                            </option>
+                        </select>
+
+                        <button class = "submit-btn"
+                                type = "button"
+                                v-if="userInputData.paymentMethods != userInputData.defaultMethod"
+                                @click.stop = "onConfirmModal">Next
+		                </button>
+
+                        <StripePaymentSystem v-if="userInputData.paymentMethods == userInputData.defaultMethod" @create-token = "onCreateToken" />
 					</div>
 				</transition>
 			</div>
@@ -335,7 +347,10 @@
     import AutoHeight from "~/components/Content/AutoHeight";
     import InputRadio from "~/components/Content/InputRadio";
     import diagnosticChatApi from "~/services/api/DiagnosticChat";
+    import Stripe from "~/services/api/Stripe";
     import StripePaymentSystem from "~/components/Content/StripePaymentSystem";
+    import select2 from "~/components/select2/select2.vue";
+    import {createSource} from "~/node_modules/vue-stripe-elements-plus";
 
     const ANIMATION_DURATION = 750; // Must be equal '$animation_duration' in SCSS
 
@@ -357,6 +372,8 @@
 
             if(store.state.diagnosticChat.doctorIdForStartDiagnosticChat !== null){
                 await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id : store.state.diagnosticChat.doctorIdForStartDiagnosticChat});
+
+                await store.dispatch('diagnosticChat/LOAD_AND_SAVE_PAYMENT_METHODS', {})
             }
         },
         mixins     : [
@@ -370,6 +387,17 @@
             InputRadio,
             AutoHeight,
             StripePaymentSystem,
+            select2,
+        },
+        created() {
+            if (process.browser) {
+                let uri = window.location.search.substring(1);
+                let params = new URLSearchParams(uri);
+                this.stripeToken = params.get('source');
+                this.userInputData.paymentMethods = params.get('type') ? params.get('type') : this.userInputData.defaultMethod;
+                this.onSubmitDiagnosticChatChargeEnquire();
+            }
+
         },
         data(){
             return {
@@ -469,6 +497,10 @@
                     bodySelect  : "BODY-SELECT",
                     multiSelect : "SELECT"
                 },
+                userInputData   : {
+                    defaultMethod : 'credit_card',
+                    paymentMethods : 'credit_card'
+                }
             }
         },
         computed   : {
@@ -534,6 +566,7 @@
             }
 
             this.$root.$on("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatConfirmEnquire);
+            this.$root.$on("submitDiagnosticChatChargeEnquire", this.onSubmitDiagnosticChatChargeEnquire);
         },
         methods    : {
             forbidScroll(){
@@ -1025,20 +1058,22 @@
             onPersonalInfoSubmit(){
                 if(this.isValidPersonalInfoBlock){
                     this.isPersonalInfoFilled = true;
-                    
+
                     setTimeout(() => {
 						this.scrollToBottom();
 					}, ANIMATION_DURATION * 2);
                 }
             },
             onCreateToken(eventData){
-              //  this.stripeToken = eventData.token.id;
+                this.stripeToken = eventData.token.id;
+                this.onConfirmModal();
+            },
+            onConfirmModal(){
                 this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
             onSubmitDiagnosticChatConfirmEnquire(){
                 let data = new FormData();
 
-                data.append("code", this.stripeToken);
                 data.append("email", this.personalInfoData.mail.value);
                 data.append("gender", this.personalInfoData.gender.value);
                 data.append("doctor_id", this.targetDoctor.id);
@@ -1080,21 +1115,83 @@
                     }
 				}
 
+                this.createEnquire(data);
+            },
+            createEnquire(data) {
                 diagnosticChatApi.createEnquires(data).then((response) => {
                     let enquireId = response.data.data.id;
                     this.$store.commit("user/SET_USER_ENQUIRE_ID", enquireId);
-                    diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
-                        this.openModal(this.$modals.chatConfirmCodeMobile, 
-                            "Confirm code", 
-                            "We've sent a verification code to your phone number. Please enter this code below:");
-                    });
+                    this.$store.commit("user/SET_USER_ENQUIRE", response.data.data);
+
+                    this.sendSMS(enquireId);
+
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
-            }
+            },
+            sendSMS(enquireId){
+                diagnosticChatApi.sendSmsCode(enquireId).then((response) => {
+                    this.openModal(this.$modals.chatConfirmCodeMobile,
+                        "Confirm code",
+                        "We've sent a verification code to your phone number. Please enter this code below:");
+
+                }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                });
+            },
+            onSubmitDiagnosticChatChargeEnquire() {
+
+                if (!this.$store.state.user.isVerifyPhone) {
+                    return;
+                }
+
+                if (this.userInputData.paymentMethods != this.userInputData.defaultMethod) {
+                    this.stripeCreateSource();
+                }
+
+                if (this.stripeToken) {
+                    let data = new FormData();
+                    data.append("_method", "PATCH");
+                    data.append("code", this.stripeToken);
+                    data.append("type", this.userInputData.paymentMethods);
+
+                    diagnosticChatApi.chargeEnquire(this.$store.state.user.userEnquireId, data).then((response) => {
+                        this.openModal(
+                            this.$modals.defaultModal,
+                            `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
+                            "Ihre Anfrage erstellt");
+                    }).catch((error) => {
+                        this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    });
+                }
+            },
+            stripeCreateSource(){
+
+                this.$store.dispatch('stripe/LOAD_AND_SAVE_STRIPE_SOURCE', {
+                    type: this.userInputData.paymentMethods,
+                    amount: this.$store.state.user.enquire.price,
+                    currency: this.$store.state.user.enquire.currency,
+                    redirect: {
+                        return_url: `${process.env.BASE_APP_URL}/forschung?type=` + this.userInputData.paymentMethods +
+                                    '&enquireId=' + this.$store.state.user.enquire.id +
+                                    '&doctorId=' + this.$store.state.diagnosticChat.doctorIdForStartDiagnosticChat,
+                    },
+                    sofort: {
+                        country: 'DE',
+                    },
+                    owner: {
+                        name: this.targetDoctor.title.name
+                    }
+                }).then(function(result) {
+                    console.log(result.source.redirect.url);
+                    window.location.href = result.source.redirect.url;
+                });
+
+            },
         },
         beforeDestroy(){
             this.$root.$off("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatConfirmEnquire);
+            this.$root.$off("submitDiagnosticChatChargeEnquire", this.onSubmitDiagnosticChatChargeEnquire);
         }
     }
 </script>

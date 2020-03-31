@@ -143,4 +143,46 @@ export default {
                 });
         });
     },
+    async chargeEnquire(id, requestConfig){
+        return new Promise((resolve, reject) => {
+            HTTP.post(`/enquires/${id}/charge`, requestConfig)
+            .then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data,
+                    message : "Enquires success created.",
+                });
+            }).catch(error => {
+                let message = error.message;
+
+                if(error.response.status === 500){
+                    message = "Internal technical error was happened.";
+                }
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message,
+                });
+            });
+        });
+    },
+    async getPaymentMethods(id){
+        return new Promise((resolve, reject) => {
+            HTTP.get(`/enquires/payment-methods`, {})
+            .then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                });
+            }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
 }
