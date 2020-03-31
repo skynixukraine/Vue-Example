@@ -1,7 +1,7 @@
 <template>
     <div class="table table--billing">
 
-        <h3>Payments</h3>
+        <h3>Transaktionen</h3>
         <div class="table__content">
             <div class="table__header">
                 <div class="table__header-item">{{ $t("page-billing.table.transactionId") }}<br class="table__br"> ID</div>
