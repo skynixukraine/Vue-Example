@@ -167,4 +167,22 @@ export default {
             });
         });
     },
+    async getPaymentMethods(id){
+        return new Promise((resolve, reject) => {
+            HTTP.get(`/enquires/payment-methods`, {})
+            .then(response => {
+                resolve({
+                    success : true,
+                    status  : response.status,
+                    data    : response.data.data,
+                });
+            }).catch(error => {
+                reject({
+                    success : false,
+                    status  : error.response.status,
+                    message : error.message,
+                });
+            });
+        });
+    },
 }

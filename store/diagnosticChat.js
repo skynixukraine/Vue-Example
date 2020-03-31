@@ -11,7 +11,10 @@ export const mutations = {
     },
     SET_DOCTOR_ID_FOR_START_DIAGNOSTIC_CHAT(state, newValue){
         state.doctorIdForStartDiagnosticChat = newValue;
-    }
+    },
+    SET_PAYMENT_METHODS(state, newValue){
+        state.paymentMethods = newValue;
+    },
 };
 
 export const actions = {
@@ -26,6 +29,19 @@ export const actions = {
                           console.error(error);
                           reject(error);
                       });
+        });
+    },
+    LOAD_AND_SAVE_PAYMENT_METHODS({state, commit}, requestConfig){
+        return new Promise((resolve, reject) => {
+             DiagnosticChatApi.getPaymentMethods(requestConfig)
+                    .then(response => {
+                        commit("SET_PAYMENT_METHODS", response.data);
+                        resolve(response);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        reject(error);
+                    });
         });
     },
 };
