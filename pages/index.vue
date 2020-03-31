@@ -199,6 +199,14 @@
 </script>
 
 <style lang = "scss" scoped>
+	.page--home .section--64-64 {
+		padding-top: 64px;
+		padding-bottom: 64px;
+	}
+	.page--home .list--d4 {
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
 	.section-header {
 		&__title {
 			text-align : center;
