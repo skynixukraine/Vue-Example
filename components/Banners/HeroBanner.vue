@@ -105,6 +105,10 @@ export default {
         }
     }
 
+    &__footer-item .link--button {
+        max-width: 295px;
+    }
+
     &__phone {
         display: none;
     }
@@ -113,7 +117,7 @@ export default {
     
         @include height-squeeze{
             right: -150px;
-            top: 76px;
+            top: 113px;
         }
     }
 
