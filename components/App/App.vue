@@ -118,8 +118,11 @@
 		&.section--fullscreen {
 			min-height : 100vh;
 			padding-top: 170px;
-			padding-left: 124px;
-    		padding-right: 124px; 
+		}
+
+		&.section--fullscreen .container {
+			max-width: 1008px;
+			padding: 0;
 		}
 		
 		&.section--0-0 {
@@ -239,7 +242,7 @@
 			&__inner {
 				width               : 100%;
 				height              : 33px;
-				max-width           : 1120px;
+				max-width			: 1008px;
 				margin-left         : auto;
 				margin-right        : auto;
 				background          : none;
