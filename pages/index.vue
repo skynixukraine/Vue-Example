@@ -38,6 +38,12 @@
 				</footer>
 			</div>
 		</div>
+		<div class = "section section--default-0">
+			<div class = "container">
+				<div class = "container__dots-svg container__dots-svg--consult-block"></div>
+				<RequestBanner />
+			</div>
+		</div>
 		<div class = "section section--bg-left-2">
 			<div class = "container">
 				<header class = "section-header">
@@ -69,12 +75,6 @@
 						{{ $t("links.further-information") }}
 					</NuxtLink>
 				</footer>
-			</div>
-		</div>
-		<div class = "section section--default-0">
-			<div class = "container">
-				<div class = "container__dots-svg container__dots-svg--consult-block"></div>
-				<RequestBanner />
 			</div>
 		</div>
 		<div class = "section">
