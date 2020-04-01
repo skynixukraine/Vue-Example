@@ -1,14 +1,14 @@
 <template>
 	<modal :name = "$modals.openImageModal"
 		   transition = "nice-modal-fade"
-		   :width = "auto"
+		   :width = "700"
 		   :height = "'auto'"
 		   :delay = "100"
 		   :adaptive = "true"
-		   :class = "'modal'">
+		   :class = "'modal modal--open-image'">
 		<button class = "modal__close-button" @click = "closeModal($modals.openImageModal)"></button>
 		<div class = "modal__main">
-			<img src = "" alt = "">
+			<img :src="getImage()">
 		</div>
 	</modal>
 </template>
@@ -23,29 +23,36 @@
             modal,
         ],
         methods : {
-            getImage(image) {
-            
+            getImage() {
+                let answers = this.$store.state.enquires.doctorEnquire.answers;
+                let src = "";
+                answers.map((val,index) => {
+                    if(val.message.type === 'IMAGE'){
+                         src = val.message_option !== null ? val.message_option.value : val.value
+                        return src;
+                    }
+                })
+           return src;
             },
         }
     }
 </script>
 <style lang = "scss">
 	.modal {
-		&__form {
-			display        : flex;
-			flex-direction : column;
-			align-items    : center;
-		}
-		
-		&__header {
-			margin-bottom : 55px;
-		}
-		
-		.link {
-			margin-top : 10px;
-			
-			@include tablet {
-				margin-top : 20px;
+		&--open-image {
+			.v--modal-box.v--modal {
+				padding: 5px;
+				box-shadow: none;
+				border-radius: 3px;
+				
+				.modal__close-button {
+					display: none;
+				}
+				img {
+					width : 100%;
+					max-height: 600px;
+					object-fit: contain;
+				}
 			}
 		}
 		
