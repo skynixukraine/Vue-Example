@@ -85,7 +85,6 @@
                     token : this.$cookies.get(this.$cookie.names.token),
                     query : query
                 }).then((response) => {
-                    console.log(response)
                     this.data = response.data.data;
                 }).catch((error) => {
                     this.responseErrorMessage = error.message;
