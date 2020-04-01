@@ -3,7 +3,7 @@
 		<h3>Please give us your payment details:</h3>
 		<card class = "payment__card input"
 			  :class = "{ 'payment__card--is-success': isAllFieldsFilled }"
-			  stripe = "pk_test_uLERvbfCVskiJ0eQcEfeoYDZ00huQC1MwH"
+              v-bind:stripe="stripeKey"
 			  :options = "stripeOptions"
 			  @change = "onChange" />
 		<button class = "payment__submit-btn"
@@ -26,6 +26,7 @@
         data(){
             return {
                 isAllFieldsFilled : false,
+                stripeKey : process.env.STRIPE_KEY
             }
         },
         computed   : {
