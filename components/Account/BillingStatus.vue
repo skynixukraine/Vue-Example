@@ -6,7 +6,10 @@
 				   :href = "userPaymentData.url"
 				   target = "_blank"
 				   class = "link link--button link--button-blue link--button-gradient">{{ $t("page-billing.stripe.connecting") }}</a>
-				<span v-else-if = "userPaymentData.stripe_account_id">{{ $t("page-billing.stripe.connectDone") }}</span>
+                <a v-else-if = "userPaymentData.stripe_account_id"
+				   :href = "userPaymentData.url"
+				   target = "_blank"
+				   class = "link link--button link--button-blue link--button-gradient">{{ $t("page-billing.stripe.changestripe") }}</a>
 			</div>
 		</div>
 	</div>
