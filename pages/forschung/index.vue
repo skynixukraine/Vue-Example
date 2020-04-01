@@ -297,7 +297,7 @@
 						<button type = "button"
 								class = "submit-btn"
 								:class = "{'is-disable': !isValidPersonalInfoBlock}"
-								@click = "onPersonalInfoSubmit">Next
+								@click = "onPersonalInfoSubmit">{{ this.$t('page-forschung.chat.nextBtn') }}
 						</button>
 					</div>
 				</transition>
@@ -313,7 +313,7 @@
                         <button class = "submit-btn"
                                 type = "button"
                                 v-if="userInputData.paymentMethods != userInputData.defaultMethod"
-                                @click.stop = "onConfirmModal">Next
+                                @click.stop = "onConfirmModal"> {{ this.$t('page-forschung.chat.nextBtn') }}
 		                </button>
 
                         <StripePaymentSystem v-if="userInputData.paymentMethods == userInputData.defaultMethod" @create-token = "onCreateToken" />

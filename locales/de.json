@@ -421,6 +421,9 @@
 		}
 	},
 	"page-forschung": {
+			"chat": {
+				"nextBtn": "Weiter"
+			},
 			"head": {
 				"title": "Anfrage starten | Online Hautarzt vor Ort"
 			},
