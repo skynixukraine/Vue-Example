@@ -248,8 +248,8 @@
 			"status": "Status"
 		},
 		"stripe": {
-			"connecting": "Connect stripe account",
-			"connectDone": "You stripe account already connected!"
+			"connecting": "BANKDATEN HINZUFÜGEN",
+			"changestripe": " BANKDATEN BEARBEITEN"
 		}
 	},
 	"page-konditionen": {
