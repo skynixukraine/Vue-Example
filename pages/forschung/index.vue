@@ -92,7 +92,7 @@
 										<div class = "edit-answer-area__controls">
 											<button type = "button"
 													class = "control-btn--cancel"
-													@click = "onEditMessageCancel">Cancel
+													@click = "onEditMessageCancel">Stornieren
 											</button>
 											<button type = "button"
 													class = "control-btn--submit"
@@ -101,7 +101,7 @@
 														'is-text': lastQuestionData.type === QUESTION_TYPES.inputText,
 														'is-upload-photo': lastQuestionData.type === QUESTION_TYPES.uploadImg && !lastUploadedImg.file
 													}"
-													@click = "onEditMessageSubmit">Confirm
+													@click = "onEditMessageSubmit">Bestätigen
 											</button>
 										</div>
 									</div>
@@ -305,7 +305,7 @@
 					<div class = "payment-details" v-if = "isQuestionsOver && isPersonalInfoFilled">
 						<h3>{{ `Services ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} cost ${this.targetDoctor.enquire_price}` }}</h3>
                         <select v-model="userInputData.paymentMethods" class="select payment">
-                            <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name">
+                            <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name" v-bind:key="option.name">
                                 {{ option.title }}
                             </option>
                         </select>
@@ -1469,7 +1469,8 @@
 			}
 			
 			&:hover {
-				transform : $transform scale(1.15);
+				text-shadow: #5dc8e5 0 0 8px;
+                transition: all 0.5s ease-out;
 			}
 		}
 	}
