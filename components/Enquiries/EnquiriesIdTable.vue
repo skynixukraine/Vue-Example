@@ -8,10 +8,11 @@
 			<div class = "table__main">
 				<div class = "table__main-items" v-for = "(answer, index) in getAnswers" :key = "index">
 					<div class = "table__main-item" data-title="Question">{{getQuestion(answer)}}</div>
-                    <div class = "edit-answer-area__upload-image__user-image-container"
-                         v-if = "isImage(getType(answer))">
+					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-if = "isImage(getType(answer))">
+                    <div class = "edit-answer-area__upload-image__user-image-container">
                         <img :src="getValue(answer)" @click="openModal($modals.openImageModal)">
                     </div>
+					</div>
 					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else> {{getValue(answer)}}</div>
 				</div>
 			</div>

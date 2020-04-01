@@ -3,13 +3,13 @@
     <div class = "enquiries-id__main">
       <div class = "diagnosis-id" v-if="this.$store.state.enquires.doctorEnquire.conclusion !== null">
         <div class = "diagnosis-id__title table__header-item">Diagnosis</div>
-        <div class = "diagnosis-id__answer table__main-item" >{{getValue(value)}}</div>
+        <div class = "diagnosis-id__answer table__main-item" >{{getValue()}}</div>
       </div>
       
       <Table />
       
       <div class = "enquiries-id__links">
-        <button v-if="getValue(value) === null"  class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.sendFindings)">{{ $t('page-enquiries.submit-diagnosis') }}</button>
+        <button v-if="getValue() === null"  class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.sendFindings)">{{ $t('page-enquiries.submit-diagnosis') }}</button>
         <button v-else  class = "link link--button link--button-blue link--button-gradient" >{{ $t('page-enquiries.finished') }}</button>
       </div>
       
@@ -35,8 +35,7 @@
             Table,
         },
         methods  : {
-            getValue(value) {
-                console.log(this.$store.state.enquires)
+            getValue() {
                 let conclusion = this.$store.state.enquires.doctorEnquire.conclusion;
                 return conclusion;
             },
@@ -96,9 +95,14 @@
     }
     
     .edit-answer-area__upload-image__user-image-container {
-      width: 40%;
+      width: 100%;
+      margin-top: 5px;
+      @include tablet {
+        margin-top: 0;
+      }
       img {
         width: 100%;
+        cursor: pointer;
       }
     }
     
