@@ -294,7 +294,8 @@
 	},
 	"page-enquiries": {
 		"submit-diagnosis": "BEFUND ABSCHICKEN & FALL SCHLIEßEN",
-		"send-findings": "BEFUND ABSCHICKEN "
+		"send-findings": "BEFUND ABSCHICKEN ",
+		"finished": "Fertig"
 	},
 	"page-jobs": {
 		"head": {

@@ -1,14 +1,14 @@
 <template>
 	<div class = "page">
 		<div class = "section section-not-padding">
-			<div class = "container-big">
+			<div class = "container-fluid">
 				<Dashboard>
 					<DashboardSidebar />
 					<DashboardMain>
 						<div class = "section-breadcrumbs">
 							<Breadcrumbs :breadcrumbs = "breadcrumbs" />
 						</div>
-						<DashboardHeader :title = "`Enquiries ID: ${$route.params.id} Information`">
+						<DashboardHeader :title = "`Anfrage ${$route.params.id} Information`">
 							<EnquiriesStatus />
 						</DashboardHeader>
 						<DashboardContent>

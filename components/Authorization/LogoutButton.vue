@@ -1,5 +1,5 @@
 <template>
-	<button class = "link logout__link" @click.stop = "onLogout">Log Out</button>
+	<button class = "link logout__link" @click.stop = "onLogout">Logout</button>
 </template>
 
 <script>
