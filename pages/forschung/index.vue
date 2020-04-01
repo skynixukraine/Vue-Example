@@ -373,7 +373,7 @@
             if(store.state.diagnosticChat.doctorIdForStartDiagnosticChat !== null){
                 await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id : store.state.diagnosticChat.doctorIdForStartDiagnosticChat});
 
-                await store.dispatch('diagnosticChat/LOAD_AND_SAVE_PAYMENT_METHODS', {})
+                await store.dispatch('diagnosticChat/LOAD_AND_SAVE_PAYMENT_METHODS', {});
             }
         },
         mixins     : [
@@ -388,16 +388,6 @@
             AutoHeight,
             StripePaymentSystem,
             select2,
-        },
-        created() {
-            if (process.browser) {
-                let uri = window.location.search.substring(1);
-                let params = new URLSearchParams(uri);
-                this.stripeToken = params.get('source');
-                this.userInputData.paymentMethods = params.get('type') ? params.get('type') : this.userInputData.defaultMethod;
-                this.onSubmitDiagnosticChatChargeEnquire();
-            }
-
         },
         data(){
             return {
@@ -1171,7 +1161,7 @@
                     amount: this.$store.state.user.enquire.price,
                     currency: this.$store.state.user.enquire.currency,
                     redirect: {
-                        return_url: `${process.env.BASE_APP_URL}/forschung?type=` + this.userInputData.paymentMethods +
+                        return_url: `${process.env.BASE_APP_URL}/auschecken?type=` + this.userInputData.paymentMethods +
                                     '&enquireId=' + this.$store.state.user.enquire.id +
                                     '&doctorId=' + this.$store.state.diagnosticChat.doctorIdForStartDiagnosticChat,
                     },

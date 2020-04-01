@@ -73,6 +73,9 @@ export default ({app}, inject) => {
         },
         awards              : {
             path : "/auszeichnungen"
+        },
+        auschecken          : {
+            path : "/auschecken"
         }
     };
 
