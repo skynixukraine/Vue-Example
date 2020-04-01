@@ -78,11 +78,7 @@
         methods : {
             requestSO(){
                 let query = {
-                    page:            this.query.page,
-                    per_page:        this.query.perPage,
                     search :         this.query.search,
-                    order_field:     this.query.field,
-                    order_direction: this.query.direction
                 };
                 UserApi.requestStripeOperations({
                     id    : this.$store.state.user.user.id,
@@ -90,9 +86,6 @@
                     query : query
                 }).then((response) => {
                     this.data = response.data.data;
-
-
-
                 }).catch((error) => {
                     this.responseErrorMessage = error.message;
                 });
