@@ -11,13 +11,17 @@
 			<h3 class = "modal__title">BEFUND ABSCHICKEN</h3>
 		</header>
 		<div class = "modal__main">
-			<form class = "modal__form">
+			<form class = "modal__form" v-if="enquire.success === false">
 				<AutoHeight :placeholder_text = "'BEFUND ABSCHICKEN'"
-							:maxLength = '170'
-							:minHeight = "'10em'" />
-				<buttom class = "link link--button link--button-blue link--button-gradient" @click = "onSubmit">Ok
-				</buttom>
+							:minHeight = "'10em'"
+							:value = "enquire.conclusion"
+							@change = "(newValue) => {enquire.conclusion = newValue}"/>
+				<buttom class = "link link--button link--button-blue link--button-gradient" @click = "onSubmit">Ok</buttom>
 			</form>
+			<div class = "modal__form--success" v-else>
+				<p>Vielen Dank für Ihre Einreichung</p>
+				<p>Dieser Fall ist jetzt abgeschlossen und Ihr Patient wird benachrichtigt.</p>
+			</div>
 		</div>
 	</modal>
 </template>
@@ -33,21 +37,30 @@
         components : {
             AutoHeight
         },
-
+        data(){
+            return {
+                enquire : {
+                    conclusion: "",
+					success: false,
+				}
+            }
+        },
         mixins  : [
             modal,
         ],
         methods : {
             onSubmit(){
+                console.log(this.$store.state.enquires.doctorEnquire);
                 let id = this.$store.state.enquires.doctorEnquire.id;
                 let token = this.$cookies.get(this.$cookie.names.token);
                 let requestConfig = new FormData();
                 requestConfig.append("_method", "PATCH");
-                requestConfig.append("conclusion", "2222")
+                requestConfig.append("conclusion", this.enquire.conclusion)
                 EnquiresApi.sendFindings(id, token, requestConfig).then((response) =>{
-                    console.log(response)
+                    this.enquire.success = true;
+                    this.enquire.conclusion = response.data.data.conclusion;
+                    setTimeout(() => location.reload(), 600);
                 }).catch((error) =>{
-                    console.log(error)
                 });
             },
         }

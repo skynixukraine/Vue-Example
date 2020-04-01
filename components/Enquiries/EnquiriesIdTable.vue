@@ -10,7 +10,7 @@
 					<div class = "table__main-item" data-title="Question">{{getQuestion(answer)}}</div>
                     <div class = "edit-answer-area__upload-image__user-image-container"
                          v-if = "isImage(getType(answer))">
-                        <img :src="getValue(answer)" v-bind:alt="pic">
+                        <img :src="getValue(answer)" @click="openModal($modals.openImageModal)">
                     </div>
 					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else> {{getValue(answer)}}</div>
 				</div>
@@ -20,9 +20,16 @@
 </template>
 
 <script>
+    import modal from '~/mixins/modal'
     export default {
+        mixins : [
+            modal,
+        ],
         data(){
             return {
+                mixins : [
+                    modal,
+                ],
                 model: {
                     status: this.$store.state.enquires.doctorEnquire.status,
                 },
@@ -50,7 +57,7 @@
             },
             isImage(type) {
                 return type === 'IMAGE';
-            }
+            },
         }
     }
 </script>

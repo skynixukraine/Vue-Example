@@ -9,6 +9,7 @@
 		<PersonalInfoConfirmDeleteAccount v-if = "$store.state.modals.currentActiveModal === $modals.personalInfoConfirmDeleteAccount" />
 		<ChatConfirmCodeMobile v-if = "$store.state.modals.currentActiveModal === $modals.chatConfirmCodeMobile" />
 		<SendFindings v-if = "$store.state.modals.currentActiveModal === $modals.sendFindings" />
+		<OpenImageModal v-if = "$store.state.modals.currentActiveModal === $modals.openImageModal" />
 	</div>
 </template>
 
@@ -22,6 +23,7 @@
 	import PersonalInfoConfirmDeleteAccount from "~/components/Modals/PersonalInfoConfirmDeleteAccount";
 	import ChatConfirmCodeMobile from "~/components/Modals/ChatConfirmCodeMobile";
     import SendFindings from "~/components/Modals/SendFindings";
+    import OpenImageModal from "~/components/Modals/OpenImageModal";
 
     export default {
         components : {
@@ -33,7 +35,8 @@
             DiagnosticChatConfirmEnquire,
 			PersonalInfoConfirmDeleteAccount,
 			ChatConfirmCodeMobile,
-            SendFindings
+            SendFindings,
+            OpenImageModal
         }
     }
 </script>

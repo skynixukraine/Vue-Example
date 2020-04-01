@@ -11,6 +11,7 @@ export default ({app}, inject) =>{
         personalInfoConfirmDeleteAccount : "personal-info-confirm-delete-account",
         chatConfirmCodeMobile            : "confirm-code-modal",
         sendFindings                     : "send-findings",
+        openImageModal                   : "open-image-modal",
     };
 
     app.modals            = OPTIONS;
