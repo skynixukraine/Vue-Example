@@ -27,9 +27,6 @@
         ],
         data(){
             return {
-                mixins : [
-                    modal,
-                ],
                 model: {
                     status: this.$store.state.enquires.doctorEnquire.status,
                 },
