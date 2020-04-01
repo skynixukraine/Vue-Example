@@ -57,8 +57,8 @@ export default {
     
     &__main.height-squeeze{
         @include height-squeeze{
-            margin-top: 42px;
-            margin-bottom: 62px ;
+            margin-top: 30px;
+            margin-bottom: 30px;
             width: 60%;
         }
     }
@@ -66,19 +66,21 @@ export default {
     &__title {
         color: $color-white;
         font-family: $TheAntiquaB;
-        letter-spacing: -0.02em;
+        
     }
     
     &__title.height-squeeze{
         
         @include height-squeeze{
             margin: 0 0 16px;
+            font-size: 60px;
+            line-height: 70px;
         }
     }
 
     &__text {
         font-weight: 400;
-        font-size: 20px;
+        font-size: 19px;
         line-height: 30px;
         color: $color-white;
     }
@@ -86,7 +88,7 @@ export default {
     &__text.height-squeeze{
     
         @include height-squeeze{
-            line-height: 1.3;
+            line-height: 1.5;
         }
     }
 
@@ -116,8 +118,8 @@ export default {
     &__phone.height-squeeze{
     
         @include height-squeeze{
-            right: -150px;
-            top: 113px;
+            right: -165px;
+            top: 0px;
         }
     }
 
@@ -149,7 +151,7 @@ export default {
         }
 
         &__phone {
-            width: 58%;
+            width: 65%;
             display: block;
             position: absolute;
             right: -191px;
