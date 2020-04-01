@@ -1092,8 +1092,7 @@
                             break;
                         }
                         case this.QUESTION_TYPES.uploadImg:{
-                            data.append(`answers[${answer.message_id}]`, "image");
-                            data.append(`image`, answer.file);
+                            data.append(`answers[${answer.message_id}]`, answer.file);
 
                             break;
                         }
