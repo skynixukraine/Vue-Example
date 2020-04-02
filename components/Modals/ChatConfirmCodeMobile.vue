@@ -101,7 +101,9 @@
                 diagnosticChatApi.verifySmsCode(userEnquireId, requestConfig).then((response) => {
                     this.$root.$emit("showNotify", {type : "success", text : response.message});
                     this.$store.commit("user/SET_USER_IS_VERIFY_PHONE", 1);
+                    this.$store.commit("enquires/SET_ENQUIRE_ACCESS", response.data);
                     this.$root.$emit("submitDiagnosticChatChargeEnquire");
+                    this.$root.$emit("submitConclusion");
                     this.closeModal(this.$modals.chatConfirmCodeMobile);
 
                 }).catch((error) => {

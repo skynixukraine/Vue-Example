@@ -76,6 +76,9 @@ export default ({app}, inject) => {
         },
         auschecken          : {
             path : "/auschecken"
+        },
+        conclusions         : {
+            path : "/conclusions"
         }
     };
 
