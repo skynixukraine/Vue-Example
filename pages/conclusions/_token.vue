@@ -42,12 +42,14 @@
             }
 
             this.hashValidate(this.performData());
+
             this.$root.$on("submitConclusion", this.submitConclusion);
         },
         methods    : {
             performData() {
                 let data = new FormData();
-                data.append("hash", this.$route.params.token);
+                let token = atob(this.$route.params.token);
+                data.append("hash", token);
                 return data;
             },
             hashValidate(data) {
