@@ -296,10 +296,37 @@
 						</div>
                         <div class = "personal-info__item">
 						<div class = "single-form">
-							<header class = "personal-info__header">{{ $t("page-personal-information.regionAndStreet") }}</header>
-							<div class = "personal-info__main personal-info__google-autocomplete">
-								<AddressAutocomplete :value = "personalInfoData.location.value"
-													 @place_change = "onAddressChange" />
+							<header class = "personal-info__header">{{ $t("page-forschung.chat.street") }}</header>
+							<div class = "personal-info__main">
+								<input type = "date"
+									   class = "input"
+									   style = "color: inherit"
+									   v-model = personalInfoData.street
+									   name = "street">
+							</div>
+						</div>
+					    </div>
+                        <div class = "personal-info__item">
+						<div class = "single-form">
+							<header class = "personal-info__header">{{ $t("page-forschung.chat.city") }}</header>
+							<div class = "personal-info__main">
+								<input type = "date"
+									   class = "input"
+									   style = "color: inherit"
+									   v-model = personalInfoData.city
+									   name = "city">
+							</div>
+						</div>
+					    </div>
+                        <div class = "personal-info__item">
+						<div class = "single-form">
+							<header class = "personal-info__header">{{ $t("page-forschung.chat.zip") }}</header>
+							<div class = "personal-info__main">
+								<input type = "date"
+									   class = "input"
+									   style = "color: inherit"
+									   v-model = personalInfoData.zip
+									   name = "zip">
 							</div>
 						</div>
 					    </div>
@@ -360,7 +387,6 @@
     import StripePaymentSystem from "~/components/Content/StripePaymentSystem";
     import select2 from "~/components/select2/select2.vue";
     import {createSource} from "~/node_modules/vue-stripe-elements-plus";
-    import AddressAutocomplete from "~/components/Content/AddressAutocomplete";
 
     const ANIMATION_DURATION = 750; // Must be equal '$animation_duration' in SCSS
 
@@ -398,7 +424,6 @@
             AutoHeight,
             StripePaymentSystem,
             select2,
-            AddressAutocomplete
         },
         data(){
             return {
@@ -462,11 +487,17 @@
                         value   : "",
                         isValid : false,
                     },
-                    location            : {
+                    street      : {
                         value : "",
-                        placeData   : null,
-                        customData   : null,
-                        isValid : false
+                        isValid : true
+                    },
+                    city      : {
+                        value : "",
+                        isValid : true
+                    },
+                    zip      : {
+                        value : "",
+                        isValid : true
                     }
                 },
 
@@ -576,50 +607,7 @@
             this.$root.$on("submitDiagnosticChatChargeEnquire", this.onSubmitDiagnosticChatChargeEnquire);
         },
         methods    : {
-            onAddressChange(placeData){
-                let newFullAddress = "";
-
-				if(placeData.address_components){
-					this.personalInfoData.location.customData = {};
-					for(let param = null, i = placeData.address_components.length - 1; i > -1; i--){
-						param = placeData.address_components[i];
-
-						if(param.types){
-							switch(param.types[0]){
-								case "country":{
-									this.personalInfoData.location.customData.country = param.long_name;
-									newFullAddress += ` ${param.long_name},`;
-									break;
-								}
-								case "locality":{
-									this.personalInfoData.location.customData.city = param.long_name;
-									newFullAddress += ` ${param.long_name},`;
-									break;
-								}
-								case "route":{
-									this.personalInfoData.location.customData.street = param.long_name;
-									newFullAddress += ` ${param.long_name},`;
-									break;
-								}
-								case "street_number":{
-									this.personalInfoData.location.customData.street_number = param.long_name;
-									newFullAddress += ` ${param.long_name},`;
-									break;
-								}
-							}
-						}
-					}
-					
-					newFullAddress = newFullAddress.slice(0, -2);
-				} else{
-                    newFullAddress = placeData.formatted_address || placeData.name || "";
-                    this.personalInfoData.location.isValid = false;
-				}
-				
-                this.personalInfoData.location.placeData   = placeData;
-                this.personalInfoData.location.value = newFullAddress.trim();
-                this.personalInfoData.location.isValid = true;
-            },
+            
             forbidScroll(){
                 this.scrollOffsetForForbidScroll = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -1133,6 +1121,9 @@
                 data.append("phone_number", this.personalInfoData.phone.value);
                 data.append("country_code", this.personalInfoData.phone.eventData.country.dialCode);
                 data.append("date_of_birth", this.personalInfoData.dateOfBirth.value);
+                data.append("street", this.personalInfoData.street);
+                data.append("city", this.personalInfoData.city);
+                data.append("zip", this.personalInfoData.zip);
 
                 for(let i = 1, answer = null; answer = this.userAnswers[i++];){
 
