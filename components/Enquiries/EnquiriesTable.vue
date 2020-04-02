@@ -1,5 +1,5 @@
 <template>
-	<div class = "table__content">
+	<div class = "table__content table--enquirie">
 		<div class = "table__header">
 			<div class = "table__header-item table__header-item_id"
 				 :class = "[sortingName === 'id' ? query.direction : '']"
@@ -25,7 +25,7 @@
 		</div>
 		<div class = "table__main">
 			
-			<NuxtLink class = "table__main-items"
+			<NuxtLink class = "table__main-items main-items--enquirie"
 					  v-for = "(enquire, index) in doctorEnquiresData"
 					  :key = "index"
 					  :to = "routes(enquire.id)">
@@ -92,6 +92,13 @@
 
 </script>
 <style lang = "scss" scoped>
+
+    .main-items--enquirie {
+        min-height: 56px;
+    }
+    .main-items--enquirie:hover {
+        cursor: pointer;
+    }
 	
 	@include tablet-big-min--big {
 		.table {
