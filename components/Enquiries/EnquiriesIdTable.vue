@@ -173,14 +173,10 @@
 
 <script>
     import modal from '~/mixins/modal'
-    import BodyParts from "~/components/Content/BodyParts";
     export default {
         mixins : [
             modal,
         ],
-        components : {
-            BodyParts
-        },
         data(){
             return {
                 model: {
