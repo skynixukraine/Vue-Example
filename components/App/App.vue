@@ -436,6 +436,8 @@
 			}
 			
 			&-blue {
+				position: relative;
+				z-index: 100;
 				background : $color-gradient-button-blue;
 				color      : $color-white;
 				
@@ -445,15 +447,25 @@
 				
 				&:active {
 					background-attachment : $color-tory-blue;
-				}
+				} 
 			}
-			
-			&-gradient {
+
+			&-gradient::before {
+				position: absolute;
+				content: "";
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
 				color      : $color-white;
-				background : $color-gradient-blue-light;
-				
-				&:hover, &:active {
-					background : $color-gradient-blue-dark;
+				background-image : $color-gradient-blue-light;
+				z-index: -1;
+				transition: opacity 0.5s easy-in;
+				opacity: 0.7;
+
+				&:hover::before, &:active::before {
+					background-image : $color-gradient-blue-dark;
+					opacity: 1;
 				}
 			}
 			
