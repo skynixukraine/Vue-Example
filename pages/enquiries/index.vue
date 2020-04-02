@@ -5,7 +5,7 @@
                 <Dashboard>
                     <DashboardSidebar />
                     <DashboardMain>
-                        <DashboardHeader :title = "`Enquiries`" />
+                        <DashboardHeader :title = "`Anfragen`" />
                         <DashboardContent>
                             <Enquiries />
                         </DashboardContent>

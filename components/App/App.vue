@@ -116,13 +116,13 @@
 		background-position : center center;
 		
 		&.section--fullscreen {
-			min-height : 100vh;
-			padding-top: 130px;
+			min-height  : 100vh;
+			padding-top : 130px;
 		}
-
+		
 		&.section--fullscreen .container {
-			max-width: 1008px;
-			padding: 0;
+			max-width : 1008px;
+			padding   : 0;
 		}
 		
 		&.section--0-0 {
@@ -242,7 +242,7 @@
 			&__inner {
 				width               : 100%;
 				height              : 33px;
-				max-width			: 1008px;
+				max-width           : 1008px;
 				margin-left         : auto;
 				margin-right        : auto;
 				background          : none;
@@ -703,6 +703,7 @@
 			position     : relative;
 			flex-basis   : 25%;
 			padding-left : 50%;
+			min-height   : 30px;
 			
 			@include tablet {
 				padding-left : 15px;
