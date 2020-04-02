@@ -5,7 +5,6 @@
 				<Dashboard>
 					<DashboardSidebar />
 					<DashboardMain>
-							
                         <DashboardHeader :title = "'Abrechnungsdetails'">
 							<BillingStatus />
 						</DashboardHeader>    

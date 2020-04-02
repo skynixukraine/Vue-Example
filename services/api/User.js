@@ -510,11 +510,7 @@ export default {
                     "Content-Type"  : "application/x-www-form-urlencoded"
                 },
                 params    : {
-                    page: query.page,
-                    per_page:  query.per_page,
                     search : query.search,
-                    order_field: query.order_field,
-                    order_direction: query.order_direction //asc || desc
                 }
 
             }).then(response => {
