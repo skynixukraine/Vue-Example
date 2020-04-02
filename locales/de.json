@@ -280,7 +280,7 @@
 		},
 		"q3": {
 			"title": "3) Wie hoch sind Aufwand und Entlohnung?",
-			"p1_1": "Durchschnittlich dauert das Bearbeiten eines Falles weniger als drei Minuten. Sie haben die Möglichkeit dem Patienten Rückfragen zu stellen, falls etwas unklar ist. Der Patient bezahlt insgesamt 19,- Euro: Davon verbleiben nur 5,- Euro bei der Plattform für den Betrieb, Marketing, Weiterentwicklung, Zahlungs-, sowie Rechnungsabwicklung und 14,- Euro, also rund 74% des Betrages, können Ihnen, also den Hautärzten ausgezahlt werden. Dies ist der höchste ärztliche Auszahlungsanteil aller uns bekannten Telemedizin- und Teledermatologieplattformen. Dies kann daran liegen, dass dieser Dienst von weiterhin auch in der Dermatologie klinisch tätigen Ärzten entwickelt sowie betrieben wird. Geht man von 2:30 Minuten durchschnittlicher Bearbeitungszeit pro Fall aus,  ", 
+			"p1_1": "Durchschnittlich dauert das Bearbeiten eines Falles weniger als drei Minuten. Sie haben die Möglichkeit dem Patienten Rückfragen zu stellen, falls etwas unklar ist. Der Patient bezahlt insgesamt 19,- Euro: Davon verbleiben nur 5,- Euro bei der Plattform für den Betrieb, Marketing, Weiterentwicklung, Zahlungs-, sowie Rechnungsabwicklung und 14,- Euro, also rund 74% des Betrages, können Ihnen, also den Hautärzten ausgezahlt werden. Dies ist der höchste ärztliche Auszahlungsanteil aller uns bekannten Telemedizin- und Teledermatologieplattformen. Dies kann daran liegen, dass dieser Dienst von weiterhin auch in der Dermatologie klinisch tätigen Ärzten entwickelt sowie betrieben wird. Geht man von 2:30 Minuten durchschnittlicher Bearbeitungszeit pro Fall aus,  ",
 			"p1_a1": "beträgt die Entlohnung für den Dermatologen etwa 336,- Euro/Stunde. ",
 			"p1_2": "Viele Dermatologen bearbeiten die Anfragen von zuhause oder von einem Urlaubsort aus. Eine Internetverbindung und ein internetfähiges Endgerät genügen."
 		},
@@ -449,8 +449,13 @@
 	},
 	"page-forschung": {
 			"chat": {
-				"nextBtn": "Weiter"
+				"nextBtn": "Weiter",
+				"please-give-us-your-payment-details": "Bitte wählen Sie die Zahlungsmethode:"
 			},
+		"modal": {
+			"confirm": "Bestätigen",
+			"reset": "Code erneut senden"
+		},
 			"head": {
 				"title": "Anfrage starten | Online Hautarzt vor Ort"
 			},

@@ -22,11 +22,11 @@
             <div class = "buttons-confirm-code-wrapper">
             <button type = "button"
                     class = "control-btn--submit"
-                    @click = "confirmCode">Confirm
+                    @click = "confirmCode">{{ $t("page-forschung.modal.confirm") }}
             </button>
             <button type = "button"
 					class = "control-btn--cancel"
-					@click.stop = "resendCode">Resend
+					@click.stop = "resendCode">{{ $t("page-forschung.modal.reset") }}
 			</button>
             </div>
         </div>
