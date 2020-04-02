@@ -93,11 +93,14 @@
 				position: relative;
 				padding-bottom: 10px;
 			}
+            &__main-item:hover {
+                background-color: #c7c7c7;
+            }
 			&__main-item:not(:last-child) {
 				border-bottom: 1px solid #f3f3f3;
 			}
 			&__main-items {
-				min-height: 112px;
+				min-height: 56px;
 				color: #7a7d84;
 				display: flex;
 				position: relative;
