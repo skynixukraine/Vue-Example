@@ -100,21 +100,23 @@
 				position       : relative;
 				padding-bottom : 10px;
 			}
+            &__main-item:hover {
+                background-color: #c7c7c7;
+            }
 			&__main-item:not(:last-child) {
 				border-bottom : 1px solid #F3F3F3;
 			}
 			&__main-items {
-				min-height            : 112px;
-				color                 : #7A7D84;
-				display               : flex;
-				position              : relative;
-				padding-top           : 10px;
-				border-radius         : 4px;
-				padding-bottom        : 10px;
-				-webkit-box-orient    : vertical;
-				-webkit-box-direction : normal;
-				flex-direction        : column;
-				
+				min-height: 56px;
+				color: #7a7d84;
+				display: flex;
+				position: relative;
+				padding-top: 10px;
+				border-radius: 4px;
+				padding-bottom: 10px;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				flex-direction: column;
 				&:after {
 					right : 0;
 					width : 100%;
