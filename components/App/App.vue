@@ -188,9 +188,7 @@
 			}
 		}
 		
-		@include tablet {
-			margin-bottom : 8px;
-			
+		@include tablet {			
 			&__title {
 				text-align : center;
 			}
@@ -199,10 +197,7 @@
 	.section-footer {
 		text-align : center;
 		margin-top : 32px;
-		
-		@include tablet {
-			margin-top : 8px;
-		}
+	
 	}
 	.section-scroll-tooltip {
 		left       : 50%;
@@ -324,6 +319,7 @@
 		margin     : 0;
 		padding    : 0;
 		display    : flex;
+		justify-content: center;
 		list-style : none;
 		flex-wrap  : wrap;
 		
