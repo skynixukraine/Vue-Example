@@ -437,36 +437,37 @@
 			
 			&-blue {
 				position: relative;
-				z-index: 100;
+				z-index: 1;
 				background : $color-gradient-button-blue;
 				color      : $color-white;
-				
-				&:hover {
-					background : $color-torea-bay;
-				}
 				
 				&:active {
 					background-attachment : $color-tory-blue;
 				} 
 			}
 
-			&-gradient::before {
+			&-blue::before {
 				position: absolute;
 				content: "";
 				top: 0;
 				right: 0;
 				bottom: 0;
 				left: 0;
-				color      : $color-white;
-				background-image : $color-gradient-blue-light;
+				background : $color-gradient-blue-light;
 				z-index: -1;
-				transition: opacity 0.5s easy-in;
-				opacity: 0.7;
+				transition: opacity 0.8s linear;
+				opacity: 0;
+			}
 
-				&:hover::before, &:active::before {
-					background-image : $color-gradient-blue-dark;
-					opacity: 1;
-				}
+			&-blue:hover::before {
+				background : $color-gradient-blue-dark;
+				opacity: 1;
+				transition: opacity 1.4s linear;
+			}
+
+			&-gradient {
+				color      : $color-white;
+				background : $color-gradient-blue-light;
 			}
 			
 			&-transparent {
