@@ -3,6 +3,8 @@ import EnquiresApi from "../services/api/Enquires";
 export const state = () => ({
     enquiresFiltered             : [],
 
+    enquireAccess             : null,
+
     MAX_ENQUIRE_ANSWERS_PER_PAGE : 50,
 
 });
@@ -10,6 +12,9 @@ export const state = () => ({
 export const mutations = {
     SET_DOCTOR_ENQUIRE(state, newValue){
         state.doctorEnquire = newValue;
+    },
+    SET_ENQUIRE_ACCESS(state, newValue){
+        state.enquireAccess = newValue;
     }
 };
 

@@ -131,7 +131,7 @@ export default {
                     resolve({
                         success : true,
                         status  : response.status,
-                        data    : response.data.data,
+                        data    : response.data,
                         message : "SMS has been veryfied",
                     });
                 }).catch(error => {
