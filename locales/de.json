@@ -100,11 +100,6 @@
 			"title": "Online Hautarzt vor Ort"
 		}
 	},
-	"page-enquiries": {
-		"head": {
-			"title": "Anfragen | Online Hautarzt vor Ort"
-		}
-	},
 	"page-email": {
 		"head": {
 			"title": "E-Mail bestätigt | Online Hautarzt vor Ort"
@@ -310,6 +305,9 @@
 		}
 	},
 	"page-enquiries": {
+		"head": {
+			"title": "Anfragen | Online Hautarzt vor Ort"
+		},
 		"filter" : "Filtern nach:",
 		"from":"Startdatum",
 		"to":"Enddatum",
