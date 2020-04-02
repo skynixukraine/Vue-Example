@@ -1,6 +1,5 @@
 <template>
 	<div class = "payment">
-		<h3>Please give us your payment details:</h3>
 		<card class = "payment__card input"
 			  :class = "{ 'payment__card--is-success': isAllFieldsFilled }"
               v-bind:stripe="stripeKey"
@@ -9,7 +8,7 @@
 		<button class = "payment__submit-btn"
 				:class = "{'payment__submit-btn--is-disabled': !isAllFieldsFilled}"
 				type = "button"
-				@click = "onPay">Next
+				@click = "onPay">{{ $t("page-forschung.chat.nextBtn") }}
 		</button>
 	</div>
 </template>

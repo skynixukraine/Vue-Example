@@ -303,7 +303,7 @@
 				</transition>
 				<transition name = "main-animation">
 					<div class = "payment-details" v-if = "isQuestionsOver && isPersonalInfoFilled">
-						<h3>{{ `Services ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} cost ${this.targetDoctor.enquire_price}` }}</h3>
+						<h3>{{ $t("page-forschung.chat.please-give-us-your-payment-details") }}</h3>
                         <select v-model="userInputData.paymentMethods" class="select payment">
                             <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name" v-bind:key="option.name">
                                 {{ option.title }}
