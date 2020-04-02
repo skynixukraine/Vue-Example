@@ -99,8 +99,8 @@
 </script>
 
 <style lang = "scss" scoped>
-	.nuxt-link-active {
-		text-shadow: 0 0 3px;
+	.dashboard-sidebar .nuxt-link-active {
+		color : $color-light-blue;
 	}
 	.dashboard-sidebar {
 		color          : $color-white;
@@ -194,10 +194,6 @@
 		
 		&__link {
 			color : $color-white;
-			
-			&_active {
-				color : $color-light-blue;
-			}
 		}
 		
 		&__count {
