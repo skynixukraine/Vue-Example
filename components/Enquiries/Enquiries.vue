@@ -8,17 +8,17 @@
                         name = "search"
                         ref = "search"
                         v-model = "models.search"
-                        placeholder = "Search"
+                        placeholder = "Suchen..."
                         class = "input enquiries__search-input">
 				</div>
 				<div class = "enquiries__date">
-					<h3>Filter by:</h3>
+					<h3>{{ $t("page-enquiries.filter") }}</h3>
 					<div class = "enquiries__date-wrapper">
 						<div class = "enquiries__date-item">
-							<span class = "enquiries__date-title">Enquiry date</span>
+							<span class = "enquiries__date-title">{{ $t("page-enquiries.date-of-the-request") }}</span>
 							<div class = "enquiries__date-main">
 								<label class = "enquiries__date-field">
-									from:
+									{{ $t("page-enquiries.from") }}
 									<input
                                         type = "date"
                                         name = "created_at_from"
@@ -27,7 +27,7 @@
                                         class = "enquiries__date-input input">
 								</label>
 								<label class = "enquiries__date-field">
-									to:
+									{{ $t("page-enquiries.to") }}
 									<input
                                         type = "date"
                                         name = "created_at_to"
@@ -38,10 +38,10 @@
 							</div>
 						</div>
 						<div class = "enquiries__date-item">
-							<span class = "enquiries__date-title">Last contact date</span>
+							<span class = "enquiries__date-title">{{ $t("page-enquiries.date-of-last-contact") }}</span>
 							<div class = "enquiries__date-main">
 								<label class = "enquiries__date-field">
-									from:
+									{{ $t("page-enquiries.from") }}
 									<input
                                         type = "date"
                                         name = "last_contact_from"
@@ -50,7 +50,7 @@
                                         class = "enquiries__date-input input">
 								</label>
 								<label class = "enquiries__date-field">
-									to:
+									{{ $t("page-enquiries.to") }}
 									<input
                                         type = "date"
                                         name = "last_contact_to"
@@ -65,7 +65,7 @@
 				<div class = "enquiries__submit">
 					<button class = "link link--button link--button-blue link--button-gradient" type = "submit" >Search
 					</button>
-					<button class = "link link--button link--button-blue link--button-gradient" type = "reset">Reset
+					<button class = "link link--button link--button-blue link--button-gradient" type = "reset">{{ $t("page-enquiries.reset") }}
 					</button>
 				</div>
 			</form>

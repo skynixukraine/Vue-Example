@@ -1,10 +1,10 @@
 <template>
     <div class="table table--billing">
 
-        <h3>Transaktionen</h3>
+        <h3>{{ $t("page-billing.payments") }}</h3>
         <div class="table__content">
             <div class="table__header">
-                <div class="table__header-item">{{ $t("page-billing.table.transactionId") }}<br class="table__br"> ID</div>
+                <div class="table__header-item">{{ $t("page-billing.table.transactionId") }}<br class="table__br"> Nr.</div>
                 <div class="table__header-item table__header-item--date"
                      :class="[ sortingName === 'date' ? query.direction : '' ]"
                      @click.stop="sortingData('date')"
@@ -38,7 +38,7 @@
         </div>
         <span v-if="responseErrorMessage">{{ responseErrorMessage }}</span>
         <div class="table__pagination">
-            <div class="table__pagination-label">Page</div>
+            <div class="table__pagination-label">{{ $t("page-billing.page") }}</div>
         </div>
     </div>
 </template>

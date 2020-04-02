@@ -295,7 +295,7 @@
 				<div class = "personal-info__column personal-link__column">
 					<button class = "link link--button-transparent link--button link--line"
 							@click.stop = "onPauseOrUnpauseAccount">
-						{{ `${isPauseAccount ? "REAKTIVIEREN" : "PAUSIEREN"} MEIN KONTO` }}
+						{{ `MEIN KONTO ${isPauseAccount ? "REAKTIVIEREN" : "PAUSIEREN"}` }}
 					</button>
 				</div>
 				<div class = "personal-info__column personal-link__column">

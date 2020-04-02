@@ -30,7 +30,7 @@
 		"imprint": "Impressum",
 		"data-protection": "Datenschutzerklärung",
 		"terms-of-service": "Allgemeine Geschäftsbedingungen",
-		"signin": "EINLOGGEN",
+		"signin": "LOG IN",
 		"signup": "REGISTRIEREN",
 		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
 		"privacy-policy": " Datenschutzerklärung",
@@ -85,7 +85,7 @@
 		"research": "Forschung",
 		"formal": "Formales",
 		"start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt",
-		"login": "EINLOGGEN",
+		"login": "Log In",
 		"register": "REGISTRIEREN"
 	},
 	"banners": {
@@ -201,8 +201,8 @@
 		"head": {
 			"title": "Kontoinformationen | Online Hautarzt vor Ort"
 		},
-		"p1": "Bitte geben Sie alle Informationen ein, um die Genehmigung des Administrators anzufordern, und erscheinen Sie bei der Suche im Online-Hautarzt.",
-		"p2": "Nach der Genehmigung können Sie Ihre Bankdaten hinzufügen und Ihre Patienten über die Online Hautarzt-Plattform betreuen.",
+		"p1": "Bitte füllen Sie alle Felder aus. Zeugnisse können Sie nachreichen, falls nicht digital zur Hand. Im Anschluss werden Sie freigeschaltet.",
+		"p2": "Nach der Freischaltung können Sie Ihre Bankdaten hinzufügen und beginnen, Ihre Patienten über die Plattform zu behandeln.",
 		"buttons": {
 			"btnDel": "MEIN KONTO LÖSCHEN",
 			"btnApply": "Freischaltung beantragen",
@@ -218,11 +218,11 @@
 		"lastName": "Nachname",
 		"numberMobile": "Handynummer",
 		"specialist": "Facharztbezeichnung",
-		"email": "Sie die E-Mail",
+		"email": "E-Mail Adresse",
 		"password": "Passwort",
 		"regionAndStreet": "Straße/Hausnummer",
 		"region": "Hausnummer",
-		"lang": "Sprachen",
+		"lang": "Languages",
 		"medCert": "Facharztzeugnis hochladen",
 		"approvalCert": "Approbationsurkunde hochladen",
 		"bio": {
@@ -239,6 +239,8 @@
 		"head": {
 			"title": "Abrechnung | Online Hautarzt vor Ort"
 		},
+		"payments": "Zahlungen",
+		"page": "Seite",
 		"table": {
 			"transactionId": "Transaktions",
 			"date": "Datum",
@@ -293,9 +295,23 @@
 		}
 	},
 	"page-enquiries": {
+		"filter" : "Filtern nach:",
+		"from":"Startdatum",
+		"to":"Enddatum",
+		"date-of-the-request" : "Datum der Anfrage",
+		"date-of-last-contact":"Datum des letzten Kontaktes",
+		"reset":"Ergebnisse zurücksetzen",
 		"submit-diagnosis": "BEFUND ABSCHICKEN & FALL SCHLIEßEN",
 		"send-findings": "BEFUND ABSCHICKEN ",
-		"finished": "Fertig"
+		"finished": "Fertig",
+		"table": {
+			"enquiry-id":"Anfrage ID",
+			"first-name":"Vorname",
+			"last-name":"Nachname",
+			"date-of-the-request" : "Anfragedatum",
+			"date-of-last-contact":"Letzter Kontakt",
+			"status":"Status"
+		}
 	},
 	"page-jobs": {
 		"head": {
