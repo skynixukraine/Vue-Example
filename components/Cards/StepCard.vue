@@ -10,9 +10,7 @@
 						   loop
 						   playsinline
 						   muted></video>
-					<img :class = "`step-card__image-dots step-card__image-dots--${step.number}`"
-						 :src = "require('~/static/images/images/dots.png')"
-						 alt = "iphone" />
+					<div class = "container__dots-svg container__dots-svg--hand-photo list--dots"></div>
 				</header>
 				
 				<div class = "step-card__main">
@@ -50,6 +48,12 @@
 </script>
 
 <style lang = "scss">
+	.list--dots {
+		top: 265px;
+    	right: 50%;
+		height: 109px;
+		width: 6px;
+	}
 	.step-card {
 		width          : 100%;
 		max-width      : 928px;
