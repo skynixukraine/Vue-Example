@@ -8,7 +8,7 @@
 		   :class = "'modal modal--open-image'">
 		<button class = "modal__close-button" @click = "closeModal($modals.openImageModal)"></button>
 		<div class = "modal__main">
-			<img :src="getImage()">
+			<img :src="$store.state.modals.modalMessageHTML">
 		</div>
 	</modal>
 </template>
@@ -22,19 +22,6 @@
         mixins  : [
             modal,
         ],
-        methods : {
-            getImage() {
-                let answers = this.$store.state.enquires.doctorEnquire.answers;
-                let src = "";
-                answers.map((val,index) => {
-                    if(val.message.type === 'IMAGE'){
-                         src = val.message_option !== null ? val.message_option.value : val.value
-                        return src;
-                    }
-                })
-           return src;
-            },
-        }
     }
 </script>
 <style lang = "scss">

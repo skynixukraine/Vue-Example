@@ -16,7 +16,7 @@
     </div>
     <div class = "enquiries-id__footer">
       <NuxtLink :to = "$routes.enquiries.path" class = "link link--button-transparent">
-        GO BACK
+        {{ $t('page-enquiries.go-back') }}
       </NuxtLink>
     </div>
   </div>
