@@ -1161,9 +1161,9 @@
                 data.append("phone_number", this.personalInfoData.phone.value);
                 data.append("country_code", this.personalInfoData.phone.eventData.country.dialCode);
                 data.append("date_of_birth", this.personalInfoData.dateOfBirth.value);
-                data.append("street", this.personalInfoData.street.value);
+                data.append("address", this.personalInfoData.street.value);
                 data.append("city", this.personalInfoData.city.value);
-                data.append("zip", this.personalInfoData.zip.value);
+                data.append("postal_code", this.personalInfoData.zip.value);
 
                 for(let i = 1, answer = null; answer = this.userAnswers[i++];){
 
