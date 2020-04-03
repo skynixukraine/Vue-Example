@@ -2,18 +2,18 @@
 	<div class = "table">
 		<div class = "table__content">
 			<div class = "table__header">
-				<div class = "table__header-item">Question</div>
-				<div class = "table__header-item enquiries-id__answer">Answer</div>
+				<div class = "table__header-item">{{ $t('page-enquiries.question') }}</div>
+				<div class = "table__header-item enquiries-id__answer">{{ $t('page-enquiries.answer') }}</div>
 			</div>
 			<div class = "table__main">
 				<div class = "table__main-items" v-for = "(answer, index) in getAnswers" :key = "index">
 					<div class = "table__main-item" data-title="Question">{{getQuestion(answer)}}</div>
 					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-if = "isImage(getType(answer))">
                     <div class = "edit-answer-area__upload-image__user-image-container">
-                        <img :src="getValue(answer)" @click="openModal($modals.openImageModal)">
+                        <img :src="getValue(answer)" @click="openModal($modals.openImageModal, getValue(answer))">
                     </div>
 					</div>
-					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else-if = "isBoby(getType(answer))">
+					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else-if = "isBoby(getType(answer)) && getValue(answer) !== null">
 						<div class = "body-parts body-parts--answer" ref = "bodyAnswer">
 							<div class = "body-parts__half front"
 								 data-half-part = "front">

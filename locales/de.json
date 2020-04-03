@@ -331,7 +331,11 @@
 			"date-of-the-request" : "Anfragedatum",
 			"date-of-last-contact":"Letzter Kontakt",
 			"status":"Status"
-		}
+		},
+		"go-back":"GEH ZURÜCK",
+		"question": "Frage",
+		"answer": "Antworten"
+		
 	},
 	"page-jobs": {
 		"head": {
