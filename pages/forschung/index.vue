@@ -298,10 +298,12 @@
 						<div class = "single-form">
 							<header class = "personal-info__header">{{ $t("page-forschung.chat.street") }}</header>
 							<div class = "personal-info__main">
-								<input type = "date"
+								<input type = "text"
 									   class = "input"
 									   style = "color: inherit"
-									   v-model = personalInfoData.street
+                                       :placeholder = personalInfoData.street.txt
+                                       :maxlength="maxLengthSymbols"
+									   v-model = personalInfoData.street.value
 									   name = "street">
 							</div>
 						</div>
@@ -310,10 +312,12 @@
 						<div class = "single-form">
 							<header class = "personal-info__header">{{ $t("page-forschung.chat.city") }}</header>
 							<div class = "personal-info__main">
-								<input type = "date"
+								<input type = "text"
 									   class = "input"
 									   style = "color: inherit"
-									   v-model = personalInfoData.city
+                                       :placeholder = personalInfoData.city.txt
+                                       :maxlength="maxLengthSymbols"
+									   v-model = personalInfoData.city.value
 									   name = "city">
 							</div>
 						</div>
@@ -322,10 +326,12 @@
 						<div class = "single-form">
 							<header class = "personal-info__header">{{ $t("page-forschung.chat.zip") }}</header>
 							<div class = "personal-info__main">
-								<input type = "date"
+								<input type = "text"
 									   class = "input"
 									   style = "color: inherit"
-									   v-model = personalInfoData.zip
+                                       :placeholder = personalInfoData.zip.txt
+                                       :maxlength="maxLengthSymbols"
+									   v-model = personalInfoData.zip.value
 									   name = "zip">
 							</div>
 						</div>
@@ -427,6 +433,7 @@
         },
         data(){
             return {
+                maxLengthSymbols            : 50,
                 questions                   : [],
                 editingData                 : null,
                 userAnswers                 : [],
@@ -488,14 +495,17 @@
                         isValid : false,
                     },
                     street      : {
+                        txt   : "",
                         value : "",
                         isValid : true
                     },
                     city      : {
+                        txt   : "",
                         value : "",
                         isValid : true
                     },
                     zip      : {
+                        txt   : "",
                         value : "",
                         isValid : true
                     }
@@ -1121,9 +1131,9 @@
                 data.append("phone_number", this.personalInfoData.phone.value);
                 data.append("country_code", this.personalInfoData.phone.eventData.country.dialCode);
                 data.append("date_of_birth", this.personalInfoData.dateOfBirth.value);
-                data.append("street", this.personalInfoData.street);
-                data.append("city", this.personalInfoData.city);
-                data.append("zip", this.personalInfoData.zip);
+                data.append("street", this.personalInfoData.street.value);
+                data.append("city", this.personalInfoData.city.value);
+                data.append("zip", this.personalInfoData.zip.value);
 
                 for(let i = 1, answer = null; answer = this.userAnswers[i++];){
 

@@ -453,7 +453,7 @@
 				"please-give-us-your-payment-details": "Bitte wählen Sie die Zahlungsmethode:",
 				"street": "Straße/Nr",
 				"city": "Stadt",
-				"zip": "Postleitzahl",
+				"zip": "Postleitzahl"
 			},
 		"modal": {
 			"confirm": "Bestätigen",
