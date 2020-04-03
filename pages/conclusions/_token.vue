@@ -2,7 +2,9 @@
     <div class="page">
         <div class="section">
             <div class="container">
-                <h1>Download Conclusions</h1>
+                <div class="conclusion-text">
+                    <p class="conclusion-text__caption">{{ this.$t('page-conclusions.caption')}}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -96,3 +98,13 @@
         }
     }
 </script>
+
+<style lang = "scss" scoped>
+    .conclusion-text {
+        &__caption {
+            font-size: 18px;
+            line-height: 25px;
+            font-family: 'TheSansB-SemiBold';
+        }
+    }
+</style>

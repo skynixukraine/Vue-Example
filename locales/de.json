@@ -130,6 +130,12 @@
 			"title": "AGB | Online Hautarzt vor Ort"
 		}
 	},
+	"page-conclusions": {
+		"head": {
+			"title": "Conclusions | Online Hautarzt vor Ort"
+		},
+		"caption": "Der Dateidownload wird automatisch gestartet."
+	},
 	"page-impressum": {
 		"head": {
 			"title": "Impressum | Online Hautarzt vor Ort"
