@@ -9,14 +9,14 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : "First question success loaded.",
+                        message : "First question loaded successfully.",
                     });
                 })
                 .catch(error => {
                     let message = "";
 
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Internal technical error.";
                     }
 
                     reject({
@@ -35,14 +35,14 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : "Question success loaded.",
+                        message : "Question loaded successfully.",
                     });
                 })
                 .catch(error => {
                     let message = "";
 
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Internal technical error.";
                     }
 
                     reject({
@@ -61,14 +61,14 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : "Doctor success loaded.",
+                        message : "Doctor loaded successfully.",
                     });
                 })
                 .catch(error => {
                     let message = error.message;
 
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Internal technical error.";
                     }
 
                     reject({
@@ -87,14 +87,14 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : "Enquires success created.",
+                        message : "Enquiry was created successfully.",
                     });
                 })
                 .catch(error => {
                     let message = error.message;
 
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Internal technical error.";
                     }
 
                     reject({
@@ -113,7 +113,7 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data.data,
-                        message : "SMS has been send",
+                        message : "SMS has been sent.",
                     });
                 }).catch(error => {
                     reject({
@@ -132,7 +132,7 @@ export default {
                         success : true,
                         status  : response.status,
                         data    : response.data,
-                        message : "SMS has been veryfied",
+                        message : "Phone has been verified successfully",
                     });
                 }).catch(error => {
                     reject({
@@ -151,13 +151,13 @@ export default {
                     success : true,
                     status  : response.status,
                     data    : response.data,
-                    message : "Enquires success created.",
+                    message : "New enquiry was created successfully.",
                 });
             }).catch(error => {
                 let message = error.message;
 
                 if(error.response.status === 500){
-                    message = "Internal technical error was happened.";
+                    message = "Internal technical error.";
                 }
                 reject({
                     success : false,
