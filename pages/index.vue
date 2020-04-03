@@ -199,6 +199,7 @@
 </script>
 
 <style lang = "scss" scoped>
+	
 	.page--home .section--64-64 {
 		padding-top: 64px;
 		padding-bottom: 64px;
