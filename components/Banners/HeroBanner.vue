@@ -46,6 +46,12 @@ export default {
 .hero-banner {
     position: relative;
     margin-top: 50px;
+    @include phone-big-max {
+		&__title,
+		&__text {
+			text-align: center;
+		}
+	}
 
     @include tablet {
         margin-top: auto;

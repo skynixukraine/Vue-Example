@@ -49,6 +49,9 @@
 </script>
 
 <style lang = "scss">
+
+	
+
 	.app-header {
 		top        : 0;
 		left       : 0;
@@ -58,7 +61,7 @@
 		padding    : 8px 15px;
 		position   : fixed;
 		background : $color-stratos;
-		transition: all 0.5s;
+		transition: all 0.5s;	
 		
 		&--bg-transparent { 
 			background : transparent;
@@ -77,7 +80,10 @@
 		&--bg-default { 
 			background : $color-stratos;
 			height     : 80px;
-			padding    : 8px 15px; 
+			padding    : 8px 15px;
+			@include phone-big-max {
+				height: 65px;
+		} 
 		}
 		
 		&__inner {

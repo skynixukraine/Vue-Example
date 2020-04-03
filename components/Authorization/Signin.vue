@@ -19,6 +19,7 @@
 </script>
 
 <style lang = "scss">
+	
 	.signin {
 		width           : 100%;
 		display         : flex;
@@ -27,5 +28,8 @@
 		justify-content : flex-start;
 		
 		&__header { text-align : center; }
+		@include phone-big-max {
+			margin-top: 30px;
+		}
 	}
 </style>
