@@ -9,14 +9,15 @@
 				   :name = "name"
 				   :value = "inner_value"
 				   class = "custom-input__input"
+                   @paste = "onPaste"
 				   @blur = "onBlur"
 				   @focus = "onFocus"
 				   @input = "onChange"
 				   @change = "onChange"
 				   @keyup.stop = "onChange">
-			<transition name = "main-animation">
+			<!-- <transition name = "main-animation">
 				<span v-if = "errors[name]" class = "custom-input__error">{{ errors[name] }}</span>
-			</transition>
+			</transition> -->
 		</label>
 	</div>
 </template>
@@ -71,6 +72,9 @@
                 this.inner_value = event.target.value;
                 this.$emit("change", event);
             },
+            onPaste(event) {
+                event.preventDefault();
+            }
         }
     }
 </script>

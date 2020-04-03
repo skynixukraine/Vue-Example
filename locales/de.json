@@ -49,6 +49,7 @@
 			"required-field": "Dieses Feld ist erforderlich.",
 			"unvalid-email-name": "Ungültiger E-Mail-Name.",
 			"passwords-not-equal": "Passwörter nicht gleich.",
+			"emails-not-equal": "E-Mail nicht gleich.",
 			"invalid-number": "Ungültige Telefonnummer.",
 			"invalid-recaptcha-tocken": "Ungültiges reCAPTCHA-Token.",
 			"email-is-empty": "E-Mail ist leer.",
@@ -471,6 +472,7 @@
 				"male": "Männlich",
 				"mobile": "Handynummer",
 				"email": "E-Mail Adresse",
+				"emailConfirm": "Bestätigen E-Mail Adresse",
 				"birth": "Geburtsdatum",
 				"typeNumber": "Geben Sie Ihre Handynummer ein"
 			}
