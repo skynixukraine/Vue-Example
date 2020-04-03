@@ -280,9 +280,28 @@
 							<InputEmail :labelTxt = personalInfoData.mail.txt
 										:isRequired = true
 										:placeholder = personalInfoData.mail.txt
+                                        v-model = personalInfoData.mail.value
 										:name = "'mail'"
+                                        :ref = "'mail'"
 										@blur = "onPersonalInfoMailBlur" />
+                            <transition name = "main-animation">
+                                <span v-if = "errors.mail" class = "custom-input__error">{{ errors.mail }}</span>
+                            </transition>            
 						</div>
+                        <div class = "personal-info__field">
+							<InputEmail :labelTxt = personalInfoData.mailConfirm.txt
+										:isRequired = true
+										:placeholder = personalInfoData.mailConfirm.txt
+                                        v-model = personalInfoData.mailConfirm.value
+                                        class = "confirmation-email-input"
+										:name = "'mailConfirmation'"
+                                        :ref = "'mail-confirmation'"
+                                        @paste = "onPaste"
+										@blur = "onPersonalInfoMailConfirmBlur" />
+                            <transition name = "main-animation">
+                                <span v-if = "errors.mailConfirmation" class = "error-message">{{ errors.mailConfirmation }}</span>
+                            </transition>						
+                            </div>
 						<div class = "personal-info__field">
 							<label>
 								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.birth')}}</div>
@@ -491,6 +510,11 @@
                     },
                     mail        : {
                         txt     : this.$t('page-forschung.feedback-form.email'),
+                        value   : "",
+                        isValid : false,
+                    },
+                    mailConfirm : {
+                        txt     : this.$t('page-forschung.feedback-form.emailConfirm'),
                         value   : "",
                         isValid : false,
                     },
@@ -1100,7 +1124,13 @@
             },
             onPersonalInfoMailBlur(event){
                 this.personalInfoData.mail.value   = event.target.value;
-                this.personalInfoData.mail.isValid = this.validateName(event);
+                this.personalInfoData.mail.isValid = this.validateEmail(event);
+
+                this.$forceUpdate();
+            },
+            onPersonalInfoMailConfirmBlur(event){
+                this.personalInfoData.mailConfirm.value   = event.target.value;
+                this.personalInfoData.mailConfirm.isValid = this.validateConfirmEmail(event, this.$refs.mail);
 
                 this.$forceUpdate();
             },

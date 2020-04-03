@@ -77,6 +77,26 @@ export default {
             this.clearError(name);
             return true;
         },
+        validateConfirmEmail(event, compareInput){
+            const name         = event.target.name;
+            const value        = event.target.value;
+            const compareValue = compareInput.value;
+
+            // empty check
+            if(!value){
+                this.errors[name] = this.$t('errors.form.required-field');
+                return false;
+            }
+
+            // emails equal check
+            if(!this.checkStringEqual(value, compareValue)){
+                this.errors[name] = this.$t('errors.form.emails-not-equal');
+                return false;
+            }
+
+            this.clearError(name);
+            return true;
+        },
         validatePhone(eventValue, telInput){
             // more info about telInput - https://github.com/EducationLink/vue-tel-input
             const name = 'phone_number';
