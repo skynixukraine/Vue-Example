@@ -10,6 +10,12 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+
+@include phone-big-max {
+.request-banner .link--button {
+    min-width: 100%;
+}
+}
 .request-banner {
     padding: 48px $main_offset;
     text-align: center;
@@ -18,6 +24,7 @@ export default {}
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+
 
     &__title {
         color: $color-white;
