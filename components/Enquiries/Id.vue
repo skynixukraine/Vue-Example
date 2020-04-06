@@ -2,7 +2,7 @@
   <div class = "enquiries-id">
     <div class = "enquiries-id__main">
       <div class = "diagnosis-id" v-if="this.$store.state.enquires.doctorEnquire.conclusion !== null">
-        <div class = "diagnosis-id__title table__header-item">Diagnosis</div>
+        <div class = "diagnosis-id__title table__header-item">{{ $t('page-enquiries.diagnosis') }}</div>
         <div class = "diagnosis-id__answer table__main-item" >{{getValue()}}</div>
       </div>
       

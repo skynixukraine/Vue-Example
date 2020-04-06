@@ -8,7 +8,7 @@
                         name = "search"
                         ref = "search"
                         v-model = "models.search"
-                        placeholder = "Suchen..."
+                        placeholder = "Suche..."
                         class = "input enquiries__search-input">
 				</div>
 				<div class = "enquiries__date">
@@ -63,7 +63,7 @@
 					</div>
 				</div>
 				<div class = "enquiries__submit">
-					<button class = "link link--button link--button-blue link--button-gradient" type = "submit" >Search
+					<button class = "link link--button link--button-blue link--button-gradient" type = "submit" >{{ $t("page-enquiries.search") }}
 					</button>
 					<button class = "link link--button link--button-blue link--button-gradient" type = "reset">{{ $t("page-enquiries.reset") }}
 					</button>
@@ -74,7 +74,7 @@
 			<div class = "table">
                 <div class = "table__info" v-if="doctorEnquiresMeta.total > 0">
                     <div class = "table__info-count">
-                        {{doctorEnquiresMeta.from}}-{{doctorEnquiresMeta.to}} from {{doctorEnquiresMeta.total}}
+                        {{doctorEnquiresMeta.from}}-{{doctorEnquiresMeta.to}} {{ $t("page-enquiries.from") }} {{doctorEnquiresMeta.total}}
                     </div>
                     <div class = "table__info-nav">
                         <div

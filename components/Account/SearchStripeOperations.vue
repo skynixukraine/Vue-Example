@@ -3,7 +3,7 @@
         <form>
             <div class="enquiries__search">
                 <input type="search"
-                       placeholder="Suchen..."
+                       placeholder="Suche..."
                        class="input enquiries__search-input"
                        @change="querySearch"
                        @search="querySearch('clean')"
