@@ -60,6 +60,10 @@
                     {
                         to   : this.$routes.vorteile.path,
                         text : this.$t('links.vorteile')
+					},
+					{
+                        to   : this.$routes.registrierung.path,
+                        text : this.$t('links.signup-hautarzte')
                     },
                     {
                         to   : this.$routes.faq.path,
