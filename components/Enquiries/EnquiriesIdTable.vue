@@ -7,7 +7,7 @@
 			</div>
 			<div class = "table__main">
 				<div class = "table__main-items" v-for = "(answer, index) in getAnswers" :key = "index">
-					<div class = "table__main-item" data-title="Question">{{getQuestion(answer)}}</div>
+					<div class = "table__main-item" data-title="Question"> <div v-html="getQuestion(answer)"></div></div>
 					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-if = "isImage(getType(answer))">
                     <div class = "edit-answer-area__upload-image__user-image-container">
                         <img :src="getValue(answer)" @click="openModal($modals.openImageModal, getValue(answer))">
@@ -228,8 +228,7 @@
                 return answer.message.type;
             },
             getQuestion(answer) {
-                let question = answer.message.content
-                question = question.replace(/(&nbsp;|<\/?[^>]+>)/g,'');
+                let question = answer.message.content;
                 return question;
             },
             isImage(type) {
