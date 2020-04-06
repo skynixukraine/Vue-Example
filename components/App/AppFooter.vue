@@ -102,9 +102,6 @@
                         text : "Datenschutz Plattforminhabe",
                         to   : this.$routes.datenschutzGmbh.path
                     },{
-                        text : "Datenschutzerklärung",
-                        to   : this.$routes.datenschutz.path
-                    }, {
                         text : "Allgemeine Geschäftsbedingungen",
                         to   : this.$routes.agb.path
                     }, {
