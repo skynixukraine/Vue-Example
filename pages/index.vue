@@ -83,11 +83,11 @@
 				<WhyInfo />
 			</div>
 		</div>
-		<div class = "section section--0-default">
+	<!--	<div class = "section section--0-default">
 			<div class = "container">
 				<DiseasesInfo />
 			</div>
-		</div>
+		</div> -->
 	</div>
 </template>
 
