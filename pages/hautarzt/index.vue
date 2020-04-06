@@ -14,7 +14,7 @@
 		<div class = "container">
 			<div class = "filters-distance" ref = "filterContainer">
 				<div class="distance-block">
-				<label>Ort eingeben</label>
+				<label>Stadt eingeben</label>
 				<gmap-autocomplete
 					:placeholder="placeholder"
 					:value="autocompleteVal"

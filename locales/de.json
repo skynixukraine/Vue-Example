@@ -30,15 +30,15 @@
 		"imprint": "Impressum",
 		"data-protection": "Datenschutzerklärung",
 		"terms-of-service": "Allgemeine Geschäftsbedingungen",
-		"signin": "LOG IN",
-		"signup": "REGISTRIEREN",
+		"signin": "Einloggen",
+		"signup": "Registrieren",
 		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
 		"privacy-policy": " Datenschutzerklärung",
 		"forgot-password": "Vergessenes passwort?",
         "enquiries": "Anfragen"
 	},
 	"states": {
-		"loading": "Loading..."
+		"loading": "Wird geladen..."
 	},
 	"errors": {
 		"app": {
@@ -86,8 +86,8 @@
 		"research": "Forschung",
 		"formal": "Formales",
 		"start-your-request-now": "Konsultieren Sie jetzt einen Hautarzt",
-		"login": "Log In",
-		"register": "REGISTRIEREN"
+		"login": "Einloggen",
+		"register": "Registrieren"
 	},
 	"banners": {
 		"herobanner": {
