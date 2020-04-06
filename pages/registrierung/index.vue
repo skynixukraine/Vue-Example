@@ -1,24 +1,8 @@
 <template>
     <div class="page">
-        <div class="section section--authorization">
+        <div class="section section--registration">
             <div class="container">
-                <div class="tab-buttons">
-                    <button
-                        class="link link--button link--button-blue link--button-gradient"
-                        @click="setCurrentTab('signin')"
-                    >{{this.$t('links.signin')}}</button>
-                    <button
-                        class="link link--button link--button-blue link--button-gradient"
-                        @click="setCurrentTab('signup')"
-                    >{{this.$t('links.signup')}}</button>
-                </div>
-                <div class="container-forms">
-                    <template v-if="windowWidth  >= 962 || currentTab === 'signin'">
-                        <Signin />
-                    </template>
-                    <template v-if="windowWidth  >= 962 || currentTab === 'signup'">
                         <Signup />
-                    </template>
                 </div>
             </div>
         </div>
@@ -26,19 +10,13 @@
 </template>
 
 <script>
-// Mixins
-import windowWidth from "~/mixins/window";
-// Components
-import Signin from "~/components/Authorization/Signin";
 import Signup from "~/components/Authorization/Signup";
 
-const DEFAULT_CURRENT_TAB = "signin";
 
 export default {
     middleware: [
         'nonauth',
     ],
-    mixins: [windowWidth],   
     head(){
             return {title : this.$t("page-auth.head.title")}
         },
@@ -54,71 +32,47 @@ export default {
     },
 
     components: {
-        Signin,
         Signup
     },
-    
-    data() {
-        return {
-            currentTab: DEFAULT_CURRENT_TAB
-        };
-    },
-    methods: {
-        setCurrentTab(tabName) {
-            this.currentTab = tabName;
-        }
-    }
+  
 };
 </script>
 
 
 <style lang="scss">
 .section{
-    &--authorization{
+    &--authorization, &--registration{
 
         @include tablet-big {
             padding-top: 51px;
             padding-bottom: 51px;
         }
+    
+        .container {
+            @media (min-width: #{962px}) {
+                width: 50%;
+                margin: auto;
+            }
+        
+            .form__item {
+                input, #vue-tel-input.vue-tel-input {
+                    @media (min-width : #{962px}) {
+                        width : 100%;
+                    }
+                }
+                &--checkbox {
+                    input {
+                        @media (min-width : #{962px}) {
+                            width : auto;
+                        }
+                    }
+                }
+            }
+        }
+        
     }
+    
+  
 }
 
-.container-forms {
-    width: 100%;
-    max-width: 1160px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-
-    @media (min-width: #{962px}) {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    & > div {
-     @media (min-width: #{962px}) {
-         flex: 50%;
-         padding: 0 10px;
-    }
-
- }
-}
-
-.tab-buttons {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    margin: 0 auto;
-
-
-    @media (min-width: #{962px}) {
-        display: none;
-    }
-
-    button{
-        margin: 1.5% 0;
-    }
-}
 </style>

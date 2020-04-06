@@ -32,6 +32,9 @@ export default ({app}, inject) => {
         registrierung       : {
             path : "/registrierung"
         },
+        einloggen       : {
+            path : "/einloggen"
+        },
         login               : {
             path : "/registrierung"
         },

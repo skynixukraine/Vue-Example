@@ -80,7 +80,10 @@
                         text : "Teilnahmekonditionen",
                         to   : this.$routes.konditionen.path
                     }, {
-                        text : "Login",
+                        text : "Einloggen",
+                        to   : this.$routes.einloggen.path
+                    },{
+                        text : "Registrieren",
                         to   : this.$routes.login.path
                     }],
 
