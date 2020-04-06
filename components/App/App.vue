@@ -821,16 +821,14 @@
 				padding   : $main_offset / 2 31px 9px;
 				font-size : 18px;
 			}
-		}
-		&__floating__buttons {
-			padding : 0 0 0 211px;
-			@include tablet {
-				padding : 0 0 0 265px;
-			}
-			@include phone-big-max {
-				padding : 45px 0 0;
+			&--accept {
+				margin-top: 15px;
+				@include tablet-big {
+					margin-top: 0;
+				}
 			}
 		}
+		
 	}
 	.container__dots-svg {
 		@include tablet-big {
