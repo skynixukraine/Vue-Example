@@ -69,15 +69,21 @@
         },
         methods    : {
             onScroll(){
+				let sidebar_main = this.$refs.sidebarMain !== undefined ? this.$refs.sidebarMain.clientHeight : 0;
+                let sidebar_footer = this.$refs.sidebarFooter !== undefined ? this.$refs.sidebarFooter.clientHeight : 0;
                 if(window.innerWidth >= constants.mediaScreenTabletBigMin){
-                    if(window.pageYOffset + this.appHeader.clientHeight + this.$refs.sidebarMain.clientHeight > this.appMain.clientHeight - this.$refs.sidebarFooter.clientHeight){
+                    if(window.pageYOffset + this.appHeader.clientHeight + sidebar_main > this.appMain.clientHeight - sidebar_footer){
                         if(!this.isStickSidebarMain){
                             this.isStickSidebarMain = true;
-                            this.$refs.sidebarMain.setAttribute("style", `bottom: ${this.$refs.sidebarFooter.clientHeight}px`);
+                            if (sidebar_main !== 0){
+                                this.$refs.sidebarMain.setAttribute("style", `bottom: ${sidebar_footer}px`);
+                            }
                         }
                     } else{
                         this.isStickSidebarMain = false;
-                        this.$refs.sidebarMain.setAttribute("style", ``);
+                        if (sidebar_main !== 0){
+                            this.$refs.sidebarMain.setAttribute("style", ``);
+                        }
                     }
 
                     if(window.pageYOffset + window.innerHeight > this.appMain.clientHeight){
