@@ -96,6 +96,12 @@
                     }],
 
                     formal : [{
+                        text : "Datenschutz Hautarzt",
+                        to   : this.$routes.datenschutzHautarzt.path
+                    },{
+                        text : "Datenschutz Plattforminhabe",
+                        to   : this.$routes.datenschutzGmbh.path
+                    },{
                         text : "Datenschutzerklärung",
                         to   : this.$routes.datenschutz.path
                     }, {
