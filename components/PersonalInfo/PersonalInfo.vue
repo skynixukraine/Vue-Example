@@ -178,6 +178,12 @@
 						</div>
 					</div>
 					<div class = "personal-info__item">
+						<header class = "personal-info__header">{{ $t("page-personal-information.lanr") }}</header>
+						<div class = "personal-info__main">
+							<InputText :maxlength="50" v-model = "userInputData.lanr" />
+						</div>
+					</div>
+					<div class = "personal-info__item">
 						<div class = "single-form">
 							<header class = "personal-info__header">{{ $t("page-personal-information.regionAndStreet") }}</header>
 							<div class = "personal-info__main personal-info__google-autocomplete">
@@ -337,6 +343,7 @@
         data(){
             return {
                 userInputData : {
+					lanr			  : "",
                     languages         : [],
                     last_name         : "",
                     first_name        : "",
@@ -729,6 +736,7 @@
                 this.userInputData.avatar.userInput.file && formData.append("photo", this.userInputData.avatar.userInput.file);
                 this.userInputData.board_certification.userInput.file && formData.append("board_certification", this.userInputData.board_certification.userInput.file);
                 this.userInputData.medical_degree.userInput.file && formData.append("medical_degree", this.userInputData.medical_degree.userInput.file);
+				this.userInputData.lanr && formData.append("lanr", this.userInputData.lanr);
 
                 formData.append("_method", "PATCH");
 

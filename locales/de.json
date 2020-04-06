@@ -65,6 +65,7 @@
 		}
 	},
 	"forms": {
+		"lanr": "Lebenslange Arztnummer (LANR)",
 		"enter-email": "E-Mail eingeben",
 		"enter-password": "Passwort eingeben",
 		"create-password": "Passwort erstellen",
@@ -229,6 +230,7 @@
 			"chooseOptions": "Wählen Sie eine der Optionen",
 			"changeIt": "Ändern"
 		},
+		"lanr": "Lebenslange Arztnummer (LANR)",
 		"status": "Kontostatus",
 		"title": "Titel",
 		"firstName": "Vorname",

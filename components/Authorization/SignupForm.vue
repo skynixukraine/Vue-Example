@@ -55,6 +55,15 @@
 			<div class = "form__message" v-if = "errors.phone_number_invalid">{{ errors.phone_number_invalid }}</div>
 		</div>
 		<div class = "form__item">
+			<div class = "form__title form__title--lanr">{{ $t('forms.lanr') }}</div>
+			<input class = "input input--lanr"
+				   type = "text"
+				   name = "lanr"
+				   ref = "password_confirmation"
+				   v-model = "models.lanr"
+				   :placeholder = "$t('forms.lanr')" />
+		</div>
+		<div class = "form__item">
 			<div class = "form__title form__title--degree">{{ $t('forms.upload-degree') }} <span>*</span></div>
 			<input class = "input input--hidden"
 				   type = "file"
@@ -144,6 +153,7 @@
         data(){
             return {
                 models            : {
+					lanr				  : '',
                     email                 : '',
                     password              : '',
                     password_confirmation : '',
@@ -153,6 +163,7 @@
                     accepted              : false
                 },
                 formIsValid       : {
+					lanr			 : true,
                     password         : false,
                     confirm_password : false,
                     email            : false,
@@ -281,6 +292,9 @@
                 }
                 if(models.certification){
                     formData.append('board_certification', models.certification);
+				}
+				if(models.lanr){
+                    formData.append('lanr', models.lanr);
                 }
 
                 // recaptcha token for action 'register_doctor'
@@ -388,7 +402,8 @@
 		}
 		
 		&--login,
-		&--password {
+		&--password,
+		&--lanr {
 			position : relative;
 		}
 		
