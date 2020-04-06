@@ -115,6 +115,8 @@
 		padding        : 0 30px;
 		background     : $color-gradient-blue-light-revert;
 		flex-direction : column;
+
+		
 		
 		@include tablet-big {
 			$header_height : 80px;
@@ -131,12 +133,18 @@
 			}
 			
 			&__main {
+				position: relative;
+				bottom: 0;
 				padding-top : $vertical_offset;
 			}
 			
 			&__footer {
 				bottom         : 0;
 				padding-bottom : $vertical_offset;
+				@media (max-height: 420px) {
+				position: relative;
+				bottom: 0;
+				}
 			}
 		}
 		
