@@ -162,6 +162,12 @@
 			"title": "Kontakt | Online Hautarzt vor Ort"
 		}
 	},
+	"page-vorlagen": {
+		"head": {
+			"title": "Vorlagen | Online Hautarzt vor Ort"
+		},
+		"p1": "Für häufige Fälle erstellen wir grade gemeinsam mit Fachärzten Vorlagen. Diese werden hier in Bälde abrufbar sein."
+	},
 	"page-faq": {
 		"head": {
 			"title": "Häufige Fragen | Online Hautarzt vor Ort"

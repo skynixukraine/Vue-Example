@@ -26,6 +26,9 @@ export default ({app}, inject) => {
         contact             : {
             path : "/kontakt"
         },
+        vorlagen            : {
+            path : "/vorlagen"
+        },
         authorisation       : {
             path : "/authorisation"
         },

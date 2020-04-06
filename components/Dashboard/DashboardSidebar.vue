@@ -33,6 +33,10 @@
 				<li class = "dashboard-sidebar__item dashboard-sidebar__item--help">
 					<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.contact.path">Hilfe</NuxtLink>
 				</li>
+
+				<li class = "dashboard-sidebar__item dashboard-sidebar__item--vorlagen">
+					<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.vorlagen.path">Vorlagen</NuxtLink>
+				</li>
 			</ul>
 		</footer>
 	</aside>
