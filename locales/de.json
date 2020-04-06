@@ -316,8 +316,8 @@
 			"title": "Anfragen | Online Hautarzt vor Ort"
 		},
 		"filter" : "Filtern nach:",
-		"from":"Startdatum",
-		"to":"Enddatum",
+		"from":"von",
+		"to":"neu",
 		"date-of-the-request" : "Datum der Anfrage",
 		"date-of-last-contact":"Datum des letzten Kontaktes",
 		"reset":"Ergebnisse zurücksetzen",
@@ -332,10 +332,11 @@
 			"date-of-last-contact":"Letzter Kontakt",
 			"status":"Status"
 		},
-		"go-back":"GEH ZURÜCK",
+		"go-back":"Zurückkehren",
 		"question": "Frage",
-		"answer": "Antworten"
-		
+		"answer": "Antworten",
+		"diagnosis": "Die Diagnose",
+		"search" : "Suche"
 	},
 	"page-jobs": {
 		"head": {

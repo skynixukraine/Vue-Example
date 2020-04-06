@@ -1,10 +1,7 @@
 <template>
 	<div class = "table">
 		<div class = "table__content">
-			<div class = "table__header">
-				<div class = "table__header-item">{{ $t('page-enquiries.question') }}</div>
-				<div class = "table__header-item enquiries-id__answer">{{ $t('page-enquiries.answer') }}</div>
-			</div>
+			<div class = "table__header"></div>
 			<div class = "table__main">
 				<div class = "table__main-items" v-for = "(answer, index) in getAnswers" :key = "index">
 					<div class = "table__main-item" data-title="Question"> <div v-html="getQuestion(answer)"></div></div>
