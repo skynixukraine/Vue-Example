@@ -10,9 +10,10 @@ module.exports = {
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
-            { hid: 'description', name: 'description', content: 'Nuxt.js project' },
+            { hid: 'description', name: 'description', content: 'Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der ärztlichen Empfehlung wissen Sie zudem, was Sie dagegen tun können.' },
             { name: 'msapplication-TileColor', content: '#ffffff' },
             { name: 'msapplication-TileImage', content: '/favicon512x512.png' },
+            { hid: 'og:image', property: 'og:image', name: 'og:image', content: '/prevImg.jpg'},
         ],
         script: [
             { src: `https://js.stripe.com/v3/` },
@@ -53,9 +54,9 @@ module.exports = {
     ],
     loading: { color: '#FFF' },
     manifest: {
-        name: 'Nuxt Hacker News',
-        short_name: 'Nuxt HN',
-        description: 'HackerNews clone built with Nuxt.js',
+        name: 'Hautprobleme? | Hautarzt online fragen | Nur 19 Euro‎',
+        short_name: 'Hautarzt online fragen',
+        description: 'Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der ärztlichen Empfehlung wissen Sie zudem, was Sie dagegen tun können.',
         display: 'standalone',
         orientation: 'portrait',
         theme_color: '#2F495E',
