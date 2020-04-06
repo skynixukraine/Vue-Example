@@ -47,9 +47,10 @@ export default {
     position: relative;
     margin-top: 50px;
     @include phone-big-max {
+        padding: 0 15px;
 		&__title,
 		&__text {
-			text-align: center;
+			text-align: left;
 		}
 	}
 

@@ -100,10 +100,12 @@
 			padding       : 48px 16px 32px;
 			border-radius : 20px;
 			text-align    : center;
-			
 		}
-		
-	
+		@include phone-big-max {
+			&__main {
+				text-align: left;
+			}
+		}
 		
 		&__image-dots {
 			position : absolute;

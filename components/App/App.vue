@@ -120,6 +120,12 @@
 			padding-top : 130px;
 		}
 		
+		@include phone-big-max {
+			&.section--fullscreen {
+				padding-top : 75px;
+			}
+		}
+		
 		&.section--fullscreen .container {
 			max-width : 1008px;
 			padding   : 0;
