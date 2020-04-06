@@ -47,6 +47,12 @@ export default ({app}, inject) => {
         forschung           : {
             path : "/forschung"
         },
+        datenschutzGmbh         : {
+            path : "/datenschutz-gmbh"
+        },
+        datenschutzHautarzt         : {
+            path : "/datenschutz-hautarzt"
+        },
         datenschutz         : {
             path : "/datenschutz"
         },
