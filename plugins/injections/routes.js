@@ -23,6 +23,9 @@ export default ({app}, inject) => {
         about               : {
             path : "/ueber-uns"
         },
+        patient             : {
+            path : "/patient"
+        },
         contact             : {
             path : "/kontakt"
         },
