@@ -1,8 +1,6 @@
 <template>
 	<div>
 		<div class="registration-content">
-			<h2 class="registration-content__title">{{ this.$t('register-page.title')}}</h2>
-			<h3 class="registration-content__sub-title">{{ this.$t('register-page.subtitle')}}</h3>
 			<div class = "faq-block">
 				<div class = "faq-block__header" @click = "openTab" id = "q1">
 					<h3 class = "faq-block__title">{{ this.$t('register-page.questions.q1.title')}}</h3>
@@ -137,9 +135,6 @@
 	
 	.faq-contents { list-style-type : none; }
 	.registration-content {
-		&__title {
-			text-align: center;
-		}
 		&__blue-text {
 			text-align: center;
 			margin: 30px 0;
