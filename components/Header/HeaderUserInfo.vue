@@ -2,17 +2,22 @@
 	<NuxtLink :to = "$routes.dashboard.path" exact>
 		<div v-if = "$store.getters['user/USER']"
 			 class = "header-user-info"
-			 :class = "{ 'header-user-info--personal-office': $store.state.app.isPersonalOfficePage }">
+			 :class = "{ 'header-user-info--personal-office': $store.state.app.isPersonalOfficePage,
+			  }">
 			<div class = "header-user-info__text">
 				<div class = "header-user-info__item"
-					 :class = "{ 'header-user-info__item--personal-office': $store.state.app.isPersonalOfficePage }">
+					 :class = "{ 
+						 		  'header-user-info__item--personal-office': $store.state.app.isPersonalOfficePage, 
+					 			   'header-user-info--visible': isNotDashboard}">
 					{{
 					$store.getters["user/USER"].first_name && $store.getters["user/USER"].last_name ?
 						$store.getters["user/USER"].first_name + " " + $store.getters["user/USER"].last_name :
 						$store.getters["user/USER"].email
 					}}
 				</div>
-				<div class = "header-user-info__item__account-status" v-if = "$store.getters['user/USER'] && $store.getters['user/USER'].status">
+				<div :class = "{
+					'header-user-info--visible': isNotDashboard
+				}" class = "header-user-info__item__account-status" v-if = "$store.getters['user/USER'] && $store.getters['user/USER'].status">
 					<p>{{ $store.getters["user/USER"].status.toLowerCase() }}</p>
 				</div>
 			</div>
@@ -31,7 +36,12 @@
             return {
                 isLogin : true,
             }
-        },
+		},
+		computed : {
+			isNotDashboard() {
+				return this.$route.name !== "dashboard" && this.$route.name !== "account/billing" && this.$route.name !== "account/personal-information" && this.$route.name !== "enquiries";
+			}
+		},
         components : {
             UserAvatar
         }
@@ -49,6 +59,8 @@
 		align-items     : center;
 		flex-direction  : row-reverse;
 		justify-content : center;
+
+		
 		
 		&--personal-office {
 			background : $color-white;
@@ -76,9 +88,7 @@
 			&:first-child {
 				display : none;
 				
-				@include desktop {
-					display : flex;
-				}
+			
 			}
 			
 			&:last-child {
@@ -111,6 +121,9 @@
 			&__item {
 				&:last-child { margin-right : 0; }
 			}
+		}
+		&--visible {
+			display: none;
 		}
 	}
 </style>
