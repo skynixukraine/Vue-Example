@@ -815,8 +815,8 @@
 		"status" : "Stand: 20. März 2020"
 	},
 	"register-page": {
-		"title": "Beraten Sie Ihre Patienten online - wann und wo Sie wollen.",
-		"subtitle" : "Sie sind Facharzt für Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos auf unserer Plattform - in weniger als 24 Stunden können Sie Ihre Patienten ohne Ansteckungsgefahr online beraten.",
+		"title": "Versorgen Sie Ihre Patienten online.",
+		"subtitle" : "Sie sind Facharzt für Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos bei unserem Modellprojekt. In weniger als 24 Stunden können Sie Ihre Patienten fernbehandeln.",
 		"questions" : {
 			"q1" : {
 				"title" : "Wie funktioniert Online Hautarzt vor Ort?",
