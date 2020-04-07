@@ -874,7 +874,7 @@
 			},
 			"c" : {
 				"title" : "Bezahlung / Honorar",
-				"p1" : "Die Fallgebühr nach GoÄ ist bereits vor abschicken der Anfrage angegeben und wird in dem Moment, in dem Sie diese abschicken abschließen, fällig. Die Gesellschaft zieht den gesamten Fallbetrag ein und leitet die Fallgebühr abzüglich der Nutzungsgebühr an den Hautarzt weiter. Der Hautarzt hat die Gesellschaft ermächtigt, den Fallbetrag einzuziehen. Sollte es dem Hautarzt auf Grund schlechter Qualität der eingesandten Fotos oder unvollständigen Informationen die Begutachtung und/oder die Handlungsempfehlung nicht möglich sein, ist der Fallbetrag dennoch fällig und durch den Verbraucher zu zahlen."
+				"p1" : "Die Fallgebühr nach GOÄ ist bereits vor abschicken der Anfrage angegeben und wird in dem Moment, in dem Sie diese abschicken abschließen, fällig. Die Gesellschaft zieht den gesamten Fallbetrag ein und leitet die Fallgebühr abzüglich der Nutzungsgebühr an den Hautarzt weiter. Der Hautarzt hat die Gesellschaft ermächtigt, den Fallbetrag einzuziehen. Sollte es dem Hautarzt auf Grund schlechter Qualität der eingesandten Fotos oder unvollständigen Informationen die Begutachtung und/oder die Handlungsempfehlung nicht möglich sein, ist der Fallbetrag dennoch fällig und durch den Verbraucher zu zahlen."
 			},
 			"d" : {
 				"title" : "Datenspeicherung & Archivierung",
@@ -920,12 +920,12 @@
 			},
 			"q4" : {
 				"title" : "Habe ich als Facharzt Arbeit mit Abrechnung oder Zahlung?",
-				"p1" : "So gut wie garnicht. Der Patient erhält automatisiert einen korrekten Rechnungsbeleg nach GoÄ von Ihnen, wenn Sie Ihre Antwort an den Patienten abschicken. Im Ärzteportal können Sie Ihr Geld automatisiert auf Ihre IBAN überweisen lassen. Bei jedweden Fragen antworten wir Ihnen schnell."
+				"p1" : "So gut wie garnicht. Der Patient erhält automatisiert einen korrekten Rechnungsbeleg nach GOÄ von Ihnen, wenn Sie Ihre Antwort an den Patienten abschicken. Im Ärzteportal können Sie Ihr Geld automatisiert auf Ihre IBAN überweisen lassen. Bei jedweden Fragen antworten wir Ihnen schnell."
 			},
 			"q5" : {
 				"title" : "Wie hoch ist die Anzahl der Online-Anfragen?",
 				"p1" : "Durch den niedrigen Gesamtpreis von 19,- Euro – der mit Abstand günstigste Gesamtpreis sämtlicher uns bekannten fachärztlichen Teledermatologieplattformen – ist die Barriere auch für Ihre Patienten reduziert und Sie erreichen mit dem niedrigen Preis insbesondere in der Coronakrise auch Geringverdiener. Dadurch erhalten Sie deutlich mehr Anfragen und damit Einkünfte, als bei teureren Diensten. Unser Dienst zahlt 66% (ca. 2/3) direkt an den Dermatologen aus. Auch dieser Anteil ist höher als bei allen uns bekannten Telemedizindiensten.",
-				"p2" : "Wieviele Anfragen Sie erhalten, können Sie zu einem großen Teil selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B. Online-Hautarzt.de/hautarzt/Max-Mustermann), auf dass Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können. ",
+				"p2" : "Wieviele Anfragen Sie erhalten, können Sie zu einem großen Teil selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B. Online-Hautarzt.de/hautarzt/Max-Mustermann), auf das Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können. ",
 				"p3" : "Dieser Mustertext hat sich bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig (19,- Euro) eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und müssen meist nicht mehr persönlich vorbeikommen: Online-Hautarzt.de/Hautarzt/Max-Mustermann“.",
 				"p4" : "Darüber hinaus kommt ein Teil der Patienten auch über Ihr Profil auf online-hautarzt.de zu Ihnen. Über die Zeit werden auch viele Patienten Ihre Online-Behandlung schätzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
 			},
@@ -973,7 +973,7 @@
 			"d" : {
 				"title" : "4 Leistung der Smart Health Heidelberg GmbH",
 				"p1" : "Die Smart Health Heidelberg GmbH betreibt den von der Landesärztekammer als Modellprojekt genehmigte Vermittlungsplatform Online Hautarzt. Die Smart Health Heidelberg GmbH vermittelt ",
-				"p2" : "Der Patient rechnet den Fall formal vollständig nach den Ziffern 3 und 5 der GoÄ mit der Praxis ab. Als medizinische Leistung ist die Fallpauschale gemäß geltenden Gesetzen umsatzsteuerbefreit. Die Praxis zahlt pro Fall eine Nutzungsgebühr von 50% an die Smart Health Heidelberg GmbH. Die technische Zahlungsabwicklung erfolgt durch die Smart Health Heidelberg GmbH, die das Geld treuhändlerisch einbehält und nach Verrechnung der Nutzungsgebühr Dr. Jansen in der Regel am Ende jedes Kalendermonats, spätestens aber sechs Wochen nach erbringen der Leistung, auszahlt."
+				"p2" : "Der Patient rechnet den Fall formal vollständig nach den Ziffern 3 und 5 der GOÄ mit der Praxis ab. Als medizinische Leistung ist die Fallpauschale gemäß geltenden Gesetzen umsatzsteuerbefreit. Die Praxis zahlt pro Fall eine Nutzungsgebühr von 50% an die Smart Health Heidelberg GmbH. Die technische Zahlungsabwicklung erfolgt durch die Smart Health Heidelberg GmbH, die das Geld treuhändlerisch einbehält und nach Verrechnung der Nutzungsgebühr Dr. Jansen in der Regel am Ende jedes Kalendermonats, spätestens aber sechs Wochen nach erbringen der Leistung, auszahlt."
 			},
 			"e" : {
 				"title": "5 Kündigung des Vertrages",
