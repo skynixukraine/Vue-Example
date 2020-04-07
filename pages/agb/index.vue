@@ -1,11 +1,15 @@
 <template>
     <div class="page">
-        <div class="section">
-            <div class="container">
-                <h1>AGB</h1>
-                <AgbContent />
+        <div class="section vorteile-section"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
+            <div class = "container container__mobile-adaptation">
+                <h2 class="title">AGB</h2>
             </div>
         </div>
+            <div class="container">
+                <AgbContent />
+            </div>
+        
     </div>
 </template>
 
