@@ -226,40 +226,40 @@
 	},
 	"register-page": {
 		"title": "Versorgen Sie Patienten online - wann und wo Sie wollen.",
-		"subtitle" : "Sie sind Facharzt fГјr Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos auf unserer Plattform - in weniger als 24 Stunden kГ¶nnen Sie Ihre Patienten ohne Ansteckungsgefahr online behandeln.",
+		"subtitle" : "Sie sind Facharzt für Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos auf unserer Plattform - in weniger als 24 Stunden können Sie Ihre Patienten ohne Ansteckungsgefahr online behandeln.",
 		"questions" : {
 			"q1" : {
 				"title" : "Wie funktioniert Online Hautarzt vor Ort?",
-				"p1" : "Гњber Online Hautarzt vor Ort haben FachГ¤rzte fГјr Haut- & Geschlechtskrankheiten die MГ¶glichkeit, Patienten von ihrem Wunschort aus zu betreuen, ohne dass diese persГ¶nlich vorstellig werden. Die Anamnese erfolgt dabei automatisiert Гјber einen interaktiven Fragebogen. Die HautГ¤rzte erhalten auf eine fГјr sie schnell einzuschГ¤tzende Art und Weise das Hautproblem des Patienten Гјbermittelt. Wenn sie Zeit haben, aber spГ¤testens innerhalb von 48 Stunden, schicken die HautГ¤rzte eine professionelle EinschГ¤tzung und Handlungsempfehlung an den Patienten zurГјck, die nach unserer externen wissenschaftlichen Evaluation an der UniversitГ¤ts-Hautklinik Essen in etwa 70% der FГ¤lle den persГ¶nlichen Praxisbesuch erspart."
+				"p1" : "Über Online Hautarzt vor Ort haben Fachärzte für Haut- & Geschlechtskrankheiten die Möglichkeit, Patienten von ihrem Wunschort aus zu betreuen, ohne dass diese persönlich vorstellig werden. Die Anamnese erfolgt dabei automatisiert über einen interaktiven Fragebogen. Die Hautärzte erhalten auf eine für sie schnell einzuschätzende Art und Weise das Hautproblem des Patienten übermittelt. Wenn sie Zeit haben, aber spätestens innerhalb von 48 Stunden, schicken die Hautärzte eine professionelle Einschätzung und Handlungsempfehlung an den Patienten zurück, die nach unserer externen wissenschaftlichen Evaluation an der Universitäts-Hautklinik Essen in etwa 70% der Fälle den persönlichen Praxisbesuch erspart."
 			},
 			"q2" : {
-				"title" : "Wie hoch ist die VergГјtung?",
-				"p1" : "Der Dermatologe erhГ¤lt 12,50 Euro pro Fall (=Umsatzsteuerfreie Heilleistung). Dies entspricht bei einer durchschnittlichen Bearbeitungsdauer pro Fall von ca. zwei Minuten einem Netto-Stundenlohn von etwa 375,- Euro. 12,50 Euro entspricht etwa 2/3 des niedrigen Gesamtbetrages von 19,- Euro. Damit zahlen wir einen hГ¶heren Anteil an unsere Г„rzte aus, als alle uns bekannten Telemedizindienste. Als Г¤rztlich geleitete Plattform mГ¶chten wir den Dienst in der Coronakrise so gГјnstig wie mГ¶glich fГјr die Patienten bereitstellen und verzichten daher auf unseren Gewinn."
+				"title" : "Wie hoch ist die Vergütung?",
+				"p1" : "Der Dermatologe erhält 12,50 Euro pro Fall (=Umsatzsteuerfreie Heilleistung). Dies entspricht bei einer durchschnittlichen Bearbeitungsdauer pro Fall von ca. zwei Minuten einem Netto-Stundenlohn von etwa 375,- Euro. 12,50 Euro entspricht etwa 2/3 des niedrigen Gesamtbetrages von 19,- Euro. Damit zahlen wir einen höheren Anteil an unsere Ärzte aus, als alle uns bekannten Telemedizindienste. Als ärztlich geleitete Plattform möchten wir den Dienst in der Coronakrise so günstig wie möglich für die Patienten bereitstellen und verzichten daher auf unseren Gewinn."
 			},
 			"q3" : {
-				"title" : "В Wie funktioniert der Befundungsprozess?",
-				"p1" : "Nach der Registrierung erhalten Sie Zugang zum Г„rzteportal. Egal wann & egal wo kГ¶nnen Sie nun Hautprobleme online begutachten, die von Patienten Гјber unseren digitalen Anamnesebogen eingesandt werden. Eine Internetverbindung und ein internetfГ¤higes GerГ¤t reichen aus.",
-				"p2" : "Das verfassen des Antworttextes dauert pro Fall je nach Erfahrung und KomplexitГ¤t zwischen 1-5 Minuten. FГјr hГ¤ufige FГ¤lle gibt es Vorlagen. Innerhalb von 48 Stunden nach stellen der Anfrage erwartet der Patient eine Textantwort von Ihnen. Wenn Sie diesen Zeitraum nicht gewГ¤hrleisten kГ¶nnen, zum Beispiel weil Sie im Urlaub sind, setzen Sie Ihr Profil einfach auf вЂћPauseвЂњ und reaktivieren es wieder, wenn Sie Lust haben."
+				"title" : "Wie funktioniert der Befundungsprozess?",
+				"p1" : "Nach der Registrierung erhalten Sie Zugang zum Ärzteportal. Egal wann & egal wo können Sie nun Hautprobleme online begutachten, die von Patienten über unseren digitalen Anamnesebogen eingesandt werden. Eine Internetverbindung und ein internetfähiges Gerät reichen aus.",
+				"p2" : "Das verfassen des Antworttextes dauert pro Fall je nach Erfahrung und Komplexität zwischen 1-5 Minuten. Für häufige Fälle gibt es Vorlagen. Innerhalb von 48 Stunden nach stellen der Anfrage erwartet der Patient eine Textantwort von Ihnen. Wenn Sie diesen Zeitraum nicht gewährleisten können, zum Beispiel weil Sie im Urlaub sind, setzen Sie Ihr Profil einfach auf „Pause“ und reaktivieren es wieder, wenn Sie Lust haben."
 			},
 			"q4" : {
 				"title" : "Habe ich als Facharzt Arbeit mit Abrechnung oder Zahlung?",
-				"p1" : "So gut wie garnicht. Der Patient erhГ¤lt automatisiert einen korrekten Rechnungsbeleg nach GoГ„ von Ihnen, wenn Sie Ihre Antwort an den Patienten abschicken. Im Г„rzteportal kГ¶nnen Sie Ihr Geld automatisiert auf Ihre IBAN Гјberweisen lassen. Bei jedweden Fragen antworten wir Ihnen schnell."
+				"p1" : "So gut wie garnicht. Der Patient erhält automatisiert einen korrekten Rechnungsbeleg nach GoÄ von Ihnen, wenn Sie Ihre Antwort an den Patienten abschicken. Im Ärzteportal können Sie Ihr Geld automatisiert auf Ihre IBAN überweisen lassen. Bei jedweden Fragen antworten wir Ihnen schnell."
 			},
 			"q5" : {
 				"title" : "Wie hoch ist die Anzahl der Online-Anfragen?",
-				"p1" : "Durch den niedrigen Gesamtpreis von 19,- Euro вЂ“ der mit Abstand gГјnstigste Gesamtpreis sГ¤mtlicher uns bekannten fachГ¤rztlichen Teledermatologieplattformen вЂ“ ist die Barriere auch fГјr Ihre Patienten reduziert und Sie erreichen mit dem niedrigen Preis insbesondere in der Coronakrise auch Geringverdiener. Dadurch erhalten Sie deutlich mehr Anfragen und damit EinkГјnfte, als bei teureren Diensten. Unser Dienst zahlt 66% (ca. 2/3) direkt an den Dermatologen aus. Auch dieser Anteil ist hГ¶her als bei allen uns bekannten Telemedizindiensten.",
-				"p2" : "Wieviele Anfragen Sie erhalten, kГ¶nnen Sie zu einem groГџen Teil selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B.В Online-Hautarzt.de/hautarzt/Max-Mustermann), auf dass Sie Ihre Patienten Гјber die Startseite Ihrer Praxis verweisen kГ¶nnen.В",
-				"p3" : "Dieser Mustertext hat sich bewГ¤hrt: вЂћSie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengГјnstig (19,- Euro) eine professionelle EinschГ¤tzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und mГјssen meist nicht mehr persГ¶nlich vorbeikommen:В Online-Hautarzt.de/Hautarzt/Max-MustermannвЂњ.",
-				"p4" : "DarГјber hinaus kommt ein Teil der Patienten auch Гјber Ihr Profil aufВ online-hautarzt.deВ zu Ihnen. Гњber die Zeit werden auch viele Patienten Ihre Online-Behandlung schГ¤tzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
+				"p1" : "Durch den niedrigen Gesamtpreis von 19,- Euro – der mit Abstand günstigste Gesamtpreis sämtlicher uns bekannten fachärztlichen Teledermatologieplattformen – ist die Barriere auch für Ihre Patienten reduziert und Sie erreichen mit dem niedrigen Preis insbesondere in der Coronakrise auch Geringverdiener. Dadurch erhalten Sie deutlich mehr Anfragen und damit Einkünfte, als bei teureren Diensten. Unser Dienst zahlt 66% (ca. 2/3) direkt an den Dermatologen aus. Auch dieser Anteil ist höher als bei allen uns bekannten Telemedizindiensten.",
+				"p2" : "Wieviele Anfragen Sie erhalten, können Sie zu einem großen Teil selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B. Online-Hautarzt.de/hautarzt/Max-Mustermann), auf dass Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können. ",
+				"p3" : "Dieser Mustertext hat sich bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig (19,- Euro) eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und müssen meist nicht mehr persönlich vorbeikommen: Online-Hautarzt.de/Hautarzt/Max-Mustermann“.",
+				"p4" : "Darüber hinaus kommt ein Teil der Patienten auch über Ihr Profil auf online-hautarzt.de zu Ihnen. Über die Zeit werden auch viele Patienten Ihre Online-Behandlung schätzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
 			},
 			"q6" : {
 				"title" : "Kann ich auch als Assistenzarzt mitmachen?",
 				"p1" : "Nein, die Facharztausbildung zum Dermatologen muss abgeschlossen sein."
 			}
 		},
-		"text" : "вЂћImmernoch Fragen? Dann nutzen Sie unser",
+		"text" : "Immernoch Fragen? Dann nutzen Sie unser",
 		"link" : "Kontaktformular",
-		"register_text" : "Hier kГ¶nnen Sie sich jetzt kostenlos registrieren:"
+		"register_text" : "Hier können Sie sich jetzt kostenlos registrieren:"
 	},
 	"page-personal-information": {
 		"head": {
