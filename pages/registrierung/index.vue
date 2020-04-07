@@ -2,17 +2,16 @@
     <div class="page">
         <div class="section section--registration">
             <div class="container">
-                <RegistrationContent />
                         <Signup />
-                    
                 </div>
             </div>
         </div>
+    </div>
 </template>
 
 <script>
 import Signup from "~/components/Authorization/Signup";
-import RegistrationContent from "~/components/Static/RegistrationContent"
+
 
 export default {
     middleware: [
@@ -33,8 +32,7 @@ export default {
     },
 
     components: {
-        Signup,
-        RegistrationContent
+        Signup
     },
   
 };
@@ -51,12 +49,11 @@ export default {
         }
     
         .container {
-            form {
-                @media (min-width : #{962px}) {
-                    width  : 50%;
-                    margin : auto;
-                }
+            @media (min-width: #{962px}) {
+                width: 50%;
+                margin: auto;
             }
+        
             .form__item {
                 input, #vue-tel-input.vue-tel-input {
                     @media (min-width : #{962px}) {
@@ -74,6 +71,7 @@ export default {
         }
         
     }
+    
   
 }
 

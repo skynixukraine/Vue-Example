@@ -2,15 +2,9 @@
     <div class="page">
         <div class="section">
             <div class="container">
-                <h1>Mehr Patienten</h1>
-                <p class="patient-block__paragraph">
-                {{this.$t('page-patient.p1')}}<br>
-                </p>
-                <p class="patient-block__paragraph">
-                {{this.$t('page-patient.p2')}}<br>
-                </p>
-                <p class="patient-block__paragraph">
-                {{this.$t('page-patient.p3')}}<br>
+                <h1>Vorlagenen</h1>
+                <p class="vorlagen-block__paragraph">
+                {{this.$t('page-vorlagen.p1')}}<br>
                 </p>
             </div>
         </div>
@@ -20,7 +14,7 @@
 <script>
 export default {
     head(){
-            return {title : this.$t("page-patient.head.title")}
+            return {title : this.$t("page-vorlagen.head.title")}
         },
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
@@ -35,7 +29,7 @@ export default {
 }
 </script>
 <style lang = "scss">
-.patient-block{
+.vorlagen-block{
         &__paragraph{
             margin-bottom: 20px;
         }
