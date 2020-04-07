@@ -57,6 +57,10 @@
 	}
 		&__list {
 			font-weight: bold;
+			padding: 0;
+			@include tablet-big {
+				padding : 0 20px;
+			}
 			
 			li {
 				list-style-type : none;
