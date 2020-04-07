@@ -1,10 +1,10 @@
 <template>
     <div class="page">
-        <div class = "section datehautarzt-section"
+        <div class = "section datenschutz-section"
              :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}"
         >
             <div class = "container container__mobile-adaptation">
-                <h1 class ="datehautarzt-title title">{{this.$t('page-datenschutz.caption')}}</h1>
+                <h1 class ="datenschutz-title title">{{this.$t('page-datenschutz.caption')}}</h1>
             </div>
         </div>
             <div class="container">
@@ -18,15 +18,9 @@
                 {{this.$t('page-datenschutz.p3')}}
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p4_1')}}
-                </p>
-                <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p4_2')}}
-                </p>
-                <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p4_3')}}
-                </p>
-                <p class="datenschutz-block__paragraph">
+                {{this.$t('page-datenschutz.p4_1')}}<br>
+                {{this.$t('page-datenschutz.p4_2')}}<br>
+                {{this.$t('page-datenschutz.p4_3')}}<br>
                 {{this.$t('page-datenschutz.p4_4')}}<br>
                 </p>
                 <h3 class = "datenschutz-block__title">{{ this.$t('page-datenschutz.title1')}}</h3>
@@ -38,20 +32,24 @@
                 </p>
                 <p class="datenschutz-block__paragraph">
                 {{this.$t('page-datenschutz.p7')}}
-                {{this.$t('page-datenschutz.p7_a1')}}<br>
+                <a href="www.online-hautarzt.de" class="link link--small-blue">
+                    {{this.$t('page-datenschutz.p7_a1')}}
+                </a>
                 </p>
                 <h3 class = "datenschutz-block__title">{{ this.$t('page-datenschutz.title2')}}</h3>
                 <p class="datenschutz-block__paragraph">
                 {{this.$t('page-datenschutz.p8')}}
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p9_1')}}<br>
-                {{this.$t('page-datenschutz.p9_2')}}<br>
-                {{this.$t('page-datenschutz.p9_3')}}<br>
-                {{this.$t('page-datenschutz.p9_4')}}<br>
-                {{this.$t('page-datenschutz.p9_5')}}<br>
-                {{this.$t('page-datenschutz.p9_6')}}<br>
-                {{this.$t('page-datenschutz.p9_7')}}<br>
+                    <ul>
+                        <li>{{this.$t('page-datenschutz.p9_1')}}</li>
+                        <li>{{this.$t('page-datenschutz.p9_2')}}</li>
+                        <li>{{this.$t('page-datenschutz.p9_3')}}</li>
+                        <li>{{this.$t('page-datenschutz.p9_4')}}</li>
+                        <li>{{this.$t('page-datenschutz.p9_5')}}</li>
+                        <li>{{this.$t('page-datenschutz.p9_6')}}</li>
+                        <li>{{this.$t('page-datenschutz.p9_7')}}</li>
+                    </ul>
                 </p>
                 <h3 class = "datenschutz-block__title">{{ this.$t('page-datenschutz.title3')}}</h3>
                 <p class="datenschutz-block__paragraph">
@@ -63,13 +61,15 @@
                 <p class="datenschutz-block__paragraph">
                 {{this.$t('page-datenschutz.p12')}}<br>
                 </p>
-                <h3 class = "datenschutz-block__title">{{ this.$t('page-datenschutzk.title4')}}</h3>
+                <h3 class = "datenschutz-block__title">{{ this.$t('page-datenschutz.title4')}}</h3>
                 <p class="datenschutz-block__paragraph">
                 {{this.$t('page-datenschutz.p13')}}
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p14_1')}}<br>
-                {{this.$t('page-datenschutz.p14_2')}}
+                    <ul>
+                        <li>{{this.$t('page-datenschutz.p14_1')}}</li>
+                        <li>{{this.$t('page-datenschutz.p14_2')}}</li>
+                    </ul>                
                 </p>
                 <p class="datenschutz-block__paragraph">
                 {{this.$t('page-datenschutz.p15')}}
@@ -119,23 +119,23 @@
                 </p>
                 <h3 class = "datenschutz-block__title">{{ this.$t('page-datenschutz.title9')}}</h3>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p29_1')}}<br>
-                {{this.$t('page-datenschutz.p29_2')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p29_1')}}</span><br>
+                {{this.$t('page-datenschutz.p29_2')}}
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p30_1')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p30_1')}}</span><br>
                 {{this.$t('page-datenschutz.p30_2')}}<br>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p31_1')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p31_1')}}</span><br>
                 {{this.$t('page-datenschutz.p31_2')}}<br>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p32_1')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p32_1')}}</span><br>
                 {{this.$t('page-datenschutz.p32_2')}}<br>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p33_1')}}<br>
+                {{this.$t('page-datenschutz.p33_1')}}<br><br>
                 {{this.$t('page-datenschutz.p33_2')}}<br>
                 {{this.$t('page-datenschutz.p33_3')}}<br>
                 {{this.$t('page-datenschutz.p33_4')}}<br>
@@ -143,36 +143,54 @@
                 {{this.$t('page-datenschutz.p33_6')}}<br>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p34_1')}}<br>
-                {{this.$t('page-datenschutz.p34_a1')}}<br>
+                {{this.$t('page-datenschutz.p34_1')}}
+                <a href="www.online-hautarzt.de" class="link link--small-blue">
+                    {{this.$t('page-datenschutz.p34_a1')}}
+                </a><br>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p35_1')}}<br>
-                {{this.$t('page-datenschutz.p35_a1')}}<br>
+                {{this.$t('page-datenschutz.p35_1')}}
+                <a href="www.online-hautarzt.de" class="link link--small-blue">
+                {{this.$t('page-datenschutz.p35_a1')}}
+                </a><br>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p36_1')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p36_1')}}</span><br>
                 {{this.$t('page-datenschutz.p36_2')}}<br>
-                {{this.$t('page-datenschutz.p36_3')}} {{this.$t('page-datenschutz.p36_a3')}}<br>
+                {{this.$t('page-datenschutz.p36_3')}}
+                <a href="www.online-hautarzt.de" class="link link--small-blue">
+                {{this.$t('page-datenschutz.p36_a3')}}
+                </a>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p37_1')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p37_1')}}</span><br>
                 {{this.$t('page-datenschutz.p37_2')}}<br>
                 {{this.$t('page-datenschutz.p37_3')}}<br>
                 {{this.$t('page-datenschutz.p37_4')}}<br>
-                {{this.$t('page-datenschutz.p37_5')}} {{this.$t('page-datenschutz.p37_a5')}}<br><br>
+                {{this.$t('page-datenschutz.p37_5')}}
+                <a href="www.online-hautarzt.de" class="link link--small-blue">
+                 {{this.$t('page-datenschutz.p37_a5')}}
+                 </a>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p38_1')}}<br>
-                {{this.$t('page-datenschutz.p38_2')}} {{this.$t('page-datenschutz.p38_a2')}}<br>
-                {{this.$t('page-datenschutz.p38_3')}} {{this.$t('page-datenschutz.p38_a3')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p38_1')}}</span><br>
+                {{this.$t('page-datenschutz.p38_2')}}
+                <a href="www.online-hautarzt.de" class="link link--small-blue">
+                {{this.$t('page-datenschutz.p38_a2')}}
+                </a><br>
+                {{this.$t('page-datenschutz.p38_3')}}
+                <a href="www.online-hautarzt.de" class="link link--small-blue"> 
+                {{this.$t('page-datenschutz.p38_a3')}}
+                </a><br>
                 </p>
                 <p class="datenschutz-block__paragraph">
                 {{this.$t('page-datenschutz.p38_4')}}<br>
-                {{this.$t('page-datenschutz.p38_a4')}}<br>
+                <a href="www.online-hautarzt.de" class="link link--small-blue">
+                {{this.$t('page-datenschutz.p38_a4')}}
+                </a><br>
                 </p>
                 <p class="datenschutz-block__paragraph">
-                {{this.$t('page-datenschutz.p39')}}<br>
+                <span class="black-title">{{this.$t('page-datenschutz.p39')}}</span><br>
                 </p>
                 <p class="datenschutz-block__paragraph">
                 {{this.$t('page-datenschutz.p40')}}<br>
@@ -201,11 +219,11 @@ export default {
 
 <style lang = "scss">
 
-    .datehautarzt-section .datehautarzt-h3{
+    .datenschutz-section .datehautarzt-h3{
 		color: white;
 	}
 
-    .datehautarzt-section .title{
+    .datenschutz-section .title{
         color: white;
     }
     .page{
@@ -216,7 +234,7 @@ export default {
         }
     }
 
-    .datehautarzt-section{
+    .datenschutz-section{
         margin: 0 0 32px 0;
         padding: 0;
 
@@ -224,9 +242,15 @@ export default {
             margin: 0 0 60px 0;
         }
     }
-    .datehautarzt-block{
+    .datenschutz-block{
         &__paragraph{
             margin-bottom: 20px;
+            ul {
+                list-style: disc outside;
+            }
+            .black-title {
+                color: black;
+            }
         }
         &__title{
             margin: 35px 0 25px 0;
