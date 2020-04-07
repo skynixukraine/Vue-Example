@@ -1,17 +1,29 @@
 <template>
-    <div class="page">
-        <div class="section">
-            <div class="container">
-                <h1>Vorlagenen</h1>
-                <p class="vorlagen-block__paragraph">
-                {{this.$t('page-vorlagen.p1')}}<br>
-                </p>
+    <div class = "page page-vorlagen">
+        <div class = "section section-not-padding">
+            <div class = "container-fluid">
+                <Dashboard>
+                    <DashboardSidebar />
+                    <DashboardMain>
+                        <DashboardHeader :title = "`Vorlagen`" />
+                        <DashboardContent>
+                            <Vorlagen />
+                        </DashboardContent>
+                    </DashboardMain>
+                </Dashboard>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import Dashboard from "~/components/Dashboard/Dashboard"
+    import DashboardSidebar from "~/components/Dashboard/DashboardSidebar"
+    import DashboardMain from "~/components/Dashboard/DashboardMain"
+    import DashboardHeader from "~/components/Dashboard/DashboardHeader"
+    import DashboardContent from "~/components/Dashboard/DashboardContent"
+    import Vorlagen from "~/components/Vorlagen/Vorlagen"
+
 export default {
     head(){
             return {title : this.$t("page-vorlagen.head.title")}
@@ -26,12 +38,30 @@ export default {
                 })
         }
     },
+    components : {
+            Dashboard,
+            DashboardSidebar,
+            DashboardMain,
+            DashboardHeader,
+            DashboardContent,
+            Vorlagen,
+        },
 }
 </script>
 <style lang = "scss">
-.vorlagen-block{
-        &__paragraph{
-            margin-bottom: 20px;
+
+
+    .section-breadcrumbs {
+        padding-bottom : 30px;
+    }
+    
+    .dashboard-header {
+        align-items    : flex-end;
+        flex-direction : column;
+        
+        @include tablet {
+            align-items    : center;
+            flex-direction : row;
         }
 }
 </style>
