@@ -82,9 +82,7 @@
                     }, {
                         text : "Einloggen",
                         to   : this.$routes.einloggen.path
-                    },{
-                        text : "Registrieren",
-                        to   : this.$routes.login.path
+                  
                     }],
 
                     research : [{
@@ -99,7 +97,7 @@
                         text : "Datenschutz Hautarzt",
                         to   : this.$routes.datenschutzHautarzt.path
                     },{
-                        text : "Datenschutz Plattforminhabe",
+                        text : "Datenschutz Plattforminhaber",
                         to   : this.$routes.datenschutzGmbh.path
                     },{
                         text : "Allgemeine Geschäftsbedingungen",
