@@ -6,8 +6,7 @@
 			<div class = "container container__mobile-adaptation">
 				<h1 class ="title">Hautarzt wählen & Online-Anfrage starten</h1>
 				<h3 class ="subtext">
-					Jeder Hautarzt kann Ihr Hautproblem ortsunabhängig online begutachten & eine Handlungsempfehlung mitteilen.
-					Geben Sie Ihre Stadt und den Umkreis an, falls Sie jemanden aus der näheren Umgebung wünschen.
+					Jeder Hautarzt kann Ihr Hautproblem ortsunabhängig online begutachten. Geben Sie Ihre Stadt und den Umkreis an, falls Sie jemanden aus der näheren Umgebung wünschen. Meist bereits in weniger als sechs Stunden, maximal nach 48 Stunden erhalten Sie eine Beurteilung & Handlungsempfehlung Ihres Hautarztes.
 				</h3>
 			</div>
 		</div>
