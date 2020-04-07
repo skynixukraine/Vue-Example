@@ -7,6 +7,7 @@
                 <h1 class ="gmbh-title title">
                     {{this.$t('page-gmbh.caption')}} 
                 </h1>
+                <h3 class ="gmbh-h3">{{this.$t('page-gmbh.subtext')}}</h3>
             </div>
         </div>
         <div class="container">
