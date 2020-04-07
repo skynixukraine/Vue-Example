@@ -110,6 +110,10 @@
 		}
 		&__text-list {
 			font-weight: bold;
+			padding: 0 5px;
+			@include tablet-big {
+				padding : 0 20px;
+			}
 			p, ul {
 				margin-bottom: 10px;
 			}
