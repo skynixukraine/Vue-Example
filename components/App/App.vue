@@ -1078,4 +1078,9 @@
 	}
 	//Hide recaptcha badge on all pages @see https://jira.skynix.co/browse/OH-220
 	.grecaptcha-badge { opacity : 0;}
+	.container__mobile-adaptation {
+		.title, .subtext {
+			color : white;
+		}
+	}
 </style>

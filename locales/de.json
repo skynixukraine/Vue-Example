@@ -1,7 +1,7 @@
 {
 	"genegal-translations": {
 		"i-accept": "Ich habe die",
-		"accept": "Ich habe dan",
+		"accept": "Ich habe den",
 		"and": "und die",
 		"general-terms" : "Allgemeinen Geschäftsbedingungen",
 		"read-and-accept" : "gelesen und akzeptiere diese.",
@@ -146,7 +146,93 @@
 	"page-datenschutz": {
 		"head": {
 			"title": "Datenschutz | Online Hautarzt vor Ort"
-		}
+		},
+		"caption": "Datenschutzinformationen des Hautarztes",
+		"p1": "Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.",
+		"p2": "Gemäß Art. 4 Ziffer 1. der Verordnung (EU) 2016/679, also der Datenschutz-Grundverordnung (nachfolgend nur „DSGVO“ genannt), gilt als „Verarbeitung“ jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführter Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten, wie das Erheben, das Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, das Abfragen, die Verwendung, die Offenlegung durch Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung.",
+		"p3": "Mit der nachfolgenden Datenschutzerklärung informieren wir Sie insbesondere über Art, Umfang, Zweck, Dauer und Rechtsgrundlage der Verarbeitung personenbezogener Daten, soweit wir entweder allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung entscheiden. Zudem informieren wir Sie nachfolgend über die von uns zu Optimierungszwecken sowie zur Steigerung der Nutzungsqualität eingesetzten Fremdkomponenten, soweit hierdurch Dritte Daten in wiederum eigener Verantwortung verarbeiten.",
+		"p4_1": "Unsere Datenschutzerklärung ist wie folgt gegliedert:",
+		"p4_2": "I. Verantwortliche Stelle",
+		"p4_3": "II. Rechte der Nutzer und Betroffenen",
+		"p4_4": "III. Informationen zur Datenverarbeitung",
+		"title1": "I. Informationen über uns als Verantwortliche ",
+		"p5": "Verantwortliche Stelle für die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten gem. Art. 4 Abs. 7 DS-GVO ist:",
+		"p6": "der von Ihnen ausgewählte Hautarzt. Seine Adresse kann auf seinem Profil eingesehen werden.",
+		"p7": "Die Verarbeitung der Daten zwecks Durchführung des Behandlungsvertrages nach der EU-DSGVO wird nur durch uns verantwortet; unsere Datenschutzerklärung finden Sie separat auf ",
+		"p7_a1": "www.online-hautarzt.de",
+		"title2": "II. Rechte der Nutzer und Betroffenen",
+		"p8": "Mit Blick auf die nachfolgend noch näher beschriebene Datenverarbeitung haben die Nutzer und Betroffenen das Recht",
+		"p9_1": "auf Bestätigung, ob sie betreffende Daten verarbeitet werden, auf Auskunft über die verarbeiteten Daten, auf weitere Informationen über die Datenverarbeitung sowie auf Kopien der Daten (vgl. auch Art. 15 DSGVO);",
+		"p9_2": "auf Berichtigung oder Vervollständigung unrichtiger bzw. unvollständiger Daten (vgl. auch Art. 16 DSGVO);",
+		"p9_3": "auf unverzügliche Löschung der sie betreffenden Daten (vgl. auch Art. 17 DSGVO), oder, alternativ, soweit eine weitere Verarbeitung gemäß Art. 17 Abs. 3 DSGVO erforderlich ist, auf Einschränkung der Verarbeitung nach Maßgabe von Art. 18 DSGVO;",
+		"p9_4": "auf Erhalt der sie betreffenden und von ihnen bereitgestellten Daten und auf Übermittlung dieser Daten an andere Anbieter/Verantwortliche (vgl. auch Art. 20 DSGVO);",
+		"p9_5": "auf Beschwerde gegenüber der Aufsichtsbehörde, sofern sie der Ansicht sind, dass die sie betreffenden Daten durch den Anbieter unter Verstoß gegen datenschutzrechtliche Bestimmungen verarbeitet werden (vgl. auch Art. 77 DSGVO).",
+		"p9_6": "Darüber hinaus ist der Anbieter dazu verpflichtet, alle Empfänger, denen gegenüber Daten durch den Anbieter offengelegt worden sind, über jedwede Berichtigung oder Löschung von Daten oder die Einschränkung der Verarbeitung, die aufgrund der Artikel 16, 17 Abs. 1, 18 DSGVO erfolgt, zu unterrichten. Diese Verpflichtung besteht jedoch nicht, soweit diese Mitteilung unmöglich oder mit einem unverhältnismäßigen Aufwand verbunden ist. Unbeschadet dessen hat der Nutzer ein Recht auf Auskunft über diese Empfänger.",
+		"p9_7": "Ebenfalls haben die Nutzer und Betroffenen nach Art. 21 DSGVO das Recht auf Widerspruch gegen die künftige Verarbeitung der sie betreffenden Daten, sofern die Daten durch den Anbieter nach Maßgabe von Art. 6 Abs. 1 lit. f) DSGVO verarbeitet werden. Insbesondere ist ein Widerspruch gegen die Datenverarbeitung zum Zwecke der Direktwerbung statthaft.",
+		"title3": "III. Informationen zur Datenverarbeitung",
+		"p10": "Ihre bei Nutzung unseres Internetauftritts verarbeiteten Daten werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt, der Löschung der Daten keine gesetzlichen Aufbewahrungspflichten entgegenstehen und nachfolgend keine anderslautenden Angaben zu einzelnen Verarbeitungsverfahren gemacht werden.",
+		"p11": "Wir haben die Erhebung von personenbezogenen Daten (=alle Daten, die sich auf eine identifizierbare oder bereits identifizierte Person beziehen) auf ein Minimum beschränkt (=Datenminimierung, eines der Grundprinzipien der EU-DSGVO). Bei dem reinen Besuchen unserer Webseite werden diese nicht abgefragt. Nur dann, wenn Sie ein Vertragsverhältnis mit uns eingehen, also eine teledermatologische Behandlung starten, erheben wir die zum Vertragsschluss und zur Bereitstellung der Fernbehandlung notwendigen Daten. ",
+		"p12": "Teilweise ist für den sinnvollen Betrieb der Webseite, für Sicherheit- oder Werbemaßnahmen oder zum Beispiel für das Abschließen von Zahlungen, der Einsatz von Drittanbietern erforderlich. Nachfolgend möchten wir über alle entsprechenden Dienste einzeln und im Detail informieren.",
+		"title4": "Besuch von online-hautarzt.de ohne teledermatologische Behandlung",
+		"p13": "Wenn Sie die Seite nur besuchen, aber keine Behandlung durchführen lassen, werden folgende Informationen automatisiert von unserem Server erhoben, damit die Webseite korrekt angezeigt werden kann:", 
+		"p14_1": "* IP-Adresse (wie bei jeder Verbindung im Internet) und wann diese IP-Adresse auf den Server zugreift (automatisch im Serverlog) und was sie von diesem Server abruft (z.B. die jeweilige Unterseite, die Datenmenge; ebenfalls automatisch).",
+		"p14_2": "* Welchen Browser Sie verwenden.",
+		"p15": "Der Zweck der Datenverarbeitung ist die Nutzung unserer Webseite in der richtigen Auflösung, oder entspricht technischen / administrativen Erfordernissen (nach Art. 6 Abs. 1 S. 1 lit. f DS-GVO).",
+		"p16": "Darüber hinaus setzen wir Analysedienste und Cookies ein, über die wir weiter unten im Einzelnen aufklären.",
+		"title5": "Durchführung einer Online Behandlung über online-hautarzt.de",
+		"p17": "Sofern Sie sich über unsere Webseite nicht nur allgemein informieren, sondern auch eine Online-Behandlung in Anspruch nehmen, geben Sie weitere personenbezogene Daten von sich an. Diese werden durch uns verarbeitet bzw. an den von Ihnen ausgewählten Dermatologen weitergeleitet, damit dieser die entsprechende Leistung für Sie erbringen kann. Also, falls Sie unseren Online-Hautarzt-Dienst in Anspruch nehmen, werden Ihr vollständiger Name, Ihr Geschlecht, Ihr Geburtsdatum, Ihre Adresse, Ihre Handynummer, Ihre E-Mail-Adresse, die Fotos die Sie von Ihrer Hautveränderung einschicken, sowie weitere Informationen, die Sie zu Ihrem Hautproblem einsenden, von uns an den von Ihnen ausgewählten Hautarzt übermittelt. ",
+		"p18": "Darüber hinaus müssen Sie die Behandlung natürlich bezahlen können und dazu werden Zahlungsdaten übermittelt, wie beispielsweise Ihre Bankverbindung oder Ihre Kreditkarteninformationen, je nachdem welche Zahlungsart Sie wählen (die Zahlungsanbieter haben jeweils nochmal separate Datenschutzerklärungen, die jeweils am Zahlungsschritt verlinkt sind). ",
+		"p19": "Die Zwecke dieser erhobenen Daten nach EU-DSGVO sind a) unsere externe wissenschaftliche Evaluation, bei der anonymisierte Daten genutzt werden, um eine Qualitätssicherung zu gewährleisten, sowie Erkenntnisse über Online-Hautarzt-Behandlungen im Allgemeinen zu sammeln und auch die Entwicklung von neuen Diagnostikverfahren, b) die Vermittlung von Hautärzten zur Online-Behandlung Ihres Hautproblems, c) Abrechnung / Bezahlung.",
+		"p20": "Die rechtliche Grundlage für die Erhebung, Verarbeitung und Nutzung der oben genannten Daten nach EU-DSGVO sind Art. 6 Abs. 1 S. 1 lit. a, b und f.  Gesundheitsdaten (=besonders sensible Daten) werden ausschließlich nach Ihrer ausdrücklichen Einwilligung verarbeitet (Art. 9 Abs. 2 DS-GVO).",
+		"title6": "Wann und unter welchen Bedingungen werden Ihre Daten weitergegeben?",
+		"p21": "In der Regel geben wir Ihre personenbezogenen Daten überhaupt nicht weiter, es sei denn, wir haben Sie darauf hingewiesen, oder Sie haben dem aktiv zugestimmt, oder es ist aus juristischen Gründen erforderlich (Art. 6 Abs. 1 S. 1 lit. f DSGVO), oder ist aus weiteren Gründen in unserem berechtigten Interesse und es besteht kein Grund zur Annahme, dass Sie ein überwiegendes schutzwürdiges Interesse daran haben, dass Ihrer Daten nicht weitergegeben werden, oder es besteht für die Weitergabe nach Art. 6 Abs. 1 S. 1 lit. c DSGVO eine gesetzliche Verpflichtung, oder dies ist nach Art. 6 Abs. 1 S. 1 lit. b DSGVO für die Abwicklung von Vertragsverhältnissen mit Ihnen erforderlich.",
+		"p22": "Damit wir den Online Hautarzt Dienst optimal für Sie betreiben können, sind wir auf die Nutzung weniger externer Dienstleister angewiesen, mit denen wir Auftragsdatenverarbeitungsverträge geschlossen haben (gem. Art. 28 EU-DSGVO) und über die wir Sie weiter unten informieren: Im wesentlichen sind dies der Zahlungsanbieter STRIPE (Zahlung) und Google Maps (Hautarzt in der Nähe anzeigen lassen).",
+		"p23": "Wir dürfen darüber hinaus personenbezogene Daten dann an andere Parteien weitergeben, wenn wir Leistungen gemeinsam mit diesen Parteien anbieten. Hierüber werden Sie jedoch jeweils separat informiert, sollte dies bei einem individuellen Angebot der Fall sein. ",
+		"title7": "Technische und organisatorische Maßnahmen für die Datensicherheit",
+		"p24": "Wir haben mehrere technische und organisatorische Maßnahmen implementiert, um Ihre Daten vor Hackerangriffen, sowie grundsätzlich vor dem unbefugten Zugriff durch Dritte zu schützen. Die Webseite und die Datenverbindungen sind über das Transport-Layer-Security-Protocol verschlüsselt; dies erkennen Sie an dem Schlosssymbol oben links in Ihrem Browser. Das Schloss sollte immer geschlossen sein – dann ist die Verbindung verschlüsselt.",
+		"p25": "Zahlreiche Maßnahmen für die Sicherheit Ihrer Daten sind implementiert, werden jedoch nicht vollständig offengelegt, da dies es wiederum Angreifern leichter macht, gezielte Angriffe durchzuführen. Unsere technischen und organisatorischen Maßnahmen zum Schutz Ihrer Daten werden laufend aktualisiert.",
+		"title8": "Kontaktanfragen / Kontaktmöglichkeit",
+		"p26": "Sofern Sie per Kontaktformular oder E-Mail mit uns in Kontakt treten, werden die dabei von Ihnen angegebenen Daten zur Bearbeitung Ihrer Anfrage genutzt. Die Angabe der Daten ist zur Bearbeitung und Beantwortung Ihre Anfrage erforderlich – ohne deren Bereitstellung können wir Ihre Anfrage nicht oder allenfalls eingeschränkt beantworten.",
+		"p27": "Rechtsgrundlage für diese Verarbeitung ist Art. 6 Abs. 1 lit. b) DSGVO.",
+		"p28": "Ihre Daten werden gelöscht, sofern Ihre Anfrage abschließend beantwortet worden ist und der Löschung keine gesetzlichen Aufbewahrungspflichten entgegenstehen, wie bspw. bei einer sich etwaig anschließenden Vertragsabwicklung.",
+		"title9": "Externe Anbieter & Cookies",
+		"p29_1": "a) Sitzungs-Cookies/Session-Cookies",
+		"p29_2": "Wir verwenden mit unserem Internetauftritt sog. Cookies. Cookies sind kleine Textdateien oder andere Speichertechnologien, die durch den von Ihnen eingesetzten Internet-Browser auf Ihrem Endgerät ablegt und gespeichert werden. Durch diese Cookies werden im individuellen Umfang bestimmte Informationen von Ihnen, wie beispielsweise Ihre Browser- oder Standortdaten oder Ihre IP-Adresse, verarbeitet. Durch diese Verarbeitung wird unser Internetauftritt benutzerfreundlicher, effektiver und sicherer. Rechtsgrundlage dieser Verarbeitung ist Art. 6 Abs. 1 lit b.) DSGVO, sofern diese Cookies Daten zur Vertragsanbahnung oder Vertragsabwicklung verarbeitet werden. Falls die Verarbeitung nicht der Vertragsanbahnung oder Vertragsabwicklung dient, liegt unser berechtigtes Interesse in der Verbesserung der Funktionalität unseres Internetauftritts. Rechtsgrundlage ist in dann Art. 6 Abs. 1 lit. f) DSGVO. Mit Schließen Ihres Internet-Browsers werden diese Session-Cookies gelöscht.",
+		"p30_1": "b) Drittanbieter-Cookies",
+		"p30_2": "Unser Zahlungsanbieter Stripe platziert als externer Anbieter Cookies (nähere Informationen zu Stripe unter Abschnitt d)), um eine sichere Online-Zahlungsmöglichkeit über unsere Webseite zu gewährleisen.",
+		"p31_1": "c) Beseitigungsmöglichkeit",
+		"p31_2": "Sie können die Installation der Cookies durch eine Einstellung Ihres Internet-Browsers verhindern oder einschränken. Ebenfalls können Sie bereits gespeicherte Cookies jederzeit löschen. Die hierfür erforderlichen Schritte und Maßnahmen hängen jedoch von Ihrem konkret genutzten Internet-Browser ab. Bei Fragen benutzen Sie daher bitte die Hilfefunktion oder Dokumentation Ihres Internet-Browsers oder wenden sich an dessen Hersteller bzw. Support. Bei sog. Flash-Cookies kann die Verarbeitung allerdings nicht über die Einstellungen des Browsers unterbunden werden. Stattdessen müssen Sie insoweit die Einstellung Ihres Flash-Players ändern. Auch die hierfür erforderlichen Schritte und Maßnahmen hängen von Ihrem konkret genutzten Flash-Player ab. Bei Fragen benutzen Sie daher bitte ebenso die Hilfefunktion oder Dokumentation Ihres Flash-Players oder wenden sich an den Hersteller bzw. Benutzer-Support. Sollten Sie die Installation der Cookies verhindern oder einschränken, kann dies allerdings dazu führen, dass nicht sämtliche Funktionen unseres Internetauftritts vollumfänglich nutzbar sind.",
+		"p32_1": "d) Zahlungsdienste",
+		"p32_2": "d1) Zahlungsdienste: per Visa, Mastercard, American Express",
+		"p33_1": "Wenn  Sie die Bezahlung mittels Kreditkarte ausführen, erfolgt die  Zahlungsabwicklung über den Zahlungsanbieter „Stripe“. Die hierzu  erforderlichen Daten (Kartennummer, Gültigkeit und Prüfnummer) werden  verschlüsselt an den Zahlungsanbieter weitergeleitet und sind für den  Webseitenbetreiber nicht einsehbar. Stripe Payments Europe Ltd ist nach  Industry Data Security Standard (PCI DSS) zertifiziert und unterliegt  dem Safe Harbour Abkommen. Der Zahlungsanbieter transferiert,  verarbeitet und speichert gegebenenfalls personenbezogene Daten  außerhalb der EU, die zur Abwicklung der Zahlung erforderlich sind, jedoch nicht von diesem Zahlungsanbieter Ihrem Fall oder anderen in der App eingegebenen personenbezogenen Daten zugeordnet werden können (=Ihren Bildern, Ihrer E-Mail-Adresse oder angegebener Symptome). Für  die Verarbeitung dieser Daten ist allein Stripe verantwortlich.",
+		"p33_2": "Stripe Payments Europe Ltd",
+		"p33_3": "Block 4, Harcourt Centre",
+		"p33_4": "Harcourt Road",
+		"p33_5": "Dublin 2",
+		"p33_6": "Ireland",
+		"p34_1": "Details zur Zahlung mit Stripe entnehmen Sie den AGB und den Datenschutzbestimmungen des Zahlungsanbieters unter:", 
+		"p34_a1": "https://stripe.com/de/terms",
+		"p35_1": "Wir haben mit Stripe einen Vertrag abgeschlossen, in dem wir Stripe verpflichten, die Daten unserer Kunden zu schützen und sie nicht an Dritte weiterzugeben. Nähere Informationen hierzu finden Sie hier: ",
+		"p35_a1": "https://stripe.com/dpa/legal",
+		"p36_1": "d2) SOFORT",
+		"p36_2": "Bei Auswahl der Zahlungsart „SOFORT“ erfolgt die Zahlungsabwicklung ebenfalls über Stripe (s. d1), jedoch in Kooperation mit dem Zahlungsdienstleister SOFORT GmbH, Theresienhöhe 12, 80339 München, Deutschland (im Folgenden „SOFORT“), an den wir selber direkt keine Informationen über Ihre Bestellung weitergeben. Die Informationsweitergabe erfolgt über Stripe, der Ihrem Fall eine ID (nicht Ihre Fall-ID) zuweist und bei erfolgreicher Zahlung uns automatisiert über diese ID informiert, sodass Ihr Fall automatisiert an einen Facharzt verschickt wird bzw. im verschlüsselten Ärzteportal eingestellt wird und von einem Facharzt bearbeitet werden kann. Die Sofort GmbH ist Teil der Klarna Group (Klarna Bank AB (publ), Sveavägen 46, 11134 Stockholm, Schweden). Die Weitergabe Ihrer Daten erfolgt ausschließlich zum Zweck der Zahlungsabwicklung mit dem Zahlungsdienstleister SOFORT und nur insoweit, als sie hierfür erforderlich ist. Unter der nachstehenden Internetadresse erhalten Sie weitere Informationen über die Datenschutzbestimmungen von",
+		"p36_3": "SOFORT: ",
+		"p36_a3": "https://www.klarna.com/sofort/datenschutz.",
+		"p37_1": "d3) GiroPay",
+		"p37_2": "Auf unserer Website bieten wir u.a. die Bezahlung mittels giropay an. Anbieter dieses Zahlungsdienstes ist die giropay GmbH, An der Welle 4, 60322 Frankfurt/Main, Deutschland (im Folgenden “giropay”).",
+		"p37_3": "Wenn Sie die Bezahlung mittels giropay ausführen, erhebt giropay verschiedene Transaktionsdaten und leitet diese an die Bank weiter, bei der Sie mit giropay registriert sind. Neben den für die Zahlung erforderlichen Daten erhebt giropay im Rahmen der Transaktionsabwicklung ggf. weitere Daten wie z.B. Lieferadresse oder einzelne Positionen im Warenkorb.",
+		"p37_4": "giropay authentifiziert die Transaktion anschließend mit Hilfe des bei der Bank hierfür hinterlegten Authentifizierungsverfahrens. Anschließend wird der Zahlbetrag von Ihrem Konto auf unser Konto überwiesen. Weder wir noch Dritte haben Zugriff auf Ihre Kontodaten.",
+		"p37_5": "Details zur Zahlung mit giropay entnehmen Sie den AGB und den Datenschutzbestimmungen von giropay unter:",
+		"p37_a5": "https://www.giropay.de/rechtliches/datenschutz-agb/",
+		"p38_1": "e) Hosting Ihres Falles",
+		"p38_2": "Wir hosten Ihre Falldaten bei Amazon Web Services, Inc., 410 Terry Avenue North, Seattle WA 98109, USA („AWS“) ein. Aus technischen Gründen kann es vorkommen, dass die Infrastruktur von den USA aus gewartet wird. AWS hat sich jedoch dem",
+		"p38_a2": "EU-US Privacy Shield",
+		"p38_3": "unterworfen und wir haben ausschließlich gesicherte Serverstandorte in der europäischen Union, die Teil der Security Group von Amazon AWS sind, ausgewählt (Frankfurt & Irland, beide Teil der Security Group). Rechtsgrundlage der vorgenannten Datenverarbeitung ist Art. 6 Abs. 1 f) DSGVO beruhend auf unserem berechtigten Interesse. Wir wollen Ihnen damit die technische Infrastruktur bereitstellen, um unsere Produkte und Dienstleistungen anbieten zu können. Wir haben mit Amazon AWS einen Vertrag abgeschlossen, in dem wir Amazon AWS verpflichten, die Daten unserer Kunden zu schützen und sie nicht an Dritte weiterzugeben. Nähere Informationen hierzu finden Sie in der",
+		"p38_a3": "Datenschutzerklärung",
+		"p38_4": "von AWS und hier:", 
+		"p38_a4": "https://aws.amazon.com/blogs/security/aws-gdpr-data-processing-addendum/",
+		"p39": "f) Hosting dieser Webseite und automatisierter Versand von E-Mails",
+		"p40": "Diese Website nutzt 1&1 IONOS Mailserver für die Weiterleitung von E-Mails von Amazon AWS und einen 1&1 IONOS Hosting-Server zum Hosting dieser Webseite. Anbieter ist die 1&1 IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Deutschland. Der Mailserver-Weiterleitungs-Dienst wird genutzt, um Ihnen Ihre Fallnummer zuzumailen, bzw. Sie darüber zu informieren, wenn Ihr Fall durch einen Facharzt begutachtet wurde, oder eine Rückfrage gestellt wurde. Der Hosting-Dienst wird genutzt, um diese Webseite zu hosten."
 	},
 	"page-agb": {
 		"head": {
@@ -729,6 +815,175 @@
 			"purpose":"Authentication info",
 			"duration": "14 days"
 		}
-	]
+	],
+	"agb-page" : {
+		"sub-title" : "Unsere Allgemeinen Geschäftsbedingungen (=AGB) sind wie folgt gegliedert:",
+		"first" : {
+			"title" : "AGB zwischen Hautärzten und Verbrauchern – Fernbehandlungsbedingungen",
+			"a" : {
+				"title" : "Präambel",
+				"p1" : "Die Smart Health Heidelberg GmbH („Gesellschaft“) mit Sitz in Heidelberg stellt diesen Online-Hautarzt-Dienst zur Verfügung („Dienst“). Der Dienst ermöglicht es Verbrauchern aus Deutschland ihr Hautproblem an Fachärzte für Haut- & Geschlechtskrankheiten aus Deutschland zu verschicken; dies erfolgt in Form von Fotos und Informationen über das Internet. Der jeweilige Hautarzt begutachtet die Bilder und Informationen und gibt auf dieser Grundlage eine professionelle Einschätzung zu dem Hautproblem ab und zumeist auch eine Handlungsempfehlung, was wegen des Hautproblems seitens des Verbrauchers unternommen werden sollte.",
+				"p2" : "Hierbei ist klar zu trennen: Die Hautärzte führen die Begutachtung vollständig im eigenen Namen und auch in eigener Verantwortung durch. Die Gesellschaft ist selber nicht medizinisch oder als Gutachter tätig, sondern ermöglicht über die technische Bereitstellung des Dienstes die digitale Vermittlung des Verbrauchers an den Hautarzt  und stellt den wissenschaftlich fundierten interaktiven Anamnesebogen bereit. Somit wird die Gesellschaft auch nie teil des Fernbehandlungsvertrages oder der eigentlichen Fernbehandlung. Für den Fernbehandlungsvertrag gelten die Bedingungen in diesem Abschnitt I. ",
+				"p3" : "Die Gesellschaft bietet über ihre Plattform sowohl dem Hautarzt als auch den Patienten einen Mehrwert:",
+				"p4" : "Der Patient erhält eine schnelle fachärztliche Ersteinschätzung seines Hautproblems über eine sichere und wissenschaftlich fundierte Plattform, ohne dafür das Haus verlassen, oder sich namentlich identifizieren zu müssen. In etwa 70% der Fälle kann über die Online-Einschätzung und die Online-Handlungsempfehlung ein Besuch in der Hautarztpraxis vermieden werden.",
+				"p5" : "Der Hautarzt kann über die bereitgestellte technische Infrastruktur seine Befundung sicher und unkompliziert, sowie örtlich ungebunden (also auch von zuhause, oder von seinem Urlaubsort aus) vornehmen. Er kann überdies eine weitere Patientengruppe mit seinen ärztlichen Leistungen ansprechen."
+			},
+			"b" : {
+				"title" : "Schließung des Fernbehandlungsvertrages: Zeitpunkt",
+				"p1" : "In dem Moment, in dem der Verbraucher seine Anfrage an den Hautarzt abschickt, kommt der Fernbehandlungsvertrag zwischen Verbraucher und Hautarzt zustande."
+			},
+			"c" : {
+				"title" : "Bezahlung / Honorar",
+				"p1" : "Das Honorar von der Behandlung ist bereits vor dem Abschicken der Anfrage angegeben und wird in dem Moment, in dem Sie den Behandlungsvertrag abschließen, fällig. Die Gesellschaft zieht den gesamten Fallbetrag ein, behält die Vermittlungsgebühr ein und leitet die Fallgebühr nach GOÄ an den Hautarzt weiter. Der Hautarzt hat die Gesellschaft ermächtigt, den Fallbetrag einzuziehen. Sollte es dem Hautarzt auf Grund schlechter Qualität der eingesandten Fotos oder unvollständigen Informationen die Begutachtung und/oder die Handlungsempfehlung nicht möglich sein, ist der Fallbetrag dennoch fällig und durch den Verbraucher zu zahlen."
+			},
+			"d" : {
+				"title" : "Umfang der Leistung des Fernbehandlungsvertrages",
+				"p1" : "Innert in der Regel von 48 Stunden erhalten Sie durch den Hautarzt auf der Basis der von Ihnen eingesandten Informationen und Bilder eine professionelle Einschätzung Ihres Hautproblems und ggf. eine Handlungsempfehlung, was Sie wegen Ihres Hautproblems weiter unternehmen sollten.",
+				"p2" : "Der Verbraucher wird über die vorliegende Handlungsempfehlung informiert. Ausschließlich die mit der Erstanfrage übersandten Bilder und Informationen durch den Verbraucher sind die Grundlage der Beurteilung des Hautarztes und dieser ist allein verantwortlich, dass diese Informationen und Fotos aktuell & akkurat sind und ist auch für die Folgen, sollte dies nicht der Fall sein, selber verantwortlich. Der Dienst ist dazu da, um eine Ersteinschätzung für Hautprobleme zu geben – er bietet kein Monitoring oder die Archivierung von Bildern an.Die Leistung des Hautarztes beschränkt sich auf die einmalige Handlungsempfehlung im Einzelfall. Weitere Verpflichtungen des Hautarztes bestehen nicht."
+			},
+			"e" : {
+				"title" : "Datenschutz",
+				"p1" : "Bezüglich Datenschutz gilt die Datenschutzerklärung, die Sie auf der Webseite des Dienstes abrufen können und der Sie vor der Nutzung des Dienstes separat aktiv zustimmen müssen."
+			},
+			"f" : {
+				"title" : "Haftung",
+				"p1" : "Der Nutzer nimmt zur Kenntnis, dass die Beurteilung durch den Hautarzt von der Richtigkeit, Qualität und Vollständigkeit der hochgeladenen Fotos und übermittelten Gesundheitsdaten abhängig ist. Eine erste Beurteilung über die Plattform ersetzt kein persönliches Beratungsgespräch durch einen Arzt. Die Beurteilung über die Plattform ist kein Notfallsystem. Es ist nicht für Personen geeignet, die unmittelbar medizinisch überwacht werden müssen oder rasche medizinische Maßnahmen benötigen. Der Hautarzt schliesst seine Haftung für alle Ansprüche aus oder im Zusammenhang mit dem Behandlungsvertrag (inklusive vertraglicher und ausservertraglicher Ansprüche) im gesetzlich größtmöglichen Umfang aus."
+			},
+			"g" : {
+				"title" : "Schlussbestimmungen",
+				"p1" : "Jede im Einzelfall zwischen dem Hautarzt und dem Nutzer vereinbarte Änderung oder Ergänzung dieser AGB bedarf der Textform."
+			},
+			"h" : {
+				"title" : "Gerichtsstand",
+				"p1" : "Der Gerichtsstand ist Heidelberg, Deutschland."
+			}
+		},
+		"last" : {
+			"title" : "AGB zwischen Smart Health Heidelberg GmbH und allen Nutzern des Dienstes – Nutzungsbedingungen",
+			"a" : {
+				"title" : "Präambel",
+				"p1" : "Die Smart Health Heidelberg GmbH („Gesellschaft“) mit Sitz in Heidelberg stellt diesen Online-Hautarzt-Dienst zur Verfügung („Dienst“). Der Dienst ermöglicht es Verbrauchern aus Deutschland ihr Hautproblem an Fachärzte für Haut- & Geschlechtskrankheiten aus Deutschland zu verschicken; dies erfolgt in Form von Fotos und Informationen über das Internet. Der jeweilige Hautarzt begutachtet die Bilder und Informationen und gibt auf dieser Grundlage eine professionelle Einschätzung zu dem Hautproblem ab und zumeist auch eine Handlungsempfehlung, was wegen des Hautproblems seitens des Verbrauchers unternommen werden sollte.",
+				"p2" : "Hierbei ist klar zu trennen: Die Hautärzte führen die Begutachtung vollständig im eigenen Namen und auch in eigener Verantwortung durch. Die Gesellschaft ist selber nicht medizinisch oder als Gutachter tätig, sondern ermöglicht über die technische Bereitstellung des Dienstes die digitale Vermittlung des Verbrauchers an den Hautarzt und stellt den wissenschaftlich fundierten interaktiven Anamnesebogen bereit. Somit wird die Gesellschaft auch nie teil des Fernbehandlungsvertrages. Für den Fernbehandlungsvertrag gelten die Bedingungen in dem Abschnitt I. In diesem Abschnitt ll. wird",
+				"p3" : "Die Gesellschaft bietet über ihre Plattform sowohl dem Hautarzt als auch den Patienten einen Mehrwert:",
+				"p4" : "Der Patient erhält eine schnelle fachärztliche Ersteinschätzung seines Hautproblems über eine sichere und wissenschaftlich fundierte Plattform, ohne dafür das Haus verlassen, oder sich namentlich identifizieren zu müssen. In etwa 70% der Fälle kann über die Online-Einschätzung und die Online-Handlungsempfehlung ein Besuch in der Hautarztpraxis vermieden werden.",
+				"p5" : "Der Hautarzt kann über die bereitgestellte technische Infrastruktur seine Befundung sicher und unkompliziert, sowie örtlich ungebunden (also auch von zuhause, oder von seinem Urlaubsort aus) vornehmen. Er kann überdies eine weitere Patientengruppe mit seinen ärztlichen Leistungen ansprechen."
+			},
+			"b" : {
+				"title" : "Schließung des Nutzungsvertrages & Ablauf der Online-Konsultation",
+				"p1" : "Wenn ein Verbraucher eine Beurteilung einholen möchte, füllt er zunächst den Online-Fragebogen aus und wählt an den Hautarzt zu übermittelnde Bilder der betroffenen Hautstelle aus. Jederzeit kann der Nutzer hierbei die AGB einsehen und wird bereits vor dem Hochladen der Bilder um seine Kenntnisnahme und aktive Zustimmung der Datenschutzerklärung gebeten. Nach dem Ausfüllen des Fragebogens und dem Wählen der zu übermittelnden Bilder akzeptiert der Nutzer diese AGB und die Datenschutzerklärung aktiv und dann dann seine Beurteilungsanfrage absenden. Bei dem Abschicken der Anfrage kommt ein Nutzungsvertrag mit Smart Health Heidelberg GmbH zustande. Zugleich kommt ein Fernbehandlungsvertrag mit dem zugeteilten Hautarzt zustande (vgl. Abschnitt l.). Die Gesellschaft schickt den Fall an den kooperierenden Hautarzt, der für die Bereitstellung der technischen Infrastruktur & Abwicklung eine Nutzungsgebühr bezahlt. Der Verbraucher erhält eine Email mit einem Link zu der Beurteilung, sofern er eine E-Mail Adresse angegeben hat (optional). Ansonsten erhält er eine Push-Nachricht auf dem Smartphone und/oder kann über die ihm bei Übersendung des Falles mitgeteilte Fallnummer den Fall aufrufen."
+			},
+			"c" : {
+				"title" : "Bezahlung / Honorar",
+				"p1" : "Die Fallgebühr nach GoÄ ist bereits vor abschicken der Anfrage angegeben und wird in dem Moment, in dem Sie diese abschicken abschließen, fällig. Die Gesellschaft zieht den gesamten Fallbetrag ein und leitet die Fallgebühr abzüglich der Nutzungsgebühr an den Hautarzt weiter. Der Hautarzt hat die Gesellschaft ermächtigt, den Fallbetrag einzuziehen. Sollte es dem Hautarzt auf Grund schlechter Qualität der eingesandten Fotos oder unvollständigen Informationen die Begutachtung und/oder die Handlungsempfehlung nicht möglich sein, ist der Fallbetrag dennoch fällig und durch den Verbraucher zu zahlen."
+			},
+			"d" : {
+				"title" : "Datenspeicherung & Archivierung",
+				"p1" : "Es liegt in der alleinigen Verantwortung des Verbrauchers Falldaten zu archivieren, wenn der Verbraucher dies wünscht. Hierfür steht dem Nutzer während einer Zeit von zwei Wochen der Fall zur Verfügung um die Daten zu exportieren, um sie auf seinem eigenen Computer zu speichern."
+			},
+			"e" : {
+				"title" : "Datenschutz",
+				"p1" : "Bezüglich Datenschutz gilt die Datenschutzerklärung, die hier: ",
+				"p1_2" : "abgerufen werden kann. Der Nutzer nimmt die Datenschutzerklärung zur Kenntnis."
+			},
+			"f" : {
+				"title" : "Haftung",
+				"p1" : "Smart Health Heidelberg GmbH schließt seine Haftung (inklusive der Haftung für seine Hilfspersonen, Arbeitnehmer, Lieferanten und Subunternehmer) für alle Ansprüche aus oder im Zusammenhang mit der Plattform (inklusive vertraglicher und ausservertraglicher Ansprüche) im gesetzlich größtmöglichen Umfang aus, insbesondere für Schäden aufgrund von Übermittlungsfehlern, technischen Mängeln, Unterbrechungen oder Störungen. Ein fehlerfreier Betrieb der Plattform wird nicht garantiert.Smart Health Heidelberg GmbH haftet nicht für Ansprüche aus oder im Zusammenhang mit dem Behandlungsvertrag; insbesondere haftet Smart Health Heidelberg GmbH nicht für (Folge-)schäden, die im Zusammenhang mit der Beurteilung der veränderten Hautstelle durch den Hautarzt entstehen."
+			},
+			"g" : {
+				"title" : "Schlussbestimmungen",
+				"p1" : "Rechte und Pflichten aus dem Vertrag zwischen der Gesellschaft und ihren Nutzern können jederzeit durch die Gesellschaft an einen Dritten abgetreten und übertragen werden. Den Nutzern steht dieses Recht nur mit schriftlicher Zustimmung von der Gesellschaft zu. Jede im Einzelfall zwischen Smart Health Heidelberg GmbH und dem Nutzer vereinbarte Änderung oder Ergänzung dieser AGB bedarf der Textform. "
+			},
+			"h" : {
+				"title" : "Gerichtsstand",
+				"p1" : "Der Gerichtsstand ist Heidelberg, Deutschland."
+			}
+		},
+		"link" : "https://online-hautarzt.de/datenschutz-gmbh",
+		"status" : "Stand: 20. März 2020"
+	},
+	"register-page": {
+		"title": "Versorgen Sie Ihre Patienten online.",
+		"subtitle" : "Sie sind Facharzt für Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos bei unserem Modellprojekt. In weniger als 24 Stunden können Sie Ihre Patienten fernbehandeln.",
+		"questions" : {
+			"q1" : {
+				"title" : "Wie funktioniert Online Hautarzt vor Ort?",
+				"p1" : "Über Online Hautarzt vor Ort haben Fachärzte für Haut- & Geschlechtskrankheiten die Möglichkeit, Patienten von ihrem Wunschort aus zu betreuen, ohne dass diese persönlich vorstellig werden. Die Anamnese erfolgt dabei automatisiert über einen interaktiven Fragebogen. Die Hautärzte erhalten auf eine für sie schnell einzuschätzende Art und Weise das Hautproblem des Patienten übermittelt. Wenn sie Zeit haben, aber spätestens innerhalb von 48 Stunden, schicken die Hautärzte eine professionelle Einschätzung und Handlungsempfehlung an den Patienten zurück, die nach unserer externen wissenschaftlichen Evaluation an der Universitäts-Hautklinik Essen in etwa 70% der Fälle den persönlichen Praxisbesuch erspart."
+			},
+			"q2" : {
+				"title" : "Wie hoch ist die Vergütung?",
+				"p1" : "Der Dermatologe erhält 12,50 Euro pro Fall (=Umsatzsteuerfreie Heilleistung). Dies entspricht bei einer durchschnittlichen Bearbeitungsdauer pro Fall von ca. zwei Minuten einem Netto-Stundenlohn von etwa 375,- Euro. 12,50 Euro entspricht etwa 2/3 des niedrigen Gesamtbetrages von 19,- Euro. Damit zahlen wir einen höheren Anteil an unsere Ärzte aus, als alle uns bekannten Telemedizindienste. Als ärztlich geleitete Plattform möchten wir den Dienst in der Coronakrise so günstig wie möglich für die Patienten bereitstellen und verzichten daher auf unseren Gewinn."
+			},
+			"q3" : {
+				"title" : "Wie funktioniert der Befundungsprozess?",
+				"p1" : "Nach der Registrierung erhalten Sie Zugang zum Ärzteportal. Egal wann & egal wo können Sie nun Hautprobleme online begutachten, die von Patienten über unseren digitalen Anamnesebogen eingesandt werden. Eine Internetverbindung und ein internetfähiges Gerät reichen aus.",
+				"p2" : "Das verfassen des Antworttextes dauert pro Fall je nach Erfahrung und Komplexität zwischen 1-5 Minuten. Für häufige Fälle gibt es Vorlagen. Innerhalb von 48 Stunden nach stellen der Anfrage erwartet der Patient eine Textantwort von Ihnen. Wenn Sie diesen Zeitraum nicht gewährleisten können, zum Beispiel weil Sie im Urlaub sind, setzen Sie Ihr Profil einfach auf „Pause“ und reaktivieren es wieder, wenn Sie Lust haben."
+			},
+			"q4" : {
+				"title" : "Habe ich als Facharzt Arbeit mit Abrechnung oder Zahlung?",
+				"p1" : "So gut wie garnicht. Der Patient erhält automatisiert einen korrekten Rechnungsbeleg nach GoÄ von Ihnen, wenn Sie Ihre Antwort an den Patienten abschicken. Im Ärzteportal können Sie Ihr Geld automatisiert auf Ihre IBAN überweisen lassen. Bei jedweden Fragen antworten wir Ihnen schnell."
+			},
+			"q5" : {
+				"title" : "Wie hoch ist die Anzahl der Online-Anfragen?",
+				"p1" : "Durch den niedrigen Gesamtpreis von 19,- Euro – der mit Abstand günstigste Gesamtpreis sämtlicher uns bekannten fachärztlichen Teledermatologieplattformen – ist die Barriere auch für Ihre Patienten reduziert und Sie erreichen mit dem niedrigen Preis insbesondere in der Coronakrise auch Geringverdiener. Dadurch erhalten Sie deutlich mehr Anfragen und damit Einkünfte, als bei teureren Diensten. Unser Dienst zahlt 66% (ca. 2/3) direkt an den Dermatologen aus. Auch dieser Anteil ist höher als bei allen uns bekannten Telemedizindiensten.",
+				"p2" : "Wieviele Anfragen Sie erhalten, können Sie zu einem großen Teil selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B. Online-Hautarzt.de/hautarzt/Max-Mustermann), auf dass Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können. ",
+				"p3" : "Dieser Mustertext hat sich bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig (19,- Euro) eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und müssen meist nicht mehr persönlich vorbeikommen: Online-Hautarzt.de/Hautarzt/Max-Mustermann“.",
+				"p4" : "Darüber hinaus kommt ein Teil der Patienten auch über Ihr Profil auf online-hautarzt.de zu Ihnen. Über die Zeit werden auch viele Patienten Ihre Online-Behandlung schätzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
+			},
+			"q6" : {
+				"title" : "Kann ich auch als Assistenzarzt mitmachen?",
+				"p1" : "Nein, die Facharztausbildung zum Dermatologen muss abgeschlossen sein."
+			}
+		},
+		"text" : "Immernoch Fragen? Dann nutzen Sie unser",
+		"link" : "Kontaktformular",
+		"register_text" : "Hier können Sie sich jetzt kostenlos registrieren:"
+	},
+	"arztvertrag-page" : {
+		"title": "Arztvertrag zur Regelung der Zusammenarbeit bzgl. des Vermittlungsdienstes „Online Hautarzt vor Ort“",
+		"between": {
+			"title": "Zwischen",
+			"p1": "Smart Health Heidelberg GmbH",
+			"p2": "c/o Dr. med. Titus J. Brinker",
+			"p3": "Handschuhsheimer Landstr. 9/1",
+			"p4": "69120 Heidelberg"
+		},
+		"and": {
+			"title": "Und",
+			"p1": "Allen Ärzten, die sich auf der Plattform „Online Hautarzt vor Ort“, abrufbar unter (online-hautarzt.de) registrieren",
+			"p2_st": "Vertragsdauer: ",
+			"p2": "Unbefristet (bei Kündigung)"
+		},
+		"list": {
+			"a": {
+				"title": "1 Präambel",
+				"p1": "Die Smart Health Heidelberg GmbH (“Gesellschaft“) betreibt die Vermittlungsplattform Online Hautarzt vor Ort (“Plattform“). Über die Plattform können Patienten eine Hautveränderung von Dermatologen aus Deutschland mit abgeschlossener Facharztausbildung beurteilen lassen, indem sie einem dieser Dermatologen Informationen zu und Fotos der veränderten Hautstelle über die Plattform zukommen lassen. Der Dermatologe beurteilt auf Grundlage der Informationen und Fotos über das verschlüsselte Ärzteportal die veränderte Hautstelle und gibt eine Handlungsempfehlung ab. ",
+				"p2": "Die Smart Health Heidelberg GmbH bietet über die Plattform sowohl den Dermatologen als auch den Patienten einen Mehrwert:",
+				"p3": "Der Patient erhält eine schnelle fachärztliche Ersteinschätzung seines Hautproblems über eine sichere und wissenschaftlich fundierte Plattform, ohne dafür das Haus verlassen zu müssen. In etwa 70% der Fälle kann über die Online-Einschätzung und die Online-Handlungsempfehlung ein unnötiger Besuch in der Hautarztpraxis vermieden werden.",
+				"p4": "Der Dermatologe kann über die bereitgestellte technische Infrastruktur seine Befundung sicher, unkompliziert, sowie örtlich ungebunden (also auch von zuhause, oder von seinem Urlaubsort aus) vornehmen. "
+			},
+			"b": {
+				"title": "2 Gegenstand des Vertrages",
+				"p1" : "Die Gesellschaft erlaubt dem Arzt über die Plattform die Online-Befundung von dermatologischen Patienten, stellt die sichere technische Infrastruktur bereit und wickelt die Zahlung sowie die Rechnungsstellung ab. 12,50 Euro pro Fall werden an den Dermatologen für die Behandlung ausgezahlt (Umsatzsteuerfreie Heilleistung). Der Dermatologe beauftragt die Smart Health Heidelberg GmbH damit, seine Leistung bei der Online-Behandlung nach der Gebührenordnung der Ärzte gegenüber den Patienten abzurechnen. Der Arzt kann die Auszahlung seiner Einnahmen über das Ärzteportal selber anfordern. Der Abrechnungsbetrag für den Arzt beträgt pro Fall immer 12,50 Euro (Umsatzsteuerfrei).  Die Gesellschaft erhält für ihre Dienste eine Vermittlungsgebühr von den Patienten von 5,26 Euro netto, bzw. 6,50 Euro inklusive Umsatzsteuer pro Fall. "
+			},
+			"c": {
+				"title": "3 Leistung des Arztes",
+				"p1" : "Der Arzt verpflichtet sich, die Befundung über das Ärzteportal von online-hautarzt.de nach bestem Wissen und Gewissen durchzuführen und unterliegt der ärztlichen Schweigepflicht. Er erklärt sich einverstanden, dass der Betrag für die nach gleichem Muster ablaufende Befundung pro Fall stets 12,50 Euro beträgt und die Rechnungsstellung durch die Smart Health Heidelberg GmbH erfolgt. Er erklärt sich damit einverstanden, dass die Smart Health Heidelberg GmbH die Fallpauschale zunächst einbehält und jeweils nach eigenem Abruf im Ärzteportal innerhalb von zwei Wochen auszahlt. Der Arzt erklärt sich einverstanden, mit seinen Daten auf online-hautarzt.de als befundendender Arzt angezeigt zu werden und stellt hierfür ein professionelles Portraitbild zur Verfügung. ",
+				"p2" : "Der Arzt erklärt sich einverstanden, alle Kenntnisse, die durch die Arbeit an der Plattform erlangt werden, streng vertraulich zu behandeln. "
+			},
+			"d" : {
+				"title" : "4 Leistung der Smart Health Heidelberg GmbH",
+				"p1" : "Die Smart Health Heidelberg GmbH betreibt den von der Landesärztekammer als Modellprojekt genehmigte Vermittlungsplatform Online Hautarzt. Die Smart Health Heidelberg GmbH vermittelt ",
+				"p2" : "Der Patient rechnet den Fall formal vollständig nach den Ziffern 3 und 5 der GoÄ mit der Praxis ab. Als medizinische Leistung ist die Fallpauschale gemäß geltenden Gesetzen umsatzsteuerbefreit. Die Praxis zahlt pro Fall eine Nutzungsgebühr von 50% an die Smart Health Heidelberg GmbH. Die technische Zahlungsabwicklung erfolgt durch die Smart Health Heidelberg GmbH, die das Geld treuhändlerisch einbehält und nach Verrechnung der Nutzungsgebühr Dr. Jansen in der Regel am Ende jedes Kalendermonats, spätestens aber sechs Wochen nach erbringen der Leistung, auszahlt."
+			},
+			"e" : {
+				"title": "5 Kündigung des Vertrages",
+				"p1" : "Beide Parteien können diesen Vertrag mit einer Frist von 30 Kalendertagen kündigen."
+			},
+			"f" : {
+				"title": "6 Salvatorische Klausel",
+				"p1" : "Sollten einzelne Bestimmungen dieses Vertrages unwirksam oder undurchführbar sein oder nach Vertragsschluss unwirksam oder undurchführbar werden, bleibt davon die Wirksamkeit des Vertrages im Übrigen unberührt. An die Stelle der unwirksamen oder undurchführbaren Bestimmung soll diejenige wirksame und durchführbare Regelung treten, deren Wirkungen der wirtschaftlichen Zielsetzung am nächsten kommen, die die Vertragsparteien mit der unwirksamen bzw. undurchführbaren Bestimmung verfolgt haben. Die vorstehenden Bestimmungen gelten entsprechend für den Fall, dass sich der Vertrag als lückenhaft erweist."
+			}
+		}
+	}
 }
 

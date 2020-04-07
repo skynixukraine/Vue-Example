@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>{{ $t('headers.register')}}</h2>
         <SignupForm />
     </div>
 </template>

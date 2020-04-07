@@ -2,26 +2,26 @@
     <div class="page">
         <div class="section vorteile-section"
              :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
-            <div class = "container container__mobile-adaptation agb-page">
-                <h2 class="title">Allgemeine Geschäftsbedingungen</h2>
+            <div class = "container container__mobile-adaptation">
+                <h2 class="title">{{ this.$t('arztvertrag-page.title') }}</h2>
             </div>
         </div>
-            <div class="container">
-                <AgbContent />
+            <div class="container arztvertrag-page">
+                <ArztvertragContent />
             </div>
         
     </div>
 </template>
 
 <script>
-    import AgbContent from "~/components/Static/AgbContent"
+    import ArztvertragContent from "~/components/Static/ArztvertragContent"
     
 export default {
     components : {
-        AgbContent
+        ArztvertragContent
     },
     head(){
-            return {title : this.$t("page-agb.head.title")}
+            return {title : "Arztvertrag zur Regelung der Zusammenarbeit bzgl"}
         },
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
@@ -35,13 +35,3 @@ export default {
     },
 }
 </script>
-<style lang = "scss" scoped>
-    .container__mobile-adaptation.agb-page {
-        .title {
-            font-size: 30px;
-            @include tablet {
-                font-size: 48px;
-            }
-        }
-    }
-    </style>

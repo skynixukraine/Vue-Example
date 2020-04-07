@@ -318,7 +318,7 @@ export default {
                     success : true,
                     status  : response.status,
                     data    : response.data.data,
-                    message : "The request has been successfully sent for consideration by the administration",
+                    message : "Werter Kollege, Ihre Anfrage wurde erfolgreich an den Administrator übermittelt. Ihr Online Hautarzt vor Ort Team",
                 });
             }).catch(error => {
                 let message = "";

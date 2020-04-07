@@ -1,17 +1,24 @@
 <template>
     <div class="page">
+        <div class="section section--registration vorteile-section"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
+            <div class = "container container__mobile-adaptation">
+                <h2 class="title">{{ this.$t('register-page.title')}}</h2>
+                <h3 class="subtext">{{ this.$t('register-page.subtitle')}}</h3>
+            </div>
+        </div>
         <div class="section section--registration">
             <div class="container">
+                <RegistrationContent />
                         <Signup />
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
 import Signup from "~/components/Authorization/Signup";
-
+import RegistrationContent from "~/components/Static/RegistrationContent"
 
 export default {
     middleware: [
@@ -32,7 +39,8 @@ export default {
     },
 
     components: {
-        Signup
+        Signup,
+        RegistrationContent
     },
   
 };
@@ -49,9 +57,11 @@ export default {
         }
     
         .container {
-            @media (min-width: #{962px}) {
-                width: 50%;
-                margin: auto;
+            form {
+                @media (min-width : #{962px}) {
+                    width  : 50%;
+                    margin : auto;
+                }
             }
         
             .form__item {
@@ -70,6 +80,17 @@ export default {
             }
         }
         
+    }
+    &--registration {
+        padding-top: 0;
+        .container {
+            form {
+                @media (min-width : #{962px}) {
+                    width  : 50%;
+                    margin : 0;
+                }
+            }
+        }
     }
     
   
