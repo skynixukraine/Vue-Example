@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-export default ({app}, inject) => {
+export default ({app}, inject) =>{
     const OPTIONS = {
         home                : {
             path : "/"
@@ -35,7 +35,7 @@ export default ({app}, inject) => {
         registrierung       : {
             path : "/registrierung"
         },
-        einloggen       : {
+        einloggen           : {
             path : "/einloggen"
         },
         login               : {
@@ -50,10 +50,10 @@ export default ({app}, inject) => {
         forschung           : {
             path : "/forschung"
         },
-        datenschutzGmbh         : {
+        datenschutzGmbh     : {
             path : "/datenschutz-gmbh"
         },
-        datenschutzHautarzt         : {
+        datenschutzHautarzt : {
             path : "/datenschutz-hautarzt"
         },
         datenschutz         : {
@@ -91,6 +91,9 @@ export default ({app}, inject) => {
         },
         conclusions         : {
             path : "/conclusions"
+        },
+        kontakt             : {
+            path : "/kontakt"
         }
     };
 

@@ -36,7 +36,7 @@
 		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
 		"privacy-policy": " Datenschutzerklärung",
 		"forgot-password": "Vergessenes passwort?",
-        "enquiries": "Anfragen"
+		"enquiries": "Anfragen"
 	},
 	"states": {
 		"loading": "Wird geladen..."
@@ -224,6 +224,43 @@
 			"p2_3": "genannt und ist bis heute für iPhones und Android-Smartphones als native App herunterladbar. Bei AppDoc befunden nur drei Hautfachärzte aus Heidelberg mit jeweils über 20 Jahren Praxiserfahrung Ihre Hautprobleme. Im Dezember 2019 erhielten wir schließlich die Genehmigung, unser Modellprojekt auch auf andere Bundesländer auszuweiten. Nun dürfen der Online Hautärzte vor Ort über diese Webseite im Rahmen unseres Modellprojektes Patienten beraten."
 		}
 	},
+	"register-page": {
+		"title": "Versorgen Sie Patienten online - wann und wo Sie wollen.",
+		"subtitle" : "Sie sind Facharzt fГјr Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos auf unserer Plattform - in weniger als 24 Stunden kГ¶nnen Sie Ihre Patienten ohne Ansteckungsgefahr online behandeln.",
+		"questions" : {
+			"q1" : {
+				"title" : "Wie funktioniert Online Hautarzt vor Ort?",
+				"p1" : "Гњber Online Hautarzt vor Ort haben FachГ¤rzte fГјr Haut- & Geschlechtskrankheiten die MГ¶glichkeit, Patienten von ihrem Wunschort aus zu betreuen, ohne dass diese persГ¶nlich vorstellig werden. Die Anamnese erfolgt dabei automatisiert Гјber einen interaktiven Fragebogen. Die HautГ¤rzte erhalten auf eine fГјr sie schnell einzuschГ¤tzende Art und Weise das Hautproblem des Patienten Гјbermittelt. Wenn sie Zeit haben, aber spГ¤testens innerhalb von 48 Stunden, schicken die HautГ¤rzte eine professionelle EinschГ¤tzung und Handlungsempfehlung an den Patienten zurГјck, die nach unserer externen wissenschaftlichen Evaluation an der UniversitГ¤ts-Hautklinik Essen in etwa 70% der FГ¤lle den persГ¶nlichen Praxisbesuch erspart."
+			},
+			"q2" : {
+				"title" : "Wie hoch ist die VergГјtung?",
+				"p1" : "Der Dermatologe erhГ¤lt 12,50 Euro pro Fall (=Umsatzsteuerfreie Heilleistung). Dies entspricht bei einer durchschnittlichen Bearbeitungsdauer pro Fall von ca. zwei Minuten einem Netto-Stundenlohn von etwa 375,- Euro. 12,50 Euro entspricht etwa 2/3 des niedrigen Gesamtbetrages von 19,- Euro. Damit zahlen wir einen hГ¶heren Anteil an unsere Г„rzte aus, als alle uns bekannten Telemedizindienste. Als Г¤rztlich geleitete Plattform mГ¶chten wir den Dienst in der Coronakrise so gГјnstig wie mГ¶glich fГјr die Patienten bereitstellen und verzichten daher auf unseren Gewinn."
+			},
+			"q3" : {
+				"title" : "В Wie funktioniert der Befundungsprozess?",
+				"p1" : "Nach der Registrierung erhalten Sie Zugang zum Г„rzteportal. Egal wann & egal wo kГ¶nnen Sie nun Hautprobleme online begutachten, die von Patienten Гјber unseren digitalen Anamnesebogen eingesandt werden. Eine Internetverbindung und ein internetfГ¤higes GerГ¤t reichen aus.",
+				"p2" : "Das verfassen des Antworttextes dauert pro Fall je nach Erfahrung und KomplexitГ¤t zwischen 1-5 Minuten. FГјr hГ¤ufige FГ¤lle gibt es Vorlagen. Innerhalb von 48 Stunden nach stellen der Anfrage erwartet der Patient eine Textantwort von Ihnen. Wenn Sie diesen Zeitraum nicht gewГ¤hrleisten kГ¶nnen, zum Beispiel weil Sie im Urlaub sind, setzen Sie Ihr Profil einfach auf вЂћPauseвЂњ und reaktivieren es wieder, wenn Sie Lust haben."
+			},
+			"q4" : {
+				"title" : "Habe ich als Facharzt Arbeit mit Abrechnung oder Zahlung?",
+				"p1" : "So gut wie garnicht. Der Patient erhГ¤lt automatisiert einen korrekten Rechnungsbeleg nach GoГ„ von Ihnen, wenn Sie Ihre Antwort an den Patienten abschicken. Im Г„rzteportal kГ¶nnen Sie Ihr Geld automatisiert auf Ihre IBAN Гјberweisen lassen. Bei jedweden Fragen antworten wir Ihnen schnell."
+			},
+			"q5" : {
+				"title" : "Wie hoch ist die Anzahl der Online-Anfragen?",
+				"p1" : "Durch den niedrigen Gesamtpreis von 19,- Euro вЂ“ der mit Abstand gГјnstigste Gesamtpreis sГ¤mtlicher uns bekannten fachГ¤rztlichen Teledermatologieplattformen вЂ“ ist die Barriere auch fГјr Ihre Patienten reduziert und Sie erreichen mit dem niedrigen Preis insbesondere in der Coronakrise auch Geringverdiener. Dadurch erhalten Sie deutlich mehr Anfragen und damit EinkГјnfte, als bei teureren Diensten. Unser Dienst zahlt 66% (ca. 2/3) direkt an den Dermatologen aus. Auch dieser Anteil ist hГ¶her als bei allen uns bekannten Telemedizindiensten.",
+				"p2" : "Wieviele Anfragen Sie erhalten, kГ¶nnen Sie zu einem groГџen Teil selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B.В Online-Hautarzt.de/hautarzt/Max-Mustermann), auf dass Sie Ihre Patienten Гјber die Startseite Ihrer Praxis verweisen kГ¶nnen.В",
+				"p3" : "Dieser Mustertext hat sich bewГ¤hrt: вЂћSie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengГјnstig (19,- Euro) eine professionelle EinschГ¤tzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und mГјssen meist nicht mehr persГ¶nlich vorbeikommen:В Online-Hautarzt.de/Hautarzt/Max-MustermannвЂњ.",
+				"p4" : "DarГјber hinaus kommt ein Teil der Patienten auch Гјber Ihr Profil aufВ online-hautarzt.deВ zu Ihnen. Гњber die Zeit werden auch viele Patienten Ihre Online-Behandlung schГ¤tzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
+			},
+			"q6" : {
+				"title" : "Kann ich auch als Assistenzarzt mitmachen?",
+				"p1" : "Nein, die Facharztausbildung zum Dermatologen muss abgeschlossen sein."
+			}
+		},
+		"text" : "вЂћImmernoch Fragen? Dann nutzen Sie unser",
+		"link" : "Kontaktformular",
+		"register_text" : "Hier kГ¶nnen Sie sich jetzt kostenlos registrieren:"
+	},
 	"page-personal-information": {
 		"head": {
 			"title": "Kontoinformationen | Online Hautarzt vor Ort"
@@ -261,7 +298,6 @@
 			},
 			"bioFull": "Ihre Erfahrung:"
 		}
-
 	},
 	"page-billing": {
 		"head": {
@@ -291,28 +327,28 @@
 		"head": {
 			"title": "Anfragen | Online Hautarzt vor Ort"
 		},
-		"filter" : "Filtern nach:",
-		"from":"von",
-		"to":"neu",
-		"date-of-the-request" : "Datum der Anfrage",
-		"date-of-last-contact":"Datum des letzten Kontaktes",
-		"reset":"Ergebnisse zurücksetzen",
+		"filter": "Filtern nach:",
+		"from": "von",
+		"to": "neu",
+		"date-of-the-request": "Datum der Anfrage",
+		"date-of-last-contact": "Datum des letzten Kontaktes",
+		"reset": "Ergebnisse zurücksetzen",
 		"submit-diagnosis": "BEFUND ABSCHICKEN & FALL SCHLIEßEN",
 		"send-findings": "BEFUND ABSCHICKEN ",
 		"finished": "Fertig",
 		"table": {
-			"enquiry-id":"Anfrage ID",
-			"first-name":"Vorname",
-			"last-name":"Nachname",
-			"date-of-the-request" : "Anfragedatum",
-			"date-of-last-contact":"Letzter Kontakt",
-			"status":"Status"
+			"enquiry-id": "Anfrage ID",
+			"first-name": "Vorname",
+			"last-name": "Nachname",
+			"date-of-the-request": "Anfragedatum",
+			"date-of-last-contact": "Letzter Kontakt",
+			"status": "Status"
 		},
-		"go-back":"Zurückkehren",
+		"go-back": "Zurückkehren",
 		"question": "Frage",
 		"answer": "Antworten",
 		"diagnosis": "Die Diagnose",
-		"search" : "Suche"
+		"search": "Suche"
 	},
 	"page-jobs": {
 		"head": {
@@ -367,41 +403,42 @@
 			"title2": "Der Online Hautarzt vor Ort ist nachhaltig gut für alle:",
 			"title3": "Für Hautarztpraxen, für Betroffene, für Apotheken und für gesunde Bürgerinnen und Bürger."
 		},
-		"p1_1":"Der Online Hautarzt ist ein von der Landesärztekammer bereits im Oktober 2018 genehmigtes und mehrfach ausgezeichnetes",
-		"p1_a1":"Modellprojekt",
-		"p1_2":", das in kooperativer Zusammenarbeit von Heidelberger Hautärzten und Wissenschaftlern entwickelt wurde. Bis vor wenigen Monaten war das Angebot ausschließlich für Hautärzte in Baden-Württemberg zugelassen. Erst im Dezember 2019 erhielt das Projekt die Genehmigung der Landesärztekammer, auch Hautärzte außerhalb Baden-Württembergs aufnehmen zu dürfen. So wurde der bereits lange geplante „Online Hautarzt vor Ort“ möglich. Patienten können nun langfristig auch Hautärzte aus ihrer näheren Umgebung, die sie idealerweise bereits persönlich kennen, für die individuelle Fernbehandlung über eine neu geschaffene Radiusfunktion auswählen.",
+		"p1_1": "Der Online Hautarzt ist ein von der Landesärztekammer bereits im Oktober 2018 genehmigtes und mehrfach ausgezeichnetes",
+		"p1_a1": "Modellprojekt",
+		"p1_2": ", das in kooperativer Zusammenarbeit von Heidelberger Hautärzten und Wissenschaftlern entwickelt wurde. Bis vor wenigen Monaten war das Angebot ausschließlich für Hautärzte in Baden-Württemberg zugelassen. Erst im Dezember 2019 erhielt das Projekt die Genehmigung der Landesärztekammer, auch Hautärzte außerhalb Baden-Württembergs aufnehmen zu dürfen. So wurde der bereits lange geplante „Online Hautarzt vor Ort“ möglich. Patienten können nun langfristig auch Hautärzte aus ihrer näheren Umgebung, die sie idealerweise bereits persönlich kennen, für die individuelle Fernbehandlung über eine neu geschaffene Radiusfunktion auswählen.",
 		"title1": "Das Team hinter Online Hautarzt vor Ort",
 		"title2": "Gründer & technischer Leiter",
-		"p2":"„Erst im Dezember 2019 wurde unserem Modellprojekt auch der Einbezug von Hautärzten außerhalb Baden-Württembergs genehmigt. Diese Genehmigung macht nun den Weg für den bereits in 2017 geplanten Online Hautarzt vor Ort frei: Bei diesem neuen Dienst unseres Modellprojektes kann der teilnehmende Hautarzt, der die geringste räumliche Distanz zu dem Patienten hat, für die Online-Konsultation über die von uns entwickelte Radiusfunktion ausgewählt werden. Bisher ließen sich nur Fälle an drei spezialisierte Hautärzte aus Heidelberg senden. So wird die Fernbehandlung etwas persönlicher und bleibt dabei gut für alle: Für Patienten, Hautärzte und die Apotheken vor Ort.“",
-		"p3_1":"Dr. med. Titus J. Brinker",
-		"p3_2":"Assistenzarzt in der Dermatologie & Leiter der App-Entwicklung",
-		"p3_3":"Nationales Centrum für Tumorerkrankungen Heidelberg (NCT Heidelberg)",
+		"p2": "„Erst im Dezember 2019 wurde unserem Modellprojekt auch der Einbezug von Hautärzten außerhalb Baden-Württembergs genehmigt. Diese Genehmigung macht nun den Weg für den bereits in 2017 geplanten Online Hautarzt vor Ort frei: Bei diesem neuen Dienst unseres Modellprojektes kann der teilnehmende Hautarzt, der die geringste räumliche Distanz zu dem Patienten hat, für die Online-Konsultation über die von uns entwickelte Radiusfunktion ausgewählt werden. Bisher ließen sich nur Fälle an drei spezialisierte Hautärzte aus Heidelberg senden. So wird die Fernbehandlung etwas persönlicher und bleibt dabei gut für alle: Für Patienten, Hautärzte und die Apotheken vor Ort.“",
+		"p3_1": "Dr. med. Titus J. Brinker",
+		"p3_2": "Assistenzarzt in der Dermatologie & Leiter der App-Entwicklung",
+		"p3_3": "Nationales Centrum für Tumorerkrankungen Heidelberg (NCT Heidelberg)",
 		"title3": "Wissenschaftlicher Beirat",
-		"p4_1":"„Mit",
-		"p4_a1":"AppDoc",
-		"p4_2":"widment sich die dermatologische Versorgungsforschung in Deutschland seit November 2018 dem Potential der Fernbehandlung in der Praxis. Der Online Hautarzt vor Ort ist der bereits länger geplante und nun genehmigte nächste konsequente Schritt für unser Modellprojekt.“",
-		"p5_1":"Prof. Dr. Jochen Sven Utikal",
-		"p5_2":"Leitender Oberarzt, Universitäts-Hautklinik Mannheim der Medizinischen Fakultät  Heidelberg, Mannheim ",
-		"p5_3":"Leiter der klinischen Kooperationseinheit Dermato-Onkologie des DKFZ, Heidelberg",
-		"p6":"„Die jungen Kollegen um Titus Brinker haben mit dem Modellprojekt Online Hautarzt vor Ort auf innovative Art echten Patientennutzen geschaffen und zeigen uns wie Digitalisierung in der Medizin sein kann: patientenorientiert, einfach, sicher und schnell.“",
-		"p7_1":"Prof. Dr. Christof von Kalle",
-		"p7_2":"BIH-Chair für Klinisch-Translationale Wissenschaften / Charité Berlin",
-		"p7_3":"Direktor emeritus, Nationales Centrum für Tumorerkrankungen Heidelberg",
+		"p4_1": "„Mit",
+		"p4_a1": "AppDoc",
+		"p4_2": "widment sich die dermatologische Versorgungsforschung in Deutschland seit November 2018 dem Potential der Fernbehandlung in der Praxis. Der Online Hautarzt vor Ort ist der bereits länger geplante und nun genehmigte nächste konsequente Schritt für unser Modellprojekt.“",
+		"p5_1": "Prof. Dr. Jochen Sven Utikal",
+		"p5_2": "Leitender Oberarzt, Universitäts-Hautklinik Mannheim der Medizinischen Fakultät  Heidelberg, Mannheim ",
+		"p5_3": "Leiter der klinischen Kooperationseinheit Dermato-Onkologie des DKFZ, Heidelberg",
+		"p6": "„Die jungen Kollegen um Titus Brinker haben mit dem Modellprojekt Online Hautarzt vor Ort auf innovative Art echten Patientennutzen geschaffen und zeigen uns wie Digitalisierung in der Medizin sein kann: patientenorientiert, einfach, sicher und schnell.“",
+		"p7_1": "Prof. Dr. Christof von Kalle",
+		"p7_2": "BIH-Chair für Klinisch-Translationale Wissenschaften / Charité Berlin",
+		"p7_3": "Direktor emeritus, Nationales Centrum für Tumorerkrankungen Heidelberg",
 		"title4": "Externe Qualitätssicherung & wissenschaftliche Evaluation",
 		"p8": "„Patienten sollten die Möglichkeit haben, ohne lange Wartezeiten eine qualifizierte Erstmeinung einholen zu können – idealerweise von einem Hautarzt vor Ort, bei dem sie im Zweifelsfall persönlich vorstellig werden können.“",
-		"p9_1":"Dr. med. Wiebke Sondermann",
-		"p9_2":"Oberärztin für Dermatologie, Universitäts-Hautklinik Essen",
+		"p9_1": "Dr. med. Wiebke Sondermann",
+		"p9_2": "Oberärztin für Dermatologie, Universitäts-Hautklinik Essen",
 		"title5": "Fernbehandelnde Fachärzte für Hautkrankheiten",
 		"p10": "Bei Online Hautarzt vor Ort dürfen ausschließlich in Deutschland, Österreich oder der Schweiz zugelassene Fachärzte für Haut- und Geschlechtskrankheiten befunden. Dies heißt, dass erstens das Medizinstudium erfolgreich abgeschlossen wurde und zweitens eine mindestens fünfjährige Facharztausbildung mit Facharztprüfung für das Fach Haut- & Geschlechtskrankheiten erfolgreich absolviert wurde. Nur wenn diese Kriterien erfüllt sind, kann bei Online Hautarzt vor Ort befundet werden. Die aktuell bei uns tätigen Hautärzte finden Sie",
 		"p10_a1": "hier."
 	},
-	"page-vorteile":{
+	"page-vorteile": {
 		"head": {
 			"title": "Vorteile | Online Hautarzt vor Ort"
 		},
 		"v1": {
-			"question":"Was sind die Vorteile für Patientinnen und Patienten?",
-			"li":["Sie bekommen eine schnelle, ortsunabhängige und kostengünstige (19,- €) fachärztliche Einschätzung von einem Hautarzt Ihrer Wahl, ohne dass Sie das Haus verlassen müssen.",
+			"question": "Was sind die Vorteile für Patientinnen und Patienten?",
+			"li": [
+				"Sie bekommen eine schnelle, ortsunabhängige und kostengünstige (19,- €) fachärztliche Einschätzung von einem Hautarzt Ihrer Wahl, ohne dass Sie das Haus verlassen müssen.",
 				"Wir sind der kostengünstigste Dienst, der fachärztliche Beratungsqualität von Hautärzten aus Deutschland anbietet.",
 				"Unsere Hautärzte haben jeweils über fünf Jahre Berufserfahrung und ihre Facharztausbildung erfolgreich abgeschlossen. Sie können sich aussuchen, welcher Hautarzt Ihr Hautproblem begutachten darf.",
 				"Etwa 70% unserer Patienten können rezeptfrei behandelt werden und müssen nicht mehr in die Praxis. Damit ersparen Sie sich lange Anfahrtswege, ggf. einen Urlaubstag und unnötige Zeit im Wartezimmer. ",
@@ -410,16 +447,16 @@
 				"Wir sind der einzige nach Prüfungsverfahren durch eine Landesärztekammer zugelassene Online-Hautarzt-Dienst in Deutschland.",
 				"Wir sind verpflichtet zu externer Qualitätssicherung und wissenschaftlicher Evaluation, die am Universitätsklinikum in Essen durch die dermatologische Oberärztin Dr. Wiebke Sondermann erfolgt."
 			],
-			"p1":"Wählen Sie hier einen Hautarzt aus und starten Sie die Behandlung."
+			"p1": "Wählen Sie hier einen Hautarzt aus und starten Sie die Behandlung."
 		},
 		"v2": {
-			"question":"Was sind die Vorteile für Hautärzte?",
-			"p1":"Der Online Hautarzt vor Ort ist der Dienst, der den mit Abstand größten Anteil des Gesamtbetrages (73,7%) direkt an Sie weitergibt und trotzdem keine Kompromisse macht: Wir unterstützen Sie bei der telemedizinischen Anbindung Ihrer Praxis über moderne Technologie und kümmern uns darüber hinaus um sowohl um die Anamnese, das Marketing, als auch die Zahlungsabwicklung für Sie. Wie schaffen wir das? Indem wir die Betriebskosten auf ein Minimum reduzieren und nicht gewinnorientiert arbeiten.",
-			"p2":"Lohnt sich der Online Hautarzt vor Ort finanziell für Sie? Entscheiden Sie selber: Bei 14 Euro die Sie pro Fall direkt ausgezahlt bekommen, liegt Ihr Stundenlohn bei etwa 300 Euro (die Beantwortung eines Falles dauert durchschnittlich 2-3 Minuten). Und zwar egal, ob Sie die Fälle in Ihrer Praxis bearbeiten, oder daheim auf der Couch. Ein internetfähiges Gerät ist ausreichend. Weitere Deteils finden Sie hier."
+			"question": "Was sind die Vorteile für Hautärzte?",
+			"p1": "Der Online Hautarzt vor Ort ist der Dienst, der den mit Abstand größten Anteil des Gesamtbetrages (73,7%) direkt an Sie weitergibt und trotzdem keine Kompromisse macht: Wir unterstützen Sie bei der telemedizinischen Anbindung Ihrer Praxis über moderne Technologie und kümmern uns darüber hinaus um sowohl um die Anamnese, das Marketing, als auch die Zahlungsabwicklung für Sie. Wie schaffen wir das? Indem wir die Betriebskosten auf ein Minimum reduzieren und nicht gewinnorientiert arbeiten.",
+			"p2": "Lohnt sich der Online Hautarzt vor Ort finanziell für Sie? Entscheiden Sie selber: Bei 14 Euro die Sie pro Fall direkt ausgezahlt bekommen, liegt Ihr Stundenlohn bei etwa 300 Euro (die Beantwortung eines Falles dauert durchschnittlich 2-3 Minuten). Und zwar egal, ob Sie die Fälle in Ihrer Praxis bearbeiten, oder daheim auf der Couch. Ein internetfähiges Gerät ist ausreichend. Weitere Deteils finden Sie hier."
 		},
 		"v3": {
-			"question":"Wie hilft unser Dienst den Apotheken vor Ort?",
-			"p1":"Das Modellprojekt Online Hautarzt hat unter dem Namen „AppDoc“ seit seinem Start im November 2018 bereits über 4.000 Patienten versorgt, ganz ohne Versandapotheken zu nutzen. Wir glauben, dass die Apotheken vor Ort falls eine Arznei notwendig ist, verweisen wir auf die Apotheken vor Ort, bei denen sich der Patient das frei verkäufliche Medikament persönlich abholen kann. Der Gründer von Online Hautarzt vor Ort hat bereits in der Pressemitteilung des Nationalen Centrums für Tumorerkrankungen in Heidelberg zur Verleihung des Innovationspreises Dermatologie im März 2019 formuliert: „Telemedizin kann nur dann nachhaltig erfolgreich sein, wenn sie die qualifizierte Apotheke vor Ort mit ihrer wichtigen Beratungs- und Kontrollfunktion gerade auch für ältere Menschen langfristig nicht schwächt, sondern stärkt.“"
+			"question": "Wie hilft unser Dienst den Apotheken vor Ort?",
+			"p1": "Das Modellprojekt Online Hautarzt hat unter dem Namen „AppDoc“ seit seinem Start im November 2018 bereits über 4.000 Patienten versorgt, ganz ohne Versandapotheken zu nutzen. Wir glauben, dass die Apotheken vor Ort falls eine Arznei notwendig ist, verweisen wir auf die Apotheken vor Ort, bei denen sich der Patient das frei verkäufliche Medikament persönlich abholen kann. Der Gründer von Online Hautarzt vor Ort hat bereits in der Pressemitteilung des Nationalen Centrums für Tumorerkrankungen in Heidelberg zur Verleihung des Innovationspreises Dermatologie im März 2019 formuliert: „Telemedizin kann nur dann nachhaltig erfolgreich sein, wenn sie die qualifizierte Apotheke vor Ort mit ihrer wichtigen Beratungs- und Kontrollfunktion gerade auch für ältere Menschen langfristig nicht schwächt, sondern stärkt.“"
 		},
 		"v4": {
 			"question": "Warum sind wir gut für Bürgerinnen und Bürger?",
@@ -436,176 +473,177 @@
 		}
 	},
 	"page-forschung": {
-			"chat": {
-				"nextBtn": "Weiter",
-				"please-give-us-your-payment-details": "Bitte wählen Sie die Zahlungsmethode:",
-				"street": "Straße/Nr",
-				"city": "Stadt",
-				"zip": "Postleitzahl"
-			},
+		"chat": {
+			"nextBtn": "Weiter",
+			"please-give-us-your-payment-details": "Bitte wählen Sie die Zahlungsmethode:",
+			"street": "Straße/Nr",
+			"city": "Stadt",
+			"zip": "Postleitzahl"
+		},
 		"modal": {
 			"confirm": "Bestätigen",
 			"reset": "Code erneut senden"
 		},
-			"head": {
-				"title": "Anfrage starten | Online Hautarzt vor Ort"
-			},
-			"feedback-form": {
-				"title": "Ihre persönlichen Informationen",
-				"firstName": "Vorname",
-				"lastName": "Nachname",
-				"gender": "Geschlecht",
-				"female": "Weiblich",
-				"male": "Männlich",
-				"mobile": "Handynummer",
-				"email": "E-Mail Adresse",
-				"emailConfirm": "Bestätigen E-Mail Adresse",
-				"birth": "Geburtsdatum",
-				"typeNumber": "Geben Sie Ihre Handynummer ein"
-			}
+		"head": {
+			"title": "Anfrage starten | Online Hautarzt vor Ort"
+		},
+		"feedback-form": {
+			"title": "Ihre persönlichen Informationen",
+			"firstName": "Vorname",
+			"lastName": "Nachname",
+			"gender": "Geschlecht",
+			"female": "Weiblich",
+			"male": "Männlich",
+			"mobile": "Handynummer",
+			"email": "E-Mail Adresse",
+			"emailConfirm": "Bestätigen E-Mail Adresse",
+			"birth": "Geburtsdatum",
+			"typeNumber": "Geben Sie Ihre Handynummer ein"
+		}
 	},
 	"cookie": [
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":true,
-			"name":"OGPC",
-			"provider":"google.com",
-			"purpose":"These cookies are used by Google to store preferences and user information each time they visit web pages containing geographical maps of Google Maps.",
+			"funktion": true,
+			"analyse": true,
+			"name": "OGPC",
+			"provider": "google.com",
+			"purpose": "These cookies are used by Google to store preferences and user information each time they visit web pages containing geographical maps of Google Maps.",
 			"duration": "1 month"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":false,
-			"analyse":true,
-			"name":"HSID",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube.",
+			"funktion": false,
+			"analyse": true,
+			"name": "HSID",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "cookies enable Google to collect user information for videos hosted by YouTube.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":false,
-			"analyse":true,
-			"name":"SSID",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube.",
+			"funktion": false,
+			"analyse": true,
+			"name": "SSID",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "cookies enable Google to collect user information for videos hosted by YouTube.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":true,
-			"name":"APISID",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube. These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"funktion": true,
+			"analyse": true,
+			"name": "APISID",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "cookies enable Google to collect user information for videos hosted by YouTube. These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":false,
-			"analyse":true,
-			"name":"SAPISID",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"cookies enable Google to collect user information for videos hosted by YouTube.",
+			"funktion": false,
+			"analyse": true,
+			"name": "SAPISID",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "cookies enable Google to collect user information for videos hosted by YouTube.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"NID",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"funktion": true,
+			"analyse": false,
+			"name": "NID",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"SID",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"funktion": true,
+			"analyse": false,
+			"name": "SID",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"1P_JAR",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"funktion": true,
+			"analyse": false,
+			"name": "1P_JAR",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"SIDCC",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"funktion": true,
+			"analyse": false,
+			"name": "SIDCC",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"CONSENT",
-			"provider":"Google Targeting / Advertising",
-			"purpose":"These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
+			"funktion": true,
+			"analyse": false,
+			"name": "CONSENT",
+			"provider": "Google Targeting / Advertising",
+			"purpose": "These cookies are used by Google to display personalized advertisements on Google sites, based on recent searches and previous interactions, including Google Maps.",
 			"duration": "1 - 10 years"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"__stripe_mid",
-			"provider":"Stripe Payment Processor",
-			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"funktion": true,
+			"analyse": false,
+			"name": "__stripe_mid",
+			"provider": "Stripe Payment Processor",
+			"purpose": "Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
 			"duration": "1 year"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"__stripe_sid",
-			"provider":"Stripe Payment Processor",
-			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"funktion": true,
+			"analyse": false,
+			"name": "__stripe_sid",
+			"provider": "Stripe Payment Processor",
+			"purpose": "Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
 			"duration": "1 year"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"__stripe_orig_props",
-			"provider":"Stripe Payment Processor",
-			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"funktion": true,
+			"analyse": false,
+			"name": "__stripe_orig_props",
+			"provider": "Stripe Payment Processor",
+			"purpose": "Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
 			"duration": "1 year"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"cid",
-			"provider":"Stripe Payment Processor",
-			"purpose":"Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
+			"funktion": true,
+			"analyse": false,
+			"name": "cid",
+			"provider": "Stripe Payment Processor",
+			"purpose": "Stripe is used to making credit card payments. Stripe uses a cookie to remember who you are and to enable Online Hautarzt vor Ort to process payments without storing any credit card information on its own servers. The main purpose of this cookie is: Functionality",
 			"duration": "session"
 		},
 		{
 			"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"oh-token",
-			"provider":"Authentication cookies",
-			"purpose":"Authentication info",
+			"funktion": true,
+			"analyse": false,
+			"name": "oh-token",
+			"provider": "Authentication cookies",
+			"purpose": "Authentication info",
 			"duration": "14 days"
 		},
-		{	"selectedDefault": true,
-			"funktion":true,
-			"analyse":false,
-			"name":"oh-token-id",
-			"provider":"Authentication cookies",
-			"purpose":"Authentication info",
+		{
+			"selectedDefault": true,
+			"funktion": true,
+			"analyse": false,
+			"name": "oh-token-id",
+			"provider": "Authentication cookies",
+			"purpose": "Authentication info",
 			"duration": "14 days"
 		}
 	]
