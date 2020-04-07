@@ -103,6 +103,9 @@ export default ({app}, inject) => {
         },
         conclusions         : {
             path : "/conclusions"
+        },
+        kontakt             : {
+            path : "/kontakt"
         }
     };
 
