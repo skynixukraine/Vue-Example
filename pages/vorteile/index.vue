@@ -10,7 +10,7 @@
                     Der Online Hautarzt vor Ort ist nachhaltig gut für alle.
                 </h3>
                 <h3 class ="subtext">
-                    Für Patienten, Hautärzte, Apotheker & gesunde Bürgerinnen und Bürger.
+                    Für Hautarztpraxen, für Betroffene, für Apotheken und für gesunde Bürgerinnen und Bürger.
                 </h3>
             </div>
         </div>
