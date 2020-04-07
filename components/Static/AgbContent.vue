@@ -124,6 +124,12 @@
 		&__status {
 			margin-top: 20px;
 		}
+		
+	}
+	.container__mobile-adaptation {
+		.title {
+		
+		}
 	}
 
 </style>

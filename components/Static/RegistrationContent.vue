@@ -71,11 +71,6 @@
 					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q6.p1')}}</p>
 				</div>
 			</div>
-			<h3 class="registration-content__blue-text">{{ this.$t('register-page.text')}}
-				<NuxtLink :to = "$routes.kontakt.path">
-					{{ this.$t('register-page.link')}}
-				</NuxtLink>
-			</h3>
 			<h4>{{ this.$t('register-page.register_text')}}</h4>
 		</div>
 	</div>
@@ -229,5 +224,9 @@
 		.faq-block--step.faq-block--open {
 			background-color : transparent;
 		}
+		
+	}
+	.title, .subtext {
+		color: white;
 	}
 </style>

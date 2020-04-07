@@ -2,7 +2,7 @@
     <div class="page">
         <div class="section vorteile-section"
              :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
-            <div class = "container container__mobile-adaptation">
+            <div class = "container container__mobile-adaptation agb-page">
                 <h2 class="title">Allgemeine Geschäftsbedingungen</h2>
             </div>
         </div>
@@ -35,3 +35,13 @@ export default {
     },
 }
 </script>
+<style lang = "scss" scoped>
+    .container__mobile-adaptation.agb-page {
+        .title {
+            font-size: 30px;
+            @include tablet {
+                font-size: 48px;
+            }
+        }
+    }
+    </style>
