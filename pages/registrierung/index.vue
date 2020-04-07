@@ -2,16 +2,16 @@
     <div class="page">
         <div class="section section--registration">
             <div class="container">
+                <RegistrationContent />
                         <Signup />
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
 import Signup from "~/components/Authorization/Signup";
-
+import RegistrationContent from "~/components/Static/RegistrationContent"
 
 export default {
     middleware: [
@@ -32,7 +32,8 @@ export default {
     },
 
     components: {
-        Signup
+        Signup,
+        RegistrationContent
     },
   
 };
@@ -49,9 +50,11 @@ export default {
         }
     
         .container {
-            @media (min-width: #{962px}) {
-                width: 50%;
-                margin: auto;
+            form {
+                @media (min-width : #{962px}) {
+                    width  : 50%;
+                    margin : auto;
+                }
             }
         
             .form__item {
