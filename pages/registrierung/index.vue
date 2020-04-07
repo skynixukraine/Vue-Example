@@ -81,6 +81,17 @@ export default {
         }
         
     }
+    &--registration {
+        padding-top: 0;
+        .container {
+            form {
+                @media (min-width : #{962px}) {
+                    width  : 50%;
+                    margin : 0;
+                }
+            }
+        }
+    }
     
   
 }
