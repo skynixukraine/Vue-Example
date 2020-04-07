@@ -108,6 +108,16 @@
 			"scroll-to-run": "Runterscrollen"
 		}
 	},
+	"page-notfound": {
+		"head": {
+			"title": "Seite nicht gefunden | Online Hautarzt vor Ort"
+		}
+	},
+	"page-error": {
+		"head": {
+			"title": "Seite nicht gefunden | Online Hautarzt vor Ort"
+		}
+	},
 	"page-home": {
 		"head": {
 			"title": "Online Hautarzt vor Ort"
