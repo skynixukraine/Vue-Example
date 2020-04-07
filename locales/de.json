@@ -1,7 +1,14 @@
 {
 	"genegal-translations": {
-		"i-accept": "Ich akzeptiere die",
-		"and": "und die"
+		"i-accept": "Ich habe die",
+		"accept": "Ich habe dan",
+		"and": "und die",
+		"general-terms" : "Allgemeinen Geschäftsbedingungen",
+		"read-and-accept" : "gelesen und akzeptiere diese.",
+		"data-protection" : "Datenschutzerklärung",
+		"medical-contract" : "Arztvertrag",
+		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin."
+		
 	},
 	"links": {
 		"logo-link": "Online Hautarzt vor Ort",
@@ -57,7 +64,10 @@
 			"password-is-empty": "Passwort ist leer.",
 			"сonfirmation-password-is-empty": "Das Bestätigungskennwort ist leer.",
 			"phone-is-empty": "Telefon ist leer.",
-			"accept-terms-and-conditions": "Akzeptieren Sie die Allgemeinen Geschäftsbedingungen und Datenschutzbestimmungen.",
+			"accept-terms": "Akzeptieren Sie die Allgemeinen Geschäftsbedingungen.",
+			"accept-conditions": "Akzeptieren Sie die Datenschutzbestimmungen.",
+			"accept-contract": "Akzeptieren Sie die Arztvertrag.",
+			"i-am-specialist" : "Akzeptieren dass ich Facharzt für Haut- & Geschlechtskrankheiten bin.",
 			"validation-failed": "Formularüberprüfung fehlgeschlagen",
 			"file-type": "Ungültiger Typ. Zulässige Typen sind PDF/JPG/PNG.",
 			"file-size": "Die Dateigröße sollte kleiner sein als 10Mb.",

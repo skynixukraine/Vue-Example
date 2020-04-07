@@ -105,19 +105,57 @@
 			<div class = "form__title form__title--accepted">
 				{{ $t('genegal-translations.i-accept') }}
 				<NuxtLink :to = "$routes.terms.path" class = "link link--small-blue" exact>
-					{{ $t('links.terms-and-conditions') }}
+					{{ $t('genegal-translations.general-terms') }}
 				</NuxtLink>
-				{{ $t('genegal-translations.and') }}
-				<NuxtLink :to = "$routes.privacy.path" class = "link link--small-blue" exact>
-					{{ $t('links.privacy-policy') }}
-				</NuxtLink>
+				{{ $t('genegal-translations.read-and-accept') }}
 			</div>
 			<input type = "checkbox"
 				   name = "accepted"
 				   ref = "accepted"
 				   v-model = "models.accepted"
-				   @change = "onAcceptChange" />
+				   @change = "onAcceptChangeTerms" />
 			<div class = "form__message" v-if = "errors.accepted">{{ errors.accepted }}</div>
+		</div>
+		<div class = "form__item form__item--checkbox">
+			<div class = "form__title form__title--accepted">
+				{{ $t('genegal-translations.i-accept') }}
+				<NuxtLink :to = "$routes.datenschutzGmbh.path" class = "link link--small-blue" exact>
+					{{ $t('genegal-translations.data-protection') }}
+				</NuxtLink>
+				{{ $t('genegal-translations.read-and-accept') }}
+			</div>
+			<input type = "checkbox"
+				   name = "accepted2"
+				   ref = "accepted2"
+				   v-model = "models.accepted2"
+				   @change = "onAcceptChangePolicy" />
+			<div class = "form__message" v-if = "errors.accepted2">{{ errors.accepted2 }}</div>
+		</div>
+		<div class = "form__item form__item--checkbox">
+			<div class = "form__title form__title--accepted">
+				{{ $t('genegal-translations.accept') }}
+				<NuxtLink :to = "$routes.arztvertrag.path" class = "link link--small-blue" exact>
+					{{ $t('genegal-translations.medical-contract') }}
+				</NuxtLink>
+				{{ $t('genegal-translations.read-and-accept') }}
+			</div>
+			<input type = "checkbox"
+				   name = "accepted3"
+				   ref = "accepted3"
+				   v-model = "models.accepted3"
+				   @change = "onAcceptChangeReadContract" />
+			<div class = "form__message" v-if = "errors.accepted3">{{ errors.accepted3 }}</div>
+		</div>
+		<div class = "form__item form__item--checkbox">
+			<div class = "form__title form__title--accepted">
+				{{ $t('genegal-translations.am-a-specialist') }}
+			</div>
+			<input type = "checkbox"
+				   name = "accepted4"
+				   ref = "accepted4"
+				   v-model = "models.accepted4"
+				   @change = "onAcceptChangeConfirm" />
+			<div class = "form__message" v-if = "errors.accepted4">{{ errors.accepted4 }}</div>
 		</div>
 		<div class = "form__item">
 			<button class = "link link--button link--button-full-width link--button-blue link--button-gradient"
@@ -153,17 +191,20 @@
         data(){
             return {
                 models            : {
-					lanr				  : '',
+                    lanr                  : '',
                     email                 : '',
                     password              : '',
                     password_confirmation : '',
                     phone_number          : '',
                     degree                : '',
                     certification         : '',
-                    accepted              : false
+                    accepted              : false,
+                    accepted2             : false,
+                    accepted3             : false,
+                    accepted4             : false
                 },
                 formIsValid       : {
-					lanr			 : true,
+                    lanr             : true,
                     password         : false,
                     confirm_password : false,
                     email            : false,
@@ -171,6 +212,9 @@
                     terms            : false,
                     degree           : false,
                     certification    : false,
+                    policy           : false,
+                    read_contract    : false,
+                    confirm          : false,
                 },
                 bindProps         : {
                     mode                    : "international",
@@ -242,7 +286,28 @@
                     this.errors['accepted'] = this.$t('errors.form.required-field');
                     this.$root.$emit('showNotify', {
                         type : 'error',
-                        text : this.$t('errors.form.accept-terms-and-conditions')
+                        text : this.$t('errors.form.accept-terms')
+                    });
+                }
+                if(!models.accepted2){
+                    this.errors['accepted2'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {
+                        type : 'error',
+                        text : this.$t('errors.form.accept-conditions')
+                    });
+                }
+                if(!models.accepted3){
+                    this.errors['accepted3'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {
+                        type : 'error',
+                        text : this.$t('errors.form.accept-contract')
+                    });
+                }
+                if(!models.accepted4){
+                    this.errors['accepted4'] = this.$t('errors.form.required-field');
+                    this.$root.$emit('showNotify', {
+                        type : 'error',
+                        text : this.$t('errors.form.i-am-specialist')
                     });
                 }
                 if(!models.certification){
@@ -285,6 +350,9 @@
                 formData.append('password', models.password);
                 formData.append('password_confirmation', models.password_confirmation);
                 formData.append('accepted', models.accepted);
+                formData.append('accepted2', models.accepted2);
+                formData.append('accepted3', models.accepted3);
+                formData.append('accepted4', models.accepted4);
 
                 // unrequired fields
                 if(models.degree){
@@ -292,8 +360,8 @@
                 }
                 if(models.certification){
                     formData.append('board_certification', models.certification);
-				}
-				if(models.lanr){
+                }
+                if(models.lanr){
                     formData.append('lanr', models.lanr);
                 }
 
@@ -351,8 +419,19 @@
                 }
                 this.$forceUpdate();
             },
-            onAcceptChange(event){
+            onAcceptChangeTerms(event){
                 this.formIsValid.terms = this.validateAccept(event, this.models.accepted);
+
+
+            },
+            onAcceptChangePolicy(event){
+                this.formIsValid.policy = this.validateAccept(event, this.models.accepted2);
+            },
+            onAcceptChangeReadContract(event){
+                this.formIsValid.read_contract = this.validateAccept(event, this.models.accepted3);
+            },
+            onAcceptChangeConfirm(event){
+                this.formIsValid.confirm = this.validateAccept(event, this.models.accepted4);
             },
             togglePasswordVisibility(){
                 this.$refs.password.type = this.$refs.password.type === 'password' ?
@@ -410,20 +489,29 @@
 		&--checkbox {
 			display         : flex;
 			align-items     : center;
-			flex-direction  : column-reverse;
-			justify-content : center;
-			
-			@include tablet {
-				flex-direction : row-reverse;
-			}
+			flex-direction  : row-reverse;
+			justify-content : flex-end;
+			position        : relative;
+			margin          : 3% auto;
 			
 			.form__title--accepted {
 				font-size    : 14px;
-				text-align   : center;
+				text-align   : left;
 				padding-left : 10px;
+				line-height  : 18px;
 				
 				@include tablet {
-					text-align : left;
+					line-height : 28px;
+				}
+			}
+			.form__message {
+				position     : absolute;
+				left         : 0;
+				bottom       : -18px;
+				padding-left : 0;
+				@include tablet {
+					bottom       : -15px;
+					padding-left : 10px;
 				}
 			}
 		}
@@ -499,6 +587,6 @@
 		}
 	}
 	.form__message {
-		font-size: 13px;
+		font-size : 13px;
 	}
 </style>
