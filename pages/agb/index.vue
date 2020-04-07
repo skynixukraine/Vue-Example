@@ -3,13 +3,19 @@
         <div class="section">
             <div class="container">
                 <h1>AGB</h1>
+                <AgbContent />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import AgbContent from "~/components/Static/AgbContent"
+    
 export default {
+    components : {
+        AgbContent
+    },
     head(){
             return {title : this.$t("page-agb.head.title")}
         },
