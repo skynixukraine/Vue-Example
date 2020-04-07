@@ -76,9 +76,7 @@
                     forDermatologists : [{
                         text : "Mitmachen bei Online Hautarzt",
                         to   : this.$routes.registrierung.path
-                    }, {
-                        text : "Teilnahmekonditionen",
-                        to   : this.$routes.konditionen.path
+                    
                     }, {
                         text : "Einloggen",
                         to   : this.$routes.einloggen.path
