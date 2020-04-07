@@ -756,6 +756,53 @@
 		"text" : "Immernoch Fragen? Dann nutzen Sie unser",
 		"link" : "Kontaktformular",
 		"register_text" : "Hier können Sie sich jetzt kostenlos registrieren:"
+	},
+	"arztvertrag-page" : {
+		"title": "Arztvertrag zur Regelung der Zusammenarbeit bzgl. des Vermittlungsdienstes „Online Hautarzt vor Ort“",
+		"between": {
+			"title": "Zwischen",
+			"p1": "Smart Health Heidelberg GmbH",
+			"p2": "c/o Dr. med. Titus J. Brinker",
+			"p3": "Handschuhsheimer Landstr. 9/1",
+			"p4": "69120 Heidelberg"
+		},
+		"and": {
+			"title": "Und",
+			"p1": "Allen Ärzten, die sich auf der Plattform „Online Hautarzt vor Ort“, abrufbar unter (online-hautarzt.de) registrieren",
+			"p2_st": "Vertragsdauer: ",
+			"p2": "Unbefristet (bei Kündigung)"
+		},
+		"list": {
+			"a": {
+				"title": "1 Präambel",
+				"p1": "Die Smart Health Heidelberg GmbH (“Gesellschaft“) betreibt die Vermittlungsplattform Online Hautarzt vor Ort (“Plattform“). Über die Plattform können Patienten eine Hautveränderung von Dermatologen aus Deutschland mit abgeschlossener Facharztausbildung beurteilen lassen, indem sie einem dieser Dermatologen Informationen zu und Fotos der veränderten Hautstelle über die Plattform zukommen lassen. Der Dermatologe beurteilt auf Grundlage der Informationen und Fotos über das verschlüsselte Ärzteportal die veränderte Hautstelle und gibt eine Handlungsempfehlung ab. ",
+				"p2": "Die Smart Health Heidelberg GmbH bietet über die Plattform sowohl den Dermatologen als auch den Patienten einen Mehrwert:",
+				"p3": "Der Patient erhält eine schnelle fachärztliche Ersteinschätzung seines Hautproblems über eine sichere und wissenschaftlich fundierte Plattform, ohne dafür das Haus verlassen zu müssen. In etwa 70% der Fälle kann über die Online-Einschätzung und die Online-Handlungsempfehlung ein unnötiger Besuch in der Hautarztpraxis vermieden werden.",
+				"p4": "Der Dermatologe kann über die bereitgestellte technische Infrastruktur seine Befundung sicher, unkompliziert, sowie örtlich ungebunden (also auch von zuhause, oder von seinem Urlaubsort aus) vornehmen. "
+			},
+			"b": {
+				"title": "2 Gegenstand des Vertrages",
+				"p1" : "Die Gesellschaft erlaubt dem Arzt über die Plattform die Online-Befundung von dermatologischen Patienten, stellt die sichere technische Infrastruktur bereit und wickelt die Zahlung sowie die Rechnungsstellung ab. 12,50 Euro pro Fall werden an den Dermatologen für die Behandlung ausgezahlt (Umsatzsteuerfreie Heilleistung). Der Dermatologe beauftragt die Smart Health Heidelberg GmbH damit, seine Leistung bei der Online-Behandlung nach der Gebührenordnung der Ärzte gegenüber den Patienten abzurechnen. Der Arzt kann die Auszahlung seiner Einnahmen über das Ärzteportal selber anfordern. Der Abrechnungsbetrag für den Arzt beträgt pro Fall immer 12,50 Euro (Umsatzsteuerfrei).  Die Gesellschaft erhält für ihre Dienste eine Vermittlungsgebühr von den Patienten von 5,26 Euro netto, bzw. 6,50 Euro inklusive Umsatzsteuer pro Fall. "
+			},
+			"c": {
+				"title": "3 Leistung des Arztes",
+				"p1" : "Der Arzt verpflichtet sich, die Befundung über das Ärzteportal von online-hautarzt.de nach bestem Wissen und Gewissen durchzuführen und unterliegt der ärztlichen Schweigepflicht. Er erklärt sich einverstanden, dass der Betrag für die nach gleichem Muster ablaufende Befundung pro Fall stets 12,50 Euro beträgt und die Rechnungsstellung durch die Smart Health Heidelberg GmbH erfolgt. Er erklärt sich damit einverstanden, dass die Smart Health Heidelberg GmbH die Fallpauschale zunächst einbehält und jeweils nach eigenem Abruf im Ärzteportal innerhalb von zwei Wochen auszahlt. Der Arzt erklärt sich einverstanden, mit seinen Daten auf online-hautarzt.de als befundendender Arzt angezeigt zu werden und stellt hierfür ein professionelles Portraitbild zur Verfügung. ",
+				"p2" : "Der Arzt erklärt sich einverstanden, alle Kenntnisse, die durch die Arbeit an der Plattform erlangt werden, streng vertraulich zu behandeln. "
+			},
+			"d" : {
+				"title" : "4 Leistung der Smart Health Heidelberg GmbH",
+				"p1" : "Die Smart Health Heidelberg GmbH betreibt den von der Landesärztekammer als Modellprojekt genehmigte Vermittlungsplatform Online Hautarzt. Die Smart Health Heidelberg GmbH vermittelt ",
+				"p2" : "Der Patient rechnet den Fall formal vollständig nach den Ziffern 3 und 5 der GoÄ mit der Praxis ab. Als medizinische Leistung ist die Fallpauschale gemäß geltenden Gesetzen umsatzsteuerbefreit. Die Praxis zahlt pro Fall eine Nutzungsgebühr von 50% an die Smart Health Heidelberg GmbH. Die technische Zahlungsabwicklung erfolgt durch die Smart Health Heidelberg GmbH, die das Geld treuhändlerisch einbehält und nach Verrechnung der Nutzungsgebühr Dr. Jansen in der Regel am Ende jedes Kalendermonats, spätestens aber sechs Wochen nach erbringen der Leistung, auszahlt."
+			},
+			"e" : {
+				"title": "5 Kündigung des Vertrages",
+				"p1" : "Beide Parteien können diesen Vertrag mit einer Frist von 30 Kalendertagen kündigen."
+			},
+			"f" : {
+				"title": "6 Salvatorische Klausel",
+				"p1" : "Sollten einzelne Bestimmungen dieses Vertrages unwirksam oder undurchführbar sein oder nach Vertragsschluss unwirksam oder undurchführbar werden, bleibt davon die Wirksamkeit des Vertrages im Übrigen unberührt. An die Stelle der unwirksamen oder undurchführbaren Bestimmung soll diejenige wirksame und durchführbare Regelung treten, deren Wirkungen der wirtschaftlichen Zielsetzung am nächsten kommen, die die Vertragsparteien mit der unwirksamen bzw. undurchführbaren Bestimmung verfolgt haben. Die vorstehenden Bestimmungen gelten entsprechend für den Fall, dass sich der Vertrag als lückenhaft erweist."
+			}
+		}
 	}
 }
 
