@@ -11,7 +11,7 @@
 <script>
 export default {
     head(){
-            return {title : this.$t("page-kontant.head.title")}
+            return {title : this.$t("page-kontakt.head.title")}
         },
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
