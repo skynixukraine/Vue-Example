@@ -36,10 +36,14 @@
                 {{this.$t('page-gmbh.p5_6')}}<br>
                 {{this.$t('page-gmbh.p5_7')}}<br>
                 {{this.$t('page-gmbh.p5_8')}}<br>
-                {{this.$t('page-gmbh.p5_9')}}            
+                {{this.$t('page-gmbh.p5_9')}}
+                <a href="mailto:" class="link link--small-blue">{{this.$t('page-gmbh.p5_a9')}}</a>            
             </p>
             <p class="gmbh-block__paragraph">
-                {{this.$t('page-gmbh.p6_1')}}<br>
+                {{this.$t('page-gmbh.p6_1')}}
+                <a href="https://online-hautarzt.de/privacy-hautarzt" class="link link--small-blue">
+                {{this.$t('page-gmbh.p6_a1')}}
+                </a><br>
                 {{this.$t('page-gmbh.p6_2')}}
             </p>
             <h3 class = "ueber-uns-block__title">
@@ -47,13 +51,15 @@
             </h3>
             <p class="gmbh-block__paragraph">
                 {{this.$t('page-gmbh.p7_1')}}<br>
-                {{this.$t('page-gmbh.p7_2')}}<br>
-                {{this.$t('page-gmbh.p7_3')}}<br>
-                {{this.$t('page-gmbh.p7_4')}}<br>
-                {{this.$t('page-gmbh.p7_5')}}<br>
-                {{this.$t('page-gmbh.p7_6')}}<br>
-                {{this.$t('page-gmbh.p7_7')}}<br>
-                {{this.$t('page-gmbh.p7_8')}}<br>
+                <ul>
+                    <li>{{this.$t('page-gmbh.p7_2')}}</li>
+                    <li>{{this.$t('page-gmbh.p7_3')}}</li>
+                    <li>{{this.$t('page-gmbh.p7_4')}}</li>
+                    <li>{{this.$t('page-gmbh.p7_5')}}</li>
+                    <li>{{this.$t('page-gmbh.p7_6')}}</li>
+                    <li>{{this.$t('page-gmbh.p7_7')}}</li>
+                    <li>{{this.$t('page-gmbh.p7_8')}}</li>
+                </ul>
             </p>
             <h3 class = "ueber-uns-block__title">
                 {{this.$t('page-gmbh.title3')}}
@@ -70,8 +76,10 @@
             </h3>
             <p class="gmbh-block__paragraph">
                 {{this.$t('page-gmbh.p11_1')}}<br><br>
-                * {{this.$t('page-gmbh.p11_2')}}<br><br>
-                * {{this.$t('page-gmbh.p11_3')}}<br><br>
+                <ul>
+                    <li>{{this.$t('page-gmbh.p11_2')}}</li>
+                    <li>{{this.$t('page-gmbh.p11_3')}}</li> 
+                </ul>
                 {{this.$t('page-gmbh.p11_4')}}<br><br>
                 {{this.$t('page-gmbh.p11_5')}}
             </p>
@@ -127,7 +135,7 @@
                 {{this.$t('page-gmbh.title8')}} 
             </h3>
             <p class="gmbh-block__paragraph">
-            {{this.$t('page-gmbh.p24_1')}} <br>
+            <span class="black-title">{{this.$t('page-gmbh.p24_1')}}</span><br>
             {{this.$t('page-gmbh.p24_2')}}<br>
             {{this.$t('page-gmbh.p24_3')}}<br>
             {{this.$t('page-gmbh.p24_4')}}<br>
@@ -135,16 +143,18 @@
             {{this.$t('page-gmbh.p24_6')}}
             </p>
             <p class="gmbh-block__paragraph">
-                {{this.$t('page-gmbh.p25_1')}}<br>
+                <span class="black-title">{{this.$t('page-gmbh.p25_1')}}</span><br>
                 {{this.$t('page-gmbh.p25_2')}}
             </p>
             <p class="gmbh-block__paragraph">
-                {{this.$t('page-gmbh.p26_1')}}<br>
+                <span class="black-title">{{this.$t('page-gmbh.p26_1')}}</span><br>
                 {{this.$t('page-gmbh.p26_2')}}<br>
                 {{this.$t('page-gmbh.p26_2')}}
             </p>
             <p class="gmbh-block__paragraph">
-                {{this.$t('page-gmbh.p27_1')}}<br>
+                <span class="black-title">
+                {{this.$t('page-gmbh.p27_1')}}
+                </span><br>
                 {{this.$t('page-gmbh.p27_2')}}<br>
                 {{this.$t('page-gmbh.p27_3')}}<br><br>
                 {{this.$t('page-gmbh.p27_4')}}<br>
@@ -152,30 +162,56 @@
                 {{this.$t('page-gmbh.p27_6')}}<br>
                 {{this.$t('page-gmbh.p27_7')}}<br>
                 {{this.$t('page-gmbh.p27_8')}}<br><br>
-                {{this.$t('page-gmbh.p27_9')}}<br>
+                {{this.$t('page-gmbh.p27_9')}}
+                <a href="https://stripe.com/de/terms" class="link link--small-blue">
+                {{this.$t('page-gmbh.p27_a9')}}
+                </a><br>
                 {{this.$t('page-gmbh.p27_10')}}
+                <a href="https://stripe.com/dpa/legal" class="link link--small-blue">
+                {{this.$t('page-gmbh.p27_a10')}}
+                </a>
             </p>
             <p class="gmbh-block__paragraph">
-                {{this.$t('page-gmbh.p28_1')}}<br>
+                <span class="black-title">
+                {{this.$t('page-gmbh.p28_1')}}
+                </span><br>
                 {{this.$t('page-gmbh.p28_2')}}
+                <a href="https://www.klarna.com/sofort/datenschutz" class="link link--small-blue">
+                {{this.$t('page-gmbh.p28_a2')}}
+                </a>
             </p>
             <p class="gmbh-block__paragraph">
-                {{this.$t('page-gmbh.p29_1')}}<br>
+                <span class="black-title">
+                {{this.$t('page-gmbh.p29_1')}}
+                </span><br>
                 {{this.$t('page-gmbh.p29_2')}}<br>
                 {{this.$t('page-gmbh.p29_3')}}<br>
                 {{this.$t('page-gmbh.p29_4')}}<br>
-                {{this.$t('page-gmbh.p29_5')}}n<br>
+                {{this.$t('page-gmbh.p29_5')}}<br>
                 {{this.$t('page-gmbh.p29_6')}}<br>
-                {{this.$t('page-gmbh.p29_7')}}
+                <a href="https://www.giropay.de/rechtliches/datenschutz-agb/" class="link link--small-blue">
+                {{this.$t('page-gmbh.p29_a6')}}
+                </a>
             </p>
             <p class="gmbh-block__paragraph">
-                {{this.$t('page-gmbh.p30_1')}}<br>
-                {{this.$t('page-gmbh.p30_2')}}<br>
+                <span class="black-title">
+                {{this.$t('page-gmbh.p30_1')}}
+                </span><br>
+                {{this.$t('page-gmbh.p30_2')}}
+                <a href="https://www.privacyshield.gov/participant?id=a2zt0000000TOWQAA4&status=Active" class="link link--small-blue">
+                {{this.$t('page-gmbh.p30_a2')}}
+                </a><br>
                 {{this.$t('page-gmbh.p30_3')}}<br>
-                {{this.$t('page-gmbh.p30_4')}}
+                {{this.$t('page-gmbh.p30_4')}}<br>
+                {{this.$t('page-gmbh.p30_5')}}
+                <a href="https://aws.amazon.com/blogs/security/aws-gdpr-data-processing-addendum/" class="link link--small-blue">
+                {{this.$t('page-gmbh.p30_a5')}}
+                </a>
             </p>
             <p class="gmbh-block__paragraph">
-                 {{this.$t('page-gmbh.p31_1')}}<br>
+                <span class="black-title">
+                 {{this.$t('page-gmbh.p31_1')}}
+                </span><br>
                  {{this.$t('page-gmbh.p31_2')}}
 
             </p>
@@ -228,7 +264,14 @@ export default {
     .gmbh-block{
         &__paragraph{
             margin-bottom: 20px;
+            .black-title {
+                color: black;
+            }
         }
+        ul {
+                list-style: disc outside;
+            }
+        
         &__title{
             margin: 35px 0 25px 0;
         }
