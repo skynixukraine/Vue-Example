@@ -91,7 +91,7 @@
                     this.MAIN_LINKS;
 			},
 			isDashboard() {
-				return this.$route.name === "dashboard" || this.$route.name === "account/billing" || this.$route.name === "account/personal-information" || this.$route.name === "enquiries";
+				return this.$route.name === "dashboard" || this.$route.name === "account-billing" || this.$route.name === "account-personal-information" || this.$route.name === "enquiries";
  
 			}
         },

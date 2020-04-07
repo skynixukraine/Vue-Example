@@ -4,11 +4,14 @@
 			 class = "header-user-info"
 			 :class = "{ 'header-user-info--personal-office': $store.state.app.isPersonalOfficePage,
 			  }">
-			<div class = "header-user-info__text">
+			<div class = "header-user-info__text"
+			:class = "{
+				'header-user-info--visible': isNotDashboard
+			}">
 				<div class = "header-user-info__item"
 					 :class = "{ 
 						 		  'header-user-info__item--personal-office': $store.state.app.isPersonalOfficePage, 
-					 			   'header-user-info--visible': isNotDashboard}">
+					 			   }">
 					{{
 					$store.getters["user/USER"].first_name && $store.getters["user/USER"].last_name ?
 						$store.getters["user/USER"].first_name + " " + $store.getters["user/USER"].last_name :
@@ -16,7 +19,6 @@
 					}}
 				</div>
 				<div :class = "{
-					'header-user-info--visible': isNotDashboard
 				}" class = "header-user-info__item__account-status" v-if = "$store.getters['user/USER'] && $store.getters['user/USER'].status">
 					<p>{{ $store.getters["user/USER"].status.toLowerCase() }}</p>
 				</div>
@@ -39,7 +41,7 @@
 		},
 		computed : {
 			isNotDashboard() {
-				return this.$route.name !== "dashboard" && this.$route.name !== "account/billing" && this.$route.name !== "account/personal-information" && this.$route.name !== "enquiries";
+				return this.$route.name !== "dashboard" && this.$route.name !== "account-billing" && this.$route.name !== "account-personal-information" && this.$route.name !== "enquiries";
 			}
 		},
         components : {
