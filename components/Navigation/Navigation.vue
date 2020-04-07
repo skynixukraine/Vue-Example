@@ -2,9 +2,13 @@
 	<nav class = "navigation"
 		 :class = "{
 		 	'navigation--active': $store.state.app.isNavigationActive,
-		 	'navigation--personal-office': $store.state.app.isPersonalOfficePage
+		 	'navigation--personal-office': $store.state.app.isPersonalOfficePage,
+			'navigation--visible': isDashboard
+
 		 }">
-		<ul class = "navigation__list">
+		<ul :class = "{
+			'navigation--visible': isDashboard
+		}" class = "navigation__list">
 			<li class = "navigation__item"
 				v-for = "(link, index) in links"
 				:key = "index">
@@ -61,13 +65,13 @@
                         to   : this.$routes.vorteile.path,
                         text : this.$t('links.vorteile')
 					},
-					{
-                        to   : this.$routes.registrierung.path,
-                        text : this.$t('links.signup-hautarzte')
-                    },
                     {
                         to   : this.$routes.faq.path,
                         text : this.$t('links.faq')
+					},
+					{
+                        to   : this.$routes.registrierung.path,
+                        text : this.$t('links.signup-hautarzte')
                     },
                     {
                         to   : this.$routes.about.path,
@@ -85,7 +89,11 @@
                         this.MAIN_LINKS :
                         this.MAIN_LINKS.concat(this.PERSONAL_OFFICE_LINKS) :
                     this.MAIN_LINKS;
-            },
+			},
+			isDashboard() {
+				return this.$route.name === "dashboard" || this.$route.name === "account-billing" || this.$route.name === "account-personal-information" || this.$route.name === "enquiries";
+ 
+			}
         },
         watch      : {
             windowWidth(width){
@@ -186,5 +194,8 @@
 				&__link { color : $color-curious-blue; }
 			}
 		}
+		&--visible {
+		display: none;
+	}
 	}
 </style>
