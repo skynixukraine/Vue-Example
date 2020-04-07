@@ -78,7 +78,13 @@ export default ({app}, inject) =>{
             path : "/enquiries"
         },
         terms               : {
-            path : "/terms-and-conditions"
+            path : "/agb"
+        },
+        datenschutzGmbh               : {
+            path : "/datenschutz-gmbh"
+        },
+        arztvertrag               : {
+            path : "/arztvertrag"
         },
         privacy             : {
             path : "/privacy-policy"
