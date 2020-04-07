@@ -811,12 +811,12 @@
 				"p1" : "Der Gerichtsstand ist Heidelberg, Deutschland."
 			}
 		},
-		"link" : "https://online-hautarzt.net/privacy/",
+		"link" : "https://online-hautarzt.de/datenschutz-gmbh",
 		"status" : "Stand: 20. März 2020"
 	},
 	"register-page": {
-		"title": "Versorgen Sie Patienten online - wann und wo Sie wollen.",
-		"subtitle" : "Sie sind Facharzt für Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos auf unserer Plattform - in weniger als 24 Stunden können Sie Ihre Patienten ohne Ansteckungsgefahr online behandeln.",
+		"title": "Beraten Sie Ihre Patienten online - wann und wo Sie wollen.",
+		"subtitle" : "Sie sind Facharzt für Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos auf unserer Plattform - in weniger als 24 Stunden können Sie Ihre Patienten ohne Ansteckungsgefahr online beraten.",
 		"questions" : {
 			"q1" : {
 				"title" : "Wie funktioniert Online Hautarzt vor Ort?",
