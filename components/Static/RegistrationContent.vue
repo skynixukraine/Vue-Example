@@ -224,5 +224,9 @@
 		.faq-block--step.faq-block--open {
 			background-color : transparent;
 		}
+		
+	}
+	.title, .subtext {
+		color: white;
 	}
 </style>

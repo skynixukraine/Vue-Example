@@ -80,6 +80,9 @@
 				font-weight: normal;
 			}
 		}
+		
 	}
-
+	.title, .subtext {
+		color: white;
+	}
 </style>
