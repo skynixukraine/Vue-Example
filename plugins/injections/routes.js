@@ -71,6 +71,9 @@ export default ({app}, inject) => {
         billing             : {
             path : "/account/billing"
         },
+        patient             : {
+            path : "/patient"
+        },
         personalInformation : {
             path : "/account/personal-information"
         },

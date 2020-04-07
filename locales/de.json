@@ -222,6 +222,14 @@
 			"p2_3": "genannt und ist bis heute für iPhones und Android-Smartphones als native App herunterladbar. Bei AppDoc befunden nur drei Hautfachärzte aus Heidelberg mit jeweils über 20 Jahren Praxiserfahrung Ihre Hautprobleme. Im Dezember 2019 erhielten wir schließlich die Genehmigung, unser Modellprojekt auch auf andere Bundesländer auszuweiten. Nun dürfen der Online Hautärzte vor Ort über diese Webseite im Rahmen unseres Modellprojektes Patienten beraten."
 		}
 	},
+	"page-patient": {
+		"head": {
+			"title": "Mehr Patienten | Online Hautarzt vor Ort"
+		},
+		"p1": "Wieviele Anfragen Sie erhalten, können Sie zu einem großen Teil selber steuern: Nach Registrierung haben Sie ein individuelles Profil (z.B. Online-Hautarzt.de/hautarzt/Max-Mustermann) erhalten, auf dass Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können.",
+		"p2": "Dieser Mustertext hat sich bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig (19,- Euro) eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und müssen meist nicht mehr persönlich vorbeikommen: Online-Hautarzt.de/Hautarzt/Max-Mustermann“.",
+		"p3": "Darüber hinaus kommt ein Teil der Patienten auch über Ihr Profil auf online-hautarzt.de zu Ihnen. Über die Zeit werden auch viele Patienten Ihre Online-Behandlung schätzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
+	},
 	"page-personal-information": {
 		"head": {
 			"title": "Kontoinformationen | Online Hautarzt vor Ort"
