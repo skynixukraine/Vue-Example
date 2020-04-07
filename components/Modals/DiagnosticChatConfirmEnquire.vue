@@ -9,10 +9,10 @@
 		<button class = "modal__close-button" @click.stop = "closeModal($modals.diagnosticChatConfirmEnquire)"></button>
 		<div class = "modal__content" v-if = "!isSubmit">
 			<header class = "modal__header">
-				<h3 class = "modal__title">Alles ist fertig</h3>
+				<h3 class = "modal__title">Geschafft!</h3>
 			</header>
 			<div class = "modal__main">
-				<p>{{ `Sie können jetzt eine Konsultation mit einem Arzt beginnen ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name}` }}</p>
+				<p>{{ `Alles ist fertig eingegeben. Jetzt können Sie Ihren Fall an den Hautarzt abschicken. Die Online-Beratung kostet 19,- Euro. Einverstanden?` }}</p>
 				<p>{{ `Beratung kostet ${this.targetDoctor.enquire_price}` }}</p>
 				<p>Zahlen und anfangen?</p>
 			</div>
@@ -22,7 +22,7 @@
 					Abbrechen
 				</button>
 				<button class = "control-btn--submit" @click.stop = "onSubmit">
-					Bestätigen
+					Einverstanden
 				</button>
 			</footer>
 		</div>
