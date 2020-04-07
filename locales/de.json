@@ -634,6 +634,91 @@
 			"purpose":"Authentication info",
 			"duration": "14 days"
 		}
-	]
+	],
+	"agb-page" : {
+		"sub-title" : "Unsere Allgemeinen Geschäftsbedingungen (=AGB) sind wie folgt gegliedert:",
+		"first" : {
+			"title" : "AGB zwischen Hautärzten und Verbrauchern – Fernbehandlungsbedingungen",
+			"a" : {
+				"title" : "Präambel",
+				"p1" : "Die Smart Health Heidelberg GmbH („Gesellschaft“) mit Sitz in Heidelberg stellt diesen Online-Hautarzt-Dienst zur Verfügung („Dienst“). Der Dienst ermöglicht es Verbrauchern aus Deutschland ihr Hautproblem an Fachärzte für Haut- & Geschlechtskrankheiten aus Deutschland zu verschicken; dies erfolgt in Form von Fotos und Informationen über das Internet. Der jeweilige Hautarzt begutachtet die Bilder und Informationen und gibt auf dieser Grundlage eine professionelle Einschätzung zu dem Hautproblem ab und zumeist auch eine Handlungsempfehlung, was wegen des Hautproblems seitens des Verbrauchers unternommen werden sollte.",
+				"p2" : "Hierbei ist klar zu trennen: Die Hautärzte führen die Begutachtung vollständig im eigenen Namen und auch in eigener Verantwortung durch. Die Gesellschaft ist selber nicht medizinisch oder als Gutachter tätig, sondern ermöglicht über die technische Bereitstellung des Dienstes die digitale Vermittlung des Verbrauchers an den Hautarzt  und stellt den wissenschaftlich fundierten interaktiven Anamnesebogen bereit. Somit wird die Gesellschaft auch nie teil des Fernbehandlungsvertrages oder der eigentlichen Fernbehandlung. Für den Fernbehandlungsvertrag gelten die Bedingungen in diesem Abschnitt I. ",
+				"p3" : "Die Gesellschaft bietet über ihre Plattform sowohl dem Hautarzt als auch den Patienten einen Mehrwert:",
+				"p4" : "Der Patient erhält eine schnelle fachärztliche Ersteinschätzung seines Hautproblems über eine sichere und wissenschaftlich fundierte Plattform, ohne dafür das Haus verlassen, oder sich namentlich identifizieren zu müssen. In etwa 70% der Fälle kann über die Online-Einschätzung und die Online-Handlungsempfehlung ein Besuch in der Hautarztpraxis vermieden werden.",
+				"p5" : "Der Hautarzt kann über die bereitgestellte technische Infrastruktur seine Befundung sicher und unkompliziert, sowie örtlich ungebunden (also auch von zuhause, oder von seinem Urlaubsort aus) vornehmen. Er kann überdies eine weitere Patientengruppe mit seinen ärztlichen Leistungen ansprechen."
+			},
+			"b" : {
+				"title" : "Schließung des Fernbehandlungsvertrages: Zeitpunkt",
+				"p1" : "In dem Moment, in dem der Verbraucher seine Anfrage an den Hautarzt abschickt, kommt der Fernbehandlungsvertrag zwischen Verbraucher und Hautarzt zustande."
+			},
+			"c" : {
+				"title" : "Bezahlung / Honorar",
+				"p1" : "Das Honorar von der Behandlung ist bereits vor dem Abschicken der Anfrage angegeben und wird in dem Moment, in dem Sie den Behandlungsvertrag abschließen, fällig. Die Gesellschaft zieht den gesamten Fallbetrag ein, behält die Vermittlungsgebühr ein und leitet die Fallgebühr nach GOÄ an den Hautarzt weiter. Der Hautarzt hat die Gesellschaft ermächtigt, den Fallbetrag einzuziehen. Sollte es dem Hautarzt auf Grund schlechter Qualität der eingesandten Fotos oder unvollständigen Informationen die Begutachtung und/oder die Handlungsempfehlung nicht möglich sein, ist der Fallbetrag dennoch fällig und durch den Verbraucher zu zahlen."
+			},
+			"d" : {
+				"title" : "Umfang der Leistung des Fernbehandlungsvertrages",
+				"p1" : "Innert in der Regel von 48 Stunden erhalten Sie durch den Hautarzt auf der Basis der von Ihnen eingesandten Informationen und Bilder eine professionelle Einschätzung Ihres Hautproblems und ggf. eine Handlungsempfehlung, was Sie wegen Ihres Hautproblems weiter unternehmen sollten.",
+				"p2" : "Der Verbraucher wird über die vorliegende Handlungsempfehlung informiert. Ausschließlich die mit der Erstanfrage übersandten Bilder und Informationen durch den Verbraucher sind die Grundlage der Beurteilung des Hautarztes und dieser ist allein verantwortlich, dass diese Informationen und Fotos aktuell & akkurat sind und ist auch für die Folgen, sollte dies nicht der Fall sein, selber verantwortlich. Der Dienst ist dazu da, um eine Ersteinschätzung für Hautprobleme zu geben – er bietet kein Monitoring oder die Archivierung von Bildern an.Die Leistung des Hautarztes beschränkt sich auf die einmalige Handlungsempfehlung im Einzelfall. Weitere Verpflichtungen des Hautarztes bestehen nicht."
+			},
+			"e" : {
+				"title" : "Datenschutz",
+				"p1" : "Bezüglich Datenschutz gilt die Datenschutzerklärung, die Sie auf der Webseite des Dienstes abrufen können und der Sie vor der Nutzung des Dienstes separat aktiv zustimmen müssen."
+			},
+			"f" : {
+				"title" : "Haftung",
+				"p1" : "Der Nutzer nimmt zur Kenntnis, dass die Beurteilung durch den Hautarzt von der Richtigkeit, Qualität und Vollständigkeit der hochgeladenen Fotos und übermittelten Gesundheitsdaten abhängig ist. Eine erste Beurteilung über die Plattform ersetzt kein persönliches Beratungsgespräch durch einen Arzt. Die Beurteilung über die Plattform ist kein Notfallsystem. Es ist nicht für Personen geeignet, die unmittelbar medizinisch überwacht werden müssen oder rasche medizinische Maßnahmen benötigen. Der Hautarzt schliesst seine Haftung für alle Ansprüche aus oder im Zusammenhang mit dem Behandlungsvertrag (inklusive vertraglicher und ausservertraglicher Ansprüche) im gesetzlich größtmöglichen Umfang aus."
+			},
+			"g" : {
+				"title" : "Schlussbestimmungen",
+				"p1" : "Jede im Einzelfall zwischen dem Hautarzt und dem Nutzer vereinbarte Änderung oder Ergänzung dieser AGB bedarf der Textform."
+			},
+			"h" : {
+				"title" : "Gerichtsstand",
+				"p1" : "Der Gerichtsstand ist Heidelberg, Deutschland."
+			}
+		},
+		"last" : {
+			"title" : "AGB zwischen Smart Health Heidelberg GmbH und allen Nutzern des Dienstes – Nutzungsbedingungen",
+			"a" : {
+				"title" : "Präambel",
+				"p1" : "Die Smart Health Heidelberg GmbH („Gesellschaft“) mit Sitz in Heidelberg stellt diesen Online-Hautarzt-Dienst zur Verfügung („Dienst“). Der Dienst ermöglicht es Verbrauchern aus Deutschland ihr Hautproblem an Fachärzte für Haut- & Geschlechtskrankheiten aus Deutschland zu verschicken; dies erfolgt in Form von Fotos und Informationen über das Internet. Der jeweilige Hautarzt begutachtet die Bilder und Informationen und gibt auf dieser Grundlage eine professionelle Einschätzung zu dem Hautproblem ab und zumeist auch eine Handlungsempfehlung, was wegen des Hautproblems seitens des Verbrauchers unternommen werden sollte.",
+				"p2" : "Hierbei ist klar zu trennen: Die Hautärzte führen die Begutachtung vollständig im eigenen Namen und auch in eigener Verantwortung durch. Die Gesellschaft ist selber nicht medizinisch oder als Gutachter tätig, sondern ermöglicht über die technische Bereitstellung des Dienstes die digitale Vermittlung des Verbrauchers an den Hautarzt und stellt den wissenschaftlich fundierten interaktiven Anamnesebogen bereit. Somit wird die Gesellschaft auch nie teil des Fernbehandlungsvertrages. Für den Fernbehandlungsvertrag gelten die Bedingungen in dem Abschnitt I. In diesem Abschnitt ll. wird",
+				"p3" : "Die Gesellschaft bietet über ihre Plattform sowohl dem Hautarzt als auch den Patienten einen Mehrwert:",
+				"p4" : "Der Patient erhält eine schnelle fachärztliche Ersteinschätzung seines Hautproblems über eine sichere und wissenschaftlich fundierte Plattform, ohne dafür das Haus verlassen, oder sich namentlich identifizieren zu müssen. In etwa 70% der Fälle kann über die Online-Einschätzung und die Online-Handlungsempfehlung ein Besuch in der Hautarztpraxis vermieden werden.",
+				"p5" : "Der Hautarzt kann über die bereitgestellte technische Infrastruktur seine Befundung sicher und unkompliziert, sowie örtlich ungebunden (also auch von zuhause, oder von seinem Urlaubsort aus) vornehmen. Er kann überdies eine weitere Patientengruppe mit seinen ärztlichen Leistungen ansprechen."
+			},
+			"b" : {
+				"title" : "Schließung des Nutzungsvertrages & Ablauf der Online-Konsultation",
+				"p1" : "Wenn ein Verbraucher eine Beurteilung einholen möchte, füllt er zunächst den Online-Fragebogen aus und wählt an den Hautarzt zu übermittelnde Bilder der betroffenen Hautstelle aus. Jederzeit kann der Nutzer hierbei die AGB einsehen und wird bereits vor dem Hochladen der Bilder um seine Kenntnisnahme und aktive Zustimmung der Datenschutzerklärung gebeten. Nach dem Ausfüllen des Fragebogens und dem Wählen der zu übermittelnden Bilder akzeptiert der Nutzer diese AGB und die Datenschutzerklärung aktiv und dann dann seine Beurteilungsanfrage absenden. Bei dem Abschicken der Anfrage kommt ein Nutzungsvertrag mit Smart Health Heidelberg GmbH zustande. Zugleich kommt ein Fernbehandlungsvertrag mit dem zugeteilten Hautarzt zustande (vgl. Abschnitt l.). Die Gesellschaft schickt den Fall an den kooperierenden Hautarzt, der für die Bereitstellung der technischen Infrastruktur & Abwicklung eine Nutzungsgebühr bezahlt. Der Verbraucher erhält eine Email mit einem Link zu der Beurteilung, sofern er eine E-Mail Adresse angegeben hat (optional). Ansonsten erhält er eine Push-Nachricht auf dem Smartphone und/oder kann über die ihm bei Übersendung des Falles mitgeteilte Fallnummer den Fall aufrufen."
+			},
+			"c" : {
+				"title" : "Bezahlung / Honorar",
+				"p1" : "Die Fallgebühr nach GoÄ ist bereits vor abschicken der Anfrage angegeben und wird in dem Moment, in dem Sie diese abschicken abschließen, fällig. Die Gesellschaft zieht den gesamten Fallbetrag ein und leitet die Fallgebühr abzüglich der Nutzungsgebühr an den Hautarzt weiter. Der Hautarzt hat die Gesellschaft ermächtigt, den Fallbetrag einzuziehen. Sollte es dem Hautarzt auf Grund schlechter Qualität der eingesandten Fotos oder unvollständigen Informationen die Begutachtung und/oder die Handlungsempfehlung nicht möglich sein, ist der Fallbetrag dennoch fällig und durch den Verbraucher zu zahlen."
+			},
+			"d" : {
+				"title" : "Datenspeicherung & Archivierung",
+				"p1" : "Es liegt in der alleinigen Verantwortung des Verbrauchers Falldaten zu archivieren, wenn der Verbraucher dies wünscht. Hierfür steht dem Nutzer während einer Zeit von zwei Wochen der Fall zur Verfügung um die Daten zu exportieren, um sie auf seinem eigenen Computer zu speichern."
+			},
+			"e" : {
+				"title" : "Datenschutz",
+				"p1" : "Bezüglich Datenschutz gilt die Datenschutzerklärung, die hier: ",
+				"p1_2" : "abgerufen werden kann. Der Nutzer nimmt die Datenschutzerklärung zur Kenntnis."
+			},
+			"f" : {
+				"title" : "Haftung",
+				"p1" : "Smart Health Heidelberg GmbH schließt seine Haftung (inklusive der Haftung für seine Hilfspersonen, Arbeitnehmer, Lieferanten und Subunternehmer) für alle Ansprüche aus oder im Zusammenhang mit der Plattform (inklusive vertraglicher und ausservertraglicher Ansprüche) im gesetzlich größtmöglichen Umfang aus, insbesondere für Schäden aufgrund von Übermittlungsfehlern, technischen Mängeln, Unterbrechungen oder Störungen. Ein fehlerfreier Betrieb der Plattform wird nicht garantiert.Smart Health Heidelberg GmbH haftet nicht für Ansprüche aus oder im Zusammenhang mit dem Behandlungsvertrag; insbesondere haftet Smart Health Heidelberg GmbH nicht für (Folge-)schäden, die im Zusammenhang mit der Beurteilung der veränderten Hautstelle durch den Hautarzt entstehen."
+			},
+			"g" : {
+				"title" : "Schlussbestimmungen",
+				"p1" : "Rechte und Pflichten aus dem Vertrag zwischen der Gesellschaft und ihren Nutzern können jederzeit durch die Gesellschaft an einen Dritten abgetreten und übertragen werden. Den Nutzern steht dieses Recht nur mit schriftlicher Zustimmung von der Gesellschaft zu. Jede im Einzelfall zwischen Smart Health Heidelberg GmbH und dem Nutzer vereinbarte Änderung oder Ergänzung dieser AGB bedarf der Textform. "
+			},
+			"h" : {
+				"title" : "Gerichtsstand",
+				"p1" : "Der Gerichtsstand ist Heidelberg, Deutschland."
+			}
+		},
+		"link" : "https://online-hautarzt.net/privacy/",
+		"status" : "Stand: 20. März 2020"
+	}
 }
 
