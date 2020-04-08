@@ -365,11 +365,13 @@
 				<transition name = "main-animation">
 					<div class = "payment-details" v-if = "isQuestionsOver && isPersonalInfoFilled">
 						<h3>{{ $t("page-forschung.chat.please-give-us-your-payment-details") }}</h3>
-                        <select v-model="userInputData.paymentMethods" class="select payment">
-                            <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name" v-bind:key="option.name">
-                                {{ option.title }}
-                            </option>
-                        </select>
+
+                        <div v-for="option in $store.state.diagnosticChat.paymentMethods" :key="option.name" class="credit-card-method">
+                            <input type="radio" :id="option.id" :value="option.name" v-model="userInputData.paymentMethods">
+                            
+                            {{option.title === 'Credit Card' ? 'Kreditkarte' : (option.title === 'SOFORT' ? 'Sofortüberweisung': 'Giropay')}} 
+                            <img class="credit-card-method__img" :src = "require('~/static/images/payments/' + option.name + '.png')" alt = "payment_method" />
+                        </div>
 
                         <button class = "submit-btn"
                                 type = "button"
@@ -572,7 +574,12 @@
                 userInputData   : {
                     defaultMethod : 'credit_card',
                     paymentMethods : 'credit_card'
-                }
+                },
+                userInputImg    : {
+                    credit: '/path/to/img',
+                    sofort: '',
+                    giropay: '',
+                },
             }
         },
         computed   : {
@@ -1278,6 +1285,21 @@
 </script>
 
 <style lang = "scss" scoped>
+
+    .credit-card-method {
+        display: flex;
+        align-items: center;
+    }
+    .credit-card-method__img {
+            display: block;
+            height: auto;
+            max-width: 50px;
+            margin-left: 20px;
+    }
+    .payment {
+        margin-top: 10px;
+    }
+
 	$max_width : 400px;
 	$border-radius : 20px;
 	$animation_duration : .75s;
