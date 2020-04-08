@@ -194,8 +194,5 @@
 				&__link { color : $color-curious-blue; }
 			}
 		}
-		&--visible {
-		display: none;
-	}
 	}
 </style>
