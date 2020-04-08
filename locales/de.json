@@ -996,7 +996,9 @@
 	},
 	"before-chat-modal" : {
 		"title" : "Datenschutzerklärung",
-		"text" : "War da nicht noch was? Genau, der Datenschutz. Bitte nehmen Sie unsere hier verlinkte Datenschutzerklärung zur Kenntnis und stimmen Sie ihr mit Klick auf den Button „Zustimmen“ zu. Vorher können wir keine Daten von Ihnen verarbeiten. Vielen Dank!",
+		"text1" : "War da nicht noch was? Genau, der Datenschutz. Bitte nehmen Sie unsere ",
+		"text2" : " verlinkte Datenschutzerklärung zur Kenntnis und stimmen Sie ihr mit Klick auf den Button „Zustimmen“ zu. Vorher können wir keine Daten von Ihnen verarbeiten. Vielen Dank!",
+		"link" : "hier",
 		"b1" : "Abbruch",
 		"b2" : "Zustimmen"
 	}
