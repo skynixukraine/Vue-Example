@@ -237,6 +237,18 @@ export default {
 }
 </script>
 <style lang = "scss">
+    
+    .gmbh-section {
+        .gmbh-title {
+            font-size : 28px;
+            @include tablet {
+                font-size : 36px;
+            }
+            @include tablet-big {
+                font-size : 62px;
+            }
+        }
+    }
 
     .gmbh-section .gmbh-h3{
 		color: white;
