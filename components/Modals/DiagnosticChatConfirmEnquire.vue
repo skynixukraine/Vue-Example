@@ -13,8 +13,6 @@
 			</header>
 			<div class = "modal__main">
 				<p>{{ `Alles ist fertig eingegeben. Jetzt können Sie Ihren Fall an den Hautarzt abschicken. Die Online-Beratung kostet 19,- Euro. Einverstanden?` }}</p>
-				<p>{{ `Beratung kostet ${this.targetDoctor.enquire_price}` }}</p>
-				<p>Zahlen und anfangen?</p>
 			</div>
 			<footer class = "modal__footer">
 				<button class = "control-btn--cancel"
