@@ -2,16 +2,11 @@
 	<NuxtLink :to = "$routes.dashboard.path" exact>
 		<div v-if = "$store.getters['user/USER']"
 			 class = "header-user-info"
-			 :class = "{ 'header-user-info--personal-office': $store.state.app.isPersonalOfficePage,
-			  }">
+			 :class = "{ 'header-user-info--personal-office': $store.state.app.isPersonalOfficePage}">
 			<div class = "header-user-info__text"
-			:class = "{
-				'header-user-info--visible': isNotDashboard
-			}">
+			:class = "{'header-user-info--visible': isNotDashboard}">
 				<div class = "header-user-info__item"
-					 :class = "{ 
-						 		  'header-user-info__item--personal-office': $store.state.app.isPersonalOfficePage, 
-					 			   }">
+					 :class = "{ 'header-user-info__item--personal-office': $store.state.app.isPersonalOfficePage}">
 					{{
 					$store.getters["user/USER"].first_name && $store.getters["user/USER"].last_name ?
 						$store.getters["user/USER"].first_name + " " + $store.getters["user/USER"].last_name :
