@@ -1082,5 +1082,11 @@
 		.title, .subtext {
 			color : white;
 		}
+		.subtext, .gmbh-h3, .ueber-uns-h3 {
+			font-weight: 400;
+			font-size: 19px;
+			line-height: 30px;
+			margin: 0;
+		}
 	}
 </style>
