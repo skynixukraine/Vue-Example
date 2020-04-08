@@ -29,15 +29,15 @@ export default {
             return {title : this.$t("page-vorlagen.head.title")}
         },
     async fetch ({ app, store, error }) {
-        // if token exist and user empty - load User object        
-        if (app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null) {
-            await store.dispatch('user/LOAD_USER', { id: app.$cookies.get(app.cookie.names.tokenId), token: app.$cookies.get(app.cookie.names.token) })
-                .catch(error => {
-                    app.$cookies.remove(app.cookie.names.token)
-                    app.$cookies.remove(app.cookie.names.tokenId)
-                })
-        }
-    },
+                // if token exist and user empty - load User object
+                if (app.$cookies.get(app.cookie.names.token) && store.getters['user/USER'] === null) {
+                    await store.dispatch('user/LOAD_USER', { id: app.$cookies.get(app.cookie.names.tokenId), token: app.$cookies.get(app.cookie.names.token) })
+                               .catch(error => {
+                                   app.$cookies.remove(app.cookie.names.token)
+                                   app.$cookies.remove(app.cookie.names.tokenId)
+                               })
+                }
+            },
     components : {
             Dashboard,
             DashboardSidebar,
@@ -46,6 +46,9 @@ export default {
             DashboardContent,
             Vorlagen,
         },
+        middleware : [
+            "auth",
+        ],
 }
 </script>
 <style lang = "scss">
