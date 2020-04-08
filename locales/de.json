@@ -155,7 +155,7 @@
 	},
 	"page-conclusions": {
 		"head": {
-			"title": "Conclusions | Online Hautarzt vor Ort"
+			"title": "Ergebnis | Online Hautarzt vor Ort"
 		},
 		"caption": "Der Dateidownload wird automatisch gestartet."
 	},
@@ -466,7 +466,7 @@
 			"reset": "Code erneut senden"
 		},
 			"head": {
-				"title": "Anfrage starten | Online Hautarzt vor Ort"
+				"title": "Forschung | Online Hautarzt vor Ort"
 			},
 			"feedback-form": {
 				"title": "Ihre persönlichen Informationen",
