@@ -1083,6 +1083,7 @@
 			color : white;
 		}
 		.subtext, .gmbh-h3, .ueber-uns-h3 {
+			font-family: $TheSansB;
 			font-weight: 400;
 			font-size: 19px;
 			line-height: 30px;

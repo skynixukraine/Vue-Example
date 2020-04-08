@@ -80,6 +80,7 @@
 		
 		.link {
 			margin-top : 10px;
+			cursor: pointer;
 			
 			@include tablet {
 				margin-top : 20px;
