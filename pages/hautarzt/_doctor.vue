@@ -21,7 +21,7 @@
                             <div class = "profile__info__price__value">{{ `${this.doctorData.enquire_price} €` || "" }}</div>
                         </div>
                         <button class = "profile__info__start-enquiry-btn link--button link--button-blue"
-                                @click.stop = "startDiagnosticChat">
+                                @click="openModal($modals.beforeChat, startDiagnosticChat)">
                             ANFRAGE STARTEN
                         </button>
                     </div>
@@ -57,8 +57,12 @@
 
 <script>
     import DoctorsApi from "~/services/api/Doctors";
+    import modal from '~/mixins/modal'
 
     export default {
+        mixins : [
+            modal,
+        ],
         head(){
             return {title : `${this.doctorData.first_name} ${this.doctorData.last_name} ${this.doctorData.location.city} | Online Hautarzt vor Ort`}
         },

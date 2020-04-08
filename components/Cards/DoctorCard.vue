@@ -25,7 +25,7 @@
 			</div>
 			<button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
 					v-if = "isPreview"
-					@click.stop = "startDiagnosticChat">
+					@click="openModal($modals.beforeChat, startDiagnosticChat)">
 				ANFRAGE STARTEN
 			</button>
 		</div>
@@ -33,7 +33,11 @@
 </template>
 
 <script>
+    import modal from '~/mixins/modal'
     export default {
+        mixins : [
+            modal,
+        ],
         props    : {
             doctor    : {
                 type     : Object,

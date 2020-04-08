@@ -12,6 +12,7 @@ export default ({app}, inject) =>{
         chatConfirmCodeMobile            : "confirm-code-modal",
         sendFindings                     : "send-findings",
         openImageModal                   : "open-image-modal",
+        beforeChat                       : "before-chat",
     };
 
     app.modals            = OPTIONS;

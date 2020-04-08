@@ -992,6 +992,12 @@
 				"p1" : "Sollten einzelne Bestimmungen dieses Vertrages unwirksam oder undurchführbar sein oder nach Vertragsschluss unwirksam oder undurchführbar werden, bleibt davon die Wirksamkeit des Vertrages im Übrigen unberührt. An die Stelle der unwirksamen oder undurchführbaren Bestimmung soll diejenige wirksame und durchführbare Regelung treten, deren Wirkungen der wirtschaftlichen Zielsetzung am nächsten kommen, die die Vertragsparteien mit der unwirksamen bzw. undurchführbaren Bestimmung verfolgt haben. Die vorstehenden Bestimmungen gelten entsprechend für den Fall, dass sich der Vertrag als lückenhaft erweist."
 			}
 		}
+	},
+	"before-chat-modal" : {
+		"title" : "Datenschutzerklärung",
+		"text" : "War da nicht noch was? Genau, der Datenschutz. Bitte nehmen Sie unsere hier verlinkte Datenschutzerklärung zur Kenntnis und stimmen Sie ihr mit Klick auf den Button „Zustimmen“ zu. Vorher können wir keine Daten von Ihnen verarbeiten. Vielen Dank!",
+		"b1" : "Abbruch",
+		"b2" : "Zustimmen"
 	}
 }
 
