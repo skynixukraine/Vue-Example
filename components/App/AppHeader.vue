@@ -75,6 +75,10 @@
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
 			height     : 80px;
 			padding    : 8px 15px;
+			
+			.app-logo {
+				max-width: 290px;
+			}
 		}
 		
 		&--bg-default { 
