@@ -6,7 +6,6 @@
 				<Nuxt />
 			</AppMain>
 			<AppFooter />
-			<AppNotify />
 			<Modals />
 			<VueCookieAcceptDecline
 					:elementId = "id"
@@ -91,7 +90,6 @@
     import AppHeader from "~/components/App/AppHeader"
     import AppMain from "~/components/App/AppMain"
     import AppFooter from "~/components/App/AppFooter"
-    import AppNotify from "~/components/App/AppNotify"
     import Modals from "~/components/Modals/Modals"
     import VueCookieAcceptDecline from 'vue-cookie-accept-decline'
     import GroupsList from "~/components/cookies/GroupsList.vue"
@@ -171,7 +169,6 @@
             AppHeader,
             AppMain,
             AppFooter,
-            AppNotify,
             Modals,
             GroupsList
         }
