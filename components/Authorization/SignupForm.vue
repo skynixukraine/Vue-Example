@@ -64,7 +64,7 @@
 				   :placeholder = "$t('forms.lanr')" />
 		</div>
 		<div class = "form__item">
-			<div class = "form__title form__title--degree">{{ $t('forms.upload-degree') }} <span>*</span></div>
+			<div class = "form__title form__title--degree">{{ $t('forms.upload-degree') }}</div>
 			<input class = "input input--hidden"
 				   type = "file"
 				   name = "degree"
@@ -83,7 +83,7 @@
 		</div>
 		<div class = "form__item">
 			<div class = "form__title form__title--certification">
-				{{ $t('forms.upload-certification') }} <span>*</span>
+				{{ $t('forms.upload-certification') }}
 			</div>
 			<input class = "input input--hidden"
 				   type = "file"
@@ -310,14 +310,7 @@
                         text : this.$t('errors.form.i-am-specialist')
                     });
                 }
-                if(!models.certification){
-                    this.errors['certification'] = this.$t('errors.form.required-field');
-                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')});
-                }
-                if(!models.degree){
-                    this.errors['degree'] = this.$t('errors.form.required-field');
-                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.phone-is-empty')});
-                }
+               
 
                 // check recaptcha token exist
                 if(!this.recaptchaToken){
