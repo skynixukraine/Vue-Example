@@ -626,16 +626,21 @@
 				"Wir sind der einzige nach Prüfungsverfahren durch eine Landesärztekammer zugelassene Online-Hautarzt-Dienst in Deutschland.",
 				"Wir sind verpflichtet zu externer Qualitätssicherung und wissenschaftlicher Evaluation, die am Universitätsklinikum in Essen durch die dermatologische Oberärztin Dr. Wiebke Sondermann erfolgt."
 			],
-			"p1":"Wählen Sie hier einen Hautarzt aus und starten Sie die Behandlung."
+			"p1":"Wählen Sie ",
+			"p2":" einen Hautarzt aus und starten Sie die Behandlung.",
+			"l1":"hier"
 		},
 		"v2": {
 			"question":"Was sind die Vorteile für Hautärzte?",
 			"p1":"Der Online Hautarzt vor Ort ist der Dienst, der den mit Abstand größten Anteil des Gesamtbetrages (~2/3) direkt an Sie weitergibt und trotzdem keine Kompromisse macht: Wir unterstützen Sie bei der telemedizinischen Anbindung Ihrer Praxis über moderne Technologie und kümmern uns darüber hinaus um sowohl um die Anamnese, das Marketing, als auch die Zahlungsabwicklung für Sie. Wie schaffen wir das? Indem wir die Betriebskosten auf ein Minimum reduzieren und nicht gewinnorientiert arbeiten.",
-			"p2":"Lohnt sich der Online Hautarzt vor Ort finanziell für Sie? Entscheiden Sie selber: Bei 12,50 Euro, die Sie pro Fall direkt als Umsatzsteuerfreie Heilleistung ausgezahlt bekommen, liegt Ihr Netto-Stundenlohn bei etwa 300 Euro (die Beantwortung eines Falles dauert durchschnittlich 2-3 Minuten). Und zwar egal, ob Sie die Fälle in Ihrer Praxis bearbeiten, oder daheim auf der Couch. Ein internetfähiges Gerät ist ausreichend. Weitere Details finden Sie hier."
+			"p2":"Lohnt sich der Online Hautarzt vor Ort finanziell für Sie? Entscheiden Sie selber: Bei 12,50 Euro, die Sie pro Fall direkt als Umsatzsteuerfreie Heilleistung ausgezahlt bekommen, liegt Ihr Netto-Stundenlohn bei etwa 300 Euro (die Beantwortung eines Falles dauert durchschnittlich 2-3 Minuten). Und zwar egal, ob Sie die Fälle in Ihrer Praxis bearbeiten, oder daheim auf der Couch. Ein internetfähiges Gerät ist ausreichend. Weitere Details finden Sie ",
+			"l1" : "hier."
 		},
 		"v3": {
 			"question":"Wie hilft unser Dienst den Apotheken vor Ort?",
-			"p1":"Das Modellprojekt Online Hautarzt hat unter dem Namen „AppDoc“ seit seinem Start im November 2018 bereits über 4.000 Patienten versorgt, ganz ohne Versandapotheken zu nutzen. Falls eine Arznei notwendig ist, verweisen wir auf die Apotheken vor Ort, bei denen sich der Patient das frei verkäufliche Medikament persönlich abholen kann. Der Gründer von Online Hautarzt vor Ort hat bereits in der Pressemitteilung des Nationalen Centrums für Tumorerkrankungen in Heidelberg zur Verleihung des Innovationspreises Dermatologie im März 2019 formuliert: „Telemedizin kann nur dann nachhaltig erfolgreich sein, wenn sie die qualifizierte Apotheke vor Ort mit ihrer wichtigen Beratungs- und Kontrollfunktion gerade auch für ältere Menschen langfristig nicht schwächt, sondern stärkt.“"
+			"p1":"Das Modellprojekt Online Hautarzt hat unter dem Namen „AppDoc“ seit seinem Start im November 2018 bereits über 4.000 Patienten versorgt, ganz ohne Versandapotheken zu nutzen. Falls eine Arznei notwendig ist, verweisen wir auf die Apotheken vor Ort, bei denen sich der Patient das frei verkäufliche Medikament persönlich abholen kann. Der Gründer von Online Hautarzt vor Ort hat bereits in der Pressemitteilung des Nationalen Centrums für Tumorerkrankungen in Heidelberg zur Verleihung des ",
+			"p2" : " im März 2019 formuliert: „Telemedizin kann nur dann nachhaltig erfolgreich sein, wenn sie die qualifizierte Apotheke vor Ort mit ihrer wichtigen Beratungs- und Kontrollfunktion gerade auch für ältere Menschen langfristig nicht schwächt, sondern stärkt.“",
+			"l1" : "Innovationspreises Dermatologie"
 		},
 		"v4": {
 			"question": "Warum sind wir gut für Bürgerinnen und Bürger?",

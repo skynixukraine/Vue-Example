@@ -11,7 +11,7 @@
                 <ul class="vorteile-block__list">
                     <li class="vorteile-block__list-item" v-for="(item, index) in this.$t('page-vorteile.v1.li') " :key="index + '-col2'"><span>{{ item }}</span></li>
                 </ul>
-                <p class = "vorteile-block__paragraph">{{ this.$t('page-vorteile.v1.p1') }}</p>
+                <p class = "vorteile-block__paragraph">{{ this.$t('page-vorteile.v1.p1') }}	<NuxtLink :to = "$routes.hautarzt.path" exact>{{ this.$t('page-vorteile.v1.l1') }}</NuxtLink>{{ this.$t('page-vorteile.v1.p2') }}</p>
 
             </div>
         </div>
@@ -24,7 +24,7 @@
             </div>
             <div class = "vorteile-block__content-wrap">
                 <p class = "vorteile-block__paragraph">{{ this.$t('page-vorteile.v2.p1') }}</p>
-                <p class = "vorteile-block__paragraph">{{ this.$t('page-vorteile.v2.p2') }}</p>
+                <p class = "vorteile-block__paragraph">{{ this.$t('page-vorteile.v2.p2') }}<NuxtLink :to = "$routes.registrierung.path" exact>{{ this.$t('page-vorteile.v2.l1') }}</NuxtLink></p>
             </div>
         </div>
         <div class = "vorteile-block">
@@ -35,7 +35,7 @@
                 </svg>
             </div>
             <div class = "vorteile-block__content-wrap">
-                <p class = "vorteile-block__paragraph">{{ this.$t('page-vorteile.v3.p1') }}</p>
+                <p class = "vorteile-block__paragraph">{{ this.$t('page-vorteile.v3.p1') }}<a href = "https://www.nct-heidelberg.de/fuer-patienten/aktuelles/details/titus-brinker-mit-dem-innovationspreis-dermatologie-2019-ausgezeichnet.html">{{ this.$t('page-vorteile.v3.l1') }}</a>{{ this.$t('page-vorteile.v3.p2') }}</p>
             </div>
         </div>
         <div class = "vorteile-block">
