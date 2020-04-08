@@ -1289,12 +1289,16 @@
     .credit-card-method {
         display: flex;
         align-items: center;
+        margin: 20px 0;
     }
     .credit-card-method__img {
             display: block;
             height: auto;
-            max-width: 50px;
+            max-width: 300px;
             margin-left: 20px;
+    }
+    .credit-card-method input {
+        margin-right: 10px;
     }
     .payment {
         margin-top: 10px;
