@@ -367,10 +367,11 @@
 						<h3>{{ $t("page-forschung.chat.please-give-us-your-payment-details") }}</h3>
 
                         <div v-for="option in $store.state.diagnosticChat.paymentMethods" :key="option.name" class="credit-card-method">
-                            <input type="radio" :id="option.id" :value="option.name" v-model="userInputData.paymentMethods">
-                            
-                            {{option.title === 'Credit Card' ? 'Kreditkarte' : (option.title === 'SOFORT' ? 'Sofortüberweisung': 'Giropay')}} 
-                            <img class="credit-card-method__img" :src = "require('~/static/images/payments/' + option.name + '.png')" alt = "payment_method" />
+
+                            <input type="radio" :id="option.id" :value="option.name" v-model="userInputData.paymentMethods">  
+                             {{option.title === 'Credit Card' ? 'Kreditkarte' : (option.title === 'SOFORT' ? 'Sofortüberweisung': 'Giropay')}} 
+
+                            <img class="credit-card-method__img" v-bind:src = "require('~/static/images/payments/' + option.name + '.png')" alt = "payment_method" />
                         </div>
 
                         <button class = "submit-btn"
@@ -1294,7 +1295,7 @@
     .credit-card-method__img {
             display: block;
             height: auto;
-            max-width: 300px;
+            max-width: 185px;
             margin-left: 20px;
     }
     .credit-card-method input {
