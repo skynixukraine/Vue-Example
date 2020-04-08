@@ -10,7 +10,8 @@
 				<div class = "doctor-card__main--name">
 					<div class = "doctor-card__main--name_title">{{doctor.title.name || ""}}</div>
 					<NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
-						{{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` : doctor.first_name : "" }}
+						{{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` :
+						doctor.first_name : "" }}
 					</NuxtLink>
 				</div>
 				<div class = "doctor-card__main--price">
@@ -25,7 +26,7 @@
 			</div>
 			<button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
 					v-if = "isPreview"
-					@click="openModal($modals.beforeChat, startDiagnosticChat)">
+					@click = "openModal($modals.beforeChat, startDiagnosticChat)">
 				ANFRAGE STARTEN
 			</button>
 		</div>
@@ -34,8 +35,9 @@
 
 <script>
     import modal from '~/mixins/modal'
+
     export default {
-        mixins : [
+        mixins   : [
             modal,
         ],
         props    : {
@@ -80,13 +82,13 @@
 		height          : 100%;
 		
 		&__photo {
-			width         : 100%;
-			position      : relative;
-			overflow      : hidden;
-			max-width     : $size;
-			max-height    : $size;
-			border-radius : $border-radius $border-radius 0 0;
-			background-color: $color-black-squeeze;
+			width            : 100%;
+			position         : relative;
+			overflow         : hidden;
+			max-width        : $size;
+			max-height       : $size;
+			border-radius    : $border-radius $border-radius 0 0;
+			background-color : $color-black-squeeze;
 			
 			@include tablet {
 				max-width : none;
@@ -130,6 +132,7 @@
 			}
 			
 			&--name {
+				min-height      : 90px;
 				color           : $color-river-bed;
 				font-size       : 24px;
 				font-style      : normal;
