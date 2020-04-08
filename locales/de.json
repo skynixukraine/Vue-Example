@@ -76,7 +76,7 @@
 		}
 	},
 	"forms": {
-		"lanr": "Lebenslange Arztnummer (LANR)",
+		"lanr": "Lebenslange Arztnummer (jetzt oder später hinzufügen)",
 		"enter-email": "E-Mail eingeben",
 		"enter-password": "Passwort eingeben",
 		"create-password": "Passwort erstellen",
