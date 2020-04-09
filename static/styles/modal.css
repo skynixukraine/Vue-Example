@@ -50,7 +50,7 @@
     -webkit-overflow-scrolling: touch;
   }
   .v--modal-overlay .v--modal-background-click {
-    width: 100%;
+    width: 0vh;
     min-height: 100%;
     height: auto;
   }

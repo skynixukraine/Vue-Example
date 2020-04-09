@@ -296,7 +296,6 @@
                                         class = "confirmation-email-input"
 										:name = "'mailConfirmation'"
                                         :ref = "'mail-confirmation'"
-                                        @paste = "onPaste"
 										@blur = "onPersonalInfoMailConfirmBlur" />
                             <transition name = "main-animation">
                                 <span v-if = "errors.mailConfirmation" class = "error-message">{{ errors.mailConfirmation }}</span>
@@ -649,6 +648,7 @@
             this.$root.$on("submitDiagnosticChatChargeEnquire", this.onSubmitDiagnosticChatChargeEnquire);
         },
         methods    : {
+            
             
             forbidScroll(){
                 this.scrollOffsetForForbidScroll = window.pageYOffset || document.documentElement.scrollTop;
