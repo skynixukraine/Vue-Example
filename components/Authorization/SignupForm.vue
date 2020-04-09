@@ -137,7 +137,7 @@
 				<NuxtLink :to = "$routes.arztvertrag.path" class = "link link--small-blue" exact>
 					{{ $t('genegal-translations.medical-contract') }}
 				</NuxtLink>
-				{{ $t('genegal-translations.read-and-accept') }}
+				{{ $t('genegal-translations.read-and-accept1') }}
 			</div>
 			<input type = "checkbox"
 				   name = "accepted3"
