@@ -121,12 +121,12 @@
 
                         UserApi.verifyChangeEmail(formData).then(response => {
                             this.title           = "Glückwunsch!";
-                            this.message         = "Ihre E-Mail wurde erfolgreich geändert.";
+                            this.message         = "Ihre E-Mail Adresse wurde erfolgreich bestätigt. Wir werden nun die von Ihnen eingereichten Informationen prüfen und über Ihre Freischaltung entscheiden. Dies dauert in der Regel weniger als 48h. Bitte halten Sie die Augen offen nach einer E-Mail, die Sie über die nächsten Schritte informiert.";
                             this.isSuccess       = true;
                             this.isLoadingFinish = true;
                         }).catch(error => {
                             this.title           = "Etwas ist schief gelaufen";
-                            this.message         = error.message;
+                            this.message         = "Diese E-Mail wurde bereits verifiziert. Wir werden nun die von Ihnen eingereichten Informationen prüfen und über Ihre Freischaltung entscheiden. Dies dauert in der Regel weniger als 48h. Bitte halten Sie die Augen offen nach einer E-Mail, die Sie über die nächsten Schritte informiert.";
                             this.isHideContent   = false;
                             this.isLoadingFinish = true;
                         });
