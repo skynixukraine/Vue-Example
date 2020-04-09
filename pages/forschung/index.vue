@@ -199,7 +199,6 @@
 								<div class = "answer-area__upload-image"
 									 v-if = "lastQuestionData.type === QUESTION_TYPES.uploadImg">
 									<input type = "file"
-										   accept = ".jpeg, .jpg, .png"
 										   class = "answer-area__upload-image__input"
 										   ref = "lastUploadImgInput"
 										   @change = "onUploadFile">
