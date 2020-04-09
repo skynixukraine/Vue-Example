@@ -1006,6 +1006,10 @@
 		"link" : "hier",
 		"b1" : "Abbruch",
 		"b2" : "Zustimmen"
+	},
+	"reset-password-page" : {
+		"title" : "Passwort zurücksetzen",
+		"send" : "senden"
 	}
-}
+ }
 
