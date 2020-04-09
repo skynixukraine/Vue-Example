@@ -11,10 +11,6 @@
 			<h3 class = "modal__title">{{ $store.state.modals.modalTitle }}</h3>
 		</header>
 		<div class = "modal__main" v-html = "$store.state.modals.modalMessageHTML"></div>
-		<NuxtLink :to = "$routes.home.path"
-					  class = "link link--button link--button-blue link--button-gradient"
-					  exact>Zurück zur Homepage
-			</NuxtLink>
 	</modal>
 </template>
 

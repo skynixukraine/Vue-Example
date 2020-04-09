@@ -13,6 +13,7 @@ export default ({app}, inject) =>{
         sendFindings                     : "send-findings",
         openImageModal                   : "open-image-modal",
         beforeChat                       : "before-chat",
+        chatModal                        : "chat-modal",
     };
 
     app.modals            = OPTIONS;
