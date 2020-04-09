@@ -85,7 +85,7 @@
 
                     research : [{
                         text : "Studien der Projektgruppe",
-                        to   : this.$routes.forschung.path
+                        to   : "https://online-hautarzt.net/forschung/"
 					}, {
                         text : "Wissenschaftlicher Beirat",
                         to   : this.$routes.about.path
