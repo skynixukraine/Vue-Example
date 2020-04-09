@@ -33,7 +33,6 @@
 			<li>
 				<span>{{ this.$t('arztvertrag-page.list.d.title') }}</span>
 				<p>{{ this.$t('arztvertrag-page.list.d.p1') }}</p>
-				<p>{{ this.$t('arztvertrag-page.list.d.p2') }}</p>
 			</li>
 			<li>
 				<span>{{ this.$t('arztvertrag-page.list.e.title') }}</span>
@@ -52,9 +51,13 @@
 <style lang = "scss" scoped>
 	
 	.arztvertrag-content {
-	p{
-		margin-bottom: 15px;
-	}
+		h4 {
+			margin: 0 0 30px;
+			color: unset;
+		}
+		p{
+			margin-bottom: 15px;
+		}
 		&__list {
 			font-weight: bold;
 			padding: 0;
@@ -63,12 +66,15 @@
 			}
 			
 			li {
+				margin-bottom   : 15px;
 				list-style-type : none;
-				&:before {
-					content : "§";
+
+				span {
+					display: inline-block;
+					margin-bottom: 15px;
 				}
 				li {
-					list-style-type: circle;
+					list-style-type: disc;
 					&:before {
 						content : "";
 						display : none;
