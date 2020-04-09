@@ -14,5 +14,9 @@ export default {
             this.$store.commit("modals/SET_CURRENT_ACTIVE_MODAL", "");
             this.$modal.hide(name);
         },
+        redirectToHomeAndCloseModal(name) {
+            this.$store.commit("modals/SET_CURRENT_ACTIVE_MODAL", "");
+            this.$modal.hide(name);
+        }
     },
 }
