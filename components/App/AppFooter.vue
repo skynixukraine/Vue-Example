@@ -25,7 +25,7 @@
 						<h4 class = "app-footer__title">{{ $t("headers.research") }}</h4>
 						<ul class = "app-footer__list">
 							<li class = "app-footer__item">
-								<a href="https://online-hautarzt.net/forschung/" class = "app-footer__link">Studien der Projektgrupp</a>
+								<a href="https://online-hautarzt.net/forschung/" class = "app-footer__link">Studien der Projektgruppe</a>
 							</li>
 							<li class = "app-footer__item">
 								<a href="https://online-hautarzt.de/ueber-uns/" class = "app-footer__link">Wissenschaftlicher Beirat</a>
