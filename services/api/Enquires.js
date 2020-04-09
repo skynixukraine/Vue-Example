@@ -28,7 +28,7 @@ export default {
                     let message = '';
 
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                     }
 
                     const responseData = {
