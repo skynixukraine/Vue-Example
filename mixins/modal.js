@@ -1,6 +1,7 @@
 export default {
     methods : {
         openModal(name, modalMessageHTML, modalTitle){
+            console.log(name)
             this.$store.commit("modals/SET_CURRENT_ACTIVE_MODAL", name);
 
             modalTitle && this.$store.commit("modals/SET_MODAL_TITLE", modalTitle);
@@ -14,9 +15,5 @@ export default {
             this.$store.commit("modals/SET_CURRENT_ACTIVE_MODAL", "");
             this.$modal.hide(name);
         },
-        redirectToHomeAndCloseModal(name) {
-            this.$store.commit("modals/SET_CURRENT_ACTIVE_MODAL", "");
-            this.$modal.hide(name);
-        }
     },
 }
