@@ -21,7 +21,7 @@ export default {
                         errors  = error.response.data.errors;
                     }
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                     }
 
                     reject({
@@ -56,7 +56,7 @@ export default {
                         errors  = error.response.data.errors;
                     }
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                     }
 
                     reject({
@@ -86,7 +86,7 @@ export default {
                         message = "Authorization failed.";
                     }
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                     }
 
                     reject({
@@ -121,7 +121,7 @@ export default {
                         message = "Resource not found.";
                     }
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                     }
 
                     reject({
@@ -231,7 +231,7 @@ export default {
                         message = "An email is not valid.";
                     }
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                     }
 
                     reject({
@@ -257,7 +257,7 @@ export default {
                     let message = '';
 
                     if(error.response.status === 500){
-                        message = "Internal technical error was happened.";
+                        message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                     }
 
                     reject({
@@ -295,7 +295,7 @@ export default {
                     message = "Resource not found.";
                 }
                 if(error.response.status === 500){
-                    message = "Internal technical error was happened.";
+                    message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                 }
 
                 reject({
@@ -333,7 +333,7 @@ export default {
                     message = "Resource not found.";
                 }
                 if(error.response.status === 500){
-                    message = "Internal technical error was happened.";
+                    message = "Entschuldigung. Leider ist ein Fehler aufgetreten. Versuchen Sie es später erneut.";
                 }
 
                 reject({
