@@ -84,11 +84,11 @@
                     }],
 
                     research : [{
-                        text : "Abgeschlossene Studien",
-                        to   : this.$routes.studien.path
-                    }, {
-                        text : "Laufende Studien",
+                        text : "Studien der Projektgruppe",
                         to   : this.$routes.forschung.path
+					}, {
+                        text : "Wissenschaftlicher Beirat",
+                        to   : this.$routes.about.path
                     }],
 
                     formal : [{
