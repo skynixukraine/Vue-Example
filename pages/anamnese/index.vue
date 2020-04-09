@@ -1244,9 +1244,7 @@
                     data.append("type", this.userInputData.paymentMethods);
 
                     diagnosticChatApi.chargeEnquire(this.$store.state.user.userEnquireId, data).then((response) => {
-                        this.openModal(
-                            this.$modals.chatModal,
-                            `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
+                        this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
                             "Ihre Anfrage erstellt");
                     }).catch((error) => {
                         this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");

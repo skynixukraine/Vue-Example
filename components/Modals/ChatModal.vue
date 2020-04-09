@@ -10,8 +10,7 @@
 			<h3 class = "modal__title">{{ $store.state.modals.modalTitle }}</h3>
 		</header>
 		<div class = "modal__main" v-html = "$store.state.modals.modalMessageHTML"></div>
-		<NuxtLink :to = "$routes.home.path" exact class = "control-btn--submit" @click.stop = "closeModal($modals.chatModal)">
-			</NuxtLink>
+		<button class="control-btn--submit chatmodal-add-btn" @click.stop = "closeModal($modals.chatModal)"><nuxt-link to="/">Fertig</nuxt-link></button>
 	</modal>
 </template>
 
@@ -28,3 +27,14 @@
 		}
     }
 </script>
+
+<style lang = "scss" scoped>
+	.chatmodal-add-btn {
+		margin-top: 10px;
+		width: 50%;
+	}
+	.chatmodal-add-btn a {
+		color: white;
+	}
+</style>
+
