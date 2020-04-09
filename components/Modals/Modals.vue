@@ -11,6 +11,7 @@
 		<SendFindings v-if = "$store.state.modals.currentActiveModal === $modals.sendFindings" />
 		<OpenImageModal v-if = "$store.state.modals.currentActiveModal === $modals.openImageModal" />
 		<BeforeChat v-if = "$store.state.modals.currentActiveModal === $modals.beforeChat" />
+		<ChatModal v-if = "$store.state.modals.currentActiveModal === $modals.chatModal" />
 	</div>
 </template>
 
@@ -25,7 +26,8 @@
 	import ChatConfirmCodeMobile from "~/components/Modals/ChatConfirmCodeMobile";
     import SendFindings from "~/components/Modals/SendFindings";
     import OpenImageModal from "~/components/Modals/OpenImageModal";
-    import BeforeChat from "~/components/Modals/BeforeChat";
+	import BeforeChat from "~/components/Modals/BeforeChat";
+	import ChatModal from "~/components/Modals/ChatModal";
 
     export default {
         components : {
@@ -39,7 +41,8 @@
 			ChatConfirmCodeMobile,
             SendFindings,
             OpenImageModal,
-            BeforeChat
+			BeforeChat,
+			ChatModal
         }
     }
 </script>
