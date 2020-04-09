@@ -1,15 +1,15 @@
 <template>
 	<div class = "arztvertrag-content">
 		<h4>
-	<p><strong>{{ this.$t('arztvertrag-page.between.title') }}</strong></p>
+	<p><span>{{ this.$t('arztvertrag-page.between.title') }}</span></p>
 		<p>{{ this.$t('arztvertrag-page.between.p1') }} <br>
 			{{ this.$t('arztvertrag-page.between.p2') }}<br>
 			{{ this.$t('arztvertrag-page.between.p3') }}<br>
 			{{ this.$t('arztvertrag-page.between.p4') }}<br>
 		</p>
-		<p><strong>{{ this.$t('arztvertrag-page.and.title') }}</strong></p>
+		<p><span>{{ this.$t('arztvertrag-page.and.title') }}</span></p>
 		<p>{{ this.$t('arztvertrag-page.and.p1') }} </p>
-		<p><strong>{{ this.$t('arztvertrag-page.and.p2_st') }}</strong>{{ this.$t('arztvertrag-page.and.p2') }}</p>
+		<p><span>{{ this.$t('arztvertrag-page.and.p2_st') }}</span> {{ this.$t('arztvertrag-page.and.p2') }}</p>
 		</h4>
 		<ol class = "arztvertrag-content__list">
 			<li>
@@ -51,6 +51,20 @@
 <style lang = "scss" scoped>
 	
 	.arztvertrag-content {
+		span {
+			color:rgb(122, 125, 132);
+			display:inline-block;
+			font-family:TheSansB, sans-serif;
+			font-size:18px;
+			font-weight:700;
+		}
+		p {
+			color:rgb(122, 125, 132);
+			display: block;
+			font-family:TheSansB, sans-serif;
+			font-size:18px;
+			font-weight:400;
+		}
 		h4 {
 			margin: 0 0 30px;
 			color: unset;
