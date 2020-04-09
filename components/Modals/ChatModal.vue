@@ -6,12 +6,11 @@
 		   :delay = "100"
 		   :adaptive = "true"
 		   :class = "'modal'">
+		<button class = "modal__close-button" @click.stop = "closeModal($modals.chatModal)"></button>
 		<header class = "modal__header">
 			<h3 class = "modal__title">{{ $store.state.modals.modalTitle }}</h3>
 		</header>
 		<div class = "modal__main" v-html = "$store.state.modals.modalMessageHTML"></div>
-		<NuxtLink :to = "$routes.home.path" exact class = "control-btn--submit" @click.stop = "closeModal($modals.chatModal)">
-			</NuxtLink>
 	</modal>
 </template>
 
@@ -28,3 +27,7 @@
 		}
     }
 </script>
+
+
+
+
