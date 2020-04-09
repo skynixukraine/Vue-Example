@@ -24,8 +24,11 @@
 					<div class = "app-footer__column">
 						<h4 class = "app-footer__title">{{ $t("headers.research") }}</h4>
 						<ul class = "app-footer__list">
-							<li class = "app-footer__item" v-for = "(link, index) in links.research" :key = "index">
-								<NuxtLink :to = "link.to" class = "app-footer__link">{{ link.text }}</NuxtLink>
+							<li class = "app-footer__item">
+								<a href="https://online-hautarzt.net/forschung/" class = "app-footer__link">Studien der Projektgrupp</a>
+							</li>
+							<li class = "app-footer__item">
+								<a href="https://online-hautarzt.de/ueber-uns/" class = "app-footer__link">Wissenschaftlicher Beirat</a>
 							</li>
 						</ul>
 					</div>
