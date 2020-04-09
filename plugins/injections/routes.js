@@ -51,7 +51,7 @@ export default ({app}, inject) => {
             path : "/studien"
         },
         forschung           : {
-            path : "/forschung"
+            path : "/anamnese"
         },
         datenschutzGmbh         : {
             path : "/datenschutz-gmbh"
