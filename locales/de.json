@@ -4,7 +4,7 @@
 		"accept": "Ich habe den",
 		"and": "und die",
 		"general-terms" : "Allgemeinen Geschäftsbedingungen",
-		"read-and-accept" : "gelesen und akzeptiere diese.",
+		"read-and-accept" : "gelesen und akzeptiere diesen.",
 		"data-protection" : "Datenschutzerklärung",
 		"medical-contract" : "Arztvertrag",
 		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin."
@@ -953,7 +953,7 @@
 		"register_text" : "Hier können Sie sich jetzt kostenlos registrieren:"
 	},
 	"arztvertrag-page" : {
-		"title": "Arztvertrag zur Regelung der Zusammenarbeit bzgl. des Vermittlungsdienstes „Online Hautarzt vor Ort“",
+		"title": "Arztvertrag",
 		"between": {
 			"title": "Zwischen",
 			"p1": "Smart Health Heidelberg GmbH",

@@ -21,7 +21,7 @@ export default {
         ArztvertragContent
     },
     head(){
-            return {title : "Arztvertrag zur Regelung der Zusammenarbeit bzgl"}
+            return {title : "Arztvertrag"}
         },
     async fetch ({ app, store, error }) {
         // if token exist and user empty - load User object        
