@@ -10,14 +10,14 @@
 			<div class = "faq-block__content-wrap">
 				<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p1') }}</p>
 				<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p2_1') }}
-					<NuxtLink :to = "$routes.awards.path" class = "link link--small-blue">
+					<a href="https://online-hautarzt.net/auszeichnungen/" class = "link link--small-blue">
 						{{this.$t('page-faq.q1.p2_a1')}}
-					</NuxtLink>
+					</a>
 					{{ this.$t('page-faq.q1.p2_2') }}
 				</p>
-				<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p3')}}</p>
 				<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p4')}}</p>
 				<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p5')}}</p>
+				<p class = "faq-block__paragraph">{{ this.$t('page-faq.q1.p6')}}</p>
 			</div>
 		</div>
 		<div class = "faq-block faq-block--step">
