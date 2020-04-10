@@ -1,7 +1,6 @@
 <template>
     <form action class = "form form--sendEmail" method = "POST" @submit.prevent = "onSubmit">
         <div class = "form__item">
-			<div class = "form__title form__title--email"></div>
 			<input class = "input input--login"
 				   type = "email"
 				   name = "email"
@@ -12,29 +11,48 @@
 			<div class = "form__message" v-if = "errors.email">{{ errors.email }}</div>
 		</div>
         <div class = "form__item">
-			<div class = "form__title form__title--name"></div>
-			<input class = "input input--password"
+			<input class = "input input--name"
 				   type = "text"
 				   name = "name"
 				   ref = "name"
 				   v-model = "models.name"
-				   :placeholder = "'Name'">
+				   :placeholder = "'Name'"
+				   @blur = "onNameChange">
 			<div class = "form__message" v-if = "errors.name">{{ errors.name }}</div>
 		</div>
         <div class = "form__item">
-			<div class = "form__title form__title--password"></div>
-			<input class = "input input--password"
+			<textarea class = "input input--text textarea-sendEmail"
 				   type = "text"
 				   name = "describe"
 				   ref = "describe"
+				   autocomplete = "off"
 				   v-model = "models.describe"
-				   :placeholder = "'Nachricht'">
+				   :placeholder = "'Nachricht'"
+				   @blur = "onNameChange"></textarea>
 			<div class = "form__message" v-if = "errors.describe">{{ errors.describe }}</div>
+		</div>
+		<div class = "form__item form__item--checkbox">
+			<div class = "form__title form__title--accepted">
+			{{ $t('genegal-translations.kontaktformaular-accept') }}
+			</div>
+			<div class = "group-accept-form">
+			<input type = "checkbox"
+				   name = "accepted"
+				   ref = "accepted"
+				   v-model = "models.accepted"
+				   @change = "onAcceptChangeReadContract" />
+			<div class = "form__title form__title--accepted">
+				<a href="https://online-hautarzt.net/privacy" class = "link link--small-blue" exact>
+					{{ $t('genegal-translations.kontaktformular') }}
+				</a>
+			</div>
+			</div>
+			<div class = "form__message" v-if = "errors.accepted">{{ errors.accepted }}</div>
 		</div>
 		<div class = "form__item">
 			<button class = "link link--button link--button-full-width link--button-blue link--button-gradient"
 					type = "submit">
-				{{ $t("links.signin") }}
+				{{ $t("links.send-email") }}
 			</button>
 		</div>
     </form>
@@ -52,7 +70,8 @@ export default {
                 models        : {
                     email    : "",
                     name     : "",
-                    describe : "",
+					describe : "",
+					accepted : false,
                 },
                 isFormSending : false,
             }
@@ -61,6 +80,13 @@ export default {
             onEmailChange(event){
                 this.validateEmail(event);
                 this.$forceUpdate();
+			},
+			onNameChange(event){
+                this.validateName(event);
+                this.$forceUpdate();
+			},
+			onAcceptChangeReadContract(event){
+                this.validateAccept(event, this.models.accepted);
             },
             onSubmit(){
                 this.isFormSending = true;
@@ -68,26 +94,38 @@ export default {
                 if(!this.validateForm(this.models)){
                     this.isFormSending = false;
                     return false;
-                }
+				}
+				
+				let formData = new FormData();
+
+				formData.append('email', this.models.email);
+                formData.append('describe', this.models.describe);
+                formData.append('name', this.models.name);
+				formData.append('accepted', this.models.accepted);
+				
+				// API to Sending E-Mail
+
             },
             validateForm(models){
                 // check required fields
                 if(!models.email){
                     this.errors["email"] = this.$t("errors.form.required-field");
-                    this.$forceUpdate();
-                    this.$root.$emit("showNotify", {type : "error", text : "Email required"});
+					this.$forceUpdate();
                     return false;
                 }
                 if(!models.name){
                     this.errors["name"] = this.$t("errors.form.required-field");
                     this.$forceUpdate();
-                    this.$root.$emit("showNotify", {type : "error", text : "Name required"});
                     return false;
                 }
                 if(!models.describe){
                     this.errors["describe"] = this.$t("errors.form.required-field");
                     this.$forceUpdate();
-                    this.$root.$emit("showNotify", {type : "error", text : "Describe required"});
+                    return false;
+				}
+				if(!models.accepted){
+                    this.errors['accepted'] = this.$t('errors.form.required-field');
+                    this.$forceUpdate();
                     return false;
                 }
                
@@ -98,6 +136,20 @@ export default {
 </script>
 
 <style lang = "scss" scoped>
+	.group-accept-form {
+		display: flex;
+		align-items: baseline;
+		.form__title--accepted {
+			margin-left: 10px;
+		}
+	}
+	.textarea-sendEmail {
+		resize: none;
+    	overflow: hidden;
+		min-height: 5em;
+    	height: 200px;
+	}
+
 	.form {
 		&--login {
 			width          : 100%;
