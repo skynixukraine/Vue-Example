@@ -139,7 +139,7 @@
                             this.title           = "Glückwunsch!";
                             this.message         = "Ihre E-Mail Adresse wurde erfolgreich bestätigt. Wir werden nun die von Ihnen eingereichten Informationen prüfen und über Ihre Freischaltung entscheiden. Dies dauert in der Regel weniger als 48h. Bitte halten Sie die Augen offen nach einer E-Mail, die Sie über die nächsten Schritte informiert.";
                             this.isSuccess       = true;
-                            this.isLoadingFinish = true;
+                            this.isLoadingFinish = false;
 
                             // need this code for new component
                             // this.$store.dispatch("user/LOAD_USER", {
@@ -148,7 +148,7 @@
                             // })
                         }).catch(error => {
                             this.title           = "Etwas ist schief gelaufen";
-                            this.message         = error.message || "Diese E-Mail wurde bereits verifiziert. Wir werden nun die von Ihnen eingereichten Informationen prüfen und über Ihre Freischaltung entscheiden. Dies dauert in der Regel weniger als 48h. Bitte halten Sie die Augen offen nach einer E-Mail, die Sie über die nächsten Schritte informiert.";
+                            this.message         = "Diese E-Mail wurde bereits verifiziert. Wir werden nun die von Ihnen eingereichten Informationen prüfen und über Ihre Freischaltung entscheiden. Dies dauert in der Regel weniger als 48h. Bitte halten Sie die Augen offen nach einer E-Mail, die Sie über die nächsten Schritte informiert.";
                             this.isLoadingFinish = true;
                         });
                     }
