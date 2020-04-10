@@ -360,13 +360,13 @@
 						</button>
 					</div>
 				</transition>
-				<transition name = "main-animation">
+				<transition name = "main-animation ">
 					<div class = "payment-details" v-if = "isQuestionsOver && isPersonalInfoFilled">
 						<h3>{{ $t("page-forschung.chat.please-give-us-your-payment-details") }}</h3>
 
-                        <div v-for="option in $store.state.diagnosticChat.paymentMethods" :key="option.name" class="credit-card-method">
+                        <div v-for="option in $store.state.diagnosticChat.paymentMethods" :key="option.name" class="credit-card-method ">
 
-                            <input type="radio" :id="option.id" :value="option.name" v-model="userInputData.paymentMethods">  
+                            <input class = "payment-radio__input" type="radio" :id="option.id" :value="option.name" v-model="userInputData.paymentMethods">  
                              {{option.title === 'Credit Card' ? 'Kreditkarte' : (option.title === 'SOFORT' ? 'Sofortüberweisung': 'Giropay')}} 
 
                             <img class="credit-card-method__img" v-bind:src = "require('~/static/images/payments/' + option.name + '.png')" alt = "payment_method" />
@@ -664,6 +664,12 @@
             scrollToBottom(){
                 window.scrollTo({
                     top      : +(this.footer.offsetTop - document.documentElement.clientHeight),
+                    behavior : "smooth"
+                });
+            },
+             scrollToPersonalInfo(){
+                window.scrollTo({
+                    top      : +(this.footer.offsetTop - document.documentElement.clientHeight - 320),
                     behavior : "smooth"
                 });
             },
@@ -972,7 +978,7 @@
 						this.isQuestionsOver = true;
 						
 						setTimeout(() => {
-							this.scrollToBottom();
+							this.scrollToPersonalInfo();
 						}, ANIMATION_DURATION * 1.25);
 					}
 				}, ANIMATION_DURATION * 1.25);
@@ -1300,6 +1306,10 @@
     }
     .payment {
         margin-top: 10px;
+    }
+    .payment-radio__input {
+        -webkit-appearance: radio;
+         display: inline;
     }
 
 	$max_width : 400px;
