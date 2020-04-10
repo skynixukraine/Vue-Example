@@ -106,6 +106,12 @@ export default ({app}, inject) => {
         },
         kontakt             : {
             path : "/kontakt"
+        },
+        resetPassword             : {
+            path : "/reset-password"
+        },
+        NewPassword             : {
+            path : "/new-password"
         }
     };
 

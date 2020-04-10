@@ -1,5 +1,5 @@
 <template>
-    <button class="link link--button link--button-transparent">{{$t('links.forgot-password')}}</button>
+ <NuxtLink :to = "$routes.resetPassword.path" class = "link link--button link--button-transparent">{{$t('links.forgot-password')}}</NuxtLink>
 </template>
 
 <script>
