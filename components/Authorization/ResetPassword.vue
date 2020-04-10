@@ -1,9 +1,10 @@
 <template>
 	<div>
+	<div class="reset-pasword" v-if="success === false">
 	<h3>Geben Sie die E-Mail-Adresse ein und wir senden Ihnen weitere Anweisungen</h3>
 	<form action class = "form form--login" method = "POST" @submit.prevent = "onSubmit">
 		<div class = "form__item">
-			<div class = "form__title form__title--login">{{ $t("forms.enter-email") }}</div>
+			<div class = "form__title form__title--login">{{ $t("forms.enter-email") }}<span>*</span></div>
 			<input class = "input input--email"
 				   type = "email"
 				   name = "email"
@@ -20,6 +21,10 @@
 			</button>
 		</div>
 	</form>
+	</div>
+		<div class="reset-pasword reset-pasword__success" v-else>
+			<h3>An die E-Mail wurde eine E-Mail mit weiteren Anweisungen gesendet</h3>
+		</div>
 	</div>
 </template>
 
@@ -46,6 +51,7 @@
                     email    : ""
                 },
                 isFormSending : false,
+				success: false,
             };
         },
         methods : {
@@ -63,7 +69,8 @@
                 emailData.append("recaptcha", this.recaptchaToken);
 
                 userApi.resetPassword(emailData).then((response) => {
-
+                    this.success = true
+					console.log(this.$route.params)
                 }).catch((error) => {
                 });
              
@@ -94,15 +101,6 @@
                 }
                 this.$forceUpdate();
                 return true;
-            },
-            prepareDataForSending(models){
-                let formData = new FormData();
-
-                // required fields
-                formData.append("email", models.email);
-                formData.append("recaptcha", this.recaptchaToken);
-
-                return formData;
             },
 
             onEmailChange(event){
@@ -149,11 +147,18 @@
 			@include tablet-big {
 				font-size : 18px;
 			}
+			span {
+				color: $color-alert-red;
+			}
 		}
 		
 		.form__message {
 			color        : $color-alert-red;
 			padding-left : 10px;
 		}
+	}
+	
+	.reset-pasword__success {
+		padding-bottom: 40px;
 	}
 </style>

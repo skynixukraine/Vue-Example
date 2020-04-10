@@ -1009,6 +1009,7 @@
 	},
 	"reset-password-page" : {
 		"title" : "Passwort zurücksetzen",
+		"new-password" : "Neues passwort",
 		"send" : "senden"
 	}
  }

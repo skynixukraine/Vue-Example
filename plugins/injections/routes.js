@@ -109,6 +109,9 @@ export default ({app}, inject) => {
         },
         resetPassword             : {
             path : "/reset-password"
+        },
+        NewPassword             : {
+            path : "/new-password"
         }
     };
 

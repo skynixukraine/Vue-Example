@@ -8,6 +8,7 @@ export default ({app}, inject) =>{
         changeEmailVerificationLink : "change_email_verification_link",
         submitVerificationSmsCode   : "verify_sms",
         resetPassword               : "send_reset_password_link",
+        newPassword                 : "update_password",
     };
 
     Vue.prototype.$recaptchaActions = OPTIONS;
