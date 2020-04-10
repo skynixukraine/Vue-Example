@@ -1,14 +1,23 @@
 <template>
     <div class="page">
-        <div class="section">
+            <div class = "section kontakt-section"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
+            <div class = "container container__mobile-adaptation">
+                <h1 class ="title">Kontaktformular</h1>
+                <h3 class ="subtext">
+                    Senden Sie uns hier Ihre Anfrage:
+                </h3>
+            </div>
+            </div>
             <div class="container">
-                <h1>Kontakt</h1>
+                <KontaktContent />
             </div>
         </div>
-    </div>
 </template>
 
 <script>
+import KontaktContent from "~/components/Kontakt/KontaktContent"
+
 export default {
     head(){
             return {title : this.$t("page-kontakt.head.title")}
@@ -23,5 +32,8 @@ export default {
                 })
         }
     },
+    components  : {
+        KontaktContent
+    }
 }
 </script>

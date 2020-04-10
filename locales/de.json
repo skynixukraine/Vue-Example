@@ -8,8 +8,9 @@
         "read-and-accept1" : "gelesen und akzeptiere diesen.",
 		"data-protection" : "Datenschutzerklärung",
 		"medical-contract" : "Arztvertrag",
-		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin."
-		
+		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin.",
+		"kontaktformular": "Ich habe die Datenschutzerklärung zur Verarbeitung meiner Daten durch die Smart Health Heidelberg GmbH gelesen und bin damit einverstanden",
+		"kontaktformaular-accept": "Datenschutzerklärung"	
 	},
 	"links": {
 		"logo-link": "Online Hautarzt vor Ort",
@@ -44,7 +45,8 @@
 		"terms-and-conditions": "Allgemeinen Geschäftsbedingungen",
 		"privacy-policy": " Datenschutzerklärung",
 		"forgot-password": "Vergessenes passwort?",
-        "enquiries": "Anfragen"
+		"enquiries": "Anfragen",
+		"send-email": "Senden"
 	},
 	"states": {
 		"loading": "Wird geladen..."
