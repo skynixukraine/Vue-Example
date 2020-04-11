@@ -19,6 +19,27 @@ export default {
             this.clearError(name);
             return true;
         },
+        validateQuest(event, compareInput) {
+            const name  = event.target.name;
+            const value = parseInt(event.target.value);
+            let compareInputVal = parseInt(compareInput);
+
+            console.log(typeof value)
+            console.log(typeof compareInputVal)
+
+            // empty check
+            if(!value){
+                this.errors[name] = this.$t('errors.form.required-field');
+                return false
+            }
+            if(value !== compareInput) {
+                this.errors[name] = this.$t('errors.form.error-quest');
+                return false;
+            }
+
+            this.clearError(name);
+            return true;
+        },
         validateEmail(event){
             const name  = event.target.name;
             const value = event.target.value;
