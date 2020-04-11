@@ -105,7 +105,11 @@ export default {
     },
     async resetPasswordNew(emailData){
         return new Promise((resolve, reject) => {
-            HTTP.post("/doctors/reset-password", emailData)
+            HTTP.post("/doctors/reset-password",  emailData.emailData, {
+                headers : {
+                    "Authorization" : `Bearer ${emailData.token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }})
                 .then(response => {
                     resolve({
                         success : true,
