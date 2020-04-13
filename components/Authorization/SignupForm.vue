@@ -59,7 +59,7 @@
 			<input class = "input input--lanr"
 				   type = "text"
 				   name = "lanr"
-				   ref = "password_confirmation"
+				   ref = "lanrRef"
 				   v-model = "models.lanr"
 				   :placeholder = "$t('forms.lanr')" />
 		</div>
@@ -210,8 +210,8 @@
                     email            : false,
                     phone            : false,
                     terms            : false,
-                    degree           : false,
-                    certification    : false,
+                    degree           : true,
+                    certification    : true,
                     policy           : false,
                     read_contract    : false,
                     confirm          : false,
@@ -394,7 +394,6 @@
 
                 if(this.validateFileExtension(event)){
                     this.models.degree      = event.target.files[0];
-                    this.formIsValid.degree = true;
                 } else{
                     this.models.degree = '';
                 }
@@ -406,7 +405,6 @@
 
                 if(this.validateFileExtension(event)){
                     this.models.certification      = event.target.files[0];
-                    this.formIsValid.certification = true;
                 } else{
                     this.models.certification = '';
                 }
