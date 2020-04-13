@@ -448,8 +448,8 @@
 		"head": {
 			"title": "Kontoinformationen | Online Hautarzt vor Ort"
 		},
-		"p1": "Bitte füllen Sie alle Felder aus. Zeugnisse können Sie nachreichen, falls nicht digital zur Hand. Im Anschluss werden Sie freigeschaltet.",
-		"p2": "Nach der Freischaltung können Sie Ihre Bankdaten hinzufügen und beginnen, Ihre Patienten über die Plattform zu behandeln.",
+		"p1": "Bitte füllen Sie möglichst alle Felder aus, bevor Sie die Freischaltung beantragen. Zeugnisse können Sie nachreichen, falls Sie diese nicht digital zur Hand haben. Bitte geben Sie unbedingt Ihre Zahlungsdaten im Bereich “Abrechnung” an (externer Zahlungsanbieter “stripe”), da sonst die Bezahlung seitens der Patienten an Sie nicht funktioniert und wir Sie nicht freischalten können. Bei Fragen schicken Sie uns gern eine E-Mail:",
+		"p2": "hilfe@online-hautarzt.de",
 		"buttons": {
 			"btnDel": "MEIN KONTO LÖSCHEN",
 			"btnApply": "Freischaltung beantragen",
@@ -464,20 +464,22 @@
 		"title": "Titel",
 		"firstName": "Vorname",
 		"lastName": "Nachname",
+		"imgTitle": "Portraitbild hinzufügen",
+		"imgText": "Dieses Foto erscheint auf der Webseite unter Ihrem Profil. Bitte tragen Sie möglichst ein weißes Oberteil oder Kittel.",
 		"numberMobile": "Handynummer",
 		"specialist": "Facharztbezeichnung",
 		"email": "E-Mail Adresse",
 		"password": "Passwort",
-		"regionAndStreet": "Straße/Hausnummer",
+		"regionAndStreet": "Adresse",
 		"region": "Hausnummer",
-		"lang": "Languages",
+		"lang": "Sprachen",
 		"medCert": "Facharztzeugnis hochladen",
 		"approvalCert": "Approbationsurkunde hochladen",
 		"bio": {
-			"title": "Deine Beschreibung",
+			"title": "Ihre Kurzvorstellung",
 			"bioShort": {
-				"title": "Drei Sätze über Ihre Erfahrung",
-				"previewText": "zur vorschau"
+				"title": "170 Zeichen zu Ihnen",
+				"previewText": "Diese werden den Patienten gezeigt"
 			},
 			"bioFull": "Ihre Erfahrung:"
 		}
