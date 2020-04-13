@@ -10,7 +10,7 @@
       
       <div class = "enquiries-id__links">
         <button v-if="getValue() === null"  class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.sendFindings)">{{ $t('page-enquiries.submit-diagnosis') }}</button>
-        <button v-else  class = "link link--button link--button-blue link--button-gradient" >{{ $t('page-enquiries.finished') }}</button>
+        <!-- <button v-else  class = "link link--button link--button-blue link--button-gradient" >{{ $t('page-enquiries.finished') }}</button> -->
       </div>
       
     </div>
