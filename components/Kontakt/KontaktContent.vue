@@ -1,5 +1,6 @@
 <template>
     <form action class = "form form--sendEmail" method = "POST" @submit.prevent = "onSubmit">
+		<div class = "form__item-group">
         <div class = "form__item">
 			<input class = "input input--login"
 				   type = "email"
@@ -20,6 +21,7 @@
 				   @blur = "onNameChange">
 			<div class = "form__message" v-if = "errors.name">{{ errors.name }}</div>
 		</div>
+		</div>
         <div class = "form__item">
 			<textarea class = "input input--text textarea-sendEmail"
 				   type = "text"
@@ -33,7 +35,6 @@
 		</div>
 		<div class = "form__item form__item--checkbox">
 			<div class = "form__title form__title--accepted">
-			{{ $t('genegal-translations.kontaktformaular-accept') }}
 			</div>
 			<div class = "group-accept-form">
 			<input type = "checkbox"
@@ -42,14 +43,26 @@
 				   v-model = "models.accepted"
 				   @change = "onAcceptChangeReadContract" />
 			<div class = "form__title form__title--accepted">
-				<a href="https://online-hautarzt.net/privacy" class = "link link--small-blue" exact>
-					{{ $t('genegal-translations.kontaktformular') }}
-				</a>
+				{{ $t('genegal-translations.i-accept') }}
+				<NuxtLink :to = "$routes.datenschutzGmbh.path" class = "link link--small-blue" exact>
+					{{ $t('genegal-translations.data-protection') }}
+				</NuxtLink>
+				{{ $t('genegal-translations.read-and-accept') }}
 			</div>
 			</div>
 			<div class = "form__message" v-if = "errors.accepted">{{ errors.accepted }}</div>
 		</div>
-		<div class = "form__item">
+		<div class = "form__item form__item-kontakt-btn">
+			<div class = "quest-for-submit">
+				<span>{{this.questNumber}}</span>
+				<input 
+				type = "number" 
+				name = "question"
+				v-model = "models.questionAnswer"
+  				@change="updateAnswer" 
+				class = "quest__input"/>
+				<div class = "form__message" v-if = "errors.question">{{ errors.question }}</div>
+			</div>
 			<button class = "link link--button link--button-full-width link--button-blue link--button-gradient"
 					type = "submit">
 				{{ $t("links.send-email") }}
@@ -60,6 +73,7 @@
 
 <script>
 import validator from "~/mixins/validator";
+import UserApi from "~/services/api/User";
 
 export default {
         mixins : [
@@ -72,11 +86,24 @@ export default {
                     name     : "",
 					describe : "",
 					accepted : false,
-                },
-                isFormSending : false,
+					questionAnswer : null,
+				},
+				quest		   : null,
+                isFormSending  : false,
             }
-        },
+		},
+		computed: {
+			questNumber() {
+				// static quest
+				this.quest = 12;
+				return '3 + 9 =';
+			}
+		},
         methods: {
+			updateAnswer(event) {
+				this.validateQuest(event, this.quest);
+				this.$forceUpdate();
+			},
             onEmailChange(event){
                 this.validateEmail(event);
                 this.$forceUpdate();
@@ -101,9 +128,14 @@ export default {
 				formData.append('email', this.models.email);
                 formData.append('describe', this.models.describe);
                 formData.append('name', this.models.name);
-				formData.append('accepted', this.models.accepted);
 				
 				// API to Sending E-Mail
+
+				UserApi.createSupportRequest(formData).then(response => {
+						   this.$root.$emit("showNotify", {type : "error", text : response.message});
+                        }).catch(error => {
+                           this.$root.$emit("showNotify", {type : "error", text : error});
+                        });
 
             },
             validateForm(models){
@@ -127,6 +159,11 @@ export default {
                     this.errors['accepted'] = this.$t('errors.form.required-field');
                     this.$forceUpdate();
                     return false;
+				}
+				if(!models.questionAnswer){
+                    this.errors['question'] = this.$t('errors.form.required-field');
+                    this.$forceUpdate();
+                    return false;
                 }
                
                 return true;
@@ -136,6 +173,30 @@ export default {
 </script>
 
 <style lang = "scss" scoped>
+	.quest__input {
+		height: 100%;
+    	width: 60px;
+    	margin-right: 20px;
+		-moz-appearance: textfield;
+	}
+	.quest__input::-webkit-outer-spin-button,
+	.quest__input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+  		margin: 0;
+	}
+	.form__item-kontakt-btn {
+		display: flex;
+		justify-content: flex-end;
+		button {
+			width: auto;
+		}
+	}
+	.form__item-group {
+		display: flex;
+	}
+    .form__item-group .input--login {
+		width: 90%;
+	}
 	.group-accept-form {
 		display: flex;
 		align-items: baseline;

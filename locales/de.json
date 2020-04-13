@@ -8,9 +8,7 @@
         "read-and-accept1" : "gelesen und akzeptiere diesen.",
 		"data-protection" : "Datenschutzerklärung",
 		"medical-contract" : "Arztvertrag",
-		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin.",
-		"kontaktformular": "Ich habe die Datenschutzerklärung zur Verarbeitung meiner Daten durch die Smart Health Heidelberg GmbH gelesen und bin damit einverstanden",
-		"kontaktformaular-accept": "Datenschutzerklärung"	
+		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin."
 	},
 	"links": {
 		"logo-link": "Online Hautarzt vor Ort",
@@ -75,7 +73,8 @@
 			"file-type": "Ungültiger Typ. Zulässige Typen sind PDF/JPG/PNG.",
 			"file-size": "Die Dateigröße sollte kleiner sein als 10Mb.",
 			"unvalid-email-length": "Die E-Mail-Länge sollte weniger als 75 Symbole betragen",
-			"password-has-problem": "Das Passwort muss mindestens 6 und nicht mehr als 100 Zeichen enthalten. Das Passwort darf keine Leerzeichen enthalten. Das Passwort muss mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten !@#$%^&*. "
+			"password-has-problem": "Das Passwort muss mindestens 6 und nicht mehr als 100 Zeichen enthalten. Das Passwort darf keine Leerzeichen enthalten. Das Passwort muss mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten !@#$%^&*. ",
+			"error-quest": "Nicht gleich"
 		}
 	},
 	"forms": {

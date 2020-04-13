@@ -209,36 +209,21 @@ export default {
             });
         });
     },
-    async verifyUserEmail(verifyData){
+    async createSupportRequest(data){
         return new Promise((resolve, reject) => {
-            HTTP.get("/doctors/verify-email", {params : verifyData})
+            HTTP.post("/api/v1/contact", {params : data})
                 .then(response => {
                     resolve({
                         success : true,
                         status  : response.status,
-                        message : "Email is verify",
+                        message : "Support request is created",
                     });
                 })
                 .catch(error => {
-                    let message = "";
-
-                    if(error.response.status === 304){
-                        message = "An e-mail already verified.";
-                    }
-                    if(error.response.status === 401){
-                        message = "Invalid signature: unauthenticated.";
-                    }
-                    if(error.response.status === 404){
-                        message = "Resource not found."
-                    }
-                    if(error.response.status === 500){
-                        message = "Etwas ist schief gelaufen, please try again later.";
-                    }
-
                     reject({
                         success : false,
                         status  : error.response.status,
-                        message,
+                        message : "Support request is failed..."
                     });
                 });
         });
