@@ -63,7 +63,7 @@
 				class = "quest__input"/>
 				<div class = "form__message" v-if = "errors.question">{{ errors.question }}</div>
 			</div>
-			<button class = "link link--button link--button-full-width link--button-blue link--button-gradient"
+			<button class = "link link--button link--button-full-width link--button-blue link--button-gradient btn-kontakt"
 					type = "submit">
 				{{ $t("links.send-email") }}
 			</button>
@@ -93,10 +93,11 @@ export default {
             }
 		},
 		computed: {
-			questNumber() {
-				// static quest
-				this.quest = 12;
-				return '3 + 9 =';
+			questNumber() {				
+				let leftNum = Math.round(Math.random() * 10);
+				let rightNum = Math.round(Math.random() * 10);
+				this.quest = leftNum + rightNum;
+				return `${leftNum} + ${rightNum} =`;
 			}
 		},
         methods: {
@@ -189,6 +190,7 @@ export default {
 		justify-content: flex-end;
 		button {
 			width: auto;
+			
 		}
 	}
 	.form__item-group {
@@ -234,15 +236,25 @@ export default {
 			@include phone-big {
 				font-size : 16px;
 			}
-			
 			@include tablet-big {
 				font-size : 18px;
 			}
+			
 		}
+		
 		
 		.form__message {
 			color        : $color-alert-red;
 			padding-left : 10px;
 		}
 	}
+	@media (max-width : #{768px}) {	
+				.form__item-kontakt-btn button {
+					min-width: 140px;
+					padding: 20px 45px 15px 40px;
+				}
+				.quest-for-submit {
+					width: 170px;
+				}
+			}
 </style>

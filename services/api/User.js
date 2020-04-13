@@ -211,7 +211,7 @@ export default {
     },
     async createSupportRequest(data){
         return new Promise((resolve, reject) => {
-            HTTP.post("/api/v1/contact", {params : data})
+            HTTP.post("/contact", {params : data})
                 .then(response => {
                     resolve({
                         success : true,
