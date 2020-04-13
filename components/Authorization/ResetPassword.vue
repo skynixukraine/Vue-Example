@@ -70,8 +70,9 @@
 
                 userApi.resetPassword(emailData).then((response) => {
                     this.success = true
-					console.log(this.$route.params)
+					this.$router.push({path : this.$routes.home.path});
                 }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Error");
                 });
              
             },

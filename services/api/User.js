@@ -103,6 +103,45 @@ export default {
                 });
         });
     },
+    async resetPasswordNew(emailData){
+        return new Promise((resolve, reject) => {
+            HTTP.post("/doctors/reset-password",  emailData.emailData, {
+                headers : {
+                    "Authorization" : `Bearer ${emailData.token}`,
+                    "Content-Type"  : "application/x-www-form-urlencoded"
+                }})
+                .then(response => {
+                    resolve({
+                        success : true,
+                        status  : response.status,
+                        data    : response.data.data,
+                        message : "User success login.",
+                    });
+                })
+                .catch(error => {
+                    let message = "";
+                    let errors  = {};
+
+                    if(error.response.status === 401){
+                        message = "An authorization attempt has been failed.";
+                    }
+                    if(error.response.status === 422){
+                        message = "There are some validation errors.";
+                        errors  = error.response.data.errors;
+                    }
+                    if(error.response.status === 500){
+                        message = "Internal technical error was happened.";
+                    }
+
+                    reject({
+                        success : false,
+                        status  : error.response.status,
+                        message,
+                        errors,
+                    });
+                });
+        });
+    },
     async logoutUser(token){
         return new Promise((resolve, reject) => {
             HTTP.patch("/doctors/logout", {}, {headers : {"Authorization" : `Bearer ${token}`}})

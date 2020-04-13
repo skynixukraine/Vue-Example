@@ -66,7 +66,7 @@
             if(process.client){
                 this.$recaptchaLoaded()
                     .then(() => {
-                        this.loadAndSetRecaptchaToken(this.$recaptchaActions.resetPassword)
+                        this.loadAndSetRecaptchaToken(this.$recaptchaActions.newPassword)
                     })
             }
         },
@@ -109,8 +109,23 @@
                     return false;
                 }
 
-                let email = this.$refs.email.value;
                 let emailData = new FormData();
+
+                formData.append("email", this.models.email);
+                formData.append("password", this.models.password);
+                formData.append("password_confirmation", this.models.password_confirmation);
+                formData.append("token", this.$cookies.get(this.$cookie.names.token));
+                formData.append("recaptcha", this.recaptchaToken);
+
+
+                formData.append("_method", "PATCH");
+
+                userApi.resetPasswordNew(emailData).then((response) => {
+                    this.success = true;
+                    this.$router.push({path : this.$routes.home.path});
+                }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Error");
+                });
 
             },
             validateForm(models){
