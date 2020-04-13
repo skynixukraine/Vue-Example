@@ -224,6 +224,7 @@
 					</div>
 				</div>
 				<div class = "personal-info__column personal-info__column-image">
+					<h3 class="personal-info__img-title">{{ $t("page-personal-information.imgTitle") }}</h3>
 					<div class = "personal-info__item personal-info__avatar"
 						 @click = "$refs.avatarInputFile.click();">
 						<img class = "personal-info__avatar-image"
@@ -243,6 +244,7 @@
 							   accept = ".jpg, .jpeg, .png"
 							   @change = "onAvatarUpload" />
 					</div>
+					<p class="personal-info__img-text">{{ $t("page-personal-information.imgText") }}</p>
 				</div>
 			</div>
 			<div class = "personal-info__items personal-info__items--max-width">
@@ -252,21 +254,11 @@
 						<small>({{ $t("page-personal-information.bio.bioShort.previewText") }})</small>
 					</header>
 					<div class = "personal-info__main">
-						<AutoHeight :placeholder_text = "'BIO Short'"
+						<AutoHeight :placeholder_text = "'Dr. Max Mustermann ist niedergelassener Facharzt für Haut- & Geschlechtskrankheiten mit über X Jahren Praxiserfahrung aus Musterstadt.'"
 									:maxLength = '170'
 									:minHeight = "'5em'"
 									:value = "userInputData.short_description || $store.state.user.user && $store.state.user.user.short_description || ''"
 									@change = "(newValue) => {userInputData.short_description = newValue}" />
-					</div>
-				</div>
-				<div class = "personal-info__item">
-					<header class = "personal-info__header">{{ $t("page-personal-information.bio.bioFull") }}</header>
-					<div class = "personal-info__main">
-						<AutoHeight :placeholder_text = "'BIO'"
-									:maxLength = '3000'
-									:minHeight = "'5em'"
-									:value = "userInputData.description || $store.state.user.user && $store.state.user.user.description || ''"
-									@change = "(newValue) => {userInputData.description = newValue}" />
 					</div>
 				</div>
 			</div>
@@ -292,8 +284,7 @@
 			</div>
 		</div>
 		<div class = "personal-text">
-			<p>{{this.$t('page-personal-information.p1')}}</p>
-			<p>{{this.$t('page-personal-information.p2')}}</p>
+			<p>{{this.$t('page-personal-information.p1')}} <a href="mailto:hilfe@online-hautarzt.de"> {{this.$t('page-personal-information.p2')}}</a></p>
 		</div>
 		<div class = "personal-link">
 
@@ -1023,6 +1014,24 @@
 				white-space   : nowrap;
 				text-overflow : ellipsis;
 			}
+		}
+		
+		&__img-title, &__img-text{
+			width: 256px;
+			margin-left   : auto;
+			margin-right  : auto;
+			text-align: center;
+			@include phone-big {
+				margin-left  : 0;
+				margin-right : 0;
+			}
+			
+		}
+		
+		&__img-text {
+			font-size: 14px;
+			line-height: 1.3;
+			color: $color-curious-blue;
 		}
 	}
 	
