@@ -669,7 +669,7 @@
             },
              scrollToPersonalInfo(){
                 window.scrollTo({
-                    top      : +(this.footer.offsetTop - document.documentElement.clientHeight - 320),
+                    top      : +(this.footer.offsetTop - document.documentElement.clientHeight - 650),
                     behavior : "smooth"
                 });
             },
