@@ -369,7 +369,7 @@
                             <input class = "payment-radio__input" type="radio" :id="option.id" :value="option.name" v-model="userInputData.paymentMethods">  
                              {{option.title === 'Credit Card' ? 'Kreditkarte' : (option.title === 'SOFORT' ? 'Sofortüberweisung': 'Giropay')}} 
 
-                            <img class="credit-card-method__img" v-bind:src = "require('~/static/images/payments/' + option.name + '.png')" alt = "payment_method" />
+                            <img class="credit-card-method__img" :class="option.name" v-bind:src = "require('~/static/images/payments/' + option.name + '.png')" alt = "payment_method" />
                         </div>
 
                         <button class = "submit-btn"
@@ -1300,6 +1300,21 @@
             height: auto;
             max-width: 185px;
             margin-left: 20px;
+            @media (max-width: 425px) {
+                max-width: 155px;
+            }
+            @media (max-width: 360px) {
+                max-width: 105px;
+            }
+    }
+    .credit_card {
+            max-width: 260px;
+            @media (max-width: 425px) {
+                max-width: 200px;
+            }
+            @media (max-width: 360px) {
+                max-width: 160px;
+            }
     }
     .credit-card-method input {
         margin-right: 10px;
