@@ -7,8 +7,9 @@ export default function({store, app, route}){
         !!(~route.fullPath.indexOf(app.routes.dashboard.path) ||
             ~route.fullPath.indexOf(app.routes.personalInformation.path) ||
             ~route.fullPath.indexOf(app.routes.billing.path) ||
-            ~route.fullPath.indexOf(app.routes.enquiries.path))
-    );
+            ~route.fullPath.indexOf(app.routes.enquiries.path) ||
+            ~route.fullPath.indexOf(app.routes.patient.path) ||
+            ~route.fullPath.indexOf(app.routes.vorlagen.path)))
 
     store.app.store.state.app.isNavigationActive && store.commit("app/SET_IS_NAVIGATION_ACTIVE", false);
 }
