@@ -67,7 +67,7 @@
         },
         computed   : {
 			newEnquire() {
-				if (this.$store.state.doctors.doctorEnquires.data) {
+				if (this.$store.state.doctors.doctorEnquires) {
 					let statusArr = this.$store.state.doctors.doctorEnquires.data.filter(elem => elem.status === 'Neu')
 					if (statusArr.length > 0) return true;
 				} else return false;
