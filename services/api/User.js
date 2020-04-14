@@ -103,11 +103,11 @@ export default {
                 });
         });
     },
-    async resetPasswordNew(emailData){
+    async resetPasswordNew({requestData, token}){
         return new Promise((resolve, reject) => {
-            HTTP.post("/doctors/reset-password",  emailData.emailData, {
+            HTTP.post("/doctors/reset-password",  requestData, {
                 headers : {
-                    "Authorization" : `Bearer ${emailData.token}`,
+                    "Authorization" : `Bearer ${token}`,
                     "Content-Type"  : "application/x-www-form-urlencoded"
                 }})
                 .then(response => {

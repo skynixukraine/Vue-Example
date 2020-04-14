@@ -57,6 +57,7 @@
     import validator from "~/mixins/validator";
     import recaptcha from "~/mixins/recaptcha";
     import userApi from "~/services/api/User";
+
     export default {
         mixins : [
             validator,
@@ -78,9 +79,9 @@
                     password_confirmation : '',
                 },
                 formIsValid       : {
-                    password         : false,
-                    confirm_password : false,
-                    email            : false,
+                    password              : false,
+                    password_confirmation : false,
+                    email                 : false,
                 },
                 isFormSending : false,
                 success: false,
@@ -90,18 +91,6 @@
             onSubmit(){
                 this.isFormSending = true;
 
-                if(!this.models.password){
-                    this.errors['password'] = this.$t('errors.form.required-field');
-                    this.$root.$emit('showNotify', {type : 'error', text : this.$t('errors.form.password-is-empty')});
-                }
-                if(!this.models.password_confirmation){
-                    this.errors['password_confirmation'] = this.$t('errors.form.required-field');
-                    this.$root.$emit('showNotify', {
-                        type : 'error',
-                        text : this.$t('errors.form.сonfirmation-password-is-empty')
-                    });
-                }
-
                 if(Object.values(this.formIsValid).indexOf(false) > -1){
                     this.validateForm(this.models);
                     this.isFormSending = false;
@@ -109,7 +98,7 @@
                     return false;
                 }
 
-                let emailData = new FormData();
+                let formData = new FormData();
 
                 formData.append("email", this.models.email);
                 formData.append("password", this.models.password);
@@ -120,11 +109,14 @@
 
                 formData.append("_method", "PATCH");
 
-                userApi.resetPasswordNew(emailData).then((response) => {
+                userApi.resetPasswordNew({
+                    token       : this.$cookies.get(this.$cookie.names.token),
+                    requestData : formData})
+                    .then((response) => {
                     this.success = true;
                     this.$router.push({path : this.$routes.home.path});
                 }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Error");
+                    this.$root.$emit("showNotify", {type : "error", text : error});
                 });
 
             },
@@ -168,7 +160,7 @@
             },
 
             onEmailChange(event){
-                this.validateEmail(event);
+                this.formIsValid.email = this.validateEmail(event);
                 this.$forceUpdate();
             },
             onPasswordChange(event){
@@ -176,7 +168,7 @@
                 this.$forceUpdate();
             },
             onConfirmPasswordChange(event){
-                this.formIsValid.confirm_password = this.validateConfirmPassword(event, this.$refs.password);
+                this.formIsValid.password_confirmation = this.validateConfirmPassword(event, this.$refs.password);
                 this.$forceUpdate();
             },
         }
