@@ -21,14 +21,16 @@
 					</div>
 					<div class = "personal-info__item">
 						<header class = "personal-info__header">{{ $t("page-personal-information.firstName") }}</header>
-						<div class = "personal-info__main">
-							<InputText v-model = "userInputData.first_name" />
+						<div  class = "personal-info__main">
+							<InputText @input="onChangeRequere" v-model = "userInputData.first_name" />
+							<div ref = "first_name_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 						</div>
 					</div>
 					<div class = "personal-info__item">
 						<header class = "personal-info__header">{{ $t("page-personal-information.lastName") }}</header>
 						<div class = "personal-info__main">
-							<InputText v-model = "userInputData.last_name" />
+							<InputText @input="onChangeRequere" v-model = "userInputData.last_name" />
+							<div ref = "last_name_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 						</div>
 					</div>
 					<div class = "personal-info__item">
@@ -42,6 +44,7 @@
 										   @input = "onPhoneChange" />
 						</div>
 						<footer class = "personal-info__footer" v-if = "errors.phone">{{ errors.phone }}</footer>
+						<div ref = "phone_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 					</div>
 					<div class = "personal-info__item">
 						<header class = "personal-info__header">{{ $t("page-personal-information.specialist") }}</header>
@@ -187,8 +190,9 @@
 						<div class = "single-form">
 							<header class = "personal-info__header">{{ $t("page-personal-information.regionAndStreet") }}</header>
 							<div class = "personal-info__main personal-info__google-autocomplete">
-								<AddressAutocomplete :value = "userInputData.location.fullAddress"
-													 @place_change = "onAddressChange" />
+								<AddressAutocomplete ref = "loc_error1" :value = "userInputData.location.fullAddress"
+													 @place_change = "onAddressChange" @input="onChangeRequereLoc"/>
+								<div ref = "loc_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 							</div>
 						</div>
 					</div>
@@ -543,14 +547,38 @@
                 });
             },
             onApproveRequest(){
-                UserApi.requestActivation({
-                    id    : this.$store.state.user.user.id,
-                    token : this.$cookies.get(this.$cookie.names.token)
-                }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, response.message, "Aktualisierung erfolgreich.");
-                }).catch((error) => {
-                    this.openModal(this.$modals.defaultModal, error.message, "Bitte füllen Sie alle Felder aus und richten Sie die Zahlung ein, bevor Sie weitermachen.");
-                });
+				if(this.userInputData.first_name === ""
+					|| this.userInputData.last_name === ""
+					|| this.userInputData.phone.value === "") {
+				    if(this.userInputData.first_name === "") {
+                        this.$refs.first_name_error.style.display = "block";
+					} else {
+                        this.$refs.first_name_error.style.display = "none";
+					}
+                    if(this.userInputData.last_name === "") {
+                        this.$refs.last_name_error.style.display = "block";
+                    } else {
+                        this.$refs.last_name_error.style.display = "none";
+					}
+                    if(this.userInputData.phone.value === "") {
+                        this.$refs.phone_error.style.display = "block";
+                    } else {
+                        this.$refs.phone_error.style.display = "none";
+					}
+					
+                } else {
+                    this.$refs.first_name_error.style.display = "none";
+                    this.$refs.last_name_error.style.display = "none";
+                    this.$refs.phone_error.style.display = "none";
+                    UserApi.requestActivation({
+                        id    : this.$store.state.user.user.id,
+                        token : this.$cookies.get(this.$cookie.names.token)
+                    }).then((response) => {
+                        this.openModal(this.$modals.defaultModal, response.message, "Aktualisierung erfolgreich.");
+                    }).catch((error) => {
+                        this.openModal(this.$modals.defaultModal, error.message, "Bitte füllen Sie alle Felder aus und richten Sie die Zahlung ein, bevor Sie weitermachen.");
+                    });
+				}
             },
             onAddressChange(placeData){
                 let newFullAddress = "";
@@ -661,7 +689,11 @@
             },
             onPhoneChange(formattedNumber, telInputData){
                 this.userInputData.phone.eventData = telInputData;
-
+                if(this.userInputData.phone.value === "") {
+                    this.$refs.phone_error.style.display = "block";
+                } else {
+                    this.$refs.phone_error.style.display = "none";
+                }
                 if(this.errors.phone){
                     delete this.errors.phone;
                     this.$forceUpdate();
@@ -749,6 +781,31 @@
             },
             onChangePassword(){
                 this.openModal(this.$modals.personalInfoChangePassword);
+            },
+            onChangeRequere(){
+                if(this.userInputData.first_name === "") {
+                    this.$refs.first_name_error.style.display = "block";
+                } else {
+                    this.$refs.first_name_error.style.display = "none";
+                }
+                if(this.userInputData.last_name === "") {
+                    this.$refs.last_name_error.style.display = "block";
+                } else {
+                    this.$refs.last_name_error.style.display = "none";
+                }
+                if(this.userInputData.phone.value === "") {
+                    this.$refs.phone_error.style.display = "block";
+                } else {
+                    this.$refs.phone_error.style.display = "none";
+                }
+            },
+            onChangeRequereLoc(event){
+                console.log(this.$refs)
+            if(event.target.value === "") {
+                this.$refs.loc_error.style.display = "block";
+			} else {
+                this.$refs.loc_error.style.display = "none";
+			}
             }
         }
     };
@@ -1058,6 +1115,10 @@
 		color        : $color-alert-red;
 		text-align   : left;
 		padding-left : 10px;
+		
+		&.form__message--error-info {
+			display: none;
+		}
 	}
 	
 	.select {
