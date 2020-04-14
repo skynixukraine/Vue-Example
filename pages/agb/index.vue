@@ -38,6 +38,7 @@ export default {
 <style lang = "scss" scoped>
     .container__mobile-adaptation.agb-page {
         .title {
+            font-family: $TheAntiquaB;
             font-size: 30px;
             @include tablet {
                 font-size: 48px;

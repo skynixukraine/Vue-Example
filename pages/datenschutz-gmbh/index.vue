@@ -240,12 +240,10 @@ export default {
     
     .gmbh-section {
         .gmbh-title {
-            font-size : 28px;
+            font-family: $TheAntiquaB;
+            font-size: 30px;
             @include tablet {
-                font-size : 36px;
-            }
-            @include tablet-big {
-                font-size : 62px;
+                font-size: 48px;
             }
         }
     }

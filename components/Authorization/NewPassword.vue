@@ -99,7 +99,7 @@
                 }
 
                 let formData = new FormData();
-
+console.log(this.$route.query)
                 formData.append("email", this.models.email);
                 formData.append("password", this.models.password);
                 formData.append("password_confirmation", this.models.password_confirmation);

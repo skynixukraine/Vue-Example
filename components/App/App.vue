@@ -1082,6 +1082,13 @@
 		.title, .subtext {
 			color : white;
 		}
+		.title {
+			font-family: $TheAntiquaB;
+			font-size: 30px;
+			@include tablet {
+				font-size: 48px;
+			}
+		}
 		.subtext, .gmbh-h3, .ueber-uns-h3 {
 			font-family: $TheSansB;
 			font-weight: 400;
