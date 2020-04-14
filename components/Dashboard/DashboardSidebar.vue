@@ -18,7 +18,7 @@
 						<NuxtLink class = "dashboard-sidebar__link" :to = "$routes.enquiries.path">
 							{{ $t("sidebar.request") }}
 						</NuxtLink>
-						<span v-if="statusNew" class = "dashboard-sidebar__sticker">Neu</span>
+						<span v-if="newEnquire" class = "dashboard-sidebar__sticker">Neu</span>
 					</li>
 				</ul>
 			</div>
@@ -54,7 +54,7 @@
         },
         mounted(){
             this.onResize();
-            window.addEventListener("resize", this.onResize);
+			window.addEventListener("resize", this.onResize);
         },
         beforeDestroy(){
             window.removeEventListener("resize", this.onResize);
@@ -63,12 +63,14 @@
             return {
                 isStickSidebarMain   : false,
 				isStickSidebarFooter : false,
-				statusNew			 : false,
             }
         },
         computed   : {
 			newEnquire() {
-				return this.statusNew = this.$store.state.enquires.doctorEnquire.status;	
+				if (this.$store.state.doctors.doctorEnquires.data) {
+					let statusArr = this.$store.state.doctors.doctorEnquires.data.filter(elem => elem.status === 'Neu')
+					if (statusArr.length > 0) return true;
+				} else return false;
 			},
             appHeader(){
                 return document.querySelector(".app-header");
