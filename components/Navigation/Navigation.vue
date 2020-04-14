@@ -54,7 +54,15 @@
                     {
                         to   : this.$routes.contact.path,
                         text : "Hilfe"
-                    }
+					},
+					{
+                        to   : this.$routes.patient.path,
+                        text : "Mehr Patienten"
+					},
+					{
+                        to   : this.$routes.vorlagen.path,
+                        text : "Vorlagen"
+					},
                 ],
                 MAIN_LINKS            : [
                     {
