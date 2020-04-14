@@ -518,6 +518,40 @@ export default {
             });
         });
     },
+    async verifyUserEmail(verifyData){
+            return new Promise((resolve, reject) => {
+                HTTP.get("/doctors/verify-email", {params : verifyData})
+                    .then(response => {
+                        resolve({
+                            success : true,
+                            status  : response.status,
+                            message : "Email is verify",
+                        });
+                    })
+                    .catch(error => {
+                        let message = "";
+    
+                        if(error.response.status === 304){
+                            message = "An e-mail already verified.";
+                        }
+                        if(error.response.status === 401){
+                            message = "Invalid signature: unauthenticated.";
+                        }
+                        if(error.response.status === 404){
+                            message = "Resource not found."
+                        }
+                        if(error.response.status === 500){
+                            message = "Etwas ist schief gelaufen, please try again later.";
+                        }
+    
+                        reject({
+                            success : false,
+                            status  : error.response.status,
+                            message,
+                        });
+                    });
+            });
+        },
     async verifyChangeEmail(requestData){
         return new Promise((resolve, reject) => {
             HTTP.post(`/doctors/change-email`, requestData)
