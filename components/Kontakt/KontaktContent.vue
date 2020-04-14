@@ -30,7 +30,7 @@
 				   autocomplete = "off"
 				   v-model = "models.describe"
 				   :placeholder = "'Nachricht'"
-				   @blur = "onNameChange"></textarea>
+				   @blur = "onBodyChange"></textarea>
 			<div class = "form__message" v-if = "errors.describe">{{ errors.describe }}</div>
 		</div>
 		<div class = "form__item form__item--checkbox">
@@ -74,10 +74,12 @@
 <script>
 import validator from "~/mixins/validator";
 import UserApi from "~/services/api/User";
+import modal from '~/mixins/modal';
 
 export default {
         mixins : [
-            validator
+			validator,
+			modal
         ],
         data(){
             return {
@@ -85,8 +87,15 @@ export default {
                     email    : "",
                     name     : "",
 					describe : "",
-					accepted : false,
-					questionAnswer : null,
+					accepted   		: false,
+					questionAnswer	: false,
+				},
+				formIsValid	   : {
+					email	   		: false,
+					name       		: false,
+					describe   		: false,
+					accepted   		: false,
+					questionAnswer	: false,
 				},
 				quest		   : null,
                 isFormSending  : false,
@@ -102,40 +111,49 @@ export default {
 		},
         methods: {
 			updateAnswer(event) {
-				this.validateQuest(event, this.quest);
+				this.formIsValid.questionAnswer = this.validateQuest(event, this.quest);
 				this.$forceUpdate();
 			},
             onEmailChange(event){
-                this.validateEmail(event);
+                this.formIsValid.email = this.validateEmail(event);
                 this.$forceUpdate();
 			},
 			onNameChange(event){
-                this.validateName(event);
+                this.formIsValid.name = this.validateName(event);
+                this.$forceUpdate();
+			},
+			onBodyChange(event){
+				this.formIsValid.describe = this.validateName(event);
                 this.$forceUpdate();
 			},
 			onAcceptChangeReadContract(event){
-                this.validateAccept(event, this.models.accepted);
+                this.formIsValid.accepted = this.validateAccept(event, this.models.accepted);
             },
             onSubmit(){
-                this.isFormSending = true;
+				this.isFormSending = true;
 
-                if(!this.validateForm(this.models)){
+				if(Object.values(this.formIsValid).indexOf(false) > -1){
+					this.validateForm(this.models);
                     this.isFormSending = false;
+                    this.$forceUpdate();
                     return false;
 				}
 				
 				let formData = new FormData();
 
 				formData.append('email', this.models.email);
-                formData.append('describe', this.models.describe);
-                formData.append('name', this.models.name);
+                formData.append('body', this.models.describe);
+				formData.append('name', this.models.name);
 				
 				// API to Sending E-Mail
 
 				UserApi.createSupportRequest(formData).then(response => {
+						   this.openModal(this.$modals.defaultModal, response.message);
 						   this.$root.$emit("showNotify", {type : "error", text : response.message});
+						   this.$router.push({path : this.$routes.home.path});
                         }).catch(error => {
-                           this.$root.$emit("showNotify", {type : "error", text : error});
+						   this.openModal(this.$modals.defaultModal, error.message);
+						   this.$root.$emit("showNotify", {type : "error", text : error});
                         });
 
             },
