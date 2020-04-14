@@ -209,9 +209,9 @@ export default {
             });
         });
     },
-    async createSupportRequest(data){
+    async createSupportRequest(formData){
         return new Promise((resolve, reject) => {
-            HTTP.post("/contact", {params : data})
+            HTTP.post("/contact", formData)
                 .then(response => {
                     resolve({
                         success : true,
