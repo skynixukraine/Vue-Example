@@ -74,10 +74,12 @@
 <script>
 import validator from "~/mixins/validator";
 import UserApi from "~/services/api/User";
+import modal from '~/mixins/modal';
 
 export default {
         mixins : [
-            validator
+			validator,
+			modal
         ],
         data(){
             return {
@@ -148,9 +150,10 @@ export default {
 				UserApi.createSupportRequest(formData).then(response => {
 						   this.openModal(this.$modals.defaultModal, response.message);
 						   this.$root.$emit("showNotify", {type : "error", text : response.message});
+						   this.$router.push({path : this.$routes.home.path});
                         }).catch(error => {
-							this.openModal(this.$modals.defaultModal, error.message);
-                           this.$root.$emit("showNotify", {type : "error", text : error});
+						   this.openModal(this.$modals.defaultModal, error.message);
+						   this.$root.$emit("showNotify", {type : "error", text : error});
                         });
 
             },
