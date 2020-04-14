@@ -103,7 +103,7 @@ console.log(this.$route.query)
                 formData.append("email", this.models.email);
                 formData.append("password", this.models.password);
                 formData.append("password_confirmation", this.models.password_confirmation);
-                formData.append("token", this.$cookies.get(this.$cookie.names.token));
+                formData.append("token", this.$route.query.token);
                 formData.append("recaptcha", this.recaptchaToken);
 
 
