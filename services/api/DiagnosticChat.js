@@ -79,9 +79,9 @@ export default {
                 });
         });
     },
-    async createEnquires(requestConfig){
+    async createEnquires(data){
         return new Promise((resolve, reject) => {
-            HTTP.post("/enquires", requestConfig)
+            HTTP.post("/enquires", data)
                 .then(response => {
                     resolve({
                         success : true,

@@ -6,7 +6,7 @@
 					<div class = "payment-details">
 						<h3>{{ `Services ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} cost ${this.targetDoctor.enquire_price}` }}</h3>
                         <select v-model="userInputData.paymentMethods" class="select payment">
-                            <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name">
+                            <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name" v-bind:key="option.name">
                                 {{ option.title }}
                             </option>
                         </select>
@@ -139,7 +139,8 @@
                         this.openModal(
                             this.$modals.defaultModal,
                             `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-                            "Ihre Anfrage erstellt");
+							"Ihre Anfrage wurde erstellt.");
+							this.$router.push({ path : this.$routes.faq.path });
                     }).catch((error) => {
                         this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                     });
