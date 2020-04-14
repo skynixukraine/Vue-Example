@@ -15,7 +15,7 @@
                     <div class = "profile__info">
                         <h3 class = "profile__info__title">{{ this.doctorData.title ? this.doctorData.title.name : "" }}</h3>
                         <h1 class = "profile__info__name">{{ `${this.doctorData.first_name} ${this.doctorData.last_name}` }}</h1>
-                        <div class = "profile__info__description">{{ this.doctorData.description }}</div>
+                        <div class = "profile__info__description">{{ this.doctorData.short_description }}</div>
                         <div class = "profile__info__price">
                             <span class = "profile__info__price__title">Professionelle Einschätzung & Handlungsempfehlung</span>
                             <div class = "profile__info__price__value">{{ `${this.doctorData.enquire_price} €` || "" }}</div>

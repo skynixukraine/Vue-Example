@@ -3,7 +3,8 @@
 		<gmap-autocomplete :class = "'custom-input__input'"
 						   :placeholder = "placeholder"
 						   :value = "value"
-						   @place_changed = "onChange" />
+						   @place_changed = "onChange"
+						   @input="onInput"/>
 	</label>
 </template>
 
@@ -22,6 +23,9 @@
         methods : {
             onChange(eventData){
                 this.$emit("place_change", eventData);
+            },
+            onInput(eventData){
+                this.$emit("input", eventData);
             }
         }
     }
