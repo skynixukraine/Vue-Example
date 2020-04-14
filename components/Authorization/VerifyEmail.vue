@@ -28,10 +28,10 @@
 					  exact>Zurück zur Homepage
 			</NuxtLink>
 			<transition name = "main-animation">
-				<NuxtLink :to = "$routes.account.path"
+				<a href="https://online-hautarzt.de/einloggen"
 						  class = "link link--button link--button-blue link--button-gradient"
 						  exact>Mein Konto
-				</NuxtLink>
+				</a>
 			</transition>
 		</div>
 	</div>
@@ -121,7 +121,7 @@
 
                         UserApi.verifyChangeEmail(formData).then(response => {
                             this.title           = "Glückwunsch!";
-                            this.message         = "Ihre E-Mail Adresse wurde erfolgreich bestätigt. Wir werden nun die von Ihnen eingereichten Informationen prüfen und über Ihre Freischaltung entscheiden. Dies dauert in der Regel weniger als 48h. Bitte halten Sie die Augen offen nach einer E-Mail, die Sie über die nächsten Schritte informiert.";
+                            this.message         = "Ihre E-Mail-Adresse wurde erfolgreich bestätigt. Bevor Sie sich einloggen können, prüfen wir Ihre Daten auf Korrektheit. Sie erhalten eine E-Mail sobald die Prüfung abgeschlossen ist. Dies erfolgt in der Regel innerhalb 24 Stunden. Im Anschluss können Sie sich einloggen und Ihre erforderlichen Daten ergänzen, die wir dann erneut auf Korrektheit überprüfen, bevor wir Sie für die Patientenversorgung freischalten. Bitte halten Sie Ausschau nach E-Mail-Post von uns - dann kann es bald losgehen!";
                             this.isSuccess       = true;
                             this.isLoadingFinish = true;
                         }).catch(error => {
@@ -137,7 +137,7 @@
                             signature : this.$route.query.signature,
                         }).then(response => {
                             this.title           = "Glückwunsch!";
-                            this.message         = "Ihre E-Mail Adresse wurde erfolgreich bestätigt. Wir werden nun die von Ihnen eingereichten Informationen prüfen und über Ihre Freischaltung entscheiden. Dies dauert in der Regel weniger als 48h. Bitte halten Sie die Augen offen nach einer E-Mail, die Sie über die nächsten Schritte informiert.";
+                            this.message         = "Ihre E-Mail-Adresse wurde erfolgreich bestätigt. Bevor Sie sich einloggen können, prüfen wir Ihre Daten auf Korrektheit. Sie erhalten eine E-Mail sobald die Prüfung abgeschlossen ist. Dies erfolgt in der Regel innerhalb 24 Stunden. Im Anschluss können Sie sich einloggen und Ihre erforderlichen Daten ergänzen, die wir dann erneut auf Korrektheit überprüfen, bevor wir Sie für die Patientenversorgung freischalten. Bitte halten Sie Ausschau nach E-Mail-Post von uns - dann kann es bald losgehen!";
                             this.isSuccess       = true;
                             this.isLoadingFinish = false;
 
