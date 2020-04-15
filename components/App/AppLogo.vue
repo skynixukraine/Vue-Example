@@ -27,12 +27,12 @@
 			height              : $size;
 			min-width           : $size;
 			background-size     : cover;
-			background-image    : url("~static/images/icons/logo.svg");
+			background-image    : url("~static/images/icons/new-logo.svg");
 			background-repeat   : no-repeat;
 			background-position : center center;
 			
 			&--personal-office {
-				background-image : url("~static/images/icons/logo_blue.svg");
+				background-image : url("~static/images/icons/new-logo2.svg");
 			}
 		}
 		
