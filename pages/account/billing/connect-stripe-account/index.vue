@@ -3,7 +3,7 @@
 		<div class = "section">
 			<div class = "container">
 				<div v-if = "serverResponse">
-					<h1>{{ serverResponse.success ? "Account successful connected" : "Etwas ist schief gelaufen!" }}</h1>
+					<h1>{{ serverResponse.success ? "Konto wurde erfolgreich verbunden" : "Etwas ist schief gelaufen!" }}</h1>
 					<code v-if = "!serverResponse.success">{{ serverResponse.message }}</code>
 				</div>
 			</div>
