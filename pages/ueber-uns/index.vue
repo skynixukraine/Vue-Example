@@ -18,18 +18,25 @@
                 {{this.$t('ueber-uns.p1_2')}}
             </p>
             <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title1')}}</h3>
-            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title2')}}</h3>
-            <img class="ueber-uns-block__photo"
-                 :src = "require('~/static/images/photo-1.jpg')"
-                 alt = "photo" />
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p2')}}
-            </p>
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p3_1')}}<br>
-                {{this.$t('ueber-uns.p3_2')}}<br>
-                {{this.$t('ueber-uns.p3_3')}}
-            </p>
+            <div class = "ueber-uns-card">
+                <div class = "ueber-uns-card__left">
+                    <img class="ueber-uns-block__photo"
+                         :src = "require('~/static/images/photo-1.jpg')"
+                         alt = "photo" />
+                </div>
+                <div class = "ueber-uns-card__right">
+                    <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title2')}}</h3>
+                    <p class="ueber-uns-block__paragraph">
+                        {{this.$t('ueber-uns.p3_1')}}<br>
+                        {{this.$t('ueber-uns.p3_2')}}<br>
+                        {{this.$t('ueber-uns.p3_3')}}
+                    </p>
+                    <p class="ueber-uns-block__paragraph">
+                        {{this.$t('ueber-uns.p2')}}
+                    </p>
+                </div> 
+            </div>
+            
             <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title3')}}</h3>
             <img class="ueber-uns-block__photo"
                  :src = "require('~/static/images/photo-2.jpg')"
@@ -98,6 +105,15 @@ export default {
 }
 </script>
 <style lang = "scss">
+
+    .ueber-uns-card {
+        display: flex;
+        width: 100%;
+        &__left, 
+        &__right {
+            width: 50%;
+        }
+    }
 
     .ueber-uns-section .ueber-uns-h3{
 		color: white;
