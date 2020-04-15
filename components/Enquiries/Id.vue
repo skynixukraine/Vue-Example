@@ -5,7 +5,16 @@
         <div class = "diagnosis-id__title table__header-item">{{ $t('page-enquiries.diagnosis') }}</div>
         <div class = "diagnosis-id__answer table__main-item" >{{getValue()}}</div>
       </div>
-      
+      <div class = "diagnosis-id patient-info" >
+        <div class = "patient-info__block">
+          <p class = "table__header-item">{{ $t('page-enquiries.patient') }}</p>
+          <p class="table__main-item">{{getName()}}</p>
+        </div>
+        <div class = "patient-info__block">
+          <p class = " table__header-item">{{ $t('page-enquiries.phone') }}</p>
+          <p class="table__main-item">{{getPhone()}} </p>
+        </div>
+      </div>
       <Table />
       
       <div class = "enquiries-id__links">
@@ -39,6 +48,14 @@
                 let conclusion = this.$store.state.enquires.doctorEnquire.conclusion;
                 return conclusion;
             },
+            getName() {
+                let name = this.$store.state.enquires.doctorEnquire.first_name + " " + this.$store.state.enquires.doctorEnquire.last_name;
+                return name;
+            },
+            getPhone() {
+                let phone = this.$store.state.enquires.doctorEnquire.phone_number;
+                return phone;
+            },
 
         }
     }
@@ -63,7 +80,24 @@
         flex-basis: 100%;
         padding-left: 0;
       }
-      
+      &.patient-info {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        @include tablet {
+          flex-direction: row;
+        }
+        
+        .table__header-item, .table__main-item {
+          padding-left: 0;
+        }
+        .patient-info__block {
+          width: 100%;
+          @include tablet {
+            width: 50%;
+          }
+        }
+      }
     }
     
     &__answer {
