@@ -2,9 +2,9 @@
 	<NuxtLink :to = "$routes.home.path" class = "link app-logo__link">
 		<div class = "app-logo">
 			<div class = "app-logo__image"
-				 :class = "{ 'app-logo__image--personal-office': $store.state.app.isPersonalOfficePage }"></div>
+				 :class = "{ 'app-logo__image--personal-office': isDashboard }"></div>
 			<div class = "app-logo__text"
-				 :class = "{ 'app-logo__text--personal-office': $store.state.app.isPersonalOfficePage }">
+				 :class = "{ 'app-logo__text--personal-office': isDashboard }">
 				{{ $t("links.logo-link") }}
 			</div>
 		</div>
@@ -13,6 +13,11 @@
 
 <script>
     export default {
+		computed : {
+			isDashboard() {
+				return this.$route.name === "dashboard" || this.$route.name === "account-billing" || this.$route.name === "account-personal-information" || this.$route.name === "enquiries" || this.$route.name === "vorlagen" || this.$route.name === "patient";
+			}
+		}
     }
 </script>
 

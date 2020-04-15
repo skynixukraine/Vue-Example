@@ -2,7 +2,7 @@
 	<header class = "app-header"
 			:class = "{
 				'app-header--bg-transparent': isHomePage,
-				'app-header--bg-white': $store.state.app.isPersonalOfficePage,
+				'app-header--bg-white': isDashboard,
 				'app-header--bg-default': scrollTop > 57 && !$store.state.app.isPersonalOfficePage
 			}">
 		<div class = "app-header__inner">
@@ -40,6 +40,9 @@
         computed   : {
             isHomePage(){
 				return this.$route.name === "index";
+			},
+			isDashboard() {
+				return this.$route.name === "dashboard" || this.$route.name === "account-billing" || this.$route.name === "account-personal-information" || this.$route.name === "enquiries" || this.$route.name === "vorlagen" || this.$route.name === "patient";
 			},
             userIsLogIn(){
                 return this.$store.getters["user/USER"] === null ? "app-header__item--off" : '';

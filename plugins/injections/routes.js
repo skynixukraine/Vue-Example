@@ -26,12 +26,6 @@ export default ({app}, inject) => {
         contact             : {
             path : "/kontakt"
         },
-        patient             : {
-            path : "/patient"
-        },
-        vorlagen            : {
-            path : "/vorlagen"
-        },
         authorisation       : {
             path : "/authorisation"
         },
@@ -74,14 +68,17 @@ export default ({app}, inject) => {
         billing             : {
             path : "/account/billing"
         },
-        patient             : {
-            path : "/patient"
-        },
         personalInformation : {
             path : "/account/personal-information"
         },
         enquiries           : {
             path : "/enquiries"
+        },
+        patient             : {
+            path : "/patient"
+        },
+        vorlagen            : {
+            path : "/vorlagen"
         },
         terms               : {
             path : "/agb"
