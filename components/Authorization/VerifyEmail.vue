@@ -7,7 +7,6 @@
 		<Loader v-if = "!isLoadingFinish && (isChangeEmail && isHideContent && !isSuccess || !isChangeEmail)" />
 		<div class = "verify-email__sign-in-container" v-if = "isLoadingFinish && !isChangeEmail">
 			<transition name = "main-animation">
-				<SigninForm v-if = "isSuccess" />
 			</transition>
 		</div>
 		<transition name = "main-animation">
