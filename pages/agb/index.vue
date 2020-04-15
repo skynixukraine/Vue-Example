@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class="section vorteile-section"
-             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.webp')})`}">
             <div class = "container container__mobile-adaptation agb-page">
                 <h2 class="title">Allgemeine Geschäftsbedingungen</h2>
             </div>

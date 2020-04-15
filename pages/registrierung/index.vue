@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class="section section--registration vorteile-section"
-             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}">
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.webp')})`}">
             <div class = "container container__mobile-adaptation">
                 <h2 class="title">{{ this.$t('register-page.title')}}</h2>
                 <h3 class="subtext">{{ this.$t('register-page.subtitle')}}</h3>
