@@ -23,7 +23,10 @@
 			</li>
 			<li>
 				<span>{{ this.$t('arztvertrag-page.list.b.title') }}</span>
-				<p>{{ this.$t('arztvertrag-page.list.b.p1') }}</p>
+				<p>{{ this.$t('arztvertrag-page.list.b.p1') }}<br>
+				   {{ this.$t('arztvertrag-page.list.b.p2') }}<br>
+				   {{ this.$t('arztvertrag-page.list.b.p3') }}
+				</p>
 			</li>
 			<li>
 				<span>{{ this.$t('arztvertrag-page.list.c.title') }}</span>

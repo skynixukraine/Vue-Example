@@ -971,7 +971,7 @@
 		},
 		"and": {
 			"title": "Und",
-			"p1": "Allen Ärzten, die sich auf der Plattform „Online Hautarzt vor Ort“, abrufbar unter (online-hautarzt.de) registrieren",
+			"p1": "Allen Ärzten, die sich auf der Plattform „Online Hautarzt vor Ort“, abrufbar unter (online-hautarzt.de) registrieren.",
 			"p2_st": "Vertragsdauer: ",
 			"p2": "Unbefristet (bei Kündigung)"
 		},
@@ -985,7 +985,9 @@
 			},
 			"b": {
 				"title": "§1 Gegenstand des Vertrages",
-				"p1" : "Die Gesellschaft erlaubt dem Arzt über die Plattform die Online-Befundung von dermatologischen Patienten, stellt die sichere technische Infrastruktur bereit und wickelt die Zahlung sowie die Rechnungsstellung ab. 12,50 Euro pro Fall werden an den Dermatologen für die Behandlung ausgezahlt (Umsatzsteuerfreie Heilleistung). Der Dermatologe beauftragt die Smart Health Heidelberg GmbH damit, seine Leistung bei der Online-Behandlung nach der Gebührenordnung der Ärzte gegenüber den Patienten abzurechnen. Der Arzt kann die Auszahlung seiner Einnahmen über das Ärzteportal selber anfordern. Der Abrechnungsbetrag für den Arzt beträgt pro Fall immer 12,50 Euro (Umsatzsteuerfrei).  Die Gesellschaft erhält für ihre Dienste eine Vermittlungsgebühr von den Patienten von 5,26 Euro netto, bzw. 6,50 Euro inklusive Umsatzsteuer pro Fall. "
+				"p1" : "Die Gesellschaft erlaubt dem Arzt über die Plattform die Online-Befundung von dermatologischen Patienten, stellt die sichere technische Infrastruktur bereit und wickelt die Zahlung sowie die Rechnungsstellung ab.",
+				"p2" : "12,50 Euro pro Fall werden an den Dermatologen für die Behandlung ausgezahlt (Umsatzsteuerfreie Heilleistung). Der Dermatologe beauftragt die Smart Health Heidelberg GmbH damit, seine Leistung bei der Online-Behandlung nach der Gebührenordnung der Ärzte gegenüber den Patienten abzurechnen. Der Arzt kann die Auszahlung seiner Einnahmen über das Ärzteportal selber anfordern. Der Abrechnungsbetrag für den Arzt beträgt pro Fall immer 12,50 Euro (Umsatzsteuerfrei).",
+				"p3" : "Die Gesellschaft erhält für ihre Dienste eine Vermittlungsgebühr von den Patienten von 5,26 Euro netto, bzw. 6,50 Euro inklusive Umsatzsteuer pro Fall."
 			},
 			"c": {
 				"title": "§2 Leistung des Arztes",
