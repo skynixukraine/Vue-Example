@@ -17,19 +17,20 @@
 									{{ option.name }}
 								</option>
 							</select>
+							<div ref = "title_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 						</div>
 					</div>
 					<div class = "personal-info__item">
 						<header class = "personal-info__header">{{ $t("page-personal-information.firstName") }}</header>
 						<div  class = "personal-info__main">
-							<InputText @input="onChangeRequere" v-model = "userInputData.first_name" />
+							<InputText  v-model = "userInputData.first_name" />
 							<div ref = "first_name_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 						</div>
 					</div>
 					<div class = "personal-info__item">
 						<header class = "personal-info__header">{{ $t("page-personal-information.lastName") }}</header>
 						<div class = "personal-info__main">
-							<InputText @input="onChangeRequere" v-model = "userInputData.last_name" />
+							<InputText  v-model = "userInputData.last_name" />
 							<div ref = "last_name_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 						</div>
 					</div>
@@ -60,6 +61,7 @@
 									{{ option.name }}
 								</option>
 							</select>
+							<div ref = "specialization_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 						</div>
 					</div>
 					<div class = "personal-info__item">
@@ -224,6 +226,7 @@
 							}"
 									 @selectedData="onLanguagesChang"
 							/>
+							<div ref = "language_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 						</div>
 					</div>
 				</div>
@@ -262,7 +265,8 @@
 									:maxLength = '170'
 									:minHeight = "'5em'"
 									:value = "userInputData.short_description || $store.state.user.user && $store.state.user.user.short_description || ''"
-									@change = "(newValue) => {userInputData.short_description = newValue}" />
+									@change = "(newValue) => {userInputData.short_description = newValue;}" />
+						<div ref = "description_error" class="form__message form__message--error-info">{{ $t("errors.form.required-field") }}</div>
 					</div>
 				</div>
 			</div>
@@ -547,6 +551,7 @@
                 });
             },
             onApproveRequest(){
+                console.log(this.userInputData)
 				if(this.userInputData.first_name === ""
 					|| this.userInputData.last_name === ""
 					|| this.userInputData.phone.value === "") {
@@ -565,11 +570,42 @@
                     } else {
                         this.$refs.phone_error.style.display = "none";
 					}
+                    if(this.userInputData.short_description === "") {
+                        this.$refs.description_error.style.display = "block";
+                    } else {
+                        this.$refs.description_error.style.display = "none";
+                    }
+                    if(this.userInputData.title_id === "") {
+                        this.$refs.title_error.style.display = "block";
+                    } else {
+                        this.$refs.title_error.style.display = "none";
+                    }
+                    if(this.userInputData.specialization_id === "") {
+                        this.$refs.specialization_error.style.display = "block";
+                    } else {
+                        this.$refs.specialization_error.style.display = "none";
+                    }
+                    if(this.userInputData.languages.length === 0) {
+                        this.$refs.language_error.style.display = "block";
+                    } else {
+                        this.$refs.language_error.style.display = "none";
+                    }
+                    if(this.userInputData.location.fullAddress === "") {
+                        this.$refs.loc_error.style.display = "block";
+                    } else {
+                        this.$refs.loc_error.style.display = "none";
+                    }
+                    
 					
                 } else {
                     this.$refs.first_name_error.style.display = "none";
                     this.$refs.last_name_error.style.display = "none";
                     this.$refs.phone_error.style.display = "none";
+                    this.$refs.description_error.style.display = "none";
+                    this.$refs.title_error.style.display = "none";
+                    this.$refs.specialization_error.style.display = "none";
+                    this.$refs.language_error.style.display = "none";
+                    this.$refs.loc_error.style.display = "none";
                     UserApi.requestActivation({
                         id    : this.$store.state.user.user.id,
                         token : this.$cookies.get(this.$cookie.names.token)
@@ -782,25 +818,7 @@
             onChangePassword(){
                 this.openModal(this.$modals.personalInfoChangePassword);
             },
-            onChangeRequere(){
-                if(this.userInputData.first_name === "") {
-                    this.$refs.first_name_error.style.display = "block";
-                } else {
-                    this.$refs.first_name_error.style.display = "none";
-                }
-                if(this.userInputData.last_name === "") {
-                    this.$refs.last_name_error.style.display = "block";
-                } else {
-                    this.$refs.last_name_error.style.display = "none";
-                }
-                if(this.userInputData.phone.value === "") {
-                    this.$refs.phone_error.style.display = "block";
-                } else {
-                    this.$refs.phone_error.style.display = "none";
-                }
-            },
             onChangeRequereLoc(event){
-                console.log(this.$refs)
             if(event.target.value === "") {
                 this.$refs.loc_error.style.display = "block";
 			} else {
