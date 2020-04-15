@@ -534,7 +534,9 @@
 		"question": "Frage",
 		"answer": "Antworten",
 		"diagnosis": "Die Diagnose",
-		"search" : "Suche"
+		"search" : "Suche",
+		"patient" : "Der Patient",
+		"phone" : "Telefon"
 	},
 	"page-jobs": {
 		"head": {
