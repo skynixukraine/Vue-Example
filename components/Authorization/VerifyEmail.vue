@@ -139,7 +139,7 @@
                             this.title           = "Glückwunsch!";
                             this.message         = "Ihre E-Mail-Adresse wurde erfolgreich bestätigt. Bevor Sie sich einloggen können, prüfen wir Ihre Daten auf Korrektheit. Sie erhalten eine E-Mail sobald die Prüfung abgeschlossen ist. Dies erfolgt in der Regel innerhalb 24 Stunden. Im Anschluss können Sie sich einloggen und Ihre erforderlichen Daten ergänzen, die wir dann erneut auf Korrektheit überprüfen, bevor wir Sie für die Patientenversorgung freischalten. Bitte halten Sie Ausschau nach E-Mail-Post von uns - dann kann es bald losgehen!";
                             this.isSuccess       = true;
-                            this.isLoadingFinish = false;
+                            this.isLoadingFinish = true;
 
                             // need this code for new component
                             // this.$store.dispatch("user/LOAD_USER", {
