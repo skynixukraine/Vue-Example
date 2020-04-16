@@ -1220,6 +1220,9 @@
                     this.sendSMS(enquireId);
 
                 }).catch((error) => {
+                    if (error.status === 422) {
+                        error.message = 'Ungültiges Datenformat. Bitte überprüfen Sie.' 
+                    }
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
             },
