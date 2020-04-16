@@ -551,10 +551,14 @@
                 });
             },
             onApproveRequest(){
-                console.log(this.userInputData)
 				if(this.userInputData.first_name === ""
 					|| this.userInputData.last_name === ""
-					|| this.userInputData.phone.value === "") {
+					|| this.userInputData.phone.value === ""
+                    || this.userInputData.short_description === ""
+                    || this.userInputData.title_id === ""
+                    || this.userInputData.specialization_id === ""
+                    || this.userInputData.languages.length === 0
+                    || this.userInputData.location.fullAddress === "") {
 				    if(this.userInputData.first_name === "") {
                         this.$refs.first_name_error.style.display = "block";
 					} else {
@@ -736,6 +740,7 @@
                 }
             },
             onSave(){
+                
                 let formData = new FormData();
                 
                 if(this.userInputData.phone.eventData){
@@ -810,6 +815,7 @@
                     this.openModal(this.$modals.defaultModal, "", "Etwas ist schief gelaufen!");
                     this.setDefaultValues();
                 });
+				
             },
             onChangeEmail(){
                 this.$store.commit("modals/SET_NEW_EMAIL", this.$store.state.user.user.email);
