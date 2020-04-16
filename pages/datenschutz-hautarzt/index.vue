@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class = "section datenschutz-section"
-             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.webp')})`}"
         >
             <div class = "container container__mobile-adaptation">
                 <h1 class ="datenschutz-title title">{{this.$t('page-datenschutz.caption')}}</h1>

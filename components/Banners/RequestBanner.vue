@@ -1,5 +1,5 @@
 <template>
-    <div class="request-banner" :style="`background-image: url(${require('~/static/images/bg/abstract-bg-new.jpg')})`">
+    <div class="request-banner" :style="`background-image: url(${require('~/static/images/bg/abstract-bg-new.webp')})`">
         <h2 class="request-banner__title">{{ $t('headers.start-your-request-now') }}</h2>
         <NuxtLink :to="$routes.hautarzt.path" class="link link--button link--button-white" exact>{{ $t('links.start-inquiry') }}</NuxtLink>
     </div>
