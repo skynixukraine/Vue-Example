@@ -18,6 +18,11 @@
                 {{this.$t('ueber-uns.p1_2')}}
             </p>
             <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title1')}}</h3>
+            <div class = "ueber-uns-block-title-row">
+                <div class = "ueber-uns-block__left"></div>
+                <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title2')}}</h3>
+            </div>
+
             <div class = "ueber-uns-card">
                 <div class = "ueber-uns-card__left">
                     <img class="ueber-uns-block__photo"
@@ -25,9 +30,9 @@
                          alt = "photo" />
                 </div>
                 <div class = "ueber-uns-card__right">
-                    <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title2')}}</h3>
+                    
                     <p class="ueber-uns-block__paragraph">
-                        {{this.$t('ueber-uns.p3_1')}}<br>
+                        <span class="ueber-uns-block__name">{{this.$t('ueber-uns.p3_1')}}</span><br>
                         {{this.$t('ueber-uns.p3_2')}}<br>
                         {{this.$t('ueber-uns.p3_3')}}
                     </p>
@@ -36,45 +41,77 @@
                     </p>
                 </div> 
             </div>
+        
+        <div class = "ueber-uns-card-group">
+            <div class = "ueber-uns-block-title-row">
+                <div class = "ueber-uns-block__left"></div>
+                <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title3')}}</h3>
+            </div>
+               
+            <div class = "ueber-uns-card">
+                <div class = "ueber-uns-card__left">
+                    <img class="ueber-uns-block__photo"
+                         :src = "require('~/static/images/photo-2.jpg')"
+                          alt = "photo" />
+                </div>
+                <div class = "ueber-uns-card__right">
+                    
+                    <p class="ueber-uns-block__paragraph">
+                       <span class="ueber-uns-block__name">{{this.$t('ueber-uns.p5_1')}}</span><br>
+                        {{this.$t('ueber-uns.p5_2')}}<br>
+                        {{this.$t('ueber-uns.p5_3')}}
+                    </p>
+                    <p class="ueber-uns-block__paragraph">
+                        {{this.$t('ueber-uns.p4_1')}}
+                        <a href="https://online-hautarzt.net" class="link link--small-blue">
+                            {{this.$t('ueber-uns.p4_a1')}}
+                        </a>
+                        {{this.$t('ueber-uns.p4_2')}}
+                    </p>
+                </div> 
+            </div>
+
+            <div class = "ueber-uns-card">
+                <div class = "ueber-uns-card__left">
+                    <img class="ueber-uns-block__photo"
+                        :src = "require('~/static/images/photo-3.jpg')"
+                        alt = "photo" />
+                </div>
+                <div class = "ueber-uns-card__right">
+                    <p class="ueber-uns-block__paragraph">
+                        <span class="ueber-uns-block__name">{{this.$t('ueber-uns.p7_1')}}</span><br>
+                        {{this.$t('ueber-uns.p7_2')}}<br>
+                        {{this.$t('ueber-uns.p7_3')}}
+                    </p>
+                    <p class="ueber-uns-block__paragraph">
+                        {{this.$t('ueber-uns.p6')}}
+                    </p>
+                </div> 
+            </div>  
+        </div>       
+
+        <div class = "ueber-uns-block-title-row">
+                <div class = "ueber-uns-block__left-last"></div>
+                <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title4')}}</h3>
+        </div>
+
+        <div class = "ueber-uns-card">
+                <div class = "ueber-uns-card__left">
+                    <img class="ueber-uns-block__photo"
+                        :src = "require('~/static/images/photo-4.jpg')"
+                        alt = "photo" />
+                </div>
+                <div class = "ueber-uns-card__right">
+                   <p class="ueber-uns-block__paragraph">
+                        {{this.$t('ueber-uns.p9_1')}}<br>
+                        {{this.$t('ueber-uns.p9_2')}}
+                    </p>
+                    <p class="ueber-uns-block__paragraph">
+                        {{this.$t('ueber-uns.p8')}}
+                    </p>
+                </div> 
+            </div>    
             
-            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title3')}}</h3>
-            <img class="ueber-uns-block__photo"
-                 :src = "require('~/static/images/photo-2.jpg')"
-                 alt = "photo" />
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p4_1')}}
-                <a href="https://online-hautarzt.net" class="link link--small-blue">
-                    {{this.$t('ueber-uns.p4_a1')}}
-                </a>
-                {{this.$t('ueber-uns.p4_2')}}
-            </p>
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p5_1')}}<br>
-                {{this.$t('ueber-uns.p5_2')}}<br>
-                {{this.$t('ueber-uns.p5_3')}}
-            </p>
-            <img class="ueber-uns-block__photo"
-                 :src = "require('~/static/images/photo-3.jpg')"
-                 alt = "photo" />
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p6')}}
-            </p>
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p7_1')}}<br>
-                {{this.$t('ueber-uns.p7_2')}}<br>
-                {{this.$t('ueber-uns.p7_3')}}
-            </p>
-            <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title4')}}</h3>
-            <img class="ueber-uns-block__photo"
-                 :src = "require('~/static/images/photo-4.jpg')"
-                 alt = "photo" />
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p8')}}
-            </p>
-            <p class="ueber-uns-block__paragraph">
-                {{this.$t('ueber-uns.p9_1')}}<br>
-                {{this.$t('ueber-uns.p9_2')}}
-            </p>
             <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title5')}}</h3>
             <p class="ueber-uns-block__paragraph">
                 {{this.$t('ueber-uns.p10')}}
@@ -105,10 +142,25 @@ export default {
 }
 </script>
 <style lang = "scss">
+    .ueber-uns-block__left-last {
+        width: 56%;
+    }
+
+    .ueber-uns-block-title-row {
+        display: flex;
+        width: 100%;
+    }
+    .ueber-uns-block__left {
+        width: 50%;
+    }
 
     .ueber-uns-card {
         display: flex;
         width: 100%;
+        margin-bottom: 50px;
+        &__left {
+            text-align: center;
+        }
         &__left, 
         &__right {
             width: 50%;
@@ -142,14 +194,17 @@ export default {
         &__paragraph{
             margin-bottom: 20px;
         }
+        &__name {
+            font-weight: 600;
+        }
         &__title{
             margin: 35px 0 25px 0;
         }
         &__photo{
-            max-width: 100%;
+            width: 100%;
+            max-width: 220px;
             height: auto;
-            display: block;
-            margin: 0 0 25px 0;
+            display: inline-block;
         }
         @include tablet-max{
             &__title{
