@@ -446,6 +446,9 @@
 				z-index: 1;
 				background : $color-gradient-button-blue;
 				color      : $color-white;
+				@media (max-width: 345px) {
+					left: -12px;
+				}
 				
 				&:active {
 					background-attachment : $color-tory-blue;
