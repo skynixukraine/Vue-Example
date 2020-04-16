@@ -1252,7 +1252,7 @@
                     diagnosticChatApi.chargeEnquire(this.$store.state.user.userEnquireId, data).then((response) => {
                         this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
                             "Ihre Anfrage wurde erstellt");
-                        this.$router.push({path : this.$routes.faq.path});
+                        this.$router.push({path : this.$routes.home.path});
                     }).catch((error) => {
                         this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                     });

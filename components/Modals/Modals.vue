@@ -67,6 +67,13 @@
 		}
 		
 		&__footer { margin-top : $main_offset * 2; }
+
+		@media (max-width: 375px) {
+			&__footer {
+				    display: flex;
+    				justify-content: center;
+			}
+		}
 		
 		.v--modal {
 			$vertical_padding : 64px;
