@@ -1,12 +1,13 @@
 <template>
     <div class="enquiries__filter">
-        <form>
+        <form @submit.prevent = "querySearch">
             <div class="enquiries__search">
                 <input type="search"
                        placeholder="Suche..."
                        class="input enquiries__search-input"
+                       v-on:keyup.enter="querySearch"
                        @change="querySearch"
-                       @search="querySearch('clean')"
+                       @search="querySearch"
                        v-model="search"
                 >
             </div>
@@ -31,14 +32,11 @@
         },
         methods :{
             querySearch(e){
-                if(e === 'clean'){
-                    this.search = '';
-                }
-
                 this.$emit('search', this.search);
             },
             resetResults(){
-                this.querySearch('clean');
+                this.search = '';
+                this.$emit('search', this.search);
             }
         }
     }
