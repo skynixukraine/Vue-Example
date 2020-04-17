@@ -10,6 +10,7 @@
 						</DashboardHeader>    
 						<DashboardContent>
 							<SearchStripeOperations @search="search"/>
+							<BillingPrice/>
 							<BillingTable v-bind:querySearch="querySearch"/>
 						</DashboardContent>
 					</DashboardMain>
@@ -24,6 +25,7 @@
     import BillingStatus from "~/components/Account/BillingStatus.vue";
     import DashboardMain from "~/components/Dashboard/DashboardMain";
     import BillingTable from "~/components/Account/BillingTable.vue";
+    import BillingPrice from "~/components/Account/BillingPrice.vue";
     import DashboardHeader from "~/components/Dashboard/DashboardHeader";
     import DashboardSidebar from "~/components/Dashboard/DashboardSidebar";
     import DashboardContent from "~/components/Dashboard/DashboardContent";
@@ -77,6 +79,7 @@
             DashboardHeader,
             DashboardSidebar,
             DashboardContent,
+            BillingPrice
         }
     }
 </script>

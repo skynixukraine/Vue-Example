@@ -489,7 +489,7 @@
 		"head": {
 			"title": "Abrechnung | Online Hautarzt vor Ort"
 		},
-		"payments": "Zahlungen",
+		"payments": "Kostenstruktur",
 		"page": "Seite",
 		"table": {
 			"transactionId": "Transaktions",
@@ -502,6 +502,17 @@
 		"stripe": {
 			"connecting": "BANKDATEN HINZUFÜGEN",
 			"changestripe": " BANKDATEN BEARBEITEN"
+		},
+		"prices" : {
+			"title" : "Bitte wählen Sie die Option",
+			"doctor-fee" : "Arztgebühr",
+			"admin-fee" : "Bearbeitungsgebühr",
+			"total" : "Gesamtpreis",
+			"edit-but" : "Bearbeiten",
+			"plan-selected" : "Plan ausgewählt",
+			"cancel" : "Stornieren",
+			"confirm" : "Bestätigen",
+			"popup-text" : "Bitte wählen Sie eine dieser Optionen. Diese Änderung wird sofort übernommen."
 		}
 	},
 	"page-about": {

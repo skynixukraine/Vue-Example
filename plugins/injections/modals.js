@@ -14,6 +14,7 @@ export default ({app}, inject) =>{
         openImageModal                   : "open-image-modal",
         beforeChat                       : "before-chat",
         chatModal                        : "chat-modal",
+        editPrice                        : "edit-price",
     };
 
     app.modals            = OPTIONS;
