@@ -80,7 +80,7 @@
 										<div class = "edit-answer-area__upload-image"
 											 v-if = "editingData.type === QUESTION_TYPES.uploadImg">
 											<input type = "file"
-												   accept = ".jpeg, .jpg, .png"
+												   accept="image/*"
 												   class = "edit-answer-area__upload-image__input"
 												   ref = "editUploadImgInput"
 												   @change = "onUploadFile">
@@ -199,6 +199,7 @@
 								<div class = "answer-area__upload-image"
 									 v-if = "lastQuestionData.type === QUESTION_TYPES.uploadImg">
 									<input type = "file"
+                                           accept="image/*"
 										   class = "answer-area__upload-image__input"
 										   ref = "lastUploadImgInput"
 										   @change = "onUploadFile">
@@ -1279,8 +1280,9 @@
                         name: this.targetDoctor.title.name
                     }
                 }).then(function(result) {
-                    console.log(result.source.redirect.url);
-                    window.location.href = result.source.redirect.url;
+                    this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
+                            "Ihre Anfrage wurde erstellt");
+                    this.$router.push({path : this.$routes.home.path});
                 });
 
             },
