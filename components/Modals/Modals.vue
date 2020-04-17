@@ -12,6 +12,7 @@
 		<OpenImageModal v-if = "$store.state.modals.currentActiveModal === $modals.openImageModal" />
 		<BeforeChat v-if = "$store.state.modals.currentActiveModal === $modals.beforeChat" />
 		<ChatModal v-if = "$store.state.modals.currentActiveModal === $modals.chatModal" />
+		<EditPrice v-if = "$store.state.modals.currentActiveModal === $modals.editPrice" />
 	</div>
 </template>
 
@@ -28,6 +29,7 @@
     import OpenImageModal from "~/components/Modals/OpenImageModal";
 	import BeforeChat from "~/components/Modals/BeforeChat";
 	import ChatModal from "~/components/Modals/ChatModal";
+    import EditPrice from "~/components/Modals/EditPrice";
 
     export default {
         components : {
@@ -42,7 +44,8 @@
             SendFindings,
             OpenImageModal,
 			BeforeChat,
-			ChatModal
+			ChatModal,
+            EditPrice
         }
     }
 </script>
