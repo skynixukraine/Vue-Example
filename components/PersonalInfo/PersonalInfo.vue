@@ -248,7 +248,6 @@
 							   type = "file"
 							   name = "avatar"
 							   ref = "avatarInputFile"
-							   accept = ".jpg, .jpeg, .png"
 							   @change = "onAvatarUpload" />
 					</div>
 					<p class="personal-info__img-text">{{ $t("page-personal-information.imgText") }}</p>
@@ -705,12 +704,12 @@
             onAvatarUpload(event){
                 if(!event.target.files[0]){ return; }
 
-                let file    = null;
+                const file = event.target.files[0];
                 let reader  = new FileReader();
-                const _this = this;
-
-                this.validateFileExtension(event) ? this.userInputData.avatar.userInput.file = event.target.files[0] : this.userInputData.avatar = "";
-                this.validateFileExtension(event) ? file = event.target.files[0] : file = "";
+				const _this = this;
+				
+				if (!this.checkFileTypeImage(event.target.files[0].type)) return;
+				this.userInputData.avatar.userInput.file = event.target.files[0]
 
                 reader.onload = function(e){
                     _this.userInputData.avatar.userInput.HTML = `<img class = "personal-info__avatar-image" src = "${e.target.result}">`;
