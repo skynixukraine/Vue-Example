@@ -26,7 +26,7 @@
 		</div>
 		<div class = "modal__loader" v-else>
 			<Loader />
-			<p>{{ this.$t('loader-text') }} </p>
+			<p>{{ this.$t('loader-text-diagnostic') }} </p>
 		</div>
 	</modal>
 </template>

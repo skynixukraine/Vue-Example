@@ -1008,7 +1008,8 @@
 			}
 		}
 	},
-    "loader-text" : "Bitte haben Sie etwas Geduld. Wir verarbeiten derzeit Informationen. Es kann einige Sekunden dauern.",
+	"loader-text" : "Bitte haben Sie etwas Geduld. Wir verarbeiten derzeit Informationen. Es kann einige Sekunden dauern.",
+	"loader-text-diagnostic" : "Bitte haben Sie etwas Geduld. Wir laden derzeit Ihre Informationen hoch. Dies kann einige Sekunden dauern.",
 	"before-chat-modal" : {
 		"title" : "Datenschutzerklärung",
 		"text1" : "War da nicht noch was? Genau, der Datenschutz. Bitte nehmen Sie unsere ",

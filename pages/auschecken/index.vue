@@ -167,7 +167,6 @@
                     }
                 }).then(function(result) {
                     console.log(result.source.redirect.url);
-                    window.location.href = result.source.redirect.url;
                 });
 
             },
