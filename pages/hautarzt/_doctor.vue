@@ -64,7 +64,7 @@
             modal,
         ],
         head(){
-            return {title : `${this.doctorData.first_name} ${this.doctorData.last_name} | Online Hautarzt vor Ort`}
+            return {title : `${this.doctorData.first_name} ${this.doctorData.last_name} ${this.doctorData.location.city} | Online Hautarzt vor Ort`}
         },
         async fetch({app, store, route, error}){
             // if token exist and user empty - load User object
