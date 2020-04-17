@@ -7,11 +7,11 @@
 			:class = "{'header-user-info--visible': isNotDashboard}">
 				<div class = "header-user-info__item"
 					 :class = "{ 'header-user-info__item--personal-office': $store.state.app.isPersonalOfficePage}">
-					{{
+					<p>{{
 					$store.getters["user/USER"].first_name && $store.getters["user/USER"].last_name ?
 						$store.getters["user/USER"].first_name + " " + $store.getters["user/USER"].last_name :
 						$store.getters["user/USER"].email
-					}}
+					}}</p>
 				</div>
 				<div :class = "{
 				}" class = "header-user-info__item__account-status" v-if = "$store.getters['user/USER'] && $store.getters['user/USER'].status">
@@ -82,11 +82,10 @@
 			text-decoration : none;
 			
 			// hide user name
-			&:first-child {
+			/* &:first-child {
 				display : none;
 				
-			
-			}
+			} */
 			
 			&:last-child {
 				margin-bottom : 0;
@@ -105,7 +104,7 @@
 			
 			&--personal-office {
 				color       : $color-rolling-stone;
-				font-size   : 18px;
+				font-size   : 14px;
 				font-style  : normal;
 				font-weight : 500;
 			}
