@@ -80,7 +80,6 @@
 										<div class = "edit-answer-area__upload-image"
 											 v-if = "editingData.type === QUESTION_TYPES.uploadImg">
 											<input type = "file"
-												   accept="image/*"
 												   class = "edit-answer-area__upload-image__input"
 												   ref = "editUploadImgInput"
 												   @change = "onUploadFile">
@@ -199,7 +198,6 @@
 								<div class = "answer-area__upload-image"
 									 v-if = "lastQuestionData.type === QUESTION_TYPES.uploadImg">
 									<input type = "file"
-                                           accept="image/*"
 										   class = "answer-area__upload-image__input"
 										   ref = "lastUploadImgInput"
 										   @change = "onUploadFile">
