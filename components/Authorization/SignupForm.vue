@@ -483,7 +483,7 @@
 			flex-direction  : row-reverse;
 			justify-content : flex-end;
 			position        : relative;
-			margin          : 3% auto;
+			margin          : 0;
 			
 			.form__title--accepted {
 				font-size    : 14px;
