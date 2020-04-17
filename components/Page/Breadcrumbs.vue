@@ -84,6 +84,8 @@ export default {
 
         &--home {
             width: 43px;
+            max-height: 63px;
+            height: 100%;
         }
     }
 
