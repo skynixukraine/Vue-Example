@@ -302,9 +302,12 @@
 						<div class = "personal-info__field">
 							<label>
 								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.birth')}}</div>
-								<input type = "date"
+								<input type="text"
+                                       placeholder="MM/DD/YYYY"
 									   class = "input"
 									   style = "color: inherit"
+                                       onfocus="(this.type='date')"
+                                       onblur="(this.type='text')"
 									   @change = "onPersonalInfoChangeDateOfBirth"
 									   name = "dateOfBirth">
 								<span class = "error-message" v-show = "errors.dateOfBirth">{{ this.errors.dateOfBirth }}</span>
@@ -1173,9 +1176,9 @@
                 data.append("phone_number", this.personalInfoData.phone.value);
                 data.append("country_code", this.personalInfoData.phone.eventData.country.dialCode);
                 data.append("date_of_birth", this.personalInfoData.dateOfBirth.value);
-                data.append("address", this.personalInfoData.street.value);
-                data.append("city", this.personalInfoData.city.value);
-                data.append("postal_code", this.personalInfoData.zip.value);
+                data.append("address", this.personalInfoData.street.value || "null");
+                data.append("city", this.personalInfoData.city.value || "null");
+                data.append("postal_code", this.personalInfoData.zip.value || "null");
 
                 for(let i = 1, answer = null; answer = this.userAnswers[i++];){
 
@@ -1280,7 +1283,7 @@
                 }).then(function(result) {
                     this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
                             "Ihre Anfrage wurde erstellt");
-                    this.$router.push({path : this.$routes.home.path});
+                    this.$router.push({path : this.$routes.faq.path});
                 });
 
             },
