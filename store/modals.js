@@ -3,6 +3,7 @@ export const state = () => ({
     modalTitle         : "",
     modalMessageHTML   : "",
     newEmail           : "",
+    modalRedirect      : "",
 });
 
 export const mutations = {
@@ -17,5 +18,8 @@ export const mutations = {
     },
     SET_NEW_EMAIL(state, email){
         state.newEmail = email;
+    },
+    SET_MODAL_REDIRECT(state, url){
+        state.modalRedirect = url;
     },
 };
