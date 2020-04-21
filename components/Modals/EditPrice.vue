@@ -5,7 +5,7 @@
 		   :height = "'auto'"
 		   :delay = "100"
 		   :adaptive = "true"
-		   :class = "'modal'">
+		   :class = "'modal modal--billing-prices'">
 		<button class = "modal__close-button" @click = "closeModal($modals.editPrice)"></button>
 		<header class = "modal__header">
 			<h3 class = "modal__title">{{ this.$t('page-billing.prices.popup-text') }}</h3>
@@ -92,6 +92,9 @@
     }
 </script>
 <style lang = "scss">
+	modal--billing-prices {
+		overflow: auto;
+	}
 	.modal__main.billing-prices {
 		.billing-variants {
 			display        : flex;
