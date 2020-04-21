@@ -6,6 +6,31 @@ export default {
     },
     methods : {
         // validators
+        validateDate(event) {
+            const name  = event.target.name;
+            let value = event.target.value.trim();
+            let dateArr = value.split('-');
+            let timeArr = (new Date()).getTime() >= (new Date(dateArr[0], dateArr[1], dateArr[2])).getTime();
+
+            // empty check
+            if(!value){
+                this.errors[name] = this.$t('errors.form.required-field');
+                return false
+            }
+
+            if(!this.checkDateFormat(value, dateArr)){
+                this.errors[name] = this.$t('errors.form.validation-failed');
+                return false;
+            }
+
+            if(!timeArr) {
+                this.errors[name] = this.$t('errors.form.validation-failed');
+                return false;
+            }
+
+            this.clearError(name);
+            return true;
+        },
         validateName(event){
             const name  = event.target.name;
             const value = event.target.value;
@@ -23,9 +48,6 @@ export default {
             const name  = event.target.name;
             const value = parseInt(event.target.value);
             let compareInputVal = parseInt(compareInput);
-
-            console.log(typeof value)
-            console.log(typeof compareInputVal)
 
             // empty check
             if(!value){
@@ -177,23 +199,36 @@ export default {
             return true;
         },
         validateVerifyCode(event, name) {
-            console.log('validatefunc')
             const value = event.target.value;
 
             // empty check
             if(!value){
-                console.log(888)
                 this.errors[name] = this.$t('errors.form.required-field');
                 return false;
             }
             if(!this.checkSmsByNumberType(value)) {
-                console.log(999)
                 this.errors[name] = this.$t('errors.form.invalid-number');
                 return false;
             }
             return true;
         },
         // checkers
+        checkDateFormat(date, dateArr) {
+            var re = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+            var regs = re.test(date);
+            if (regs) {
+                if((dateArr[1] == 0 || dateArr[1] == '00') || dateArr[1] > 12) {
+                    return false;
+                }
+                if(dateArr[2] < 1 || dateArr[2] > 31) {
+                    return false;
+                }
+                if(dateArr[0] < 1902 || dateArr[0] > (new Date()).getFullYear()) {
+                    return false;
+                }
+                return true;
+            }
+        },
         checkSmsByNumberType(value) {
             return (typeof parseInt(value) === 'number')
         },
