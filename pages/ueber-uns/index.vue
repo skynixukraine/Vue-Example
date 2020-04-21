@@ -18,10 +18,6 @@
                 {{this.$t('ueber-uns.p1_2')}}
             </p>
             <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title1')}}</h3>
-            <div class = "ueber-uns-block-title-row">
-                <div class = "ueber-uns-block__left"></div>
-                <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title2')}}</h3>
-            </div>
 
             <div class = "ueber-uns-card">
                 <div class = "ueber-uns-card__left">
@@ -30,7 +26,7 @@
                          alt = "photo" />
                 </div>
                 <div class = "ueber-uns-card__right">
-                    
+                    <h3 class = "ueber-uns-block__title-cards">{{ this.$t('ueber-uns.title2')}}</h3>
                     <p class="ueber-uns-block__paragraph">
                         <span class="ueber-uns-block__name">{{this.$t('ueber-uns.p3_1')}}</span><br>
                         {{this.$t('ueber-uns.p3_2')}}<br>
@@ -43,11 +39,6 @@
             </div>
         
         <div class = "ueber-uns-card-group">
-            <div class = "ueber-uns-block-title-row">
-                <div class = "ueber-uns-block__left"></div>
-                <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title3')}}</h3>
-            </div>
-               
             <div class = "ueber-uns-card">
                 <div class = "ueber-uns-card__left">
                     <img class="ueber-uns-block__photo"
@@ -55,7 +46,7 @@
                           alt = "photo" />
                 </div>
                 <div class = "ueber-uns-card__right">
-                    
+                    <h3 class = "ueber-uns-block__title-cards">{{ this.$t('ueber-uns.title3')}}</h3>
                     <p class="ueber-uns-block__paragraph">
                        <span class="ueber-uns-block__name">{{this.$t('ueber-uns.p5_1')}}</span><br>
                         {{this.$t('ueber-uns.p5_2')}}<br>
@@ -90,11 +81,6 @@
             </div>  
         </div>       
 
-        <div class = "ueber-uns-block-title-row">
-                <div class = "ueber-uns-block__left-last"></div>
-                <h3 class = "ueber-uns-block__title">{{ this.$t('ueber-uns.title4')}}</h3>
-        </div>
-
         <div class = "ueber-uns-card">
                 <div class = "ueber-uns-card__left">
                     <img class="ueber-uns-block__photo"
@@ -102,6 +88,7 @@
                         alt = "photo" />
                 </div>
                 <div class = "ueber-uns-card__right">
+                    <h3 class = "ueber-uns-block__title-cards">{{ this.$t('ueber-uns.title4')}}</h3>
                    <p class="ueber-uns-block__paragraph">
                         {{this.$t('ueber-uns.p9_1')}}<br>
                         {{this.$t('ueber-uns.p9_2')}}
@@ -198,7 +185,7 @@ export default {
             font-weight: 600;
         }
         &__title{
-            margin: 35px 0 25px 0;
+            margin: 50px 0;
         }
         &__photo{
             width: 100%;
