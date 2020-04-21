@@ -10,7 +10,7 @@
 						   loop
 						   playsinline
 						   muted></video>
-					<div class = "container__dots-svg container__dots-svg--hand-photo list--dots"></div>
+					<div v-if = "index !== 2" class = "container__dots-svg container__dots-svg--hand-photo list--dots"></div>
 				</header>
 				
 				<div class = "step-card__main">
