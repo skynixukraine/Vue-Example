@@ -307,7 +307,6 @@
 									   class = "input"
 									   style = "color: inherit"
                                        onfocus="(this.type='date')"
-                                       onblur="(this.type='text')"
 									   @change = "onPersonalInfoChangeDateOfBirth"
 									   name = "dateOfBirth">
 								<span class = "error-message" v-show = "errors.dateOfBirth">{{ this.errors.dateOfBirth }}</span>
@@ -1256,8 +1255,7 @@
 
                     diagnosticChatApi.chargeEnquire(this.$store.state.user.userEnquireId, data).then((response) => {
                         this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-                            "Ihre Anfrage wurde erstellt");
-                        this.$router.push({path : this.$routes.home.path});
+                            "Ihre Anfrage wurde erstellt", "/");
                     }).catch((error) => {
                         this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                     });
@@ -1270,7 +1268,7 @@
                     amount: this.$store.state.user.enquire.price,
                     currency: this.$store.state.user.enquire.currency,
                     redirect: {
-                        return_url: `${process.env.BASE_APP_URL}/auschecken?type=` + this.userInputData.paymentMethods +
+                        return_url: `${process.env.BASE_API_URL}/auschecken?type=` + this.userInputData.paymentMethods +
                                     '&enquireId=' + this.$store.state.user.enquire.id +
                                     '&doctorId=' + this.$store.state.diagnosticChat.doctorIdForStartDiagnosticChat,
                     },
@@ -1280,10 +1278,11 @@
                     owner: {
                         name: this.targetDoctor.title.name
                     }
-                }).then(function(result) {
+                }).then((response) => {
                     this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-                            "Ihre Anfrage wurde erstellt");
-                    this.$router.push({path : this.$routes.faq.path});
+                            "Ihre Anfrage wurde erstellt", "faq");
+                }).catch((error) => {
+                        this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
 
             },

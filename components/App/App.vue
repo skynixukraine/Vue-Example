@@ -1053,8 +1053,6 @@
 		&--submit {
 			@extend .control-btn;
 			background-color : transparentize($color-user-is-active, .25);
-
-			margin-bottom: 10px;
 			
 			&.is-disable {
 				cursor           : not-allowed;

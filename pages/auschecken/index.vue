@@ -155,7 +155,7 @@
                     amount: this.targetDoctor.price,
                     currency: this.targetDoctor.currency,
                     redirect: {
-                        return_url: `${process.env.BASE_APP_URL}/auschecken?type=` + this.userInputData.paymentMethods +
+                        return_url: `${process.env.BASE_API_URL}/auschecken?type=` + this.userInputData.paymentMethods +
                                     '&enquireId=' + this.enquireId +
                                     '&doctorId=' + this.targetDoctor.id,
                     },
