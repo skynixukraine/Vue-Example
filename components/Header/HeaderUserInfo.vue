@@ -36,7 +36,7 @@
 		},
 		computed : {
 			isNotDashboard() {
-				return this.$route.name !== "dashboard" && this.$route.name !== "account-billing" && this.$route.name !== "account-personal-information" && this.$route.name !== "enquiries";
+				return this.$route.name !== "dashboard" && this.$route.name !== "account-billing" && this.$route.name !== "account-personal-information" && this.$route.name !== "enquiries" && this.$route.name !== "enquiries-id";
 			}
 		},
         components : {
