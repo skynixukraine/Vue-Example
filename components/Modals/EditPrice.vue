@@ -12,7 +12,7 @@
 		</header>
 		<div class = "modal__main billing-prices">
 			<div class = "billing-variants" >
-				<div class = "billing-list" v-for="(item, index) in data" :key="'billing-price-' + index" :id="index + 1" ref="index" @click="selectedPrice(item)">
+				<div class = "billing-list" v-for="(item, index) in data" :key="'billing-price-' + index" :id="item.id" ref="index" @click="selectedPrice(item)">
 					<div class = "billing-list__elem billing-list__elem--doctor"><p>{{ $t("page-billing.prices.doctor-fee")
 						}}</p> <span>&#8364; {{item.enquire_doctor_fee}}</span></div>
 					<div class = "billing-list__elem billing-list__elem--admin"><p>{{ $t("page-billing.prices.admin-fee")
