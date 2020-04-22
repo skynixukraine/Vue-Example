@@ -21,7 +21,7 @@
             <div class = "form__message" v-if = "errors.verifyCode">{{ errors.verifyCode }}</div>
             <div class = "buttons-confirm-code-wrapper">
             <button type = "button"
-                    class = "control-btn--submit"
+                    class = "control-btn--submit confirm-btn-chat"
                     @click = "confirmCode">{{ $t("page-forschung.modal.confirm") }}
             </button>
             <button type = "button"
@@ -133,7 +133,11 @@
 </script>
 
 <style lang = "scss" scoped>
+    .confirm-btn-chat {
+        margin-bottom: 5px;
+    }
     .buttons-confirm-code-wrapper {
         padding-top: 10px;
+        flex-direction: column;
     }
 </style>

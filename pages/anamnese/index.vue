@@ -303,10 +303,9 @@
 							<label>
 								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.birth')}}</div>
 								<input type="text"
-                                       placeholder="MM/DD/YYYY"
+                                       placeholder="YYYY-MM-DD"
 									   class = "input"
 									   style = "color: inherit"
-                                       onfocus="(this.type='date')"
 									   @change = "onPersonalInfoChangeDateOfBirth"
 									   name = "dateOfBirth">
 								<span class = "error-message" v-show = "errors.dateOfBirth">{{ this.errors.dateOfBirth }}</span>
@@ -1125,9 +1124,9 @@
                 }
             },
             onPersonalInfoChangeDateOfBirth(event){
-                this.personalInfoData.dateOfBirth.value = event.target.value;
+                this.personalInfoData.dateOfBirth.value = event.target.value.trim();
 
-                this.personalInfoData.dateOfBirth.isValid = (new Date()).getTime() >= (new Date(event.target.value)).getTime();
+                this.personalInfoData.dateOfBirth.isValid = this.validateDate(event);
 
                 if(!this.personalInfoData.dateOfBirth.isValid){
                     this.errors.dateOfBirth = this.$t("errors.form.validation-failed");
@@ -1135,6 +1134,7 @@
                 } else{
                     delete this.errors.dateOfBirth;
                 }
+                this.$forceUpdate();
             },
             onPersonalInfoMailBlur(event){
                 this.personalInfoData.mail.value   = event.target.value;
@@ -1268,7 +1268,7 @@
                     amount: this.$store.state.user.enquire.price,
                     currency: this.$store.state.user.enquire.currency,
                     redirect: {
-                        return_url: `${process.env.BASE_API_URL}/auschecken?type=` + this.userInputData.paymentMethods +
+                        return_url: `${process.env.BASE_APP_URL}/auschecken?type=` + this.userInputData.paymentMethods +
                                     '&enquireId=' + this.$store.state.user.enquire.id +
                                     '&doctorId=' + this.$store.state.diagnosticChat.doctorIdForStartDiagnosticChat,
                     },
