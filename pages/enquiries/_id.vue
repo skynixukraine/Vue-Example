@@ -31,6 +31,9 @@
     import Id from "~/components/Enquiries/Id"
 
     export default {
+        middleware: [
+        'auth',
+        ],
         head(){
             return {title : this.$t("page-enquiries.head.title")}
         }, 
