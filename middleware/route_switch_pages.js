@@ -8,6 +8,7 @@ export default function({store, app, route}){
             ~route.fullPath.indexOf(app.routes.personalInformation.path) ||
             ~route.fullPath.indexOf(app.routes.billing.path) ||
             ~route.fullPath.indexOf(app.routes.enquiries.path) ||
+            ~route.fullPath.indexOf(app.routes.enquiriesId.path) ||
             ~route.fullPath.indexOf(app.routes.patient.path) ||
             ~route.fullPath.indexOf(app.routes.vorlagen.path)))
 

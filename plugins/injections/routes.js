@@ -74,6 +74,9 @@ export default ({app}, inject) => {
         enquiries           : {
             path : "/enquiries"
         },
+        enquiriesId           : {
+            path : "/enquiries/:id?"
+        },
         patient             : {
             path : "/patient"
         },
