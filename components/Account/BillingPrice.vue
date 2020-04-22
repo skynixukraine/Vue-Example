@@ -4,7 +4,7 @@
 		<div class = "billing-variants" v-if="visible_select === true" >
 			<div class = "billing-list" v-for="(item, index) in data" :key="'billing-price-' + index" :id="index" @click="selectPrice(item)">
 				<div class = "billing-list__elem billing-list__elem--doctor"><p>{{ $t("page-billing.prices.doctor-fee")
-					}}</p> <span>&#8364; {{item.enquire_display_price}}</span></div>
+					}}</p> <span>&#8364; {{item.enquire_doctor_fee}}</span></div>
 				<div class = "billing-list__elem billing-list__elem--admin"><p>{{ $t("page-billing.prices.admin-fee")
 					}}</p> <span>&#8364; {{item.enquire_admins_fee}}</span></div>
 				<div class = "billing-list__elem billing-list__elem--total"><p>{{ $t("page-billing.prices.total") }}</p>
@@ -39,7 +39,7 @@
                 visible_result: false,
 				result: {
                     id: this.$store.state.user.user.price_policy ? this.$store.state.user.user.price_policy.id : "",
-                    doctor: this.$store.state.user.user.price_policy ? this.$store.state.user.user.price_policy.enquire_display_price  : "",
+                    doctor: this.$store.state.user.user.price_policy ? this.$store.state.user.user.price_policy.enquire_doctor_fee  : "",
 					admin: this.$store.state.user.user.price_policy ? this.$store.state.user.user.price_policy.enquire_admins_fee  : "",
 					total: this.$store.state.user.user.price_policy ? this.$store.state.user.user.price_policy.enquire_total_price : ""
 				}
