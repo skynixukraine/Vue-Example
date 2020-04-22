@@ -16,7 +16,7 @@
 							:minHeight = "'10em'"
 							:value = "enquire.conclusion"
 							@change = "(newValue) => {enquire.conclusion = newValue}"/>
-				<buttom class = "link link--button link--button-blue link--button-gradient" @click = "onSubmit">Ok</buttom>
+				<button class = "link link--button link--button-blue link--button-gradient" @click = "onSubmit">Ok</button>
 			</form>
 			<div class = "modal__form--success" v-else>
 				<p>Vielen Dank für Ihre Einreichung</p>
@@ -50,12 +50,13 @@
         ],
         methods : {
             onSubmit(){
-                console.log(this.$store.state.enquires.doctorEnquire);
                 let id = this.$store.state.enquires.doctorEnquire.id;
                 let token = this.$cookies.get(this.$cookie.names.token);
-                let requestConfig = new FormData();
+				let requestConfig = new FormData();
+				
                 requestConfig.append("_method", "PATCH");
-                requestConfig.append("conclusion", this.enquire.conclusion)
+				requestConfig.append("conclusion", this.enquire.conclusion)
+				
                 EnquiresApi.sendFindings(id, token, requestConfig).then((response) =>{
                     this.enquire.success = true;
                     this.enquire.conclusion = response.data.data.conclusion;

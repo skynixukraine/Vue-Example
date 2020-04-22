@@ -1,9 +1,11 @@
 <template lang = "html">
   <div class = "enquiries-id">
     <div class = "enquiries-id__main">
-      <div class = "diagnosis-id" v-if="this.$store.state.enquires.doctorEnquire.conclusion !== null">
+      <div class = "diagnosis-id" v-show="this.$store.state.enquires.doctorEnquire.conclusion !== null">
         <div class = "diagnosis-id__title table__header-item">{{ $t('page-enquiries.diagnosis') }}</div>
-        <div class = "diagnosis-id__answer table__main-item" >{{getValue()}}</div>
+        <div class = "diagnosis-id__answer table__main-item" v-html="getValue">
+          {{getValue}}
+        </div>
       </div>
       <div class = "diagnosis-id patient-info" >
         <div class = "patient-info__block">
@@ -18,7 +20,7 @@
       <Table />
       
       <div class = "enquiries-id__links">
-        <button v-if="getValue() === null"  class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.sendFindings)">{{ $t('page-enquiries.submit-diagnosis') }}</button>
+        <button v-if="!getValue"  class = "link link--button link--button-blue link--button-gradient" @click="openModal($modals.sendFindings)">{{ $t('page-enquiries.submit-diagnosis') }}</button>
         <!-- <button v-else  class = "link link--button link--button-blue link--button-gradient" >{{ $t('page-enquiries.finished') }}</button> -->
       </div>
       
@@ -39,15 +41,23 @@
         mixins : [
             modal,
         ],
-
         components : {
             Table,
         },
-        methods  : {
-            getValue() {
+        computed : {
+          getValue() {
                 let conclusion = this.$store.state.enquires.doctorEnquire.conclusion;
-                return conclusion;
-            },
+                if (conclusion !== null) {
+                  let splitArr = conclusion.split('\n');
+                  let formatedToHtmlArr = [];
+                  for (let i = 0; i < splitArr.length; i++) {
+                    formatedToHtmlArr.push(`<p>${splitArr[i]}</p>`);
+                  }
+                    return formatedToHtmlArr.join('')
+                }
+            }
+        },
+        methods  : {
             getName() {
                 let name = this.$store.state.enquires.doctorEnquire.first_name + " " + this.$store.state.enquires.doctorEnquire.last_name;
                 return name;
