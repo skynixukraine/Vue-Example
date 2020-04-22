@@ -414,9 +414,6 @@
 		&--underline {
 			text-decoration : underline;
 		}
-		&--button:hover {
-			border-radius: unset;
-		}
 		&--button {
 			width          : auto;
 			border         : none;
