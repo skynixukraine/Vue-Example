@@ -10,7 +10,7 @@ export default {
             const name  = event.target.name;
             let value = event.target.value.trim();
             let dateArr = value.split('-');
-            let timeArr = (new Date()).getTime() >= (new Date(dateArr[0], dateArr[1], dateArr[2])).getTime();
+            let timeArr = (new Date()).getTime() >= (new Date(dateArr[2], dateArr[1], dateArr[0])).getTime();
 
             // empty check
             if(!value){
@@ -214,16 +214,16 @@ export default {
         },
         // checkers
         checkDateFormat(date, dateArr) {
-            var re = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+            var re = /^\d{1,2}\-\d{1,2}\-\d{4}$/;
             var regs = re.test(date);
             if (regs) {
                 if((dateArr[1] == 0 || dateArr[1] == '00') || dateArr[1] > 12) {
                     return false;
                 }
-                if(dateArr[2] < 1 || dateArr[2] > 31) {
+                if(dateArr[0] < 1 || dateArr[0] > 31) {
                     return false;
                 }
-                if(dateArr[0] < 1902 || dateArr[0] > (new Date()).getFullYear()) {
+                if(dateArr[2] < 1902 || dateArr[2] > (new Date()).getFullYear()) {
                     return false;
                 }
                 return true;

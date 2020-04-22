@@ -1,6 +1,6 @@
 <template>
 	<div class = "page">
-		<div class = "section" :class = "{'section--is-editing-message': editingData}" v-if="targetDoctor">
+		<div class = "section" :class = "{'section--is-editing-message': editingData}" v-if="!targetDoctor && !$route.query.source && !$route.query.type && !$route.query.enquireId">
 			<div class = "container">
 				<transition name = "main-animation">
 					<div class = "payment-details">
@@ -35,6 +35,13 @@
 					</footer>
 				</div>
 			</transition>
+		</div>
+		<div  class = "section" :class = "{'section--is-editing-message': editingData}" v-else-if="targetDoctor">
+			<div class = "container">
+				<transition name = "main-animation">
+					<h3>Vielen Dank für Ihre Zahlung</h3>
+				</transition>
+			</div>
 		</div>
 	</div>
 </template>
@@ -102,18 +109,13 @@
             }
         },
         mounted(){
-            if(!this.targetDoctor || !this.$route.query.source || !this.$route.query.type || !this.$route.query.enquireId){
-                this.$router.replace(this.$routes.hautarzt.path);
-            } else {
-
                 this.stripeToken = this.$route.query.source;
                 this.userInputData.paymentMethods = this.$route.query.type;
                 this.enquireId = this.$route.query.enquireId;
                 this.onSubmitDiagnosticChatChargeEnquire();
                 this.$router.replace(this.$routes.auschecken.path);
-            }
-
-            this.$root.$on("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatChargeEnquire);
+            
+            	this.$root.$on("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatChargeEnquire);
         },
         methods    : {
             onCreateToken(eventData){
@@ -121,7 +123,7 @@
                 this.onConfirmModal();
             },
             onConfirmModal(){
-                this.openModal(this.$modals.diagnosticChatConfirmEnquire);
+				this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
             onSubmitDiagnosticChatChargeEnquire() {
 
@@ -136,20 +138,19 @@
                     data.append("type", this.userInputData.paymentMethods);
 
                     diagnosticChatApi.chargeEnquire(this.enquireId, data).then((response) => {
-                        this.openModal(
-                            this.$modals.defaultModal,
-                            `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-							"Ihre Anfrage wurde erstellt.");
-							this.$router.push({ path : this.$routes.faq.path });
-                    }).catch((error) => {
-                        this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
-                    });
-
+						if (this.targetDoctor) {
+						this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
+							"Ihre Anfrage wurde erstellt", "/faq");
+						}
+					}).catch((error) => {
+						this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+					});
+					
                     this.stripeToken = null;
-                }
+				}
+				
             },
             stripeCreateSource(){
-
                 this.$store.dispatch('stripe/LOAD_AND_SAVE_STRIPE_SOURCE', {
                     type: this.userInputData.paymentMethods,
                     amount: this.targetDoctor.price,
@@ -166,7 +167,9 @@
                         name: this.targetDoctor.title.name
                     }
                 }).then(function(result) {
-                    console.log(result.source.redirect.url);
+                    location.replace(result.source.redirect.url)
+                }).catch((error) => {
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
 
             },
