@@ -1,6 +1,7 @@
 export default {
     methods : {
         openModal(name, modalMessageHTML, modalTitle, modalRedirect){
+            document.querySelector("body").style.overflow = "hidden";
             this.$store.commit("modals/SET_CURRENT_ACTIVE_MODAL", name);
 
             modalTitle && this.$store.commit("modals/SET_MODAL_TITLE", modalTitle);
@@ -12,6 +13,7 @@ export default {
             })
         },
         closeModal(name){
+            document.querySelector("body").style.overflow = "auto";
             this.$store.commit("modals/SET_CURRENT_ACTIVE_MODAL", "");
             this.$modal.hide(name);
         },

@@ -77,7 +77,7 @@
 			}
 		},
         mounted(){
-            PricingPoliciesApi.loadPricing().then((response) => {
+			PricingPoliciesApi.loadPricing().then((response) => {
                 this.data = response.data.data;
             }).catch((error) => {
             });
@@ -92,7 +92,7 @@
     }
 </script>
 <style lang = "scss">
-	modal--billing-prices {
+	.modal--billing-prices {
 		overflow: auto;
 	}
 	.modal__main.billing-prices {
