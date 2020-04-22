@@ -303,7 +303,7 @@
 							<label>
 								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.birth')}}</div>
 								<input type="text"
-                                       placeholder="YYYY-MM-DD"
+                                       placeholder="DD-MM-YYYY"
 									   class = "input"
 									   style = "color: inherit"
 									   @change = "onPersonalInfoChangeDateOfBirth"
@@ -1124,8 +1124,13 @@
                 }
             },
             onPersonalInfoChangeDateOfBirth(event){
-                this.personalInfoData.dateOfBirth.value = event.target.value.trim();
+                let dateArr =  event.target.value.trim().split('-'); 
+                let tmp = dateArr[0]; 
+                dateArr[0] = dateArr[2]; 
+                dateArr[2] = tmp;
+                let dateReverse = dateArr.join('-');
 
+                this.personalInfoData.dateOfBirth.value = dateReverse;
                 this.personalInfoData.dateOfBirth.isValid = this.validateDate(event);
 
                 if(!this.personalInfoData.dateOfBirth.isValid){
@@ -1279,10 +1284,9 @@
                         name: this.targetDoctor.title.name
                     }
                 }).then((response) => {
-                    this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-                            "Ihre Anfrage wurde erstellt", "faq");
+                    location.replace(response.source.redirect.url)
                 }).catch((error) => {
-                        this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
 
             },
