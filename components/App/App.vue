@@ -397,7 +397,7 @@
 		transition : all $transition ease-in-out;
 		
 		:hover {
-			text-decoration : underline;
+			text-decoration : underline;			
 		}
 		
 		:focus {
@@ -427,16 +427,21 @@
 			border-radius  : 4px;
 			text-transform : uppercase;
 			letter-spacing : .14em;
+			border-radius: 4px;
+
+			
 			
 			&-full-width { width : 100% }
 			
 			&--button-upload { font-weight : 500; }
 			
 			&-white {
+				border-radius: 4px;
 				background : $color-white;
 				color      : $color-curious-blue;
 				
 				&:hover, &:active {
+					border-radius: 4px;
 					background : $color-solitude;
 				}
 			}
@@ -444,6 +449,7 @@
 			&-blue {
 				position: relative;
 				z-index: 1;
+				border-radius: 4px;
 				background : $color-gradient-button-blue;
 				color      : $color-white;
 				@media (max-width: 345px) {
@@ -466,17 +472,22 @@
 				z-index: -1;
 				transition: opacity 0.8s linear;
 				opacity: 0;
+				border-radius: 4px;
 			}
 
 			&-blue:hover::before {
 				background : $color-gradient-blue-dark;
 				opacity: 1;
-				transition: opacity 1.4s linear;
+				border-radius: 4px;
+			}
+			&-blue:hover {
+				border-radius: 4px;
 			}
 
 			&-gradient {
 				color      : $color-white;
 				background : $color-gradient-blue-light;
+				border-radius: 4px;
 			}
 			
 			&-transparent {
