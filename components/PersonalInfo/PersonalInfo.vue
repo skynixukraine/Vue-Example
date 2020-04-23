@@ -185,7 +185,7 @@
 					<div class = "personal-info__item">
 						<header class = "personal-info__header">{{ $t("page-personal-information.lanr") }}</header>
 						<div class = "personal-info__main">
-							<InputText :maxlength="50" v-model = "userInputData.lanr" />
+							<InputText :maxlength="9" v-model = "userInputData.lanr" />
 						</div>
 					</div>
 					<div class = "personal-info__item">
@@ -408,6 +408,7 @@
                         this.userInputData.first_name && this.userInputData.first_name !== this.$store.state.user.user.first_name ||
                         this.userInputData.phone.eventData && this.userInputData.phone.eventData.isValid && this.userInputData.phone.value !== this.$store.state.user.user.phone_number ||
                         this.userInputData.description && this.userInputData.description !== this.$store.state.user.user.description ||
+                        this.userInputData.lanr && this.userInputData.lanr !== this.$store.state.user.user.lanr ||
                         this.userInputData.short_description && this.userInputData.short_description !== this.$store.state.user.user.short_description);
 
                     if(!result){
@@ -494,6 +495,7 @@
                 this.userInputData.last_name         = this.$store.state.user.user.last_name || "";
                 this.userInputData.first_name        = this.$store.state.user.user.first_name || "";
                 this.userInputData.description       = this.$store.state.user.user.description || "";
+                this.userInputData.lanr              = this.$store.state.user.user.lanr || "";
                 this.userInputData.short_description = this.$store.state.user.user.short_description || "";
 
                 this.userInputData.title_id          = this.$store.state.user.user.title && this.$store.state.user.user.title.id || "";

@@ -59,6 +59,7 @@
 			<input class = "input input--lanr"
 				   type = "text"
 				   name = "lanr"
+				   maxlength="9"
 				   ref = "lanrRef"
 				   v-model = "models.lanr"
 				   :placeholder = "$t('forms.lanr')" />
