@@ -8,6 +8,7 @@
 				   :placeholder = "placeholder"
 				   :name = "name"
 				   :value = "value"
+				   :maxlength = "maxlength"
 				   class = "custom-input__input"
 				   @blur = "onBlur"
 				   @focus = "onFocus"
@@ -38,6 +39,10 @@
             value       : {
                 type    : String,
                 default : ""
+            },
+            maxlength       : {
+                type    : Number,
+                default : null
             }
         },
         model   : {
