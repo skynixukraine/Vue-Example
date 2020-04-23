@@ -1,23 +1,28 @@
 <template>
 	<div class = "page">
-		<div class = "section" :class = "{'section--is-editing-message': editingData}" v-if="!targetDoctor && !$route.query.source && !$route.query.type && !$route.query.enquireId">
+		<div class = "section" :class = "{'section--is-editing-message': editingData}" v-if = "!success">
 			<div class = "container">
 				<transition name = "main-animation">
 					<div class = "payment-details">
-						<h3>{{ `Services ${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} cost ${this.targetDoctor.enquire_price}` }}</h3>
-                        <select v-model="userInputData.paymentMethods" class="select payment">
-                            <option v-for="option in $store.state.diagnosticChat.paymentMethods" v-bind:value="option.name" v-bind:key="option.name">
-                                {{ option.title }}
-                            </option>
-                        </select>
-
-                        <button class = "submit-btn"
-                                type = "button"
-                                v-if="userInputData.paymentMethods != userInputData.defaultMethod"
-                                @click.stop = "onConfirmModal">Next
-		                </button>
-
-                        <StripePaymentSystem v-if="userInputData.paymentMethods == userInputData.defaultMethod" @create-token = "onCreateToken" />
+						<h3>{{ `Services ${this.targetDoctor.title ? this.targetDoctor.title.name : ""}
+							${this.targetDoctor.first_name} ${this.targetDoctor.last_name} cost
+							${this.targetDoctor.enquire_price}` }}</h3>
+						<select v-model = "userInputData.paymentMethods" class = "select payment">
+							<option v-for = "option in $store.state.diagnosticChat.paymentMethods"
+									v-bind:value = "option.name"
+									v-bind:key = "option.name">
+								{{ option.title }}
+							</option>
+						</select>
+						
+						<button class = "submit-btn"
+								type = "button"
+								v-if = "userInputData.paymentMethods != userInputData.defaultMethod"
+								@click.stop = "onConfirmModal">Next
+						</button>
+						
+						<StripePaymentSystem v-if = "userInputData.paymentMethods == userInputData.defaultMethod"
+											 @create-token = "onCreateToken" />
 					</div>
 				</transition>
 			</div>
@@ -30,13 +35,14 @@
 								   :selectedParts = "editingData ? editingData.notConfirmedSelectedBodyParts : notConfirmedSelectedBodyParts" />
 					</div>
 					<footer class = "select-body-part-modal__footer">
-						<button class = "control-btn--submit" @click.stop = "onConfirmBodySelectParts">Bestätigen</button>
+						<button class = "control-btn--submit" @click.stop = "onConfirmBodySelectParts">Bestätigen
+						</button>
 						<button class = "control-btn--cancel" @click.stop = "onCancelBodySelectParts">Abbrechen</button>
 					</footer>
 				</div>
 			</transition>
 		</div>
-		<div  class = "section" :class = "{'section--is-editing-message': editingData}" v-else-if="targetDoctor">
+		<div class = "section" :class = "{'section--is-editing-message': editingData}" v-else>
 			<div class = "container">
 				<transition name = "main-animation">
 					<h3>Vielen Dank für Ihre Zahlung</h3>
@@ -55,7 +61,7 @@
     import select2 from "~/components/select2/select2.vue";
 
     export default {
-		head(){
+        head(){
             return {title : this.$t("page-forschung.head.title")}
         },
         async fetch({app, store, route, error}){
@@ -64,14 +70,14 @@
                 await store.dispatch("user/LOAD_USER", {
                     id    : app.$cookies.get(app.cookie.names.tokenId),
                     token : app.$cookies.get(app.cookie.names.token)
-                }).catch(error => {
+                }).catch(error =>{
                     app.$cookies.remove(app.cookie.names.token);
                     app.$cookies.remove(app.cookie.names.tokenId);
                 });
             }
 
-            if (route.query.doctorId) {
-                await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id: route.query.doctorId});
+            if(route.query.doctorId){
+                await store.dispatch("diagnosticChat/LOAD_AND_SAVE_DOCTOR_FOR_DIAGNOSTIC_CHAT", {id : route.query.doctorId});
                 await store.dispatch('diagnosticChat/LOAD_AND_SAVE_PAYMENT_METHODS', {});
             }
         },
@@ -88,14 +94,15 @@
                 scrollOffsetForForbidScroll : 0,
                 editingData                 : null,
                 // Data for 'body select' question type
-                showedBodyHalf                : "",
-                selectedBodyParts             : [],
-                isShowSelectBodyPartModal     : false,
-                doctorId                      : null,
-                stripeToken : null,
-                enquireId   : null,
-                userInputData   : {
-                    defaultMethod : 'credit_card',
+                showedBodyHalf              : "",
+                selectedBodyParts           : [],
+                isShowSelectBodyPartModal   : false,
+                doctorId                    : null,
+                success                     : true,
+                stripeToken                 : null,
+                enquireId                   : null,
+                userInputData               : {
+                    defaultMethod  : 'credit_card',
                     paymentMethods : 'credit_card'
                 }
             }
@@ -109,13 +116,13 @@
             }
         },
         mounted(){
-                this.stripeToken = this.$route.query.source;
-                this.userInputData.paymentMethods = this.$route.query.type;
-                this.enquireId = this.$route.query.enquireId;
-                this.onSubmitDiagnosticChatChargeEnquire();
-                this.$router.replace(this.$routes.auschecken.path);
-            
-            	this.$root.$on("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatChargeEnquire);
+            this.stripeToken                  = this.$route.query.source;
+            this.userInputData.paymentMethods = this.$route.query.type;
+            this.enquireId                    = this.$route.query.enquireId;
+            this.onSubmitDiagnosticChatChargeEnquire();
+            this.$router.replace(this.$routes.auschecken.path);
+
+            this.$root.$on("submitDiagnosticChatConfirmEnquire", this.onSubmitDiagnosticChatChargeEnquire);
         },
         methods    : {
             onCreateToken(eventData){
@@ -123,52 +130,54 @@
                 this.onConfirmModal();
             },
             onConfirmModal(){
-				this.openModal(this.$modals.diagnosticChatConfirmEnquire);
+                this.openModal(this.$modals.diagnosticChatConfirmEnquire);
             },
-            onSubmitDiagnosticChatChargeEnquire() {
+            onSubmitDiagnosticChatChargeEnquire(){
 
-                if (this.userInputData.paymentMethods != this.userInputData.defaultMethod && this.stripeToken === null) {
+                if(this.userInputData.paymentMethods != this.userInputData.defaultMethod && this.stripeToken === null){
                     this.stripeCreateSource();
                 }
 
-                if (this.stripeToken) {
+                if(this.stripeToken){
                     let data = new FormData();
                     data.append("_method", "PATCH");
                     data.append("code", this.stripeToken);
                     data.append("type", this.userInputData.paymentMethods);
 
-                    diagnosticChatApi.chargeEnquire(this.enquireId, data).then((response) => {
-						if (this.targetDoctor) {
-						this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
-							"Ihre Anfrage wurde erstellt", "/faq");
-						}
-					}).catch((error) => {
-						this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
-					});
-					
+                    diagnosticChatApi.chargeEnquire(this.enquireId, data).then((response) =>{
+                        if(this.targetDoctor){
+                            this.openModal(this.$modals.chatModal, `${this.targetDoctor.title ? this.targetDoctor.title.name : ""} ${this.targetDoctor.first_name} ${this.targetDoctor.last_name} wird Sie per E-Mail kontaktieren.`,
+                                "Ihre Anfrage wurde erstellt", "/faq");
+                            this.success = true;
+                        }
+                    }).catch((error) =>{
+                        this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                        this.success = false;
+                    });
+
                     this.stripeToken = null;
-				}
-				
+                }
+
             },
             stripeCreateSource(){
                 this.$store.dispatch('stripe/LOAD_AND_SAVE_STRIPE_SOURCE', {
-                    type: this.userInputData.paymentMethods,
-                    amount: this.targetDoctor.price,
-                    currency: this.targetDoctor.currency,
-                    redirect: {
-                        return_url: `${process.env.BASE_APP_URL}/auschecken?type=` + this.userInputData.paymentMethods +
-                                    '&enquireId=' + this.enquireId +
-                                    '&doctorId=' + this.targetDoctor.id,
+                    type     : this.userInputData.paymentMethods,
+                    amount   : this.targetDoctor.price,
+                    currency : this.targetDoctor.currency,
+                    redirect : {
+                        return_url : `${process.env.BASE_APP_URL}/auschecken?type=` + this.userInputData.paymentMethods +
+                        '&enquireId=' + this.enquireId +
+                        '&doctorId=' + this.targetDoctor.id,
                     },
-                    sofort: {
-                        country: 'DE',
+                    sofort   : {
+                        country : 'DE',
                     },
-                    owner: {
-                        name: this.targetDoctor.title.name
+                    owner    : {
+                        name : this.targetDoctor.title.name
                     }
-                }).then(function(result) {
+                }).then(function(result){
                     location.replace(result.source.redirect.url)
-                }).catch((error) => {
+                }).catch((error) =>{
                     this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
                 });
 
@@ -190,13 +199,11 @@
 		opacity   : 0;
 		transform : translateY(50px);
 	}
-	
 	@mixin edit-animation {
 		opacity   : 0;
 		z-index   : -1;
 		transform : translateY(-100%);
 	}
-	
 	@mixin delete-animation {
 		width      : 0;
 		height     : 0;
@@ -204,7 +211,6 @@
 		font-size  : 0;
 		transition : $animation_duration;
 	}
-	
 	@mixin btn--is-disable {
 		&.is-disable {
 			cursor           : not-allowed;
@@ -212,16 +218,14 @@
 			background-color : $color-rolling-stone;
 		}
 	}
-	
 	@mixin container-for-input-text {
 		&.is-for-input-text {
 			width     : 100%;
 			max-width : 100%;
 		}
 	}
-	
 	.section {
-		background-color: $color-mercury;
+		background-color : $color-mercury;
 		
 		&:before {
 			transition       : $transition;
@@ -250,7 +254,6 @@
 			}
 		}
 	}
-	
 	.submit-btn {
 		color            : white;
 		border           : none;
@@ -285,13 +288,11 @@
 			}
 		}
 	}
-	
 	.chat-container, .answer-area {
 		margin    : 0 auto;
 		position  : relative;
 		max-width : 600px;
 	}
-	
 	.message {
 		color         : white;
 		display       : flex;
@@ -328,13 +329,12 @@
 			@include delete-animation;
 		}
 	}
-	
 	.message--is-me {
 		justify-content : flex-end;
 		
 		.message {
 			&__container {
-				border-radius : $border-radius 0 $border-radius $border-radius;
+				border-radius    : $border-radius 0 $border-radius $border-radius;
 				background-color : $color-curious-blue;
 			}
 			
@@ -348,12 +348,11 @@
 			.message {
 				&__container {
 					border-radius    : $border-radius 0 $border-radius $border-radius;
-					background-color : rgba(1,1,1,0);
+					background-color : rgba(1, 1, 1, 0);
 				}
 			}
 		}
 	}
-	
 	.answer-area, .edit-answer-area {
 		display         : flex;
 		flex-grow       : 1;
@@ -365,7 +364,6 @@
 			max-width       : $max_width;
 			flex-direction  : column;
 			justify-content : flex-end;
-			
 			@include container-for-input-text;
 		}
 		
@@ -418,12 +416,10 @@
 		
 		.submit-btn { float : right; }
 	}
-	
 	.edit-answer-area {
 		position       : absolute;
 		flex-wrap      : wrap;
 		flex-direction : column;
-		
 		@include container-for-input-text;
 		
 		&__controls {
@@ -459,11 +455,9 @@
 			}
 		}
 	}
-	
 	/deep/ .user-uploaded-img {
 		width : 100%;
 	}
-	
 	.personal-info, .payment-details {
 		margin-top : $main_offset;
 		
@@ -478,7 +472,6 @@
 			margin-top : $main_offset * 4;
 		}
 	}
-	
 	.personal-info {
 		&__field {
 			position      : relative;
@@ -489,7 +482,6 @@
 			}
 		}
 	}
-	
 	.select-body-part-modal {
 		$header_height : 64px;
 		top              : $header_height;
@@ -502,7 +494,7 @@
 		position         : fixed;
 		align-items      : center;
 		flex-direction   : column;
-        overflow         : hidden;
+		overflow         : hidden;
 		background-color : $color-black-squeeze;
 		
 		&__main {
@@ -519,7 +511,6 @@
 			height : calc(100vh - #{$header_height});
 		}
 	}
-	
 	.is-required {
 		&:after {
 			color       : $color-alert-red;
@@ -528,7 +519,6 @@
 			margin-left : 6px;
 		}
 	}
-	
 	.error-message {
 		$size : .75em;
 		left      : 0;
@@ -537,29 +527,24 @@
 		position  : absolute;
 		font-size : $size;
 	}
-	
 	// Vue transitions
 	.main-animation-enter-active, .main-animation-leave-active {
 		transition : $animation_duration;
 	}
-	
 	.edit-animation-enter-active, .edit-animation-leave-active {
 		transition : $animation_duration;
 	}
-	
 	.edit-animation-enter, .edit-animation-leave-to {
 		@include edit-animation;
 	}
-	
 	// modal
 	.modal-enter-active, .modal-leave-active {
 		transition : $animation_duration;
 	}
-	
 	.modal-enter, .modal-leave-to {
 		opacity : 0;
 	}
 	.vue-tel-input#vue-tel-input {
-		border: 1px solid $color-table-border;
+		border : 1px solid $color-table-border;
 	}
 </style>
