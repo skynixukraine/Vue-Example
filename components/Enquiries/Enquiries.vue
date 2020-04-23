@@ -304,20 +304,25 @@
 	.table__header-item_last-contact {
 		position : relative;
         cursor: pointer;
-		
 		&:after {
 			$size : 20px;
-			top              : 0;
-			right            : 5px;
+			left             : 0;
+			right            : 0;
 			width            : $size;
 			height           : $size;
 			margin           : auto;
-			bottom           : 0;
+			bottom           : -10px;
 			content          : "";
 			display          : block;
 			position         : absolute;
 			pointer-events   : none;
 			background-image : url("~static/images/icons/arrow-down.svg");
+			@include desktop-l{
+				top              : 0;
+				bottom           : 0;
+				left             : auto;
+				right            : 5px;
+			}
 		}
 
 		@include desktop{
@@ -326,6 +331,7 @@
 			}
 		}
 
+		
         &.desc{
             &:after {
                 transform: rotate(180deg);
