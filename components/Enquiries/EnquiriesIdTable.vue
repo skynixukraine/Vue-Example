@@ -4,13 +4,13 @@
 			<div class = "table__header"></div>
 			<div class = "table__main">
 				<div class = "table__main-items" v-for = "(answer, index) in getAnswers" :key = "index">
-					<div class = "table__main-item" data-title="Question"> <div v-html="getQuestion(answer)"></div></div>
-					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-if = "isImage(getType(answer))">
+					<div class = "table__main-item" data-title="Frage"> <div v-html="getQuestion(answer)"></div></div>
+					<div class = "table__main-item enquiries-id__answer" data-title="Antworten" v-if = "isImage(getType(answer))">
                     <div class = "edit-answer-area__upload-image__user-image-container">
                         <img :src="getValue(answer)" @click="openModal($modals.openImageModal, getValue(answer))">
                     </div>
 					</div>
-					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else-if = "isBoby(getType(answer)) && getValue(answer) !== null">
+					<div class = "table__main-item enquiries-id__answer" data-title="Antworten" v-else-if = "isBoby(getType(answer)) && getValue(answer) !== null">
 						<div class = "body-parts body-parts--answer" ref = "bodyAnswer">
 							<div class = "body-parts__half front"
 								 data-half-part = "front">
@@ -161,7 +161,7 @@
 							</div>
 						</div>
 					</div>
-					<div class = "table__main-item enquiries-id__answer" data-title="Answer" v-else> {{getValue(answer)}}</div>
+					<div class = "table__main-item enquiries-id__answer" data-title="Antworten" v-else> {{getValue(answer)}}</div>
 				</div>
 			</div>
 		</div>

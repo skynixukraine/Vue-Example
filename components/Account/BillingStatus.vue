@@ -9,7 +9,7 @@
                 <a v-else-if = "userPaymentData.stripe_account_id"
 				   :href = "userPaymentData.url"
 				   target = "_blank"
-				   class = "link link--button link--button-blue link--button-gradient">{{ $t("page-billing.stripe.changestripe") }}</a>
+				   class = "link link--button link--button-blue link--button-gradient link--button-changestripe">{{ $t("page-billing.stripe.changestripe") }}</a>
 			</div>
 		</div>
 	</div>
@@ -34,6 +34,13 @@
 .page-billing-inner .section {
     padding-top: 0;
     padding-bottom: 0;
+	
+	.link--button-changestripe {
+		margin-top: 20px;
+		@include tablet {
+			margin-top: 0;
+		}
+	}
 }
 
 

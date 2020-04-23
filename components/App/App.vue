@@ -644,7 +644,7 @@
 		&__header {
 			display        : none;
 			position       : relative;
-			padding-bottom : $main_offset / 2;
+			padding-bottom : 15px;
 			
 			@include tablet {
 				display : flex;
