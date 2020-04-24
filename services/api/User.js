@@ -594,7 +594,7 @@ export default {
             });
         });
     },
-    async requestStripeOperations({id, token, query }){
+    async requestStripeOperations({id, token, query, order_field, order_direction}){
 
         return new Promise((resolve, reject) => {
             HTTP.get(`/doctors/${id}/billings`, {
@@ -604,6 +604,8 @@ export default {
                 },
                 params    : {
                     search : query.search,
+                    order_field: order_field,
+                    order_direction: order_direction
                 }
 
             }).then(response => {

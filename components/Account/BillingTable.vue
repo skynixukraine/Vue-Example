@@ -97,26 +97,23 @@
 
                     if(this.sortingName === prop){
 
-                        this.query.direction === 'desc'
-                            ? this.query.direction = 'asc'
-                            : this.query.direction = 'desc';
+                        this.query.direction === 'asc'
+                            ? this.query.direction = 'desc'
+                            : this.query.direction = 'asc';
                     } else {
                         this.sortingName = prop;
-                        this.query.direction = 'desc';
+                        this.query.direction = 'asc';
                     }
 
                     if(prop === 'enquiryID'){ //get data from server for sorting to enquiryID
                         this.query.field = 'enquire_id';
-                        this.requestSO();
                     }
                     if(prop === 'date'){
                         this.query.field = 'created_at';
-                        this.requestSO();
 
                     } //get data from server for sorting to date
                     if(prop === 'status'){
-                        this.query.field = 'status';
-                        this.requestSO();
+                        this.query.field = 'id';
 
                     } //get data from server for sorting to status
                     _prop = prop;
@@ -165,7 +162,22 @@
                         return 0;
                     });
                 }
+                let query = {
+                    search :         this.query.search,
+                };
+                UserApi.requestStripeOperations({
+                    id    : this.$store.state.user.user.id,
+                    token : this.$cookies.get(this.$cookie.names.token),
+                    query : query,
+                    order_field : this.query.field,
+                    order_direction: this.query.direction
+                }).then((response) => {
+                    this.data = response.data.data;
+                }).catch((error) => {
+                    this.responseErrorMessage = error.message;
+                });
             },
+            
         },
         mounted(){
             this.requestSO();
