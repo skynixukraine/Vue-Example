@@ -32,9 +32,6 @@
 				box-shadow: none;
 				border-radius: 3px;
 				
-				.modal__close-button {
-					display: none;
-				}
 				img {
 					width : 100%;
 					max-height: 600px;

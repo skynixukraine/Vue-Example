@@ -26,12 +26,9 @@
 			<div class = "doctor-card__main--location" v-if = "doctor.location || doctor.region">
 				{{ doctor.location && doctor.location.city || doctor.region && doctor.region.name }}
 			</div>
-			<button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
-					v-if = "isPreview">
-				<NuxtLink :to = "linkToDoctorProfile" class = "links">
+			<NuxtLink v-if = "isPreview" :to = "linkToDoctorProfile" class = "doctor-card__main--start-enquiry-btn link--button link--button-blue">
 				{{ this.$t('page-hautarzt.button') }}
 				</NuxtLink>
-			</button>
 		</div>
 	</div>
 </template>
