@@ -197,6 +197,16 @@
 				border        : none;
 				margin        : 0 #{-$padding};
 				border-radius : 0 0 $border-radius $border-radius;
+				&::before {
+					border-radius : 0 0 $border-radius $border-radius;
+				}
+				
+				&::before {
+					border-radius : 0 0 $border-radius $border-radius;
+				}
+				&:hover {
+					border-radius : 0 0 $border-radius $border-radius;
+				}
 			}
 		}
 		
