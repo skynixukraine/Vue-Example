@@ -54,7 +54,7 @@ module.exports = {
     ],
     loading: { color: '#FFF' },
     manifest: {
-        name: 'Hautprobleme? | Hautarzt online fragen | Nur 19 Euro‎',
+        name: 'Hautprobleme? | Hautarzt online fragen | Zuhause bleiben‎',
         short_name: 'Hautarzt online fragen',
         description: 'Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der ärztlichen Empfehlung wissen Sie zudem, was Sie dagegen tun können.',
         display: 'standalone',
