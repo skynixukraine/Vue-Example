@@ -99,6 +99,8 @@
                 isShowSelectBodyPartModal   : false,
                 doctorId                    : null,
                 success                     : true,
+				errorMessage                : this.$t("genegal-translations.error-message"),
+                errorMessageTitle           : this.$t("genegal-translations.error-message-title"),
                 stripeToken                 : null,
                 enquireId                   : null,
                 userInputData               : {
@@ -151,7 +153,7 @@
                             this.success = true;
                         }
                     }).catch((error) =>{
-                        this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                        this.openModal(this.$modals.defaultModal, this.errorMessage, this.errorMessageTitle);
                         this.success = false;
                     });
 
@@ -178,7 +180,7 @@
                 }).then(function(result){
                     location.replace(result.source.redirect.url)
                 }).catch((error) =>{
-                    this.openModal(this.$modals.defaultModal, error.message, "Etwas ist schief gelaufen!");
+                    this.openModal(this.$modals.defaultModal, this.errorMessage, this.errorMessageTitle);
                 });
 
             },

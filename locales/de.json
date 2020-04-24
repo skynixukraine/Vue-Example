@@ -8,7 +8,9 @@
         "read-and-accept1" : "gelesen und akzeptiere diesen.",
 		"data-protection" : "Datenschutzerklärung",
 		"medical-contract" : "Arztvertrag",
-		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin."
+		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin.",
+		"error-message" : "Fehler der Bezahlung",
+		"error-message-title" : "Etwas ist schief gelaufen!"
 	},
 	"links": {
 		"logo-link": "Online Hautarzt vor Ort",
