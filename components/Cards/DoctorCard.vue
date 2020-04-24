@@ -8,15 +8,17 @@
 		<div class = "doctor-card__main">
 			<div class = "doctor-card__main--title-container">
 				<div class = "doctor-card__main--name">
-					<div class = "doctor-card__main--name_title">{{doctor.title.name || ""}}</div>
-					<NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
-						{{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` :
-						doctor.first_name : "" }}
-					</NuxtLink>
+					<div class = "doctor-card__main--name_title">{{doctor.title.name || ""}}
+						<NuxtLink :to = "linkToDoctorProfile" class = "doctor-card__main--name_full">
+							{{ doctor.first_name ? doctor.last_name ? `${doctor.first_name} ${doctor.last_name}` :
+							doctor.first_name : "" }}
+						</NuxtLink>
+					</div>
+				
 				</div>
-				<div class = "doctor-card__main--price">
+			<!--	<div class = "doctor-card__main--price">
 					{{ `${doctor.enquire_price} €` || "" }}
-				</div>
+				</div> -->
 			</div>
 			<!-- <div class = "doctor-card__main--description">
 				{{ doctor.short_description || !isPreview && doctor.description || "" }}
@@ -25,9 +27,10 @@
 				{{ doctor.location && doctor.location.city || doctor.region && doctor.region.name }}
 			</div>
 			<button class = "doctor-card__main--start-enquiry-btn link--button link--button-blue"
-					v-if = "isPreview"
-					@click = "openModal($modals.beforeChat, startDiagnosticChat)">
-				ANFRAGE STARTEN
+					v-if = "isPreview">
+				<NuxtLink :to = "linkToDoctorProfile" class = "links">
+				{{ this.$t('page-hautarzt.button') }}
+				</NuxtLink>
 			</button>
 		</div>
 	</div>
@@ -190,6 +193,13 @@
 					display          : inline-block;
 					margin-right     : 10px;
 					background-image : url("~static/images/icons/location_marker.svg");
+				}
+			}
+			
+			&--start-enquiry-btn {
+				.links {
+					color: $color-white;
+					left: 0;
 				}
 			}
 			

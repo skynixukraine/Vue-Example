@@ -673,7 +673,8 @@
 	"page-hautarzt": {
 		"head": {
 			"title": "Hautärzte | Online Hautarzt vor Ort"
-		}
+		},
+		"button" : "Hautarzt wählen"
 	},
 	"page-forschung": {
 			"chat": {
