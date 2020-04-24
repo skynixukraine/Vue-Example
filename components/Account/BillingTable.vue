@@ -86,7 +86,6 @@
                     query : query
                 }).then((response) => {
                     this.data = response.data.data;
-                    console.log(response)
                 }).catch((error) => {
                     this.responseErrorMessage = error.message;
                 });
