@@ -284,7 +284,7 @@
 			<div class = "personal-info__column">
 				<div class = "personal-info__item"
 					 v-if = "!isApproved">
-					<button class = "link link--button link--button-full-width link--button-gradient personal-info__item-link"
+					<button class = "link link--button link--button-blue link--button-full-width link--button-gradient personal-info__item-link"
 							@click.stop = "onApproveRequest">{{ $t("page-personal-information.buttons.btnApply") }}
 					</button>
 				</div>
@@ -864,6 +864,10 @@
 				
 				@include desktop {
 					max-width : calc(#{$desktop_max_column_width * 2} + #{$avatar_img_size} + #{$main_offset});
+				}
+				
+				&.link--button-blue {
+					left: auto;
 				}
 			}
 		}

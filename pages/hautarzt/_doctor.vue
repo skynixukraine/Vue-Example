@@ -274,15 +274,11 @@
                 max-width  : 224px;
                 margin-top : $main_offset;
                 transition : .3s;
-                background : $color-torea-bay;
 
                 @include tablet-big {
                     margin-top : 36px;
                 }
-
-                &:hover {
-                    background : $color-matisse;
-                }
+                
             }
         }
     }
