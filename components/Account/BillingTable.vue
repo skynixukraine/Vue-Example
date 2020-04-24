@@ -86,6 +86,7 @@
                     query : query
                 }).then((response) => {
                     this.data = response.data.data;
+                    console.log(response)
                 }).catch((error) => {
                     this.responseErrorMessage = error.message;
                 });
@@ -113,7 +114,7 @@
 
                     } //get data from server for sorting to date
                     if(prop === 'status'){
-                        this.query.field = 'id';
+                        this.query.field = 'status';
 
                     } //get data from server for sorting to status
                     _prop = prop;

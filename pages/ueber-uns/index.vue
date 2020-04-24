@@ -143,14 +143,23 @@ export default {
 
     .ueber-uns-card {
         display: flex;
+        flex-direction: column;
         width: 100%;
         margin-bottom: 50px;
+    
+        @include tablet {
+            flex-direction: row;
+        }
+        
         &__left {
             text-align: center;
         }
         &__left, 
         &__right {
-            width: 50%;
+            width: 100%;
+            @include tablet {
+                width: 50%;
+            }
         }
     }
 
