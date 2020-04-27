@@ -810,7 +810,7 @@
                     token  : this.$cookies.get(this.$cookie.names.token),
                     params : formData
                 }).then((response) => {
-                    this.openModal(this.$modals.defaultModal, "", "Herzliche Glückwünsche!");
+                    this.openModal(this.$modals.defaultModal, "", "Erfolgreich gespeichert.");
                     this.setDefaultValues();
                 }).catch((error) => {
                     this.openModal(this.$modals.defaultModal, "", "Etwas ist schief gelaufen!");
