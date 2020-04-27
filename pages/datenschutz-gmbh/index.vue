@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class = "section gmbh-section"
-             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.webp')})`}"
+             :style = "{ backgroundImage: `url(${require('~/static/images/bg/abstract-bg-new.jpg')})`}"
         >
             <div class = "container container__mobile-adaptation">
                 <h1 class ="gmbh-title title">
