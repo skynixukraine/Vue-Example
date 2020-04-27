@@ -1,7 +1,11 @@
 <template>
 	<div>
-		<div class="registration-content">
-			<div class = "faq-block">
+		<div class="registration-video">
+			<h3 class="registration-video__title">{{ this.$t('register-page.video-title')}}</h3>
+		<iframe  src="https://www.youtube.com/embed/CiPYqDfTNrQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+			<div class="registration-content">
+			<div class = "faq-block faq-block__one">
 				<div class = "faq-block__header" @click = "openTab" id = "q1">
 					<h3 class = "faq-block__title">{{ this.$t('register-page.questions.q1.title')}}</h3>
 					<svg class = "icon icon__small" width = "20" height = "20" viewBox = "0 0 20 20" fill = "none" xmlns = "http://www.w3.org/2000/svg">
@@ -12,7 +16,7 @@
 					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q1.p1')}}</p>
 				</div>
 			</div>
-			<div class = "faq-block">
+			<div class = "faq-block faq-block__two">
 				<div class = "faq-block__header" @click = "openTab" id = "q2">
 					<h3 class = "faq-block__title">{{ this.$t('register-page.questions.q2.title')}}</h3>
 					<svg class = "icon icon__small" width = "20" height = "20" viewBox = "0 0 20 20" fill = "none" xmlns = "http://www.w3.org/2000/svg">
@@ -23,7 +27,9 @@
 					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q2.p1')}}</p>
 				</div>
 			</div>
-			<div class = "faq-block">
+				<h4>{{ this.$t('register-page.register_text')}}</h4>
+				<Signup />
+			<div class = "faq-block faq-block__three">
 				<div class = "faq-block__header" @click = "openTab" id = "q3">
 					<h3 class = "faq-block__title">{{ this.$t('register-page.questions.q3.title')}}</h3>
 					<svg class = "icon icon__small" width = "20" height = "20" viewBox = "0 0 20 20" fill = "none" xmlns = "http://www.w3.org/2000/svg">
@@ -58,6 +64,7 @@
 					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q5.p2')}}</p>
 					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q5.p3')}}</p>
 					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q5.p4')}}</p>
+					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q5.p5')}}</p>
 				</div>
 			</div>
 			<div class = "faq-block">
@@ -71,13 +78,13 @@
 					<p class = "faq-block__paragraph">{{ this.$t('register-page.questions.q6.p1')}}</p>
 				</div>
 			</div>
-			<h4>{{ this.$t('register-page.register_text')}}</h4>
 		</div>
 	</div>
 </template>
 
 <script>
     import StepCard from "~/components/Cards/StepCard";
+    import Signup from "~/components/Authorization/Signup";
     import smoothScroll from "~/mixins/smooth-scroll";
 
     export default {
@@ -117,7 +124,8 @@
             }
         },
         components : {
-            StepCard
+            StepCard,
+            Signup
         },
         mixins     : [
             smoothScroll,
@@ -127,6 +135,19 @@
 
 <style lang = "scss" scoped>
 	$offset : 28px;
+	
+	.registration-video {
+		text-align: center;
+		margin-bottom: 50px;
+		iframe {
+			width: 100%;
+			max-width: 560px;
+			height: 48vw;
+			@include tablet {
+				height: 315px;
+			}
+		}
+	}
 	
 	.faq-contents { list-style-type : none; }
 	.registration-content {
@@ -190,6 +211,17 @@
 			margin        : 0 0 24px 0;
 			border-bottom : 2px solid #E7E8E7;
 		}
+		
+		.faq-block__two {
+			margin        : 0 0 50px 0;
+			border-bottom : 2px solid #E7E8E7;
+		}
+		
+		.faq-block__three {
+			margin-top: 50px;
+		}
+		
+		
 		.step-section {
 			padding : 18px 0;
 			

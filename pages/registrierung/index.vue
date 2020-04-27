@@ -10,14 +10,12 @@
         <div class="section section--registration">
             <div class="container">
                 <RegistrationContent />
-                        <Signup />
                 </div>
             </div>
         </div>
 </template>
 
 <script>
-import Signup from "~/components/Authorization/Signup";
 import RegistrationContent from "~/components/Static/RegistrationContent"
 
 export default {
@@ -39,7 +37,6 @@ export default {
     },
 
     components: {
-        Signup,
         RegistrationContent
     },
   
