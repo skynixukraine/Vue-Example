@@ -99,6 +99,7 @@ export default {
 				},
 				quest		   : null,
                 isFormSending  : false,
+				succesMessage: this.$t("genegal-translations.succes-message")
             }
 		},
 		computed: {
@@ -148,7 +149,7 @@ export default {
 				// API to Sending E-Mail
 
 				UserApi.createSupportRequest(formData).then(response => {
-						   this.openModal(this.$modals.defaultModal, response.message);
+						   this.openModal(this.$modals.defaultModal, this.succesMessage);
 						   this.$root.$emit("showNotify", {type : "error", text : response.message});
 						   this.$router.push({path : this.$routes.home.path});
                         }).catch(error => {
