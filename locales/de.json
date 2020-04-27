@@ -10,6 +10,7 @@
 		"medical-contract" : "Arztvertrag",
 		"am-a-specialist" : "Ich bestätige, dass ich Facharzt für Haut- & Geschlechtskrankheiten bin.",
 		"error-message" : "Fehler der Bezahlung",
+		"error-message-title" : "Etwas ist schief gelaufen!",
 		"succes-message" : "Ihre Nachricht wurde versendet"
 	},
 	"links": {
