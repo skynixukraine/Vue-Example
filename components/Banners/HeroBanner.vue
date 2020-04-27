@@ -16,7 +16,7 @@
         </footer>
         <img
             class="hero-banner__phone" v-bind:class="checkForSqueeze"
-            :src="require('~/static/images/images/iPhone_banner.webp')"
+            :src="require('~/static/images/images/iPhone_banner.png')"
             alt="iphone"
         />
     </div>
