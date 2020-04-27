@@ -508,14 +508,14 @@
 		},
 		"prices" : {
 			"title" : "Bitte wählen Sie die Option",
-			"doctor-fee" : "Arztgebühr",
-			"admin-fee" : "Bearbeitungsgebühr",
+			"doctor-fee" : "Arzthonorar",
+			"admin-fee" : "Plattformgebühr",
 			"total" : "Gesamtpreis",
 			"edit-but" : "Bearbeiten",
-			"plan-selected" : "Plan ausgewählt",
+			"plan-selected" : "Gewählte Vergütung",
 			"cancel" : "Stornieren",
 			"confirm" : "Bestätigen",
-			"popup-text" : "Bitte wählen Sie eine dieser Optionen. Diese Änderung wird sofort übernommen."
+			"popup-text" : "Bitte wählen Sie Ihr Arzthonorar pro Fall (Bearbeitungszeit ca. 2-4 Minuten). Der Gesamtpreis wird dann auf Ihrem Profil dem Patienten angezeigt."
 		}
 	},
 	"page-about": {
