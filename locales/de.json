@@ -109,7 +109,7 @@
 	"banners": {
 		"herobanner": {
 			"title": "Fragen Sie einen Hautarzt - wann und wo Sie wollen.",
-			"description": "Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig (19,- €) eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der ärztlichen Empfehlung wissen Sie zudem, was Sie dagegen tun können.",
+			"description": "Bei Online Hautarzt vor Ort erhalten Sie schnell, online und kostengünstig eine professionelle Einschätzung Ihres Hautproblems durch einen Hautarzt aus Deutschland. Dank der ärztlichen Empfehlung wissen Sie zudem, was Sie dagegen tun können.",
 			"scroll-to-run": "Runterscrollen"
 		}
 	},
@@ -941,14 +941,15 @@
 	"register-page": {
 		"title": "Versorgen Sie Ihre Patienten online.",
 		"subtitle" : "Sie sind Facharzt für Haut- & Geschlechtskrankheiten? Registrieren Sie sich kostenlos bei unserem Modellprojekt. In weniger als 24 Stunden können Sie Ihre Patienten fernbehandeln.",
+		"video-title" : "Erfahrungsbericht eines niedergelassenen Hautarztes",
 		"questions" : {
 			"q1" : {
 				"title" : "Wie funktioniert Online Hautarzt vor Ort?",
-				"p1" : "Über Online Hautarzt vor Ort haben Fachärzte für Haut- & Geschlechtskrankheiten die Möglichkeit, Patienten von ihrem Wunschort aus zu betreuen, ohne dass diese persönlich vorstellig werden. Die Anamnese erfolgt dabei automatisiert über einen interaktiven Fragebogen. Die Hautärzte erhalten auf eine für sie schnell einzuschätzende Art und Weise das Hautproblem des Patienten übermittelt. Wenn sie Zeit haben, aber spätestens innerhalb von 48 Stunden, schicken die Hautärzte eine professionelle Einschätzung und Handlungsempfehlung an den Patienten zurück, die nach unserer externen wissenschaftlichen Evaluation an der Universitäts-Hautklinik Essen in etwa 70% der Fälle den persönlichen Praxisbesuch erspart."
+				"p1" : "Mit Online Hautarzt vor Ort haben Fachärzte für Haut- & Geschlechtskrankheiten die Möglichkeit, Patienten von ihrem Wunschort aus zu behandeln. Die Anamnese erfolgt dabei automatisiert über einen interaktiven Fragebogen. Die Hautärzte erhalten auf eine für sie schnell einzuschätzende Art und Weise das Hautproblem des Patienten übermittelt. Wenn sie Zeit haben, aber spätestens innerhalb von 48 Stunden, schicken die Hautärzte eine professionelle Einschätzung und Handlungsempfehlung an den Patienten zurück. Die Vergütung hierfür legen die Hautärzte selber fest."
 			},
 			"q2" : {
 				"title" : "Wie hoch ist die Vergütung?",
-				"p1" : "Der Dermatologe erhält 12,50 Euro pro Fall (=Umsatzsteuerfreie Heilleistung). Dies entspricht bei einer durchschnittlichen Bearbeitungsdauer pro Fall von ca. zwei Minuten einem Netto-Stundenlohn von etwa 375,- Euro. 12,50 Euro entspricht etwa 2/3 des niedrigen Gesamtbetrages von 19,- Euro. Damit zahlen wir einen höheren Anteil an unsere Ärzte aus, als alle uns bekannten Telemedizindienste. Als ärztlich geleitete Plattform möchten wir den Dienst in der Coronakrise so günstig wie möglich für die Patienten bereitstellen und verzichten daher auf unseren Gewinn."
+				"p1" : "Da der Aufwand der Bedienung einer Online-Plattform und dessen angemessene Vergütung unterschiedlich empfunden wird, legt der Hautarzt diese selber fest: 12,50 Euro, 17,50 Euro oder 25 Euro können von dem Hautarzt als umsatzsteuerfreie Heilleistung automatisiert abgerechnet werden. Die Bearbeitungsdauer pro Fall beträgt gemäß den teilnehmenden Hautärzten zwei bis vier Minuten. Kosten fallen für den Hautarzt keine an. Der Patient zahlt neben der Behandlungsgebühr noch eine Gebühr für den Betrieb der Plattform. So ergibt sich ein Gesamtpreis von 19, 25 oder 34 Euro, je nach der von Ihnen gewählten Vergütung für den Patienten. Der Patient bekommt Ihren Preis erst angezeigt, wenn er Sie ausgewählt hat. Ein direkter Preisvergleich zwischen den Kollegen ist damit nicht möglich. Durch unsere niedrigen Betriebskosten zahlen wir einen höheren Anteil an unsere Kollegen aus, als alle uns bekannten Telemedizindienste. Dieser Dienst ist von Hautärzten für Hautärzte und der einzige Online-Hautarzt-Dienst aus Deutschland."
 			},
 			"q3" : {
 				"title" : "Wie funktioniert der Befundungsprozess?",
@@ -961,10 +962,11 @@
 			},
 			"q5" : {
 				"title" : "Wie hoch ist die Anzahl der Online-Anfragen?",
-				"p1" : "Durch den niedrigen Gesamtpreis von 19,- Euro – der mit Abstand günstigste Gesamtpreis sämtlicher uns bekannten fachärztlichen Teledermatologieplattformen – ist die Barriere auch für Ihre Patienten reduziert und Sie erreichen mit dem niedrigen Preis insbesondere in der Coronakrise auch Geringverdiener. Dadurch erhalten Sie deutlich mehr Anfragen und damit Einkünfte, als bei teureren Diensten. Unser Dienst zahlt 66% (ca. 2/3) direkt an den Dermatologen aus. Auch dieser Anteil ist höher als bei allen uns bekannten Telemedizindiensten.",
-				"p2" : "Wieviele Anfragen Sie erhalten, können Sie zu einem großen Teil selber steuern: Nach Registrierung erhalten Sie ein individuelles Profil (z.B. Online-Hautarzt.de/hautarzt/Max-Mustermann), auf das Sie Ihre Patienten über die Startseite Ihrer Praxis verweisen können. ",
-				"p3" : "Dieser Mustertext hat sich bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig (19,- Euro) eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und müssen meist nicht mehr persönlich vorbeikommen: Online-Hautarzt.de/Hautarzt/Max-Mustermann“.",
-				"p4" : "Darüber hinaus kommt ein Teil der Patienten auch über Ihr Profil auf online-hautarzt.de zu Ihnen. Über die Zeit werden auch viele Patienten Ihre Online-Behandlung schätzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
+				"p1" : "Das haben Sie selber in der Hand.",
+				"p2" : "Die meisten Patienten kommen über die eigene Praxisseite auf Ihr Profil (ca. fünf pro Tag). Wenn Sie dieses nicht auf Ihrer Praxisseite verlinken, kommen ausschließlich Patienten über die Radius-Funktion dieser Webseite und den Suchmaschinen-Eintrag Ihres Profils zu Ihnen. Dies sind substantiell weniger (ca. 2-4 pro Monat).",
+				"p3" : "Für den Patienten ist außerdem der Gesamtpreis von großer Bedeutung. Bei einem Gesamtpreis von 25 Euro und somit 17,50 Euro Vergütung für Sie pro kurzer Anfrage von 2-4 Minuten Aufwand, schicken nach unseren Erfahrungen dreimal so viele Patienten Anfragen an Sie, wie bei einem Gesamtpreis von 34 Euro und 25 Euro Vergütung. Letztlich ist dies jedoch auch stark abhängig von dem jeweiligen Einzugsgebiet (Geringverdiener vs. Wohlhabende). Über die Zeit werden auch viele Patienten Ihre Online-Behandlung schätzen, Sie weiterempfehlen, oder Sie wieder online besuchen.",
+				"p4" : "Für die Praxisseite hat sich dieser Mustertext bewährt: „Sie sorgen sich wegen eines Hautproblems? Unter diesem Link erhalten Sie schnell, online und kostengünstig eine professionelle Einschätzung durch unsere Praxis. Dank der Handlungsempfehlung wissen Sie zudem, was Sie wegen Ihres Hautproblems unternehmen sollten und müssen meist nicht mehr persönlich vorbeikommen: Online-Hautarzt.de/Hautarzt/Max-Mustermann“.",
+				"p5" : "Über die Zeit werden auch viele Patienten Ihre Online-Behandlung schätzen, Sie weiterempfehlen, oder Sie wieder online besuchen."
 			},
 			"q6" : {
 				"title" : "Kann ich auch als Assistenzarzt mitmachen?",
