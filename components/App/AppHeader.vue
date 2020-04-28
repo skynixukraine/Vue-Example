@@ -75,12 +75,25 @@
 		
 		&--bg-white {
 			background : $color-white;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+			box-shadow : 0 0 10px rgba(0, 0, 0, 0.07);
 			height     : 80px;
 			padding    : 8px 15px;
 			
 			.app-logo {
-				max-width: 290px;
+				max-width : 260px;
+			}
+			
+			.navigation__item {
+				margin-bottom : 16px;
+				
+				&:last-child { margin-bottom : 0; }
+				
+				@include tablet-big {
+					margin-right  : 15px;
+					margin-bottom : 0;
+					
+					&:last-child { margin-right : 0; }
+				}
 			}
 		}
 		
