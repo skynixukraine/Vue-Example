@@ -103,8 +103,8 @@
 						</div>
 						<div
 								class = "table__header-item table__header-item_last-contact"
-								:class = "[sortingName === 'last_contacted_at' ? query.direction : '']"
-								@click = "sort('last_contacted_at')">{{ $t("page-enquiries.table.date-of-last-contact") }}
+								:class = "[sortingName === 'conclusion_created_at' ? query.direction : '']"
+								@click = "sort('conclusion_created_at')">{{ $t("page-enquiries.table.date-of-last-contact") }}
 						</div>
 						<div
 								class = "table__header-item table__header-item_status"
@@ -123,7 +123,7 @@
 							<div class = "table__main-item" data-title = "Nachname">{{enquire.last_name}}</div>
 							<div class = "table__main-item" data-title = "Anfragedatum">{{enquire.created_at.date | dateFormat}}
 							</div>
-							<div class = "table__main-item" data-title = "Letzter Kontakt">{{enquire.last_contacted_at}}</div>
+							<div class = "table__main-item" data-title = "Letzter Kontakt">{{enquire.conclusion_created_at ? enquire.conclusion_created_at.date : null | dateFormat}}</div>
 							<div class = "table__main-item" data-title = "Status">{{enquire.status}}</div>
 						</NuxtLink>
 					</div>
@@ -178,6 +178,10 @@
 		},
         filters  : {
             dateFormat(val){  //dd/mm/yyyy hh:mm
+                if (!val) {
+                    return val;
+                }
+
                 let _date = new Date(val).toJSON();
 
                 return _date.slice(8, 10) + '/' + _date.slice(5, 7) + '/' + _date.slice(0, 4) + ' ' + _date.slice(11, 16);
