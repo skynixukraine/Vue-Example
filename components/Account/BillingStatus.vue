@@ -3,7 +3,7 @@
 		<div class = "section">
 			<div class = "container">
 				<a v-if = "!userPaymentData.stripe_account_id && userPaymentData.url"
-				   :href = "userPaymentData.url"
+				   :href = "stripeConnectUrl"
 				   target = "_blank"
 				   class = "link link--button link--button-blue link--button-gradient">{{ $t("page-billing.stripe.connecting") }}</a>
                 <a v-else-if = "userPaymentData.stripe_account_id"
@@ -23,7 +23,10 @@
         computed   : {
             userPaymentData(){
                 return this.$store.state.user.userPaymentData;
-            }
+            },
+            stripeConnectUrl(){
+                return 'https://connect.stripe.com/express/oauth/authorize?redirect_url=' + this.$store.state.user.userPaymentData.url;
+            },
         },
     }
 </script>
