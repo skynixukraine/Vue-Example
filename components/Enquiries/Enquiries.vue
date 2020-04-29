@@ -88,27 +88,65 @@
                         @click="next"></div>
                     </div>
                 </div>
-
-			    <Table />
+				<div class = "table__content table--enquirie">
+					<div class = "table__header">
+						<div class = "table__header-item table__header-item_id"
+							 :class = "[sortingName === 'id' ? query.direction : '']"
+							 @click = "sort('id')">{{ $t("page-enquiries.table.enquiry-id") }}
+						</div>
+						<div class = "table__header-item">{{ $t("page-enquiries.table.first-name") }}</div>
+						<div class = "table__header-item">{{ $t("page-enquiries.table.last-name") }}</div>
+						<div
+								class = "table__header-item table__header-item_enquiry-date"
+								:class = "[sortingName === 'created_at' ? query.direction : '']"
+								@click = "sort('created_at')">{{ $t("page-enquiries.table.date-of-the-request") }}
+						</div>
+						<div
+								class = "table__header-item table__header-item_last-contact"
+								:class = "[sortingName === 'last_contacted_at' ? query.direction : '']"
+								@click = "sort('last_contacted_at')">{{ $t("page-enquiries.table.date-of-last-contact") }}
+						</div>
+						<div
+								class = "table__header-item table__header-item_status"
+								:class = "[sortingName === 'status' ? query.direction : '']"
+								@click = "sort('status')">{{ $t("page-enquiries.table.status") }}
+						</div>
+					</div>
+					<div class = "table__main">
+						
+						<NuxtLink class = "table__main-items main-items--enquirie"
+								  v-for = "(enquire, index) in data"
+								  :key = "index"
+								  :to = "routes(enquire.id)">
+							<div class = "table__main-item" data-title = "Anfrage ID">{{enquire.id}}</div>
+							<div class = "table__main-item" data-title = "Vorname">{{enquire.first_name}}</div>
+							<div class = "table__main-item" data-title = "Nachname">{{enquire.last_name}}</div>
+							<div class = "table__main-item" data-title = "Anfragedatum">{{enquire.created_at.date | dateFormat}}
+							</div>
+							<div class = "table__main-item" data-title = "Letzter Kontakt">{{enquire.last_contacted_at}}</div>
+							<div class = "table__main-item" data-title = "Status">{{enquire.status}}</div>
+						</NuxtLink>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-    import Table from "~/components/Enquiries/EnquiriesTable.vue"
     import modal from '~/mixins/modal'
 
     export default {
         mixins : [
             modal,
         ],
-
-        components : {
-            Table,
-        },
         data(){
             return {
+                data: "",
+                query       : {
+                    direction : 'desc'
+                },
+                sortingName : "id",
                 models        : {
                     search             : "",
                     created_at_from    : "",
@@ -135,7 +173,32 @@
                 return this.$store.state.doctors.doctorEnquires.meta;
             },
         },
+		mounted() {
+            this.sendRequest();
+		},
+        filters  : {
+            dateFormat(val){  //dd/mm/yyyy hh:mm
+                let _date = new Date(val).toJSON();
+
+                return _date.slice(8, 10) + '/' + _date.slice(5, 7) + '/' + _date.slice(0, 4) + ' ' + _date.slice(11, 16);
+            }
+        },
         methods  : {
+            routes(id){
+                return this.$routes.enquiries.path + '/' + id;
+            },
+            sort(column){
+                if(this.requestParams.order_field == column){
+                    let direction                              = this.requestParams.order_direction;
+                    this.requestParams.order_direction = direction === "desc" ? "asc" : "desc";
+                } else{
+                    this.requestParams.order_field     = column;
+                    this.requestParams.order_direction = "desc";
+                }
+                this.sendRequest();
+                this.sortingName     = column;
+                this.query.direction = this.requestParams.order_direction;
+            },
             onSubmit(){
                 this.requestParams = this.prepareDataForSending(this.models, this.requestParams);
 
@@ -188,7 +251,9 @@
                     token       : this.$cookies.get(this.$cookie.names.token),
                     doctor_id   : this.$store.state.user.user.id,
                     requestData : this.requestParams
-                })
+                }).then((resolve)=>{
+                    this.data = resolve.data.data
+				})
             },
             setToDefaultModel(models) {
                 models.search = "";
@@ -274,6 +339,7 @@
 			
 			&-input {
 				margin-top : 6px;
+				min-width: 150px;
 			}
 		}
 		
@@ -337,5 +403,63 @@
                 transform: rotate(180deg);
             }
         }
+	}
+	
+	.main-items--enquirie {
+		min-height: 56px;
+	}
+	.main-items--enquirie:hover {
+		cursor: pointer;
+	}
+	
+	@include tablet-big-min--big {
+		.table {
+			&__header {
+				display        : none;
+				position       : relative;
+				padding-bottom : 10px;
+			}
+			&__main-item:hover {
+				background-color: #c7c7c7;
+			}
+			&__main-item:not(:last-child) {
+				border-bottom : 1px solid #F3F3F3;
+			}
+			&__main-items {
+				min-height: 56px;
+				color: #7a7d84;
+				display: flex;
+				position: relative;
+				padding-top: 10px;
+				border-radius: 4px;
+				padding-bottom: 10px;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				flex-direction: column;
+				&:after {
+					right : 0;
+					width : 100%;
+				}
+			}
+			&__main-item {
+				position     : relative;
+				flex-basis   : 25%;
+				padding-left : 50%;
+				
+				&:before {
+					top           : 0;
+					left          : 6px;
+					width         : 45%;
+					color         : $color-curious-blue;
+					display       : block;
+					content       : attr(data-title);
+					position      : absolute;
+					white-space   : nowrap;
+					padding-right : 10px;
+				}
+			}
+			
+		}
+		
 	}
 </style>
