@@ -533,7 +533,7 @@
 		"date-of-the-request" : "Datum der Anfrage",
 		"date-of-last-contact":"Datum des letzten Kontaktes",
 		"reset":"Ergebnisse zurücksetzen",
-		"submit-diagnosis": "BEFUND ABSCHICKEN & FALL SCHLIEßEN",
+		"submit-diagnosis": "BEFUND EINGEBEN",
 		"send-findings": "BEFUND ABSCHICKEN ",
 		"finished": "Fertig",
 		"table": {
