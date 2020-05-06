@@ -121,9 +121,9 @@
 							<div class = "table__main-item" data-title = "Anfrage ID">{{enquire.id}}</div>
 							<div class = "table__main-item" data-title = "Vorname">{{enquire.first_name}}</div>
 							<div class = "table__main-item" data-title = "Nachname">{{enquire.last_name}}</div>
-							<div class = "table__main-item" data-title = "Anfragedatum">{{enquire.created_at.date | dateFormat}}
+							<div class = "table__main-item" data-title = "Anfragedatum">{{enquire.created_at}}
 							</div>
-							<div class = "table__main-item" data-title = "Letzter Kontakt">{{enquire.conclusion_created_at ? enquire.conclusion_created_at.date : null | dateFormat}}</div>
+							<div class = "table__main-item" data-title = "Letzter Kontakt">{{enquire.conclusion_created_at ? enquire.conclusion_created_at : null }}</div>
 							<div class = "table__main-item" data-title = "Status">{{enquire.status}}</div>
 						</NuxtLink>
 					</div>
@@ -176,17 +176,7 @@
 		mounted() {
             this.sendRequest();
 		},
-        filters  : {
-            dateFormat(val){  //dd/mm/yyyy hh:mm
-                if (!val) {
-                    return val;
-                }
-
-                let _date = new Date(val).toJSON();
-
-                return _date.slice(8, 10) + '/' + _date.slice(5, 7) + '/' + _date.slice(0, 4) + ' ' + _date.slice(11, 16);
-            }
-        },
+    
         methods  : {
             routes(id){
                 return this.$routes.enquiries.path + '/' + id;
