@@ -26,7 +26,7 @@
             </div>
             <div class="table__main-items table__main-items--billing" v-for="(item, index) in data" :key="'billing2-' + index">
                 <div class="table__main-item" data-title="Transaction ID">{{item.id}}</div>
-                <div class="table__main-item" data-title="Date">{{item.enquire.created_at.date | dateFormat}}</div>
+                <div class="table__main-item" data-title="Date">{{item.enquire.created_at}}</div>
                 <div class="table__main-item" data-title="Enquiry ID">{{item.enquire.id}}</div>
                 <div class="table__main-item table__main-item--full-name" data-title="Patient's full name">
                     {{item.enquire.first_name}} {{item.enquire.last_name}}
@@ -182,13 +182,7 @@
         mounted(){
             this.requestSO();
         },
-        filters:{
-            dateFormat(val){  //dd/mm/yyyy hh:mm
-               let _date = new Date(val).toJSON();
-
-               return _date.slice(8,10) + '/' + _date.slice(5,7)+ '/'+ _date.slice(0,4) + ' ' + _date.slice(11,16);
-            }
-        }
+        
     }
 </script>
 
