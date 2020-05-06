@@ -553,12 +553,7 @@
             },
             onApproveRequest(){
 				if(this.userInputData.first_name === "") {
-				    if(this.userInputData.first_name === "") {
-                        this.$refs.first_name_error.style.display = "block";
-					} else {
-                        this.$refs.first_name_error.style.display = "none";
-					}
-					
+				    this.$refs.first_name_error.style.display = "block";
                 } else {
                     this.$refs.first_name_error.style.display = "none";
                     UserApi.requestActivation({
