@@ -2,7 +2,7 @@
 	<div>
 		<div class="registration-video">
 			<h3 class="registration-video__title">{{ this.$t('register-page.video-title')}}</h3>
-		<iframe  src="https://www.youtube.com/embed/CiPYqDfTNrQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe  src="https://www.youtube.com/embed/cubXLHg2Ck4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 			<div class="registration-content">
 			<div class = "faq-block faq-block__one">
