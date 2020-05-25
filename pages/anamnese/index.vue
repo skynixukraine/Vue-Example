@@ -303,7 +303,7 @@
 							<label>
 								<div class = "personal-info__field__title is-required">{{ this.$t('page-forschung.feedback-form.birth')}}</div>
 								<input type="text"
-                                       placeholder="DD-MM-YYYY"
+                                       placeholder="DD.MM.YYYY"
 									   class = "input"
 									   style = "color: inherit"
 									   @change = "onPersonalInfoChangeDateOfBirth"
@@ -1124,11 +1124,11 @@
                 }
             },
             onPersonalInfoChangeDateOfBirth(event){
-                let dateArr =  event.target.value.trim().split('-'); 
+                let dateArr =  event.target.value.trim().split('.'); 
                 let tmp = dateArr[0]; 
                 dateArr[0] = dateArr[2]; 
                 dateArr[2] = tmp;
-                let dateReverse = dateArr.join('-');
+                let dateReverse = dateArr.join('.');
 
                 this.personalInfoData.dateOfBirth.value = dateReverse;
                 this.personalInfoData.dateOfBirth.isValid = this.validateDate(event);
