@@ -9,7 +9,7 @@ export default {
         validateDate(event) {
             const name  = event.target.name;
             let value = event.target.value.trim();
-            let dateArr = value.split('-');
+            let dateArr = value.split('.');
             let timeArr = (new Date()).getTime() >= (new Date(dateArr[2], dateArr[1], dateArr[0])).getTime();
 
             // empty check
@@ -214,7 +214,7 @@ export default {
         },
         // checkers
         checkDateFormat(date, dateArr) {
-            var re = /^\d{1,2}\-\d{1,2}\-\d{4}$/;
+            var re = /^\d{1,2}\.\d{1,2}\.\d{4}$/;
             var regs = re.test(date);
             if (regs) {
                 if((dateArr[1] == 0 || dateArr[1] == '00') || dateArr[1] > 12) {
