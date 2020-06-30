@@ -17,8 +17,20 @@ module.exports = {
         ],
         script: [
             { src: `https://js.stripe.com/v3/` },
-            { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` }
+            { src: `https://www.google.com/recaptcha/api.js?render=6LdevsYUAAAAANMMWGDy7h5SPUc9knsvAwe-28bI` },
+            { innerHTML: `
+                    (function(h,o,t,j,a,r){
+                        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                        h._hjSettings={hjid:1841225,hjsv:6};
+                        a=o.getElementsByTagName('head')[0];
+                        r=o.createElement('script');r.async=1;
+                        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                        a.appendChild(r);
+                    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            ` },
         ],
+        __dangerouslyDisableSanitizers: ['script'],
+
         link: [
             { rel: 'shortcut icon', type: 'image/x-icon', sizes: "72x72", href: '/favicon72x72.png' },
             { rel: 'icon', type: 'image/x-icon', sizes: "72x72", href: '/favicon.ico' },
