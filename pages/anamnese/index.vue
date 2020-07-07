@@ -1168,8 +1168,6 @@
             onSubmitDiagnosticChatConfirmEnquire(){
                 let data = new FormData();
 
-                console.log(this.personalInfoData.dateOfBirth.value)
-
                 data.append("email", this.personalInfoData.mail.value);
                 data.append("gender", this.personalInfoData.gender.value);
                 data.append("doctor_id", this.targetDoctor.id);
