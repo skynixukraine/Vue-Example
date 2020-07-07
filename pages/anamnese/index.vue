@@ -1124,11 +1124,13 @@
                 }
             },
             onPersonalInfoChangeDateOfBirth(event){
-                let dateArr =  event.target.value.trim().split('.'); 
-                let tmp = dateArr[0]; 
-                dateArr[0] = dateArr[2]; 
-                dateArr[2] = tmp;
-                let dateReverse = dateArr.join('.');
+                let dateReverse =  event.target.value.trim().split('.').join('.'); 
+                // let tmp = dateArr[0]; 
+                // dateArr[0] = dateArr[2]; 
+                // dateArr[2] = tmp;
+                // let dateReverse = dateArr.join('.');
+
+                console.log(dateReverse)
 
                 this.personalInfoData.dateOfBirth.value = dateReverse;
                 this.personalInfoData.dateOfBirth.isValid = this.validateDate(event);
@@ -1139,7 +1141,7 @@
                 } else{
                     delete this.errors.dateOfBirth;
                 }
-                this.$forceUpdate();
+                // this.$forceUpdate();
             },
             onPersonalInfoMailBlur(event){
                 this.personalInfoData.mail.value   = event.target.value;
@@ -1171,6 +1173,8 @@
             },
             onSubmitDiagnosticChatConfirmEnquire(){
                 let data = new FormData();
+
+                console.log(this.personalInfoData.dateOfBirth.value)
 
                 data.append("email", this.personalInfoData.mail.value);
                 data.append("gender", this.personalInfoData.gender.value);
