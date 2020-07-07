@@ -1124,7 +1124,7 @@
                 }
             },
             onPersonalInfoChangeDateOfBirth(event){
-                let dateReverse =  event.target.value.trim().split('.').join('.'); 
+                let dateReverse =  event.target.value.trim().split('.').reverse().join('.'); 
 
                 this.personalInfoData.dateOfBirth.value = dateReverse;
                 this.personalInfoData.dateOfBirth.isValid = this.validateDate(event);
