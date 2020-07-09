@@ -1124,11 +1124,7 @@
                 }
             },
             onPersonalInfoChangeDateOfBirth(event){
-                let dateArr =  event.target.value.trim().split('.'); 
-                let tmp = dateArr[0]; 
-                dateArr[0] = dateArr[2]; 
-                dateArr[2] = tmp;
-                let dateReverse = dateArr.join('.');
+                let dateReverse =  event.target.value.trim().split('.').reverse().join('-'); 
 
                 this.personalInfoData.dateOfBirth.value = dateReverse;
                 this.personalInfoData.dateOfBirth.isValid = this.validateDate(event);
@@ -1139,7 +1135,7 @@
                 } else{
                     delete this.errors.dateOfBirth;
                 }
-                this.$forceUpdate();
+                // this.$forceUpdate();
             },
             onPersonalInfoMailBlur(event){
                 this.personalInfoData.mail.value   = event.target.value;
